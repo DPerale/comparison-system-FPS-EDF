@@ -1,0 +1,29 @@
+[MAPPING FILE]
+/tmp/GNAT-TEMP-000004.TMP
+[TOOLCHAIN VERSION]
+ada
+GNAT 2018
+[MAIN BASE NAME]
+unit01
+[COMPILER PATH]
+/usr/local/gnat-arm/bin/arm-eabi-gcc
+[COMPILER LEADING SWITCHES]
+-c
+-x
+ada
+-gnatA
+--RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/
+-mlittle-endian
+-mhard-float
+-mcpu=cortex-m4
+-mfpu=fpv4-sp-d16
+-mthumb
+[MAIN DEPENDENCY FILE]
+/home/aquox/Scrivania/edf-ravenscar-arm/build/unit01.ali
+[DEPENDENCY FILES]
+[BINDING OPTIONS]
+gnatbind_prefix=arm-eabi-
+--RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/
+[PROJECT FILES]
+/home/aquox/Scrivania/edf-ravenscar-arm/unit01.gpr
+20181030102055

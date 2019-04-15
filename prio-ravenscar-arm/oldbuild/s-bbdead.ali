@@ -1,0 +1,51 @@
+V "GNAT Lib v2018"
+A -gnatA
+A --RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/
+A -mlittle-endian
+A -mfloat-abi=hard
+A -mcpu=cortex-m4
+A -mfpu=fpv4-sp-d16
+A -mthumb
+A -gnatg
+P DB ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_IMPLEMENTATION_RESTRICTIONS
+RR NO_ELABORATION_CODE
+
+U system.bb.deadlines%s	s-bbdead.ads		c59cea07 NE OL PR PK
+W system%s		system.ads		system.ali
+W system.bb%s		s-bb.ads		s-bb.ali
+W system.bb.time%s	s-bbtime.adb		s-bbtime.ali
+
+D interfac.ads		20181010193657 5ab55268 interfaces%s
+D i-stm32.ads		20181010193657 4d2e1e9b interfaces.stm32%s
+D i-stm32-pwr.ads	20181010193657 10ed2a13 interfaces.stm32.pwr%s
+D system.ads		20181010193713 db831581 system%s
+D s-bb.ads		20180914141903 09e072ae system.bb%s
+D s-bbbopa.ads		20181010193701 95d97b26 system.bb.board_parameters%s
+D s-bbdead.ads		20180509204331 deeac8df system.bb.deadlines%s
+D s-bbmcpa.ads		20181010193701 c4c55388 system.bb.mcu_parameters%s
+D s-bbpara.ads		20181010193701 431abc17 system.bb.parameters%s
+D s-bbtime.ads		20181102134919 12965076 system.bb.time%s
+D s-multip.ads		20181010193706 f33e0e35 system.multiprocessors%s
+D s-stm32.ads		20181010193709 e898dba2 system.stm32%s
+D s-stoele.ads		20181010193709 2dc34a04 system.storage_elements%s
+D s-unstyp.ads		20181010193711 34867c83 system.unsigned_types%s
+X 4 system.ads
+50K9*System 164e11 7|41r6 43r9 51r34 59r6 60r8 65r34 71r5
+X 5 s-bb.ads
+40K16*BB 4|50k9 5|95e14 7|41r13 43r16 51r41 59r13 60r15 65r41 71r12
+X 7 s-bbdead.ads
+43K19*Deadlines 5|40k16 7|59r16 60r18 71l15 71e24
+51I12*Relative_Deadline{10|84I9} 54r41 55r6 59r26 60r28
+54i4*Default_Relative_Deadline{51I12}
+58i4*Unspecified_Relative_Deadline{51I12}
+65M12*Absolute_Deadline{10|46M9} 68r41 69r6
+68m4*Default_Absolute_Deadline{65M12}
+X 10 s-bbtime.ads
+43K19*Time 7|41w16 51r44 65r44 10|246e19
+46M9*Time 7|65r49
+84I9*Time_Span<long_long_integer> 7|51r49
+

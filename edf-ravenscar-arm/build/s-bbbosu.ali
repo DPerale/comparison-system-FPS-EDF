@@ -1,0 +1,178 @@
+V "GNAT Lib v2018"
+A -gnatA
+A --RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/
+A -mlittle-endian
+A -mfloat-abi=hard
+A -mcpu=cortex-m4
+A -mfpu=fpv4-sp-d16
+A -mthumb
+A -gnatwA
+A -gnatg
+A -g
+P DB ZX
+
+RN
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_IMPLEMENTATION_ATTRIBUTES
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_IMPLEMENTATION_RESTRICTIONS
+RR NO_ELABORATION_CODE
+RV SPARK_05
+
+U system.bb.board_support%b  s-bbbosu.adb	774b40d4 NE OL PK
+W system%s		system.ads		system.ali
+W system.bb%s		s-bb.ads		s-bb.ali
+W system.bb.cpu_primitives%s  s-bbcppr.adb	s-bbcppr.ali
+W system.bb.parameters%s  s-bbpara.ads		s-bbpara.ali
+W system.machine_code%s	s-maccod.ads		s-maccod.ali
+
+U system.bb.board_support%s  s-bbbosu.ads	27ef4a64 BN NE OL PR PK
+W system%s		system.ads		system.ali
+W system.bb%s		s-bb.ads		s-bb.ali
+W system.bb.interrupts%s  s-bbinte.adb		s-bbinte.ali
+W system.bb.time%s	s-bbtime.adb		s-bbtime.ali
+W system.multiprocessors%s  s-multip.adb	s-multip.ali
+
+D interfac.ads		20181010193657 5ab55268 interfaces%s
+D i-stm32.ads		20181010193657 4d2e1e9b interfaces.stm32%s
+D i-stm32-pwr.ads	20181010193657 10ed2a13 interfaces.stm32.pwr%s
+D system.ads		20181010193713 db831581 system%s
+D s-bb.ads		20181010193701 09e072ae system.bb%s
+D s-bbbopa.ads		20181010193701 95d97b26 system.bb.board_parameters%s
+D s-bbbosu.ads		20181102132403 0f820a2a system.bb.board_support%s
+D s-bbbosu.adb		20190203130236 21f80941 system.bb.board_support%b
+D s-bbsumu.adb		20170517144320 cbb92b04 system.bb.board_support.multiprocessors
+D s-bbcppr.ads		20181010193701 bcfa73ad system.bb.cpu_primitives%s
+D s-bbinte.ads		20181010193701 c88d39da system.bb.interrupts%s
+D s-bbmcpa.ads		20181010193701 c4c55388 system.bb.mcu_parameters%s
+D s-bbpara.ads		20181010193701 431abc17 system.bb.parameters%s
+D s-bbtime.ads		20190210170141 1a3e050f system.bb.time%s
+D s-maccod.ads		20181010193705 6d68a701 system.machine_code%s
+D s-multip.ads		20181010193706 f33e0e35 system.multiprocessors%s
+D s-stm32.ads		20181010193709 e898dba2 system.stm32%s
+D s-stoele.ads		20181010193709 2dc34a04 system.storage_elements%s
+D s-unstyp.ads		20181010193711 34867c83 system.unsigned_types%s
+X 4 system.ads
+50K9*System 164e11 7|43r6 44r6 45r6 47r9 100r22 101r16 106r22 144r38 148r35
+. 152r36 158r5 8|37r6 39r6 39r32 40r6 42r14 424r5 9|37r11 40r8 52r32 58r33
+80M9*Address 8|107r26
+116I12*Any_Priority{integer} 7|101r23 8|128r39 395r43
+117I12*Priority{116I12} 8|180r26
+118I12*Interrupt_Priority{116I12} 7|107r22 8|119r19 120r17 126r42 127r21
+. 128r13 142r19 294r42 341r19 348r32 380r22 397r50
+X 5 s-bb.ads
+40K16*BB 4|50k9 5|95e14 7|44r13 45r13 47r16 70r34 100r29 106r29 158r12 8|39r13
+. 39r39 40r13 42r21 43r24 194r34 254r17 291r20 293r10 424r12 9|37r18
+X 7 s-bbbosu.ads
+47K19*Board_Support 5|40k16 7|158l15 158e28 8|42b24 424l15 424t28 9|37r21
+54U14*Initialize_Board 8|153b14 181l8 181t24
+62K12*Time 92l8 92e12 8|43r53 50r17 77r27 172r7 173r7 183b17 296l8 296t12
+. 350r10
+63M12*Timer_Interval 64r11 75r42 82r36 8|50r22 77r32 97r21 172r23 188r42
+. 197r20 198r20 213r19 270r36 271r25 271r43 279r18 279r38
+70V16*Read_Clock{14|46M9} 8|194b16 255l11 255t21 271s59
+75V16*Max_Timer_Interval{63M12} 76r22 8|188b16
+82U17*Set_Alarm 82>28 8|172s12 270b17 284l11 284t20
+82m28 Ticks{63M12} 8|270b28 279r63 281r13
+86U17*Install_Alarm_Handler 86>40 8|290b17 295l11 295t32
+86p40 Handler{11|57P9} 8|291b10 294r13
+89U17*Clear_Alarm_Interrupt 90r22 8|173s12 261b17 264l11 264t32 350s15
+98K12*Interrupts 137l8 137e18 8|373b17 423l8 423t18
+99V16*Priority_Of_Interrupt{4|116I12} 100>10 102r22 8|394b16
+100i10 Interrupt{11|48I12} 8|397r14 398r32
+105U17*Install_Interrupt_Handler 106>10 107>10 8|378b17 388l11 388t36
+106i10 Interrupt{11|48I12} 8|379b10 383r13 384r17 387r36
+107i10 Prio{4|118I12} 8|380b10 384r39 387r47
+122U17*Set_Current_Priority 122>39 123r22 8|413b17 422l11 422t31
+122i39 Priority{integer} 8|413b39 420r53
+133U17*Power_Down 134r22 8|404b17 407l11 407t21
+139K12*Multiprocessors 157l8 157e23 8|298b17 9|39b14 66l5 66t20
+144V16*Number_Of_CPUs{16|23I12} 145r22 9|46b13
+148V16*Current_CPU{16|23I12} 149r22 9|52b13
+152U17*Poke_CPU 152>27
+152i27 CPU_Id{16|23I12}
+155U17*Start_All_CPUs
+X 8 s-bbbosu.adb
+45i4 Sys_Tick_Vector{10|96I9} 176r43
+46i4 Interrupt_Request_Vector{10|96I9} 178r37
+50m4 Alarm_Time{7|63M12} 51r21 52m22 52r22 278m10
+54i4 Alarm_Interrupt_ID{11|48I12} 294r22 306r26 344r22 383r26 397r26
+63m4 ICSR{10|42M9} 263m10 282m13
+66N4 ICSR_Pend_ST_Set 282r21
+67N4 ICSR_Pend_ST_Clr 263r18
+77m4 Tick_Period{7|63M12} 92r19 167r30 171r25 240r48
+79R9 Sys_Tick_Registers 84e14 94r11
+80m7*SYST_CSR{10|42M9} 166m12 169m12 225r24 351m15 351r32
+81m7*SYST_RVR{10|42M9} 167m12
+82m7*SYST_CVR{10|42M9} 168m12 213r40
+83m7*SYST_CALIB{10|42M9}
+86N4 CSR_Count_Flag 225r37
+87N4 CSR_Clk_Source 166r24 169r24
+88N4 CSR_Tick_Int 351r44
+89N4 CSR_Enable 169r42
+91N4 RVR_Last 92r34
+94r4 SYST{79R9} 166m7 167m7 168m7 169m7 213r35 225r19 351m10 351r27
+97m4 Next_Tick_Time{7|63M12} 171m7 239r20 240m13 240r31 245r20
+104N4 NVIC_Base 107r37
+107m4 NVIC_ISER0{4|80M9} 360r54
+110M9 PRI 118r41 120r12 126r30 135r43 420r25
+118V13 To_PRI{110M9} 118>21 384s31 420s45
+118i21 P{integer} 119r10 120r43
+126V13 To_Priority{4|118I12} 126>26 398s15
+126m26 P{110M9} 127r10 128r58
+135a4 IP(110M9) 384m13 398r28
+140U14 Enable_Interrupt_Request 141>7 142>7 339b14 371l8 371t32 387s10
+141i7 Interrupt{11|48I12} 340b7 344r10 355r28 356r42
+142i7 Prio{4|118I12} 341b7 348r25
+145U14 Interrupt_Handler 178r10 313b14 333l8 333t25
+146U14 Timer_Interrupt_Handler 176r10 304b14 307l8 307t31
+195m10 PRIMASK{10|42M9} 205m50 205r50 251r46
+196b10 Flag{boolean} 225m10 227r13
+197m10 Count{7|63M12} 213m10 245r37
+198m10 Res{7|63M12} 239m13 245m13 254r31
+271m10 Now{7|63M12} 279r12
+314i7 Id{11|48I12} 329m7 331r26
+315m7 Res{10|42M9} 321m35 321r35 324m7 324r14 329r32
+356i13 IRQ{natural} 357r42 358r44
+357i13 Regofs{natural} 368r24
+358m13 Regbit{10|42M9} 368r35
+359a13 NVIC_ISER(10|42M9) 368m13
+X 9 s-bbsumu.adb
+58U14 Poke_CPU
+58i24 CPU_Id{16|23I12}
+65U14 Start_All_CPUs
+X 10 s-bbcppr.ads
+39K19*CPU_Primitives 8|40w16 43r8 10|142e29
+42M9*Word 8|63r11 80r20 81r20 82r20 83r20 167r24 195r20 205r26 208r26 251r25
+. 315r13 321r12 358r31 359r44
+96I9*Vector_Id<short_short_integer> 8|45r40 46r40
+104U14*Install_Trap_Handler 8|175s7 177s7
+112U14*Disable_Interrupts 8|156s7
+120U14*Enable_Interrupts 8|180s7
+X 11 s-bbinte.ads
+45K19*Interrupts 7|44w16 86r50 100r32 106r32 8|43r27 291r23 293r13 11|92e25
+48I12*Interrupt_ID{13|102I12} 7|100r43 106r43 8|54r34 135r21 141r19 314r12
+. 329r13 340r19 379r22 395r22
+57P9*Interrupt_Handler 7|86r61 8|291r34
+64U14*Interrupt_Wrapper 8|306s7 331s7
+69U14*Attach_Handler 8|293s24
+X 13 s-bbpara.ads
+45K19*Parameters 8|39w16 39r42 13|155e25
+49N4*Clock_Frequency 8|77r50
+102I12*Interrupt_Range{integer}
+X 14 s-bbtime.ads
+43K19*Time 7|45w16 70r37 8|194r37 254r20 14|254e19
+46M9*Time 7|70r42 8|194r42 254r25
+X 15 s-maccod.ads
+36K16*Machine_Code 8|37w13 43r39 15|131e24
+44I9*Asm_Input_Operand<integer>
+45I9*Asm_Output_Operand<integer>
+83U14*Asm 8|204s10 207s10 250s10 320s7 406s10 419s10
+85i6 Outputs{45I9} 8|205r15
+86i6 Inputs{44I9} 8|208r15 251r15 420r15
+88b6 Volatile{boolean} 8|206r15 209r15 252r15 322r12 406r22 421r15
+X 16 s-multip.ads
+18K16*Multiprocessors 7|43w13 144r45 148r42 152r43 9|40r15 52r39 58r40 16|31e27
+21I9*CPU_Range<short_short_integer>
+23I12*CPU{21I9} 7|144r61 148r58 152r59 9|46r35 52r55 58r56
+

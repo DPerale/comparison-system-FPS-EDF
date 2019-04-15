@@ -1,0 +1,141 @@
+V "GNAT Lib v2017"
+A -gnatA
+A --RTS=/usr/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/
+A -mlittle-endian
+A -mfloat-abi=hard
+A -mcpu=cortex-m4
+A -mfpu=fpv4-sp-d16
+A -mthumb
+A -gnatg
+P DB ZX
+
+RN
+RV NO_ACCESS_SUBPROGRAMS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV NO_OBSOLESCENT_FEATURES
+RV SPARK_05
+
+U system.soft_links%b	s-soflin.adb		0a2898db NE OL PK
+W system%s		system.ads		system.ali
+W system.task_primitives%s  s-taspri.ads	s-taspri.ali
+W system.task_primitives.operations%s  s-taprop.adb  s-taprop.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+
+U system.soft_links%s	s-soflin.ads		fb0a0b74 BN EE OL PR PK
+W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W system%s		system.ads		system.ali
+
+D ada.ads		20170517144320 76789da1 ada%s
+D a-except.ads		20170517144320 291912d5 ada.exceptions%s
+D a-unccon.ads		20170517144320 31484697 ada.unchecked_conversion%s
+D interfac.ads		20170517144320 5ab55268 interfaces%s
+D i-stm32.ads		20170517144320 4d2e1e9b interfaces.stm32%s
+D i-stm32-pwr.ads	20170517144320 10ed2a13 interfaces.stm32.pwr%s
+D i-stm32-rcc.ads	20170517144320 ed083a96 interfaces.stm32.rcc%s
+D system.ads		20170517144320 db831581 system%s
+D s-bb.ads		20170517144320 09e072ae system.bb%s
+D s-bbbopa.ads		20170517144320 95d97b26 system.bb.board_parameters%s
+D s-bbbosu.ads		20170517144320 9b59a61f system.bb.board_support%s
+D s-bbcppr.ads		20170517144320 bcfa73ad system.bb.cpu_primitives%s
+D s-bcprmu.ads		20170517144320 043d3736 system.bb.cpu_primitives.multiprocessors%s
+D s-bbinte.ads		20170517144320 d9fc23b0 system.bb.interrupts%s
+D s-bbmcpa.ads		20170517144320 c4c55388 system.bb.mcu_parameters%s
+D s-bbpara.ads		20170517144320 77379e7b system.bb.parameters%s
+D s-bbthre.ads		20170517144320 d6c36e4f system.bb.threads%s
+D s-bbthqu.ads		20170517144320 db3cad46 system.bb.threads.queues%s
+D s-bbtime.ads		20170517144320 ad086247 system.bb.time%s
+D s-multip.ads		20170517144320 f33e0e35 system.multiprocessors%s
+D s-osinte.ads		20170517144320 2d4f0621 system.os_interface%s
+D s-parame.ads		20170517144320 c9fe535f system.parameters%s
+D s-soflin.ads		20170517144320 09900c20 system.soft_links%s
+D s-soflin.adb		20170517144320 f25f2d5e system.soft_links%b
+D s-stalib.ads		20170517144320 09bd3940 system.standard_library%s
+D s-stm32.ads		20170517144320 e898dba2 system.stm32%s
+D s-stoele.ads		20170517144320 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20170517144320 801abd01 system.task_info%s
+D s-taspri.ads		20170517144320 351848fa system.task_primitives%s
+D s-taprop.ads		20170517144320 5013f316 system.task_primitives.operations%s
+D s-taskin.ads		20170517144320 a1f44ab3 system.tasking%s
+D s-traent.ads		20170517144320 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20170517144320 34867c83 system.unsigned_types%s
+X 1 ada.ads
+16K9*Ada 20e8 23|43r6 48r19 49r18 139r39 24|68r39 70r14 84r37
+X 2 a-except.ads
+54K13*Exceptions 349e19 23|43w10 48r23 49r22 139r43 24|68r43 70r18 84r41
+58P9*Exception_Id<25|87P9> 23|139r54 24|68r54
+63R9*Exception_Occurrence 317e14 23|49r33
+66P9*Exception_Occurrence_Access(63R9) 23|48r34
+68r4*Null_Occurrence{63R9} 24|84r52
+102V13*Exception_Identity{58P9} 24|70s29
+X 8 system.ads
+50K9*System 164e11 23|45r9 73r28 179r5 24|39r6 40r6 42r14 44r8 45r13 104r26
+. 112r29 117r36 134r26 135r17 143r13 161r26 177r5
+80M9*Address 23|73r35
+116I12*Any_Priority{integer} 24|51r22 112r36 117r43 141r30
+X 13 s-bcprmu.ads
+39U14*Start_All_CPUs 40i<c,__gnat_start_slave_cpus>22
+X 23 s-soflin.ads
+45K16*Soft_Links 8|50k9 23|179l12 179e22 24|42b21 177l12 177t22
+48P12*EOA{2|66P9} 60r48 134r43 24|59r43
+49R12*EO{2|63R9} 57r52 146r46 157r24 24|131r46
+55P9*No_Param_Proc 56r36 65r35 88r16 96r18 121r15 124r27 128r29
+57P9*EO_Param_Proc 57>44 58r28 66r35 150r31
+57r44 Excep{49R12}
+60P9*Get_EOA_Call(2|66P9) 67r35 137r33
+72P9*Traceback_Decorator_Wrapper_Call(string) 73>16 73>44 74r28 165r34
+73m16 Traceback{8|80M9}
+73i44 Len{natural}
+76U14*Abort_Defer_Raven 124r44
+79U14*Abort_Undefer_Raven 128r46
+82U14*Task_Lock_Soft 88r33 24|103b14 125l8 125t22
+85U14*Task_Unlock_Soft 96r35 24|160b14 175l8 175t24
+88p4*Lock_Task{55P9}
+96p4*Unlock_Task{55P9}
+118U14*Adafinal_Soft 121r32 24|77b14 97l8 97t21
+121p4*Adafinal{55P9}
+124p4*Abort_Defer{55P9} 125r35
+128p4*Abort_Undefer{55P9} 129r35
+134V13*Get_Current_Excep_Soft{48P12} 135r19 137r49 24|59b13 62l8 62t30
+137p4*Get_Current_Excep{60P9} 24|70r49
+139V13*Get_GNAT_Exception{2|58P9} 140r19 24|68b13 71l8 71t26
+146U14*Task_Termination_Soft 146>37 150r48 24|131b14 154l8 154t29
+146r37 Except{49R12} 24|131b37 132r28
+150p4*Task_Termination_Handler{57P9} 24|84r7
+157r4*Library_Exception{49R12}
+161b4*Library_Exception_Set{boolean}
+165p4*Traceback_Decorator_Wrapper{72P9} 174r19
+X 24 s-soflin.adb
+51i4 Caller_Priority{8|116I12} 122m13 173r33
+104p7 Self_Id{31|66P9} 107r7 108r9 110r10 112r66 117r27
+112i13 Prio{8|116I12} 122r32
+134p7 Self_Id{31|66P9} 141r21 147r21 147r30 152r18
+135p7 TH{31|234P9} 143m7 151r10 152r10
+161p7 Self_Id{31|66P9} 164r22 166r7 167r9 169r10 173r24
+X 25 s-stalib.ads
+87P9*Exception_Data_Ptr(86R9)
+X 29 s-taspri.ads
+40K16*Task_Primitives 24|40r13 44r15 29|82e27
+X 30 s-taprop.ads
+44K32*Operations 24|40w29 44r31 30|122e38
+76V13*Self{31|66P9} 24|61s14 104s52 134s52 161s52
+79U14*Set_Priority 24|117s13 141s7 147s7 173s10
+82V13*Get_Priority{31|249I12} 24|112s52
+X 31 s-taskin.ads
+57K16*Tasking 24|39w13 45r20 104r33 134r33 135r24 143r20 161r33 31|473e19
+66P9*Task_Id(64R9) 24|104r41 134r41 161r41
+234P9*Termination_Handler 24|45r28 135r32
+238p4*Fall_Back_Handler{234P9} 24|143r28
+249I12*Extended_Priority{integer}
+297r7*Current_Excep{2|63R9} 24|61m40
+318i7*Base_Priority{249I12} 24|147r45
+353r7*Compiler_Data{290R9} 24|61m26
+369i7*Global_Task_Lock_Nesting{natural} 24|107m22 108r24 110r25 164r37 166m22
+. 167r24 169r25
+392r7*Common{306R9} 24|61m19 107m15 108r17 110r18 147r38 164r30 166m15 167r17
+. 169r18
+413V13*Get_Sec_Stack{8|80M9} 414i<c,__gnat_get_secondary_stack>22
+

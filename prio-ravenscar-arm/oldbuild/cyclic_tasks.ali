@@ -1,0 +1,155 @@
+V "GNAT Lib v2018"
+A -gnatA
+A --RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/
+A -mlittle-endian
+A -mfloat-abi=hard
+A -mcpu=cortex-m4
+A -mfpu=fpv4-sp-d16
+A -mthumb
+A -gnatg
+P DB LC TF  ZX
+
+RN
+RV NO_ACCESS_SUBPROGRAMS
+RV NO_DELAY
+RV NO_FIXED_POINT
+RV NO_IMPLICIT_DYNAMIC_CODE
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_TASKING
+RV STATIC_PRIORITIES
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U cyclic_tasks%b	cyclic_tasks.adb	240a38c5 OO PK
+W ada%s			ada.ads			ada.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+Z ada.real_time.delays%s  a-retide.adb		a-retide.ali
+W system%s		system.ads		system.ali
+W system.address_image%s  s-addima.adb		s-addima.ali
+W system.bb%s		s-bb.ads		s-bb.ali
+W system.bb.threads%s	s-bbthre.adb		s-bbthre.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+Z system.img_lld%s	s-imglld.adb		s-imglld.ali
+W system.io%s		s-io.adb		s-io.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.tasking.restricted.stages%s  s-tarest.adb  s-tarest.ali
+W system_time%s		system_time.ads		system_time.ali
+
+U cyclic_tasks%s	cyclic_tasks.ads	4b0eb155 EE NE OO PK
+W system%s		system.ads		system.ali
+Z system.parameters%s	s-parame.adb		s-parame.ali
+Z system.storage_elements%s  s-stoele.adb	s-stoele.ali
+Z system.task_info%s	s-tasinf.adb		s-tasinf.ali
+Z system.tasking%s	s-taskin.adb		s-taskin.ali
+Z system.tasking.restricted.stages%s  s-tarest.adb  s-tarest.ali
+
+D ada.ads		20181010193652 76789da1 ada%s
+D a-except.ads		20181010193647 291912d5 ada.exceptions%s
+D a-reatim.ads		20181010193649 4c16970e ada.real_time%s
+D a-retide.ads		20181010193649 081cdaa4 ada.real_time.delays%s
+D a-unccon.ads		20181010193651 0e9b276f ada.unchecked_conversion%s
+D cyclic_tasks.ads	20181030105326 908da4d4 cyclic_tasks%s
+D cyclic_tasks.adb	20181030105525 92d5e751 cyclic_tasks%b
+D interfac.ads		20181010193657 5ab55268 interfaces%s
+D i-stm32.ads		20181010193657 4d2e1e9b interfaces.stm32%s
+D i-stm32-pwr.ads	20181010193657 10ed2a13 interfaces.stm32.pwr%s
+D system.ads		20181010193713 db831581 system%s
+D s-addima.ads		20181010193701 a1ec9d3a system.address_image%s
+D s-bb.ads		20180914141903 09e072ae system.bb%s
+D s-bbbopa.ads		20181010193701 95d97b26 system.bb.board_parameters%s
+D s-bbbosu.ads		20181102132403 0f820a2a system.bb.board_support%s
+D s-bbcppr.ads		20181010193701 bcfa73ad system.bb.cpu_primitives%s
+D s-bbdead.ads		20180509204331 deeac8df system.bb.deadlines%s
+D s-bbinte.ads		20181010193701 c88d39da system.bb.interrupts%s
+D s-bbmcpa.ads		20181010193701 c4c55388 system.bb.mcu_parameters%s
+D s-bbpara.ads		20181010193701 431abc17 system.bb.parameters%s
+D s-bbthre.ads		20181102134919 dc32e97f system.bb.threads%s
+D s-bbthqu.ads		20181102134919 3453fee2 system.bb.threads.queues%s
+D s-bbtime.ads		20181102134919 12965076 system.bb.time%s
+D s-imgint.ads		20181010193704 02dbe0c2 system.img_int%s
+D s-imglld.ads		20181010193704 f3220969 system.img_lld%s
+D s-io.ads		20181010193705 9e42f74f system.io%s
+D s-multip.ads		20181010193706 f33e0e35 system.multiprocessors%s
+D s-osinte.ads		20181102134919 f5cd7990 system.os_interface%s
+D s-parame.ads		20181010193708 d106111e system.parameters%s
+D s-secsta.ads		20181010193709 56a2861c system.secondary_stack%s
+D s-stalib.ads		20181010193709 09bd3940 system.standard_library%s
+D s-stm32.ads		20181010193709 e898dba2 system.stm32%s
+D s-stoele.ads		20181010193709 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20181010193710 801abd01 system.task_info%s
+D s-taspri.ads		20181010193710 351848fa system.task_primitives%s
+D s-taskin.ads		20181102134919 1f51ce19 system.tasking%s
+D s-tasres.ads		20181010193710 0c8ef6fb system.tasking.restricted%s
+D s-tarest.ads		20181102134919 053361b5 system.tasking.restricted.stages%s
+D s-traent.ads		20181010193711 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20181010193711 34867c83 system.unsigned_types%s
+D system_time.ads	20181030105126 89d86f44 system_time%s
+X 1 ada.ads
+16K9*Ada 20e8 7|2r6 2r25 12r16 14r21 17r25 18r16
+X 3 a-reatim.ads
+41K13*Real_Time 182e18 7|2w10 2r29 12r20 14r25 17r29 18r20
+51M9*Time<23|46M9> 7|14r35 23r32 24r23
+61I9*Time_Span<23|84I9> 7|11r37 17r39
+68V13*Clock{51M9}<23|183p13> 7|23s40 28s24
+72V14*"+"{51M9} 7|15s13 15s49 65s37
+76V14*"-"{61I9} 7|29s41
+119V13*To_Duration{duration}<23|123p13> 7|29s17
+126V13*Microseconds{61I9}<23|154p13> 7|12s30 18s30
+X 6 cyclic_tasks.ads
+3K9*Cyclic_Tasks 18l5 18e17 7|8b14 76l5 76t17
+5T14*Cyclic 7d7 8d7 9d7 10d7 11d7 13l8 13e14 7|10b14 67l8 67t14
+7i7 Pri{11|117I12} 12r24 7|48r55
+8i7 Dead{positive}
+9i7 Cycle_Time{positive} 7|18r44
+10i7 T_Num{integer} 7|49r45
+11i7 Gauss_Num{integer} 7|55r56 56r54 59r18
+15U14*Init 16r22 7|69b14 74l8 74t12
+X 7 cyclic_tasks.adb
+11i7 Task_Static_Offset{3|61I9} 15r51
+14m7 Next_Period{3|51M9} 53r22 65m10 65r25
+17i7 Period{3|61I9} 65r39
+20P12 Proc_Access 20=45 21r34 22r34 39r31
+20i45 X{integer}
+21V16 Time_It{duration} 21>25 21>47 22b16 30l11 30t18 56s31
+21p25 Action{20P12} 22b25 27r10
+21i47 Arg{integer} 22b47 25r32
+23m10 Start_Time{3|51M9} 29r43
+24m10 Finis_Time{3|51M9} 28m10 29r30
+25i10 Func_Arg{integer} 27m18 27r18
+31U17 Gauss 31=24 32b17 38l11 38t16 39r46 60s10
+31i24 Times{integer} 32b24 35r24
+33i10 Num{integer} 36m13 36r20
+35i14 I{integer} 36r26
+39p7 Gauss_Access{20P12} 56r40
+42i7 Temp{integer} 59m10 60m17 60r17
+X 11 system.ads
+50K9*System 6|1w6 7r20 7|1r6 1r21 4r6 5r6 50r14 50r36 55r10 11|164e11
+80M9*Address
+116I12*Any_Priority{integer}
+117I12*Priority{116I12} 6|7r27
+X 12 s-addima.ads
+39V17*Address_Image{string} 7|5w13 50s21
+X 13 s-bb.ads
+40K16*BB 7|4r13 50r43 13|95e14
+X 21 s-bbthre.ads
+49K19*Threads 7|4w16 50r46 21|356e22
+352V13*Get_ATCB{11|80M9} 7|50s54
+X 23 s-bbtime.ads
+46M9*Time
+84I9*Time_Span<long_long_integer>
+X 26 s-io.ads
+37K16*IO 7|1w13 1r28 55r17 26|64e14
+45U14*Put_Line 7|48s7 55s20
+X 30 s-secsta.ads
+46P9*SS_Stack_Ptr(43R9)
+X 36 s-taskin.ads
+419V13*Get_Sec_Stack{30|46P9} 420i<c,__gnat_get_secondary_stack>22
+X 38 s-tarest.ads
+230U14*Activate_All_Tasks_Sequential 231i<c,__gnat_activate_all_tasks>22
+X 41 system_time.ads
+3K9*System_Time 7|6w6 14r43 15r15 41|17e16
+10m4*System_Start_Time{3|51M9} 7|14r55
+14i4*Task_Activation_Delay{3|61I9} 7|15r27
+

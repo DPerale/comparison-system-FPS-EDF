@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project>
+    <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/raven.gpr</vfs_file>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/raven.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/src/s-bbinte.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/raven.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/src/s-bbthqu.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 27" line=" 51" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/raven.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/src/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 253" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/raven.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/src/s-bbthre.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 264" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/raven.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/src/s-bbthre.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 57" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/raven.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/src/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 27" line=" 51" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/raven.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm/raven-prio/src/s-bbthqu.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>

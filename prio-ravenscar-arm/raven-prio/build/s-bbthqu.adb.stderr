@@ -1,0 +1,4 @@
+s-bbthqu.adb:51:27: warning: "Time" is already use-visible through previous use_type_clause
+s-bbthqu.adb:57:04: warning: use clause for package "IO" has no effect
+s-bbthre.ads:253:06: (style) bad column
+s-bbthre.ads:264:06: (style) bad column

@@ -1,0 +1,2 @@
+tasking.adb:15:09: subtype mark required in this context
+tasking.adb:15:09: found "Periodic" declared at line 11

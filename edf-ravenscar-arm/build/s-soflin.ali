@@ -1,0 +1,150 @@
+V "GNAT Lib v2018"
+A -gnatA
+A --RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/
+A -mlittle-endian
+A -mfloat-abi=hard
+A -mcpu=cortex-m4
+A -mfpu=fpv4-sp-d16
+A -mthumb
+A -gnatwA
+A -gnatg
+A -g
+P DB ZX
+
+RN
+RV NO_ACCESS_SUBPROGRAMS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV NO_OBSOLESCENT_FEATURES
+RV SPARK_05
+
+U system.soft_links%b	s-soflin.adb		c43cfb83 NE OL PK
+W system%s		system.ads		system.ali
+W system.bb%s		s-bb.ads		s-bb.ali
+W system.bb.deadlines%s	s-bbdead.ads		s-bbdead.ali
+W system.task_primitives%s  s-taspri.ads	s-taspri.ali
+W system.task_primitives.operations%s  s-taprop.adb  s-taprop.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+
+U system.soft_links%s	s-soflin.ads		fb0a0b74 BN EE OL PR PK
+W ada%s			ada.ads			ada.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+W system%s		system.ads		system.ali
+
+D ada.ads		20181010193652 76789da1 ada%s
+D a-except.ads		20181010193647 291912d5 ada.exceptions%s
+D a-unccon.ads		20181010193651 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20181010193657 5ab55268 interfaces%s
+D i-stm32.ads		20181010193657 4d2e1e9b interfaces.stm32%s
+D i-stm32-pwr.ads	20181010193657 10ed2a13 interfaces.stm32.pwr%s
+D system.ads		20181010193713 db831581 system%s
+D s-bb.ads		20181010193701 09e072ae system.bb%s
+D s-bbbopa.ads		20181010193701 95d97b26 system.bb.board_parameters%s
+D s-bbbosu.ads		20181102132403 0f820a2a system.bb.board_support%s
+D s-bbcppr.ads		20181010193701 bcfa73ad system.bb.cpu_primitives%s
+D s-bbdead.ads		20190210124650 deeac8df system.bb.deadlines%s
+D s-bbinte.ads		20181010193701 c88d39da system.bb.interrupts%s
+D s-bbmcpa.ads		20181010193701 c4c55388 system.bb.mcu_parameters%s
+D s-bbpara.ads		20181010193701 431abc17 system.bb.parameters%s
+D s-bbthre.ads		20190324144342 9be493b9 system.bb.threads%s
+D s-bbthqu.ads		20190324145125 9b3d531d system.bb.threads.queues%s
+D s-bbtime.ads		20190210170141 1a3e050f system.bb.time%s
+D s-multip.ads		20181010193706 f33e0e35 system.multiprocessors%s
+D s-osinte.ads		20190324143916 cd77825b system.os_interface%s
+D s-parame.ads		20181010193708 d106111e system.parameters%s
+D s-secsta.ads		20181010193709 56a2861c system.secondary_stack%s
+D s-soflin.ads		20181010193709 09900c20 system.soft_links%s
+D s-soflin.adb		20190324144417 9b5902cd system.soft_links%b
+D s-stalib.ads		20181010193709 09bd3940 system.standard_library%s
+D s-stm32.ads		20181010193709 e898dba2 system.stm32%s
+D s-stoele.ads		20181010193709 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20181010193710 801abd01 system.task_info%s
+D s-taspri.ads		20181010193710 351848fa system.task_primitives%s
+D s-taprop.ads		20190324143932 9444b269 system.task_primitives.operations%s
+D s-taskin.ads		20190324151830 1c5b8fd8 system.tasking%s
+D s-traent.ads		20181010193711 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20181010193711 34867c83 system.unsigned_types%s
+X 1 ada.ads
+16K9*Ada 20e8 23|43r6 48r19 49r18 139r39 24|71r39 73r14 87r37
+X 2 a-except.ads
+54K13*Exceptions 349e19 23|43w10 48r23 49r22 139r43 24|71r43 73r18 87r41
+58P9*Exception_Id<25|87P9> 23|139r54 24|71r54
+63R9*Exception_Occurrence 317e14 23|49r33
+66P9*Exception_Occurrence_Access(63R9) 23|48r34
+68r4*Null_Occurrence{63R9} 24|87r52
+102V13*Exception_Identity{58P9} 24|73s29
+X 7 system.ads
+50K9*System 164e11 23|45r9 73r28 179r5 24|39r6 40r6 41r6 43r14 45r8 46r13
+. 47r8 107r26 116r31 126r17 144r26 145r17 154r13 173r26 189r5
+80M9*Address 23|73r35
+X 8 s-bb.ads
+40K16*BB 95e14 24|41r13 47r15 116r38 126r24
+X 12 s-bbdead.ads
+43K19*Deadlines 71e24 24|41w16 47r18 116r41 126r27
+51I12*Relative_Deadline{18|84I9} 24|54r31 116r51 126r37 152r39
+X 18 s-bbtime.ads
+84I9*Time_Span<long_long_integer>
+X 22 s-secsta.ads
+46P9*SS_Stack_Ptr(43R9)
+X 23 s-soflin.ads
+45K16*Soft_Links 7|50k9 23|179l12 179e22 24|43b21 189l12 189t22
+48P12*EOA{2|66P9} 60r48 134r43 24|62r43
+49R12*EO{2|63R9} 57r52 146r46 157r24 24|141r46
+55P9*No_Param_Proc 56r36 65r35 88r16 96r18 121r15 124r27 128r29
+57P9*EO_Param_Proc 57>44 58r28 66r35 150r31
+57r44 Excep{49R12}
+60P9*Get_EOA_Call(2|66P9) 67r35 137r33
+72P9*Traceback_Decorator_Wrapper_Call(string) 73>16 73>44 74r28 165r34
+73m16 Traceback{7|80M9}
+73i44 Len{natural}
+76U14*Abort_Defer_Raven 124r44
+79U14*Abort_Undefer_Raven 128r46
+82U14*Task_Lock_Soft 88r33 24|106b14 135l8 135t22
+85U14*Task_Unlock_Soft 96r35 24|172b14 187l8 187t24
+88p4*Lock_Task{55P9}
+96p4*Unlock_Task{55P9}
+118U14*Adafinal_Soft 121r32 24|80b14 100l8 100t21
+121p4*Adafinal{55P9}
+124p4*Abort_Defer{55P9} 125r35
+128p4*Abort_Undefer{55P9} 129r35
+134V13*Get_Current_Excep_Soft{48P12} 135r19 137r49 24|62b13 65l8 65t30
+137p4*Get_Current_Excep{60P9} 24|73r49
+139V13*Get_GNAT_Exception{2|58P9} 140r19 24|71b13 74l8 74t26
+146U14*Task_Termination_Soft 146>37 150r48 24|141b14 166l8 166t29
+146r37 Except{49R12} 24|141b37 142r28
+150p4*Task_Termination_Handler{57P9} 24|87r7
+157r4*Library_Exception{49R12}
+161b4*Library_Exception_Set{boolean}
+165p4*Traceback_Decorator_Wrapper{72P9} 174r19
+X 24 s-soflin.adb
+54i4 Caller_Relative_Deadline{12|51I12} 132m13 185r42
+107p7 Self_Id{31|70P9} 110r7 111r9 113r10 117r38 124r17
+116i13 R_Dead{12|51I12} 132r41
+144p7 Self_Id{31|70P9} 152r30 159r30 159r39 164r18
+145p7 TH{31|238P9} 154m7 163r10 164r10
+173p7 Self_Id{31|70P9} 176r22 177r7 178r9 180r10 185r33
+X 25 s-stalib.ads
+87P9*Exception_Data_Ptr(86R9)
+X 29 s-taspri.ads
+40K16*Task_Primitives 24|40r13 45r15 29|82e27
+X 30 s-taprop.ads
+45K32*Operations 24|40w29 45r31 30|147e38
+78V13*Self{31|70P9} 24|64s14 107s52 144s52 173s52
+87U14*Set_Relative_Deadline 24|123s13 152s7 159s7 185s10
+97V13*Get_Relative_Deadline{12|51I12} 24|117s15
+X 31 s-taskin.ads
+59K16*Tasking 24|39w13 46r20 107r33 144r33 145r24 154r20 173r33 31|478e19
+70P9*Task_Id(68R9) 24|107r41 144r41 173r41
+238P9*Termination_Handler 24|46r28 145r32
+242p4*Fall_Back_Handler{238P9} 24|154r28
+305r7*Current_Excep{2|63R9} 24|64m40
+361r7*Compiler_Data{298R9} 24|64m26
+377i7*Global_Task_Lock_Nesting{natural} 24|110m22 111r24 113r25 176r37 177m22
+. 178r24 180r25
+386i7*Base_Relative_Deadline{12|51I12} 24|159r54
+400r7*Common{314R9} 24|64m19 110m15 111r17 113r18 159r47 176r30 177m15 178r17
+. 180r18
+421V13*Get_Sec_Stack{22|46P9} 422i<c,__gnat_get_secondary_stack>22
+

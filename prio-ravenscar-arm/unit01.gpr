@@ -1,0 +1,24 @@
+-- with "raven-prio/raven.gpr";
+
+project Unit01 is
+
+   for Languages use ("Ada");
+   for Main use ("pippoprova");
+   for Object_Dir use "build";
+   for Source_Dirs use ("src/**", "raven-prio/build/**", "raven-prio-arm/**", "arm-tutto/**");
+   for Exec_Dir use ".";
+   for Target use "arm-eabi";
+   --  for Runtime ("ada") use "ravenscar-full-stm32f4";
+   for Runtime ("ada") use "ravenscar-full-stm32f4";
+
+   package Compiler is
+      for Default_Switches ("ada") use ("-gnatg", "-g");
+   end Compiler;
+
+   package Ide is
+      for Program_Host use "localhost:1234";
+      for Communication_Protocol use "remote";
+   end Ide;
+
+end Unit01;
+

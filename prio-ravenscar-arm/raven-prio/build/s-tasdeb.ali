@@ -1,0 +1,76 @@
+V "GNAT Lib v2017"
+A -gnatA
+A --RTS=/usr/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/
+A -mlittle-endian
+A -mfloat-abi=hard
+A -mcpu=cortex-m4
+A -mfpu=fpv4-sp-d16
+A -mthumb
+A -gnatg
+P DB ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U system.tasking.debug%b  s-tasdeb.adb		0f8eba36 NE OL PK
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+
+U system.tasking.debug%s  s-tasdeb.ads		3417972c BN NE OL PR PK
+W system%s		system.ads		system.ali
+W system.os_interface%s	s-osinte.ads		s-osinte.ali
+W system.tasking%s	s-taskin.adb		s-taskin.ali
+
+D ada.ads		20170517144320 76789da1 ada%s
+D a-except.ads		20170517144320 291912d5 ada.exceptions%s
+D a-unccon.ads		20170517144320 31484697 ada.unchecked_conversion%s
+D interfac.ads		20170517144320 5ab55268 interfaces%s
+D i-stm32.ads		20170517144320 4d2e1e9b interfaces.stm32%s
+D i-stm32-pwr.ads	20170517144320 10ed2a13 interfaces.stm32.pwr%s
+D i-stm32-rcc.ads	20170517144320 ed083a96 interfaces.stm32.rcc%s
+D system.ads		20170517144320 db831581 system%s
+D s-bb.ads		20170517144320 09e072ae system.bb%s
+D s-bbbopa.ads		20170517144320 95d97b26 system.bb.board_parameters%s
+D s-bbbosu.ads		20170517144320 9b59a61f system.bb.board_support%s
+D s-bbcppr.ads		20170517144320 bcfa73ad system.bb.cpu_primitives%s
+D s-bcprmu.ads		20170517144320 043d3736 system.bb.cpu_primitives.multiprocessors%s
+D s-bbinte.ads		20170517144320 d9fc23b0 system.bb.interrupts%s
+D s-bbmcpa.ads		20170517144320 c4c55388 system.bb.mcu_parameters%s
+D s-bbpara.ads		20170517144320 77379e7b system.bb.parameters%s
+D s-bbthre.ads		20170517144320 d6c36e4f system.bb.threads%s
+D s-bbthqu.ads		20170517144320 db3cad46 system.bb.threads.queues%s
+D s-bbtime.ads		20170517144320 ad086247 system.bb.time%s
+D s-multip.ads		20170517144320 f33e0e35 system.multiprocessors%s
+D s-osinte.ads		20170517144320 2d4f0621 system.os_interface%s
+D s-parame.ads		20170517144320 c9fe535f system.parameters%s
+D s-stalib.ads		20170517144320 09bd3940 system.standard_library%s
+D s-stm32.ads		20170517144320 e898dba2 system.stm32%s
+D s-stoele.ads		20170517144320 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20170517144320 801abd01 system.task_info%s
+D s-taspri.ads		20170517144320 351848fa system.task_primitives%s
+D s-taskin.ads		20170517144320 a1f44ab3 system.tasking%s
+D s-tasdeb.ads		20170517144320 1958910d system.tasking.debug%s
+D s-tasdeb.adb		20170517144320 16d62b3b system.tasking.debug%b
+D s-traent.ads		20170517144320 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20170517144320 34867c83 system.unsigned_types%s
+X 8 system.ads
+50K9*System 164e11 29|36r6 37r6 39r9 50r5 30|40r14 67r5
+80M9*Address
+X 13 s-bcprmu.ads
+39U14*Start_All_CPUs 40i<c,__gnat_start_slave_cpus>22
+X 21 s-osinte.ads
+51K16*OS_Interface 211e24 29|37w13
+X 28 s-taskin.ads
+57K16*Tasking 8|50k9 28|473e19 29|36w13 39r16 50r12 30|40r21 67r12
+66P9*Task_Id(64R9) 29|46r31 30|42r17 46r17 54r31
+358p7*Activation_Link{66P9} 30|56r31 59m27
+392r7*Common{306R9} 30|56r24 59m20
+413V13*Get_Sec_Stack{8|80M9} 414i<c,__gnat_get_secondary_stack>22
+X 29 s-tasdeb.ads
+39K24*Debug 28|57k16 29|50l20 50e25 30|40b29 67l20 67t25
+46U14*Add_Task_Id 46>27 47r19 30|54b14 65l8 65t19
+46p27 T{28|66P9} 30|54b27 56r22 59r46 61r24 64r20
+X 30 s-tasdeb.adb
+42p4 First_Task{28|66P9} 43r25 61m10
+46p4 Last_Task{28|66P9} 58r10 59r10 64m7
+

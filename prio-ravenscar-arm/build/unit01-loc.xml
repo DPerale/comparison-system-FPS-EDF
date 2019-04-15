@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project>
+    <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_file>
+    <file_marker column=" 22" line=" 5" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/src/unit01.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 13" line=" 74" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/src/cyclic_tasks.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 106" >
+      <vfs_project />
+      <vfs_file>/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/gnat/s-io.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/src/data_struct01.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 28" line=" 15" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/src/cyclic_tasks.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 41" line=" 222" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/raven-prio-arm/s-bbthre.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/src/pippoprova.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/src/tasking.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 61" line=" 29" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/src/tasking.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 232" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/arm-tutto/s-taprop.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 16" line=" 402" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/arm-tutto/s-bbbosu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/arm-tutto/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/arm-tutto/s-interr.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/arm-tutto/s-bbbosu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 16" line=" 402" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/arm-tutto/s-bbbosu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 26" line=" 419" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/arm-tutto/s-bbtime.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/edf-ravenscar-arm (copia)/arm-tutto/s-bbtime.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>
