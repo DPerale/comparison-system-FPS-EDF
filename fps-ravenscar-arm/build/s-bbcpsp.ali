@@ -1,0 +1,31 @@
+V "GNAT Lib v2018"
+A -gnatA
+A --RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/
+A -mlittle-endian
+A -mfloat-abi=hard
+A -mcpu=cortex-m4
+A -mfpu=fpv4-sp-d16
+A -mthumb
+A -gnatg
+A -g
+P DB ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_IMPLEMENTATION_RESTRICTIONS
+RR NO_ELABORATION_CODE
+
+U system.bb.cpu_specific%s  s-bbcpsp.ads	c51cf369 NE OL PR PK
+W system.bb%s		s-bb.ads		s-bb.ali
+
+D system.ads		20181010193713 db831581 system%s
+D s-bb.ads		20181010193701 09e072ae system.bb%s
+D s-bbcpsp.ads		20181010193701 ccfc81c7 system.bb.cpu_specific%s
+X 1 system.ads
+50K9*System 164e11 3|37r9 43r5
+X 2 s-bb.ads
+40K16*BB 1|50k9 2|95e14 3|37r16 43r12
+X 3 s-bbcpsp.ads
+37K19*CPU_Specific 2|40k16 3|43l15 43e27
+40N4*Stack_Alignment
+

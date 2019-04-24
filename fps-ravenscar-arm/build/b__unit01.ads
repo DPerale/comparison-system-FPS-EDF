@@ -38,12 +38,6 @@ package ada_main is
    --  system.exceptions%b
    --  system.img_int%s
    --  system.img_int%b
-   --  system.img_dec%s
-   --  system.img_dec%b
-   --  system.img_lli%s
-   --  system.img_lli%b
-   --  system.img_lld%s
-   --  system.img_lld%b
    --  system.machine_code%s
    --  system.parameters%s
    --  system.parameters%b
@@ -89,8 +83,9 @@ package ada_main is
    --  system.exceptions_debug%s
    --  system.exceptions_debug%b
    --  ada.exceptions%s
-   --  system.val_util%s
-   --  system.val_uns%s
+   --  system.exceptions.machine%s
+   --  system.exceptions.machine%b
+   --  system.wch_stw%s
    --  ada.tags%s
    --  system.bb.time%s
    --  system.bb.protection%s
@@ -108,34 +103,34 @@ package ada_main is
    --  system.bb.cpu_primitives.context_switch_trigger%b
    --  system.bb.board_support%b
    --  ada.exceptions.last_chance_handler%s
-   --  system.wch_stw%s
-   --  system.exceptions.machine%s
-   --  system.exceptions.machine%b
+   --  system.bb.deadlines%s
+   --  system.val_util%s
+   --  system.val_uns%s
    --  ada.exceptions.traceback%s
    --  ada.exceptions.traceback%b
    --  system.memory%s
    --  system.memory%b
-   --  system.val_util%b
-   --  system.val_uns%b
+   --  system.traceback.symbolic%s
+   --  system.traceback.symbolic%b
+   --  system.wch_stw%b
    --  ada.tags%b
    --  system.bb.timing_events%s
    --  system.bb.threads%s
+   --  system.val_util%b
+   --  system.val_uns%b
+   --  system.standard_library%b
+   --  ada.exceptions%b
    --  system.bb.threads.queues%s
    --  system.bb.threads.queues%b
+   --  system.bb.protection%b
+   --  system.bb.threads%b
    --  system.bb.interrupts%b
    --  system.bb.cpu_primitives%b
    --  system.os_interface%s
    --  ada.exceptions.last_chance_handler%b
    --  system.task_primitives%s
-   --  system.wch_stw%b
-   --  system.traceback.symbolic%s
-   --  system.traceback.symbolic%b
-   --  system.standard_library%b
-   --  ada.exceptions%b
    --  system.bb.timing_events%b
    --  system.bb.time%b
-   --  system.bb.protection%b
-   --  system.bb.threads%b
    --  system.multiprocessors.fair_locks%b
    --  system.tasking%s
    --  system.tasking.debug%s
@@ -152,6 +147,8 @@ package ada_main is
    --  system.tasking.restricted.stages%s
    --  system.tasking.restricted.stages%b
    --  system_time%s
+   --  print_task%s
+   --  print_task%b
    --  cyclic_tasks%s
    --  cyclic_tasks%b
    --  unit01%b

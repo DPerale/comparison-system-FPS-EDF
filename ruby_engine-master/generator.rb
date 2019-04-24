@@ -151,19 +151,34 @@ class Generator
       return a, b, c
    end
 
-   def generateSingleTask (size, mode)
+   
+   
+   def generateSingleTask (size, mode, alreadyPicked)
       # Generates the task modality
-      case mode
+      ret = 0
+      case mode      
       when "implicit"
          case size
-         when "short"
+         when "short"             
             p = rand @param.short_period_demo_mixed
+            while alreadyPicked.include? p
+              p = rand @param.short_period_demo_mixed
+            end
+            ret = p
             e = rand @param.short_impl_exec_range
          when "mid"
             p = rand @param.mid_period_demo_mixed
+            while alreadyPicked.include? p
+              p = rand @param.short_period_demo_mixed
+            end
+            ret = p
             e = rand @param.mid_impl_exec_range
          when "long"
             p = rand @param.long_period_demo_mixed
+            while alreadyPicked.include? p
+              p = rand @param.long_period_demo_mixed
+            end
+            ret = p
             e = rand @param.long_impl_exec_range
          else
             raise 'Error size in generateSingleTask'
@@ -201,15 +216,25 @@ class Generator
       t = BasicTask.new 0, dead, period, 0, e
 
       @taskset.push t
+      return ret
    end
 
    def expSolver (code)
+      puts code
       code = code - 1
       a = Array.new
       a = @param.exponentsDemo.to_a.product([code])
       # puts a
       # puts "2 ^ #{a[code][0][0][0]} * 3 ^ #{a[code][0][0][1]} "\
       #      "5 ^ #{a[code][0][0][2]} * 7 ^ #{a[code][0][0][3]}"
+      print "ciao      "
+      print a[code][0][0][0]
+      print "      "
+      print a[code][0][0][1]
+      print "      "
+      print a[code][0][0][2]
+      print "      "
+      puts a[code][0][0][3]
       value = 2 ** a[code][0][0][0] *
               3 ** a[code][0][0][1] *
               5 ** a[code][0][0][2] *
@@ -218,15 +243,20 @@ class Generator
    end
 
    def generateImplicitTaskset (short, mid, long, type)
-      for i in 1..short
-         generateSingleTask "short", "implicit"
+      alreadyPicked = []
+      for i in 0..short-1
+         n = generateSingleTask "short", "implicit", alreadyPicked
+         alreadyPicked.push(n)
       end
-      for i in 1..mid
-         generateSingleTask "mid", "implicit"
+      for i in 0..mid-1
+         n = generateSingleTask "mid", "implicit", alreadyPicked
+         alreadyPicked.push(n)
       end
-      for i in 1..long
-         generateSingleTask "long", "implicit"
+      for i in 0..long-1
+         n = generateSingleTask "long", "implicit", alreadyPicked
+         alreadyPicked.push(n)
       end
+      alreadyPicked.clear
    end
 
    def generateConstrainedTaskset (short, mid, long, type)
@@ -412,7 +442,7 @@ class Generator
         out.puts "      end loop;"
         out.puts "   end Init;"
         out.puts ""
-        out.puts "   P1 : Print_Task.Print (255, -1, " + (hyperPeriod/168000).to_s + "); -- period in milliseconds"
+        out.puts "   P1 : Print_Task.Print (240, -"+(hyperPeriod/1000).to_s+", " + (hyperPeriod/1000).to_s + "); -- period in milliseconds"
         
           
         
@@ -424,6 +454,8 @@ class Generator
          # end
 
          @taskset.each do |t|
+            print t.deadInMicroseconds
+            print ", "
             str = "   C#{i} : Cyclic (#{t.prio}, #{t.deadInMicroseconds},"\
                   " #{t.periodInMicroseconds}, #{i}, #{t.execInOperations});"
             out.puts str

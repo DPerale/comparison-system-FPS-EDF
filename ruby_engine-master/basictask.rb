@@ -32,11 +32,11 @@ class BasicTask
    end
 
    def periodInMicroseconds
-      return (@period / 168).to_i
+      return (@period ).to_i
    end
 
    def deadInMicroseconds
-      return (@dead / 168).to_i
+      return (@dead ).to_i
    end
 
    ## Da vedere quanti cicli fa un'operazione

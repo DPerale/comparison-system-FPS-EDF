@@ -1,0 +1,59 @@
+V "GNAT Lib v2018"
+A -gnatA
+A --RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/
+A -mlittle-endian
+A -mfloat-abi=hard
+A -mcpu=cortex-m4
+A -mfpu=fpv4-sp-d16
+A -mthumb
+A -gnatg
+A -g
+P DB ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U system.bb.mcu_parameters%b  s-bbmcpa.adb	90da926c NE OL PK
+W interfaces%s		interfac.ads		interfac.ali
+W interfaces.stm32%s	i-stm32.ads		i-stm32.ali
+W interfaces.stm32.pwr%s  i-stm32-pwr.ads	i-stm32-pwr.ali
+W system.bb%s		s-bb.ads		s-bb.ali
+
+U system.bb.mcu_parameters%s  s-bbmcpa.ads	90e615ae NE OL PR PK
+W interfaces%s		interfac.ads		interfac.ali
+W interfaces.stm32%s	i-stm32.ads		i-stm32.ali
+W interfaces.stm32.pwr%s  i-stm32-pwr.ads	i-stm32-pwr.ali
+W system.bb%s		s-bb.ads		s-bb.ali
+
+D interfac.ads		20181010193657 5ab55268 interfaces%s
+D i-stm32.ads		20181010193657 4d2e1e9b interfaces.stm32%s
+D i-stm32-pwr.ads	20181010193657 10ed2a13 interfaces.stm32.pwr%s
+D system.ads		20181010193713 db831581 system%s
+D s-bb.ads		20181010193701 09e072ae system.bb%s
+D s-bbmcpa.ads		20181010193701 c4c55388 system.bb.mcu_parameters%s
+D s-bbmcpa.adb		20181010193633 44f2ebf7 system.bb.mcu_parameters%b
+D s-stoele.ads		20181010193709 2dc34a04 system.storage_elements%s
+X 1 interfac.ads
+38K9*Interfaces 184e15 6|37r6 38r6 43r13 52r10 7|35r6 35r32
+X 2 i-stm32.ads
+13K20*STM32 234e21 6|37w17 38r17 43r24 52r21 7|35r17 35r43
+24M9*Bit 6|43r30
+X 3 i-stm32-pwr.ads
+12K26*PWR 141e25 6|38w23 52r27 7|35w23 35r49
+51m7*VOS{28M12} 7|48m21
+99m7*VOSRDY{78M12} 6|52r46
+126r7*CR{31R9} 7|48m18
+128r7*CSR{81R9} 6|52r42
+138r4*PWR_Periph{124R9} 6|52r31 7|48m7
+X 4 system.ads
+50K9*System 164e11 6|40r9 54r5 7|37r14 61r5
+X 5 s-bb.ads
+40K16*BB 4|50k9 5|95e14 6|40r16 54r12 7|37r21 61r12
+X 6 s-bbmcpa.ads
+40K19*MCU_Parameters 5|40k16 6|54l15 54e29 7|37b24 61l15 61t29
+45N4*Number_Of_Interrupts
+47U14*PWR_Initialize 7|43b14 49l8 49t22
+49U14*PWR_Overdrive_Enable 7|55b14 59l8 59t28
+51V13*Is_PWR_Stabilized{boolean}
+

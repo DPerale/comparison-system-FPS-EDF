@@ -43,17 +43,8 @@ with System.BB.Parameters;
 with System.BB.Threads.Queues;
 with System.BB.Timing_Events;
 with System.Multiprocessors.Fair_Locks;
-
--------------------------------------------------------------
-
---  DEBUG
---  with System.Tasking;
---  with System.Task_Primitives.Operations;
-
 with Ada.Unchecked_Conversion;
 with System.OS_Interface;
-with System.BB.Debug; use System.BB.Debug;
-with System.BB.Stats;
 -------------------------------------------------------------
 package body System.BB.Time is
 
@@ -352,19 +343,15 @@ package body System.BB.Time is
 
       --  Test if the alarm time is in the future
 
-      if Print_Miss then
-         if Self.Active_Absolute_Deadline < Now then
+      if Self.Active_Absolute_Deadline < Now then
             --  Se necessario si aumentano le deadline miss
-            if System.BB.Threads.Queues.Get_Check (Self.Fake_Number_ID) = False
-            then
-               System.BB.Threads.Queues.Add_DM (Self.Fake_Number_ID);
-            end if;
-            System.BB.Stats.Deadline_Miss := System.BB.Stats.Deadline_Miss + 1;
-         else
-            System.BB.Stats.Executions := System.BB.Stats.Executions + 1;
+         if System.BB.Threads.Queues.Get_Check (Self.Fake_Number_ID) = False
+         then
+            System.BB.Threads.Queues.Add_DM (Self.Fake_Number_ID);
          end if;
       end if;
       System.BB.Threads.Queues.Set_Check (Self.Fake_Number_ID, False);
+
       if T > Now then
 
          --  Extract the thread from the ready queue. When a thread wants to

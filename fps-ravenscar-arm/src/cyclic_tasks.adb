@@ -35,7 +35,7 @@ package body Cyclic_Tasks is
       procedure Gauss (Times : Integer) is
          Num : Integer := 0;
       begin
-         for I in 1 .. Times loop
+         for I in 1 .. Times * 1000 loop
             Num := Num + I;
          end loop;
       end Gauss;
@@ -67,13 +67,16 @@ package body Cyclic_Tasks is
       System.Task_Primitives.Operations.Set_Relative_Deadline
         (System.Task_Primitives.Operations.Self,
           System.BB.Time.Milliseconds (Integer'Last));
+      System.Task_Primitives.Operations.Set_Priority (
+            System.Task_Primitives.Operations.Self,
+                                                      0);
       loop
          null;
       end loop;
    end Init;
 
-   P1 : Print_Task.Print (255, -1, 150028200); -- period in milliseconds
-   C1 : Cyclic (59, 10937, 10937, 1, 6300);
+   P1 : Print_Task.Print (240, -1, 1000); --  period in milliseconds
+   C1 : Cyclic (59, 10937, 1000937, 1, 6300);
    C2 : Cyclic (58, 12250, 12250, 2, 4572);
    C3 : Cyclic (58, 12250, 12250, 3, 4608);
    C4 : Cyclic (57, 12500, 12500, 4, 4320);

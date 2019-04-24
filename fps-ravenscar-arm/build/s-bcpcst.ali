@@ -1,0 +1,76 @@
+V "GNAT Lib v2018"
+A -gnatA
+A --RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/
+A -mlittle-endian
+A -mfloat-abi=hard
+A -mcpu=cortex-m4
+A -mfpu=fpv4-sp-d16
+A -mthumb
+A -gnatg
+A -g
+P DB ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_IMPLEMENTATION_RESTRICTIONS
+RR NO_ELABORATION_CODE
+RV NO_OBSOLESCENT_FEATURES
+RV SPARK_05
+
+U system.bb.cpu_primitives.context_switch_trigger%b  s-bcpcst.adb  b5aa84fb NE OL PK
+W system%s		system.ads		system.ali
+W system.bb%s		s-bb.ads		s-bb.ali
+W system.bb.cpu_primitives%s  s-bbcppr.adb	s-bbcppr.ali
+W system.bb.parameters%s  s-bbpara.ads		s-bbpara.ali
+W system.machine_code%s	s-maccod.ads		s-maccod.ali
+
+U system.bb.cpu_primitives.context_switch_trigger%s  s-bcpcst.ads  a4bbd201 NE OL PR PK
+W system.bb.cpu_primitives%s  s-bbcppr.adb	s-bbcppr.ali
+
+D interfac.ads		20181010193657 5ab55268 interfaces%s
+D i-stm32.ads		20181010193657 4d2e1e9b interfaces.stm32%s
+D i-stm32-pwr.ads	20181010193657 10ed2a13 interfaces.stm32.pwr%s
+D system.ads		20181010193713 db831581 system%s
+D s-bb.ads		20181010193701 09e072ae system.bb%s
+D s-bbbopa.ads		20181010193701 95d97b26 system.bb.board_parameters%s
+D s-bbcppr.ads		20181010193701 bcfa73ad system.bb.cpu_primitives%s
+D s-bcpcst.ads		20181010193702 1841a1ac system.bb.cpu_primitives.context_switch_trigger%s
+D s-bcpcst.adb		20181010193634 83993e41 system.bb.cpu_primitives.context_switch_trigger%b
+D s-bbmcpa.ads		20181010193701 c4c55388 system.bb.mcu_parameters%s
+D s-bbpara.ads		20181010193701 431abc17 system.bb.parameters%s
+D s-maccod.ads		20181010193705 6d68a701 system.machine_code%s
+D s-stm32.ads		20181010193709 e898dba2 system.stm32%s
+D s-stoele.ads		20181010193709 2dc34a04 system.storage_elements%s
+D s-unstyp.ads		20181010193711 34867c83 system.unsigned_types%s
+X 4 system.ads
+50K9*System 164e11 8|39r9 51r5 9|37r6 38r6 38r31 40r14 45r48 48r36 176r5
+X 5 s-bb.ads
+40K16*BB 4|50k9 5|95e14 8|39r16 51r12 9|37r13 40r21 45r55 48r43 176r12
+X 7 s-bbcppr.ads
+39K19*CPU_Primitives 5|40k16 7|142e29 8|39r19 51r15 9|40r24 176r15
+42M9*Word 9|51r11 53r32
+X 8 s-bcpcst.ads
+39K34*Context_Switch_Trigger 7|39k19 8|51l30 51e52 9|40b39 176l30 176t52
+42U14*Initialize_Context_Switch
+47U14*Trigger_Context_Switch 9|72b14 83l8 83t30
+X 9 s-bcpcst.adb
+42a4 NL{string} 99r50 100r33 101r33 110r41 111r41 112r41 113r41 114r41 120r41
+. 121r41 122r41 123r41 124r41 125r41 126r41 127r41 129r41 131r42 132r29 133r29
+. 138r37 139r37 140r37 141r37 142r37 144r39 145r39 146r39 147r39 148r39 149r39
+. 150r39 152r33 153r33 154r39 156r39 163r41 164r41 165r41 166r41 167r41 171r28
+45b4 No_Floating_Point{boolean} 108r14 161r14
+48b4 Is_ARMv6m{boolean} 118r14 136r14
+51m4 ICSR{7|42M9} 77m7 82r23
+53m4 ICSR_Pend_SV_Set{7|42M9} 77r15 82r32
+55U14 Pend_SV_Handler 56r30 57i24 89b14 174l8 174t23
+65U14 Initialize_Context_Switch
+X 11 s-bbpara.ads
+45K19*Parameters 9|37w16 45r58 48r46 11|155e25
+81b4*Has_FPU{boolean} 9|45r69
+92b4*Is_ARMv6m{boolean} 9|48r57
+X 12 s-maccod.ads
+36K16*Machine_Code 9|38w13 38r38 12|131e24
+83U14*Asm 9|97s7
+84a6 Template{string} 9|98r10
+88b6 Volatile{boolean} 9|173r10
+

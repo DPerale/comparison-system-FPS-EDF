@@ -1,0 +1,45 @@
+V "GNAT Lib v2018"
+A -gnatA
+A --RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/
+A -mlittle-endian
+A -mfloat-abi=hard
+A -mcpu=cortex-m4
+A -mfpu=fpv4-sp-d16
+A -mthumb
+A -gnatg
+A -g
+P DB ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+
+U system.text_io%b	s-textio.adb		028b3591 NE OL PK
+W system%s		system.ads		system.ali
+W system.semihosting%s	s-semiho.adb		s-semiho.ali
+
+U system.text_io%s	s-textio.ads		f9949a48 NE OL PR PK
+W system%s		system.ads		system.ali
+
+D system.ads		20181010193713 db831581 system%s
+D s-semiho.ads		20181010193709 bee239dc system.semihosting%s
+D s-textio.ads		20181010193710 22178fc9 system.text_io%s
+D s-textio.adb		20181010193641 9e7e8384 system.text_io%b
+X 1 system.ads
+50K9*System 164e11 3|35r9 82r5 4|34r6 36r14 66r7 76r7 85r5
+X 2 s-semiho.ads
+37K16*Semihosting 50e23 4|34w13 66r14 76r14
+41U14*Put 4|76s26
+47U14*Get 4|66s26
+X 3 s-textio.ads
+35K16*Text_IO 1|50k9 3|82l12 82e19 4|36b21 85l12 85t19
+43U14*Initialize 4|42b14 45l8 45t18
+47b4*Initialized{boolean} 4|44m7
+55V13*Is_Tx_Ready{boolean} 4|51b13
+62U14*Put 62>19 4|74b14 77l8 77t11
+62e19 C{character} 4|74b19 76r31
+66V13*Use_Cr_Lf_For_New_Line{boolean} 4|83b13
+74V13*Is_Rx_Ready{boolean} 4|57b13
+79V13*Get{character} 4|63b13 68l8 68t11
+X 4 s-textio.adb
+64e7 Item{character} 66m31 67r14
+

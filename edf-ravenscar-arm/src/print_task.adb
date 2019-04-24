@@ -16,7 +16,7 @@ package body Print_Task is
             + System_Time.Task_Activation_Delay + Task_Static_Offset;
 
       Period : constant Ada.Real_Time.Time_Span :=
-        Ada.Real_Time.Microseconds (Cycle_Time);
+        Ada.Real_Time.Milliseconds (Cycle_Time);
 
       i : Integer := 0;
 

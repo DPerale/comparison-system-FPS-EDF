@@ -7,8 +7,10 @@ package Cyclic_Tasks is
       Dead       : Positive;
       Cycle_Time : Positive;
       T_Num      : Integer;
-      Gauss_Num  : Integer) is
+       Gauss_Num  : Integer
+      ) is
       pragma Priority (Pri);
+      pragma Storage_Size (450);
    end Cyclic;
 
    procedure Init;

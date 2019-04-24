@@ -1,0 +1,34 @@
+V "GNAT Lib v2018"
+A -gnatA
+A --RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/
+A -mlittle-endian
+A -mfloat-abi=hard
+A -mcpu=cortex-m4
+A -mfpu=fpv4-sp-d16
+A -mthumb
+A -gnatg
+A -g
+P DB ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U system.exceptions%b	s-except.adb		ce4af020 NE OL PK
+W system%s		system.ads		system.ali
+
+U system.exceptions%s	s-except.ads		b3e07877 NE OL PR PK
+W system%s		system.ads		system.ali
+
+D system.ads		20181010193713 db831581 system%s
+D s-except.ads		20181010193703 68636df6 system.exceptions%s
+D s-except.adb		20181010193634 a6299dd6 system.exceptions%b
+X 1 system.ads
+50K9*System 164e11 2|34r9 59r41 66r5 3|43r14 45r5
+162b4 ZCX_By_Default{boolean} 2|59r48
+X 2 s-except.ads
+34K16*Exceptions 1|50k9 2|44E9 66l12 66e22 3|43b21 45l12 45t22
+39b4*ZCX_By_Default{boolean} 59c4
+44I9 Require_Body 3|44c9
+61X4 Foreign_Exception 62r25
+

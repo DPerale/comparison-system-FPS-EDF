@@ -191,7 +191,7 @@ class RTA_Calculus
       maxLoad = 0.0
       # hyperPeriod = (@taskset.max_by &:period).period
       periodicArray = @taskset.map(&:period)
-      hyperPeriod = periodicArray.reduce(:lcm)
+      hyperPeriod = periodicArray.reduce(:lcm)   
 
       # @taskset.each do |t|
       #    puts "Prio: #{t.prio}\t Dead: #{t.dead}\t Period: #{t.period}\t Exec: #{t.exec}"
