@@ -1,0 +1,519 @@
+-- Real-Time System Model: MAST
+-- File format
+-- This line is just an example of a comment
+
+-- Processor
+
+Processing_Resource (
+        Type                    => Fixed_Priority_Processor,
+	Name 	                => CPU_1,
+        Max_Priority            => 200,
+        Min_Priority            => 1,
+        Max_Interrupt_Priority  => 300,
+        Min_Interrupt_Priority  => 100,
+	Worst_Context_Switch 	=> 150,
+	Avg_Context_Switch 	=> 100,
+	Best_Context_Switch 	=>  50.0,
+ 	Worst_ISR_Switch 	=> 50,
+	Avg_ISR_Switch   	=> 30,
+	Best_ISR_Switch 	=> 2E1,
+        System_Timer            => 
+ 	    (Type               => Ticker,
+             Worst_Overhead 	=> 5E2,
+	     Avg_Overhead 	=> 30,
+	     Best_Overhead 	=> 20.0,        
+	     Period 	        => 2000),
+        Speed_Factor            => 2);
+
+Processing_Resource (
+        Type                    => Fixed_Priority_Processor,
+	Name 	                => CPU_2,
+	Worst_Context_Switch 	=> 150,
+	Avg_Context_Switch 	=> 100,
+	Best_Context_Switch 	=>  50.0,
+	Worst_ISR_Switch 	=> 50,
+	Avg_ISR_Switch   	=> 30,
+	Best_ISR_Switch 	=> 20.0,
+        System_Timer            => 
+ 	    (Type               => Alarm_Clock,
+             Worst_Overhead 	=> 50,
+	     Avg_Overhead 	=> 30,
+	     Best_Overhead 	=> 20.0),
+        Speed_Factor            => 2);
+
+
+-- Networks
+
+Processing_Resource (
+	Type 	=> Fixed_Priority_Network,
+	Name 	=> RED.1,
+        Max_Priority            => 200,
+        Min_Priority            => 1,
+	Packet_Worst_Overhead 	=> 20,
+	Packet_Avg_Overhead 	=> 15,
+	Packet_Best_Overhead 	=> 10,
+        Transmission            => Full_Duplex,
+        List_of_Drivers         => 
+            ((Type                        => Character_Packet_Driver,
+              Packet_Server               => 
+                  (Type                       => Fixed_Priority,
+	           Name 	              => RS232_P_Server1,
+	           Server_Sched_Parameters    => (
+        	       Type 	=> Fixed_Priority_Policy,
+        	       The_Priority 	=> 21),
+	           Server_Processing_Resource => CPU_1),
+              Packet_Send_Operation    => 
+                  (Type 	=> Simple,
+		   Name 	=> RS232_P_Send1,
+  	           Worst_Case_Execution_Time 	=> 250,
+	           Avg_Case_Execution_Time 	=> 100,
+	           Best_Case_Execution_Time 	=> 10),
+              Packet_Receive_Operation =>
+                  (Type 	=> Simple,
+		   Name 	=> RS232_P_Receive1,
+  	           Worst_Case_Execution_Time 	=> 250,
+	           Avg_Case_Execution_Time 	=> 100,
+	           Best_Case_Execution_Time 	=> 10),
+              Character_Server            => 
+                  (Type                       => Fixed_Priority,
+	           Name 	              => RS232_C_Server1,
+	           Server_Sched_Parameters    => (
+        	       Type 	=> Fixed_Priority_Policy,
+        	       The_Priority 	=> 21),
+	           Server_Processing_Resource => CPU_1),
+              Character_Send_Operation    => 
+                  (Type 	=> Simple,
+		   Name 	=> RS232_C_Send1,
+  	           Worst_Case_Execution_Time 	=> 250,
+	           Avg_Case_Execution_Time 	=> 100,
+	           Best_Case_Execution_Time 	=> 10),
+              Character_Receive_Operation => 
+                  (Type 	=> Simple,
+		   Name 	=> RS232_C_Receive1,
+  	           Worst_Case_Execution_Time 	=> 250,
+	           Avg_Case_Execution_Time 	=> 100,
+	           Best_Case_Execution_Time 	=> 10)),
+             (Type                        => Character_Packet_Driver,
+              Packet_Server               => 
+                  (Type                       => fixed_priority,
+	           Name 	                   => RS232_P_Server2,
+	           Server_Sched_Parameters    => (
+        	       Type 	=> Fixed_Priority_Policy,
+        	       The_Priority 	=> 21),
+	           Server_Processing_Resource => CPU_2),
+              Packet_Send_Operation    => 
+                  (Type 	=> Simple,
+		   Name 	=> RS232_P_Send2,
+  	           Worst_Case_Execution_Time 	=> 250,
+	           Avg_Case_Execution_Time 	=> 100,
+	           Best_Case_Execution_Time 	=> 10),
+              Packet_Receive_Operation =>
+                  (Type 	=> Simple,
+		   Name 	=> RS232_P_Receive2,
+  	           Worst_Case_Execution_Time 	=> 250,
+	           Avg_Case_Execution_Time 	=> 100,
+	           Best_Case_Execution_Time 	=> 10),
+              Character_Server            => 
+                  (Type                       => Fixed_Priority,
+	           Name 	              => RS232_C_Server2,
+	           Server_Sched_Parameters    => (
+        	       Type 	=> Fixed_Priority_Policy,
+        	       The_Priority 	=> 21),
+	           Server_Processing_Resource => CPU_2),
+              Character_Send_Operation    => 
+                  (Type 	=> Simple,
+		   Name 	=> RS232_C_Send2,
+  	           Worst_Case_Execution_Time 	=> 250,
+	           Avg_Case_Execution_Time 	=> 100,
+	           Best_Case_Execution_Time 	=> 10),
+              Character_Receive_Operation => 
+                  (Type 	=> Simple,
+		   Name 	=> RS232_C_Receive2,
+  	           Worst_Case_Execution_Time 	=> 250,
+	           Avg_Case_Execution_Time 	=> 100,
+	           Best_Case_Execution_Time 	=> 10))),
+	Max_Blocking            	=> 199,
+	Max_Packet_Transmission_Time 	=> 200,
+	Min_Packet_Transmission_Time 	=> 200,
+        Speed_Factor           => 1.1);
+
+Processing_Resource (
+	Type 	=> Fixed_Priority_Network,
+	Name 	=> RED.2,
+	Packet_Worst_Overhead 	=> 20,
+	Packet_Avg_Overhead 	=> 15,
+	Packet_Best_Overhead 	=> 10,
+        Transmission            => Half_Duplex,
+        List_of_Drivers         => 
+            ((Type                     => Packet_Driver,
+              Packet_Server            => 
+                 (Type                       => Fixed_Priority,
+                  Name 	                   => Ethernet_Server1,
+	          Server_Sched_Parameters    => (
+        	       Type 	=> Fixed_Priority_Policy,
+        	       The_Priority 	=> 18),
+	          Server_Processing_Resource => CPU_1),
+              Packet_Send_Operation    => 
+                  (Type 	=> Simple,
+		   Name 	=> Ethernet_Send1,
+  	           Worst_Case_Execution_Time 	=> 250,
+	           Avg_Case_Execution_Time 	=> 100,
+	           Best_Case_Execution_Time 	=> 10),
+              Packet_Receive_Operation =>
+                  (Type 	=> Simple,
+		   Name 	=> Ethernet_Receive1,
+  	           Worst_Case_Execution_Time 	=> 250,
+	           Avg_Case_Execution_Time 	=> 100,
+	           Best_Case_Execution_Time 	=> 10)),
+             (Type                     => Packet_Driver,
+              Packet_Server            => 
+                 (Type                       => Fixed_Priority,
+                  Name 	                   => Ethernet_Server2,
+	          Server_Sched_Parameters    => (
+        	       Type 	=> Fixed_Priority_Policy,
+        	       The_Priority 	=> 18),
+	          Server_Processing_Resource => CPU_2),
+              Packet_Send_Operation    => 
+                  (Type 	=> Simple,
+		   Name 	=> Ethernet_Send2,
+  	           Worst_Case_Execution_Time 	=> 250,
+	           Avg_Case_Execution_Time 	=> 100,
+	           Best_Case_Execution_Time 	=> 10),
+              Packet_Receive_Operation =>
+                  (Type 	=> Simple,
+		   Name 	=> Ethernet_Receive2,
+  	           Worst_Case_Execution_Time 	=> 250,
+	           Avg_Case_Execution_Time 	=> 100,
+	           Best_Case_Execution_Time 	=> 10))),
+	Max_Packet_Transmission_Time 	=> 200,
+	Min_Packet_Transmission_Time 	=> 200,
+        Speed_Factor           => 1.1);
+
+-- Shared resources
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Dato_PCP_1,
+	Ceiling 	=> 5,
+        Preassigned     => yes);
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Dato_PCP_2);
+
+Shared_Resource (
+	Type 	=> Priority_Inheritance_Resource,
+	Name 	=> Dato_PI_1);
+
+Shared_Resource (
+	Type 	=> Priority_Inheritance_Resource,
+	Name 	=> Dato_PI_2);
+
+-- Operations
+
+Operation (
+	Type 	=> Simple,
+	Name 	=> Proc_1,
+	New_Sched_Parameters	        => 
+           (Type         => Overridden_Fixed_Priority,
+            The_Priority => 5),
+	Worst_Case_Execution_Time 	=> 250,
+	Avg_Case_Execution_Time 	=> 100,
+	Best_Case_Execution_Time 	=> 10,
+	Shared_Resources_List 	=> (
+            		Dato_PCP_1,
+		        Dato_PCP_2)); 
+
+Operation (
+	Type 	=> Simple,
+	Name 	=> Proc_2,
+	Worst_Case_Execution_Time 	=> 500,
+	Avg_Case_Execution_Time 	=> 300,
+	Best_Case_Execution_Time 	=> 100,
+        Shared_Resources_To_Lock =>
+               (Dato_PCP_1),
+        Shared_Resources_To_Unlock =>
+               (Dato_PCP_1));
+
+Operation (
+	Type 	=> Simple,
+	Name 	=> Proc_3,
+	Worst_Case_Execution_Time 	=> 5000,
+	Avg_Case_Execution_Time 	=> 3000,
+	Best_Case_Execution_Time 	=> 1000,
+        Shared_Resources_To_Lock =>
+              (Dato_PCP_1,
+               Dato_PCP_2),
+        Shared_Resources_To_Unlock =>
+              (Dato_PCP_1,
+               Dato_PCP_2));
+
+Operation (
+	Type 	=> Composite,
+	Name 	=> Proc_4,
+	New_Sched_Parameters	        => 
+           (Type         => Overridden_Permanent_FP,
+            The_Priority => 7),
+	Composite_Operation_List 	=> (
+		Proc_1,
+                Proc_2));
+
+Operation (
+	Type 	=> Simple,
+	Name 	=> Mensaje_1,
+	Worst_Case_Execution_Time 	=> 5000,
+	Avg_Case_Execution_Time 	=> 3000,
+	Best_Case_Execution_Time 	=> 1000,
+        Shared_Resources_To_Lock =>
+                      (dato_PI_1,
+                       dato_PI_2),
+        Shared_Resources_To_Unlock =>
+                       (Dato_PI_2,
+                        Dato_PI_1));
+
+-- Scheduling_Servers
+
+Scheduling_Server (
+        Type                       => Fixed_Priority,
+	Name 	=> Tarea_1,
+	Server_Sched_Parameters 	=> (
+        	Type 	=> Interrupt_FP_Policy),
+--                The_Priority => 13,
+--                Preassigned => Yes),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+        Type                       => Fixed_Priority,
+	Name 	=> Tarea_11,
+	Server_Sched_Parameters 	=> (
+        	Type 	=> Non_Preemptible_FP_Policy,
+        	The_Priority 	=> 12,
+                Preassigned     => Yes),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+        Type                       => Fixed_Priority,
+	Name 	=> Tarea_X,
+	Server_Sched_Parameters 	=> (
+        	Type 	=> fixed_priority_policy),
+--        	The_Priority 	=> 12,
+--                Preassigned     => Yes),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+        Type                       => Fixed_Priority,
+	Name 	=> Tarea_2,
+	Server_Sched_Parameters 	=> (
+	Type 	=> Polling_Policy,
+        Preassigned => No,
+--	The_Priority 	=> 8,
+	Polling_Period 	=> 100,
+        Polling_Worst_Overhead => 12,
+        Polling_Avg_Overhead => 13,
+        Polling_Best_Overhead => 14),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+        Type                       => Fixed_Priority,
+	Name 	=> Tarea_3,
+	Server_Sched_Parameters 	=> (
+              Type => Sporadic_Server_Policy,
+              Normal_Priority => 3,
+              Initial_Capacity => 5,
+              Replenishment_Period => 8,
+              Background_Priority => 5 ),
+	Server_Processing_Resource	=> CPU_1);
+
+-- Transactions
+
+Transaction (
+        Type                       => Regular,
+	Name 	=> Trans_1,
+        External_Events => (
+          (Type 	=> Periodic,
+	   Name 	=> EP1,
+	   Period 	=> 1000,
+	   Max_Jitter 	=> 50,
+	   Phase 	=> 150),
+	  (Type 	=> Sporadic,
+	   Name 	=> ES1,
+	   Avg_Interarrival 	=> 2000,
+	   Distribution 	=> Uniform,
+	   Min_Interarrival 	=> 1000),
+	  (Type 	=> Unbounded,
+	   Name 	=> EU1,
+	   Avg_Interarrival 	=> 5000,
+	   Distribution 	=> Poisson),
+	  (Type 	=> Bursty,
+	   Name 	=> EB1,
+	   Avg_Interarrival 	=> 500,
+	   Distribution 	=> Uniform,
+	   Bound_Interval 	=> 1000,
+	   Max_Arrivals	=> 10)),
+	Internal_Events 	=> (
+  	      (Type 	=> Regular,
+  	       Name 	=> AN1,
+	       Timing_Requirements 	=> (
+            	           Type 	=> Hard_Global_Deadline,
+	                   Deadline 	=> 10000,
+	                   Referenced_Event 	=> EP1)),
+  	      (Type 	=> Regular,
+  	       Name 	=> AN2,
+	       Timing_Requirements  => 
+      	         ( Type 	     => composite,
+                   Requirements_List => 
+                     ( (Type              => Soft_Local_Deadline,
+                        Deadline          => 10000),
+                       (Type              => Hard_Global_Deadline,
+                        Deadline 	  => 10000,
+	                Referenced_Event 	          => EP1),
+                       (Type              => Soft_Global_Deadline,
+                        Deadline 	  => 10000,
+	                Referenced_Event 	          => EP1),
+                       (Type              => Hard_Local_Deadline,
+                        Deadline 	  => 10000),
+                       (Type              => Global_Max_Miss_Ratio,
+                        Deadline 	  => 10000,
+	                Referenced_Event 	          => EP1,
+                        Ratio             => 2.3),
+                       (Type              => Local_Max_Miss_Ratio,
+                        Deadline 	  => 10000,
+                        Ratio             => 2.3),
+                       (Type              => Global_Max_Miss_Ratio,
+                        Deadline 	  => 10000,
+	                Referenced_Event 	          => EP1,
+                        Ratio             => 23),
+                       (Type              => Local_Max_Miss_Ratio,
+                        Deadline 	  => 10000,
+                        Ratio             => 23),
+               	       (Type        	  => Max_Output_Jitter_Req,
+                        Referenced_Event             => ES1,
+	                Max_Output_Jitter => 4000)))),
+  	      (Type 	=> Regular,
+  	       Name 	=> AN3),
+  	      (Type 	=> Regular,
+  	       Name 	=> AN4,
+	       Timing_Requirements 	=> (
+            	           Type 	=> Soft_Global_Deadline,
+	                   Deadline 	=> 10000,
+	                   Referenced_Event 	=> EP1)),
+  	      (Type 	=> Regular,
+  	       Name 	=> AN5),
+  	      (Type 	=> Regular,
+  	       Name 	=> AN6),
+  	      (Type 	=> Regular,
+  	       Name 	=> AN7),
+  	      (Type 	=> Regular,
+  	       Name 	=> AN8),
+  	      (Type 	=> Regular,
+  	       Name 	=> AN9),
+  	      (Type 	=> Regular,
+  	       Name 	=> AN10),
+  	      (Type 	=> Regular,
+  	       Name 	=> I1),
+  	      (Type 	=> Regular,
+  	       Name 	=> I2),
+  	      (Type 	=> Regular,
+  	       Name 	=> I3),
+     	      (Type 	=> Regular,
+	       Name	=>AI1),
+     	      (Type 	=> Regular,
+	       Name	=>AI2),
+	      (Type 	=> Regular,
+	       Name 	=> AO1,
+	       Timing_Requirements 	=> (
+            	           Type 	=> Hard_Local_Deadline,
+	                   Deadline 	=> 10000)),
+	      (Type 	=> Regular,
+	       Name 	=> AO2,
+	       Timing_Requirements 	=> (
+               	           Type 	=> Max_Output_Jitter_Req,
+                           Referenced_Event        => EP1,
+	                   Max_Output_Jitter 	=> 4000))),
+	Event_Handlers 	=> (
+	      (Type 	=> Activity,
+      	       Input_Event 	=> AN8,
+	       Output_Event 	=> AN1,
+	       Activity_Operation 	=> Proc_1,
+               Activity_Server => Tarea_X), 
+	      (Type 	=> Activity,
+      	       Input_Event 	=> AN10,
+	       Output_Event 	=> AN2,
+	       Activity_Operation 	=> Proc_2,
+               Activity_Server => Tarea_2), 
+	      (Type 	=> System_Timed_Activity,
+      	       Input_Event 	=> AN5,
+	       Output_Event 	=> AO1,
+	       Activity_Operation 	=> Proc_3,
+               Activity_Server => Tarea_3),
+	      (Type 	=> Activity,
+      	       Input_Event 	=> AN4,
+	       Output_Event 	=> AO2,
+	       Activity_Operation 	=> Proc_4,
+               Activity_Server => Tarea_1), 
+	      (Type 	=> Rate_Divisor,
+      	       Input_Event 	=> AN6,
+	       Output_Event 	=> AN4,
+	       Rate_Factor 	=> 10),
+	      (Type 	=> Delay,
+      	       Input_Event 	=> AI1,
+	       Output_Event 	=> AN8,
+	       Delay_Min_Interval => 1000,
+	       Delay_Max_Interval => 1000),
+	      (Type 	=> Offset,
+      	       Input_Event 	=> AI2,
+	       Output_Event 	=> AN10,
+	       Delay_Min_Interval => 1000,
+	       Delay_Max_Interval => 1000,
+	       Referenced_Event     => EP1),
+	      (Type 	=> Concentrator,
+	       Output_Event 	=> I1,
+	       Input_Events_List 	=> (
+		           EP1,
+		           ES1)),
+	      (Type 	=> Barrier,
+	       Output_Event 	=> I2,
+	       Input_Events_List 	=> (
+		           EU1,
+		           EB1)),
+	      (Type 	=> Delivery_Server,
+	       Input_Event 	=> I1,
+               Delivery_Policy  => Random,
+	       Output_Events_List 	=> (
+		           AN3,
+		           AN5,
+                           I3)),
+	      (Type 	=> Query_Server,
+	       Input_Event 	=> I2,
+               Request_Policy  => Fifo,
+	       Output_Events_List 	=> (
+		           AN6,
+		           AI1,
+                           AI2)),
+	      (Type 	=> Multicast,
+	       Input_Event 	=> I3,
+	       Output_Events_List 	=> (
+		           AN7,
+		           AN9))));
+
+
+Transaction (
+        Type     => Regular,
+	Name 	=> Trans_2,
+        External_Events => (
+	  (Type 	=> Singular,
+	   Name 	=> entrada,
+	   Phase	=> 10)),
+	Internal_Events 	=> (
+  	      (Type 	=> Regular,
+               Name     => salida,
+               Timing_Requirements => (
+                    Type => Soft_Global_Deadline,
+                    Deadline => 3,
+                    Referenced_Event => entrada))),
+        Event_Handlers => (
+              (Type   => Activity,
+               Input_Event => entrada,
+               Output_Event => salida,
+               activity_operation => Proc_4,
+               activity_server => Tarea_2)));

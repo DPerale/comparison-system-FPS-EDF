@@ -41,7 +41,7 @@ class BasicTask
 
    ## Da vedere quanti cicli fa un'operazione
    def execInOperations
-      return (((@exec - 117) / 168) * 36).to_i
+      return (((@exec)) * 36).to_i
    end
 
    def EDF_InitCost (taskNumber)

@@ -236,6 +236,99 @@ class RTA_Calculus
    end
    
    
+   def MASTcomputeEDF
+      puts "calculating RTA EDF with MAST"
+      createMASTinputFILE
+      str = "../mast/mast_analysis/mast_analysis edf_monoprocessor -s ../MASTinput.txt ../MASTinput.out"
+      utilization = 0
+      Open3.popen3(str) do |stdin, stdout, stderr, thread|
+        stdout.each do |output|
+          if output.include?"Utilization" then             
+            s = output.split(" ")
+            utilization = s[1].to_f
+          end
+        end
+        
+      end
+      
+      periodicArray = @taskset.map(&:period)
+      hyperPeriod = periodicArray.reduce(:lcm) 
+      maxLoad = 1
+      x = 1
+      return true, utilization, x, hyperPeriod
+   end
+
+
+   def createMASTinputFILE
+      ofile = "../MASTinput.txt"
+      File.open(ofile, 'w') do |out|
+          out.puts "Model ("
+          out.puts "   Model_Name  => EDF_RTA_CALCULUS,"
+          out.puts "   Model_Date  => 2019-01-01);"
+          out.puts ""
+          out.puts "Processing_Resource ("
+          out.puts "        Type => Regular_Processor,"
+          out.puts "        Name => Processor_1);"
+          out.puts ""
+          out.puts "Scheduler ("
+          out.puts "        Type  => Primary_Scheduler,"
+          out.puts "        Name  => EDF_Scheduler,"
+          out.puts "        Host  => Processor_1,"
+          out.puts "        Policy =>"
+          out.puts "           (Type => EDF,"
+          out.puts "            Worst_Context_Switch => 0.0005,"
+          out.puts "            Avg_Context_Switch => 0.0005,"
+          out.puts "            Best_Context_Switch => 0.0005));"
+          
+          i = 1
+          @taskset.sort_by! {|t| t.dead}
+          @taskset.each do |task|          
+              out.puts "Scheduling_Server ("
+              out.puts "        Type                    => Regular,"
+              out.puts "        Name                    => SC"+i.to_s+","
+              out.puts "        Server_Sched_Parameters => ("
+              out.puts "                Type        => EDF_policy,"
+              out.puts "                Deadline    => "+task.dead.to_s+","
+              out.puts "                Preassigned => No),"
+              out.puts "        Scheduler               => EDF_Scheduler);"
+              i = i + 1
+          end
+              
+          i = 1    
+          @taskset.each do |task| 
+              out.puts "Operation ("
+              out.puts "        Type    => Simple,"
+              out.puts "        Name    => C"+i.to_s+","
+              out.puts "        Worst_Case_Execution_Time => "+task.exec.to_s+","
+              out.puts "        Avg_Case_Execution_Time => "+task.exec.to_s+","
+              out.puts "        Best_Case_Execution_Time => "+task.exec.to_s+");"
+              i = i + 1
+          end
+          
+          i = 1    
+          @taskset.each do |task| 
+              out.puts "Transaction ("
+              out.puts "        Type    => Regular,"
+              out.puts "        Name    => T"+i.to_s+","
+              out.puts "        External_Events => ("
+              out.puts "                (Type   => Periodic,"          
+              out.puts "                 Name   => E"+i.to_s+","
+              out.puts "                 Period => "+task.period.to_s+")),"
+              out.puts "        Internal_Events => ("
+              out.puts "                (Type   => regular,"
+              out.puts "                 name   => O"+i.to_s+")),"
+              out.puts "        Event_Handlers => ("
+              out.puts "                (Type                => Activity,"
+              out.puts "                 Input_Event         => E"+i.to_s+","
+              out.puts "                 Output_Event        => O"+i.to_s+","
+              out.puts "                 Activity_Operation  => C"+i.to_s+","
+              out.puts "                 Activity_Server     => SC"+i.to_s+")));"
+              i = i + 1
+          end
+      end
+   end
+     
+   
    
    
    def Extact_MaxPrio_MinDead

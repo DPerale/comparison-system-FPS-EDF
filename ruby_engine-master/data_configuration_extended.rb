@@ -109,9 +109,9 @@ class Parameters_Extended
       # They do not need to be extended because timings for computation is
       # corrected
 
-      @short_impl_exec_range   =   10000..30000   #   10000..25000
-      @mid_impl_exec_range     =   60000..180000  #  100000..250000
-      @long_impl_exec_range    =  360000..1180000 # 1000000..2500000
+      @short_impl_exec_range   =   110..900   #   10000..25000
+      @mid_impl_exec_range     =   3000..5800  #  100000..250000
+      @long_impl_exec_range    =  7000..11000 # 1000000..2500000
 
       @short_constr_exec_range =   10000..25000   #   10000..25000
       @mid_constr_exec_range   =   50000..150000  #  100000..250000

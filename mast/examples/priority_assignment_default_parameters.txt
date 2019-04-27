@@ -1,0 +1,14 @@
+
+Annealing_Parameters (
+    Max_Iterations  =>  100000,
+    Iterations_To_Optimize => 0);
+
+
+
+HOPA_Parameters (
+    Size_Of_K_List          =>  3,
+    Ka_List                 => (1.50,2.00,3.00),
+    Kr_List                 => (1.50,2.00,3.00),
+    Size_Of_Iterations_List =>  3,
+    Iterations_List         => (10,20,30),
+    Iterations_To_Optimize  =>  0);

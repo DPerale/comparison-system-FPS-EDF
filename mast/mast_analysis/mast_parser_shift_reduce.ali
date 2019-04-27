@@ -1,0 +1,23 @@
+V "GNAT Lib v2018"
+A -g
+A -gnato
+P ZX
+
+RN
+RV SPARK_05
+
+U mast_parser_shift_reduce%s  mast_parser_shift_reduce.ads  e51709c2 NE OO PK
+
+D mast_parser_shift_reduce.ads  20080722124150 e51709c2 mast_parser_shift_reduce%s
+D system.ads		20180525052301 4635ec04 system%s
+X 1 mast_parser_shift_reduce.ads
+1K9*Mast_Parser_Shift_Reduce 3409l5 3409e29
+3I10*Small_Integer<short_integer> 6r15 7r15
+5R10*Shift_Reduce_Entry 8e15 9r17 15r57
+6i9*T{3I10}
+7i9*Act{3I10}
+11I13*Row{integer} 15r39
+15A10*Shift_Reduce_Array(5R10)<integer> 17r36
+17a5*Shift_Reduce_Matrix{15A10}
+3272a1*SHIFT_REDUCE_OFFSET(integer)
+

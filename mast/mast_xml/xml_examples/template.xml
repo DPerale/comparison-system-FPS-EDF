@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mast fileType="XML-Mast-Model-File" version="1.1"?>
+<mast_mdl:MAST_MODEL 
+   xmlns:mast_mdl="http://mast.unican.es/xmlmast/model" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+   xsi:schemaLocation="http://mast.unican.es/xmlmast/model Mast_Model.xsd" 
+   Model_Name="template" 
+   Model_Date="2004-01-23T00:00:00">
+   <mast_mdl:Regular_Processor Name="cpu_1" Max_Interrupt_Priority="300" Min_Interrupt_Priority="100" Worst_ISR_Switch="50.00" Avg_ISR_Switch="30.00" Best_ISR_Switch="20.00" Speed_Factor="2.00" >
+      <mast_mdl:Ticker_System_Timer Worst_Overhead="500.00" Avg_Overhead="30.00" Best_Overhead="20.00" Period="2000.00"/>
+   </mast_mdl:Regular_Processor>
+   <mast_mdl:Regular_Processor Name="cpu_2" Max_Interrupt_Priority="32767" Min_Interrupt_Priority="1" Worst_ISR_Switch="50.00" Avg_ISR_Switch="30.00" Best_ISR_Switch="20.00" Speed_Factor="2.00" >
+      <mast_mdl:Alarm_Clock_System_Timer Worst_Overhead="50.00" Avg_Overhead="30.00" Best_Overhead="20.00"/>
+   </mast_mdl:Regular_Processor>
+   <mast_mdl:Packet_Based_Network Name="red.1" Transmission="FULL_DUPLEX" Throughput="0.00" Max_Blocking="199.00" Speed_Factor="1.10" Max_Packet_Size="200000000000.0" Min_Packet_Size="200000000000.0" >
+   <mast_mdl:List_of_Drivers>
+         <mast_mdl:Character_Packet_Driver Packet_Server="rs232_p_server1" Character_Server="rs232_c_server1" Character_Transmission_Time= "1.000E+100" Packet_Send_Operation="rs232_p_send" Packet_Receive_Operation="rs232_p_receive" Character_Send_Operation="rs232_c_send" Character_Receive_Operation="rs232_c_receive" Message_Partitioning="YES" RTA_Overhead_Model="DECOUPLED" />
+         <mast_mdl:Character_Packet_Driver Packet_Server="rs232_p_server2" Character_Server="rs232_c_server2" Character_Transmission_Time= "1.000E+100" Packet_Send_Operation="rs232_p1_send" Packet_Receive_Operation="rs232_p1_receive" Character_Send_Operation="rs232_c1_send" Character_Receive_Operation="rs232_c1_receive" Message_Partitioning="YES" RTA_Overhead_Model="DECOUPLED" />
+         <mast_mdl:RTEP_Packet_Driver Packet_Server="rtep_internal_thread2" Packet_Send_Operation="rtep_send" Packet_Receive_Operation="rtep_receive" Number_Of_Stations="10" Token_Delay="10.200" Failure_Timeout="100.000" Token_Transmission_Retries="3" Packet_Transmission_Retries="3" Packet_Interrupt_Server="rtep_isr2" Packet_ISR_Operation="rtep_isr_op" Token_Check_Operation="tco" Token_Manage_Operation="tmo" Packet_Discard_Operation="pdo" Token_Retransmission_Operation="tro" Packet_Retransmission_Operation="pro" Message_Partitioning="NO" RTA_Overhead_Model="COUPLED" />
+</mast_mdl:List_of_Drivers>
+   </mast_mdl:Packet_Based_Network>
+   <mast_mdl:Packet_Based_Network Name="red.2" Transmission="HALF_DUPLEX" Throughput="1000000.0" Max_Blocking="0.00" Speed_Factor="1.10" Max_Packet_Size="200000000000.0" Min_Packet_Size="200000000000.0" >
+   <mast_mdl:List_of_Drivers>
+         <mast_mdl:Packet_Driver Packet_Server="ethernet_server1" Packet_Send_Operation="ethernet_send" Packet_Receive_Operation="ethernet_receive" Message_Partitioning="YES" RTA_Overhead_Model="DECOUPLED" />
+         <mast_mdl:Packet_Driver Packet_Server="ethernet_server2" Packet_Send_Operation="ethernet_send1" Packet_Receive_Operation="ethernet_receive1" Message_Partitioning="YES" RTA_Overhead_Model="DECOUPLED" />
+</mast_mdl:List_of_Drivers>
+   </mast_mdl:Packet_Based_Network>
+   <mast_mdl:Packet_Based_Network Name="red.3" Transmission="HALF_DUPLEX" Throughput="1000000.0" Max_Blocking="0.00" Speed_Factor="1.10" Max_Packet_Size="200.00" Min_Packet_Size="200.00" >
+   </mast_mdl:Packet_Based_Network>
+   <mast_mdl:Packet_Based_Network Name="red.22" Transmission="HALF_DUPLEX" Throughput="1000000.0" Max_Blocking="0.00" Speed_Factor="1.10" Max_Packet_Size="200.00" Min_Packet_Size="200.00" >
+   </mast_mdl:Packet_Based_Network>
+   <mast_mdl:Primary_Scheduler Name="cpu_1" Host="cpu_1"  >
+      <mast_mdl:Fixed_Priority_Scheduler Worst_Context_Switch="150.00" Avg_Context_Switch="100.00" Best_Context_Switch="50.00" Max_Priority="200" Min_Priority="1" />
+   </mast_mdl:Primary_Scheduler> 
+
+   <mast_mdl:Primary_Scheduler Name="cpu_2" Host="cpu_2"  >
+      <mast_mdl:Fixed_Priority_Scheduler Worst_Context_Switch="150.00" Avg_Context_Switch="100.00" Best_Context_Switch="50.00" Max_Priority="32767" Min_Priority="1" />
+   </mast_mdl:Primary_Scheduler> 
+
+   <mast_mdl:Primary_Scheduler Name="red.1" Host="red.1"  >
+      <mast_mdl:FP_Packet_Based_Scheduler Packet_Overhead_Max_Size="20000000000.0" Packet_Overhead_Avg_Size="15000000000.0" Packet_Overhead_Min_Size="10000000000.0" Max_Priority="200" Min_Priority="1" />
+   </mast_mdl:Primary_Scheduler> 
+
+   <mast_mdl:Primary_Scheduler Name="red.2" Host="red.2"  >
+      <mast_mdl:FP_Packet_Based_Scheduler Packet_Overhead_Max_Size="20000000000.0" Packet_Overhead_Avg_Size="15000000000.0" Packet_Overhead_Min_Size="10000000000.0" Max_Priority="32767" Min_Priority="1" />
+   </mast_mdl:Primary_Scheduler> 
+
+   <mast_mdl:Primary_Scheduler Name="red.22" Host="red.22"  >
+      <mast_mdl:FP_Packet_Based_Scheduler Packet_Overhead_Max_Size="2000.0" Packet_Overhead_Avg_Size="1500.0" Packet_Overhead_Min_Size="1000.0" Max_Priority="32767" Min_Priority="1" />
+   </mast_mdl:Primary_Scheduler> 
+
+   <mast_mdl:Secondary_Scheduler Name="edf_scheduler_1" Host="edf_scheduler_1"  >
+      <mast_mdl:EDF_Scheduler Worst_Context_Switch="150.00" Avg_Context_Switch="100.00" Best_Context_Switch="50.00" />
+</mast_mdl:Secondary_Scheduler> 
+
+   <mast_mdl:Secondary_Scheduler Name="net_scheduler" Host="net_scheduler"  >
+      <mast_mdl:EDF_Scheduler Worst_Context_Switch="150.00" Avg_Context_Switch="100.00" Best_Context_Switch="50.00" />
+</mast_mdl:Secondary_Scheduler> 
+
+   <mast_mdl:Secondary_Scheduler Name="edf_scheduler_2" Host="edf_scheduler_2"  >
+      <mast_mdl:EDF_Scheduler Worst_Context_Switch="150.00" Avg_Context_Switch="100.00" Best_Context_Switch="50.00" />
+</mast_mdl:Secondary_Scheduler> 
+
+   <mast_mdl:Immediate_Ceiling_Resource Name="dato_pcp_1" Ceiling="5" Preassigned="YES" />
+
+   <mast_mdl:Immediate_Ceiling_Resource Name="dato_pcp_2" Ceiling="32767" Preassigned="NO" />
+
+   <mast_mdl:Priority_Inheritance_Resource Name="dato_pi_1" />
+
+   <mast_mdl:Priority_Inheritance_Resource Name="dato_pi_2" />
+
+   <mast_mdl:SRP_Resource Name="dato_srp_1" Preemption_Level="1300" Preassigned="YES" />
+
+
+   <mast_mdl:Simple_Operation Name="rs232_p_send" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="rs232_p_receive" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="rs232_c_send" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="rs232_c_receive" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="rs232_p1_send" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="rs232_p1_receive" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="rs232_c1_send" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="rs232_c1_receive" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="rtep_send" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="rtep_receive" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="rtep_isr_op" Worst_Case_Execution_Time="25.00" Average_Case_Execution_Time="10.00" Best_Case_Execution_Time="1.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="tco" Worst_Case_Execution_Time="25.00" Average_Case_Execution_Time="12.00" Best_Case_Execution_Time="2.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="tmo" Worst_Case_Execution_Time="25.00" Average_Case_Execution_Time="12.00" Best_Case_Execution_Time="2.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="pdo" Worst_Case_Execution_Time="25.00" Average_Case_Execution_Time="12.00" Best_Case_Execution_Time="2.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="tro" Worst_Case_Execution_Time="25.00" Average_Case_Execution_Time="12.00" Best_Case_Execution_Time="2.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="pro" Worst_Case_Execution_Time="25.00" Average_Case_Execution_Time="12.00" Best_Case_Execution_Time="2.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="ethernet_send" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="ethernet_receive" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="ethernet_send1" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="ethernet_receive1" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="proc_1" Worst_Case_Execution_Time="250.00" Average_Case_Execution_Time="100.00" Best_Case_Execution_Time="10.00"> 
+      <mast_mdl:Overridden_Fixed_Priority The_Priority="5"/>
+      <mast_mdl:Shared_Resources_To_Lock>dato_pcp_1 dato_pcp_2</mast_mdl:Shared_Resources_To_Lock> 
+      <mast_mdl:Shared_Resources_To_Unlock>dato_pcp_2 dato_pcp_1</mast_mdl:Shared_Resources_To_Unlock> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="proc_2" Worst_Case_Execution_Time="500.00" Average_Case_Execution_Time="300.00" Best_Case_Execution_Time="100.00"> 
+      <mast_mdl:Shared_Resources_To_Lock>dato_pcp_1</mast_mdl:Shared_Resources_To_Lock> 
+      <mast_mdl:Shared_Resources_To_Unlock>dato_pcp_1</mast_mdl:Shared_Resources_To_Unlock> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="proc_3" Worst_Case_Execution_Time="5000.0" Average_Case_Execution_Time="3000.0" Best_Case_Execution_Time="1000.0"> 
+      <mast_mdl:Shared_Resources_To_Lock>dato_pcp_1 dato_pcp_2</mast_mdl:Shared_Resources_To_Lock> 
+      <mast_mdl:Shared_Resources_To_Unlock>dato_pcp_1 dato_pcp_2</mast_mdl:Shared_Resources_To_Unlock> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Composite_Operation Name="proc_4"> 
+      <mast_mdl:Overridden_Permanent_FP The_Priority="7"/>
+      <mast_mdl:Operation_List>proc_1 proc_2</mast_mdl:Operation_List> 
+      </mast_mdl:Composite_Operation> 
+
+   <mast_mdl:Simple_Operation Name="mensaje_1" Worst_Case_Execution_Time="5000.0" Average_Case_Execution_Time="3000.0" Best_Case_Execution_Time="1000.0"> 
+      <mast_mdl:Shared_Resources_To_Lock>dato_pi_1 dato_pi_2</mast_mdl:Shared_Resources_To_Lock> 
+      <mast_mdl:Shared_Resources_To_Unlock>dato_pi_2 dato_pi_1</mast_mdl:Shared_Resources_To_Unlock> 
+   </mast_mdl:Simple_Operation> 
+
+
+   <mast_mdl:Regular_Scheduling_Server Name="rs232_c_server1" Scheduler="cpu_1" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="21" Preassigned="YES"/>
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="rs232_p_server1" Scheduler="cpu_1" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="21" Preassigned="YES"/>
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="rs232_p_server2" Scheduler="cpu_2" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="21" Preassigned="YES"/>
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="rs232_c_server2" Scheduler="cpu_2" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="21" Preassigned="YES"/>
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="rtep_internal_thread2" Scheduler="cpu_2" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="21" Preassigned="YES"/>
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="rtep_isr2" Scheduler="cpu_2" >
+      <mast_mdl:Interrupt_FP_Policy The_Priority="100"/>
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="ethernet_server1" Scheduler="cpu_1" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="18" Preassigned="YES"/>
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="ethernet_server2" Scheduler="cpu_2" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="18" Preassigned="YES"/>
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="edf_scheduler_1" Scheduler="cpu_1" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="13" Preassigned="YES"/>
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="net_scheduler" Scheduler="red.2" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="13" Preassigned="YES"/>
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="edf_scheduler_2" Scheduler="edf_scheduler_1" >
+      <mast_mdl:EDF_Policy Deadline="130.400" Preassigned="YES" />
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="edf_task" Scheduler="edf_scheduler_2" >
+      <mast_mdl:EDF_Policy Deadline="1.304" Preassigned="YES" />
+      <mast_mdl:SRP_Parameters Preemption_Level="12002" Preassigned="NO" />
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="tarea_1" Scheduler="cpu_1" >
+      <mast_mdl:Interrupt_FP_Policy The_Priority="1"/>
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="tarea_11" Scheduler="cpu_1" >
+      <mast_mdl:Non_Preemptible_FP_Policy The_Priority="12" Preassigned="YES"/>
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="tarea_x" Scheduler="cpu_1" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="1" Preassigned="NO"/>
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="tarea_2" Scheduler="cpu_1" >
+      <mast_mdl:Polling_Policy The_Priority="1" Preassigned="NO" Polling_Period="100.000" Polling_Worst_Overhead="12.00" Polling_Best_Overhead="14.00" Polling_Avg_Overhead="13.00"/> 
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="tarea_3" Scheduler="cpu_1" >
+      <mast_mdl:Sporadic_Server_Policy Normal_Priority="3" Preassigned="YES" Background_Priority="5" Initial_Capacity="5.000" Replenishment_Period="8.000" Max_Pending_Replenishments="1"/>
+   </mast_mdl:Regular_Scheduling_Server>
+
+   <mast_mdl:Regular_Transaction Name="trans_1" >
+           <mast_mdl:Periodic_External_Event Name="ep1" Period="1000.00" Max_Jitter="50.000" Phase="150.000" />
+           <mast_mdl:Sporadic_External_Event Name="es1" Avg_Interarrival="2000.00" Distribution="UNIFORM" Min_Interarrival="1000.00" />
+           <mast_mdl:Unbounded_External_Event Name="eu1" Avg_Interarrival="5000.00" Distribution="POISSON" />
+           <mast_mdl:Bursty_External_Event Name="eb1" Avg_Interarrival="500.000" Distribution="UNIFORM" Bound_Interval="1000.00" Max_Arrivals="10" />
+           <mast_mdl:Regular_Event Event="an1" >
+              <mast_mdl:Hard_Global_Deadline Deadline="10000.00" Referenced_Event="ep1"/>
+           </mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="an2" >
+              <mast_mdl:Composite_Timing_Requirement>
+                 <mast_mdl:Soft_Local_Deadline Deadline="10000.00"/>
+                 <mast_mdl:Hard_Global_Deadline Deadline="10000.00" Referenced_Event="ep1"/>
+                 <mast_mdl:Soft_Global_Deadline Deadline="10000.00" Referenced_Event="ep1"/>
+                 <mast_mdl:Hard_Local_Deadline Deadline="10000.00"/>
+                 <mast_mdl:Global_Max_Miss_Ratio Deadline="10000.00" Referenced_Event="ep1" Ratio="2.30"/>
+                 <mast_mdl:Local_Max_Miss_Ratio Deadline="10000.00" Ratio="2.30"/>
+                 <mast_mdl:Global_Max_Miss_Ratio Deadline="10000.00" Referenced_Event="ep1" Ratio="23.00"/>
+                 <mast_mdl:Local_Max_Miss_Ratio Deadline="10000.00" Ratio="23.00"/>
+                 <mast_mdl:Max_Output_Jitter_Req  Referenced_Event="es1" Max_Output_Jitter="4000.00"/>
+              </mast_mdl:Composite_Timing_Requirement>
+           </mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="an3" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="an4" >
+              <mast_mdl:Soft_Global_Deadline Deadline="10000.00" Referenced_Event="ep1"/>
+           </mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="an5" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="an6" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="an7" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="an8" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="an9" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="an10" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="i1" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="i2" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="i3" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="ai1" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="ai2" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="ao1" >
+              <mast_mdl:Hard_Local_Deadline Deadline="10000.00"/>
+           </mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="ao2" >
+              <mast_mdl:Max_Output_Jitter_Req  Referenced_Event="ep1" Max_Output_Jitter="4000.00"/>
+           </mast_mdl:Regular_Event>
+      <mast_mdl:Activity  Input_Event="an8" Output_Event="an1" Activity_Operation= "proc_1" Activity_Server= "tarea_x"/>
+      <mast_mdl:Activity  Input_Event="an10" Output_Event="an2" Activity_Operation= "proc_2" Activity_Server= "tarea_2"/>
+      <mast_mdl:System_Timed_Activity  Input_Event="an5" Output_Event="ao1" Activity_Operation="proc_3" Activity_Server="tarea_3"/>
+      <mast_mdl:Activity  Input_Event="an4" Output_Event="ao2" Activity_Operation= "proc_4" Activity_Server= "tarea_1"/>
+      <mast_mdl:Rate_Divisor  Input_Event="an6" Output_Event="an4" Rate_Factor="10" />
+      <mast_mdl:Delay  Input_Event="ai1" Output_Event="an8" Delay_Max_Interval="1000.00" Delay_Min_Interval="1000.00" />
+      <mast_mdl:Offset  Input_Event="ai2" Output_Event="an10" Delay_Max_Interval="1000.00" Delay_Min_Interval="1000.00" Referenced_Event="ep1" />
+      <mast_mdl:Concentrator  Output_Event="i1" Input_Events_List="ep1 es1" />
+      <mast_mdl:Barrier  Output_Event="i2" Input_Events_List="eu1 eb1" />
+      <mast_mdl:Delivery_Server  Input_Event="i1" Output_Events_List="an3 an5 i3" Delivery_Policy="RANDOM" />
+      <mast_mdl:Query_Server  Input_Event="i2" Output_Events_List="an6 ai1 ai2" Request_Policy="FIFO" />
+      <mast_mdl:Multicast  Input_Event="i3" Output_Events_List="an7 an9" />
+   </mast_mdl:Regular_Transaction> 
+   <mast_mdl:Regular_Transaction Name="trans_2" >
+           <mast_mdl:Singular_External_Event Name="entrada" Phase="10.000" />
+           <mast_mdl:Regular_Event Event="salida" >
+              <mast_mdl:Soft_Global_Deadline Deadline="3.000" Referenced_Event="entrada"/>
+           </mast_mdl:Regular_Event>
+      <mast_mdl:Activity  Input_Event="entrada" Output_Event="salida" Activity_Operation= "proc_4" Activity_Server= "tarea_2"/>
+   </mast_mdl:Regular_Transaction> 
+
+</mast_mdl:MAST_MODEL> 

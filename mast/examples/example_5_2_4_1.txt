@@ -1,0 +1,326 @@
+-- Processing Resources
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> CPU_1);
+
+-- Scheduling Servers
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_1,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 60,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_2,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 50,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_3,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 40,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_4,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 30,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_5,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 20,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_6,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 10,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+-- Resources
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Data_1);
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Data_2);
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Data_3);
+
+-- Operations
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a1,
+	Worst_Case_Execution_Time 	=> 2);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a2.1,
+	Worst_Case_Execution_Time 	=> 9);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a2.2,
+	Worst_Case_Execution_Time 	=> 7,
+       	Shared_Resources_List		=> (Data_1));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a2.3,
+	Worst_Case_Execution_Time 	=> 6,
+       	Shared_Resources_List		=> (Data_2));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a2.4,
+	Worst_Case_Execution_Time 	=> 5,
+       	Shared_Resources_List		=> (Data_3));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a2.5,
+	Worst_Case_Execution_Time 	=> 4);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a3,
+	Worst_Case_Execution_Time 	=> 20);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a4.1,
+	Worst_Case_Execution_Time 	=> 21);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a4.2,
+	Worst_Case_Execution_Time 	=> 18,
+       	Shared_Resources_List		=> (Data_3));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a4.3,
+	Worst_Case_Execution_Time 	=> 4,
+       	Shared_Resources_List		=> (Data_2));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a4.4,
+	Worst_Case_Execution_Time 	=> 3,
+       	Shared_Resources_List		=> (Data_1));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a4.5,
+	Worst_Case_Execution_Time 	=> 8);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a5,
+	Worst_Case_Execution_Time 	=> 34);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a6.1,
+	Worst_Case_Execution_Time 	=> 20);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a6.2,
+	Worst_Case_Execution_Time 	=> 10,
+       	Shared_Resources_List		=> (Data_1));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a6.3,
+	Worst_Case_Execution_Time 	=> 16,
+       	Shared_Resources_List		=> (Data_3));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a6.4,
+	Worst_Case_Execution_Time 	=> 9,
+       	Shared_Resources_List		=> (Data_2));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a6.5,
+	Worst_Case_Execution_Time 	=> 8);
+
+
+-- Composite operations
+
+Operation (
+	Type 	=> Composite,
+	Name 	=> a2,
+	Composite_Operation_List 	=> 
+		(a2.1,a2.2,a2.3,a2.4,a2.5));
+
+Operation (
+	Type 	=> Composite,
+	Name 	=> a4,
+	Composite_Operation_List 	=> 
+		(a4.1,a4.2,a4.3,a4.4,a4.5));
+
+Operation (
+	Type 	=> Composite,
+	Name 	=> a6,
+	Composite_Operation_List 	=> 
+		(a6.1,a6.2,a6.3,a6.4,a6.5));
+
+-- Transactions
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T1,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E1,
+		 Period 	=> 40)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O1,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 40,
+			 referenced_event => E1))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E1,
+		 Output_Event 		=> O1,
+		 Activity_Operation 	=> a1,
+		 Activity_Server	=> Task_1)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T2,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E2,
+		 Period 	=> 100)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O2,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 100,
+			 referenced_event => E2))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E2,
+		 Output_Event 		=> O2,
+		 Activity_Operation 	=> a2,
+		 Activity_Server	=> Task_2)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T3,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E3,
+		 Period 	=> 150)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O3,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 150,
+			 referenced_event => E3))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E3,
+		 Output_Event 		=> O3,
+		 Activity_Operation 	=> a3,
+		 Activity_Server	=> Task_3)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T4,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E4,
+		 Period 	=> 350)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O4,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 350,
+			 referenced_event => E4))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E4,
+		 Output_Event 		=> O4,
+		 Activity_Operation 	=> a4,
+		 Activity_Server	=> Task_4)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T5,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E5,
+		 Period 	=> 480)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O5,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 480,
+			 referenced_event => E5))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E5,
+		 Output_Event 		=> O5,
+		 Activity_Operation 	=> a5,
+		 Activity_Server	=> Task_5)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T6,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E6,
+		 Period 	=> 500)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O6,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 500,
+			 referenced_event => E6))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E6,
+		 Output_Event 		=> O6,
+		 Activity_Operation 	=> a6,
+		 Activity_Server	=> Task_6)));
+

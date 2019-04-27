@@ -1,0 +1,254 @@
+-- Processing Resources
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> Processor_1,
+        Worst_Context_Switch 	=> 0.0);
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> Processor_2,
+        Worst_Context_Switch 	=> 0.0);
+
+-- Scheduling Servers
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_1_1,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 100,
+                Preassigned             => No),
+	Server_Processing_Resource	=> Processor_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_1_2,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 99,
+                Preassigned             => No),
+	Server_Processing_Resource	=> Processor_2);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_1_3,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 99,
+                Preassigned             => No),
+	Server_Processing_Resource	=> Processor_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_2_1,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 98,
+                Preassigned             => No),
+	Server_Processing_Resource	=> Processor_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_3_1,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 100,
+                Preassigned             => No),
+	Server_Processing_Resource	=> Processor_2);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_4_1,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 98,
+                Preassigned             => No),
+	Server_Processing_Resource	=> Processor_2);
+
+-- Resources
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> PR);
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> DB);
+
+-- Operations
+
+-- Critical Sections
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Use_PR,
+	Worst_Case_Execution_Time 	=> 1,
+       	Shared_Resources_List		=> (PR));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Use_DB,
+	Worst_Case_Execution_Time 	=> 1,
+       	Shared_Resources_List		=> (DB));
+
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Task_1_1_Code,
+	Worst_Case_Execution_Time 	=> 1);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Task_1_2_Code,
+	Worst_Case_Execution_Time 	=> 2,
+       	Shared_Resources_List		=> (DB));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Task_1_3_Code_1,
+	Worst_Case_Execution_Time 	=> 1);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Task_2_1_Code_1,
+	Worst_Case_Execution_Time 	=> 2);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Task_2_1_Code_3,
+	Worst_Case_Execution_Time 	=> 1);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Task_4_1_Code_1,
+	Worst_Case_Execution_Time 	=> 1);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Task_4_1_Code_3,
+	Worst_Case_Execution_Time 	=> 3);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Task_3_1_Code,
+	Worst_Case_Execution_Time 	=> 1);
+
+-- Composite operations
+
+Operation (
+	Type 	=> Composite,
+	Name 	=> Task_1_3_Code,
+	Composite_Operation_List 	=> 
+		(Task_1_3_Code_1,Use_PR));
+
+Operation (
+	Type 	=> Composite,
+	Name 	=> Task_2_1_Code,
+	Composite_Operation_List 	=> 
+		(Task_2_1_Code_1,Use_PR,Task_2_1_Code_3));
+
+Operation (
+	Type 	=> Composite,
+	Name 	=> Task_4_1_Code,
+	Composite_Operation_List 	=> 
+		(Task_4_1_Code_1,Use_DB,Task_4_1_Code_3));
+
+-- Transactions
+
+Transaction (
+	Type	=> Regular,
+	Name	=> Task_1,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E_1,
+		 Period 	=> 15)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 Name 	=> O_1_1),
+		(Type 	=> regular,
+		 Name 	=> O_1_2),
+		(Type 	=> regular,
+		 Name 	=> O_1_3,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 15,
+			 referenced_event => E_1))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E_1,
+		 Output_Event 		=> O_1_1,
+		 Activity_Operation 	=> Task_1_1_Code,
+		 Activity_Server	=> Task_1_1),
+		(Type 			=> Activity,
+		 Input_Event 		=> O_1_1,
+		 Output_Event 		=> O_1_2,
+		 Activity_Operation 	=> Task_1_2_Code,
+		 Activity_Server	=> Task_1_2),
+		(Type 			=> Activity,
+		 Input_Event 		=> O_1_2,
+		 Output_Event 		=> O_1_3,
+		 Activity_Operation 	=> Task_1_3_Code,
+		 Activity_Server	=> Task_1_3)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> Task_2,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E_2,
+		 Period 	=> 20)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O_2_1,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 20,
+			 referenced_event => E_2))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E_2,
+		 Output_Event 		=> O_2_1,
+		 Activity_Operation 	=> Task_2_1_Code,
+		 Activity_Server	=> Task_2_1)));
+Transaction (
+	Type	=> Regular,
+	Name	=> Task_3,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E_3,
+		 Period 	=> 2)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O_3_1,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 2,
+			 referenced_event => E_3))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E_3,
+		 Output_Event 		=> O_3_1,
+		 Activity_Operation 	=> Task_3_1_Code,
+		 Activity_Server	=> Task_3_1)));
+Transaction (
+	Type	=> Regular,
+	Name	=> Task_4,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E_4,
+		 Period 	=> 20)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O_4_1,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 20,
+			 referenced_event => E_4))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E_4,
+		 Output_Event 		=> O_4_1,
+		 Activity_Operation 	=> Task_4_1_Code,
+		 Activity_Server	=> Task_4_1)));
+

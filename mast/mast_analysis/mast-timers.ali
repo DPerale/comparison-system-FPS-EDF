@@ -1,0 +1,212 @@
+V "GNAT Lib v2018"
+A -g
+A -gnato
+P ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_DISPATCH
+RV NO_DISPATCHING_CALLS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTIONS
+RV NO_FLOATING_POINT
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_LOCAL_ALLOCATORS
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U mast.timers%b		mast-timers.adb		2d5ffd16 OO PK
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W mast%s		mast.adb		mast.ali
+W mast.io%s		mast-io.adb		mast-io.ali
+Z system%s		system.ads		system.ali
+Z system.concat_3%s	s-conca3.adb		s-conca3.ali
+Z system.pool_global%s	s-pooglo.adb		s-pooglo.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.storage_elements%s  s-stoele.adb	s-stoele.ali
+Z system.storage_pools%s  s-stopoo.adb		s-stopoo.ali
+Z system.storage_pools.subpools%s  s-stposu.adb	s-stposu.ali
+
+U mast.timers%s		mast-timers.ads		76a5652d EE OO PF PK
+W ada%s			ada.ads			ada.ali
+Z ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.streams%s		a-stream.adb		a-stream.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W mast%s		mast.adb		mast.ali
+Z system%s		system.ads		system.ali
+Z system.finalization_masters%s  s-finmas.adb	s-finmas.ali
+Z system.pool_global%s	s-pooglo.adb		s-pooglo.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+Z system.storage_elements%s  s-stoele.adb	s-stoele.ali
+Z system.stream_attributes%s  s-stratt.adb	s-stratt.ali
+
+D ada.ads		20180525052300 76789da1 ada%s
+D a-except.ads		20180525052301 291912d5 ada.exceptions%s
+D a-finali.ads		20180525052301 bf4f806b ada.finalization%s
+D a-ioexce.ads		20180525052259 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180525052300 119b8fb3 ada.streams%s
+D a-tags.ads		20180525052302 491b781d ada.tags%s
+D a-textio.ads		20180525052302 881db35a ada.text_io%s
+D a-tiflio.ads		20180525052259 56fbda09 ada.text_io.float_io%s
+D a-unccon.ads		20180525052301 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20180525052300 5ab55268 interfaces%s
+D i-cstrea.ads		20180525052259 e53d8b8e interfaces.c_streams%s
+D mast.ads		20080722124150 ce320f7b mast%s
+D mast-io.ads		20080722124150 c81275e3 mast.io%s
+D mast-timers.ads	20080722124150 308ad90c mast.timers%s
+D mast-timers.adb	20080722124150 d5c751f9 mast.timers%b
+D system.ads		20180525052301 4635ec04 system%s
+D s-conca3.ads		20180525052302 0b705ca5 system.concat_3%s
+D s-crtl.ads		20180525052259 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180525052301 54135002 system.exception_table%s
+D s-ficobl.ads		20180525052302 078245e4 system.file_control_block%s
+D s-finmas.ads		20180525052301 7811a767 system.finalization_masters%s
+D s-finroo.ads		20180525052301 4ff27390 system.finalization_root%s
+D s-memory.ads		20180525052301 597d6634 system.memory%s
+D s-parame.ads		20180525052302 48ec542b system.parameters%s
+D s-pooglo.ads		20180525052259 ede33ef8 system.pool_global%s
+D s-secsta.ads		20180525052301 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180525052300 a7318a92 system.soft_links%s
+D s-stache.ads		20180525052302 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180525052301 09bd3940 system.standard_library%s
+D s-stalib.adb		20180525052259 f2fe2716 system.standard_library%b
+D s-stoele.ads		20180525052302 2dc34a04 system.storage_elements%s
+D s-stoele.adb		20180525052301 ed88f8fb system.storage_elements%b
+D s-stopoo.ads		20180525052300 b16154c2 system.storage_pools%s
+D s-stposu.ads		20180525052259 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20180525052259 aedef97e system.stream_attributes%s
+D s-traent.ads		20180525052300 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180525052301 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180525052301 1b7d22d2 system.wch_con%s
+D var_strings.ads	20080722124150 38b5efa3 var_strings%s
+X 1 ada.ads
+16K9*Ada 20e8 14|31r6 53r14 59r14 77r14 83r14 106r14 112r14 15|105r14 111r7
+. 111r32 112r7 120r14 146r7 154r14 184r7 192r14 198r7 198r32 199r7 200r7
+. 203r7 206r7 209r7 217r14 223r7 223r32 224r7 225r7 228r7 231r7 234r7 236r7
+X 7 a-textio.ads
+49K13*Text_IO 471e16 14|31w10 53r18 59r18 77r18 83r18 106r18 112r18 15|105r18
+. 111r11 111r36 112r11 120r18 146r11 154r18 184r11 192r18 198r11 198r36 199r11
+. 200r11 203r11 206r11 209r11 217r18 223r11 223r36 224r11 225r11 228r11 231r11
+. 234r11 236r11
+52P9*File_Type 14|53r26 59r26 77r26 83r26 106r26 112r26 15|105r26 120r26
+. 154r26 192r26 217r26
+64I9*Count<integer> 15|111r44 198r44 223r44
+186U14*Set_Col 15|111s19 198s19 223s19
+241U14*Put 15|112s19 146s19 184s19 199s19 200s19 203s19 206s19 224s19 225s19
+. 228s19 231s19 234s19
+259U14*Put_Line 15|209s19 236s19
+X 12 mast.ads
+31K9*Mast 129e9 14|32r9 135r5 15|31r6 33r14 128r7 131r7 132r7 136r7 137r7
+. 141r7 142r7 162r7 165r7 166r7 170r7 171r7 175r7 176r7 180r7 181r7 299r5
+57F9*Time_Interval<long_float>
+61F12*Time{57F9} 14|100r23 103r30 132r16 15|94r13 269r23
+63f4*Large_Time{57F9} 14|132r22
+82F9*Normalized_Execution_Time<long_float> 14|38r21 41r21 44r21 46r36 48r36
+. 50r36 126r23 15|41r13 53r13 245r21 257r21 281r21 293r13
+X 13 mast-io.ads
+31K14*IO 94e12 15|31w11 128r12 131r12 132r12 134r10 136r12 137r12 139r10
+. 141r12 142r12 144r10 162r12 165r12 166r12 168r10 170r12 171r12 173r10 175r12
+. 176r12 178r10 180r12 181r12 183r10 202r10 205r10 208r10 227r10 230r10 233r10
+. 235r35
+44V13*Time_Image{string} 15|183s13 235s38
+48V13*Execution_Time_Image{string} 15|134s13 139s13 144s13 168s13 173s13
+. 178s13 202s13 205s13 208s13 227s13 230s13 233s13
+75U14*Print_Arg 15|128s15 132s15 137s15 142s15 162s15 166s15 171s15 176s15
+. 181s15
+82U14*Print_Separator 15|131s15 136s15 141s15 165s15 170s15 175s15 180s15
+X 14 mast-timers.ads
+32K14*Timers 12|31k9 14|123E9 135l10 135e16 15|33b19 299l10 299t16
+34H9*System_Timer 36p14 37r22 39p14 40r22 42p14 43r22 45p13 46r15 47p13 48r15
+. 49p13 50r15 52p14 54r22 58p14 60r22 64r36 66p13 67r15 74r28 96r23 123c9
+. 127e14 129r28 131r23 15|40r15 52r15 106r22 127r18 161r18 244r22 256r22
+. 280r22 292r15
+36U14*Set_Worst_Overhead 37=7 38>7 15|279b14 285l8 285t26
+37r7 Timer{34R9} 15|280b7 284m7
+38f7 Overhead{12|82F9} 15|281b7 284r29
+39U14*Set_Avg_Overhead 40=7 41>7 15|243b14 249l8 249t24
+40r7 Timer{34R9} 15|244b7 248m7
+41f7 Overhead{12|82F9} 15|245b7 248r27
+42U14*Set_Best_Overhead 43=7 44>7 15|255b14 261l8 261t25
+43r7 Timer{34R9} 15|256b7 260m7
+44f7 Overhead{12|82F9} 15|257b7 260r28
+45V13*Worst_Overhead{12|82F9} 46>7 15|291b13 297l8 297t22
+46r7 Timer{34R9} 15|292b7 296r14
+47V13*Avg_Overhead{12|82F9} 48>7 15|39b13 45l8 45t20
+48r7 Timer{34R9} 15|40b7 44r14
+49V13*Best_Overhead{12|82F9} 50>7 15|51b13 57l8 57t21
+50r7 Timer{34R9} 15|52b7 56r14
+52U14*Print 53>7 54=7 55>7 56>7 15|104b14 113l8 113t13 127s7 161s7
+53p7 File{7|52P9} 15|105b7 111r27 112r23
+54r7 Timer{34R9} 15|106b7
+55i7 Indentation{positive} 15|107b7 111r50
+56b7 Finalize{boolean} 15|108b7
+58x14*Print_XML 59>7 60=7 61>7 62>7
+59p7 File{7|52P9}
+60r7 Timer{34R9}
+61i7 Indentation{positive}
+62b7 Finalize{boolean}
+64P9*System_Timer_Ref(34R9) 68r13 90r13 119r13 15|65r13 67r19 79r13 81r19
+66y13*Clone{64P9} 67>7
+67r7 Timer{34R9}
+74R9*Alarm_Clock<34R9> 36p14 39p14 42p14 45p13 47p13 49p13 76P14 78r22 82P13
+. 84r22 88P13 89r15 129c9 129e57 15|64r15 69r22 121r22 193r22
+76U14*Print<52p14> 77>7 78=7 79>7 80>7 15|119b14 147l8 147t13
+77p7 File{7|52P9} 15|120b7 127r13 129r10 131r31 133r10 136r31 138r10 141r31
+. 143r10 146r23
+78r7 Timer{74R9} 15|121b7 127m31 127r31 135r11 140r11 145r11
+79i7 Indentation{positive} 15|122b7 127r38 130r24 135r33 140r31 145r32
+80b7 Finalize{boolean} 15|123b7
+82U13*Print_XML<58p14> 83>7 84=7 85>7 86>7 15|191b14 210l8 210t17
+83p7 File{7|52P9} 15|192b7 198r27 199r23 201r10 204r10 207r10 209r28
+84r7 Timer{74R9} 15|193b7 202r34 205r34 208r34
+85i7 Indentation{positive} 15|194b7 198r50
+86b7 Finalize{boolean} 15|195b7
+88V13*Clone{64P9}<66p13> 89>7 15|63b13 71l8 71t13
+89r7 Timer{74R9} 15|64b7 69r35
+96R9*Ticker<34R9> 36p14 39p14 42p14 45p13 47p13 49p13 98p14 99r22 102p13
+. 103r15 105P14 107r22 111P14 113r22 117P13 118r15 131c9 133e14 15|78r15
+. 83r22 93r15 155r22 218r22 268r22
+98U14*Set_Period 99=7 100>7 15|267b14 273l8 273t18
+99r7 Timer{96R9} 15|268b7 272m7
+100f7 The_Period{12|61F12} 15|269b7 272r21
+102V13*Period{12|61F12} 103>7 15|92b13 98l8 98t14
+103r7 Timer{96R9} 15|93b7 97r14
+105U14*Print<52p14> 106>7 107=7 108>7 109>7 15|153b14 185l8 185t13
+106p7 File{7|52P9} 15|154b7 161r13 163r10 165r31 167r10 170r31 172r10 175r31
+. 177r10 180r31 182r10 184r23
+107r7 Timer{96R9} 15|155b7 161m31 161r31 169r11 174r11 179r11 183r24
+108i7 Indentation{positive} 15|156b7 161r38 164r19 169r33 174r31 179r32 183r38
+109b7 Finalize{boolean} 15|157b7
+111U14*Print_XML<58p14> 112>7 113=7 114>7 115>7 15|216b14 237l8 237t17
+112p7 File{7|52P9} 15|217b7 223r27 224r23 226r10 229r10 232r10 235r10 236r28
+113r7 Timer{96R9} 15|218b7 227r34 230r34 233r34 235r49
+114i7 Indentation{positive} 15|219b7 223r50
+115b7 Finalize{boolean} 15|220b7
+117V13*Clone{64P9}<66p13> 118>7 15|77b13 85l8 85t13
+118r7 Timer{96R9} 15|78b7 83r30
+124f7*Worst_Overhead{12|82F9} 15|135r17 169r17 202r40 227r40 284m13 296r20
+125f7*Avg_Overhead{12|82F9} 15|44r20 140r17 174r17 205r40 230r40 248m13
+126f7*Best_Overhead{12|82F9} 15|56r20 145r17 179r17 208r40 233r40 260m13
+132f7 Period{12|61F12} 15|97r20 183r30 235r55 272m13
+X 15 mast-timers.adb
+67p7 Timer_Ref{14|64P9} 69m7 70r14
+81p7 Timer_Ref{14|64P9} 83m7 84r14
+125N7 Names_Length 130r38 135r47 140r45 145r46
+159N7 Names_Length 164r33 169r47 174r45 179r46 183r52
+X 16 system.ads
+67M9*Address
+X 23 s-memory.ads
+53V13*Alloc{16|67M9} 103i<c,__gnat_malloc>22
+68U14*Free 104i<c,__gnat_free>22
+76V13*Realloc{16|67M9} 105i<c,__gnat_realloc>22
+X 30 s-stalib.adb
+93U14 Break_Start 94i<c,__gnat_break_start>22
+

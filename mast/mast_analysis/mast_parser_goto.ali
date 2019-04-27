@@ -1,0 +1,27 @@
+V "GNAT Lib v2018"
+A -g
+A -gnato
+P ZX
+
+RN
+RV SPARK_05
+
+U mast_parser_goto%s	mast_parser_goto.ads	68b125df NE OO PK
+
+D mast_parser_goto.ads	20080722124150 68b125df mast_parser_goto%s
+D system.ads		20180525052301 4635ec04 system%s
+X 1 mast_parser_goto.ads
+1K9*Mast_Parser_Goto 3280l5 3280e21
+3I10*Small_Integer<short_integer> 6r20 7r20
+5R10*Goto_Entry 8e15 14r54
+6i9*Nonterm{3I10}
+7i9*Newstate{3I10}
+12I13*Row{integer} 14r37
+14A10*Goto_Parse_Table(5R10)<integer> 16r28
+16a5*Goto_Matrix{14A10}
+2941a1*GOTO_OFFSET(integer)
+3079I9*Rule{natural} 3082r25 3181r25
+3080I9*Nonterminal{integer} 3181r51
+3082a4*Rule_Length(natural)
+3181a4*Get_LHS_Rule(3080I9)
+

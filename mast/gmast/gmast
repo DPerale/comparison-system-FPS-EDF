@@ -1,0 +1,1 @@
+gmast_analysis && ((sh mast_command) && (sh mast_results_command))

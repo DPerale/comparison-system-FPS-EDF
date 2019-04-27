@@ -1,0 +1,214 @@
+Model (
+   Model_Name  => EDF_Within_Priorities_Example,
+   Model_Date  => 2004-12-01);
+
+-- Processing Resources
+
+Processing_Resource (
+        Type => Regular_Processor,
+        Name => Processor_1);
+
+Scheduler (
+        Type  => Primary_Scheduler,
+        Name  => Processor_1,
+        Host  => Processor_1,
+        Policy =>         
+           (Type => Fixed_Priority));
+
+Scheduling_Server (
+        Type                    => Regular,
+        Name                    => EDF_Scheduler,
+        Server_Sched_Parameters => (
+                Type         => fixed_Priority_Policy,
+                The_Priority => 2,
+                Preassigned  => No),
+        Scheduler               => Processor_1);
+
+Scheduler (
+        Type   => Secondary_Scheduler,
+        Name   => EDF_Scheduler,
+        Server => EDF_Scheduler,
+        Policy =>         
+           (Type => EDF));
+
+-- Scheduling Servers
+
+Scheduling_Server (
+        Type                    => Regular,
+        Name                    => Task_EDF21,
+        Server_Sched_Parameters => (
+                Type        => EDF_policy,
+                Deadline    => 10,
+                Preassigned => No),
+        Scheduler               => EDF_Scheduler);
+
+Scheduling_Server (
+        Type                    => Regular,
+        Name                    => Task_EDF22,
+        Server_Sched_Parameters => (
+                Type        => EDF_policy,
+                Deadline    => 45,
+                Preassigned => No),
+        Scheduler               => EDF_Scheduler);
+
+Scheduling_Server (
+        Type                            => Regular,
+        Name                            => Task_EDF23,
+        Server_Sched_Parameters         => (
+                Type            => EDF_policy,
+                Deadline        => 50,
+                Preassigned     => No),
+        Scheduler       => EDF_Scheduler);
+
+Scheduling_Server (
+        Type                            => Regular,
+        Name                            => Task_FP1,
+        Server_Sched_Parameters         => (
+                Type            => fixed_Priority_Policy,
+                The_Priority    => 3,
+                Preassigned     => Yes),
+        Scheduler       => Processor_1);
+
+Scheduling_Server (
+        Type                            => Regular,
+        Name                            => Task_FP3,
+        Server_Sched_Parameters         => (
+                Type            => fixed_Priority_Policy,
+                The_Priority    => 1,
+                Preassigned     => Yes),
+        Scheduler       => Processor_1);
+
+-- Operations
+
+Operation (
+        Type    => Simple,
+        Name    => Task_1,
+        Worst_Case_Execution_Time => 1);
+
+Operation (
+        Type    => Simple,
+        Name    => Task_21,
+        Worst_Case_Execution_Time => 2);
+
+Operation (
+        Type    => Simple,
+        Name    => Task_22,
+        Worst_Case_Execution_Time => 5);
+
+Operation (
+        Type    => Simple,
+        Name    => Task_23,
+        Worst_Case_Execution_Time => 10);
+
+Operation (
+        Type    => Simple,
+        Name    => Task_3,
+        Worst_Case_Execution_Time => 100);
+
+-- Transactions
+
+Transaction (
+        Type    => Regular,
+        Name    => Tr_21,
+        External_Events => (
+                (Type   => Periodic,
+                 Name   => E1,
+                 Period => 10)),
+        Internal_Events => (
+                (Type   => regular,
+                 name   => O1,
+                 Timing_Requirements => (
+                         Type             => Hard_Global_Deadline,
+                         Deadline         => 10,
+                         referenced_event => E1))),
+        Event_Handlers => (
+                (Type                => Activity,
+                 Input_Event         => E1,
+                 Output_Event        => O1,
+                 Activity_Operation  => Task_21,
+                 Activity_Server     => Task_EDF21)));
+
+Transaction (
+        Type    => Regular,
+        Name    => Tr_22,
+        External_Events => (
+                (Type   => Periodic,
+                 Name   => E2,
+                 Period => 20)),
+        Internal_Events => (
+                (Type   => regular,
+                 name   => O2,
+                 Timing_Requirements => (
+                         Type             => Hard_Global_Deadline,
+                         Deadline         => 45,
+                         referenced_event => E2))),
+        Event_Handlers => (
+                (Type                   => Activity,
+                 Input_Event            => E2,
+                 Output_Event           => O2,
+                 Activity_Operation     => Task_22,
+                 Activity_Server        => Task_EDF22)));
+
+Transaction (
+        Type    => Regular,
+        Name    => Tr_23,
+        External_Events => (
+                (Type   => Periodic,
+                 Name   => E3,
+                 Period => 50)),
+        Internal_Events => (
+                (Type   => regular,
+                 name   => O3,
+                 Timing_Requirements => (
+                         Type             => Hard_Global_Deadline,
+                         Deadline         => 50,
+                         referenced_event => E3))),
+        Event_Handlers => (
+                (Type                   => Activity,
+                 Input_Event            => E3,
+                 Output_Event           => O3,
+                 Activity_Operation     => Task_23,
+                 Activity_Server        => Task_EDF23)));
+
+Transaction (
+        Type    => Regular,
+        Name    => Tr_1,
+        External_Events => (
+                (Type   => Periodic,
+                 Name   => E4,
+                 Period => 5)),
+        Internal_Events => (
+                (Type   => regular,
+                 name   => O4,
+                 Timing_Requirements => (
+                         Type             => Hard_Global_Deadline,
+                         Deadline         => 5,
+                         referenced_event => E4))),
+        Event_Handlers => (
+                (Type                   => Activity,
+                 Input_Event            => E4,
+                 Output_Event           => O4,
+                 Activity_Operation     => Task_1,
+                 Activity_Server        => Task_FP1)));
+
+
+Transaction (
+        Type    => Regular,
+        Name    => Tr_3,
+        External_Events => (
+                (Type   => Periodic,
+                 Name   => E5,
+                 Period => 1000)),
+        Internal_Events => (
+                (Type   => regular,
+                 name   => O5,
+                 Timing_Requirements => (
+                         Type             => Hard_Global_Deadline,
+                         Deadline         => 1000,
+                         referenced_event => E5))),
+        Event_Handlers => (
+                (Type                   => Activity,
+                 Input_Event            => E5,
+                 Output_Event           => O5,
+                 Activity_Operation     => Task_3,
+                 Activity_Server        => Task_FP3)));

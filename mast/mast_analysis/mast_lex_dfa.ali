@@ -1,0 +1,49 @@
+V "GNAT Lib v2018"
+A -g
+A -gnato
+P SS ZX
+
+RN
+RV NO_SECONDARY_STACK
+RV NO_OBSOLESCENT_FEATURES
+RV SPARK_05
+
+U mast_lex_dfa%b	mast_lex_dfa.adb	f66a04b2 NE OO PK IL
+W mast_lex_dfa%s	mast_lex_dfa.adb	mast_lex_dfa.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+
+U mast_lex_dfa%s	mast_lex_dfa.ads	ba6952a6 EE NE OO PK IL
+
+D mast_lex_dfa.ads	20080722124150 ba6952a6 mast_lex_dfa%s
+D mast_lex_dfa.adb	20080722124150 f66a04b2 mast_lex_dfa%b
+D system.ads		20180525052301 4635ec04 system%s
+D s-parame.ads		20180525052302 48ec542b system.parameters%s
+D s-secsta.ads		20180525052301 20bbe636 system.secondary_stack%s
+D s-stoele.ads		20180525052302 2dc34a04 system.storage_elements%s
+X 1 mast_lex_dfa.ads
+1K9*mast_lex_dfa 28l5 28e17 2|2w6 2r24 3b14 44l5 44t17
+2b1*aflex_debug{boolean}
+3i1*yytext_ptr{integer} 2|11r10 38m5
+8i1*YY_READ_BUF_SIZE{integer} 9r35
+9i1*YY_BUF_SIZE{integer} 11r53
+10A6*unbounded_character_array(character)<integer> 11r24
+11A9*ch_buf_type{10A6}<integer> 12r13
+12a1*yy_ch_buf{11A9} 2|12r13 13r25 39r21 40m5
+13i1*yy_cp{integer} 2|30r12 39r31 40r15 41r19
+13i8*yy_bp{integer} 2|30r20 38r19
+16e1*yy_hold_char{character} 2|39m5
+17i1*yy_c_buf_p{integer} 2|41m5
+19V10*YYText{string} 2|4b10 25t4
+20V10*YYLength{integer} 2|28b10 31l5 31t13
+21U11*YY_DO_BEFORE_ACTION 2|36b11 42l5 42t24
+23b1*yy_init{boolean}
+24i1*yy_start{integer}
+25I9*yy_state_type{integer} 26r27
+26i1*yy_last_accepting_state{25I9}
+27i1*yy_last_accepting_cpos{integer}
+X 2 mast_lex_dfa.adb
+5i5 i{integer} 11m5 12r23 13r35 14m9 14r14
+6i5 str_loc{integer} 13r12 15m5 15r16 19r9 22r24
+7a5 buffer{string} 13m5 22r14
+8a5 EMPTY_STRING{string} 20r16
+

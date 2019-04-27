@@ -1,0 +1,99 @@
+V "GNAT Lib v2018"
+A -g
+A -gnato
+P ZX
+
+RN
+RV NO_DEFAULT_INITIALIZATION
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U symbol_table%b	symbol_table.adb	1cc40005 OO PK
+Z named_lists%s		named_lists.adb		named_lists.ali  ED
+
+U symbol_table%s	symbol_table.ads	1148e255 EE OO PK
+Z ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+Z interfaces%s		interfac.ads		interfac.ali
+Z list_exceptions%s	list_exceptions.ads	list_exceptions.ali
+W named_lists%s		named_lists.adb		named_lists.ali
+Z system.finalization_masters%s  s-finmas.adb	s-finmas.ali
+Z system.pool_global%s	s-pooglo.adb		s-pooglo.ali
+Z system.soft_links%s	s-soflin.adb		s-soflin.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+W var_strings%s		var_strings.adb		var_strings.ali
+
+D ada.ads		20180525052300 76789da1 ada%s
+D a-except.ads		20180525052301 291912d5 ada.exceptions%s
+D a-finali.ads		20180525052301 bf4f806b ada.finalization%s
+D a-ioexce.ads		20180525052259 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180525052300 119b8fb3 ada.streams%s
+D a-tags.ads		20180525052302 491b781d ada.tags%s
+D a-textio.ads		20180525052302 881db35a ada.text_io%s
+D a-unccon.ads		20180525052301 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20180525052300 5ab55268 interfaces%s
+D i-cstrea.ads		20180525052259 e53d8b8e interfaces.c_streams%s
+D list_exceptions.ads	20080722124150 720909ba list_exceptions%s
+D named_lists.ads	20080722124150 8b5d30f2 named_lists%s
+D named_lists.adb	20080722124150 d99d7a54 named_lists%b
+D symbol_table.ads	20080722124150 a2a03d04 symbol_table%s
+D symbol_table.adb	20080722124150 be643d01 symbol_table%b
+D system.ads		20180525052301 4635ec04 system%s
+D s-crtl.ads		20180525052259 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180525052301 54135002 system.exception_table%s
+D s-ficobl.ads		20180525052302 078245e4 system.file_control_block%s
+D s-finmas.ads		20180525052301 7811a767 system.finalization_masters%s
+D s-finroo.ads		20180525052301 4ff27390 system.finalization_root%s
+D s-memory.ads		20180525052301 597d6634 system.memory%s
+D s-parame.ads		20180525052302 48ec542b system.parameters%s
+D s-pooglo.ads		20180525052259 ede33ef8 system.pool_global%s
+D s-secsta.ads		20180525052301 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180525052300 a7318a92 system.soft_links%s
+D s-stache.ads		20180525052302 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180525052301 09bd3940 system.standard_library%s
+D s-stalib.adb		20180525052259 f2fe2716 system.standard_library%b
+D s-stoele.ads		20180525052302 2dc34a04 system.storage_elements%s
+D s-stopoo.ads		20180525052300 b16154c2 system.storage_pools%s
+D s-traent.ads		20180525052300 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180525052301 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180525052301 1b7d22d2 system.wch_con%s
+D var_strings.ads	20080722124150 38b5efa3 var_strings%s
+X 12 named_lists.ads
+35k9*Named_Lists 107e16 14|30w6 48r25
+37R9*List 15|32r21[14|48]
+39P9*Index 14|50r28[48] 15|39r17[14|48] 60r32[14|48]
+40p4*Null_Index{39P9[14|48]} 14|52r44[48]
+49U14*Add_Or_Find 15|41s13[14|48]
+65V13*Item{35|35R9} 15|60s20[14|48]
+70V13*Find{39P9[14|48]} 15|51s26[14|48]
+X 14 symbol_table.ads
+33K9*Symbol_Table 46E13 54l5 54e17 15|30b14 72l5 72t17
+35P9*Index<12|39P9[48]> 36r26 38r52 40r45 42r23 50c9 52r25 52r32 15|38r52
+. 42r14 49r45 51r14 58r23
+36p4*Null_Index{35P9} 52c4
+38V13*Add_Or_Find{35P9} 38>26 15|38b13 43l8 43t19
+38r26 Name{35|35R9} 15|38b26 41r35
+40V13*Find{35P9} 40>19 15|49b13 52l8 52t12
+40r19 Name{35|35R9} 15|49b19 51r41
+42V13*Item{35|35R9} 42>19 15|58b13 61l8 61t12
+42p19 I{35P9} 15|58b19 60r38
+46V13 Name{35|35R9} 46>19 48r49 15|67b13 70l8 70t12
+46r19 V{35|35R9} 15|67b19 69r14
+48K12 Lists[12|35] 50r22 52r38 15|32r15 39r11 41r7 51r20 60r14 60r26
+X 15 symbol_table.adb
+32r4 The_List{12|37R9[14|48]} 41m43 41r43 51r47 60r41
+39p7 I{12|39P9[14|48]} 41m41 41r41 42r20
+X 16 system.ads
+67M9*Address
+X 22 s-memory.ads
+53V13*Alloc{16|67M9} 103i<c,__gnat_malloc>22
+68U14*Free 104i<c,__gnat_free>22
+76V13*Realloc{16|67M9} 105i<c,__gnat_realloc>22
+X 29 s-stalib.adb
+93U14 Break_Start 94i<c,__gnat_break_start>22
+X 35 var_strings.ads
+31K9*Var_Strings 14|30w18 31r5 35|85e16
+35R9*Var_String 14|38r33 40r26 42r37 46r23 46r42 48r38 15|38r33 49r26 58r37
+. 67r23 67r42 35|80e14
+70V13*To_Lower{35R9} 15|41s26 51s32
+

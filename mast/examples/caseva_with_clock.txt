@@ -1,0 +1,297 @@
+Model (
+   Model_Name  => Caseva_With_Clock,
+   Model_Date  => 2000-01-01);
+
+-- Processing Resources
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> Processor_1,
+        Worst_Context_Switch 	=> 102.5,
+        System_Timer            => 
+ 	    (Type               => Alarm_Clock,
+             Worst_Overhead 	=> 50));
+
+-- Scheduling Servers
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Servo_Control,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 415,
+                Preassigned             => No),
+	Server_Processing_Resource	=> Processor_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Trajectory_Planning,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 412,
+                Preassigned             => No),
+	Server_Processing_Resource	=> Processor_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Light_Manager,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 410,
+                Preassigned             => No),
+	Server_Processing_Resource	=> Processor_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Reporter,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 80,
+                Preassigned             => No),
+	Server_Processing_Resource	=> Processor_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Message_Logger,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 70,
+                Preassigned             => No),
+	Server_Processing_Resource	=> Processor_1);
+
+-- Resources
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Servo_Data);
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Arm);
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Lights);
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Alarms);
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Error_Log);
+
+
+-- Operations
+
+-- Critical Sections
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Read_New_Point,
+	Worst_Case_Execution_Time 	=> 87,
+       	Shared_Resources_List		=> (Servo_Data));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> New_Point,
+	Worst_Case_Execution_Time 	=> 54,
+       	Shared_Resources_List		=> (Servo_Data));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Read_Axis_Positions,
+	Worst_Case_Execution_Time 	=> 135,
+       	Shared_Resources_List		=> (Arm));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Control_Servos,
+	Worst_Case_Execution_Time 	=> 99,
+       	Shared_Resources_List		=> (Arm));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Turn_On,
+	Worst_Case_Execution_Time 	=> 74,
+       	Shared_Resources_List		=> (Lights));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Turn_Off,
+	Worst_Case_Execution_Time 	=> 71,
+       	Shared_Resources_List		=> (Lights));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Time_Lights,
+	Worst_Case_Execution_Time 	=> 119,
+       	Shared_Resources_List		=> (Lights));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Read_All_Alarms,
+	Worst_Case_Execution_Time 	=> 78,
+       	Shared_Resources_List		=> (Alarms));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Set,
+	Worst_Case_Execution_Time 	=> 59,
+       	Shared_Resources_List		=> (Alarms));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Notify_Error,
+	Worst_Case_Execution_Time 	=> 85,
+       	Shared_Resources_List		=> (Error_Log));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Get_Error_From_Queue,
+	Worst_Case_Execution_Time 	=> 79,
+       	Shared_Resources_List		=> (Error_Log));
+
+-- Enclosing operations
+
+Operation (
+	Type 	=> Enclosing,
+	Name 	=> Servo_Control,
+	Worst_Case_Execution_Time 	=> 1080,
+	Composite_Operation_List 	=> 
+		(Read_New_Point,Read_Axis_Positions,Control_Servos,
+                 Read_All_Alarms,Set));
+
+Operation (
+	Type 	=> Enclosing,
+	Name 	=> Trajectory_Planning,
+	Worst_Case_Execution_Time 	=> 9045,
+	Composite_Operation_List 	=> 
+		(New_Point, Turn_On, Turn_Off, 
+                 Read_All_Alarms,Set,Notify_Error));
+
+Operation (
+	Type 	=> Enclosing,
+	Name 	=> Light_Manager,
+	Worst_Case_Execution_Time 	=> 119,
+	Composite_Operation_List 	=> 
+		(Time_Lights));
+
+Operation (
+	Type 	=> Enclosing,
+	Name 	=> Reporter,
+	Worst_Case_Execution_Time 	=> 72952,
+	Composite_Operation_List 	=> 
+		(Read_Axis_Positions,Read_All_Alarms));
+
+Operation (
+	Type 	=> Enclosing,
+	Name 	=> Message_Logger,
+	Worst_Case_Execution_Time 	=> 46820,
+	Composite_Operation_List 	=> 
+		(Get_Error_From_Queue));
+
+
+-- Transactions
+
+Transaction (
+	Type	=> Regular,
+	Name	=> Servo_Control,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E1,
+		 Period 	=> 5000)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O1,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 5000,
+			 referenced_event => E1))),
+	Event_Handlers => (
+		(Type 			=> System_Timed_Activity,
+		 Input_Event 		=> E1,
+		 Output_Event 		=> O1,
+		 Activity_Operation 	=> Servo_Control,
+		 Activity_Server	=> Servo_Control)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> Trajectory_Planning,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E2,
+		 Period 	=> 50000)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O2,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 50000,
+			 referenced_event => E2))),
+	Event_Handlers => (
+		(Type 			=> System_Timed_Activity,
+		 Input_Event 		=> E2,
+		 Output_Event 		=> O2,
+		 Activity_Operation 	=> Trajectory_Planning,
+		 Activity_Server	=> Trajectory_Planning)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> Light_Manager,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E3,
+		 Period 	=> 100000)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O3,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 100000,
+			 referenced_event => E3))),
+	Event_Handlers => (
+		(Type 			=> System_Timed_Activity,
+		 Input_Event 		=> E3,
+		 Output_Event 		=> O3,
+		 Activity_Operation 	=> Light_Manager,
+		 Activity_Server	=> Light_Manager)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> Reporter,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E4,
+		 Period 	=> 1000000)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O4,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 1000000,
+			 referenced_event => E4))),
+	Event_Handlers => (
+		(Type 			=> System_Timed_Activity,
+		 Input_Event 		=> E4,
+		 Output_Event 		=> O4,
+		 Activity_Operation 	=> Reporter,
+		 Activity_Server	=> Reporter)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> Message_Logger,
+	External_Events => (
+		(Type 		=> Unbounded,
+		 Name 		=> E5,
+ 	         Avg_Interarrival=> 1000000)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O5)),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E5,
+		 Output_Event 		=> O5,
+		 Activity_Operation 	=> Message_Logger,
+		 Activity_Server	=> Message_Logger)));
+

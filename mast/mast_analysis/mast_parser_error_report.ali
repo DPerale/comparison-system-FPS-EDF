@@ -1,0 +1,88 @@
+V "GNAT Lib v2018"
+A -g
+A -gnato
+P ZX
+
+RN
+RV NO_IO
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U mast_parser_error_report%b  mast_parser_error_report.adb  5ef12ff4 NE OO PK
+Z system.concat_8%s	s-conca8.adb		s-conca8.ali
+Z system.img_int%s	s-imgint.adb		s-imgint.ali
+W text_io%s		text_io.ads		text_io.ali
+
+U mast_parser_error_report%s  mast_parser_error_report.ads  a892d8e7 EE OO PK
+Z ada.tags%s		a-tags.adb		a-tags.ali
+Z system%s		system.ads		system.ali
+Z system.exception_table%s  s-exctab.adb	s-exctab.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20180525052300 76789da1 ada%s
+D a-except.ads		20180525052301 291912d5 ada.exceptions%s
+D a-ioexce.ads		20180525052259 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180525052300 119b8fb3 ada.streams%s
+D a-tags.ads		20180525052302 491b781d ada.tags%s
+D a-textio.ads		20180525052302 881db35a ada.text_io%s
+D a-unccon.ads		20180525052301 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20180525052300 5ab55268 interfaces%s
+D i-cstrea.ads		20180525052259 e53d8b8e interfaces.c_streams%s
+D mast_parser_error_report.ads  20080722124150 a892d8e7 mast_parser_error_report%s
+D mast_parser_error_report.adb  20080722124150 f663f713 mast_parser_error_report%b
+D system.ads		20180525052301 4635ec04 system%s
+D s-conca8.ads		20180525052300 e3074dd7 system.concat_8%s
+D s-crtl.ads		20180525052259 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180525052301 54135002 system.exception_table%s
+D s-ficobl.ads		20180525052302 078245e4 system.file_control_block%s
+D s-imgint.ads		20180525052300 02dbe0c2 system.img_int%s
+D s-parame.ads		20180525052302 48ec542b system.parameters%s
+D s-secsta.ads		20180525052301 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180525052300 a7318a92 system.soft_links%s
+D s-stache.ads		20180525052302 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180525052301 09bd3940 system.standard_library%s
+D s-stoele.ads		20180525052302 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180525052300 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180525052301 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180525052301 1b7d22d2 system.wch_con%s
+D text_io.ads		20180525052301 21b2c898 text_io%s
+X 6 a-textio.ads
+52P9*File_Type 11|9r24
+53n32*Out_File{53E9} 11|45r42
+86U14*Create 11|45s17
+98U14*Close 11|51s17
+207U14*Put 11|62s15
+241U14*Put 11|57s15
+259U14*Put_Line 11|67s15
+263U14*Put_Line 11|20s16 21s16 22s16 37s14
+X 10 mast_parser_error_report.ads
+1K9*Mast_Parser_Error_Report 24l5 24e29 11|7b14 71l5 71t29
+3X5*Syntax_Error
+4X5*Syntax_Warning
+5i5*Total_Errors{natural} 11|19r8
+6i5*Total_Warnings{natural}
+8U15*Report_Continuable_Error 8>40 9>40 10>40 11>40 12>40 11|27b11 40t4
+8i40 Line_Number{natural} 11|28b6 33r51
+9i40 Offset{natural} 11|29b5 34r37
+10i40 Finish{natural} 11|30b5 34r63
+11a40 Message{string} 11|31b5 35r21
+12b40 Error{boolean} 11|32b5
+14U15*Initialize_Output 11|43b15 47l11 47t28
+16U15*Finish_Output 11|49b15 53l11 53t24
+18U15*Put 18>19 11|55b15 58l9 58t12
+18a19 S{string} 11|55b19 57r29
+20U15*Put 20>19 11|60b15 63l9 63t12
+20e19 C{character} 11|60b19 62r29
+22U15*Put_Line 22>24 11|13s6 38s6 39s6 65b15 68l9 68t17
+22a24 S{string} 11|65b24 67r34
+X 11 mast_parser_error_report.adb
+9p5 The_File{6|52P9} 45m24 45r24 51m23 51r23 57r19 62r19 67r24
+11U11 Initialize_User_Error_Report 11b11 14t4 46s9
+17U11 Terminate_User_Error_Report 17b11 24t4 52s9
+33a5 Msg=35:20{string} 37r23 39r15
+X 27 text_io.ads
+24K9*Text_IO=24:29 11|3w6 4w7 5r6 9r16 20r8 21r8 22r8 37r6 45r9 45r34 51r9
+. 57r7 62r7 67r7
+

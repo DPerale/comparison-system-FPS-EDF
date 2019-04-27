@@ -24,18 +24,14 @@ package body Print_Task is
 
       System.Task_Primitives.Operations.Set_Relative_Deadline
          (System.Task_Primitives.Operations.Self,
-          System.BB.Time.Milliseconds (Dead));
+          System.BB.Time.Microseconds (-1));
       System.Tasking.Set_Priority (Pri);
       loop
-         System.Task_Primitives.Operations.Set_Absolute_Deadline
-         (System.Task_Primitives.Operations.Self,
-          0);
          delay until Next_Period;
 
          if i /= 0 then
             System.BB.Threads.Queues.Print_Table (1);
          end if;
-
          i := i + 1;
 
          Next_Period := Next_Period + Period;

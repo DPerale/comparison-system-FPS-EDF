@@ -1,0 +1,234 @@
+                       MAST Status File
+                       ----------------
+Version 1.3.7.8
+---------------
+
+This version eliminates many bugs in the graphical editor for MAST,
+which is now considered a "beta" version, still under development.
+
+Version 1.3.7.5
+---------------
+
+This version introduces basic support for the following new modelling elements:
+
+          - add the RT_EP network driver
+
+          - add the "message_partitioning" attribute
+              - add a restriction to check the message sizes if the
+                message_partitioning attribute is not set
+
+          - add the RTA_Overhead_Model attribute
+
+However, we still need to change the schedulability analysis tools to
+take into account these new model elements. This will be released in
+version 1.3.8.
+
+An "alpha" version of a graphical editor for MAST models is also
+provided with this version (gmasteditor). It should only be used for
+preliminary evaluation purposes, as it is known to have bugs that may
+actually destroy the model being edited. We expect version 1.3.8 of
+MAST to provide a stable version of this tool.
+
+
+Version 1.3.7
+-------------
+
+This version introduces the new xml input format, with conversion
+programs from the original text format to xml and bak. Three XML
+schemas are created to describe MAST elements:
+
+   Mast_Model.xsd : described the format of a MAST model
+   Mast_Result.xsd: describes the format of the results of a MAST 
+                    analysis tool
+   Mast_Trace.xsd:  describes the format of a trace results file coming 
+                    out from the Mast_Sim simulator.
+
+Version 1.3.6
+-------------
+
+  This version introduces the hierarchical schedulers in the real-time
+  model. It does so by separating from the old "processing_resource"
+  model the concept of the primary scheduler, and by defining another
+  object, the secondary scheduler, which van run on any desired
+  scheduler through a scheduling server. See the mast model
+  documentation for additional information.
+
+  This version also introduces earliest deadline first (EDF)
+  schedulers and the stack resource protocol (SRP) synchronization
+  policy for shared objects.
+
+  Several new analysis tools are introduced:
+    - EDF_Monoprocessor_Analysis
+          For single processor systems with and EDF scheduler (also
+          supporting fixed priority interrupts)
+
+    - EDF_Within_Priorities_Analysis
+          For systems with a fixed priority primary scheduler and one
+          or more EDF secondary schedulers
+
+    - Deadline Assignment
+          For EDF tasks, it assigns the scheduling deadlines equal to
+          the deadlines specified as timing requirements, and assigns
+          the task preemption levels according to the correrct order
+          (by deadline minus release jitter in reverse order)
+
+  In this version we have improved the offset_based analysis, using
+  the results of Ola Redell in his thesis
+
+Other minor changes:
+
+    - Change the graphical gmast tool driver and the results
+      viewer to GtkAda 2.x
+
+    - Introduce additional restrictions to be used in the new tools:
+                  - EDF_Only
+                  - EDF_Within_Priorities_Only
+                  - Flat_FP_Or_EDF_Only
+                  - PCP_SRP_Or_Priority_Inheritance_Only
+                  - SRP_Only
+                  - SRP_Or_PCP_Only
+
+    - Change the names of some tools:
+               Offset_Based_Unoptimized_Analysis
+                   => Offset_Based_Analysis
+               Offset_Based_Analysis
+                   => Offset_Based_Optimized_Analysis
+               Linear_Simulated_Annealing_Priority_Assignment
+                   => Linear_Simulated_Annealing_Assignment
+               Multiple_Event_Simulated_Annealing_Priority_Assignment
+                   => Multiple_Event_Simulated_Annealing_Assignment
+               Calculate_Ceilings_For_PCP_Resources
+                   => Calculate_Ceilings_And_Levels
+         
+    - Make the processor and network be abstract types and
+      create a concrete Regular_Processor and Packet_Based_Network
+
+    - Allow driver scheduling servers to be referenced by name
+
+    - Allow network operations to specify time as number of bytes
+
+    - Changed the processor, network and scheduler overheads from
+      the Time type to Normalized_Execution_Time
+
+    - Show the system schedulability status in the results
+      viewer, even if no slacks were calculated
+
+    - Enhanced the priority assignment tools
+ 
+    - Do not allow viewing results if tool=parser
+
+    - Added the "system_pip_behaviour" attribute to the model
+      attributes to specify the priority inheritance behaviour:
+      Strict, or POSIX.
+
+
+Version 1.2.2
+-------------
+
+   This version fixes a bug in the offset-based analysis technique.
+   Thanks to Ola Redell for catching it.
+
+Version 1.2
+-----------
+
+   This version introduces support for analysis of linear systems with
+   offsets, delays, or rate divisors. The tools supporting these
+   features are the linear analysis tools (offset-based, and holistic)
+
+   This version adds the following tools:
+
+       Classic_RM_Analysis
+       Varying_Priorities_Analysis
+
+   This tool introduces a new format for the results, and a gui tool
+   to view those results (gmastresults)
+
+   Other changes introduced:
+
+       Added the Permanent_Overridden_Scheduling_Parameters object,
+       to represent the case in which an operation changes its
+       priority to a given value, but does not return to the previous
+       value at the end of the operation. This new part of the model
+       is analyzable with the Varying_Priorities_Analysis tool.
+
+       Added the processing resource slacks and the operation slacks.
+
+   Supported Tools
+   ---------------
+       All restrictions
+       All consistency checks
+       Classic_RM_Analysis
+       Varying_Priorities_Analysis
+       Holistic_Analysis
+       Offset_Based_Unoptimized_Analysis
+       Offset_Based_Analysis
+       Calculate_Blocking_Times
+       Calculate_Ceilings_For_PCP_Resources
+       Calculate_Transaction_Slack
+       Calculate_System_Slack
+       Graphical driver for analysis tool
+       Monoprocessor_Priority_Assignment
+       Linear_HOPA
+       Linear_Simulated_Annealing      
+       Graphic Results Display
+
+   Unsupported tools
+   -----------------
+       Multiple_Event_Analysis
+       Multiple_Event_HOPA
+       Multiple_Event_Simulated_Annealing_Priority_Assignment
+       Monoprocessor_Simulation
+       Distributed_Simulation
+       Graphic Input Editor
+
+
+Version 1.1
+-----------
+
+   This version adds the following tools:
+
+       Monoprocessor_Priority_Assignment
+       Linear_HOPA
+       Linear_Simulated_Annealing      
+
+   Changes introduced:
+
+       Added the "preassigned" field to scheduling parameters and
+       immediate_ceiling shared resources, to allow the designer to
+       specify which priorities are to be assigned or preserved.
+
+   Supported Tools
+   ---------------
+       All restrictions
+       All consistency checks
+       Holistic_Analysis
+       Offset_Based_Unoptimized_Analysis
+       Offset_Based_Analysis
+       Calculate_Blocking_Times
+       Calculate_Ceilings_For_PCP_Resources
+       Calculate_Transaction_Slack
+       Calculate_System_Slack
+       Graphical driver for analysis tool
+       Monoprocessor_Priority_Assignment
+       Linear_HOPA
+       Linear_Simulated_Annealing      
+
+Version 1.0
+------------
+
+   This is the first "alpha" version for distribution. 
+
+   Supported Tools
+   ---------------
+       All restrictions
+       All consistency checks
+       Holistic_Analysis
+       Offset_Based_Unoptimized_Analysis
+       Offset_Based_Analysis
+       Calculate_Blocking_Times
+       Calculate_Ceilings_For_PCP_Resources
+       Calculate_Transaction_Slack
+       Calculate_System_Slack
+       Graphical driver for analysis tool
+
+

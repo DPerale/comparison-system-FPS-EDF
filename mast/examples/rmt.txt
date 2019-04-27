@@ -1,0 +1,315 @@
+Model (
+   Model_Name  => RMT,
+   Model_Date  => 2000-01-01);
+
+-- Processing Resources
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> Teleoperation_Station,
+	Max_Priority		=> 500,
+	Min_Priority		=>  1,
+	Max_Interrupt_Priority	=> 512,
+	Min_Interrupt_Priority	=> 501,
+        Worst_Context_Switch 	=> 102.5,
+        System_Timer            => 
+ 	    (Type               => Alarm_Clock,
+             Worst_Overhead 	=> 50));
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> Local_Controller,
+        Worst_Context_Switch 	=> 15,
+	Max_Priority		=> 500,
+	Min_Priority		=>  1,
+	Max_Interrupt_Priority	=> 512,
+	Min_Interrupt_Priority	=> 501,
+        System_Timer            => 
+ 	    (Type               => Alarm_Clock,
+             Worst_Overhead 	=> 10));
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Network,
+	Name 			=> Ethernet,
+        Transmission            => Half_Duplex);
+
+-- Scheduling Servers
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Servo_Control,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority	=> 415,
+		Preassigned		=> No),
+	Server_Processing_Resource	=> Local_Controller);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Command_Manager,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority	=> 412,
+		Preassigned		=> No),
+	Server_Processing_Resource	=> Local_Controller);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Data_Sender,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 410,
+		Preassigned		=> No),
+	Server_Processing_Resource	=> Local_Controller);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Trajectory_Planner,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 80,
+		Preassigned		=> No),
+	Server_Processing_Resource	=> Teleoperation_Station);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Reporter,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 79,
+		Preassigned		=> No),
+	Server_Processing_Resource	=> Teleoperation_Station);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> GUI,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 60,
+		Preassigned		=> No),
+	Server_Processing_Resource	=> Teleoperation_Station);
+
+-- Message scheduler
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Message_Scheduler,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 1,
+		Preassigned		=> No),
+	Server_Processing_Resource	=> Ethernet);
+
+-- Resources
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Status);
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Commands);
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Servo_Data);
+
+-- Operations
+
+-- Critical Sections
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Read_Status,
+	Worst_Case_Execution_Time 	=> 87,
+       	Shared_Resources_List		=> (Status));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Write_Status,
+	Worst_Case_Execution_Time 	=> 54,
+       	Shared_Resources_List		=> (Status));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Set_Command,
+	Worst_Case_Execution_Time 	=> 135,
+       	Shared_Resources_List		=> (Commands));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Get_Command,
+	Worst_Case_Execution_Time 	=> 99,
+       	Shared_Resources_List		=> (Commands));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Read_Servos,
+	Worst_Case_Execution_Time 	=> 74,
+       	Shared_Resources_List		=> (Servo_Data));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> Write_Servos,
+	Worst_Case_Execution_Time 	=> 71,
+       	Shared_Resources_List		=> (Servo_Data));
+
+-- Enclosing operations
+
+Operation (
+	Type 	=> Enclosing,
+	Name 	=> Command_Manager,
+	Worst_Case_Execution_Time 	=> 9045,
+	Composite_Operation_List 	=> 
+		(Write_Servos));
+
+Operation (
+	Type 	=> Enclosing,
+	Name 	=> Data_Sender,
+	Worst_Case_Execution_Time 	=> 1220,
+	Composite_Operation_List 	=> 
+		(Read_Servos));
+
+Operation (
+	Type 	=> Enclosing,
+	Name 	=> Servo_Control,
+	Worst_Case_Execution_Time 	=> 1019,
+	Composite_Operation_List 	=> 
+		(Read_Servos,Write_Servos));
+
+Operation (
+	Type 	=> Enclosing,
+	Name 	=> Trajectory_Planner,
+	Worst_Case_Execution_Time 	=> 7952,
+	Composite_Operation_List 	=> 
+		(Get_Command));
+
+Operation (
+	Type 	=> Enclosing,
+	Name 	=> Reporter,
+	Worst_Case_Execution_Time 	=> 2086,
+	Composite_Operation_List 	=> 
+		(Write_Status));
+
+Operation (
+	Type 	=> Enclosing,
+	Name 	=> GUI,
+	Worst_Case_Execution_Time 	=> 146820,
+	Composite_Operation_List 	=> 
+		(Read_Status,Set_Command));
+
+
+-- Network operations
+
+Operation (
+	Type 	=> Simple,
+	Name 	=> Command_Message,
+	Worst_Case_Execution_Time 	=> 4850);
+
+Operation (
+	Type 	=> Simple,
+	Name 	=> Status_Message,
+	Worst_Case_Execution_Time 	=> 5080);
+
+
+-- Transactions
+
+Transaction (
+	Type	=> Regular,
+	Name	=> Servo_Control,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E1,
+		 Period 	=> 5000)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O1,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 5000,
+			 referenced_event => E1))),
+	Event_Handlers => (
+		(Type 			=> System_Timed_Activity,
+		 Input_Event 		=> E1,
+		 Output_Event 		=> O1,
+		 Activity_Operation 	=> Servo_Control,
+		 Activity_Server	=> Servo_Control)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> Main_Control_Loop,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E2,
+		 Period 	=> 50000)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O2),
+		(Type 	=> regular,
+		 name 	=> O3),
+		(Type 	=> regular,
+		 name 	=> O4),
+		(Type 	=> regular,
+		 name 	=> O5),
+		(Type 	=> regular,
+		 name 	=> O6),
+		(Type 	=> regular,
+		 name 	=> O7,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 50000,
+			 referenced_event => E2))),
+	Event_Handlers => (
+		(Type 			=> System_Timed_Activity,
+		 Input_Event 		=> E2,
+		 Output_Event 		=> O2,
+		 Activity_Operation 	=> Trajectory_Planner,
+		 Activity_Server	=> Trajectory_Planner),
+		(Type 			=> Activity,
+		 Input_Event 		=> O2,
+		 Output_Event 		=> O3,
+		 Activity_Operation 	=> Command_Message,
+		 Activity_Server	=> Message_Scheduler),                 
+		(Type 			=> Activity,
+		 Input_Event 		=> O3,
+		 Output_Event 		=> O4,
+		 Activity_Operation 	=> Command_Manager,
+		 Activity_Server	=> Command_Manager),                 
+		(Type 			=> Activity,
+		 Input_Event 		=> O4,
+		 Output_Event 		=> O5,
+		 Activity_Operation 	=> Data_Sender,
+		 Activity_Server	=> Data_Sender),                 
+		(Type 			=> Activity,
+		 Input_Event 		=> O5,
+		 Output_Event 		=> O6,
+		 Activity_Operation 	=> Status_Message,
+		 Activity_Server	=> Message_Scheduler),                 
+		(Type 			=> Activity,
+		 Input_Event 		=> O6,
+		 Output_Event 		=> O7,
+		 Activity_Operation 	=> Reporter,
+		 Activity_Server	=> Reporter)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> GUI,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E3,
+		 Period 	=> 1000000)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O8,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 1000000,
+			 referenced_event => E3))),
+	Event_Handlers => (
+		(Type 			=> System_Timed_Activity,
+		 Input_Event 		=> E3,
+		 Output_Event 		=> O8,
+		 Activity_Operation 	=> GUI,
+		 Activity_Server	=> GUI)));
+
+

@@ -1,0 +1,394 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type"
+ content="text/html; charset=iso-8859-1">
+  <meta name="Author" content="Michael Gonzalez">
+  <meta name="GENERATOR"
+ content="Mozilla/4.76 [en] (X11; U; Linux 2.4.2-2 i686) [Netscape]">
+  <title>mast</title>
+</head>
+<body>
+&nbsp;
+<table width="100%">
+  <tbody>
+    <tr>
+      <td><img src="mast_logo_med.jpg" height="170" width="85"></td>
+      <td>
+      <dl>
+        <h1> <font face="Times New Roman,Times"><font color="#993366"><font
+ size="+4">MAST</font></font></font></h1>
+        <h1> <font face="Comic Sans MS"><font color="#3333ff">Modeling
+and
+Analysis
+Suite for Real-Time Applications</font></font></h1>
+      </dl>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<h2>
+<font face="Comic Sans MS"><font color="#3333ff">Table of Contents</font></font></h2>
+<ul>
+  <li> <font face="Comic Sans MS"><font color="#009900"><a
+ href="#intro">Introduction</a></font></font></li>
+  <li> <font face="Comic Sans MS"><font color="#009900"><a href="#docs">Documents</a></font></font></li>
+  <li> <font face="Comic Sans MS"><font color="#009900"><a
+ href="#downloading">Downloading</a></font></font></li>
+</ul>
+<font face="Arial,Helvetica">MAST 1.3.7.5 is now available. This
+version introduces basic support for the following new modelling
+elements:<br>
+</font>
+<ul>
+  <li><font face="Arial,Helvetica">add the RT_EP network driver</font></li>
+  <li><font face="Arial,Helvetica">add the "message_partitioning"
+attribute</font></li>
+  <li><font face="Arial,Helvetica">add the RTA_Overhead_Model attribute</font></li>
+</ul>
+<font face="Arial,Helvetica">However, we still need to change the
+schedulability analysis tools to take into account these new model
+elements. This will be released in version 1.3.8.<br>
+<br>
+An "alpha" version of a graphical editor for MAST models is also
+provided with this version (gmasteditor). It should only be used for
+preliminary evaluation purposes, as it is known to have bugs that may
+actually destroy the model being edited. We expect version 1.3.8 of
+MAST to provide a stable version of this tool.<br>
+<br>
+Version 1.3.7 introduced the new xml input format, with conversion
+programs from the original text format to xml and bak. Three XML
+schemas are created to describe MAST elements:<br>
+<br>
+</font>
+<ul>
+  <li><font face="Arial,Helvetica">Mast_Model.xsd : described the
+format of a MAST model</font></li>
+  <li><font face="Arial,Helvetica">Mast_Result.xsd: describes the
+format of the results of a MAST analysis tool</font></li>
+  <li><font face="Arial,Helvetica">Mast_Trace.xsd:&nbsp; describes the
+format of a trace results file coming out from the Mast_Sim simulator.</font></li>
+</ul>
+<font face="Arial,Helvetica"><br>
+Version 1.3.6 introduced the hierarchical schedulers in the real-time
+model. It does so by separating from the old "processing_resource"
+model the concept of the primary scheduler, and by defining another
+object, the secondary scheduler, which van run on any desired scheduler
+through a scheduling server. See the mast model documentation for
+additional information.<br>
+<br>
+This version also introduced earliest deadline first (EDF) schedulers
+and the stack resource protocol (SRP) synchronization policy for shared
+objects.<br>
+<br>
+Several new analysis tools are introduced:<br>
+</font>
+<ul>
+  <li><font face="Arial,Helvetica">EDF_Monoprocessor_Analysis: For
+single processor systems with and EDF scheduler (also supporting fixed
+priority interrupts)</font></li>
+  <li><font face="Arial,Helvetica">EDF_Within_Priorities_Analysis: For
+systems with a fixed priority primary scheduler and one or more EDF
+secondary schedulers</font></li>
+  <li><font face="Arial,Helvetica">Deadline Assignment: For EDF tasks,
+it assigns the scheduling deadlines equal to the deadlines specified as
+timing requirements, and assigns the task preemption levels according
+to the correrct order (by deadline minus release jitter in reverse
+order)</font></li>
+</ul>
+<font face="Arial,Helvetica"></font><font face="Arial,Helvetica"></font>
+<h2><a name="intro"></a><font face="Comic Sans MS"><font color="#3333ff">Introduction</font></font></h2>
+<font face="Arial,Helvetica">MAST is an open source set of tools that
+enables
+modeling real-time applications and performing timing analysis of those
+applications. The MAST model can be used in a UML design environment to
+design real-time applications,&nbsp; representing all the real-time
+behavior
+and requirements together with the design information, and allowing an
+automatic schedulability analysis. Please visit <a
+ href="http://mast.unican.es/umlmast">MAST-UML</a>
+for additional information on this topic.</font>
+<p><font face="Arial,Helvetica">MAST is still under development. The
+MAST
+analysis tools are listed below, with a "<font color="#cc0000">*</font>"
+marking those that are not yet available:</font>
+</p>
+<ul>
+  <li> <font face="Arial,Helvetica">Worst-case response time
+schedulability analysis (RTA):</font></li>
+  <ul>
+    <li> <font face="Arial,Helvetica">Offset Based RTA for fixed
+priorities<br>
+      </font></li>
+    <li> <font face="Arial,Helvetica">Holistic RTA for fixed priorities<br>
+      </font></li>
+    <li> <font face="Arial,Helvetica">Offset-Based Optimized RTA for
+fixed
+priorities<br>
+      </font></li>
+    <li> <font face="Arial,Helvetica">Classic Rate Monotonic RTA for
+fixed
+priorities<br>
+      </font></li>
+    <li> <font face="Arial,Helvetica">Varying Priorities RTA<br>
+      </font></li>
+    <li><font face="Arial,Helvetica">EDF Monoprocessor RTA</font></li>
+    <li><font face="Arial,Helvetica">EDF-Within-Priorities RTA, for
+hierarchical scheduling<br>
+      </font></li>
+    <li> <font face="Arial,Helvetica"><font color="#cc0000">*</font>Multiple
+Event</font></li>
+  </ul>
+  <li> <font face="Arial,Helvetica">Calculation of blocking times</font></li>
+  <ul>
+    <li> <font face="Arial,Helvetica">Single processor</font></li>
+    <li> <font face="Arial,Helvetica">Remote blockings for
+multi-processor</font></li>
+    <li> <font face="Arial,Helvetica">Assignment of optimum priority
+ceilings and preemption levels<br>
+      </font></li>
+  </ul>
+  <li> <font face="Arial,Helvetica">Calculation of Slack Times</font></li>
+  <ul>
+    <li> <font face="Arial,Helvetica">Transaction Slacks</font></li>
+    <li> <font face="Arial,Helvetica">System Slacks</font></li>
+    <li> <font face="Arial,Helvetica">Processing Resource Slacks</font></li>
+    <li> <font face="Arial,Helvetica">Operation Slacks</font></li>
+  </ul>
+  <li> <font face="Arial,Helvetica">Optimized Priority Assignment
+Techniques</font></li>
+  <ul>
+    <li> <font face="Arial,Helvetica">Single-processor</font></li>
+    <li> <font face="Arial,Helvetica">HOPA</font></li>
+    <li> <font face="Arial,Helvetica">Simulated Annealing</font></li>
+  </ul>
+</ul>
+<font face="Arial,Helvetica">An Event-driven simulation tool is
+available for version 1.2.2 of MAST from the <a
+ href="http://mast.unican.es/simmast/">SIM-MAST</a> page.<br>
+<br>
+</font>
+<font face="Arial,Helvetica">The new features that can be found in MAST
+are the following:</font>
+<ul>
+  <li> <font face="Arial,Helvetica">A very rich model of the real time
+system
+is used. It is an event-driven model in which complex dependence
+patterns
+among the different tasks can be established. For example, tasks may be
+activated with the arrival of several events, or may generate several
+events
+at their output. This makes it ideal for analyzing real-time systems
+that
+have been designed using UML or similar design tools, which have
+event-driven
+models of the system. The current version only supports linear
+distributed
+systems, but support for multiple-event systems will be available very
+soon.</font></li>
+  <li> <font face="Arial,Helvetica">The latest offset-based analysis
+techniques
+are used to enhance the results of the analysis. These techniques are
+much
+less pessimistic than previous schedulability analysis techniques for
+distributed
+systems.</font></li>
+  <li> <font face="Arial,Helvetica">The toolset is open source and
+fully
+extensible.
+That means that other teams may provide enhancements. This contains a
+full support for fixed priority systems, and limited support for EDF
+scheduling (only supported for single processor. Distributed EDF as
+well as mixed scheduled systems and other dynamically scheduled systems
+will be added in the future.</font></li>
+  <li> <font face="Arial,Helvetica">The tools support the analysis of
+both
+hard and soft timing requirements, respectively through the response
+time analysis tools, and the event-driven simulation tool.</font></li>
+</ul>
+<h2>
+<a name="docs"></a><font face="Comic Sans MS"><font color="#3333ff">Documents</font></font></h2>
+<font face="Arial,Helvetica">The following documents describing the
+MAST
+environment are available:</font>
+<ul>
+  <li> <font face="Arial,Helvetica"><b><font color="#006600">Getting
+Started</font></b>:</font></li>
+  <ul>
+    <font face="Arial,Helvetica">How to start using the MAST suite
+through
+a simple guided example (<a href="mast-getting-started.html">mast-getting-started.html</a>)</font>
+  </ul>
+  <li> <font face="Arial,Helvetica"><b><font color="#006600">MAST
+Object
+Hierarchy</font></b><font color="#000000">:</font></font></li>
+  <ul>
+    <font face="Arial,Helvetica"><font color="#000000">A listing of all
+the objects currently supported in the MAST real-time system model (<a
+ href="mast-hierarchy.html">mast-hierarchy.html</a>)</font></font>
+  </ul>
+  <li> <font face="Arial,Helvetica"><b><font color="#006600">MAST
+Description</font></b>:</font></li>
+  <ul>
+    <font face="Arial,Helvetica">The MAST format for describing models
+of real-time applications, with a few examples (<a
+ href="mast_description.pdf">mast_description.pdf</a>)<br>
+    </font>
+  </ul>
+  <li><font face="Arial,Helvetica"><b><font color="#006600">MAST
+Analysis Techniques</font></b>:</font></li>
+  <ul>
+    <font face="Arial,Helvetica">A brief description of the analysis
+techniques used internally by the MAST schedulability analysis tools (<a
+ href="mast_analysis_techniques.pdf">mast_analysis_techniques.pdf</a>)<br>
+    </font>
+  </ul>
+  <li> <font face="Arial,Helvetica"><b><font color="#006600">MAST
+Example
+Results</font></b>:</font></li>
+  <ul>
+    <font face="Arial,Helvetica">A description of the results of the
+examples
+available in the MAST distribution (<a href="mast-examples.html">mast-examples.html</a>)</font>
+  </ul>
+  <li> <b><font face="Arial,Helvetica"><font color="#006600">MAST Tool
+Restrictions</font></font></b></li>
+  <ul>
+    <font face="Arial,Helvetica"><font color="#000000">This document
+describes
+the restrictions that must be observed for using the MAST tools (<a
+ href="mast_restrictions.pdf">mast-restrictions.pdf</a>)</font></font>
+  </ul>
+  <li> <b><font face="Arial,Helvetica"><font color="#006600">README</font></font></b></li>
+  <ul>
+    <font face="Arial,Helvetica">A <a href="README.txt">text document</a>
+with installation and usage instructions</font>
+  </ul>
+  <li> <b><font face="Arial,Helvetica"><font color="#006600">MAST
+status</font></font></b></li>
+  <ul>
+    <font face="Arial,Helvetica">A <a href="mast-status.txt">text
+document</a>
+describing the current development status of MAST</font>
+  </ul>
+  <li> <b><font face="Arial,Helvetica"><font color="#006600">MAST-UML</font></font></b></li>
+  <ul>
+    <font face="Arial,Helvetica"><font color="#000000">Describes the <a
+ href="http://mast.unican.es/umlmast">MAST
+UML</a> methodology and toolset</font></font><br>
+  </ul>
+  <li> <b><font face="Arial,Helvetica"><font color="#006600">MAST XML
+schemas<br>
+    </font></font></b></li>
+  <ul>
+    <span style="font-family: arial,helvetica;">Mast model schema: <a
+ href="Mast_Model.xsd">Mast_Model.xsd</a>. Also in pdf format: <a
+ href="mast_model_xsd.pdf">mast_model_xsd.pdf</a><br>
+Mast results schema: <a href="Mast_Result.xsd">Mast_Results.xsd</a>.
+Also in pdf format: <a href="mast_results_xsd.pdf">mast_results_xsd.pdf</a><br>
+Mast trace schema: <a href="Mast_Trace.xsd">Mast_Trace.xsd</a>. Also
+in pdf format: <a href="mast_trace_xsd.pdf">mast_trace_xsd.pdf</a><br>
+    <br>
+    </span>
+  </ul>
+</ul>
+<span style="font-family: arial,helvetica;"></span>
+<ul>
+  <ul>
+  </ul>
+</ul>
+<h2>
+<a name="downloading"></a><font face="Comic Sans MS"><font
+ color="#3333ff">Downloading</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">To download, <b>right-click</b>
+on the link and choose "<b>Save link as</b>"</font></font>
+<ul>
+  <li> <font face="Arial,Helvetica"><b><font color="#006600">Binary
+distributions</font></b>:</font></li>
+</ul>
+<ul>
+  <ul>
+    <li style="font-family: helvetica,arial,sans-serif;"><a
+ href="http://mast.unican.es/mast-bin-win-1-3-7-5.zip">MAST 1.3.7.5
+for Windows</a></li>
+    <li><span style="font-family: helvetica,arial,sans-serif;"><a
+ href="http://mast.unican.es/mast-bin-linux-1-3-7-5.tar.gz">MAST
+1.3.7.5 for Linux</a> (tested on Ubuntu Draper)</span><br>
+    </li>
+    <li><font face="Arial,Helvetica"><a
+ href="http://mast.unican.es/mast-bin-win-1-3-6.zip">MAST
+1.3.6
+for Windows</a></font></li>
+    <li><font face="Arial,Helvetica">MAST 1.3.6. for Linux Only source
+code
+distribution available (see below)</font></li>
+    <li><font face="Arial,Helvetica"><a
+ href="http://mast.unican.es/mast-bin-win-1-2-2.zip">MAST
+1.2.2
+for Windows</a></font></li>
+    <li> <font face="Arial,Helvetica"><a
+ href="http://mast.unican.es/mast-bin-linux-1-2-2.tar.gz">MAST
+1.2.2 for Linux </a>(tested on RedHat 7.1)</font></li>
+    <li> <font face="Arial,Helvetica"><a
+ href="http://mast.unican.es/mast-bin-win-1-1.zip">MAST
+1.1 for
+Windows</a></font></li>
+    <li> <font face="Arial,Helvetica"><a
+ href="http://mast.unican.es/mast-bin-linux-1-1.tar.gz">MAST
+1.1
+for Linux </a>(tested on RedHat 6.2)</font></li>
+    <li> <font face="Arial,Helvetica"><a
+ href="http://mast.unican.es/mast-bin-win-1-0.zip">MAST
+1.0 for
+Windows</a></font></li>
+    <li> <font face="Arial,Helvetica"><a
+ href="http://mast.unican.es/mast-bin-linux-1-0.tar.gz">MAST
+1.0
+for Linux</a> (tested on RedHat 6.2)</font></li>
+  </ul>
+</ul>
+<ul>
+  <li><b><font face="Arial,Helvetica"><font color="#006600">Source Code:</font></font></b></li>
+</ul>
+<ul>
+  <ul>
+    <li style="font-family: helvetica,arial,sans-serif;">MAST 1.3.7.5
+sources <a href="http://mast.unican.es/mast-src-1-3-7-5.zip">Windows
+Format (Zip file)</a> or <a
+ href="http://mast.unican.es/mast-src-1-3-7-5.tar.gz">UNIX Format
+(Gziped tar file)</a><br>
+    </li>
+    <li><span style="font-family: arial;">MAST 1.3.6 sources. <a
+ href="http://mast.unican.es/mast-src-1-3-6.zip">Windows Format (Zip
+file)</a> or <a href="http://mast.unican.es/mast-src-1-3-6.tar.gz">Unix
+Format (Gziped tar file)</a></span><br>
+    </li>
+    <li><font face="Arial,Helvetica">MAST 1.2.2 sources. <a
+ href="http://mast.unican.es/mast-src-1-2-2.zip">Windows
+Format (Zip file)</a> or <a
+ href="http://mast.unican.es/mast-src-1-2-2.tar.gz">Unix Format
+(Gziped
+tar file)</a></font></li>
+    <li> <font face="Arial,Helvetica">MAST 1.1 sources. <a
+ href="http://mast.unican.es/mast-src-1-1.zip">Windows
+Format (Zip file)</a> or <a
+ href="http://mast.unican.es/mast-src-1-1.tar.gz">Unix Format
+(Gziped
+tar file)</a></font></li>
+    <li> <font face="Arial,Helvetica">MAST 1.0 sources. <a
+ href="http://mast.unican.es/mast-src-1-0.zip">Windows
+Format (Zip file)</a> or <a
+ href="http://mast.unican.es/mast-src-1-0.tar.gz">Unix Format
+(Gziped
+tar file)</a></font></li>
+    <li> <font face="Arial,Helvetica"><a
+ href="http://mast.unican.es/aflex-ayacc-gnat.tar.gz">AFLEX
+and
+AYACC for GNAT</a></font></li>
+  </ul>
+</ul>
+<br>
+<font face="Arial,Helvetica"><br>
+</font>
+</body>
+</html>

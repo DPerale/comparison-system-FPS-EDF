@@ -1,0 +1,93 @@
+V "GNAT Lib v2018"
+A -g
+A -gnato
+P ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_LOCAL_ALLOCATORS
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV SPARK_05
+
+U associations%b	associations.adb	048f3a27 NE OO PK GE
+
+U associations%s	associations.ads	60699142 BN EE NE OO PK GE
+W dynamic_lists%s	dynamic_lists.adb	dynamic_lists.ali
+Z list_exceptions%s	list_exceptions.ads	list_exceptions.ali
+
+D ada.ads		20180525052300 76789da1 ada%s
+D a-unccon.ads		20180525052301 0e9b276f ada.unchecked_conversion%s
+D associations.ads	20080722124150 e2475aeb associations%s
+D associations.adb	20080722124150 e6c860cc associations%b
+D dynamic_lists.ads	20080722124150 822ecba9 dynamic_lists%s
+D dynamic_lists.adb	20080722124150 779b7c99 dynamic_lists%b
+D list_exceptions.ads	20080722124150 720909ba list_exceptions%s
+D system.ads		20180525052301 4635ec04 system%s
+D s-exctab.ads		20180525052301 54135002 system.exception_table%s
+D s-stalib.ads		20180525052301 09bd3940 system.standard_library%s
+X 3 associations.ads
+32+9 Element 33r31 40r47 45r36 4|38r36 43r14 57r26
+33V19 "="{boolean} 33>23 33>26 40r56
+33*23 E1{32+9}
+33*26 E2{32+9}
+34k9*Associations 32z9 33z19 60E12 68l5 68e17 4|30b14 148l5 148t17
+36R9*Association 43r35 45r60 47r43 50r18 54r18 64c9 66e14 4|38r60 108r18
+. 121r35 131r43 141r18
+38P9*Rel_Set_Iteration_Object<5|37P9[60]> 51r22 56r25 62c9 4|110r25 142r22
+40K12*Relation_Sets[5|33] 41r36 4|32r13 44r21 46r10 47r22 48r13 49r16 49r45
+. 50r16 69r16 69r48 70r19 70r51 73r19 78r19 78r51 79r16 85r16 86r15 95r19
+. 96r10 97r10 98r10
+41P9*Relation_Set_Ref(5|35R9[40]) 55r17 60r44 4|41r42 55r13 58r34 109r17
+43U14*Init 43=20 4|121b14 125l8 125t12
+43r20 Assoc{36R9} 4|121b20 124m23 124r23
+45U14*Add_Relation 45>28 45>31 45=45 4|38b14 101l8 101t20
+45*28 E1{32+9} 4|38b28 69r35 79r34 81r34 97r28
+45*31 E2{32+9} 4|38b31 70r38 73r37 75r37 78r38 98r28
+45r45 Assoc{36R9} 4|38b45 63r25 64r35 67r17 89m42 89r42 99m29 99r29
+47V13*Num_Of_Relation_Sets{natural} 47>35 4|131b13 134l8 134t28
+47r35 Assoc{36R9} 4|131b35 133r31
+49U14*Rewind_Relation_Sets 50>7 51<7 4|140b14 146l8 146t28
+50r7 Assoc{36R9} 4|141b7 144r25
+51p7 Iterator{38P9} 4|142b7 145m53 145r53
+53U14*Get_Next_Relation_Set 54>7 55<7 56=7 4|107b14 115l8 115t29
+54r7 Assoc{36R9} 4|108b7 113r36
+55p7 Set{41P9} 4|109b7 113m32
+56p7 Iterator{38P9} 4|110b7 114m60 114r60
+60K12 Assoc_Sets[5|33] 62r41 65r23 4|59r17 60r18 63r7 64r19 66r10 89r16 99r10
+. 113r7 114r32 124r7 133r14 144r7 145r25
+65r7 Relation_Sets{5|35R9[60]} 4|63r31 64r41 67r23 89m48 99m35 113r42 124m29
+. 133r37 144r31
+X 4 associations.adb
+41U17 Add_Elements 41b17 41>31 41>37 53l11 53t23 88s16
+41p31 From{3|41P9} 46r31 47r41 48r43 88r29
+41p37 To{3|41P9} 49r37 50r36 88r42
+43*10 E{3|32+9} 48m41 49r35 50r34
+44p10 Iterator{5|37P9[3|40]} 46m40 46r40 48m52 48r52
+47i14 I{integer}
+55p7 Set{3|41P9} 67m13 67r13 69r38 70r41 73r40 76r39 78r41 79r37 82r36 85r52
+. 88r37 95m10 96r29 97r31 98r31 99r25
+56b7 Found{boolean} 68r17 74m19 80m16 94r14
+57*7 Inserted_Element{3|32+9} 75m19 81m16 85r35
+58p7 Set_Where_Inserted{3|41P9} 76m19 82m16 88r48
+58p27 Void{3|41P9} 89m62 89r62
+59p7 Current{5|37P9[3|60]} 65m10 89r34
+60p7 Iterator{5|40P12[3|60]} 63m45 63r45 65r19 67m37 67r37
+64i11 I{integer}
+X 5 dynamic_lists.ads
+33k9*Dynamic_Lists 3|30w6 40r33 60r30 5|103e18
+35R9 List 3|41r50[40] 65r34[60] 4|95r33[3|40]
+37P9 Index 4|32r27[3|40] 44r35[3|40] 59r28[3|60]
+38p4 Null_Index{37P9[3|40]} 4|49r59[3|40] 69r62[3|40] 70r65[3|40] 78r65[3|40]
+. 86r29[3|40]
+40P12 Iteration_Object{37P9[3|60]} 3|62r52[60] 4|60r29[3|60] 114r43[3|60]
+. 145r36[3|60]
+42U14 Init 4|96s24[3|40] 124s18[3|60]
+44U14 Add 4|50s30[3|40] 73s33[3|40] 79s30[3|40] 97s24[3|40] 98s24[3|40] 99s21[3|60]
+64U14 Delete 4|89s27[3|60]
+71V13 Find{37P9[3|40]} 4|49s30[3|40] 69s30[3|40] 70s33[3|40] 78s33[3|40]
+. 85s30[3|40]
+78V13 Size{natural} 4|47s36[3|40] 64s30[3|60] 133s25[3|60]
+80U14 Rewind 4|46s24[3|40] 63s18[3|60] 144s18[3|60]
+82U14 Get_Next_Item 4|48s27[3|40] 66s21[3|60] 113s18[3|60]
+

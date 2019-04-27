@@ -1,0 +1,259 @@
+Model (
+   Model_Name  => RTSS_98,
+   Model_Date  => 2002-10-14);
+
+-- Processing Resources
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> CPU_1);
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> CPU_2);
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Network,
+	Name 			=> Serial_Line,
+        Transmission            => Half_Duplex);
+
+-- Scheduling Servers
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> t1,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority	=> 30,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> t21,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority	=> 10,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> m1,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 10,
+                Preassigned             => No),
+	Server_Processing_Resource	=> Serial_Line);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> t4,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 20,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_2);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> m2,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 10,
+                Preassigned             => No),
+	Server_Processing_Resource	=> Serial_Line);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> t22,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 10,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> t3,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 30,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_2);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> t5,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 10,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_2);
+
+
+-- Operations
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> t1,
+	Best_Case_Execution_Time 	=> 4,
+	Worst_Case_Execution_Time 	=> 4);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> t21,
+	Best_Case_Execution_Time 	=> 20,
+	Worst_Case_Execution_Time 	=> 20);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> m1,
+	Best_Case_Execution_Time 	=> 25,
+	Worst_Case_Execution_Time 	=> 25);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> t4,
+	Best_Case_Execution_Time 	=> 15,
+	Worst_Case_Execution_Time 	=> 15);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> m2,
+	Best_Case_Execution_Time 	=> 34,
+	Worst_Case_Execution_Time 	=> 34);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> t22,
+	Best_Case_Execution_Time 	=> 30,
+	Worst_Case_Execution_Time 	=> 30);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> t3,
+	Best_Case_Execution_Time 	=> 5,
+	Worst_Case_Execution_Time 	=> 5);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> t5,
+	Best_Case_Execution_Time 	=> 100,
+	Worst_Case_Execution_Time 	=> 100);
+
+-- Transactions
+
+Transaction (
+	Type	=> Regular,
+	Name	=> t_1,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E1,
+		 Period 	=> 20)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O1,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 20,
+			 referenced_event => E1))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E1,
+		 Output_Event 		=> O1,
+		 Activity_Operation 	=> t1,
+		 Activity_Server	=> t1)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> t_2,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E2,
+		 Period 	=> 250)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> I22),
+		(Type 	=> regular,
+		 name 	=> I23),
+		(Type 	=> regular,
+		 name 	=> I24),
+		(Type 	=> regular,
+		 name 	=> I25),
+		(Type 	=> regular,
+		 name 	=> O2,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 250,
+			 referenced_event => E2))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E2,
+		 Output_Event 		=> I22,
+		 Activity_Operation 	=> t21,
+		 Activity_Server	=> t21),
+		(Type 			=> Activity,
+		 Input_Event 		=> I22,
+		 Output_Event 		=> I23,
+		 Activity_Operation 	=> m1,
+		 Activity_Server	=> m1),                 
+		(Type 			=> Activity,
+		 Input_Event 		=> I23,
+		 Output_Event 		=> I24,
+		 Activity_Operation 	=> t4,
+		 Activity_Server	=> t4),                 
+		(Type 			=> Activity,
+		 Input_Event 		=> I24,
+		 Output_Event 		=> I25,
+		 Activity_Operation 	=> m2,
+		 Activity_Server	=> m2),                 
+		(Type 			=> Activity,
+		 Input_Event 		=> I25,
+		 Output_Event 		=> O2,
+		 Activity_Operation 	=> t22,
+		 Activity_Server	=> t22)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> t_3,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E3,
+		 Period 	=> 30)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O3,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 30,
+			 referenced_event => E3))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E3,
+		 Output_Event 		=> O3,
+		 Activity_Operation 	=> t3,
+		 Activity_Server	=> t3)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> t_4,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E4,
+		 Period 	=> 200)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O4,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 200,
+			 referenced_event => E4))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E4,
+		 Output_Event 		=> O4,
+		 Activity_Operation 	=> t5,
+		 Activity_Server	=> t5)));
+
+

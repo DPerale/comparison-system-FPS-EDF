@@ -1,0 +1,157 @@
+-- Processing Resources
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> CPU_1);
+
+-- Scheduling Servers
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_1,
+	Server_Sched_Parameters		=> (
+		Type		=> Polling_Policy,
+		The_Priority            => 40,
+                Preassigned             => No,
+                Polling_Period 	        => 3,
+                Polling_Worst_Overhead  => 0.3),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_2,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 10,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_3,
+	Server_Sched_Parameters		=> (
+		Type		=> Polling_Policy,
+		The_Priority		=> 20,
+                Preassigned             => No,
+                Polling_Period 	        => 75,
+                Polling_Worst_Overhead  => 0.3),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_4,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 30,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+-- Operations
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a1,
+	Worst_Case_Execution_Time 	=> 1.7);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a2,
+	Worst_Case_Execution_Time 	=> 75);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a3,
+	Worst_Case_Execution_Time 	=> 29.7);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a4,
+	Worst_Case_Execution_Time 	=> 7);
+
+-- Transactions
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T_1,
+	External_Events => (
+		(Type 		=> Sporadic,
+		 Name 		=> E1,
+		 Min_Interarrival => 50)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O1,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 5,
+			 referenced_event => E1))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E1,
+		 Output_Event 		=> O1,
+		 Activity_Operation 	=> a1,
+		 Activity_Server	=> task_1)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T_a2,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E2,
+		 Period 	=> 200)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O2,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 200,
+			 referenced_event => E2))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E2,
+		 Output_Event 		=> O2,
+		 Activity_Operation 	=> a2,
+		 Activity_Server	=> Task_2)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T_i3,
+	External_Events => (
+		(Type 		=> Sporadic,
+		 Name 		=> E3,
+		 Min_Interarrival => 150)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O3,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 150,
+			 referenced_event => E3))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E3,
+		 Output_Event 		=> O3,
+		 Activity_Operation 	=> a3,
+		 Activity_Server	=> task_3)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T_a4,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E4,
+		 Period 	=> 30)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O4,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 10,
+			 referenced_event => E4))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E4,
+		 Output_Event 		=> O4,
+		 Activity_Operation 	=> a4,
+		 Activity_Server	=> Task_4)));
+
+

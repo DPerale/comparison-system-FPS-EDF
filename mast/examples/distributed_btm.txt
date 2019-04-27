@@ -1,0 +1,1799 @@
+-- Modelo MAST.
+
+Model (
+       Model_Name               => BTM,
+       Model_Date               => 2004-07-25);
+
+-- Procesing Resources.
+
+Processing_Resource
+  ( Type                         => Regular_Processor,
+    Name                         => btmcont,
+    Speed_Factor                 => 0.994722,
+    Max_Interrupt_Priority       => 32,
+    Min_Interrupt_Priority       => 32);
+
+Processing_Resource
+  ( Type                         => Regular_Processor,
+    Name                         => btmmmi,
+    Speed_Factor                 => 1,
+    Max_Interrupt_Priority       => 32,
+    Min_Interrupt_Priority       => 32);
+
+Scheduler
+  ( Type                    => Primary_Scheduler,
+    Name                    => btmcont,
+    Policy                  =>
+      ( Type             => Fixed_Priority,
+        Max_Priority     => 30,
+        Min_Priority     => 1),
+    Host                    => btmcont);
+
+Scheduler
+  ( Type                    => Primary_Scheduler,
+    Name                    => btmmmi,
+    Policy                  =>
+      ( Type            => Fixed_Priority,
+        Max_Priority    => 30,
+        Min_Priority    => 1),
+    Host                    => btmmmi);
+
+Processing_resource
+  ( Type                         => Packet_Based_Network,
+    Name                         => RT_EP_network,
+    Throughput                   => 100000000,
+    Transmission                 => Half_Duplex,
+    Max_Blocking                 => 879.794e-6,
+    Max_Packet_Size              => 11936, --1492*8
+    Min_Packet_Size              => 11936, --576, --72*8
+    List_of_Drivers              =>
+      (( Type               =>  RTEP_Packet_driver,
+        Packet_Server      =>
+          (Type       => Regular,
+           Name       => Communication_Thread1,
+           Server_Sched_Parameters =>
+             (Type            => Fixed_Priority_Policy,
+              The_Priority            => 29,
+              Preassigned             => Yes),
+           Scheduler          => btmcont),
+        Packet_Interrupt_server =>
+          (Type        => Regular,
+           Name        => Interrupt_handler1,
+           Server_Sched_Parameters =>
+             ( Type           => Interrupt_FP_Policy,
+               The_Priority   => 32,
+               Preassigned    => Yes),
+           Scheduler       => btmcont),
+        Packet_Send_Operation   =>
+          (Type       => Simple,
+           Name       => Packet_Send1,
+           Worst_Case_Execution_Time   => 32.57E-6,
+           Best_Case_Execution_Time    => 17.887E-6,
+           Avg_Case_Execution_Time     => 19.377E-6),
+        Packet_Receive_Operation =>
+          (Type                      => Simple,
+           Name                      => Packet_Receive1,
+           Worst_Case_Execution_Time => 46.544E-6,
+           Best_Case_Execution_Time  => 17.066E-6,
+           Avg_Case_Execution_Time   => 18.784E-6),
+        Number_Of_Stations              => 2,
+        Token_Delay                     => 80.0E-6,
+        Failure_Timeout                 => 250.0E-6,
+        Token_Transmission_Retries      => 1,
+        Packet_Transmission_Retries     =>1,
+        Packet_ISR_Operation =>
+          (Type                      =>     Simple,
+           Name                      => Packet_ISR1,
+           Worst_Case_Execution_Time => 6.48E-6,
+           Best_Case_Execution_Time  => 2.50E-6,
+           Avg_Case_Execution_Time   => 3.74E-6),
+        Token_Manage_Operation =>
+          (Type                      => Simple,
+           Name                      => Token_Manage1,
+           Worst_Case_Execution_Time => 20.605E-6,
+           Best_Case_Execution_Time  => 9.729E-6,
+           Avg_Case_Execution_Time   => 10.395E-6),
+        Token_Check_Operation =>
+          (Type                      => Simple,
+           Name                      => Token_Check1,
+           Worst_Case_Execution_Time => 23.046E-6,
+           Best_Case_Execution_Time  => 15.043E-6,
+           Avg_Case_Execution_Time   => 18.155E-6),
+        Packet_Discard_Operation =>
+          (Type                      => Simple,
+           Name                      => Packet_Discard1,
+           Worst_Case_Execution_Time => 12.757E-6,
+           Best_Case_Execution_Time  => 3.703E-6,
+           Avg_Case_Execution_Time   => 3.891E-6),
+        Token_Retransmission_Operation =>
+          (Type                      => Simple,
+           Name                      => Token_Retransmission1,
+           Worst_Case_Execution_Time => 33.362E-6,
+           Best_Case_Execution_Time  => 13.432E-6,
+           Avg_Case_Execution_Time   => 14.286E-6),
+        Packet_Retransmission_Operation =>
+          (Type                      => Simple,
+           Name                      => Packet_Retransmission1,
+           Worst_Case_Execution_Time => 32.57E-6,
+           Best_Case_Execution_Time  => 17.184E-6,
+           Avg_Case_Execution_Time   => 19.377E-6) ),
+    (Type                       => RTEP_Packet_Driver,
+     Packet_Server              =>
+       (Type             => Regular,
+        Name             => Communication_Thread,
+        Server_Sched_Parameters  =>
+          (Type                    => Fixed_Priority_Policy,
+           The_Priority            => 29,
+           Preassigned             => Yes),
+        Scheduler            => btmmmi),
+     Packet_Interrupt_Server    =>
+       (Type            => Regular,
+        Name            => Interrupt_handler,
+        Server_Sched_Parameters     =>
+          ( Type            => Interrupt_FP_Policy,
+            The_Priority            => 32,
+            Preassigned             => Yes),
+        Scheduler            => btmmmi),
+     Packet_Send_Operation       =>
+       (Type                           => Simple,
+        Name                           => Packet_Send,
+        Worst_Case_Execution_Time      => 32.57E-6,
+        Best_Case_Execution_Time       => 17.887E-6,
+        Avg_Case_Execution_Time        => 19.377E-6),
+     Packet_Receive_Operation       =>
+       (Type                           => Simple,
+        Name                           => Packet_Receive,
+        Worst_Case_Execution_Time      => 46.544E-6,
+        Best_Case_Execution_Time       => 17.066E-6,
+        Avg_Case_Execution_Time        => 18.784E-6),
+     Number_Of_Stations             => 2,
+     Token_Delay                    => 80.0E-6,
+     Failure_Timeout                => 250.0E-6,
+     Token_Transmission_Retries     => 1,
+     Packet_Transmission_Retries    =>1,
+     Packet_ISR_Operation           =>
+       (Type                           => Simple,
+        Name                           => Packet_ISR,
+        Worst_Case_Execution_Time      => 6.48E-6,
+        Best_Case_Execution_Time       => 2.50E-6,
+        Avg_Case_Execution_Time        => 3.74E-6),
+     Token_Check_Operation           =>
+       (Type                           => Simple,
+        Name                           => Token_Check,
+        Worst_Case_Execution_Time      => 23.046E-6,
+        Best_Case_Execution_Time       => 15.043E-6,
+        Avg_Case_Execution_Time        => 18.155E-6),
+     Token_Manage_Operation          =>
+       (Type                           => Simple,
+        Name                           => Token_Manage,
+        Worst_Case_Execution_Time      => 20.605E-6,
+        Best_Case_Execution_Time       => 9.729E-6,
+        Avg_Case_Execution_Time        => 10.395E-6),
+     Packet_Discard_Operation        =>
+       (Type                           => Simple,
+        Name                           => Packet_Discard,
+        Worst_Case_Execution_Time      => 12.757E-6,
+        Best_Case_Execution_Time       => 3.703E-6,
+        Avg_Case_Execution_Time        => 3.891E-6),
+     Token_Retransmission_Operation   =>
+       (Type                           => Simple,
+        Name                           => Token_Retransmission,
+        Worst_Case_Execution_Time      => 33.362E-6,
+        Best_Case_Execution_Time       => 13.432E-6,
+        Avg_Case_Execution_Time        => 14.286E-6),
+     Packet_Retransmission_Operation =>
+       (Type                           => Simple,
+        Name                           => Packet_Retransmission,
+        Worst_Case_Execution_Time      => 32.57E-6,
+        Best_Case_Execution_Time       => 17.184E-6,
+        Avg_Case_Execution_Time        => 19.377E-6))));
+
+
+-- Schedulers.
+
+
+Scheduler
+  ( Type                    => Primary_Scheduler,
+    Name                    => RT_EP_Network_Sched,
+    Host                    => RT_EP_Network,
+    Policy                  =>
+      ( Type                     => FP_Packet_Based,
+        Packet_Worst_Overhead    => 329.486e-6,
+        Max_Priority             => 255,
+        Min_Priority             => 1));
+
+-- Scheduling Servers
+
+Scheduling_Server
+  ( Type                    => Regular,
+    Name                    => Servo_Control,
+    Server_Sched_Parameters =>
+      ( Type          => Fixed_Priority_Policy,
+        The_Priority  => 22,
+        Preassigned   => No ),
+    Scheduler               => Btmcont );
+
+Scheduling_Server
+  ( Type                    => Regular,
+    Name                    => Trajectory_Planning,
+    Server_Sched_Parameters =>
+      ( Type            => Fixed_Priority_Policy,
+        The_Priority    => 20,
+        Preassigned     => No ),
+    Scheduler               => Btmmmi );
+
+Scheduling_Server
+  ( Type                    => Regular,
+    Name                    => Light_Manager,
+    Server_Sched_Parameters =>
+      ( Type            => Fixed_Priority_Policy,
+        The_Priority    => 18,
+        Preassigned     => No ),
+    Scheduler               => Btmmmi );
+
+Scheduling_Server
+  ( Type                    => Regular,
+    Name                    => Reporter,
+    Server_Sched_Parameters =>
+      ( Type            => Fixed_Priority_Policy,
+        The_Priority    => 10,
+        Preassigned     => No ),
+    Scheduler               => Btmmmi );
+
+Scheduling_Server
+  ( Type                    => Regular,
+    Name                    => Message_Logger,
+    Server_Sched_Parameters =>
+      ( Type            => Fixed_Priority_Policy,
+        The_Priority    => 5,
+        Preassigned     => No ),
+    Scheduler               => Btmmmi );
+
+
+-- Shared_Resource
+Shared_Resource
+  ( Type            => Immediate_Ceiling_Resource,
+    Name            => Servo_Data,
+    Ceiling         => 22,
+    Preassigned     => No);
+
+Shared_Resource
+  ( Type            => Immediate_Ceiling_Resource,
+    Name            => Arm,
+    Ceiling         => 22,
+    Preassigned     => No);
+
+Shared_Resource
+  ( Type            => Immediate_Ceiling_Resource,
+    Name            => Alarms,
+    Ceiling         => 22,
+    Preassigned     => No);
+
+Shared_Resource
+  ( Type            => Immediate_Ceiling_Resource,
+    Name            => Position_Command,
+    Ceiling         => 20,
+    Preassigned     => No);
+
+Shared_Resource
+  ( Type            => Immediate_Ceiling_Resource,
+    Name            => Error_Log,
+    Ceiling         => 20,
+    Preassigned     => No);
+
+Shared_Resource
+  ( Type            => Immediate_Ceiling_Resource,
+    Name            => Joystick_Data,
+    Ceiling         => 20,
+    Preassigned     => No);
+
+Shared_Resource
+  ( Type            => Immediate_Ceiling_Resource,
+    Name            => Lights_Data,
+    Ceiling         => 20,
+    Preassigned     => No);
+
+Shared_Resource
+  ( Type            => Immediate_Ceiling_Resource,
+    Name            => Button_Data,
+    Ceiling         => 20,
+    Preassigned     => No);
+
+-- Operations
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Lectura_Pos_Ejes,
+    Worst_Case_Execution_Time     => 5.6922e-05,
+    Best_Case_Execution_Time      => 4.1244e-05,
+    Avg_Case_Execution_Time       => 4.4181e-05,
+    Shared_Resources_List         => (Arm) );
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Lee_Posicion_Ejes,
+    Worst_Case_Execution_Time     => 6.0138e-05,
+    Best_Case_Execution_Time      => 4.4195e-05,
+    Avg_Case_Execution_Time       => 4.7325e-05,
+    Shared_Resources_List         => (Arm) );
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Lee_Servos_OK,
+    Worst_Case_Execution_Time     => 2.6092e-05,
+    Best_Case_Execution_Time      => 1.1022e-05,
+    Avg_Case_Execution_Time       => 1.3259e-05,
+    Shared_Resources_List         => (Arm));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Lee_Topes_Inferiores,
+    Worst_Case_Execution_Time     => 5.9553e-05,
+    Best_Case_Execution_Time      => 4.254e-05,
+    Avg_Case_Execution_Time       => 4.731e-05,
+    Shared_Resources_List         => (Arm));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Lee_Topes_Superiores,
+    Worst_Case_Execution_Time     => 6.0035e-05,
+    Best_Case_Execution_Time      => 4.2858e-05,
+    Avg_Case_Execution_Time       => 4.8314e-05,
+    Shared_Resources_List         => (Arm));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Inicializa_Posicion,
+    Worst_Case_Execution_Time     => 7.1767e-05,
+    Shared_Resources_List         => (Arm));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Actua_Rele,
+    Worst_Case_Execution_Time     => 1.6249e-05,
+    Best_Case_Execution_Time      => 1.5007e-05,
+    Shared_Resources_List         => (Arm));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Controla_Servos,
+    Worst_Case_Execution_Time     => 4.7765e-05,
+    Best_Case_Execution_Time      => 3.1555e-05,
+    Avg_Case_Execution_Time       => 3.4216e-05,
+    Shared_Resources_List         => (Arm));
+
+Operation(
+	Type	                   => Simple,
+	Name			   => Lee_Intensidad_Motores,
+	Worst_Case_Execution_Time  => 6.0138e-05,
+	Best_Case_Execution_Time   => 4.4195e-05,
+	Avg_Case_Execution_Time	   => 4.7325e-05,
+	Shared_Resources_List      => (Arm));
+	
+Operation
+  ( Type                          => Simple,
+    Name                          => Lee_Todas_Alarmas,
+    Worst_Case_Execution_Time     => 1.2319e-05,
+    Best_Case_Execution_Time      => 9.38e-07,
+    Avg_Case_Execution_Time       => 1.143e-06,
+    Shared_Resources_List         => (Alarms) );
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Activa,
+    Worst_Case_Execution_Time     => 2.132e-06,
+    Best_Case_Execution_Time      => 1.084e-06,
+    Shared_Resources_List         => (Alarms));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Desactiva,
+    Worst_Case_Execution_Time     => 1.749e-06,
+    Best_Case_Execution_Time      => 1.146e-06,
+    Shared_Resources_List         => (Alarms));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Reconoce,
+    Worst_Case_Execution_Time     => 1.890e-06,
+    Best_Case_Execution_Time      => 1.465e-06,
+    Shared_Resources_List         => (Alarms));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Inserta_Error,
+    Worst_Case_Execution_Time     => 2.769e-06,
+    Best_Case_Execution_Time      => 2.037e-06,
+    Shared_Resources_List         => (Alarms));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Extrae_Error,
+    Worst_Case_Execution_Time     => 3.948e-06,
+    Best_Case_Execution_Time      => 1.77e-06,
+    Avg_Case_Execution_Time       => 2.255e-06,
+    Shared_Resources_List         => (Alarms));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Lee_Nuevo_Punto,
+    Worst_Case_Execution_Time     => 1.1153e-05,
+    Best_Case_Execution_Time      => 7.33e-07,
+    Avg_Case_Execution_Time       => 9.92e-07,
+    Shared_Resources_List         => (Servo_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Escribe_Nuevo_Punto,
+    Worst_Case_Execution_Time     => 1.1344e-05,
+    Best_Case_Execution_Time      => 1.063e-06,
+    Avg_Case_Execution_Time       => 1.366e-06,
+    Shared_Resources_List         => (Servo_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Lee_Errores_Posicion,
+    Worst_Case_Execution_Time     => 1.831e-06,
+    Best_Case_Execution_Time      => 1.192e-06,
+    Avg_Case_Execution_Time       => 1.363e-06,
+    Shared_Resources_List         => (Servo_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Escribe_Errores_Posicion,
+    Worst_Case_Execution_Time     => 1.1618e-05,
+    Best_Case_Execution_Time      => 8.73e-07,
+    Avg_Case_Execution_Time       => 9.94e-07,
+    Shared_Resources_List         => (Servo_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Lee_Pos_Inic,
+    Worst_Case_Execution_Time     => 1.1933e-05,
+    Best_Case_Execution_Time      => 7.73e-07,
+    Avg_Case_Execution_Time       => 1.16e-06,
+    Shared_Resources_List         => (Servo_Data));
+    
+Operation
+   ( Type			  => Simple,
+     Name			  => Escribe_Pos_Inic,
+     Worst_Case_Execution_Time    => 5.149e-06,
+     Shared_Resources_List	  => (Servo_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Inserta_Elemento,
+    Worst_Case_Execution_Time     => 1.646e-06,
+    Best_Case_Execution_Time      => 1.105e-06,
+    Shared_Resources_List         => (Error_Log));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Lee_Elemento,
+    Worst_Case_Execution_Time     => 1.871e-06,
+    Best_Case_Execution_Time      => 1.158e-06,
+    Shared_Resources_List         => (Error_Log));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Lee,
+    Worst_Case_Execution_Time     => 0.000119104,
+    Best_Case_Execution_Time      => 9.308e-05,
+    Avg_Case_Execution_Time       => 0.00010639,
+    Shared_Resources_List         => (Joystick_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Lee_Estado_Actual,
+    Worst_Case_Execution_Time     => 9.213e-06,
+    Best_Case_Execution_Time      => 7.519e-06,
+    Avg_Case_Execution_Time       => 8.101e-06,
+    Shared_Resources_List         => (Button_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Lee_Todos,
+    Worst_Case_Execution_Time     => 0.000258447,
+    Best_Case_Execution_Time      => 0.000233221,
+    Avg_Case_Execution_Time       => 0.000248938,
+    Shared_Resources_List         => (Button_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Detecta_Cambio,
+    Worst_Case_Execution_Time     => 2.045e-05,
+    Best_Case_Execution_Time      => 8.402e-06,
+    Avg_Case_Execution_Time       => 1.0167e-05,
+    Shared_Resources_List         => (Button_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Detecta_Pulsacion,
+    Worst_Case_Execution_Time     => 2.0752e-05,
+    Best_Case_Execution_Time      => 8.825e-06,
+    Avg_Case_Execution_Time       => 1.0222e-05,
+    Shared_Resources_List         => (Button_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Enciende,
+    Worst_Case_Execution_Time     => 1.9376e-05,
+    Best_Case_Execution_Time      => 9.569e-06,
+    Shared_Resources_List         => (Lights_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Apaga,
+    Worst_Case_Execution_Time     => 2.1019e-05,
+    Best_Case_Execution_Time      => 9.256e-06,
+    Avg_Case_Execution_Time       => 1.078e-05,
+    Shared_Resources_List         => (Lights_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Enciende_Temporizada,
+    Worst_Case_Execution_Time     => 1.3634e-05,
+    Best_Case_Execution_Time      => 1.1668e-05,
+    Shared_Resources_List         => (Lights_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Enciende_con_Parpadeo,
+    Worst_Case_Execution_Time     => 1.4541e-05,
+    Best_Case_Execution_Time      => 1.3352e-05,
+    Shared_Resources_List         => (Lights_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Temporiza_Luces,
+    Worst_Case_Execution_Time     => 3.089e-05,
+    Best_Case_Execution_Time      => 3.569e-06,
+    Avg_Case_Execution_Time       => 5.643e-06,
+    Shared_Resources_List         => (Lights_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Esta_Apagada,
+    Worst_Case_Execution_Time     => 1.051e-05,
+    Best_Case_Execution_Time      => 7.62e-07,
+    Avg_Case_Execution_Time       => 9.14e-07,
+    Shared_Resources_List         => (Lights_Data));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Lee_Consigna_Base,
+    Worst_Case_Execution_Time     => 2.594e-06,
+    Best_Case_Execution_Time      => 1.084e-06,
+    Avg_Case_Execution_Time       => 1.52e-06,
+    Shared_Resources_List         => (Position_Command));
+
+Operation
+  ( Type                          => Simple,
+    Name                          => Pon_Consigna_Base,
+    Worst_Case_Execution_Time     => 2.91e-06,
+    Best_Case_Execution_Time      => 1.15e-06,
+    Avg_Case_Execution_Time       => 1.906e-06,
+    Shared_Resources_List         => (Position_Command));
+
+
+Operation
+  ( Type                          => Enclosing,
+    Name                          => Reportero,
+    Worst_Case_Execution_Time     => 0.0204405,
+    Best_Case_Execution_Time      => 0.0202658,
+    Avg_Case_Execution_Time       => 0.0203834,
+    Composite_Operation_List      => (Lee_Todas_Alarmas,
+                                      Lee_Errores_Posicion, Lee_Todos, Lee,
+                                      Lee_Intensidad_Motores,
+                                      Lee_Posicion_Ejes, Lee_Topes_Inferiores,
+                                      Lee_Topes_Superiores, Lee_Consigna_Base,
+                                      Inserta_Error));
+Operation
+  ( Type                          => Enclosing,
+    Name                          => Control_servos,
+    Worst_Case_Execution_Time     => 0.000463417,
+    Best_Case_Execution_Time      => 0.000240053,
+    Avg_Case_Execution_Time       => 0.000262042,
+    Composite_Operation_List      => (Lee_Todas_Alarmas, Inicializa_Posicion,
+                                      Actua_Rele, Lee_Posicion_Ejes,
+                                      Escribe_Errores_Posicion, Desactiva,
+                                      Activa, Inserta_Error, Lee_Nuevo_Punto,
+                                      Controla_Servos));
+Operation
+  ( Type                          => Enclosing,
+    Name                          => Gestion_Luces,
+    Worst_Case_Execution_Time     => 5.8307e-05,
+    Best_Case_Execution_Time      => 2.4955e-05,
+    Avg_Case_Execution_Time       => 3.206e-05,
+    Composite_Operation_List      => (Temporiza_Luces));
+
+Operation
+  ( Type                          => Enclosing,
+    Name                          => Error_Logger,
+    Worst_Case_Execution_Time     => 0.00170959,
+    Best_Case_Execution_Time      => 0.00167901,
+    Composite_Operation_List      => (Lee_Elemento));
+
+Operation
+  ( Type                          => Enclosing,
+    Name                          => Planificador_trayectorias,
+    Worst_Case_Execution_Time     => 0.00377349,
+    Best_Case_Execution_Time      => 0.00218197,
+    Avg_Case_Execution_Time       => 0.00248435,
+    Composite_Operation_List      => (Detecta_Pulsacion, Enciende, Apaga,
+                                      Enciende_Temporizada,
+                                      Enciende_con_Parpadeo, Temporiza_Luces,
+                                      Esta_Apagada, Detecta_Cambio,
+                                      Lee_Todas_Alarmas, Lee,
+                                      Lee_Posicion_Ejes, Lee_Topes_Superiores,
+                                      Lee_Topes_Inferiores, Activa,
+                                      Inserta_Error, Lee_Errores_Posicion,
+                                      Escribe_Pos_Inic, Lee_Todos, Desactiva,
+                                      Reconoce, Inserta_Elemento,
+                                      Lee_Estado_Actual, Inserta_Elemento));
+
+-- Transactions
+
+Transaction
+  ( Type                    => Regular,
+    name                    => Servo_Control,
+    External_Events         =>
+      ( (Type          => Periodic,
+         Name          => E1,
+         Period        => 5.0E-3)),
+    Internal_Events         =>
+       ( (Type                   => Regular,
+         Name                   => O1,
+         Timing_Requirements    =>
+           ( Type              => Hard_Global_Deadline,
+              Deadline          => 5.0E-3,
+              referenced_event  => E1))),
+    Event_Handlers          =>
+      ( (Type                  => Activity,
+         Input_Event           => E1,
+         Output_event          => O1,
+         Activity_Operation    => Control_Servos,
+         Activity_Server       => Servo_Control)));
+
+
+Transaction
+  ( Type                    => Regular,
+    name                    => Light_Manager,
+    External_Events         =>
+      ( (Type           => Periodic,
+         Name           => E2,
+         Period         => 100.0E-3)),
+    Internal_Events         =>
+      ( (Type           => Regular,
+         Name           => O2,
+         Timing_Requirements =>
+           (Type              => Hard_Global_Deadline,
+            Deadline          => 100.0E-3,
+            referenced_event  =>E2))),
+    Event_Handlers           =>
+      ( (Type                 => Activity,
+         Input_Event          => E2,
+         Output_event         => O2,
+         Activity_Operation   => Gestion_Luces,
+         Activity_Server      => Light_Manager)));
+
+Transaction
+  ( Type                    => Regular,
+    name                    => Message_Logger,
+    External_Events         =>
+      ( (Type             => Unbounded,
+         Name             => E3,
+         Avg_Interarrival => 1)),
+    Internal_Events         =>
+      (( Type           => Regular,
+         Name           => O3)),
+    Event_Handlers        =>
+      ( (Type                => Activity,
+         Input_Event         => E3,
+         Output_event        => O3,
+         Activity_Operation  => Error_Logger,
+         Activity_Server     => Message_Logger)));
+
+
+--- Transaccion Reportero.
+
+Operation
+  ( Type                      => Simple,
+    Name                      => Rep_Section_1,
+    Worst_Case_Execution_Time => 5.0634e-5,
+    Best_Case_Execution_Time  => 2.4614e-5,
+    Avg_Case_Execution_Time   => 3.2174e-5);
+
+Operation
+  ( Type                      => Message_Transmission,
+    Name                      => Alarmas_Lee_Todas_Alarmas,
+    Max_Message_Size          => 1492,
+    Avg_Message_Size          => 1492,
+    Min_Message_size          => 1492);
+
+Scheduling_Server
+  ( Type                      => Regular,
+    Name                      => Reportero_RPC,
+    Server_Sched_Parameters   =>
+      ( Type            => Fixed_Priority_Policy,
+        The_Priority    => 10,
+        Preassigned     => No ),
+    Scheduler                 => RT_EP_Network_Sched );
+
+Scheduling_Server
+  ( Type                      => Regular,
+    Name                      => Reportero_Remote,
+    Server_Sched_Parameters   =>
+      ( Type            => Fixed_Priority_Policy,
+        The_Priority    => 10,
+        Preassigned     => No ),
+    Scheduler                 => Btmcont );
+
+
+Operation
+  ( Type                      => Message_Transmission,
+    Name                      => Alarmas_Lee_Todas_Alarmas_2,
+    Max_Message_Size          => 1492,
+    Avg_Message_Size          => 1492,
+    Min_Message_size          => 1492);
+
+Operation
+  ( Type                      => Simple,
+    Name                      => Rep_Section_2,
+    Worst_Case_Execution_Time => 9.51e-7);
+
+Operation
+  ( Type                      => Message_Transmission,
+    Name                      => Servos_Lee_Errores_Posicion,
+    Max_Message_Size          => 1492,
+    Avg_Message_Size          => 1492,
+    Min_Message_size          => 1492);
+
+Operation
+  ( Type                      => Message_Transmission,
+    Name                      => Servos_Lee_Errores_Posicion_2,
+    Max_Message_Size          => 1492,
+    Avg_Message_Size          => 1492,
+    Min_Message_size          => 1492);
+
+Operation
+  ( Type                      => Simple,
+    Name                      => Rep_Section_3,
+    Worst_Case_Execution_Time => 9.51e-7);
+
+Operation
+  ( Type                      => Message_Transmission,
+    Name                      => Brazo_Lee_Intensidad_Motores,
+    Max_Message_Size          => 1492,
+    Avg_Message_Size          => 1492,
+    Min_Message_size          => 1492);
+
+Operation
+  ( Type                      => Message_Transmission,
+    Name                      => Brazo_Lee_Intensidad_Motores_2,
+    Max_Message_Size          => 1492,
+    Avg_Message_Size          => 1492,
+    Min_Message_size          => 1492);
+
+Operation
+  ( Type                      => Simple,
+    Name                      => Rep_Section_4,
+    Worst_Case_Execution_Time => 9.51e-7);
+
+Operation
+  ( Type                      => Message_Transmission,
+    Name                      => Brazo_Lee_Posicion_Ejes,
+    Max_Message_Size          => 1492,
+    Avg_Message_Size          => 1492,
+    Min_Message_size          => 1492);
+
+Operation
+  ( Type                      => Message_Transmission,
+    Name                      => Brazo_Lee_Posicion_Ejes_2,
+    Max_Message_Size          => 1492,
+    Avg_Message_Size          => 1492,
+    Min_Message_size          => 1492);
+
+Operation
+  ( Type                      => Simple,
+    Name                      => Rep_Section_5,
+    Worst_Case_Execution_Time => 9.51e-7);
+
+Operation
+  ( Type                      => Message_Transmission,
+    Name                      => Brazo_Lee_Topes_Inferiores,
+    Max_Message_Size          => 1492,
+    Avg_Message_Size          => 1492,
+    Min_Message_size          => 1492);
+
+Operation
+  ( Type                      => Message_Transmission,
+    Name                      => Brazo_Lee_Topes_Inferiores_2,
+    Max_Message_Size          => 1492,
+    Avg_Message_Size          => 1492,
+    Min_Message_size          => 1492);
+
+Operation
+  ( Type                      => Simple,
+    Name                      => Rep_Section_6,
+    Worst_Case_Execution_Time => 9.51e-7);
+
+Operation
+  ( Type                      => Message_Transmission,
+    Name                      => Brazo_Lee_Topes_Superiores,
+    Max_Message_Size          => 1492,
+    Avg_Message_Size          => 1492,
+    Min_Message_size          => 1492);
+
+Operation
+  ( Type                      => Message_Transmission,
+    Name                      => Brazo_Lee_Topes_Superiores_2,
+    Max_Message_Size          => 1492,
+    Avg_Message_Size          => 1492,
+    Min_Message_size          => 1492);
+
+Operation
+  ( Type                      => Simple,
+    Name                      => Rep_Section_7,
+    Worst_Case_Execution_Time => 0.0182211,
+    Best_Case_Execution_Time  => 0.0180699,
+    Avg_Case_Execution_Time   => 0.0181547);
+
+Transaction
+  ( Type                    => Regular,
+    Name                    => Reporter,
+    External_Events          =>
+      ( (Type           => Periodic,
+         Name           => In_reportero_01,
+         Period         => 0.100)),
+    Internal_Events         =>
+      ( (Type      => Regular,
+         Name      => Reportero_02),
+        (Type      => Regular,
+         Name      => Reportero_03),
+        (Type      => Regular,
+         Name      => Reportero_04),
+        (Type      => Regular,
+         Name      => Reportero_05),
+        (Type      => Regular,
+         Name      => Reportero_06),
+        (Type      => Regular,
+         Name      => Reportero_07),
+        (Type      => Regular,
+         Name      => Reportero_08),
+        (Type      => Regular,
+         Name      => Reportero_09),
+         (Type      => Regular,
+         Name      => Reportero_10),
+        (Type      => Regular,
+         Name      => Reportero_11),
+        (Type      => Regular,
+         Name      => Reportero_12),
+        (Type      => Regular,
+         Name      => Reportero_13),
+        (Type      => Regular,
+         Name      => Reportero_14),
+        (Type      => Regular,
+         Name      => Reportero_15),
+        (Type      => Regular,
+         Name      => Reportero_16),
+        (Type      => Regular,
+         Name      => Reportero_17),
+        (Type      => Regular,
+         Name      => Reportero_18),
+        (Type      => Regular,
+         Name      => Reportero_19),
+        (Type      => Regular,
+         Name      => Reportero_20),
+        (Type      => Regular,
+         Name      => Reportero_21),
+        (Type      => Regular,
+         Name      => Reportero_22),
+        (Type      => Regular,
+         Name      => Reportero_23),
+        (Type      => Regular,
+         Name      => Reportero_24),
+        (Type      => Regular,
+         Name      => Reportero_25),
+        (Type      => Regular,
+         Name      => Reportero_Out,
+         Timing_Requirements =>
+           ( Type             => Hard_Global_Deadline,
+             Deadline         => 0.100,
+             Referenced_Event => In_Reportero_01))),
+    Event_Handlers          =>
+      ( (Type                   => Activity,
+         Input_Event            => In_Reportero_01,
+         Output_event           => Reportero_02,
+         Activity_Operation     => Rep_Section_1,
+         Activity_Server        => Reporter),
+        (Type                   => Activity,
+         Input_Event            => Reportero_02,
+         Output_event           => Reportero_03,
+         Activity_Operation     => Alarmas_lee_Todas_Alarmas,
+         Activity_Server        => Reportero_RPC),
+        (Type                   => Activity,
+         Input_Event            => Reportero_03,
+         Output_event           => Reportero_04,
+         Activity_Operation     => Lee_Todas_Alarmas,
+         Activity_Server        => Reportero_Remote),
+        (Type                   => Activity,
+         Input_Event            => Reportero_04,
+         Output_event           => Reportero_05,
+         Activity_Operation     => Alarmas_lee_Todas_Alarmas_2,
+         Activity_Server        => Reportero_RPC),
+        (Type                   => Activity,
+         Input_Event            => Reportero_05,
+         Output_event           => Reportero_06,
+         Activity_Operation     => Rep_Section_2,
+         Activity_Server        => Reporter),
+        (Type                   => Activity,
+         Input_Event            => Reportero_06,
+         Output_event           => Reportero_07,
+         Activity_Operation     => Servos_Lee_Errores_Posicion,
+         Activity_Server        => Reportero_RPC),
+        (Type                   => Activity,
+         Input_Event            => Reportero_07,
+         Output_event           => Reportero_08,
+         Activity_Operation     => Lee_Errores_Posicion,
+         Activity_Server        => Reportero_Remote),
+        (Type                   => Activity,
+         Input_Event            => Reportero_08,
+         Output_event           => Reportero_09,
+         Activity_Operation     => Servos_Lee_Errores_Posicion_2,
+         Activity_Server        => Reportero_RPC),
+        (Type                   => Activity,
+         Input_Event            => Reportero_09,
+         Output_event           => Reportero_10,
+         Activity_Operation     => Rep_Section_3,
+         Activity_Server        => Reporter),
+        (Type                   => Activity,
+         Input_Event            => Reportero_10,
+         Output_event           => Reportero_11,
+         Activity_Operation     => Brazo_Lee_Intensidad_Motores,
+         Activity_Server        => Reportero_RPC),
+        (Type                   => Activity,
+         Input_Event            => Reportero_11,
+         Output_event           => Reportero_12,
+         Activity_Operation     => Lee_Intensidad_Motores,
+         Activity_Server        => Reportero_Remote),
+        (Type                   => Activity,
+         Input_Event            => Reportero_12,
+         Output_event           => Reportero_13,
+         Activity_Operation     => Brazo_Lee_Intensidad_Motores_2,
+         Activity_Server        => Reportero_RPC),
+        (Type                   => Activity,
+         Input_Event            => Reportero_13,
+         Output_event           => Reportero_14,
+         Activity_Operation     => Rep_Section_4,
+         Activity_Server        => Reporter),
+        (Type                   => Activity,
+         Input_Event            => Reportero_14,
+         Output_event           => Reportero_15,
+         Activity_Operation     => Brazo_Lee_Posicion_Ejes,
+         Activity_Server        => Reportero_RPC),
+        (Type                   => Activity,
+         Input_Event            => Reportero_15,
+         Output_event           => Reportero_16,
+         Activity_Operation     => Lee_Posicion_Ejes,
+         Activity_Server        => Reportero_Remote),
+        (Type                   => Activity,
+         Input_Event            => Reportero_16,
+         Output_event           => Reportero_17,
+         Activity_Operation     => Brazo_Lee_Posicion_ejes_2,
+         Activity_Server        => Reportero_RPC),
+        (Type                   => Activity,
+         Input_Event            => Reportero_17,
+         Output_event           => Reportero_18,
+         Activity_Operation     => Rep_Section_5,
+         Activity_Server        => Reporter),
+        (Type                   => Activity,
+         Input_Event            => Reportero_18,
+         Output_event           => Reportero_19,
+         Activity_Operation     => Brazo_Lee_Topes_Inferiores,
+         Activity_Server        => Reportero_RPC),
+        (Type                   => Activity,
+         Input_Event            => Reportero_19,
+         Output_event           => Reportero_20,
+         Activity_Operation     => Lee_Topes_Inferiores,
+         Activity_Server        => Reportero_Remote),
+        (Type                   => Activity,
+         Input_Event            => Reportero_20,
+         Output_event           => Reportero_21,
+         Activity_Operation     => Brazo_Lee_Topes_Inferiores_2,
+         Activity_Server        => Reportero_RPC),
+        (Type                   => Activity,
+         Input_Event            => Reportero_21,
+         Output_event           => Reportero_22,
+         Activity_Operation     => Rep_Section_6,
+         Activity_Server        => Reporter),
+        (Type                   => Activity,
+         Input_Event            => Reportero_22,
+         Output_event           => Reportero_23,
+         Activity_Operation     => Brazo_Lee_Topes_Superiores,
+         Activity_Server        => Reportero_RPC),
+        (Type                   => Activity,
+         Input_Event            => Reportero_23,
+         Output_event           => Reportero_24,
+         Activity_Operation     => Lee_Topes_Superiores,
+         Activity_Server        => Reportero_Remote),
+        (Type                   => Activity,
+         Input_Event            => Reportero_24,
+         Output_event           => Reportero_25,
+         Activity_Operation     => Brazo_Lee_Topes_Superiores_2,
+         Activity_Server        => Reportero_RPC),
+        (Type                   => Activity,
+         Input_Event            => Reportero_25,
+         Output_event           => Reportero_Out,
+         Activity_Operation     => Rep_Section_7,
+         Activity_Server        => Reporter)));
+
+-- Transaccion
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_1,
+    Worst_Case_Execution_Time   => 2.2044e-5,
+    Best_Case_Execution_Time    => 7.019e-6,
+    Avg_Case_Execution_Time     => 1.0198e-5);
+
+Scheduling_Server
+  ( Type                        => Regular,
+    Name                        => Planificador_RPC,
+    Server_Sched_Parameters     =>
+      ( Type         => Fixed_Priority_Policy,
+        The_Priority => 20,
+        Preassigned  => No ),
+    Scheduler                   => RT_EP_Network_Sched );
+
+Scheduling_Server
+  ( Type                        => Regular,
+    Name                        => Planificador_Remote,
+    Server_Sched_Parameters     =>
+      ( Type         => Fixed_Priority_Policy,
+        The_Priority => 20,
+        Preassigned  => No ),
+    Scheduler                   => Btmcont );
+
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_2,
+    Worst_Case_Execution_Time   => 3.05e-4,
+    Best_Case_Execution_Time    => 2.701e-4,
+    Avg_Case_Execution_Time     => 2.788e-4);
+
+Operation
+  ( Type                        => Message_Transmission,
+    Name                        => Alarmas_Desactiva,
+    Max_Message_Size            => 1492,
+    Avg_Message_Size            => 1492,
+    Min_Message_size            => 1492);
+
+Operation
+  ( Type                        => Message_Transmission,
+    Name                        => Alarmas_Desactiva_2,
+    Max_Message_Size            => 1492,
+    Avg_Message_Size            => 1492,
+    Min_Message_size            => 1492);
+
+Operation 
+   ( Type                        => Message_Transmission,
+     Name                        => Alarmas_Activa,
+     Max_Message_Size            => 1492,
+     Avg_Message_Size            => 1492,
+     Min_Message_size            => 1492);
+ 
+Operation 
+   ( Type                        => Message_Transmission,
+     Name                        => Alarmas_Activa_2,
+     Max_Message_Size            => 1492,
+     Avg_Message_Size            => 1492,
+     Min_Message_size            => 1492);
+
+Operation 
+  ( Type                        => Message_Transmission,
+    Name                        => Alarmas_Inserta_Error,
+    Max_Message_Size            => 1492,
+    Avg_Message_Size            => 1492,
+    Min_Message_size            => 1492);
+
+Operation 
+  ( Type                        => Message_Transmission,
+    Name                        => Alarmas_Inserta_Error_2,
+    Max_Message_Size            => 1492,
+    Avg_Message_Size            => 1492,
+    Min_Message_size            => 1492);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_3,
+    Worst_Case_Execution_Time   => 9.51e-7);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_4,
+    Worst_Case_Execution_Time   => 9.51e-7);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_5,
+    Worst_Case_Execution_Time   => 2.0545e-5,
+    Best_Case_Execution_Time    => 7.29e-7,
+    Avg_Case_Execution_Time     => 7.46e-7);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_6,
+    Worst_Case_Execution_Time   => 2.84e-6,
+    Best_Case_Execution_Time    => 9.71e-7,
+    Avg_Case_Execution_Time     => 1.406e-6);
+
+Operation
+  ( Type                        => Message_Transmission,
+    Name                        => Alarmas_Extrae_Error,
+    Max_Message_Size            => 1492,
+    Avg_Message_Size            => 1492,
+    Min_Message_size            => 1492);
+
+Operation
+  ( Type                        => Message_Transmission,
+    Name                        => Alarmas_Extrae_Error_2,
+    Max_Message_Size            => 1492,
+    Avg_Message_Size            => 1492,
+    Min_Message_size            => 1492);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_7,
+    Worst_Case_Execution_Time   => 5.33974e-4,
+    Best_Case_Execution_Time    => 1.543e-4,
+    Avg_Case_Execution_Time     => 3.11451e-4);
+
+Operation
+  ( Type                        => Message_Transmission,
+    Name                        => Herramientas_Actua_Auxiliar,
+    Max_Message_Size            => 1492,
+    Avg_Message_Size            => 1492,
+    Min_Message_size            => 1492);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Actua_Auxiliar,
+    Worst_Case_Execution_Time   => 4.5236e-5,
+    Best_Case_Execution_Time    => 2.123e-5,
+    Avg_Case_Execution_Time     => 3.223e-5);
+
+Operation
+  ( Type                        => Message_Transmission,
+    Name                        => Herramientas_Actua_Auxiliar_2,
+    Max_Message_Size            => 1492,
+    Avg_Message_Size            => 1492,
+    Min_Message_size            => 1492);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_8,
+    Worst_Case_Execution_Time   => 9.51e-7);
+
+Operation
+  ( Type                        => Message_Transmission,
+    Name                        => Herramientas_Actua_Pinza,
+    Max_Message_Size            => 1492,
+    Avg_Message_Size            => 1492,
+    Min_Message_size            => 1492);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Actua_Pinza,
+    Worst_Case_Execution_Time   => 4.5236e-5,
+    Best_Case_Execution_Time    => 2.123e-5,
+    Avg_Case_Execution_Time     => 3.223e-5);
+
+Operation
+  ( Type                        => Message_Transmission,
+    Name                        => Herramientas_Actua_Pinza_2,
+    Max_Message_Size            => 1492,
+    Avg_Message_Size            => 1492,
+    Min_Message_size            => 1492);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_9,
+    Worst_Case_Execution_Time   => 1.302e-4,
+    Best_Case_Execution_Time    => 1.003e-4,
+    Avg_Case_Execution_Time     => 1.1155e-4);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_10,
+    Worst_Case_Execution_Time   => 7.2636e-5,
+    Best_Case_Execution_Time    => 6.444e-6,
+    Avg_Case_Execution_Time     => 2.7181e-5);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_11,
+    Worst_Case_Execution_Time   => 5.388e-5,
+    Best_Case_Execution_Time    => 7.54e-7,
+    Avg_Case_Execution_Time     => 5.308e-6);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_12,
+    Worst_Case_Execution_Time   => 9.51e-7);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_13,
+    Worst_Case_Execution_Time   => 9.51e-7);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_14,
+    Worst_Case_Execution_Time   => 9.51e-7);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_15,
+    Worst_Case_Execution_Time   => 2.533e-6,
+    Best_Case_Execution_Time    => 7.84e-7,
+    Avg_Case_Execution_Time     => 1.166e-6);
+
+Operation
+  ( Type                        => Message_Transmission,
+    Name                        => Servos_Lee_Topes_Superiores,
+    Max_Message_Size            => 1492,
+    Avg_Message_Size            => 1492,
+    Min_Message_size            => 1492);
+
+Operation
+  ( Type                        => Message_Transmission,
+    Name                        => Servos_Lee_Topes_Superiores_2,
+    Max_Message_Size            => 1492,
+    Avg_Message_Size            => 1492,
+    Min_Message_size            => 1492);
+
+Operation
+  ( Type                        => Simple,
+    Name                        => Traject_Section_16,
+    Worst_Case_Execution_Time   => 9.51e-7);
+
+Operation
+  ( Type                        => Message_Transmission,
+    Name                        => Servos_Lee_Topes_Inferiores,
+    Max_Message_Size            => 1492,
+    Avg_Message_Size            => 1492,
+    Min_Message_size            => 1492);
+
+Operation
+  ( Type                       => Message_Transmission,
+    Name                       => Servos_Lee_Topes_Inferiores_2,
+    Max_Message_Size           => 1492,
+    Avg_Message_Size           => 1492,
+    Min_Message_size           => 1492);
+
+Operation
+  ( Type                       => Simple,
+    Name                       => Traject_Section_17,
+    Worst_Case_Execution_Time  => 2.46e-6,
+    Best_Case_Execution_Time   => 7.59e-7,
+    Avg_Case_Execution_Time    => 9.11e-7);
+
+Operation
+  ( Type                       => Message_Transmission,
+    Name                       => Servos_Escribe_Nuevo_Punto,
+    Max_Message_Size           => 1492,
+    Avg_Message_Size           => 1492,
+    Min_Message_size           => 1492);
+
+Operation
+  ( Type                       => Message_Transmission,
+    Name                       => Servos_Escribe_Nuevo_Punto_2,
+    Max_Message_Size           => 1492,
+    Avg_Message_Size           => 1492,
+    Min_Message_size           => 1492);
+
+Operation
+  ( Type                       => Simple,
+    Name                       => Traject_Section_18,
+    Worst_Case_Execution_Time  => 1.0343e-5,
+    Best_Case_Execution_Time   => 7.55e-6,
+    Avg_Case_Execution_Time    => 8.538e-6);
+
+Transaction
+  ( Type                       => Regular,
+    Name                       => Trajectory_Planer,
+    External_Events             =>
+      ( (Type           => Periodic,
+         Name           => In_Trayectoria_01,
+         Period         => 0.050)),
+    Internal_Events =>
+      ((Type           => Regular,
+        Name           => Trayectoria_02),
+       (Type           => Regular,
+        Name           => Trayectoria_03),
+       (Type           => Regular,
+        Name           => Trayectoria_04),
+       (Type           => Regular,
+        Name           => Trayectoria_05),
+       (Type           => Regular,
+        Name           => Trayectoria_06),
+       (Type           => Regular,
+        Name           => Trayectoria_07),
+       (Type           => Regular,
+        Name           => Trayectoria_08),
+       (Type           => Regular,
+        Name           => Trayectoria_09),
+        (Type           => Regular,
+        Name           => Trayectoria_10),
+       (Type           => Regular,
+        Name           => Trayectoria_11),
+       (Type           => Regular,
+        Name           => Trayectoria_12),
+       (Type           => Regular,
+        Name           => Trayectoria_13),
+       (Type           => Regular,
+        Name           => Trayectoria_14),
+       (Type           => Regular,
+        Name           => Trayectoria_15),
+       (Type           => Regular,
+        Name           => Trayectoria_16),
+       (Type           => Regular,
+        Name           => Trayectoria_17),
+       (Type           => Regular,
+        Name           => Trayectoria_18),
+       (Type           => Regular,
+        Name           => Trayectoria_19),
+       (Type           => Regular,
+        Name           => Trayectoria_20),
+       (Type           => Regular,
+        Name           => Trayectoria_21),
+       (Type           => Regular,
+        Name           => Trayectoria_22),
+       (Type           => Regular,
+        Name           => Trayectoria_23),
+       (Type           => Regular,
+        Name           => Trayectoria_24),
+       (Type           => Regular,
+        Name           => Trayectoria_25),
+       (Type           => Regular,
+        Name           => Trayectoria_26),
+       (Type           => Regular,
+        Name           => Trayectoria_27),
+       (Type           => Regular,
+        Name           => Trayectoria_28),
+       (Type           => Regular,
+        Name           => Trayectoria_29),
+       (Type           => Regular,
+        Name           => Trayectoria_30),
+       (Type           => Regular,
+        Name           => Trayectoria_31),
+       (Type           => Regular,
+        Name           => Trayectoria_32),
+       (Type           => Regular,
+        Name           => Trayectoria_33),
+       (Type           => Regular,
+        Name           => Trayectoria_34),
+       (Type           => Regular,
+        Name           => Trayectoria_35),
+       (Type           => Regular,
+        Name           => Trayectoria_36),
+       (Type           => Regular,
+        Name           => Trayectoria_37),
+       (Type           => Regular,
+        Name           => Trayectoria_38),
+       (Type           => Regular,
+        Name           => Trayectoria_39),
+       (Type           => Regular,
+        Name           => Trayectoria_40),
+       (Type           => Regular,
+        Name           => Trayectoria_41),
+       (Type           => Regular,
+        Name           => Trayectoria_42),
+       (Type           => Regular,
+        Name           => Trayectoria_43),
+       (Type           => Regular,
+        Name           => Trayectoria_44),
+       (Type           => Regular,
+        Name           => Trayectoria_45),
+       (Type           => Regular,
+        Name           => Trayectoria_46),
+       (Type           => Regular,
+        Name           => Trayectoria_47),
+       (Type           => Regular,
+        Name           => Trayectoria_48),
+       (Type           => Regular,
+        Name           => Trayectoria_49),
+       (Type           => Regular,
+        Name           => Trayectoria_50),
+       (Type           => Regular,
+        Name           => Trayectoria_51),
+       (Type           => Regular,
+        Name           => Trayectoria_52),
+       (Type           => Regular,
+        Name           => Trayectoria_53),
+       (Type           => Regular,
+        Name           => Trayectoria_54),
+       (Type           => Regular,
+        Name           => Trayectoria_55),
+       (Type           => Regular,
+        Name           => Trayectoria_56),
+       (Type           => Regular,
+        Name           => Trayectoria_57),
+       (Type           => Regular,
+        Name           => Trayectoria_58),
+       (Type           => Regular,
+        Name           => Trayectoria_59),
+       (Type           => Regular,
+        Name           => Trayectoria_60),
+       (Type           => Regular,
+        Name           => Trayectoria_61),
+       (Type           => Regular,
+        Name           => Trayectoria_62),
+       (Type           => Regular,
+        Name           => Trayectoria_63),
+       (Type           => Regular,
+        Name           => Trayectoria_64),
+       (Type           => Regular,
+        Name           => Trayectoria_65),
+       (Type           => Regular,
+        Name           => Trayectoria_66),
+       (Type           => Regular,
+        Name           => Trayectoria_67),
+       (Type           => Regular,
+        Name           => Trayectoria_68),
+       (Type           => Regular,
+        Name           => Trayectoria_69),
+       (Type           => Regular,
+        Name           => Trayectoria_Out,
+        Timing_Requirements =>
+          (Type              => Hard_Global_Deadline,
+           Deadline          => 0.050,
+           Referenced_Event  => In_Trayectoria_01))),
+    Event_Handlers             =>
+      ((Type                 => Activity,
+        Input_Event          => In_Trayectoria_01,
+        Output_event         => Trayectoria_02,
+        Activity_Operation   => Traject_Section_1,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_02,
+        Output_event         => Trayectoria_03,
+        Activity_Operation   => Alarmas_Lee_Todas_Alarmas,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_03,
+        Output_event         => Trayectoria_04,
+        Activity_Operation   => Lee_Todas_Alarmas,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_04,
+        Output_event         => Trayectoria_05,
+        Activity_Operation   => Alarmas_Lee_Todas_Alarmas_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_05,
+        Output_event         => Trayectoria_06,
+        Activity_Operation   => Traject_Section_2,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_06,
+        Output_event         => Trayectoria_07,
+        Activity_Operation   => Alarmas_Desactiva,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_07,
+        Output_event         => Trayectoria_08,
+        Activity_Operation   => Desactiva,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_08,
+        Output_event         => Trayectoria_09,
+        Activity_Operation   => Alarmas_Desactiva_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_09,
+        Output_event         => Trayectoria_10,
+        Activity_Operation   => Traject_Section_3,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_10,
+        Output_event         => Trayectoria_11,
+        Activity_Operation   => Alarmas_Desactiva,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_11,
+        Output_event         => Trayectoria_12,
+        Activity_Operation   => Desactiva,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_12,
+        Output_event         => Trayectoria_13,
+        Activity_Operation   => Alarmas_Desactiva_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_13,
+        Output_event         => Trayectoria_14,
+        Activity_Operation   => Traject_Section_4,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_14,
+        Output_event         => Trayectoria_15,
+        Activity_Operation   => Alarmas_Desactiva,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_15,
+        Output_event         => Trayectoria_16,
+        Activity_Operation   => Desactiva,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_16,
+        Output_event         => Trayectoria_17,
+        Activity_Operation   => Alarmas_Desactiva_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_17,
+        Output_event         => Trayectoria_18,
+        Activity_Operation   => Traject_Section_5,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_18,
+        Output_event         => Trayectoria_19,
+        Activity_Operation   => Alarmas_Desactiva,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_19,
+        Output_event         => Trayectoria_20,
+        Activity_Operation   => Desactiva,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_20,
+        Output_event         => Trayectoria_21,
+        Activity_Operation   => Alarmas_Desactiva_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_21,
+        Output_event         => Trayectoria_22,
+        Activity_Operation   => Traject_Section_6,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_22,
+        Output_event         => Trayectoria_23,
+        Activity_Operation   => Alarmas_Extrae_Error,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_23,
+        Output_event         => Trayectoria_24,
+        Activity_Operation   => Extrae_Error,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_24,
+        Output_event         => Trayectoria_25,
+        Activity_Operation   => Alarmas_Extrae_Error_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_25,
+        Output_event         => Trayectoria_26,
+        Activity_Operation   => Traject_Section_7,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_26,
+        Output_event         => Trayectoria_27,
+        Activity_Operation   => Herramientas_Actua_Auxiliar,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_27,
+        Output_event         => Trayectoria_28,
+        Activity_Operation   => Actua_Auxiliar,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_28,
+        Output_event         => Trayectoria_29,
+        Activity_Operation   => Herramientas_Actua_Auxiliar_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_29,
+        Output_event         => Trayectoria_30,
+        Activity_Operation   => Traject_Section_8,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_30,
+        Output_event         => Trayectoria_31,
+        Activity_Operation   => Herramientas_Actua_Pinza,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_31,
+        Output_event         => Trayectoria_32,
+        Activity_Operation   => Actua_Pinza,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_32,
+        Output_event         => Trayectoria_33,
+        Activity_Operation   => Herramientas_actua_Pinza_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_33,
+        Output_event         => Trayectoria_34,
+        Activity_Operation   => Traject_Section_9,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_34,
+        Output_event         => Trayectoria_35,
+        Activity_Operation   => Alarmas_Lee_Todas_Alarmas,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_35,
+        Output_event         => Trayectoria_36,
+        Activity_Operation   => Lee_Todas_Alarmas,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_36,
+        Output_event         => Trayectoria_37,
+        Activity_Operation   => Alarmas_Lee_Todas_Alarmas_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_37,
+        Output_event         => Trayectoria_38,
+        Activity_Operation   => Traject_Section_10,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_38,
+        Output_event         => Trayectoria_39,
+        Activity_Operation   => Servos_Lee_Errores_Posicion,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_39,
+        Output_event         => Trayectoria_40,
+        Activity_Operation   => Lee_Errores_Posicion,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_40,
+        Output_event         => Trayectoria_41,
+        Activity_Operation   => Servos_Lee_Errores_Posicion_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_41,
+        Output_event         => Trayectoria_42,
+        Activity_Operation   => Traject_Section_11,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_42,
+        Output_event         => Trayectoria_43,
+        Activity_Operation   => Alarmas_Activa,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_43,
+        Output_event         => Trayectoria_44,
+        Activity_Operation   => Activa,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_44,
+        Output_event         => Trayectoria_45,
+        Activity_Operation   => Alarmas_Activa_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_45,
+        Output_event         => Trayectoria_46,
+        Activity_Operation   => Traject_Section_12,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_46,
+        Output_event         => Trayectoria_47,
+        Activity_Operation   => Alarmas_Inserta_Error,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_47,
+        Output_event         => Trayectoria_48,
+        Activity_Operation   => Inserta_Error,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_48,
+        Output_event         => Trayectoria_49,
+        Activity_Operation   => Alarmas_Inserta_Error_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_49,
+        Output_event         => Trayectoria_50,
+        Activity_Operation   => Traject_Section_13,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_50,
+        Output_event         => Trayectoria_51,
+        Activity_Operation   => Alarmas_Activa,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_51,
+        Output_event         => Trayectoria_52,
+        Activity_Operation   => Activa,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_52,
+        Output_event         => Trayectoria_53,
+        Activity_Operation   => Alarmas_Activa_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_53,
+        Output_event         => Trayectoria_54,
+        Activity_Operation   => Traject_Section_14,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_54,
+        Output_event         => Trayectoria_55,
+        Activity_Operation   => Alarmas_Inserta_Error,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_55,
+        Output_event         => Trayectoria_56,
+        Activity_Operation   => Inserta_Error,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_56,
+        Output_event         => Trayectoria_57,
+        Activity_Operation   => Alarmas_Inserta_Error_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_57,
+        Output_event         => Trayectoria_58,
+        Activity_Operation   => Traject_Section_15,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_58,
+        Output_event         => Trayectoria_59,
+        Activity_Operation   => Servos_Lee_Topes_Superiores,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_59,
+        Output_event         => Trayectoria_60,
+        Activity_Operation   => Lee_Topes_Superiores,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_60,
+        Output_event         => Trayectoria_61,
+        Activity_Operation   => Servos_Lee_Topes_Superiores_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_61,
+        Output_event         => Trayectoria_62,
+        Activity_Operation   => Traject_Section_16,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_62,
+        Output_event         => Trayectoria_63,
+        Activity_Operation   => Servos_Lee_Topes_Inferiores,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_63,
+        Output_event         => Trayectoria_64,
+        Activity_Operation   => Lee_Topes_Inferiores,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_64,
+        Output_event         => Trayectoria_65,
+        Activity_Operation   => Servos_Lee_Topes_Inferiores_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_65,
+        Output_event         => Trayectoria_66,
+        Activity_Operation   => Traject_Section_17,
+        Activity_Server      => Trajectory_Planning),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_66,
+        Output_event         => Trayectoria_67,
+        Activity_Operation   => Servos_Escribe_Nuevo_Punto,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_67,
+        Output_event         => Trayectoria_68,
+        Activity_Operation   => Escribe_Nuevo_Punto,
+        Activity_Server      => Planificador_Remote),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_68,
+        Output_event         => Trayectoria_69,
+        Activity_Operation   => Servos_Escribe_Nuevo_Punto_2,
+        Activity_Server      => Planificador_RPC),
+       (Type                 => Activity,
+        Input_Event          => Trayectoria_69,
+        Output_event         => Trayectoria_Out,
+        Activity_Operation   => Traject_Section_18,
+        Activity_Server      => Trajectory_Planning)));

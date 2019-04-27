@@ -1,0 +1,200 @@
+Model (
+   Model_Name  => Controller,
+   Model_Date  => 2000-01-01);
+
+-- File controller.txt
+
+-- Processing Resources
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> CPU_1,
+        Worst_Context_Switch 	=> 0.25);
+
+-- Scheduling Servers
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Control_Task,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 3,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Planning_Task,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 2,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Status_Task,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 1,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Emergency,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority		=> 4,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+-- Resources
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Data_Server);
+
+Shared_Resource (
+	Type 	=> Immediate_Ceiling_Resource,
+	Name 	=> Comm_Server);
+
+-- Operations
+
+-- Critical Sections
+
+Operation (
+	Type                      => Simple,
+	Name 			  => Read,
+	Worst_Case_Execution_Time => 2,
+       	Shared_Resources_List	  => (Data_Server));
+
+Operation (
+	Type 			  => Simple,
+	Name 			  => Write,
+	Worst_Case_Execution_Time => 20,
+       	Shared_Resources_List	  => (Data_Server));
+
+Operation (
+	Type 			  => Simple,
+	Name 			  => Send,
+	Worst_Case_Execution_Time => 10,
+       	Shared_Resources_List	  => (Comm_Server));
+
+Operation (
+	Type 			  => Simple,
+	Name 			  => Receive,
+	Worst_Case_Execution_Time => 10,
+       	Shared_Resources_List	  => (Comm_Server));
+
+-- Task operations
+
+Operation (
+	Type 	                  => Enclosing,
+	Name 	                  => Control,
+	Worst_Case_Execution_Time => 20,
+	Composite_Operation_List  => (Read,Send));
+
+Operation (
+	Type 	                  => Enclosing,
+	Name 	                  => Planning,
+	Worst_Case_Execution_Time => 40,
+	Composite_Operation_List  => (Write));
+
+Operation (
+	Type 	                  => Enclosing,
+	Name 	                  => Status,
+	Worst_Case_Execution_Time => 100,
+	Composite_Operation_List  => (Receive));
+
+Operation (
+	Type 	                  => Simple,
+	Name 	                  => Emergency,
+	Worst_Case_Execution_Time => 5);
+
+-- Transactions
+
+Transaction (
+	Type => Regular,
+	Name => Control_Task,
+	External_Events => (
+		(Type 	=> Periodic,
+		 Name 	=> E1,
+		 Period => 100)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O1,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 100,
+			 Referenced_Event => E1))),
+	Event_Handlers => (
+		(Type 		    => Activity,
+		 Input_Event 	    => E1,
+		 Output_Event 	    => O1,
+		 Activity_Operation => Control,
+		 Activity_Server    => Control_Task)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> Planning_Task,
+	External_Events => (
+		(Type   => Periodic,
+		 Name   => E2,
+		 Period => 150)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O2,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 150,
+			 Referenced_Event => E2))),
+	Event_Handlers => (
+		(Type 		    => Activity,
+		 Input_Event 	    => E2,
+		 Output_Event 	    => O2,
+		 Activity_Operation => Planning,
+		 Activity_Server    => Planning_Task)));
+
+Transaction (
+	Type => Regular,
+	Name => Status_Task,
+	External_Events => (
+		(Type 	=> Periodic,
+		 Name 	=> E3,
+		 Period => 350)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O3,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 350,
+			 Referenced_Event => E3))),
+	Event_Handlers => (
+		(Type 		    => Activity,
+		 Input_Event 	    => E3,
+		 Output_Event 	    => O3,
+		 Activity_Operation => Status,
+		 Activity_Server    => Status_Task)));
+
+Transaction (
+	Type => Regular,
+	Name => Emergency,
+	External_Events => (
+		(Type => Sporadic,
+		 Name => E4,
+		 Min_Interarrival => 50)),
+	Internal_Events => (
+		(Type => regular,
+		 name => O4,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 6,
+			 Referenced_Event => E4))),
+	Event_Handlers => (
+		(Type 		    => Activity,
+		 Input_Event 	    => E4,
+		 Output_Event 	    => O4,
+		 Activity_Operation => Emergency,
+		 Activity_Server    => Emergency)));
+

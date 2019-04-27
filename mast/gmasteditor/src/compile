@@ -1,0 +1,1 @@
+gnatmake -g -I../../mast_analysis -I../../utils gmasteditor -I../../gmast/src -I../../gmastresults/src `gtkada-config`

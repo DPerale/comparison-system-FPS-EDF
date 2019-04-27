@@ -1,0 +1,9754 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Michael Gonzalez">
+   <meta name="GENERATOR" content="Mozilla/4.76 [en] (Windows NT 5.0; U) [Netscape]">
+   <title>mast</title>
+</head>
+<body>
+&nbsp;
+<table WIDTH="100%" >
+<tr>
+<td><img SRC="mast_logo_med.jpg" height=170 width=85></td>
+
+<td>
+<dl>
+<h1>
+<font face="Times New Roman,Times"><font color="#993366"><font size=+4>MAST</font></font></font></h1>
+
+<h1>
+<font face="Comic Sans MS"><font color="#3333FF">Modeling and Analysis
+Suite for Real-Time Applications<br>
+Results of Examples</font></font></h1>
+</dl>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica"><font color="#000000">This document describes
+the results of applying the MAST analysis tools to the examples that appear
+in the "</font><b><font color="#990000">examples</font></b><font color="#000000">"
+directory of the MAST distribution.</font></font>
+<h2>
+<font face="Comic Sans MS"><font color="#3333FF">Table of Contents</font></font></h2>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#template">Template</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Caseva1">Caseva_Example</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Caseva2">Caseva_Multi</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Caseva3">Caseva_Simplified</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Caseva4">Caseva_With_Clock</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Caseva5">Caseva_With_Timer</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Controller">Controller</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Controller2">Controller2</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#RMT">Rmt</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Linear">Linear_Transactions_Only</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#P_A_Test_Linear_Transactions_Only">P_A_Test_Linear_Transactions_Only</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example1">Example_5_2_4_1</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example2">Example_5_2_4_2</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example3">Example_5_3_5_1</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example4">Example_5_3_5_2</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example5">Example_5_3_5_3</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example6">Example_5_3_5_4</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example7">Example_5_3_6_1</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example8">Example_5_3_6_2</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example9">Example_5_3_6_3</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example10">Example_5_3_6_4</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example11">Example_5_3_7_1</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_6_4_8_1">Example_6_4_8_1</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_6_4_8_2">Example_6_4_8_2</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_6_4_8_3">Example_6_4_8_3</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_6_4_9_1">Example_6_4_9_1</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_6_4_9_2">Example_6_4_9_2</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_6_4_9_2a">Example_6_4_9_2a</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_6_5_10_1">Example_6_5_10_1</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_6_5_10_1a">Example_6_5_10_1a</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_6_5_10_2">Example_6_5_10_2</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_6_5_10_2a">Example_6_5_10_2a</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_6_5_10_3">Example_6_5_10_3</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_6_6_12">Example_6_6_12</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_6_6_13">Example_6_6_13</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_8_3_1">Example_8_3_1</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_9_3_4trans">Example_9_3_4trans</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_Varying_Priorities">Example_Varying_Priorities</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_With_Offsets">Example_With_Offsets</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Example_With_Delays">Example_With_Delays</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Jane_Liu_Section_9_5_2">Jane_Liu_Section_9_5_2</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Jane_Liu_Table_9_2">Jane_Liu_Table_9_2</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Lehoczky_Example_3">Lehoczky_Example_3</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#RTSS_98">RTSS_98</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#Simple_Linear">Simple_Linear</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#WPDRTS_1995">WPDRST-1995</a></font></font></li>
+</ul>
+
+<h2>
+<a NAME="template"></a><font face="Comic Sans MS"><font color="#3333FF">Template</font></font></h2>
+<font face="Arial,Helvetica">This example does not represent any practical
+system, but just contains a template of each of the different objects defined
+in MAST. It is useful for copying and pasting the desired template into
+your system model, and then changing it to contain the appropriate values.</font>
+<p><font face="Arial,Helvetica">This example should not be used as input
+to the analysis tools, but it can be used as input to the "<font color="#990000">Parse</font>"
+tool.</font>
+<br>&nbsp;
+<h2>
+<a NAME="Caseva1"></a><font face="Comic Sans MS"><font color="#3333FF">Caseva_Example</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This example represents
+the software design of the CASEVA robot controller built by our group.
+It is a linear system running on a single processor. You will see that
+it contains a lot of shared resources and operations, because the software
+architecture of the CASEVA robot was based primarily on tasks synchronizing
+through Ada protected objects.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The analysis tools
+should be executed with the "Calculate Ceilings" option set. The results
+of the example are as follows, with any of the monoprocessor or linear
+analysis tools (Classic_RM, Varying_Priorities, Holistic, Offset_Based_Unoptimized,
+and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Servo_Control</td>
+
+<td>
+<center>1420</center>
+</td>
+
+<td>
+<center>220.31</center>
+</td>
+</tr>
+
+<tr>
+<td>Trajectory_Planning</td>
+
+<td>
+<center>13240</center>
+</td>
+
+<td>
+<center>263.28</center>
+</td>
+</tr>
+
+<tr>
+<td>Light Manager</td>
+
+<td>
+<center>13564</center>
+</td>
+
+<td>
+<center>40050.0</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>Reporter</td>
+
+<td>137614</td>
+
+<td>653.13</td>
+</tr>
+
+<tr>
+<td>Message_Logger</td>
+
+<td>
+<center>n/a</center>
+</td>
+
+<td>
+<center>>100000.0</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 100.78%.</font>
+<p><font face="Arial,Helvetica">The results are the same if the default
+priority assignment option is set.</font>
+<br>&nbsp;
+<h2>
+<a NAME="Caseva2"></a><font face="Comic Sans MS"><font color="#3333FF">Caseva_Multi</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This example represents
+a modification to the software design of the CASEVA robot controller, to
+use a multiprocessor architecture. Therefore, it is a linear system running
+on a multi-processor.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The analysis tools
+should be executed with the "Calculate Ceilings" option set. The results
+of the example are as follows, with any of the linear analysis tools (Holistic,
+Offset_Based_Unoptimized, and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Servo_Control</td>
+
+<td>
+<center>2714</center>
+</td>
+
+<td>
+<center>210.94</center>
+</td>
+</tr>
+
+<tr>
+<td>Trajectory_Planning</td>
+
+<td>
+<center>10775</center>
+</td>
+
+<td>
+<center>433.59</center>
+</td>
+</tr>
+
+<tr>
+<td>Light Manager</td>
+
+<td>
+<center>10599</center>
+</td>
+
+<td>
+<center>66071.9</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>Reporter</td>
+
+<td>74974</td>
+
+<td>1261.7</td>
+</tr>
+
+<tr>
+<td>Message_Logger</td>
+
+<td>
+<center>n/a</center>
+</td>
+
+<td>
+<center>>100000.0</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 153.91%.</font>
+<p><font face="Arial,Helvetica">The results are the same if the default
+priority assignment option is set.</font>
+<h2>
+<a NAME="Caseva3"></a><font face="Comic Sans MS"><font color="#3333FF">Caseva_Simplified</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This example represents
+a simplification of the software design of the CASEVA robot controller,
+to use less protected objects and operations. Therefore, it is a linear
+system running on a single processor.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The analysis tools
+should be executed with the "Calculate Ceilings" option set. The results
+of the example are as follows, with any of the monoprocessor or&nbsp; linear
+analysis tools (Classic_RM, Varying_Priorities, Holistic, Offset_Based_Unoptimized,
+and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Servo_Control</td>
+
+<td>
+<center>1420</center>
+</td>
+
+<td>
+<center>220.31</center>
+</td>
+</tr>
+
+<tr>
+<td>Trajectory_Planning</td>
+
+<td>
+<center>13240</center>
+</td>
+
+<td>
+<center>263.28</center>
+</td>
+</tr>
+
+<tr>
+<td>Light Manager</td>
+
+<td>
+<center>13564</center>
+</td>
+
+<td>
+<center>40050.0</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>Reporter</td>
+
+<td>137614</td>
+
+<td>653.13</td>
+</tr>
+
+<tr>
+<td>Message_Logger</td>
+
+<td>
+<center>n/a</center>
+</td>
+
+<td>
+<center>>100000.0</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 100.78%.</font>
+<p><font face="Arial,Helvetica">The results are the same if the default
+priority assignment option is set.</font>
+<h2>
+<a NAME="Caseva4"></a><font face="Comic Sans MS"><font color="#3333FF">Caseva_With_Clock</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This example represents
+a modification to the CASEVA example, to incorporate the overhead effects
+of a hypothetical OS timer of the type Alarm Clock, which produces an interrupt
+each time a task requests being awakened.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The analysis tools
+should be executed with the "Calculate Ceilings" option set. The results
+of the example are as follows, for the </font><b><font color="#993300">Classic_RM,
+Varying_Priorities, and Offset_Based analysis</font></b><font color="#000000">
+tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Servo_Control</td>
+
+<td>
+<center>1620</center>
+</td>
+
+<td>
+<center>214.84</center>
+</td>
+</tr>
+
+<tr>
+<td>Trajectory_Planning</td>
+
+<td>
+<center>13540</center>
+</td>
+
+<td>
+<center>257.03</center>
+</td>
+</tr>
+
+<tr>
+<td>Light Manager</td>
+
+<td>
+<center>13864</center>
+</td>
+
+<td>
+<center>39079.7</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>Reporter</td>
+
+<td>139314</td>
+
+<td>636.72</td>
+</tr>
+
+<tr>
+<td>Message_Logger</td>
+
+<td>
+<center>n/a</center>
+</td>
+
+<td>
+<center>>100000.0</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 98.44%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">For the </font><b><font color="#993300">Offset_Based_Unoptimized
+</font></b><font color="#000000">analysis
+tool the results are:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Servo_Control</td>
+
+<td>
+<center>1770</center>
+</td>
+
+<td>
+<center>214.84</center>
+</td>
+</tr>
+
+<tr>
+<td>Trajectory_Planning</td>
+
+<td>
+<center>13690</center>
+</td>
+
+<td>
+<center>257.03</center>
+</td>
+</tr>
+
+<tr>
+<td>Light Manager</td>
+
+<td>
+<center>14014</center>
+</td>
+
+<td>
+<center>39079.7</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>Reporter</td>
+
+<td>139464</td>
+
+<td>636.72</td>
+</tr>
+
+<tr>
+<td>Message_Logger</td>
+
+<td>
+<center>n/a</center>
+</td>
+
+<td>
+<center>>100000.0</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 98.44%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">And for the </font><b><font color="#993300">Holistic
+analysis</font></b><font color="#000000"> tool the results are:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Servo_Control</td>
+
+<td>
+<center>1820</center>
+</td>
+
+<td>
+<center>214.84</center>
+</td>
+</tr>
+
+<tr>
+<td>Trajectory_Planning</td>
+
+<td>
+<center>13740</center>
+</td>
+
+<td>
+<center>257.03</center>
+</td>
+</tr>
+
+<tr>
+<td>Light Manager</td>
+
+<td>
+<center>14064</center>
+</td>
+
+<td>
+<center>39079.7</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>Reporter</td>
+
+<td>139514</td>
+
+<td>636.72</td>
+</tr>
+
+<tr>
+<td>Message_Logger</td>
+
+<td>
+<center>n/a</center>
+</td>
+
+<td>
+<center>>100000.0</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 98.44%.</font>
+<p><font face="Arial,Helvetica">In all cases, the results are the same
+if the default priority assignment option is set.</font>
+<h2>
+<a NAME="Caseva5"></a><font face="Comic Sans MS"><font color="#3333FF">Caseva_With_Timer</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This example represents
+a modification to the CASEVA example, to incorporate the overhead effects
+of a hypothetical OS timer of the "Ticker" type , which produces a periodic
+interrupt and introduces jitter in the wake up times.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The analysis tools
+should be executed with the "Calculate Ceilings" option set. The results
+of the example are as follows, with any of the monoprocessor or linear
+analysis tools (Classic_RM, Varying_Priorities, Holistic, Offset_Based_Unoptimized,
+and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Servo_Control</td>
+
+<td>
+<center>2520</center>
+</td>
+
+<td>
+<center>196.88</center>
+</td>
+</tr>
+
+<tr>
+<td>Trajectory_Planning</td>
+
+<td>
+<center>14940</center>
+</td>
+
+<td>
+<center>235.16</center>
+</td>
+</tr>
+
+<tr>
+<td>Light Manager</td>
+
+<td>
+<center>16649</center>
+</td>
+
+<td>
+<center>35848.4</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>Reporter</td>
+
+<td>148584</td>
+
+<td>584.38</td>
+</tr>
+
+<tr>
+<td>Message_Logger</td>
+
+<td>
+<center>n/a</center>
+</td>
+
+<td>
+<center>>100000.0</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 89.84%.</font>
+<p><font face="Arial,Helvetica">The results are the same if the default
+priority assignment option is set.</font>
+<h2>
+<a NAME="Controller"></a><font face="Comic Sans MS"><font color="#3333FF">Controller</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This example represents
+a system with three periodic tasks and one aperiodic task of the sporadic
+kind.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The analysis tools
+should be executed with the "Calculate Ceilings" option set. The results
+of the example are as follows, with any of the monoprocessor or linear
+analysis tools (Classic_RM, Varying_Priorities, Holistic, Offset_Based_Unoptimized,
+and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Control</td>
+
+<td>
+<center>46</center>
+</td>
+
+<td>
+<center>39.84</center>
+</td>
+</tr>
+
+<tr>
+<td>Planning</td>
+
+<td>
+<center>82</center>
+</td>
+
+<td>
+<center>29.69</center>
+</td>
+</tr>
+
+<tr>
+<td>Status</td>
+
+<td>
+<center>276</center>
+</td>
+
+<td>
+<center>23.44</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>Emergency</td>
+
+<td>5.5</td>
+
+<td>9.38</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 8.59%.</font>
+<p><font face="Arial,Helvetica">The results are the same if the default
+priority assignment option is set.</font>
+<h2>
+<a NAME="Controller2"></a><font face="Comic Sans MS"><font color="#3333FF">Controller2</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This example represents
+a system with three periodic tasks and two aperiodic tasks of two kinds:
+sporadic and unbounded.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The analysis tools
+should be executed with the "Calculate Ceilings" option set. The results
+of the example are as follows, with any of the monoprocessor or linear
+analysis tools and no priority assignment (Classic_RM, Varying_Priorities,
+Holistic, Offset_Based_Unoptimized, and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Control</td>
+
+<td>
+<center>66</center>
+</td>
+
+<td>
+<center>6.25</center>
+</td>
+</tr>
+
+<tr>
+<td>lanning</td>
+
+<td>
+<center>88</center>
+</td>
+
+<td>
+<center>4.69</center>
+</td>
+</tr>
+
+<tr>
+<td>Status</td>
+
+<td>
+<center>296</center>
+</td>
+
+<td>
+<center>3.91</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>Emergency</td>
+
+<td>5</td>
+
+<td>13.28</td>
+</tr>
+
+<tr>
+<td>Communications</td>
+
+<td>
+<center>n/a</center>
+</td>
+
+<td>
+<center>n/a</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 0.78125%.</font>
+<p><font face="Arial,Helvetica">The priority assignment&nbsp; option should
+not be set because the soft deadline of the communications task is not
+taken into account by the priority assignment tools, and it would not be
+met.</font>
+<br>&nbsp;
+<h2>
+<a NAME="RMT"></a><font face="Comic Sans MS"><font color="#3333FF">RMT</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This example represents
+a simplification of the software design of the RMT robot controller built
+by our group. It is a linear system running on a distributed system.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The analysis tools
+should be executed with the "Calculate Ceilings" option set. The results
+of the example are as follows, for the </font><b><font color="#993300">Offset_Based
+analysis</font></b><font color="#000000"> tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Servo_Control</td>
+
+<td>
+<center>1133</center>
+</td>
+
+<td>
+<center>204.69</center>
+</td>
+</tr>
+
+<tr>
+<td>Main_Control_Loop</td>
+
+<td>
+<center>34374</center>
+</td>
+
+<td>
+<center>47.66</center>
+</td>
+</tr>
+
+<tr>
+<td>Gui</td>
+
+<td>
+<center>191358</center>
+</td>
+
+<td>
+<center>434.38</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 37.50%.</font>
+<p><font face="Arial,Helvetica">For the <b><font color="#993300">Offset_Based_Unoptimized</font></b>
+tool the results are:</font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Servo_Control</td>
+
+<td>
+<center>1133</center>
+</td>
+
+<td>
+<center>161.72</center>
+</td>
+</tr>
+
+<tr>
+<td>Main_Control_Loop</td>
+
+<td>
+<center>40563</center>
+</td>
+
+<td>
+<center>26.56</center>
+</td>
+</tr>
+
+<tr>
+<td>Gui</td>
+
+<td>
+<center>191408</center>
+</td>
+
+<td>
+<center>434.38</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">And the system slack for this tool is 21.88%.</font>
+<p><font face="Arial,Helvetica">For the <b><font color="#993300">Holistic</font></b>
+tool the results are:</font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Servo_Control</td>
+
+<td>
+<center>1143</center>
+</td>
+
+<td>
+<center>-100.00</center>
+</td>
+</tr>
+
+<tr>
+<td>Main_Control_Loop</td>
+
+<td>
+<center>69943</center>
+</td>
+
+<td>
+<center>-24.22</center>
+</td>
+</tr>
+
+<tr>
+<td>Gui</td>
+
+<td>
+<center>193749</center>
+</td>
+
+<td>
+<center>-100.00</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">And the system slack for this tool is -21.09%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set, the results of the example are as follows, for
+the </font><b><font color="#993300">Offset_Based </font></b><font color="#000000">analysis
+tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Servo_Control</td>
+
+<td>
+<center>2380</center>
+</td>
+
+<td>
+<center>208.59</center>
+</td>
+</tr>
+
+<tr>
+<td>Main_Control_Loop</td>
+
+<td>
+<center>34336</center>
+</td>
+
+<td>
+<center>47.66</center>
+</td>
+</tr>
+
+<tr>
+<td>Gui</td>
+
+<td>
+<center>191358</center>
+</td>
+
+<td>
+<center>434.38</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 42.19%.</font>
+<h2>
+<a NAME="Linear"></a><font face="Comic Sans MS"><font color="#3333FF">Linear_Transactions_Only</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This example represents
+a linear system running on a distributed system. It has two processors,
+a network, and two transactions.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, for the </font><b><font color="#993300">Offset_Based
+analysis</font></b><font color="#000000"> tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Trans1</td>
+
+<td>
+<center>8140</center>
+</td>
+
+<td>
+<center>70.31</center>
+</td>
+</tr>
+
+<tr>
+<td>Trans2</td>
+
+<td>
+<center>6780</center>
+</td>
+
+<td>
+<center>23.44</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 17.97%.</font>
+<p><font face="Arial,Helvetica">For the <b><font color="#993300">Offset_Based_Unoptimized</font></b>
+tool the results are:</font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Trans1</td>
+
+<td>
+<center>8940</center>
+</td>
+
+<td>
+<center>58.59</center>
+</td>
+</tr>
+
+<tr>
+<td>Trans2</td>
+
+<td>
+<center>8700</center>
+</td>
+
+<td>
+<center>19.53</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">And the system slack for this tool is 14.84%.</font>
+<p><font face="Arial,Helvetica">For the <b><font color="#993300">Holistic</font></b>
+tool the results are:</font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Trans1</td>
+
+<td>
+<center>8940</center>
+</td>
+
+<td>
+<center>42.19</center>
+</td>
+</tr>
+
+<tr>
+<td>Trans2</td>
+
+<td>
+<center>11790</center>
+</td>
+
+<td>
+<center>13.28</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">And the system slack for this tool is 10.16%.</font>
+<p><font face="Arial,Helvetica">If the default priority assignment option
+is set, t<font color="#000000">he results of the example are as follows,
+for the </font><b><font color="#993300">Offset_Based analysis</font></b><font color="#000000">
+tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Trans1</td>
+
+<td>
+<center>3620</center>
+</td>
+
+<td>
+<center>349.22</center>
+</td>
+</tr>
+
+<tr>
+<td>Trans2</td>
+
+<td>
+<center>8550</center>
+</td>
+
+<td>
+<center>246.88</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 163.28%.</font>
+<p><font face="Arial,Helvetica">If the default priority assignment option
+is set, for the <b><font color="#993300">Offset_Based_Unoptimized</font></b>
+tool the results are:</font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Trans1</td>
+
+<td>
+<center>3910</center>
+</td>
+
+<td>
+<center>310.94</center>
+</td>
+</tr>
+
+<tr>
+<td>Trans2</td>
+
+<td>
+<center>12090</center>
+</td>
+
+<td>
+<center>126.56</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">And the system slack for this tool is 97.66%.</font>
+<p><font face="Arial,Helvetica">If the default priority assignment option
+is set, for the <b><font color="#993300">Holistic</font></b> tool the results
+are:</font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Trans1</td>
+
+<td>
+<center>3910</center>
+</td>
+
+<td>
+<center>300.78</center>
+</td>
+</tr>
+
+<tr>
+<td>Trans2</td>
+
+<td>
+<center>12730</center>
+</td>
+
+<td>
+<center>118.75</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">And the system slack for this tool is 91.41%.</font>
+<h2>
+<a NAME="P_A_Test_Linear_Transactions_Only"></a><font face="Comic Sans MS"><font color="#3333FF">P_A_Test_Linear_Transactions_Only</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This example is the
+same as the Linear_Transactions_Only, but without explicit priorities.
+Priority assignment techniques need to be used. The results obtained are
+much better than with the manual priority assigment made for Linear_Transactions_Only.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, for the </font><b><font color="#993300">Offset_Based
+analysis</font></b><font color="#000000"> tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<center>
+<dt>
+<b>Transaction</b></dt></center>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<center>
+<dt>
+<b>Slack</b></dt></center>
+
+<dt>
+<b>(No Priority Assignment)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<center>
+<dt>
+<b>Slack&nbsp;</b></dt></center>
+
+<center>
+<dt>
+<b>(HOPA)</b></dt></center>
+</blockquote>
+</td>
+
+<td>
+<blockquote>
+<center>
+<dt>
+<b>Slack</b></dt></center>
+
+<center>
+<dt>
+<b>(Simulated Annealing)</b></dt></center>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>Trans1</td>
+
+<td>
+<center>70.21</center>
+</td>
+
+<td>
+<center>349.22</center>
+</td>
+
+<td>
+<center>349.22</center>
+</td>
+</tr>
+
+<tr>
+<td>Trans2</td>
+
+<td>
+<center>23.44</center>
+</td>
+
+<td>
+<center>246.88</center>
+</td>
+
+<td>
+<center>246.88</center>
+</td>
+</tr>
+
+<tr>
+<td>System</td>
+
+<td>
+<center>17.97</center>
+</td>
+
+<td>
+<center>163.28</center>
+</td>
+
+<td>
+<center>163.28</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">Note: Results with priority assignment
+may differ from one execution to another due to the randomness in the algorithms.</font>
+<h2>
+<font face="Comic Sans MS"><font color="#3333FF">Example_5_1_2_2</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 5.1.2.2 of&nbsp; "A Practitioner's Handbook for Real-Time
+Analysis" (K. Klein et al, Kluwer Academic Pub., 1993). It is a linear
+system running on a single processor, which uses an interrupt service routine.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with any of the monoprocessor or linear analysis
+tools and no priority assignment (Classic_RM, Varying_Priorities, Holistic,
+Offset_Based_Unoptimized, and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t1</td>
+
+<td>
+<center>8</center>
+</td>
+
+<td>
+<center>78.91</center>
+</td>
+</tr>
+
+<tr>
+<td>int2</td>
+
+<td>
+<center>2</center>
+</td>
+
+<td>
+<center>632.81</center>
+</td>
+</tr>
+
+<tr>
+<td>t2</td>
+
+<td>
+<center>303</center>
+</td>
+
+<td>
+<center>443.75</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>t3</td>
+
+<td>30</td>
+
+<td>107.03</td>
+</tr>
+
+<tr>
+<td>t4</td>
+
+<td>
+<center>77</center>
+</td>
+
+<td>
+<center>107.81</center>
+</td>
+</tr>
+
+<tr>
+<td>t5</td>
+
+<td>
+<center>297</center>
+</td>
+
+<td>
+<center>50.00</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 17.97%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If we set the priority
+asisgnment option to default, the results of the example are as follows,
+with any of the monoprocessor or linear analysis tools (Classic_RM, Varying_Priorities,
+Holistic, Offset_Based_Unoptimized, and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t1</td>
+
+<td>
+<center>8</center>
+</td>
+
+<td>
+<center>161.72</center>
+</td>
+</tr>
+
+<tr>
+<td>int2</td>
+
+<td>
+<center>2</center>
+</td>
+
+<td>
+<center>1200</center>
+</td>
+</tr>
+
+<tr>
+<td>t2</td>
+
+<td>
+<center>83</center>
+</td>
+
+<td>
+<center>417.97</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>t3</td>
+
+<td>30</td>
+
+<td>204.69</td>
+</tr>
+
+<tr>
+<td>t4</td>
+
+<td>
+<center>77</center>
+</td>
+
+<td>
+<center>285.94</center>
+</td>
+</tr>
+
+<tr>
+<td>t5</td>
+
+<td>
+<center>404</center>
+</td>
+
+<td>
+<center>200</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 42.97%.</font>
+<h2>
+<a NAME="Example1"></a><font face="Comic Sans MS"><font color="#3333FF">Example_5_2_4_1</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 5.2.4.1 of&nbsp; "A Practitioner's Handbook for Real-Time
+Analysis" (K. Klein et al, Kluwer Academic Pub., 1993). It is a linear
+system running on a single processor, in which the calculation of blocking
+times is the goal.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The analysis tools
+should be executed with the "Calculate Ceilings" option set. The results
+of the example are as follows, with any of the monoprocessor or linear
+analysis tools (Classic_RM, Varying_Priorities, Holistic, Offset_Based_Unoptimized,
+and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+
+<td>
+<dl>
+<dt>
+<b>Blocking Time</b></dt>
+</dl>
+</td>
+</tr>
+
+<tr>
+<td>t1</td>
+
+<td>
+<center>2</center>
+</td>
+
+<td>
+<center>66.41</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+</tr>
+
+<tr>
+<td>t2</td>
+
+<td>
+<center>53</center>
+</td>
+
+<td>
+<center>10.16</center>
+</td>
+
+<td>
+<center>18</center>
+</td>
+</tr>
+
+<tr>
+<td>t3</td>
+
+<td>
+<center>73</center>
+</td>
+
+<td>
+<center>19.53</center>
+</td>
+
+<td>
+<center>18</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>t4</td>
+
+<td>182</td>
+
+<td>14.06</td>
+
+<td>16</td>
+</tr>
+
+<tr>
+<td>t5</td>
+
+<td>
+<center>251</center>
+</td>
+
+<td>
+<center>46.88</center>
+</td>
+
+<td>
+<center>16</center>
+</td>
+</tr>
+
+<tr>
+<td>t6</td>
+
+<td>
+<center>300</center>
+</td>
+
+<td>
+<center>25.00</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 3.13%.</font>
+<p><font face="Arial,Helvetica">The results are the same if the default
+priority assignment option is set.</font>
+<br>&nbsp;
+<h2>
+<a NAME="Example2"></a><font face="Comic Sans MS"><font color="#3333FF">Example_5_2_4_2</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 5.2.4.2 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993). It is a linear system running
+on a single processor, in which the calculation of blocking times is the
+goal.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The analysis tools
+should be executed with the "Calculate Ceilings" option set. The results
+of the example are as follows, with any of the monoprocessor or linear
+analysis tools (Classic_RM, Varying_Priorities, Holistic, Offset_Based_Unoptimized,
+and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+
+<td>
+<dl>
+<dt>
+<b>Blocking Time</b></dt>
+</dl>
+</td>
+</tr>
+
+<tr>
+<td>t1</td>
+
+<td>
+<center>2</center>
+</td>
+
+<td>
+<center>66.41</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+</tr>
+
+<tr>
+<td>t2</td>
+
+<td>
+<center>69</center>
+</td>
+
+<td>
+<center>10.16</center>
+</td>
+
+<td>
+<center>34</center>
+</td>
+</tr>
+
+<tr>
+<td>t3</td>
+
+<td>
+<center>91</center>
+</td>
+
+<td>
+<center>19.53</center>
+</td>
+
+<td>
+<center>34</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>t4</td>
+
+<td>182</td>
+
+<td>14.06</td>
+
+<td>16</td>
+</tr>
+
+<tr>
+<td>t5</td>
+
+<td>
+<center>251</center>
+</td>
+
+<td>
+<center>46.88</center>
+</td>
+
+<td>
+<center>16</center>
+</td>
+</tr>
+
+<tr>
+<td>t6</td>
+
+<td>
+<center>300</center>
+</td>
+
+<td>
+<center>25.00</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 3.13%.</font>
+<p><font face="Arial,Helvetica">The results are the same if the default
+priority assignment option is set.</font>
+<br>&nbsp;
+<h2>
+<a NAME="Example3"></a><font face="Comic Sans MS"><font color="#3333FF">Example_5_3_5_1</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 5.3.5.1 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993). It is a linear system running
+on a single processor, in which there are two sporadic tasks that are handled
+through interrupt service routines.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with any of the monoprocessor or linear analysis
+tools (Classic_RM, Varying_Priorities, Holistic, Offset_Based_Unoptimized,
+and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_i1</td>
+
+<td>
+<center>32</center>
+</td>
+
+<td>
+<center>-100.00</center>
+</td>
+</tr>
+
+<tr>
+<td>t_a2</td>
+
+<td>
+<center>146</center>
+</td>
+
+<td>
+<center>-100.00</center>
+</td>
+</tr>
+
+<tr>
+<td>t_i3</td>
+
+<td>
+<center>32</center>
+</td>
+
+<td>
+<center>-96.88</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>t_a4</td>
+
+<td>39</td>
+
+<td>-100.00</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -84.38%.</font>
+<p><font face="Arial,Helvetica">The results are the same if the default
+priority assignment option is set.</font>
+<h2>
+<a NAME="Example4"></a><font face="Comic Sans MS"><font color="#3333FF">Example_5_3_5_2</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 5.3.5.2 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993). It is a linear system running
+on a single processor, in which there are two sporadic tasks that are each
+handled through a short interrupt service routine, followed by an application
+task.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the</font><b><font color="#990000"> Offset_Based</font></b><font color="#000000">
+analysis tools:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>2.5</center>
+</td>
+
+<td>
+<center>25.00</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>146</center>
+</td>
+
+<td>
+<center>10.16</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>46</center>
+</td>
+
+<td>
+<center>13.28</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>t_4</td>
+
+<td>9.5</td>
+
+<td>7.03</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 3.91%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If we use the </font><b><font color="#990000">Offset_Based_Unoptimized</font></b><font color="#000000">
+analysis tool, we get:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>3</center>
+</td>
+
+<td>
+<center>25.00</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>146</center>
+</td>
+
+<td>
+<center>8.59</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>46.5</center>
+</td>
+
+<td>
+<center>10.94</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>t_4</td>
+
+<td>9.5</td>
+
+<td>7.03</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">And the system slack for this tool is 3.13%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If we use the </font><b><font color="#990000">Holistic
+</font></b><font color="#000000">analysis
+tool, we get:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>3.5</center>
+</td>
+
+<td>
+<center>25.00</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>146</center>
+</td>
+
+<td>
+<center>8.59</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>47</center>
+</td>
+
+<td>
+<center>10.94</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>t_4</td>
+
+<td>9.5</td>
+
+<td>7.03</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">And the system slack for this tool is 3.13%.</font>
+<p><font face="Arial,Helvetica">In all cases, the results are the same
+if the default priority assignment option is set.</font>
+<h2>
+<a NAME="Example5"></a><font face="Comic Sans MS"><font color="#3333FF">Example_5_3_5_3</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 5.3.5.3 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993). It is a linear system running
+on a single processor, in which there are two sporadic tasks that are each
+handled through polling servers.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with any of the analysis tools (Classic_RM, Varying_Priorities,
+Holistic, Offset_Based_Unoptimized, and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>5</center>
+</td>
+
+<td>
+<center>-100.00</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>231.1</center>
+</td>
+
+<td>
+<center>-15.63</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>127.5</center>
+</td>
+
+<td>
+<center>-19.53</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>t_4</td>
+
+<td>9.9</td>
+
+<td>-23.44</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -6.25%.
+The results are different than in the Real-Time Analysis Handbook because
+MAST uses a more precise technique to model the polling tasks.</font>
+<p><font face="Arial,Helvetica">The results are the same if the default
+priority assignment option is set.</font>
+<h2>
+<a NAME="Example6"></a><font face="Comic Sans MS"><font color="#3333FF">Example_5_3_5_4</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 5.3.5.4 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993). It is a linear system running
+on a single processor, in which there are two sporadic tasks that are each
+handled through sporadic servers.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the&nbsp;</font><b><font color="#993300">
+Holistic, Offset_Based, or Offset_Based_Unoptimized</font></b><font color="#000000">
+analysis tools.</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>3.5</center>
+</td>
+
+<td>
+<center>0.00</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>146</center>
+</td>
+
+<td>
+<center>10.16</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>47</center>
+</td>
+
+<td>
+<center>0.00</center>
+</td>
+</tr>
+
+<tr ALIGN=CENTER>
+<td ALIGN=LEFT VALIGN=TOP>t_4</td>
+
+<td>9.5</td>
+
+<td>7.03</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 0.00%,
+because the capacity of the sporadic servers is just equal to the maximum
+load.</font>
+<p><font face="Arial,Helvetica">The results are the same if the default
+priority assignment option is set.</font>
+<h2>
+<a NAME="Example7"></a><font face="Comic Sans MS"><font color="#3333FF">Example_5_3_6_1</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 5.3.6.1 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993). It is a linear system running
+on a single processor, in which there is one bursty task that is handled
+through an interrupt service routine.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with any of the monoprocessor or linear analysis
+tools (Classic_RM, Varying_Priorities, Holistic, Offset_Based_Unoptimized,
+and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>35</center>
+</td>
+
+<td>
+<center>-100.00</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>25</center>
+</td>
+
+<td>
+<center>-40.63</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>290</center>
+</td>
+
+<td>
+<center>-100.0</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -28.91%.</font>
+<p><font face="Arial,Helvetica">The results are the same if the default
+priority assignment option is set.</font>
+<h2>
+<a NAME="Example8"></a><font face="Comic Sans MS"><font color="#3333FF">Example_5_3_6_2</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 5.3.6.2 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993). It is a linear system running
+on a single processor, in which there in which there is one bursty task
+that is handled through a short&nbsp; interrupt service routine, that triggers
+an application task.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with with the </font><b><font color="#990000">Offset_Based</font></b><font color="#000000">
+or the </font><b><font color="#990000">Offset_Based_Unoptimized</font></b><font color="#000000">
+analysis tools:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>12.5</center>
+</td>
+
+<td>
+<center>25.00</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>47.5</center>
+</td>
+
+<td>
+<center>63.28</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>295</center>
+</td>
+
+<td>
+<center>28.91</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 10.94%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If we use the </font><b><font color="#990000">Holistic</font></b><font color="#000000">
+analysis tool, we get:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>12.5</center>
+</td>
+
+<td>
+<center>25.00</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>50</center>
+</td>
+
+<td>
+<center>63.28</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>295</center>
+</td>
+
+<td>
+<center>28.91</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this tool is 10.94%.</font>
+<p><font face="Arial,Helvetica">In all cases, the results are the same
+if the default priority assignment option is set.</font>
+<h2>
+<a NAME="Example9"></a><font face="Comic Sans MS"><font color="#3333FF">Example_5_3_6_3</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 5.3.6.3 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993). It is a linear system running
+on a single processor, in which there in which there is one bursty task
+that is handled through a short&nbsp; interrupt service routine, that triggers
+an application task running under a polling server.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with with any of the monoprocessor or linear analysis
+tools (</font><b><font color="#990000">classic_RM, Varying_Priorities,
+Holistic, Offset_Based, </font></b><font color="#000000">or the </font><b><font color="#990000">Offset_Based_Unoptimized</font></b><font color="#000000">):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>13</center>
+</td>
+
+<td>
+<center>29.69</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>191</center>
+</td>
+
+<td>
+<center>90.63</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>266</center>
+</td>
+
+<td>
+<center>35.16</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 13.28%.</font>
+<p><font face="Arial,Helvetica">In all cases, the results are the same
+if the default priority assignment option is set.</font>
+<p><font face="Arial,Helvetica">The results are different than in the Real-Time
+Analysis Handbook, because MAST uses a more precise technique to model
+polling server tasks.</font>
+<h2>
+<a NAME="Example10"></a><font face="Comic Sans MS"><font color="#3333FF">Example_5_3_6_4</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 5.3.6.4 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993). It is a linear system running
+on a single processor, in which there is one bursty task that is handled
+through a sporadic server.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with any of the linear analysis tools (Holistic,
+Offset_Based_Unoptimized, or Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>12.5</center>
+</td>
+
+<td>
+<center>-100.00</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>270</center>
+</td>
+
+<td>
+<center>-20.31</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>271</center>
+</td>
+
+<td>
+<center>-100.0</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -20.31%.</font>
+<p>With the default priority assignment option set, the system slack obtained
+is the same, although the response times are different because some priorities
+are exchanged.
+<h2>
+<a NAME="Example11"></a><font face="Comic Sans MS"><font color="#3333FF">Example_5_3_7_1</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 5.3.7.1 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993). It is a linear system running
+on a single processor, in which there is one unbounded task that is handled
+through a sporadic server.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with any of the monoprocessor or linear analysis
+tools (Classic_RM, Varying_Priorities, Holistic, Offset_Based_Unoptimized,
+and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>>>1E100</center>
+</td>
+
+<td>
+<center>>100000</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>42</center>
+</td>
+
+<td>
+<center>134.38</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>146</center>
+</td>
+
+<td>
+<center>115.63</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 59.38%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows if the default priority assignment option is set,
+with any of the monoprocessor or linear analysis tools (Classic_RM, Varying_Priorities,
+Holistic,
+Offset_Based_Unoptimized, and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>>>1E100</center>
+</td>
+
+<td>
+<center>>100000</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>40</center>
+</td>
+
+<td>
+<center>150</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>140</center>
+</td>
+
+<td>
+<center>129.69</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 66.41%.</font>
+<h2>
+<a NAME="Example_6_4_8_1"></a><font face="Comic Sans MS"><font color="#3333FF">Example_6_4_8_1</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 6.4.8.1 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993).</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the </font><b><font color="#990000">Offset_Based</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>106.8</center>
+</td>
+
+<td>
+<center>-17.19</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>67.6</center>
+</td>
+
+<td>
+<center>-10.16</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>283.2</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -6.25%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the </font><b><font color="#990000">Offset_Based_Unoptimized</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>173.4</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>133</center>
+</td>
+
+<td>
+<center>-96.09</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>496.6</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -96.09%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If we use the </font><b><font color="#990000">Holistic</font></b><font color="#000000">
+analysis tool, we get:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>173.6</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>134.4</center>
+</td>
+
+<td>
+<center>-96.88</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>496.8</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this tool is -96.09%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is used, the results of the example are as follows, with
+the </font><b><font color="#990000">Offset_Based</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>41.6</center>
+</td>
+
+<td>
+<center>2.34</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>147.8</center>
+</td>
+
+<td>
+<center>3.13</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>283.2</center>
+</td>
+
+<td>
+<center>51.56</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 0.78125%.</font>
+<h2>
+<a NAME="Example_6_4_8_2"></a><font face="Comic Sans MS"><font color="#3333FF">Example_6_4_8_2</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 6.4.8.2 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993).</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the </font><b><font color="#990000">Offset_Based</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>41.6</center>
+</td>
+
+<td>
+<center>2.34</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>147.8</center>
+</td>
+
+<td>
+<center>3.13</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>283.2</center>
+</td>
+
+<td>
+<center>51.56</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 0.78125%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with with the </font><b><font color="#990000">Offset_Based_Unoptimized</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>42.0</center>
+</td>
+
+<td>
+<center>1.56</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>148.2</center>
+</td>
+
+<td>
+<center>2.34</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>283.6</center>
+</td>
+
+<td>
+<center>46.88</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 0.78125%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If we use the </font><b><font color="#990000">Holistic</font></b><font color="#000000">
+analysis tool, we get:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>42.2</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>149.6</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>283.8</center>
+</td>
+
+<td>
+<center>46.09</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this tool is 0%.</font>
+<p><font face="Arial,Helvetica">In all cases, the results are the same
+if we set the priority assignment option.</font>
+<br>&nbsp;
+<h2>
+<a NAME="Example_6_4_8_3"></a><font face="Comic Sans MS"><font color="#3333FF">Example_6_4_8_3</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 6.4.8.3 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993).</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the </font><b><font color="#990000">Offset_Based</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>41.6</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>169</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>298.2</center>
+</td>
+
+<td>
+<center>14.84</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 0%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with with the </font><b><font color="#990000">Offset_Based_Unoptimized</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>42</center>
+</td>
+
+<td>
+<center>-0.78125</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>169.4</center>
+</td>
+
+<td>
+<center>-0.78125</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>591.8</center>
+</td>
+
+<td>
+<center>-11.72</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -0.78125%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If we use the </font><b><font color="#990000">Holistic</font></b><font color="#000000">
+analysis tool, we get:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>42.2</center>
+</td>
+
+<td>
+<center>-0.78125</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>170.8</center>
+</td>
+
+<td>
+<center>-0.78125</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>592</center>
+</td>
+
+<td>
+<center>-14.84</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this tool is -0.78125%.</font>
+<p><font face="Arial,Helvetica">The results are the same if the default
+priority assignment option is set.</font>
+<h2>
+<a NAME="Example_6_4_9_1"></a><font face="Comic Sans MS"><font color="#3333FF">Example_6_4_9_1</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 6.4.9.1 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993).</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the </font><b><font color="#990000">Offset_Based</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>102</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2a</td>
+
+<td>
+<center>62.8</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2b</td>
+
+<td>
+<center>62.8</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>273.6</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -99.22%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with with the </font><b><font color="#990000">Offset_Based_Unoptimized</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>102.6</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2a</td>
+
+<td>
+<center>63</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2b</td>
+
+<td>
+<center>63</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>274.2</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -99.22%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set, the tool does not find a better solution.</font></font>
+<h2>
+<a NAME="Example_6_4_9_2"></a><font face="Comic Sans MS"><font color="#3333FF">Example_6_4_9_2</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 6.4.9.2 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993).</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the </font><b><font color="#990000">Offset_Based</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>102</center>
+</td>
+
+<td>
+<center>-4.69</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>62.8</center>
+</td>
+
+<td>
+<center>-3.13</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>2.8</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>273.6</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -2.34%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with with the </font><b><font color="#990000">Offset_Based_Unoptimized</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>102.6</center>
+</td>
+
+<td>
+<center>-6.25</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>63</center>
+</td>
+
+<td>
+<center>-4.69</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>3</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>274.2</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -3.13%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If we use the </font><b><font color="#990000">Holistic</font></b><font color="#000000">
+analysis tool, we get:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>102.8</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>63.2</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>3.2</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>274.4</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this tool is -14.84%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set, the tool does not find a better solution.</font></font>
+<h2>
+<a NAME="Example_6_4_9_2a"></a><font face="Comic Sans MS"><font color="#3333FF">Example_6_4_9_2a</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 6.4.9.2 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993). modified to use permanent
+overridden priorities to represent the changes of priorities in the same
+trasnaction. Notice that the behavior is different under this new model,
+because a job of a transaction cannot start executing until the previous
+job had finished.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the </font><b><font color="#990000">Varying_Priorities</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>101.8</center>
+</td>
+
+<td>
+<center>-4.69</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>62.8</center>
+</td>
+
+<td>
+<center>-3.13</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>2.8</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>273.6</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -2.34%.</font>
+<p><font face="Arial,Helvetica">In this case, because the system is not
+schedulable, the priority assignment techniques do not find a solution.</font>
+<br>&nbsp;
+<h2>
+<a NAME="Example_6_5_10_1"></a><font face="Comic Sans MS"><font color="#3333FF">Example_6_5_10_1</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 6.5.10.1 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993).</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the </font><b><font color="#990000">Offset_Based</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>121</center>
+</td>
+
+<td>
+<center>-42.97</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>113</center>
+</td>
+
+<td>
+<center>-29.69</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>98</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>197</center>
+</td>
+
+<td>
+<center>-17.97</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>354</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>372</center>
+</td>
+
+<td>
+<center>-17.97</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -17.97%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with with the </font><b><font color="#990000">Offset_Based_Unoptimized</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-89.06</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-69.53</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-82.03</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -51.56%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If we use the </font><b><font color="#990000">Holistic</font></b><font color="#000000">
+analysis tool, we get:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-77.34</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-96.09</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this tool is -58.59%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set, the results of the example with the </font><b><font color="#990000">Offset_Based</font></b><font color="#000000">
+analysis tool are not improved, because the system remains unschedulable.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set, the results of the example are as follows, with
+with the </font><b><font color="#990000">Offset_Based_Unoptimized</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-66.41</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -38.28%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set, and if we use the </font><b><font color="#990000">Holistic</font></b><font color="#000000">
+analysis tool, we get:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-82.72</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this tool is -50%.</font>
+<h2>
+<a NAME="Example_6_5_10_1a"></a><font face="Comic Sans MS"><font color="#3333FF">Example_6_5_10_1a</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 6.5.10.2 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993), modified to use permanent
+overridden priorities to represent the changes of priorities in the same
+trasnaction. Notice that the behavior is different under this new model,
+because a job of a transaction cannot start executing until the previous
+job had finished.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the </font><b><font color="#990000">Varying_Priorities</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>55</center>
+</td>
+
+<td>
+<center>-5.47</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>89</center>
+</td>
+
+<td>
+<center>-3.91</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>98</center>
+</td>
+
+<td>
+<center>-17.19</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>187</center>
+</td>
+
+<td>
+<center>-3.13</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>338</center>
+</td>
+
+<td>
+<center>-10.94</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>372</center>
+</td>
+
+<td>
+<center>-3.91</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -1.56%.</font>
+<p><font face="Arial,Helvetica">The priority assignment tools do not find
+a better solution in this case because they do not take into account the
+permanent overridden priorities used in this model.</font>
+<h2>
+<a NAME="Example_6_5_10_2"></a><font face="Comic Sans MS"><font color="#3333FF">Example_6_5_10_2</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 6.5.10.2 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993).</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the </font><b><font color="#990000">Offset_Based</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>49</center>
+</td>
+
+<td>
+<center>9.38</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>108</center>
+</td>
+
+<td>
+<center>5.47</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>80</center>
+</td>
+
+<td>
+<center>28.91</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>178</center>
+</td>
+
+<td>
+<center>3.91</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>219</center>
+</td>
+
+<td>
+<center>14.06</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>372</center>
+</td>
+
+<td>
+<center>5.47</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 1.56%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with with the </font><b><font color="#990000">Offset_Based_Unoptimized</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-71.88</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-99.22</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -48.44%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If we use the </font><b><font color="#990000">Holistic</font></b><font color="#000000">
+analysis tool, we get:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-73.44</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-99.22</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this tool is -55.47%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set with the </font><b><font color="#990000">Offset_Based</font></b><font color="#000000">
+analysis tool, no results better than the original are obtained.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set, the results of the example are as follows, with
+with the </font><b><font color="#990000">Offset_Based_Unoptimized</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-92.19</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-66.41</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -36.06%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set, and if we use the </font><b><font color="#990000">Holistic</font></b><font color="#000000">
+analysis tool, we get:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-78.91</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this tool is -50.78%.</font>
+<h2>
+<a NAME="Example_6_5_10_2a"></a><font face="Comic Sans MS"><font color="#3333FF">Example_6_5_10_2a</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 6.5.10.2 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993), modified to use permanent
+overridden priorities to represent the changes of priorities in the same
+trasnaction. Notice that the behavior is different under this new model,
+because a job of a transaction cannot start executing until the previous
+job had finished.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the </font><b><font color="#990000">Varying_Priorities</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>22</center>
+</td>
+
+<td>
+<center>-16.41</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>87</center>
+</td>
+
+<td>
+<center>-10.16</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>96</center>
+</td>
+
+<td>
+<center>-50</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>150</center>
+</td>
+
+<td>
+<center>-7.81</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>344</center>
+</td>
+
+<td>
+<center>-32.81</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>234</center>
+</td>
+
+<td>
+<center>-9.38</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -3.91%.</font>
+<p><font face="Arial,Helvetica">In this case, because the system is not
+schedulable, the priority assignment techniques do not find a solution.</font>
+<h2>
+<a NAME="Example_6_5_10_3"></a><font face="Comic Sans MS"><font color="#3333FF">Example_6_5_10_3</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 6.5.10.3 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993).</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with any of the monoprocessor or linear analysis
+tools (Classic_RM, Varying_Priorities, Holistic, Offset_Based_Unoptimized,
+and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>13</center>
+</td>
+
+<td>
+<center>9.38</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>47</center>
+</td>
+
+<td>
+<center>5.47</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>56</center>
+</td>
+
+<td>
+<center>28.91</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>123</center>
+</td>
+
+<td>
+<center>3.91</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>194</center>
+</td>
+
+<td>
+<center>14.06</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>372</center>
+</td>
+
+<td>
+<center>5.47</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 1.56%.</font>
+<p><font face="Arial,Helvetica">The results are the same if the default
+priority assignment option is set.</font>
+<h2>
+<a NAME="Example_6_6_12"></a><font face="Comic Sans MS"><font color="#3333FF">Example_6_6_12</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 6.6.12 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993).</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with any of the linear analysis tools (Holistic,
+Offset_Based_Unoptimized, and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>40</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>220</center>
+</td>
+
+<td>
+<center>-25</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>30</center>
+</td>
+
+<td>
+<center>-33.59</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>380</center>
+</td>
+
+<td>
+<center>-30.47</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>90</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -10.16%.</font>
+<p><font face="Arial,Helvetica">The results are the same if the default
+priority assignment option is set.</font>
+<h2>
+<a NAME="Example_6_6_13"></a><font face="Comic Sans MS"><font color="#3333FF">Example_6_6_13</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 6.6.13 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993).</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the Offset_Based analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>30</center>
+</td>
+
+<td>
+<center>-22.66</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>170</center>
+</td>
+
+<td>
+<center>-18.75</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>300</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>40</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -7.03%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the Offset_Based_Unoptimized analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>30</center>
+</td>
+
+<td>
+<center>-67.19</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>220</center>
+</td>
+
+<td>
+<center>-44.53</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>370</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>40</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -21.09%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the Holistic analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>30</center>
+</td>
+
+<td>
+<center>-83.59</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>230</center>
+</td>
+
+<td>
+<center>-50</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>370</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>40</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -25%.</font>
+<p><font face="Arial,Helvetica">The priority asisgnment option does not
+find a schedulable solution for the Holistic or Offset_Based_Unoptimized
+analysis tools. However, with the Offset_Based tool it does find a solution<font color="#000000">:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>70</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>60</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>270</center>
+</td>
+
+<td>
+<center>0</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>60</center>
+</td>
+
+<td>
+<center>50</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 0.00%.</font>
+<h2>
+<a NAME="Example_8_3_1"></a><font face="Comic Sans MS"><font color="#3333FF">Example_8_3_1</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 8.3.1 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993).</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the </font><b><font color="#990000">Offset_Based</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>alpha1</td>
+
+<td>
+<center>109</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha1_1</td>
+
+<td>
+<center>1146</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha2</td>
+
+<td>
+<center>3838</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha2_1</td>
+
+<td>
+<center>3519</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha3</td>
+
+<td>
+<center>27</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha3_1</td>
+
+<td>
+<center>7374</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha3_2</td>
+
+<td>
+<center>199</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha3_3</td>
+
+<td>
+<center>317</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie</td>
+
+<td>
+<center>115</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_1</td>
+
+<td>
+<center>107</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_2</td>
+
+<td>
+<center>1146</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_3</td>
+
+<td>
+<center>4150</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_4</td>
+
+<td>
+<center>4891</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_5</td>
+
+<td>
+<center>11857</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>echo_1</td>
+
+<td>
+<center>1041</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>echo_2</td>
+
+<td>
+<center>1194</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>fox_1</td>
+
+<td>
+<center>324</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>for_1_1</td>
+
+<td>
+<center>4866</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>fox_2</td>
+
+<td>
+<center>2060</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>gamma</td>
+
+<td>
+<center>912</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>hector</td>
+
+<td>
+<center>1012</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>monkey</td>
+
+<td>
+<center>4555</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -68.75%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the </font><b><font color="#990000">Offset_Based_Unoptimized</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>alpha1</td>
+
+<td>
+<center>215</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha1_1</td>
+
+<td>
+<center>2717</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha2</td>
+
+<td>
+<center>8527</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha2_1</td>
+
+<td>
+<center>7854</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha3</td>
+
+<td>
+<center>27</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha3_1</td>
+
+<td>
+<center>12457</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha3_2</td>
+
+<td>
+<center>199</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha3_3</td>
+
+<td>
+<center>656</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie</td>
+
+<td>
+<center>205</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_1</td>
+
+<td>
+<center>193</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_2</td>
+
+<td>
+<center>2717</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_3</td>
+
+<td>
+<center>9162</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_4</td>
+
+<td>
+<center>10007</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_5</td>
+
+<td>
+<center>22464</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>echo_1</td>
+
+<td>
+<center>2451</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>echo_2</td>
+
+<td>
+<center>2784</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>fox_1</td>
+
+<td>
+<center>696</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>for_1_1</td>
+
+<td>
+<center>9571</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>fox_2</td>
+
+<td>
+<center>4402</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>gamma</td>
+
+<td>
+<center>2053</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>hector</td>
+
+<td>
+<center>2301</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>monkey</td>
+
+<td>
+<center>8921</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -76.56%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the </font><b><font color="#990000">Holistic</font></b><font color="#000000">
+analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>alpha1</td>
+
+<td>
+<center>236</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha1_1</td>
+
+<td>
+<center>2947</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha2</td>
+
+<td>
+<center>8866</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha2_1</td>
+
+<td>
+<center>8512</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha3</td>
+
+<td>
+<center>27</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha3_1</td>
+
+<td>
+<center>12789</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha3_2</td>
+
+<td>
+<center>209</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>alpha3_3</td>
+
+<td>
+<center>704</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie</td>
+
+<td>
+<center>217</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_1</td>
+
+<td>
+<center>205</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_2</td>
+
+<td>
+<center>2947</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_3</td>
+
+<td>
+<center>9538</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_4</td>
+
+<td>
+<center>10573</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>charlie_5</td>
+
+<td>
+<center>23362</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>echo_1</td>
+
+<td>
+<center>2651</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>echo_2</td>
+
+<td>
+<center>2971</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>fox_1</td>
+
+<td>
+<center>775</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>for_1_1</td>
+
+<td>
+<center>10231</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>fox_2</td>
+
+<td>
+<center>4837</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>gamma</td>
+
+<td>
+<center>2241</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>hector</td>
+
+<td>
+<center>2451</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>monkey</td>
+
+<td>
+<center>9546</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -77.34%.</font>
+<p><font face="Arial,Helvetica">In these cases, because the system is not
+schedulable, the priority assignment techniques do not find a solution.</font>
+<h2>
+<a NAME="Example_9_3_4trans"></a><font face="Comic Sans MS"><font color="#3333FF">Example_9_3_4trans</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 9.3.4 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993), but transformed to achieve
+a utilization under 100% that allows the analysis.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with any of the monoprocessor or linear analysis
+tools (Classic_RM, Varying_Priorities, Holistic, Offset_Based_Unoptimized,
+and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>tc1</td>
+
+<td>
+<center>121</center>
+</td>
+
+<td>
+<center>508.59</center>
+</td>
+</tr>
+
+<tr>
+<td>tc2</td>
+
+<td>
+<center>60.2</center>
+</td>
+
+<td>
+<center>799.22</center>
+</td>
+</tr>
+
+<tr>
+<td>tt1</td>
+
+<td>
+<center>3.2</center>
+</td>
+
+<td>
+<center>14789.8</center>
+</td>
+</tr>
+
+<tr>
+<td>tt2</td>
+
+<td>
+<center>1.2</center>
+</td>
+
+<td>
+<center>73950</center>
+</td>
+</tr>
+
+<tr>
+<td>om</td>
+
+<td>
+<center>23.2</center>
+</td>
+
+<td>
+<center>2053.9</center>
+</td>
+</tr>
+
+<tr>
+<td>s1</td>
+
+<td>
+<center>0.8</center>
+</td>
+
+<td>
+<center>12878.1</center>
+</td>
+</tr>
+
+<tr>
+<td>s2</td>
+
+<td>
+<center>0.4</center>
+</td>
+
+<td>
+<center>12878.1</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 248.44%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set, the results of the example are as follows, with
+any of the monoprocessor or linear analysis tools (Classic_RM, Varying_Priorities,
+Holistic, Offset_Based_Unoptimized, and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>tc1</td>
+
+<td>
+<center>98.6</center>
+</td>
+
+<td>
+<center>508.59</center>
+</td>
+</tr>
+
+<tr>
+<td>tc2</td>
+
+<td>
+<center>37.8</center>
+</td>
+
+<td>
+<center>825.78</center>
+</td>
+</tr>
+
+<tr>
+<td>tt1</td>
+
+<td>
+<center>101</center>
+</td>
+
+<td>
+<center>15280.5</center>
+</td>
+</tr>
+
+<tr>
+<td>tt2</td>
+
+<td>
+<center>99</center>
+</td>
+
+<td>
+<center>76404.7</center>
+</td>
+</tr>
+
+<tr>
+<td>om</td>
+
+<td>
+<center>121</center>
+</td>
+
+<td>
+<center>3352.3</center>
+</td>
+</tr>
+
+<tr>
+<td>s1</td>
+
+<td>
+<center>0.4</center>
+</td>
+
+<td>
+<center>13576.6</center>
+</td>
+</tr>
+
+<tr>
+<td>s2</td>
+
+<td>
+<center>0.8</center>
+</td>
+
+<td>
+<center>13576.6</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 267.19%.</font>
+<h2>
+<a NAME="Example_Varying_Priorities"></a><font face="Comic Sans MS"><font color="#3333FF">Example_Varying_Priorities</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 9.3.4 of "A Practitioner's Handbook for Real-Time Analysis"
+(K. Klein et al, Kluwer Academic Pub., 1993), but transofmed to achieve
+a utilization under 100% that allows the analysis.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with any of the monoprocessor or linear analysis
+tools (Classic_RM, Varying_Priorities, Holistic, Offset_Based_Unoptimized,
+and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>28</center>
+</td>
+
+<td>
+<center>9.38</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>98</center>
+</td>
+
+<td>
+<center>7.03</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>47</center>
+</td>
+
+<td>
+<center>3.13</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>195</center>
+</td>
+
+<td>
+<center>8.59</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>223</center>
+</td>
+
+<td>
+<center>19.53</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 0.78125%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with any of the monoprocessor or linear analysis
+tools (Classic_RM, Varying_Priorities, Holistic, Offset_Based_Unoptimized,
+and Offset_Based) and the default priority option set:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>31</center>
+</td>
+
+<td>
+<center>13.28</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>90</center>
+</td>
+
+<td>
+<center>9.38</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>25</center>
+</td>
+
+<td>
+<center>4.69</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>195</center>
+</td>
+
+<td>
+<center>11.72</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>223</center>
+</td>
+
+<td>
+<center>32.81</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 1.56%.</font>
+<h2>
+<a NAME="Example_With_Offsets"></a><font face="Comic Sans MS"><font color="#3333FF">Example_With_Offsets</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is an example using
+offsets.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the Offset_Based analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>60</center>
+</td>
+
+<td>
+<center>75</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>85</center>
+</td>
+
+<td>
+<center>42.19</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>215</center>
+</td>
+
+<td>
+<center>50</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 17.19%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the Offset_Based_Unoptimized analysis tool</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>60</center>
+</td>
+
+<td>
+<center>50</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>85</center>
+</td>
+
+<td>
+<center>25</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>215</center>
+</td>
+
+<td>
+<center>32.81</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 10.94%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the Holistic analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>140</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>85</center>
+</td>
+
+<td>
+<center>-67.19</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>420</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 10.94%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the Offset_Based analysis tool and the default
+priority assignment option set:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>90</center>
+</td>
+
+<td>
+<center>75</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>75</center>
+</td>
+
+<td>
+<center>32.81</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>215</center>
+</td>
+
+<td>
+<center>50</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 17.19%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the Offset_Based_Unoptimized analysis tool
+and the default priority assignment option set:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>90</center>
+</td>
+
+<td>
+<center>75</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>75</center>
+</td>
+
+<td>
+<center>25</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>215</center>
+</td>
+
+<td>
+<center>50</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 17.19%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set with the Holistic analysis tool, no better solution
+is found.</font></font>
+<h2>
+<a NAME="Example_With_Delays"></a><font face="Comic Sans MS"><font color="#3333FF">Example_With_Delays</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is an example using
+delays.</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the Offset_Based analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>70</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>145</center>
+</td>
+
+<td>
+<center>-67.19</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>425</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -28.91%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the Offset_Based_Unoptimized analysis tool</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>70</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>155</center>
+</td>
+
+<td>
+<center>-71.88</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>570</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -33.59%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the Holistic analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>90</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>235</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>675</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -70.31%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set, the tool does not find a better solution.</font></font>
+<h2>
+<a NAME="Jane_Liu_Section_9_5_2"></a><font face="Comic Sans MS"><font color="#3333FF">Jane_Liu_Section_9_5_2</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Section 9.5.2 of "Real-Time Systems" (Jane Liu, Prentice Hall, 2000).</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with any of the linear analysis tools (Holitic,
+Ofsfet_Based_Unoptimized, or Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>trans_1</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-83.59</center>
+</td>
+</tr>
+
+<tr>
+<td>trans_2</td>
+
+<td>
+<center>>></center>
+</td>
+
+<td>
+<center>-83.59</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -42.97%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">In all the cases,
+the results of the example are as follows, with the default priority assignment
+option set:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>trans_1</td>
+
+<td>
+<center>10</center>
+</td>
+
+<td>
+<center>16.41</center>
+</td>
+</tr>
+
+<tr>
+<td>trans_2</td>
+
+<td>
+<center>10</center>
+</td>
+
+<td>
+<center>16.41</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 8.59%.</font>
+<h2>
+<a NAME="Jane_Liu_Table_9_2"></a><font face="Comic Sans MS"><font color="#3333FF">Jane_Liu_Table_9_2</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">This is the example
+from Table 9.2 of "Real-Time Systems" (Jane Liu, Prentice Hall, 2000).</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with either the Offset_Based_Unoptimized, or the
+Offset_Based alanysis tools:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>task_1</td>
+
+<td>
+<center>10</center>
+</td>
+
+<td>
+<center>25</center>
+</td>
+</tr>
+
+<tr>
+<td>task_2</td>
+
+<td>
+<center>7</center>
+</td>
+
+<td>
+<center>166.41</center>
+</td>
+</tr>
+
+<tr>
+<td>task_3</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>9.38</center>
+</td>
+</tr>
+
+<tr>
+<td>task_4</td>
+
+<td>
+<center>14</center>
+</td>
+
+<td>
+<center>19.53</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 4.69%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the Holistic analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>task_1</td>
+
+<td>
+<center>11</center>
+</td>
+
+<td>
+<center>25</center>
+</td>
+</tr>
+
+<tr>
+<td>task_2</td>
+
+<td>
+<center>7</center>
+</td>
+
+<td>
+<center>166.41</center>
+</td>
+</tr>
+
+<tr>
+<td>task_3</td>
+
+<td>
+<center>1</center>
+</td>
+
+<td>
+<center>9.38</center>
+</td>
+</tr>
+
+<tr>
+<td>task_4</td>
+
+<td>
+<center>14</center>
+</td>
+
+<td>
+<center>19.53</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 4.69%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">In all the cases,
+the results of the example are the same when the default priority assignment
+option is set.</font></font>
+<h2>
+<a NAME="Lehoczky_Example_3"></a><font face="Comic Sans MS"><font color="#3333FF">Lehoczky_Example_3</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">The results of the example
+are as follows, with any of the monoprocessor or linear analysis tools
+(Classic_RM, Varying_Priorities, Holistic, Offset_Based_Unoptimized, and
+Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>c1</td>
+
+<td>
+<center>52</center>
+</td>
+
+<td>
+<center>-2.34</center>
+</td>
+</tr>
+
+<tr>
+<td>c2</td>
+
+<td>
+<center>156</center>
+</td>
+
+<td>
+<center>-3.91</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -1.56%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">In all cases, if
+the default priority assignment option is set the results obtained are:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>c1</td>
+
+<td>
+<center>108</center>
+</td>
+
+<td>
+<center>1.56</center>
+</td>
+</tr>
+
+<tr>
+<td>c2</td>
+
+<td>
+<center>52</center>
+</td>
+
+<td>
+<center>1.56</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 0.78125%.</font>
+<h2>
+<a NAME="RTSS_98"></a><font face="Comic Sans MS"><font color="#3333FF">RTSS_98</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">The results of the example
+are as follows, with the Offset_Based analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>4</center>
+</td>
+
+<td>
+<center>235.94</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>145</center>
+</td>
+
+<td>
+<center>70.31</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>5</center>
+</td>
+
+<td>
+<center>142.19</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>140</center>
+</td>
+
+<td>
+<center>50</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 32.81%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the Offset_Based_Unoptimized analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>4</center>
+</td>
+
+<td>
+<center>210</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>145</center>
+</td>
+
+<td>
+<center>70.31</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>5</center>
+</td>
+
+<td>
+<center>142.19</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>140</center>
+</td>
+
+<td>
+<center>50</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 32.81%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of the
+example are as follows, with the Holistic analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>4</center>
+</td>
+
+<td>
+<center>-50</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>270</center>
+</td>
+
+<td>
+<center>-5.47</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>5</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>140</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -4.69%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set, the results of the example are as follows, with
+the Offset_Based analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>4</center>
+</td>
+
+<td>
+<center>235.94</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>145</center>
+</td>
+
+<td>
+<center>70.31</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>5</center>
+</td>
+
+<td>
+<center>142.19</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>140</center>
+</td>
+
+<td>
+<center>50</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 32.81%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set, the results of the example are as follows, with
+the Offset_Based_Unoptimized analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>4</center>
+</td>
+
+<td>
+<center>235.94</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>145</center>
+</td>
+
+<td>
+<center>70.31</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>5</center>
+</td>
+
+<td>
+<center>142.19</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>140</center>
+</td>
+
+<td>
+<center>50</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 32.81%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set, the results of the example are as follows, with
+the Holistic analysis tool:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>4</center>
+</td>
+
+<td>
+<center>150</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>198</center>
+</td>
+
+<td>
+<center>28.13</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>5</center>
+</td>
+
+<td>
+<center>142.19</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>140</center>
+</td>
+
+<td>
+<center>50</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 23.44%.</font>
+<h2>
+<a NAME="Simple_Linear"></a><font face="Comic Sans MS"><font color="#3333FF">Simple_Linear</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">The results of the example
+are as follows, with any of the linear analysis tools (Holistic, Offset_Based_Unoptimized,
+and Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>trans_1</td>
+
+<td>
+<center>27.4</center>
+</td>
+
+<td>
+<center>-7.03</center>
+</td>
+</tr>
+
+<tr>
+<td>trans_2</td>
+
+<td>
+<center>73</center>
+</td>
+
+<td>
+<center>-12.5</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -4.69%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">If the default priority
+assignment option is set, the results of the example are as follows, with
+any of the linear analysis tools (Holistic, Offset_Based_Unoptimized, and
+Offset_Based):</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>trans_1</td>
+
+<td>
+<center>42.8</center>
+</td>
+
+<td>
+<center>28.13</center>
+</td>
+</tr>
+
+<tr>
+<td>trans_2</td>
+
+<td>
+<center>27.4</center>
+</td>
+
+<td>
+<center>21.88</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 15.63%.</font>
+<br>&nbsp;
+<h2>
+<a NAME="WPDRTS_1995"></a><font face="Comic Sans MS"><font color="#3333FF">WPDRTS_1995</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">The results of this
+example with the Offset_Based and the Offset_Based_Unoptimized analysis
+tools are:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>620</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>3220</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>7835</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>1160</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>5095</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>205</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_7</td>
+
+<td>
+<center>1265</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -25%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of this
+example with the Holistic analysis tool are:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>760</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>3730</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>9360</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>1380</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>6005</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>265</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+
+<tr>
+<td>t_7</td>
+
+<td>
+<center>1410</center>
+</td>
+
+<td>
+<center>-100</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is -28.13%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of this
+example with the Offset_Based analysis tool are:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>1265</center>
+</td>
+
+<td>
+<center>2.34</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>2445</center>
+</td>
+
+<td>
+<center>4.69</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>2870</center>
+</td>
+
+<td>
+<center>10.94</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>990</center>
+</td>
+
+<td>
+<center>2.34</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>2050</center>
+</td>
+
+<td>
+<center>7.81</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>1165</center>
+</td>
+
+<td>
+<center>16.41</center>
+</td>
+</tr>
+
+<tr>
+<td>t_7</td>
+
+<td>
+<center>2130</center>
+</td>
+
+<td>
+<center>75</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 0.78125%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of this
+example with the Offset_Based_Unoptimized analysis tool are:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>1345</center>
+</td>
+
+<td>
+<center>1.56</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>2465</center>
+</td>
+
+<td>
+<center>3.13</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>2870</center>
+</td>
+
+<td>
+<center>10.94</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>990</center>
+</td>
+
+<td>
+<center>0.78125</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>2055</center>
+</td>
+
+<td>
+<center>6.25</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>1165</center>
+</td>
+
+<td>
+<center>12.5</center>
+</td>
+</tr>
+
+<tr>
+<td>t_7</td>
+
+<td>
+<center>2150</center>
+</td>
+
+<td>
+<center>27.34</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 0%.</font>
+<p><font face="Arial,Helvetica"><font color="#000000">The results of this
+example with the Holistic analysis tool are:</font></font>
+<br>&nbsp;
+<table BORDER BGCOLOR="#FFFFCC" >
+<tr>
+<td ALIGN=LEFT>
+<blockquote>
+<dt>
+<b>Transaction</b></dt>
+</blockquote>
+</td>
+
+<td VALIGN=CENTER>
+<dl>
+<dl>
+<dt>
+<b>WC Response times (<font face="Symbol">m</font>s)</b></dt>
+</dl>
+</dl>
+</td>
+
+<td>
+<blockquote>
+<dt>
+<b>Slack (%)</b></dt>
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<td>t_1</td>
+
+<td>
+<center>1485</center>
+</td>
+
+<td>
+<center>3.13</center>
+</td>
+</tr>
+
+<tr>
+<td>t_2</td>
+
+<td>
+<center>2360</center>
+</td>
+
+<td>
+<center>7.03</center>
+</td>
+</tr>
+
+<tr>
+<td>t_3</td>
+
+<td>
+<center>2995</center>
+</td>
+
+<td>
+<center>16.41</center>
+</td>
+</tr>
+
+<tr>
+<td>t_4</td>
+
+<td>
+<center>1120</center>
+</td>
+
+<td>
+<center>9.38</center>
+</td>
+</tr>
+
+<tr>
+<td>t_5</td>
+
+<td>
+<center>2255</center>
+</td>
+
+<td>
+<center>16.41</center>
+</td>
+</tr>
+
+<tr>
+<td>t_6</td>
+
+<td>
+<center>1225</center>
+</td>
+
+<td>
+<center>16.41</center>
+</td>
+</tr>
+
+<tr>
+<td>t_7</td>
+
+<td>
+<center>2255</center>
+</td>
+
+<td>
+<center>50</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">The system slack for this example is 0.78125%.</font>
+<br>&nbsp;
+</body>
+</html>

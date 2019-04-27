@@ -1,0 +1,12 @@
+cd mast_analysis
+./compile
+cd ../gmast/src
+./compile
+cd ../../gmastresults/src
+./compile
+cd ../../mast_xml
+./compile
+./compile_results
+cd ../gmasteditor/src
+./compile
+cd ../..

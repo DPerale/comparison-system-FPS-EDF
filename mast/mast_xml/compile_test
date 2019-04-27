@@ -1,0 +1,1 @@
+gnatmake -g -I../mast_analysis -I../utils  test_xml_results `xmlada-config`

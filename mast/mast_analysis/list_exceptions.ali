@@ -1,0 +1,27 @@
+V "GNAT Lib v2018"
+A -g
+A -gnato
+P ZX
+
+RN
+RV NO_ELABORATION_CODE
+
+U list_exceptions%s	list_exceptions.ads	720909ba EE OO PK
+Z system%s		system.ads		system.ali
+Z system.exception_table%s  s-exctab.adb	s-exctab.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20180525052300 76789da1 ada%s
+D a-unccon.ads		20180525052301 0e9b276f ada.unchecked_conversion%s
+D list_exceptions.ads	20080722124150 720909ba list_exceptions%s
+D system.ads		20180525052301 4635ec04 system%s
+D s-exctab.ads		20180525052301 54135002 system.exception_table%s
+D s-stalib.ads		20180525052301 09bd3940 system.standard_library%s
+X 3 list_exceptions.ads
+30K9*List_Exceptions 42l5 42e20
+32X4*Already_Exists
+34X4*Invalid_Index
+36X4*No_More_Items
+38X4*Empty
+40X4*Not_Found
+

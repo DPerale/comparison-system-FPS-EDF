@@ -1,0 +1,635 @@
+Model (
+   Model_Name          => caseva,
+   Model_Date          => 2000-01-01,
+   System_Pip_Behaviour=> STRICT);
+
+Processing_Resource (
+   Type                   => Regular_Processor,
+   Name                   => processor_1,
+   Max_Interrupt_Priority => 32767,
+   Min_Interrupt_Priority => 1,
+   Worst_ISR_Switch       => 0.00,
+   Avg_ISR_Switch         => 0.00,
+   Best_ISR_Switch        => 0.00,
+   Speed_Factor           => 1.00);
+
+Scheduler (
+   Type            => Primary_Scheduler,
+   Name            => processor_1,
+   Host            => processor_1,
+   Policy          => 
+      ( Type                 => EDF,
+        Worst_Context_Switch => 102.50,
+        Avg_Context_Switch   => 0.00,
+        Best_Context_Switch  => 0.00));
+
+Scheduling_Server (
+   Type                       => Regular,
+   Name                       => servo_control,
+   Server_Sched_Parameters    => 
+      ( Type         => EDF_Policy,
+        Deadline     => 5000.00,
+        Preassigned  => NO),
+   Synchronization_Parameters => 
+      ( Type             => SRP_Parameters,
+        Preemption_Level => 5,
+        Preassigned      => NO),
+   Scheduler                  => processor_1);
+
+Scheduling_Server (
+   Type                       => Regular,
+   Name                       => trajectory_planning,
+   Server_Sched_Parameters    => 
+      ( Type         => EDF_Policy,
+        Deadline     => 50000.00,
+        Preassigned  => NO),
+   Synchronization_Parameters => 
+      ( Type             => SRP_Parameters,
+        Preemption_Level => 4,
+        Preassigned      => NO),
+   Scheduler                  => processor_1);
+
+Scheduling_Server (
+   Type                       => Regular,
+   Name                       => light_manager,
+   Server_Sched_Parameters    => 
+      ( Type         => EDF_Policy,
+        Deadline     => 100000.00,
+        Preassigned  => NO),
+   Synchronization_Parameters => 
+      ( Type             => SRP_Parameters,
+        Preemption_Level => 3,
+        Preassigned      => NO),
+   Scheduler                  => processor_1);
+
+Scheduling_Server (
+   Type                       => Regular,
+   Name                       => reporter,
+   Server_Sched_Parameters    => 
+      ( Type         => EDF_Policy,
+        Deadline     => 1000000.00,
+        Preassigned  => NO),
+   Synchronization_Parameters => 
+      ( Type             => SRP_Parameters,
+        Preemption_Level => 2,
+        Preassigned      => NO),
+   Scheduler                  => processor_1);
+
+Scheduling_Server (
+   Type                       => Regular,
+   Name                       => message_logger,
+   Server_Sched_Parameters    => 
+      ( Type         => EDF_Policy,
+        Deadline     => 10000000000.00,
+        Preassigned  => NO),
+   Synchronization_Parameters => 
+      ( Type             => SRP_Parameters,
+        Preemption_Level => 1,
+        Preassigned      => NO),
+   Scheduler                  => processor_1);
+
+Shared_Resource (
+   Type             => SRP_Resource,
+   Name             => servo_data,
+   Preemption_Level => 5,
+   Preassigned      => NO);
+
+Shared_Resource (
+   Type             => SRP_Resource,
+   Name             => arm,
+   Preemption_Level => 5,
+   Preassigned      => NO);
+
+Shared_Resource (
+   Type             => SRP_Resource,
+   Name             => lights,
+   Preemption_Level => 4,
+   Preassigned      => NO);
+
+Shared_Resource (
+   Type             => SRP_Resource,
+   Name             => alarms,
+   Preemption_Level => 5,
+   Preassigned      => NO);
+
+Shared_Resource (
+   Type             => SRP_Resource,
+   Name             => position_command,
+   Preemption_Level => 4,
+   Preassigned      => NO);
+
+Shared_Resource (
+   Type             => SRP_Resource,
+   Name             => error_log,
+   Preemption_Level => 4,
+   Preassigned      => NO);
+
+Operation (
+   Type                       => Simple,
+   Name                       => read_new_point,
+   Worst_Case_Execution_Time  => 87.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( servo_data),
+   Shared_Resources_To_Unlock => 
+      ( servo_data));
+
+Operation (
+   Type                       => Simple,
+   Name                       => write_position_errors,
+   Worst_Case_Execution_Time  => 42.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( servo_data),
+   Shared_Resources_To_Unlock => 
+      ( servo_data));
+
+Operation (
+   Type                       => Simple,
+   Name                       => new_point,
+   Worst_Case_Execution_Time  => 54.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( servo_data),
+   Shared_Resources_To_Unlock => 
+      ( servo_data));
+
+Operation (
+   Type                       => Simple,
+   Name                       => read_errors,
+   Worst_Case_Execution_Time  => 47.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( servo_data),
+   Shared_Resources_To_Unlock => 
+      ( servo_data));
+
+Operation (
+   Type                       => Simple,
+   Name                       => read_axis_positions,
+   Worst_Case_Execution_Time  => 135.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( arm),
+   Shared_Resources_To_Unlock => 
+      ( arm));
+
+Operation (
+   Type                       => Simple,
+   Name                       => read_motor_positions,
+   Worst_Case_Execution_Time  => 101.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( arm),
+   Shared_Resources_To_Unlock => 
+      ( arm));
+
+Operation (
+   Type                       => Simple,
+   Name                       => read_servos_ok,
+   Worst_Case_Execution_Time  => 66.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( arm),
+   Shared_Resources_To_Unlock => 
+      ( arm));
+
+Operation (
+   Type                       => Simple,
+   Name                       => read_relay,
+   Worst_Case_Execution_Time  => 43.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( arm),
+   Shared_Resources_To_Unlock => 
+      ( arm));
+
+Operation (
+   Type                       => Simple,
+   Name                       => set_relay,
+   Worst_Case_Execution_Time  => 62.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( arm),
+   Shared_Resources_To_Unlock => 
+      ( arm));
+
+Operation (
+   Type                       => Simple,
+   Name                       => control_servos,
+   Worst_Case_Execution_Time  => 99.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( arm),
+   Shared_Resources_To_Unlock => 
+      ( arm));
+
+Operation (
+   Type                       => Simple,
+   Name                       => turn_on,
+   Worst_Case_Execution_Time  => 74.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( lights),
+   Shared_Resources_To_Unlock => 
+      ( lights));
+
+Operation (
+   Type                       => Simple,
+   Name                       => turn_off,
+   Worst_Case_Execution_Time  => 71.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( lights),
+   Shared_Resources_To_Unlock => 
+      ( lights));
+
+Operation (
+   Type                       => Simple,
+   Name                       => turn_on_timed,
+   Worst_Case_Execution_Time  => 74.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( lights),
+   Shared_Resources_To_Unlock => 
+      ( lights));
+
+Operation (
+   Type                       => Simple,
+   Name                       => turn_on_flashing,
+   Worst_Case_Execution_Time  => 125.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( lights),
+   Shared_Resources_To_Unlock => 
+      ( lights));
+
+Operation (
+   Type                       => Simple,
+   Name                       => turn_on_timed_flashing,
+   Worst_Case_Execution_Time  => 114.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( lights),
+   Shared_Resources_To_Unlock => 
+      ( lights));
+
+Operation (
+   Type                       => Simple,
+   Name                       => start_lights_test,
+   Worst_Case_Execution_Time  => 212.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( lights),
+   Shared_Resources_To_Unlock => 
+      ( lights));
+
+Operation (
+   Type                       => Simple,
+   Name                       => end_lights_test,
+   Worst_Case_Execution_Time  => 217.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( lights),
+   Shared_Resources_To_Unlock => 
+      ( lights));
+
+Operation (
+   Type                       => Simple,
+   Name                       => time_lights,
+   Worst_Case_Execution_Time  => 119.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( lights),
+   Shared_Resources_To_Unlock => 
+      ( lights));
+
+Operation (
+   Type                       => Simple,
+   Name                       => read,
+   Worst_Case_Execution_Time  => 64.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( alarms),
+   Shared_Resources_To_Unlock => 
+      ( alarms));
+
+Operation (
+   Type                       => Simple,
+   Name                       => read_all_alarms,
+   Worst_Case_Execution_Time  => 78.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( alarms),
+   Shared_Resources_To_Unlock => 
+      ( alarms));
+
+Operation (
+   Type                       => Simple,
+   Name                       => set,
+   Worst_Case_Execution_Time  => 59.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( alarms),
+   Shared_Resources_To_Unlock => 
+      ( alarms));
+
+Operation (
+   Type                       => Simple,
+   Name                       => acknowledge,
+   Worst_Case_Execution_Time  => 60.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( alarms),
+   Shared_Resources_To_Unlock => 
+      ( alarms));
+
+Operation (
+   Type                       => Simple,
+   Name                       => reset,
+   Worst_Case_Execution_Time  => 60.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( alarms),
+   Shared_Resources_To_Unlock => 
+      ( alarms));
+
+Operation (
+   Type                       => Simple,
+   Name                       => insert_error,
+   Worst_Case_Execution_Time  => 79.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( alarms),
+   Shared_Resources_To_Unlock => 
+      ( alarms));
+
+Operation (
+   Type                       => Simple,
+   Name                       => get_error,
+   Worst_Case_Execution_Time  => 72.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( alarms),
+   Shared_Resources_To_Unlock => 
+      ( alarms));
+
+Operation (
+   Type                       => Simple,
+   Name                       => read_position_command,
+   Worst_Case_Execution_Time  => 47.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( position_command),
+   Shared_Resources_To_Unlock => 
+      ( position_command));
+
+Operation (
+   Type                       => Simple,
+   Name                       => write_position_command,
+   Worst_Case_Execution_Time  => 42.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( position_command),
+   Shared_Resources_To_Unlock => 
+      ( position_command));
+
+Operation (
+   Type                       => Simple,
+   Name                       => notify_error,
+   Worst_Case_Execution_Time  => 85.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( error_log),
+   Shared_Resources_To_Unlock => 
+      ( error_log));
+
+Operation (
+   Type                       => Simple,
+   Name                       => get_error_from_queue,
+   Worst_Case_Execution_Time  => 79.00,
+   Avg_Case_Execution_Time    => 1.000E+100,
+   Best_Case_Execution_Time   => 0.00,
+   Shared_Resources_To_Lock   => 
+      ( error_log),
+   Shared_Resources_To_Unlock => 
+      ( error_log));
+
+Operation (
+   Type                     => Enclosing,
+   Name                     => servo_control,
+   Worst_Case_Execution_Time=> 1080.0,
+   Avg_Case_Execution_Time  => 1.000E+100,
+   Best_Case_Execution_Time => 0.00,
+   Composite_Operation_List => 
+      ( read_new_point,
+        write_position_errors,
+        read_axis_positions,
+        read_servos_ok,
+        set_relay,
+        control_servos,
+        read,
+        read_all_alarms,
+        set,
+        acknowledge,
+        reset,
+        insert_error));
+
+Operation (
+   Type                     => Enclosing,
+   Name                     => trajectory_planning,
+   Worst_Case_Execution_Time=> 9045.0,
+   Avg_Case_Execution_Time  => 1.000E+100,
+   Best_Case_Execution_Time => 0.00,
+   Composite_Operation_List => 
+      ( new_point,
+        turn_on,
+        turn_off,
+        turn_on_timed,
+        turn_on_flashing,
+        turn_on_timed_flashing,
+        start_lights_test,
+        end_lights_test,
+        read,
+        read_all_alarms,
+        set,
+        acknowledge,
+        reset,
+        insert_error,
+        get_error,
+        write_position_command,
+        notify_error));
+
+Operation (
+   Type                     => Enclosing,
+   Name                     => light_manager,
+   Worst_Case_Execution_Time=> 119.00,
+   Avg_Case_Execution_Time  => 1.000E+100,
+   Best_Case_Execution_Time => 0.00,
+   Composite_Operation_List => 
+      ( time_lights,
+        insert_error));
+
+Operation (
+   Type                     => Enclosing,
+   Name                     => reporter,
+   Worst_Case_Execution_Time=> 72952.0,
+   Avg_Case_Execution_Time  => 1.000E+100,
+   Best_Case_Execution_Time => 0.00,
+   Composite_Operation_List => 
+      ( read_errors,
+        read_axis_positions,
+        read_servos_ok,
+        read_relay,
+        read,
+        read_all_alarms,
+        read_position_command));
+
+Operation (
+   Type                     => Enclosing,
+   Name                     => message_logger,
+   Worst_Case_Execution_Time=> 46820.0,
+   Avg_Case_Execution_Time  => 1.000E+100,
+   Best_Case_Execution_Time => 0.00,
+   Composite_Operation_List => 
+      ( get_error_from_queue));
+
+Transaction (
+   Type            => regular,
+   Name            => servo_control,
+   External_Events => 
+      ( ( Type       => Periodic,
+          Name       => e1,
+          Period     => 5000.00,
+          Max_Jitter => 0.000,
+          Phase      => 0.000)),
+   Internal_Events => 
+      ( ( Type => Regular,
+          Name => o1,
+          Timing_Requirements => 
+            ( Type             => Hard_Global_Deadline,
+              Deadline         => 5000.00,
+              Referenced_Event => e1))),
+   Event_Handlers  => 
+      ( (Type               => Activity,
+         Input_Event        => e1,
+         Output_Event       => o1,
+         Activity_Operation => servo_control,
+         Activity_Server    => servo_control)));
+
+Transaction (
+   Type            => regular,
+   Name            => trajectory_planning,
+   External_Events => 
+      ( ( Type       => Periodic,
+          Name       => e2,
+          Period     => 50000.00,
+          Max_Jitter => 0.000,
+          Phase      => 0.000)),
+   Internal_Events => 
+      ( ( Type => Regular,
+          Name => o2,
+          Timing_Requirements => 
+            ( Type             => Hard_Global_Deadline,
+              Deadline         => 50000.00,
+              Referenced_Event => e2))),
+   Event_Handlers  => 
+      ( (Type               => Activity,
+         Input_Event        => e2,
+         Output_Event       => o2,
+         Activity_Operation => trajectory_planning,
+         Activity_Server    => trajectory_planning)));
+
+Transaction (
+   Type            => regular,
+   Name            => light_manager,
+   External_Events => 
+      ( ( Type       => Periodic,
+          Name       => e3,
+          Period     => 100000.00,
+          Max_Jitter => 0.000,
+          Phase      => 0.000)),
+   Internal_Events => 
+      ( ( Type => Regular,
+          Name => o3,
+          Timing_Requirements => 
+            ( Type             => Hard_Global_Deadline,
+              Deadline         => 100000.00,
+              Referenced_Event => e3))),
+   Event_Handlers  => 
+      ( (Type               => Activity,
+         Input_Event        => e3,
+         Output_Event       => o3,
+         Activity_Operation => light_manager,
+         Activity_Server    => light_manager)));
+
+Transaction (
+   Type            => regular,
+   Name            => reporter,
+   External_Events => 
+      ( ( Type       => Periodic,
+          Name       => e4,
+          Period     => 1000000.00,
+          Max_Jitter => 0.000,
+          Phase      => 0.000)),
+   Internal_Events => 
+      ( ( Type => Regular,
+          Name => o4,
+          Timing_Requirements => 
+            ( Type             => Hard_Global_Deadline,
+              Deadline         => 1000000.00,
+              Referenced_Event => e4))),
+   Event_Handlers  => 
+      ( (Type               => Activity,
+         Input_Event        => e4,
+         Output_Event       => o4,
+         Activity_Operation => reporter,
+         Activity_Server    => reporter)));
+
+Transaction (
+   Type            => regular,
+   Name            => message_logger,
+   External_Events => 
+      ( ( Type             => Sporadic,
+          Name             => e5,
+          Avg_Interarrival => 0.000,
+          Distribution     => UNIFORM,
+          Min_Interarrival => 2000000.00)),
+   Internal_Events => 
+      ( ( Type => Regular,
+          Name => o5)),
+   Event_Handlers  => 
+      ( (Type               => Activity,
+         Input_Event        => e5,
+         Output_Event       => o5,
+         Activity_Operation => message_logger,
+         Activity_Server    => message_logger)));
+

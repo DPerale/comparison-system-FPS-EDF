@@ -1,0 +1,229 @@
+-- Processing Resources
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> CPU_1,
+        Max_Priority            => 100,
+        Min_Priority            => 1,
+        Max_Interrupt_Priority  => 110,
+        Min_Interrupt_Priority  => 101,
+        System_Timer            => 
+ 	    (Type               => Alarm_Clock,
+             Worst_Overhead 	=> 0.2,
+             Best_Overhead 	=> 0.2));
+
+-- Scheduling Servers
+
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> ISR_e1,
+	Server_Sched_Parameters		=> (
+		Type		=> Interrupt_FP_Policy,
+		The_Priority		=> 101),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> ISR_e3,
+	Server_Sched_Parameters		=> (
+		Type		=> Interrupt_FP_Policy,
+		The_Priority		=> 101),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_1,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 20,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_2a,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority		=> 30,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_2b,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority		=> 50,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_3,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_policy,
+		The_Priority		=> 10,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+-- Operations
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a11,
+	Worst_Case_Execution_Time 	=> 0.2,
+        Best_Case_Execution_Time        => 0.2);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a12,
+	Worst_Case_Execution_Time 	=> 40,
+      	New_Sched_Parameters	        => 
+           (Type         => Overridden_Permanent_FP,
+            The_Priority => 20));
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a22,
+	Worst_Case_Execution_Time 	=> 1);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a23,
+	Worst_Case_Execution_Time 	=> 59);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a24,
+	Worst_Case_Execution_Time 	=> 1);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a31,
+	Worst_Case_Execution_Time 	=> 0.2,
+        Best_Case_Execution_Time        => 0.2);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a32,
+	Worst_Case_Execution_Time 	=> 30,
+      	New_Sched_Parameters	        => 
+           (Type         => Overridden_Permanent_FP,
+            The_Priority => 10));
+
+-- Transactions
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T_1,
+	External_Events => (
+		(Type 	=> Periodic,
+		 Name 	=> E1,
+		 Period => 100)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> I1),
+		(Type 	=> regular,
+		 name 	=> O1,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 100,
+			 referenced_event => E1))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E1,
+		 Output_Event 		=> I1,
+		 Activity_Operation 	=> a11,
+		 Activity_Server	=> isr_e1),
+		(Type 			=> Activity,
+		 Input_Event 		=> I1,
+		 Output_Event 		=> O1,
+		 Activity_Operation 	=> a12,
+		 Activity_Server	=> isr_e1)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T_2a,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E2a,
+		 Period 	=> 150,
+                 Max_Jitter     => 1)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> I21),
+		(Type 	=> regular,
+		 name 	=> O2,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 142,
+			 referenced_event => E2a))),
+	Event_Handlers => (
+		(Type 			=> System_Timed_Activity,
+		 Input_Event 		=> E2a,
+		 Output_Event 		=> I21,
+		 Activity_Operation 	=> a22,
+		 Activity_Server	=> task_2a),
+		(Type 			=> Activity,
+		 Input_Event 		=> I21,
+		 Output_Event 		=> O2,
+		 Activity_Operation 	=> a23,
+		 Activity_Server	=> Task_2a)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T_2b,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E2b,
+		 Period 	=> 150,
+                 Phase          => 142,
+                 Max_Jitter     => 1)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O2,
+                 Timing_Requirements => 
+      	         ( Type 	     => composite,
+                   Requirements_List => (
+			(Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 3,
+			 referenced_event => E2b),
+                        (Type             => Max_Output_Jitter_Req,
+                         Referenced_Event  => E2b,
+	                 Max_Output_Jitter => 3))))),
+	Event_Handlers => (
+		(Type 			=> System_Timed_Activity,
+		 Input_Event 		=> E2b,
+		 Output_Event 		=> O2,
+		 Activity_Operation 	=> a24,
+		 Activity_Server	=> task_2b)));
+
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T_3,
+	External_Events => (
+		(Type 	=> Periodic,
+		 Name 	=> E3,
+		 Period => 350)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> I3),
+		(Type 	=> regular,
+		 name 	=> O3,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 350,
+			 referenced_event => E3))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E3,
+		 Output_Event 		=> I3,
+		 Activity_Operation 	=> a31,
+		 Activity_Server	=> isr_e3),
+		(Type 			=> Activity,
+		 Input_Event 		=> I3,
+		 Output_Event 		=> O3,
+		 Activity_Operation 	=> a32,
+		 Activity_Server	=> isr_e3)));

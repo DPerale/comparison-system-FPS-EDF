@@ -1,0 +1,156 @@
+-----------------------------------------------------------------------
+--                              Mast                                 --
+--     Modelling and Analysis Suite for Real-Time Applications       --
+-----------------------------------------------------------------------
+
+   command format:
+   ---------------
+
+      mast_analysis -h
+      mast_analysis -help
+            does not make the analysis, just prints help information
+
+      mast_analysis tool_name [options] input_file [output_file]
+            executes the tool as described below.
+
+   tool description:
+   -----------------
+     
+      The tool parses the input file. If it finds errors it reports
+      them and stops. The list of errors can be found in the file
+      "mast_parser.lis". If there are no errors, the real-time system
+      description is transformed according to the options specified,
+      the analysis is performed, and the results are output to the
+      output file.
+
+      tool_name  : is one of the following (more to come)
+      --------- 
+                      parse    : does not make the analysis
+                      holistic : holistic linear analysis
+                      offset_based   : offset-based linear analysis
+                      offset_based_unoptimized : offset-based unoptimized
+
+           The "Offset_Based" analysis always provides the same or better
+           results than the other tools. The other tools are provided for
+           testing and comparison purposes.
+
+
+      input_file : needs to be defined ussing the Mast file format
+      ----------   (see the Mast file format definition)
+
+      output_file: will contain the results of the analysis
+      -----------  if not specified, then output goes to standard
+                   output
+  
+      options: the following options are defined:
+      -------
+
+        -v, -verbose:
+              enable the verbose option
+
+        -c, -ceilings
+              calculate ceilings for priority ceiling resources before
+              the analysis
+
+        -p, -priorities
+              make an optimum priority assignment before the analysis,
+              using the specified assignment technique
+
+        -t name, -technique name
+              this option specifies the priority assignment technique
+              named with "name"; it can be one of the following:
+                   hopa          (default for multiprocessors)
+                   annealing
+                   monoprocessor (default for monoprocessors)
+
+        -o, -ordering 
+              if this option is specified, a check of total ordering
+              is made for the shared resources before the analysis, to
+              determine if there is a possibility of deadlock due to
+              synchronization of shared resources. Other possible
+              deadlock situations are not analyzed.
+
+        -d filename, -description filename
+               if this option is specified, after parsing the file and,
+               if required, calculating the ceilings and priorities, a
+               description of the system is written to the filename
+               specified in the option. 
+
+        -s, -slack
+               if this option is specified, the analysis is iterated
+               to obtain both the system slack and the transaction
+               slack for each transaction.
+
+
+    Priority assignment parameters
+    ------------------------------
+
+    The priority assignment parameters allow the configuration of the
+    priority assignment tools in order to determine two main aspects:
+
+       a) bounding the number of iterations performed by the algorithm to
+	  reach a priority assignment that makes the system schedulable
+
+       b) bounding the number of iterations to optimize, which are used
+	  after a feasible solution has been obtained to optimize and try
+	  reaching a better assignment.
+
+    The priority assignment algorithm for single processors does not need
+    any parameter, but the simulated annealing and HOPA algorithms work
+    according to the values of several parameters that define their
+    performance.
+
+    The priority assignment parameters are found in the file
+    priority_assignment_parameters.txt, in the working directory.
+
+    Simulated annealing parameters:
+    -------------------------------
+
+     - Max_Iterations: maximum number of iterations to be performed by
+       the algorithm.
+
+     - Iterations_To_Optimize: maximum number of iterations to be
+       performed by the algorithm after the first feasible solution has
+       been reached.
+
+
+
+    HOPA parameters:
+    ----------------
+
+    The maximum number of iterations for this algorithm is not explicit,
+    and depends on the size of the List of K-pairs and the values for the
+    number of iterations declared in the iterations list.
+
+     - List of K-pairs: K values are heuristic constants used to modify
+       the internal deadlines that are the basis of the algorithm. Normal
+       values for these constant are between 1.0 and 3.0, and the usual
+       number of different values that HOPA may attempt is between 3 and 5.
+
+	- Size_Of_K_List: number of K-pairs
+
+	- Ka_List: list of constants for varying the priorities according
+	  to the response times of the activities in a transaction
+
+	- Kr_List: list of constants for varying the priorities according
+	  to the response times of the activities in a processing resource
+
+     - List of number of iterations to perform for each K-pair:
+       Usually, this is a list with increasing values, starting for
+       example with 10. Each value represents an attempt to find better 
+       solutions for all values of the list of K-pairs.
+
+	- Size_Of_Iterations_List: size of the iterations list
+
+	- Iterations_List: list with the numbers of iterations to be
+	  performed by the algorithm for each K-pair
+
+     - Iterations_To_Optimize: maximum number of iterations to be
+       performed by the algorithm after the first feasible solution has
+       been reached. 
+
+
+
+
+
+

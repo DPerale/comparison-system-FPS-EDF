@@ -1,0 +1,8 @@
+ayacc mast_parser.y error_recovery "=>" on
+aflex -i -E mast_lex.l
+gnatchop -w mast_parser.a
+gnatchop -w mast_parser_error_report.a
+gnatchop -w mast_lex.a
+gnatchop -w mast_lex_io.a
+gnatchop -w mast_lex_dfa.a
+gnatmake -g -gnato -I../utils mast_analysis

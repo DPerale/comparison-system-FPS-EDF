@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mast fileType="XML-Mast-Model-File" version="1.1"?>
+<mast_mdl:MAST_MODEL 
+   xmlns:mast_mdl="http://mast.unican.es/xmlmast/model" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+   xsi:schemaLocation="http://mast.unican.es/xmlmast/model Mast_Model.xsd" 
+   Model_Name="rmt" 
+   Model_Date="2000-01-01T00:00:00">
+   <mast_mdl:Regular_Processor Name="teleoperation_station" Max_Interrupt_Priority="512" Min_Interrupt_Priority="501" Worst_ISR_Switch="0.00" Avg_ISR_Switch="0.00" Best_ISR_Switch="0.00" Speed_Factor="1.00" >
+      <mast_mdl:Alarm_Clock_System_Timer Worst_Overhead="50.00" Avg_Overhead="0.00" Best_Overhead="0.00"/>
+   </mast_mdl:Regular_Processor>
+   <mast_mdl:Regular_Processor Name="local_controller" Max_Interrupt_Priority="512" Min_Interrupt_Priority="501" Worst_ISR_Switch="0.00" Avg_ISR_Switch="0.00" Best_ISR_Switch="0.00" Speed_Factor="1.00" >
+      <mast_mdl:Alarm_Clock_System_Timer Worst_Overhead="10.00" Avg_Overhead="0.00" Best_Overhead="0.00"/>
+   </mast_mdl:Regular_Processor>
+   <mast_mdl:Packet_Based_Network Name="ethernet" Transmission="HALF_DUPLEX" Throughput="0.00" Max_Blocking="0.00" Speed_Factor="1.00" Max_Packet_Size="1.000E+109" Min_Packet_Size="1.000E+109" >
+   </mast_mdl:Packet_Based_Network>
+   <mast_mdl:Primary_Scheduler Name="teleoperation_station" Host="teleoperation_station"  >
+      <mast_mdl:Fixed_Priority_Scheduler Worst_Context_Switch="102.50" Avg_Context_Switch="0.00" Best_Context_Switch="0.00" Max_Priority="500" Min_Priority="1" />
+   </mast_mdl:Primary_Scheduler> 
+
+   <mast_mdl:Primary_Scheduler Name="local_controller" Host="local_controller"  >
+      <mast_mdl:Fixed_Priority_Scheduler Worst_Context_Switch="15.00" Avg_Context_Switch="0.00" Best_Context_Switch="0.00" Max_Priority="500" Min_Priority="1" />
+   </mast_mdl:Primary_Scheduler> 
+
+   <mast_mdl:Primary_Scheduler Name="ethernet" Host="ethernet"  >
+      <mast_mdl:FP_Packet_Based_Scheduler Packet_Overhead_Max_Size="0.00" Packet_Overhead_Avg_Size="0.00" Packet_Overhead_Min_Size="0.00" Max_Priority="32767" Min_Priority="1" />
+   </mast_mdl:Primary_Scheduler> 
+
+   <mast_mdl:Immediate_Ceiling_Resource Name="status" Ceiling="32767" Preassigned="NO" />
+
+   <mast_mdl:Immediate_Ceiling_Resource Name="commands" Ceiling="32767" Preassigned="NO" />
+
+   <mast_mdl:Immediate_Ceiling_Resource Name="servo_data" Ceiling="32767" Preassigned="NO" />
+
+
+   <mast_mdl:Simple_Operation Name="read_status" Worst_Case_Execution_Time="87.00" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Shared_Resources_To_Lock>status</mast_mdl:Shared_Resources_To_Lock> 
+      <mast_mdl:Shared_Resources_To_Unlock>status</mast_mdl:Shared_Resources_To_Unlock> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="write_status" Worst_Case_Execution_Time="54.00" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Shared_Resources_To_Lock>status</mast_mdl:Shared_Resources_To_Lock> 
+      <mast_mdl:Shared_Resources_To_Unlock>status</mast_mdl:Shared_Resources_To_Unlock> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="set_command" Worst_Case_Execution_Time="135.00" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Shared_Resources_To_Lock>commands</mast_mdl:Shared_Resources_To_Lock> 
+      <mast_mdl:Shared_Resources_To_Unlock>commands</mast_mdl:Shared_Resources_To_Unlock> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="get_command" Worst_Case_Execution_Time="99.00" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Shared_Resources_To_Lock>commands</mast_mdl:Shared_Resources_To_Lock> 
+      <mast_mdl:Shared_Resources_To_Unlock>commands</mast_mdl:Shared_Resources_To_Unlock> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="read_servos" Worst_Case_Execution_Time="74.00" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Shared_Resources_To_Lock>servo_data</mast_mdl:Shared_Resources_To_Lock> 
+      <mast_mdl:Shared_Resources_To_Unlock>servo_data</mast_mdl:Shared_Resources_To_Unlock> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="write_servos" Worst_Case_Execution_Time="71.00" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Shared_Resources_To_Lock>servo_data</mast_mdl:Shared_Resources_To_Lock> 
+      <mast_mdl:Shared_Resources_To_Unlock>servo_data</mast_mdl:Shared_Resources_To_Unlock> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Enclosing_Operation Name="command_manager" Worst_Case_Execution_Time="9045.0" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Operation_List>write_servos</mast_mdl:Operation_List> 
+   </mast_mdl:Enclosing_Operation> 
+
+   <mast_mdl:Enclosing_Operation Name="data_sender" Worst_Case_Execution_Time="1220.0" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Operation_List>read_servos</mast_mdl:Operation_List> 
+   </mast_mdl:Enclosing_Operation> 
+
+   <mast_mdl:Enclosing_Operation Name="servo_control" Worst_Case_Execution_Time="1019.0" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Operation_List>read_servos write_servos</mast_mdl:Operation_List> 
+   </mast_mdl:Enclosing_Operation> 
+
+   <mast_mdl:Enclosing_Operation Name="trajectory_planner" Worst_Case_Execution_Time="7952.0" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Operation_List>get_command</mast_mdl:Operation_List> 
+   </mast_mdl:Enclosing_Operation> 
+
+   <mast_mdl:Enclosing_Operation Name="reporter" Worst_Case_Execution_Time="2086.0" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Operation_List>write_status</mast_mdl:Operation_List> 
+   </mast_mdl:Enclosing_Operation> 
+
+   <mast_mdl:Enclosing_Operation Name="gui" Worst_Case_Execution_Time="146820.0" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Operation_List>read_status set_command</mast_mdl:Operation_List> 
+   </mast_mdl:Enclosing_Operation> 
+
+   <mast_mdl:Simple_Operation Name="command_message" Worst_Case_Execution_Time="4850.0" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="status_message" Worst_Case_Execution_Time="5080.0" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+   </mast_mdl:Simple_Operation> 
+
+
+   <mast_mdl:Regular_Scheduling_Server Name="servo_control" Scheduler="local_controller" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="415" Preassigned="NO"/>
+      <mast_mdl:SRP_Parameters Preemption_Level="0" Preassigned="NO" />
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="command_manager" Scheduler="local_controller" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="412" Preassigned="NO"/>
+      <mast_mdl:SRP_Parameters Preemption_Level="0" Preassigned="NO" />
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="data_sender" Scheduler="local_controller" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="410" Preassigned="NO"/>
+      <mast_mdl:SRP_Parameters Preemption_Level="0" Preassigned="NO" />
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="trajectory_planner" Scheduler="teleoperation_station" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="80" Preassigned="NO"/>
+      <mast_mdl:SRP_Parameters Preemption_Level="0" Preassigned="NO" />
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="reporter" Scheduler="teleoperation_station" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="79" Preassigned="NO"/>
+      <mast_mdl:SRP_Parameters Preemption_Level="0" Preassigned="NO" />
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="gui" Scheduler="teleoperation_station" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="60" Preassigned="NO"/>
+      <mast_mdl:SRP_Parameters Preemption_Level="0" Preassigned="NO" />
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="message_scheduler" Scheduler="ethernet" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="1" Preassigned="NO"/>
+      <mast_mdl:SRP_Parameters Preemption_Level="0" Preassigned="NO" />
+   </mast_mdl:Regular_Scheduling_Server>
+
+   <mast_mdl:Regular_Transaction Name="servo_control" >
+           <mast_mdl:Periodic_External_Event Name="e1" Period="5000.00" Max_Jitter="0.000" Phase="0.000" />
+           <mast_mdl:Regular_Event Event="o1" >
+              <mast_mdl:Hard_Global_Deadline Deadline="5000.00" Referenced_Event="e1"/>
+           </mast_mdl:Regular_Event>
+      <mast_mdl:System_Timed_Activity  Input_Event="e1" Output_Event="o1" Activity_Operation="servo_control" Activity_Server="servo_control"/>
+   </mast_mdl:Regular_Transaction> 
+   <mast_mdl:Regular_Transaction Name="main_control_loop" >
+           <mast_mdl:Periodic_External_Event Name="e2" Period="50000.00" Max_Jitter="0.000" Phase="0.000" />
+           <mast_mdl:Regular_Event Event="o2" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="o3" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="o4" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="o5" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="o6" ></mast_mdl:Regular_Event>
+           <mast_mdl:Regular_Event Event="o7" >
+              <mast_mdl:Hard_Global_Deadline Deadline="50000.00" Referenced_Event="e2"/>
+           </mast_mdl:Regular_Event>
+      <mast_mdl:System_Timed_Activity  Input_Event="e2" Output_Event="o2" Activity_Operation="trajectory_planner" Activity_Server="trajectory_planner"/>
+      <mast_mdl:Activity  Input_Event="o2" Output_Event="o3" Activity_Operation= "command_message" Activity_Server= "message_scheduler"/>
+      <mast_mdl:Activity  Input_Event="o3" Output_Event="o4" Activity_Operation= "command_manager" Activity_Server= "command_manager"/>
+      <mast_mdl:Activity  Input_Event="o4" Output_Event="o5" Activity_Operation= "data_sender" Activity_Server= "data_sender"/>
+      <mast_mdl:Activity  Input_Event="o5" Output_Event="o6" Activity_Operation= "status_message" Activity_Server= "message_scheduler"/>
+      <mast_mdl:Activity  Input_Event="o6" Output_Event="o7" Activity_Operation= "reporter" Activity_Server= "reporter"/>
+   </mast_mdl:Regular_Transaction> 
+   <mast_mdl:Regular_Transaction Name="gui" >
+           <mast_mdl:Periodic_External_Event Name="e3" Period="1000000.00" Max_Jitter="0.000" Phase="0.000" />
+           <mast_mdl:Regular_Event Event="o8" >
+              <mast_mdl:Hard_Global_Deadline Deadline="1000000.00" Referenced_Event="e3"/>
+           </mast_mdl:Regular_Event>
+      <mast_mdl:System_Timed_Activity  Input_Event="e3" Output_Event="o8" Activity_Operation="gui" Activity_Server="gui"/>
+   </mast_mdl:Regular_Transaction> 
+
+</mast_mdl:MAST_MODEL> 

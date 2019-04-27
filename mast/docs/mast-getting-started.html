@@ -1,0 +1,608 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Michael Gonzalez">
+   <meta name="GENERATOR" content="Mozilla/4.7 [en] (Win95; I) [Netscape]">
+   <title>mast</title>
+</head>
+<body>
+&nbsp;
+<table WIDTH="100%" >
+<tr>
+<td><img SRC="mast_logo_med.jpg" height=170 width=85></td>
+
+<td>
+<dl>
+<h1>
+<font face="Times New Roman,Times"><font color="#993366"><font size=+4>MAST</font></font></font></h1>
+
+<h1>
+<font face="Comic Sans MS"><font color="#3333FF">Modeling and Analysis
+Suite for Real-Time Applications</font></font></h1>
+</dl>
+</td>
+</tr>
+</table>
+
+<h2>
+<font face="Comic Sans MS"><font color="#3333FF">Table of Contents</font></font></h2>
+
+<ul>
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#intro">Introduction</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#elements">MAST
+elements</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#cpus">Processing
+Resources</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#shared-resources">Shared
+Resources</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#sched-servers">Scheduling
+Servers</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#operations">Operations</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#transactions">Transactions</a></font></font></li>
+
+<li>
+<font face="Comic Sans MS"><font color="#009900"><a href="#analysis">Performing
+the Analysis</a></font></font></li>
+</ul>
+
+<h2>
+<a NAME="intro"></a><font face="Comic Sans MS"><font color="#3333FF">Introduction</font></font></h2>
+<font face="Arial,Helvetica">MAST is an open source set of tools that enables
+modeling real-time applications and performing timing analysis of those
+applications. MAST is still under development. Its analysis tools include
+worst-case response time schedulability analysis, calculation of blocking
+times, calculation of slack times, optimized priority assignment, and simulation
+tools.</font>
+<p><font face="Arial,Helvetica">This document describes how to use the
+MAST suite through a guided simple example. The example is a real-time
+application with four tasks. Three of them are periodic tasks that synchronize
+through the use of two shared resources. The fourth task&nbsp; is an aperiodic
+sporadic task. Although MAST support multiprocessor and distributed systems,
+this simple example runs all its tasks concurrently in the same CPU. The
+figure below shows the main timing requirements of the task set.</font>
+<center>
+<p><img SRC="task-set.gif" BORDER=1 height=336 width=576></center>
+
+<p><font face="Arial,Helvetica">In this figure <i>T </i>represents the
+period of a task, and <i>C</i> its worst-case execution time (i.e., the
+time it takes to execute it supposing that no other tasks are running).
+The numbers inside the shared resources are the worst-case execution times
+of the corresponding protected operations (<i>Read</i>, <i>Write</i>, <i>Send</i>,
+and <i>Receive</i>).&nbsp; We can see that the deadlines of the periodic
+tasks are equal to their periods.</font>
+<p><font face="Arial,Helvetica">For this example, we want to perform the
+worst-case response time analysis. This implies calculating the worst case
+response times (or finalization times) of all tasks, taking into account
+that they all run concurrently, and taking into account the effects of
+synchronization for using the shared resources in a mutually exclusive
+way, and the overheads introduced by the task context switching.</font>
+<br>&nbsp;
+<h2>
+<a NAME="elements"></a><font face="Comic Sans MS"><font color="#000099">MAST
+Elements</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">The elements that we
+need to define to build the MAST model of this application are:</font></font>
+<ul>
+<li>
+<font face="Arial,Helvetica"><font color="#000000"><a href="#cpus">Processing
+resources</a>: Just one CPU</font></font></li>
+
+<li>
+<font face="Arial,Helvetica"><font color="#000000"><a href="#shared-resources">Shared
+Resources</a>: Representing the two resources: <i>Data Server</i>, and
+<i>Communication
+Server</i>, and the associated mutually exclusive lock, with is real-time
+synchronization protocol for avoiding priority inversions</font></font></li>
+
+<li>
+<font face="Arial,Helvetica"><font color="#000000"><a href="#sched-servers">Scheduling
+Servers</a>: With the scheduling parameters of each of the four tasks (i.e.,
+their priorities)</font></font></li>
+
+<li>
+<font face="Arial,Helvetica"><font color="#000000"><a href="#operations">Operations</a>:
+on the one hand, the protected operations of the shared resources; on the
+other hand, the operations executed by each of the tasks; each operation
+defines its worst-case execution time</font></font></li>
+
+<li>
+<font face="Arial,Helvetica"><font color="#000000"><a href="#transactions">Transactions</a>:
+they define the events that arrive at the system, and the activities that
+these events release; they also define the timing requirements imposed
+on each activity</font></font></li>
+</ul>
+
+<h2>
+<a NAME="cpus"></a><font face="Comic Sans MS"><font color="#000099">Processing
+Resources</font></font></h2>
+<font color="#000000"><font face="Arial,Helvetica">The MAST description
+starts with the processing resources, which can be fixed priority processors,
+or fixed priority networks. In this case, we only have one processor, that
+we will call </font><font face="Courier New,Courier">CPU_1</font><font face="Arial,Helvetica">.
+We can add the worst-case context switch times to take into account the
+associated overhead. Other more complex overhead modeling possibilities
+are included in the MAST model, but we will just use the context switch
+overhead, for simplicity. The description of this section of the MAST model
+is:</font></font>
+<pre><font face="Courier New,Courier"><font color="#000000">Processing_Resource (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Fixed_Priority_Processor,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => CPU_1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Worst_Context_Switch&nbsp;&nbsp;&nbsp; => 0.25);</font></font></pre>
+
+<h2>
+<a NAME="shared-resources"></a><font face="Comic Sans MS"><font color="#000099">Shared
+Resources</font></font></h2>
+<font color="#000000"><font face="Arial,Helvetica">The next objects in
+the MAST description are the shared resources. In our example we have the
+</font><font face="Courier New,Courier">Data_Server</font><font face="Arial,Helvetica">,
+and the </font><font face="Courier New,Courier">Comm_Server</font><font face="Arial,Helvetica">.
+We have to indicate the synchronization protocol to use, which can be </font><font face="Courier New,Courier">Priority_Inheritance_Resource</font><font face="Arial,Helvetica">,
+or </font><font face="Courier New,Courier">Immediate_Ceiling_Resource</font><font face="Arial,Helvetica">.
+In this case let's assume that we are using the Immediate Priority Ceiling
+Protocol (also called <i>Ceiling_Locking</i> in Ada, or <i>PRIO_PROTECT</i>
+in POSIX).</font></font>
+<p><font face="Arial,Helvetica"><font color="#000000">For this protocol
+we can specify the priority ceiling of each resource, or we can let the
+tool calculate the optimum ceilings. We will do the latter. Therefore,
+the shared resources section will look like:</font></font>
+<pre><font face="Courier New,Courier"><font color="#000000">Shared_Resource (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp; => Immediate_Ceiling_Resource,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp; => Data_Server);
+
+Shared_Resource (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp; => Immediate_Ceiling_Resource,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp; => Comm_Server);</font></font></pre>
+
+<h2>
+<a NAME="sched-servers"></a><font face="Comic Sans MS"><font color="#000099">Scheduling
+Servers</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">The scheduling servers
+are the tasks or threads of control that execute the different activities
+in the system. They contain a reference to the processor used, and the
+scheduling policy and parameters for that task.</font></font>
+<p><font color="#000000"><font face="Arial,Helvetica">Among the different
+scheduling policies that are available, we will chose the simplest one:
+</font><font face="Courier New,Courier">Fixed_Priority_Policy</font><font face="Arial,Helvetica">.
+For this policy, the only scheduling parameter is the priority. For our
+task set, we will use the deadline monotonic priority assignment, which
+is optimum for tasks with deadlines at or before their periods. In this
+assignment, the highest priority is assigned to the shortest deadline.
+Therefore, we will assign priorities as follows:</font></font>
+<br>&nbsp;
+<table BORDER >
+<tr>
+<td><b>Task</b></td>
+
+<td><b>Deadline</b></td>
+
+<td><b>Priority</b></td>
+</tr>
+
+<tr>
+<td>Control_Task</td>
+
+<td>
+<center>100</center>
+</td>
+
+<td>
+<center>3</center>
+</td>
+</tr>
+
+<tr>
+<td>Planning_Task</td>
+
+<td>
+<center>150</center>
+</td>
+
+<td>
+<center>2</center>
+</td>
+</tr>
+
+<tr>
+<td>Status_Task</td>
+
+<td>
+<center>350</center>
+</td>
+
+<td>
+<center>1</center>
+</td>
+</tr>
+
+<tr>
+<td>Emergency</td>
+
+<td>
+<center>6</center>
+</td>
+
+<td>
+<center>4</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica"><font color="#000000">With this priority
+assignment, the scheduling servers section will be described as follows:</font></font>
+<pre><font face="Courier New,Courier"><font color="#000000">Scheduling_Server (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Fixed_Priority,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Control_Task,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Server_Sched_Parameters&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Fixed_Priority_policy,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The_Priority&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => 3),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Server_Processing_Resource&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => CPU_1);
+
+Scheduling_Server (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Fixed_Priority,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Planning_Task,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Server_Sched_Parameters&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Fixed_Priority_policy,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The_Priority&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => 2),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Server_Processing_Resource&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => CPU_1);
+
+Scheduling_Server (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Fixed_Priority,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Status_Task,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Server_Sched_Parameters&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Fixed_Priority_policy,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The_Priority&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => 1),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Server_Processing_Resource&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => CPU_1);
+
+Scheduling_Server (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Fixed_Priority,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Emergency,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Server_Sched_Parameters&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Fixed_Priority_Policy,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; The_Priority&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => 4),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Server_Processing_Resource&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => CPU_1);</font></font></pre>
+
+<h2>
+<a NAME="operations"></a><font face="Comic Sans MS"><font color="#000099">Operations</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">In the first place,
+we will describe the operations associated with the protected operations
+<i>Read</i>,
+<i>Write</i>,
+<i>Send</i>,
+and <i>Receive</i>, all associated with the mutually exclusive use of shared
+resources. For each operation, we have to describe its name, worst case
+execution time, and the shared resources that are used. In our case each
+protected operation uses a single resource only. The description is:</font></font>
+<pre><font face="Courier New,Courier"><font color="#000000">Operation (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Simple,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Read,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Worst_Case_Execution_Time => 2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shared_Resources_List&nbsp;&nbsp;&nbsp;&nbsp; => (Data_Server));
+
+Operation (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Simple,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Write,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Worst_Case_Execution_Time => 20,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shared_Resources_List&nbsp;&nbsp;&nbsp;&nbsp; => (Data_Server));
+
+Operation (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Simple,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Send,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Worst_Case_Execution_Time => 10,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shared_Resources_List&nbsp;&nbsp;&nbsp;&nbsp; => (Comm_Server));
+
+Operation (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Simple,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Receive,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Worst_Case_Execution_Time => 10,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Shared_Resources_List&nbsp;&nbsp;&nbsp;&nbsp; => (Comm_Server));</font></font></pre>
+<font face="Arial,Helvetica"><font color="#000000">Now we can define the
+operations that are executed by each of the four tasks. The operations
+that use protected operations (also called critical sections) are defined
+as <i>enclosing</i> operations (because they encloses the critical sections
+together with some other code). The Emergency task does not invoke any
+of the protected operations, and thus is defined as a <i>simple</i> operation.
+The description is:</font></font>
+<pre><font face="Courier New,Courier"><font color="#000000">Operation (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Enclosing,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Control,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Worst_Case_Execution_Time => 20,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Composite_Operation_List&nbsp; => (Read,Send));
+
+Operation (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Enclosing,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Planning,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Worst_Case_Execution_Time => 40,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Composite_Operation_List&nbsp; => (Write));
+
+Operation (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Enclosing,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Status,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Worst_Case_Execution_Time => 100,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Composite_Operation_List&nbsp; => (Receive));
+
+Operation (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Simple,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Emergency,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Worst_Case_Execution_Time => 5);</font></font></pre>
+
+<h2>
+<a NAME="transactions"></a><font face="Comic Sans MS"><font color="#000099">Transactions</font></font></h2>
+<font face="Arial,Helvetica"><font color="#000000">And the final part of
+the MAST description corresponds to the transactions. A MAST transaction
+is a graph that shows the flow of events in the system, and the activities
+that each event releases. Very complex graphs are possible, to represent
+complex event synchronization patterns; but in our example we only have
+simple transactions, each with one external input event, one output event,
+and just one activity, that corresponds to one of the four tasks in the
+example. The following figure shows a diagram of the four transactions.</font></font>
+<center>
+<p><img SRC="transactions.gif" BORDER=1 height=251 width=668></center>
+
+<p><font face="Arial,Helvetica"><font color="#000000">In the description
+of each transaction there are three groups of data that we need to specify:</font></font>
+<ul>
+<li>
+<font face="Arial,Helvetica"><font color="#000000"><i>External events</i>:
+each with its name, type, and timing parameters. In our case, three of
+the external events are periodic, while the fourth is a sporadic event.</font></font></li>
+
+<li>
+<font face="Arial,Helvetica"><font color="#000000"><i>Internal events</i>:
+each with its name, and the timing parameters associated with their generation.
+We have four internal events, each generated at the output of each of the
+four activities or tasks. All have hard global deadlines as timing requirements.
+Global deadlines are referred to an external event, as we will see in the
+description.</font></font></li>
+
+<li>
+<font face="Arial,Helvetica"><font color="#000000"><i>Event handlers</i>:
+they are the elements that handle the events. In our example all the event
+handlers are activities, that represent the execution of an operation,
+by a given task. The distinction between an activity and an operation is
+that the activity is an instance of an operation executed by a given task.
+For example, we could have a procedure written just once (an operation),
+but we could create two or three tasks that could be executing that procedure,
+and thus we would have three activities or instances of the operation.
+In our case, each activity describes its input event, its output event,
+its scheduling server, and its operation.</font></font></li>
+</ul>
+<font face="Arial,Helvetica"><font color="#000000">The description of the
+transactions is:</font></font>
+<pre><font face="Courier New,Courier"><font color="#000000">Transaction (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type => Regular,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name => Control_Task,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; External_Events => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Type&nbsp;&nbsp; => Periodic,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp; => E1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Period => 100)),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Internal_Events => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Type&nbsp;&nbsp; => regular,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name&nbsp;&nbsp; => O1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Timing_Requirements => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Hard_Global_Deadline,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deadline&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => 100,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referenced_Event => E1))),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Event_Handlers => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Activity,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Input_Event&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => E1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Output_Event&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => O1,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Activity_Operation => Control,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Activity_Server&nbsp;&nbsp;&nbsp; => Control_Task)));
+
+Transaction (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp; => Regular,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp;&nbsp; => Planning_Task,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; External_Events => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Type&nbsp;&nbsp; => Periodic,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp; => E2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Period => 150)),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Internal_Events => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Type&nbsp;&nbsp; => regular,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name&nbsp;&nbsp; => O2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Timing_Requirements => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Hard_Global_Deadline,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deadline&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => 150,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referenced_Event => E2))),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Event_Handlers => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Activity,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Input_Event&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => E2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Output_Event&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => O2,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Activity_Operation => Planning,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Activity_Server&nbsp;&nbsp;&nbsp; => Planning_Task)));
+
+Transaction (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type => Regular,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name => Status_Task,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; External_Events => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Type&nbsp;&nbsp; => Periodic,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name&nbsp;&nbsp; => E3,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Period => 350)),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Internal_Events => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Type&nbsp;&nbsp; => regular,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name&nbsp;&nbsp; => O3,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Timing_Requirements => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Hard_Global_Deadline,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deadline&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => 350,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referenced_Event => E3))),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Event_Handlers => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Activity,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Input_Event&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => E3,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Output_Event&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => O3,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Activity_Operation => Status,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Activity_Server&nbsp;&nbsp;&nbsp; => Status_Task)));
+
+Transaction (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type => Regular,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name => Emergency,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; External_Events => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Type => Sporadic,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Name => E4,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Min_Interarrival => 50)),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Internal_Events => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Type => regular,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name => O4,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Timing_Requirements => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Hard_Global_Deadline,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Deadline&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => 6,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Referenced_Event => E4))),
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Event_Handlers => (
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => Activity,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Input_Event&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => E4,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Output_Event&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; => O4,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Activity_Operation => Emergency,
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Activity_Server&nbsp;&nbsp;&nbsp; => Emergency)));</font></font></pre>
+
+<h2>
+<a NAME="analysis"></a><font face="Comic Sans MS"><font color="#000099">Performing
+the Analysis</font></font></h2>
+<font face="Arial,Helvetica">The described MAST objects are all stored
+in a text file called <a href="controller.txt">controller.txt.</a> Press
+<a href="controller.txt">here</a>
+to view this file.</font>
+<p><font face="Arial,Helvetica">Once we have described the application
+in the MAST description file, we can execute the analysis tool to determine
+the worst-case response time for each or the tasks. By comparing these
+response times with the timing requirements, we can determine if the system
+is schedulable or not.</font>
+<p><font face="Arial,Helvetica">In our example, all the analysis tools
+that we have will provide the same exact response time results. They provide
+different results only for distributed systems, because the offset-based
+techniques are more exact than the holistic analysis. For distributed systems,
+they all provide upper bounds to the real response times.</font>
+<p><font face="Arial,Helvetica">The simplest way to invoke the analysis
+tool is through the "gmast" graphical driver. A screenshot of this graphical
+tool is shown next:</font>
+<center>
+<p><img SRC="gmast_screen.gif" height=383 width=735></center>
+
+<p><font face="Arial,Helvetica">On the left hand side of the gmast window
+we can choose the analysis tool to use (The <i>Offset_Based</i> tool is
+selected in the figure), and the directory and input file to use. The "<b>File...</b>"
+button allows us browsing the directory searching for the desired file.
+In the figure we can see that the file "controller.txt", containing the
+MAST description of our example, is selected. We can also specify where
+the output will go to. If we leave it blank, it will go to the standard
+output. Otherwise, it will be stored in the specified file, in the same
+directory as the input file.</font>
+<p><font face="Arial,Helvetica">On the right hand side we can choose the
+options used for the tool. We have chosen "<i>Calculate Ceilings</i>",
+because we did not set the priority ceilings of the shared resources. In
+addition, we have requested calculation of the <i>slacks</i>. The latter
+will cause the tool to provide the transaction slack of each transaction,
+as well as the system slack. The transaction slack is the percentage of
+execution time that we can add to all the operations of the transaction
+while still keeping the system schedulable (or, if negative, the percentage
+by which we need to reduce the execution times to make the system schedulable).
+The system slack is the percentage by which we can increase (or decrease)
+the execution times of all the operations in the system while keeping the
+system schedulable (or to make it schedulable). The slacks are a very important
+piece of data, because they tell us how close or how far we are from becoming
+unschedulable (or schedulable).</font>
+<p><font face="Arial,Helvetica">Once we have set all the desired options,
+we press the "<b>GO</b>" button, and the analysis tool is invoked. In this
+case, the results will be stored in file "<a href="controller.out">controller.out</a>".
+By looking at this file, we can determine the following response times
+and slacks for our system:</font>
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER >
+<tr>
+<td>
+<center><b>Transaction</b></center>
+</td>
+
+<td>
+<center><b>Worst-Case Response Time</b></center>
+</td>
+
+<td>
+<center><b>Slack</b></center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>Control Task</center>
+</td>
+
+<td>
+<center>46.0</center>
+</td>
+
+<td>
+<center>39.84%</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>Planning Task</center>
+</td>
+
+<td>
+<center>82.0</center>
+</td>
+
+<td>
+<center>29.69%</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>Status Task</center>
+</td>
+
+<td>
+<center>276.0</center>
+</td>
+
+<td>
+<center>23.44%</center>
+</td>
+</tr>
+
+<tr>
+<td>
+<center>Emergency</center>
+</td>
+
+<td>
+<center>5.5</center>
+</td>
+
+<td>
+<center>9.38%</center>
+</td>
+</tr>
+</table>
+
+<p><font face="Arial,Helvetica">And the <b>system slack</b> is 8.59%. We
+can see that the system is schedulable. The emergency task has very little
+possibility of growth, but one of the other tasks may grow its execution
+time between 23 and 39%.</font>
+<br>&nbsp;
+<h2>
+<font face="Comic Sans MS"><font color="#000099">More Examples</font></font></h2>
+<font face="Arial,Helvetica">You can now try analyzing the examples found
+with the MAST distribution. You will find the results of these examples
+in <a href="mast-examples.html">mast-examples.html</a>.</font>
+<h3>
+<font face="Comic Sans MS"><a href="mast.html">Back to Main Page</a></font></h3>
+
+</body>
+</html>

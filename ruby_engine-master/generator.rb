@@ -105,7 +105,8 @@ class Generator
          raise 'Error size in generateDataset'
       end
       rta_calculus = RTA_Calculus.new @taskset
-      feasibilityEDF, maxLoadEDF, iterEDF, hyperPeriod = rta_calculus.computeRTAforEDF
+      #feasibilityEDF, maxLoadEDF, iterEDF, hyperPeriod = rta_calculus.computeRTAforEDF
+      feasibilityEDF, maxLoadEDF, iterEDF, hyperPeriod = rta_calculus.MASTcomputeEDF
       feasibilityFPS, iterFPS = rta_calculus.computeRTAforFPS
       printDataFile hyperPeriod
       totalTasks = num_of_short + num_of_mid + num_of_long
@@ -169,7 +170,7 @@ class Generator
          when "mid"
             p = rand @param.mid_period_demo_mixed
             while alreadyPicked.include? p
-              p = rand @param.short_period_demo_mixed
+              p = rand @param.mid_period_demo_mixed
             end
             ret = p
             e = rand @param.mid_impl_exec_range
@@ -211,30 +212,20 @@ class Generator
          raise 'Error size in generateSingleTask'
       end
 
-      dead = expSolver (d)
-      period = expSolver (p)
+      dead = expSolver(d)
+      period = expSolver(p)
       t = BasicTask.new 0, dead, period, 0, e
-
       @taskset.push t
       return ret
    end
 
    def expSolver (code)
-      puts code
-      code = code - 1
+      code = code
       a = Array.new
       a = @param.exponentsDemo.to_a.product([code])
       # puts a
       # puts "2 ^ #{a[code][0][0][0]} * 3 ^ #{a[code][0][0][1]} "\
       #      "5 ^ #{a[code][0][0][2]} * 7 ^ #{a[code][0][0][3]}"
-      print "ciao      "
-      print a[code][0][0][0]
-      print "      "
-      print a[code][0][0][1]
-      print "      "
-      print a[code][0][0][2]
-      print "      "
-      puts a[code][0][0][3]
       value = 2 ** a[code][0][0][0] *
               3 ** a[code][0][0][1] *
               5 ** a[code][0][0][2] *
@@ -442,7 +433,7 @@ class Generator
         out.puts "      end loop;"
         out.puts "   end Init;"
         out.puts ""
-        out.puts "   P1 : Print_Task.Print (240, -"+(hyperPeriod/1000).to_s+", " + (hyperPeriod/1000).to_s + "); -- period in milliseconds"
+        out.puts "   P1 : Print_Task.Print (240, -"+(1).to_s+", " + (hyperPeriod/1000).to_s + "); -- period in milliseconds"
         
           
         
@@ -454,8 +445,6 @@ class Generator
          # end
 
          @taskset.each do |t|
-            print t.deadInMicroseconds
-            print ", "
             str = "   C#{i} : Cyclic (#{t.prio}, #{t.deadInMicroseconds},"\
                   " #{t.periodInMicroseconds}, #{i}, #{t.execInOperations});"
             out.puts str

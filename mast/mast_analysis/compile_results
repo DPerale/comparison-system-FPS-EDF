@@ -1,0 +1,1 @@
+gnatmake -g -gnato -I../utils mast_read_results `xmlada-config`

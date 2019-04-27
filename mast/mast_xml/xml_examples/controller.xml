@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mast fileType="XML-Mast-Model-File" version="1.1"?>
+<mast_mdl:MAST_MODEL 
+   xmlns:mast_mdl="http://mast.unican.es/xmlmast/model" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+   xsi:schemaLocation="http://mast.unican.es/xmlmast/model Mast_Model.xsd" 
+   Model_Name="controller" 
+   Model_Date="2000-01-01T00:00:00">
+   <mast_mdl:Regular_Processor Name="cpu_1" Max_Interrupt_Priority="32767" Min_Interrupt_Priority="1" Worst_ISR_Switch="0.00" Avg_ISR_Switch="0.00" Best_ISR_Switch="0.00" Speed_Factor="1.00" >
+   </mast_mdl:Regular_Processor>
+   <mast_mdl:Primary_Scheduler Name="cpu_1" Host="cpu_1"  >
+      <mast_mdl:Fixed_Priority_Scheduler Worst_Context_Switch="0.250000" Avg_Context_Switch="0.00" Best_Context_Switch="0.00" Max_Priority="32767" Min_Priority="1" />
+   </mast_mdl:Primary_Scheduler> 
+
+   <mast_mdl:Immediate_Ceiling_Resource Name="data_server" Ceiling="32767" Preassigned="NO" />
+
+   <mast_mdl:Immediate_Ceiling_Resource Name="comm_server" Ceiling="32767" Preassigned="NO" />
+
+
+   <mast_mdl:Simple_Operation Name="read" Worst_Case_Execution_Time="2.00" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Shared_Resources_To_Lock>data_server</mast_mdl:Shared_Resources_To_Lock> 
+      <mast_mdl:Shared_Resources_To_Unlock>data_server</mast_mdl:Shared_Resources_To_Unlock> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="write" Worst_Case_Execution_Time="20.00" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Shared_Resources_To_Lock>data_server</mast_mdl:Shared_Resources_To_Lock> 
+      <mast_mdl:Shared_Resources_To_Unlock>data_server</mast_mdl:Shared_Resources_To_Unlock> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="send" Worst_Case_Execution_Time="10.00" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Shared_Resources_To_Lock>comm_server</mast_mdl:Shared_Resources_To_Lock> 
+      <mast_mdl:Shared_Resources_To_Unlock>comm_server</mast_mdl:Shared_Resources_To_Unlock> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Simple_Operation Name="receive" Worst_Case_Execution_Time="10.00" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Shared_Resources_To_Lock>comm_server</mast_mdl:Shared_Resources_To_Lock> 
+      <mast_mdl:Shared_Resources_To_Unlock>comm_server</mast_mdl:Shared_Resources_To_Unlock> 
+   </mast_mdl:Simple_Operation> 
+
+   <mast_mdl:Enclosing_Operation Name="control" Worst_Case_Execution_Time="20.00" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Operation_List>read send</mast_mdl:Operation_List> 
+   </mast_mdl:Enclosing_Operation> 
+
+   <mast_mdl:Enclosing_Operation Name="planning" Worst_Case_Execution_Time="40.00" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Operation_List>write</mast_mdl:Operation_List> 
+   </mast_mdl:Enclosing_Operation> 
+
+   <mast_mdl:Enclosing_Operation Name="status" Worst_Case_Execution_Time="100.00" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+      <mast_mdl:Operation_List>receive</mast_mdl:Operation_List> 
+   </mast_mdl:Enclosing_Operation> 
+
+   <mast_mdl:Simple_Operation Name="emergency" Worst_Case_Execution_Time="5.00" Average_Case_Execution_Time="1.000E+100" Best_Case_Execution_Time="0.00"> 
+   </mast_mdl:Simple_Operation> 
+
+
+   <mast_mdl:Regular_Scheduling_Server Name="control_task" Scheduler="cpu_1" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="3" Preassigned="NO"/>
+      <mast_mdl:SRP_Parameters Preemption_Level="0" Preassigned="NO" />
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="planning_task" Scheduler="cpu_1" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="2" Preassigned="NO"/>
+      <mast_mdl:SRP_Parameters Preemption_Level="0" Preassigned="NO" />
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="status_task" Scheduler="cpu_1" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="1" Preassigned="NO"/>
+      <mast_mdl:SRP_Parameters Preemption_Level="0" Preassigned="NO" />
+   </mast_mdl:Regular_Scheduling_Server>
+   <mast_mdl:Regular_Scheduling_Server Name="emergency" Scheduler="cpu_1" >
+      <mast_mdl:Fixed_Priority_Policy The_Priority="4" Preassigned="NO"/>
+      <mast_mdl:SRP_Parameters Preemption_Level="0" Preassigned="NO" />
+   </mast_mdl:Regular_Scheduling_Server>
+
+   <mast_mdl:Regular_Transaction Name="control_task" >
+           <mast_mdl:Periodic_External_Event Name="e1" Period="100.000" Max_Jitter="0.000" Phase="0.000" />
+           <mast_mdl:Regular_Event Event="o1" >
+              <mast_mdl:Hard_Global_Deadline Deadline="100.000" Referenced_Event="e1"/>
+           </mast_mdl:Regular_Event>
+      <mast_mdl:Activity  Input_Event="e1" Output_Event="o1" Activity_Operation= "control" Activity_Server= "control_task"/>
+   </mast_mdl:Regular_Transaction> 
+   <mast_mdl:Regular_Transaction Name="planning_task" >
+           <mast_mdl:Periodic_External_Event Name="e2" Period="150.000" Max_Jitter="0.000" Phase="0.000" />
+           <mast_mdl:Regular_Event Event="o2" >
+              <mast_mdl:Hard_Global_Deadline Deadline="150.000" Referenced_Event="e2"/>
+           </mast_mdl:Regular_Event>
+      <mast_mdl:Activity  Input_Event="e2" Output_Event="o2" Activity_Operation= "planning" Activity_Server= "planning_task"/>
+   </mast_mdl:Regular_Transaction> 
+   <mast_mdl:Regular_Transaction Name="status_task" >
+           <mast_mdl:Periodic_External_Event Name="e3" Period="350.000" Max_Jitter="0.000" Phase="0.000" />
+           <mast_mdl:Regular_Event Event="o3" >
+              <mast_mdl:Hard_Global_Deadline Deadline="350.000" Referenced_Event="e3"/>
+           </mast_mdl:Regular_Event>
+      <mast_mdl:Activity  Input_Event="e3" Output_Event="o3" Activity_Operation= "status" Activity_Server= "status_task"/>
+   </mast_mdl:Regular_Transaction> 
+   <mast_mdl:Regular_Transaction Name="emergency" >
+           <mast_mdl:Sporadic_External_Event Name="e4" Avg_Interarrival="0.000" Distribution="UNIFORM" Min_Interarrival="50.000" />
+           <mast_mdl:Regular_Event Event="o4" >
+              <mast_mdl:Hard_Global_Deadline Deadline="6.000" Referenced_Event="e4"/>
+           </mast_mdl:Regular_Event>
+      <mast_mdl:Activity  Input_Event="e4" Output_Event="o4" Activity_Operation= "emergency" Activity_Server= "emergency"/>
+   </mast_mdl:Regular_Transaction> 
+
+</mast_mdl:MAST_MODEL> 

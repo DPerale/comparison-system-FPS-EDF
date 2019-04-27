@@ -16,7 +16,7 @@ package body ada_main is
    E125 : Short_Integer; pragma Import (Ada, E125, "print_task_E");
    E005 : Short_Integer; pragma Import (Ada, E005, "cyclic_tasks_E");
 
-   Sec_Default_Sized_Stacks : array (1 .. 62) of aliased System.Secondary_Stack.SS_Stack (System.Parameters.Runtime_Default_Sec_Stack_Size);
+   Sec_Default_Sized_Stacks : array (1 .. 54) of aliased System.Secondary_Stack.SS_Stack (System.Parameters.Runtime_Default_Sec_Stack_Size);
 
    Local_Priority_Specific_Dispatching : constant String := "";
    Local_Interrupt_States : constant String := "";
@@ -106,7 +106,7 @@ package body ada_main is
 
       ada_main'Elab_Body;
       Default_Secondary_Stack_Size := System.Parameters.Runtime_Default_Sec_Stack_Size;
-      Binder_Sec_Stacks_Count := 62;
+      Binder_Sec_Stacks_Count := 54;
       Default_Sized_SS_Pool := Sec_Default_Sized_Stacks'Address;
 
       Runtime_Initialize (1);

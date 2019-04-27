@@ -1,0 +1,376 @@
+V "GNAT Lib v2018"
+M P W=b
+A -g
+A -gnato
+P ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_DIRECT_BOOLEAN_OPERATORS
+RV NO_EXCEPTION_HANDLERS
+RV NO_EXCEPTION_PROPAGATION
+RV NO_EXCEPTIONS
+RV NO_IO
+RV NO_IMPLICIT_CONDITIONALS
+RV NO_LOCAL_ALLOCATORS
+RV NO_SECONDARY_STACK
+RV NO_STANDARD_ALLOCATORS_AFTER_ELABORATION
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV SPARK_05
+
+U mast_analysis%b	mast_analysis.adb	b2f9865d NE OO SU
+W ada%s			ada.ads			ada.ali
+W ada.characters%s	a-charac.ads		a-charac.ali
+W ada.characters.handling%s  a-chahan.adb	a-chahan.ali
+W ada.command_line%s	a-comlin.adb		a-comlin.ali
+W ada.exceptions%s	a-except.adb		a-except.ali
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W ada.text_io%s		a-textio.adb		a-textio.ali
+W gnat%s		gnat.ads		gnat.ali
+W gnat.os_lib%s		g-os_lib.ads		g-os_lib.ali
+Z interfaces%s		interfac.ads		interfac.ali
+W list_exceptions%s	list_exceptions.ads	list_exceptions.ali
+W mast%s		mast.adb		mast.ali
+W mast.annealing_parameters%s  mast-annealing_parameters.adb  mast-annealing_parameters.ali
+W mast.consistency_checks%s  mast-consistency_checks.adb  mast-consistency_checks.ali
+W mast.hopa_parameters%s  mast-hopa_parameters.adb  mast-hopa_parameters.ali
+W mast.io%s		mast-io.adb		mast-io.ali
+W mast.miscelaneous_tools%s  mast-miscelaneous_tools.adb  mast-miscelaneous_tools.ali
+W mast.operations%s	mast-operations.adb	mast-operations.ali
+W mast.restrictions%s	mast-restrictions.adb	mast-restrictions.ali
+W mast.systems%s	mast-systems.adb	mast-systems.ali
+W mast.timing_requirements%s  mast-timing_requirements.adb  mast-timing_requirements.ali
+W mast.tool_exceptions%s  mast-tool_exceptions.adb  mast-tool_exceptions.ali
+W mast.tools%s		mast-tools.adb		mast-tools.ali
+W mast_analysis_help%b	mast_analysis_help.adb	mast_analysis_help.ali
+W mast_parser%b		mast_parser.adb		mast_parser.ali
+W mast_parser_error_report%s  mast_parser_error_report.adb  mast_parser_error_report.ali
+Z system%s		system.ads		system.ali
+Z system.concat_2%s	s-conca2.adb		s-conca2.ali
+Z system.exception_table%s  s-exctab.adb	s-exctab.ali
+Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+W var_strings%s		var_strings.adb		var_strings.ali
+
+D ada.ads		20180525052300 76789da1 ada%s
+D a-charac.ads		20180525052301 2d3ec45b ada.characters%s
+D a-chahan.ads		20180525052300 1601a50f ada.characters.handling%s
+D a-comlin.ads		20180525052301 4aa66568 ada.command_line%s
+D a-except.ads		20180525052301 291912d5 ada.exceptions%s
+D a-finali.ads		20180525052301 bf4f806b ada.finalization%s
+D a-ioexce.ads		20180525052259 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180525052300 119b8fb3 ada.streams%s
+D a-tags.ads		20180525052302 491b781d ada.tags%s
+D a-textio.ads		20180525052302 881db35a ada.text_io%s
+D a-tiflio.ads		20180525052259 56fbda09 ada.text_io.float_io%s
+D a-unccon.ads		20180525052301 0e9b276f ada.unchecked_conversion%s
+D a-uncdea.ads		20180525052301 eff36322 ada.unchecked_deallocation%s
+D gnat.ads		20180525052302 fd2ad2f1 gnat%s
+D g-os_lib.ads		20180525052259 0db74523 gnat.os_lib%s
+D hash_lists.ads	20080722124150 ebcb181e hash_lists%s
+D indexed_lists.ads	20080722124150 2a304d11 indexed_lists%s
+D interfac.ads		20180525052300 5ab55268 interfaces%s
+D i-cstrea.ads		20180525052259 e53d8b8e interfaces.c_streams%s
+D list_exceptions.ads	20080722124150 720909ba list_exceptions%s
+D mast.ads		20080722124150 ce320f7b mast%s
+D mast-annealing_parameters.ads  20080722124150 756cfe0b mast.annealing_parameters%s
+D mast-consistency_checks.ads  20080722124150 a1bd679a mast.consistency_checks%s
+D mast-drivers.ads	20080722124150 24d64b13 mast.drivers%s
+D mast-events.ads	20080722124150 46b5a01e mast.events%s
+D mast-graphs.ads	20080722124150 28bf5497 mast.graphs%s
+D mast-graphs-event_handlers.ads  20080722124150 532e4f04 mast.graphs.event_handlers%s
+D mast-graphs-links.ads	20080722124150 c72e3255 mast.graphs.links%s
+D mast-hopa_parameters.ads  20080722124150 f2f99484 mast.hopa_parameters%s
+D mast-io.ads		20080722124150 c81275e3 mast.io%s
+D mast-miscelaneous_tools.ads  20080722124150 982fa822 mast.miscelaneous_tools%s
+D mast-operations.ads	20080722124150 7c81852a mast.operations%s
+D mast-processing_resources.ads  20080722124150 d115afa6 mast.processing_resources%s
+D mast-processing_resources-network.ads  20080722124150 810c9112 mast.processing_resources.network%s
+D mast-processing_resources-processor.ads  20080722124150 c64c47fc mast.processing_resources.processor%s
+D mast-restrictions.ads	20080722124150 d52d3491 mast.restrictions%s
+D mast-results.ads	20080722124150 baf539fc mast.results%s
+D mast-schedulers.ads	20080722124150 58d16fb6 mast.schedulers%s
+D mast-schedulers-primary.ads  20080722124150 85e67f2e mast.schedulers.primary%s
+D mast-schedulers-secondary.ads  20080722124150 81a815c0 mast.schedulers.secondary%s
+D mast-scheduling_parameters.ads  20080722124150 3e1e05b7 mast.scheduling_parameters%s
+D mast-scheduling_policies.ads  20080722124150 c3a91c32 mast.scheduling_policies%s
+D mast-scheduling_servers.ads  20080722124150 9878ddd6 mast.scheduling_servers%s
+D mast-shared_resources.ads  20080722124150 a742b9d2 mast.shared_resources%s
+D mast-synchronization_parameters.ads  20080722124150 70bb7288 mast.synchronization_parameters%s
+D mast-systems.ads	20080722124150 cc6782d3 mast.systems%s
+D mast-timers.ads	20080722124150 308ad90c mast.timers%s
+D mast-timing_requirements.ads  20080722124150 8c52dba9 mast.timing_requirements%s
+D mast-tool_exceptions.ads  20080722124150 c6468eda mast.tool_exceptions%s
+D mast-tools.ads	20080722124150 00f9278d mast.tools%s
+D mast-transactions.ads	20080722124150 8477c124 mast.transactions%s
+D mast_analysis.adb	20190427135449 0bf9fb50 mast_analysis%b
+D mast_analysis_help.adb  20080722124150 3cecba9d mast_analysis_help%b
+D mast_lex.ads		20080722124150 74b66c2e mast_lex%s
+D mast_lex_dfa.ads	20080722124150 ba6952a6 mast_lex_dfa%s
+D mast_lex_io.ads	20080722124150 d67882a2 mast_lex_io%s
+D mast_parser.adb	20080722124150 cee54ce7 mast_parser%b
+D mast_parser_error_report.ads  20080722124150 a892d8e7 mast_parser_error_report%s
+D mast_parser_goto.ads	20080722124150 68b125df mast_parser_goto%s
+D mast_parser_shift_reduce.ads  20080722124150 e51709c2 mast_parser_shift_reduce%s
+D mast_parser_tokens.ads  20080722124150 608e929d mast_parser_tokens%s
+D named_lists.ads	20080722124150 8b5d30f2 named_lists%s
+D symbol_table.ads	20080722124150 a2a03d04 symbol_table%s
+D system.ads		20180525052301 4635ec04 system%s
+D s-conca2.ads		20180525052301 02a0d7d0 system.concat_2%s
+D s-conca3.ads		20180525052302 0b705ca5 system.concat_3%s
+D s-conca4.ads		20180525052301 7e642b20 system.concat_4%s
+D s-crtl.ads		20180525052259 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180525052301 54135002 system.exception_table%s
+D s-ficobl.ads		20180525052302 078245e4 system.file_control_block%s
+D s-finmas.ads		20180525052301 7811a767 system.finalization_masters%s
+D s-finroo.ads		20180525052301 4ff27390 system.finalization_root%s
+D s-imenne.ads		20180525052300 614c06c0 system.img_enum_new%s
+D s-imgint.ads		20180525052300 02dbe0c2 system.img_int%s
+D s-os_lib.ads		20180525052301 5703ce4c system.os_lib%s
+D s-parame.ads		20180525052302 48ec542b system.parameters%s
+D s-pooglo.ads		20180525052259 ede33ef8 system.pool_global%s
+D s-secsta.ads		20180525052301 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180525052300 a7318a92 system.soft_links%s
+D s-stache.ads		20180525052302 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180525052301 09bd3940 system.standard_library%s
+D s-stoele.ads		20180525052302 2dc34a04 system.storage_elements%s
+D s-stopoo.ads		20180525052300 b16154c2 system.storage_pools%s
+D s-stposu.ads		20180525052259 97a6219c system.storage_pools.subpools%s
+D s-stratt.ads		20180525052259 aedef97e system.stream_attributes%s
+D s-string.ads		20180525052301 8fe54fb7 system.strings%s
+D s-ststop.ads		20180525052300 5fbf1b38 system.strings.stream_ops%s
+D s-traent.ads		20180525052300 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180525052301 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180525052301 1b7d22d2 system.wch_con%s
+D text_io.ads		20180525052301 21b2c898 text_io%s
+D var_strings.ads	20080722124150 38b5efa3 var_strings%s
+X 1 ada.ads
+16K9*Ada 20e8 52|30r6 30r18 30r35 31r3 41r10 41r22 41r39 42r3 191r13 228r13
+. 229r13 249r10 406r16 408r16 413r13 415r13 467r7 468r7 474r7 483r7 491r7
+. 517r7
+X 2 a-charac.ads
+16K13*Characters 18e19 52|31r7 42r7
+X 3 a-chahan.ads
+36K24*Handling 159e28 52|31w18 42r18
+70V13*To_Lower{string} 52|201s15 389s23
+X 4 a-comlin.ads
+36K13*Command_Line 144e21 52|30w22 41r26
+39V13*Argument_Count{natural} 52|101s7 103s10 131s19 179s20 189s29 190s30
+. 191s62 193s29 244s22
+52V13*Argument{string} 52|104s11 104s36 111s10 113s13 115s13 117s13 119s13
+. 121s13 123s13 125s13 132s13 132s40 134s16 134s43 136s16 136s43 139s16 139s43
+. 141s16 144s19 148s19 152s19 159s16 160s12 164s49 165s16 165s43 167s16 167s43
+. 170s46 171s16 171s43 173s16 173s44 177s43 191s53 198s38 246s19 384s25 386s45
+62V13*Command_Name{string} 52|243s55
+70I9*Exit_Status<integer>
+73i4*Failure{70I9} 52|454r23 459r23 464r23 471r23 477r23 485r23 494r23 498r23
+. 520r23
+75U14*Set_Exit_Status 52|454s7 459s7 464s7 471s7 477s7 485s7 494s7 498s7
+. 520s7
+X 5 a-except.ads
+54K13*Exceptions 349e19 52|30w39 41r43
+72V13*Exception_Name{string} 52|503s17
+94V13*Exception_Message{string} 52|505s17
+X 10 a-textio.ads
+49K13*Text_IO 471e16 52|30w10 41r14 191r17 228r17 229r17 249r14 406r20 408r20
+. 413r17 415r17 467r11 468r11 474r11 483r11 491r11 517r11
+52P9*File_Type 52|59r48
+53n23*In_File{53E9} 52|228r41
+53n32*Out_File{53E9} 52|191r44 325r37
+86U14*Create 52|191s25 325s13
+92U14*Open 52|228s25
+98U14*Close 52|90s10 94s13 335s13
+107V13*Is_Open{boolean} 52|89s10 93s13
+113U14*Set_Input 52|229s25 249s22
+117V13*Standard_Input{52P9} 52|249s32
+122V13*Current_Output{52P9} 52|400s43
+166U14*New_Line 52|437s7 482s7 490s7 516s7
+263U14*Put_Line 52|214s19 230s13 231s13 253s16 264s16 311s19 319s13 339s13
+. 340s13 341s13 350s19 353s19 358s22 364s19 373s22 379s13 383s16 399s16 406s28
+. 408s28 413s25 415s25 424s7 425s7 426s7 428s7 429s7 430s7 431s7 432s7 433s7
+. 434s7 435s7 436s7 438s7 439s7 440s7 441s7 442s7 443s7 445s7 446s7 447s7
+. 457s7 462s7 467s19 468s19 474s19 480s7 481s7 483s19 488s7 489s7 491s19
+. 501s7 502s7 504s7 506s7 507s7 508s7 509s7 510s7 511s7 512s7 513s7 514s7
+. 515s7 517s19
+292X4*Status_Error 52|451r15 456r21
+294X4*Name_Error 52|456r9
+295X4*Use_Error 52|456r36
+297X4*End_Error 52|461r26
+299X4*Layout_Error 52|461r38
+X 14 gnat.ads
+34K9*GNAT 37e9 52|49r6 50r10 50r37 209r21 215r33 220r19
+X 15 g-os_lib.ads
+51K14*OS_Lib=51:36 52|49w11 50r15 50r42 209r26 215r38 220r24
+X 20 list_exceptions.ads
+30K9*List_Exceptions 42e20 52|30w51 374r24
+34X4*Invalid_Index 52|374r40
+X 21 mast.ads
+31K9*Mast 129e9 52|32r15 33r3 33r27 33r39 33r64 34r3 35r3 36r3 37r3 38r3
+. 39r3 41r5 43r10 44r10 58r17 77r13 78r19 331r16 333r16 351r19 354r19 369r19
+. 393r22 395r22 400r16
+127a4*Version_String{string} 52|230r39 242r26
+X 22 mast-annealing_parameters.ads
+31K14*Annealing_Parameters 70e30 52|36w8 295r22
+42U14*Load_Parameters 52|296s24
+X 23 mast-consistency_checks.ads
+32K14*Consistency_Checks 111e28 52|33w8 250r13 261r13
+34V13*Consistent_Transaction_Graphs{boolean} 52|250s32
+87V13*Consistent_Shared_Resource_Usage{boolean} 52|261s32
+X 29 mast-hopa_parameters.ads
+32K14*HOPA_Parameters 105e25 52|35w8 292r22
+45U14*Load_Parameters 52|293s24
+X 30 mast-io.ads
+31K14*IO 94e12 52|33w69
+X 31 mast-miscelaneous_tools.ads
+32K14*Miscelaneous_Tools 76e28 52|33w44 403r13
+62U14*Check_System_Schedulability 52|403s32
+X 32 mast-operations.ads
+34K14*Operations 596e20 52|38w8 77r18 78r24 365r33 367r27
+113P9*Operation_Ref(36R9) 52|77r29
+122K12*Lists[62|35] 52|78r35 365r44 367r38
+X 36 mast-restrictions.ads
+32K14*Restrictions 179e22 52|37w8 277r19 278r18
+38V13*Monoprocessor_Only{boolean} 52|277s32
+133V13*Simple_Transactions_Only{boolean} 52|278s31
+X 46 mast-systems.ads
+42K14*Systems 108e17 52|32w20 58r22 331r21 333r21 393r27 395r27 400r21
+48R9*System 63e14 52|58r30
+52r7*Generation_Tool{92|35R9} 52|240m21
+53r7*Generation_Profile{92|35R9} 52|243m21 245m24 245r55
+58r7*Operations{62|37R9[32|122]} 52|366r48 368r46
+82U14*Print 52|333s29
+87U14*Print_XML 52|331s29
+92U14*Print_XML_Results 52|393s35
+97U14*Print_Results 52|395s35 400s29
+X 48 mast-timing_requirements.ads
+33K14*Timing_Requirements 576e29 52|34w8 357r24 372r24
+35X4*Inconclusive 52|357r44 372r44
+X 49 mast-tool_exceptions.ads
+30K14*Tool_Exceptions 48e25 52|39w8 256r13 258r19 267r13 269r19 300r21 301r19
+. 303r25 479r9 481r16 487r9 489r16
+32X4*Restriction_Not_Met 52|258r35 269r35 487r25
+33X4*Tool_Failure 52|303r41 479r25
+35V13*Restriction_Message{string} 52|489s32
+36V13*Tool_Failure_Message{string} 52|481s32
+38U14*Set_Restriction_Message 52|256s29 267s29
+40U14*Set_Tool_Failure_Message 52|301s35
+45X4*Invalid_Format 52|300r37
+X 50 mast-tools.ads
+33K14*Tools 270e15 52|33w32 43r15 44r15 55r15 56r35 114r20 116r20 118r20
+. 120r20 122r20 124r20 126r20 143r47 147r18 151r18 155r18 282r21 286r21 320r13
+. 351r24 354r24 369r24
+39P9*Worst_Case_Analysis_Tool 52|43r21 55r21
+42b7 Only_Check_Restrictions{boolean} 52|273r47
+49U14*Classic_RM_Analysis 52|114r26
+57U14*Varying_Priorities_Analysis 52|116r26
+65U14*EDF_Monoprocessor_Analysis 52|118r26
+73U14*EDF_Within_Priorities_Analysis 52|120r26
+85U14*Holistic_Analysis 52|122r26
+93U14*Offset_Based_Analysis 52|124r26
+102U14*Offset_Based_Optimized_Analysis 52|126r26
+145U14*Calculate_Processing_Resource_Slacks 52|351s30
+152U14*Calculate_Operation_Slack 52|369s30
+163U13*Calculate_System_Slack 52|354s30
+177P9*Priority_Assignment_Tool 52|44r21 56r41
+182U14*Monoprocessor_Assignment 52|151r24 282r27
+187U14*Linear_HOPA 52|143r53 286r27
+192U14*Linear_Deadline_Distribution 52|155r24
+202U14*Linear_Simulated_Annealing_Assignment 52|147r24
+216U14*Calculate_Ceilings_And_Levels 52|320s19
+X 52 mast_analysis.adb
+52U11*Mast_Analysis 52b11 522l5 522t18
+55p4 The_Tool{50|39P9} 114m10 116m10 118m10 120m10 122m10 124m10 126m10 272r13
+. 273r13 310r19 313r33 344r13 352r33 355r33 370r40 380r13
+56p4 The_Priority_Assignment_Tool{50|177P9} 143m16 146m16 150m16 154m16 281m19
+. 285m19 312r19
+58r4 The_System{46|48R9} 233m28 240m10 243m10 245m13 245r44 250r62 261r65
+. 273m22 273r22 277r51 278r56 313m22 313r22 321m16 321r16 331m56 331r56 333m52
+. 333r52 352m22 352r22 355m22 355r22 366r37 368r35 370m29 370r29 380m22 380r22
+. 393m65 393r65 395m61 395r61 400m58 400r58 404r16
+59p4 Input_File{10|52P9} 89r18 90m16 90r16 228m30 228r30 229r35
+59p16 Output_File{10|52P9} 93r21 94m19 94r19 191m32 191r32 393r53 395r49
+59p29 Description_File{10|52P9} 325m20 325r20 331r39 333r35 335m19 335r19
+60E9 Option 63e36 66r17
+60n20 Verbose{60E9} 67r7 133r18 252r21 263r21 273r38 313r47 321r32 352r47
+. 355r47 370r54 380r38 404r44
+60n28 Calculate_Ceilings{60E9} 68r7 135r18 138r18 318r18
+60n47 Assign_Priorities{60E9} 69r7 137r18 275r18
+61n20 Assignment_Parameters{60E9} 70r7 162r18
+61n43 Dump_System_Description{60E9} 71r7 168r18 324r18
+62n20 Calculate_Slacks{60E9} 72r7 172r18 345r21
+62n38 Calculate_Operation_Slack{60E9} 73r7 175r18 362r21
+63n20 Check_Deadlocks{60E9} 74r7 166r18 338r18
+64E9 Priority_Assignment_Technique 65e66 75r16
+65n7 Default{64E9} 75r47 276r28
+65n15 HOPA{64E9} 142r27 284r30 291r24 305r29
+65n20 Annealing{64E9} 145r27 294r24 306r28
+65n30 Monoprocessor{64E9} 149r27 280r30 307r28
+65n44 Deadline_Distribution{64E9} 153r27 308r28
+66a4 Flag(boolean) 133m13 135m13 137m13 138m13 162m13 166m13 168m13 172m13
+. 175m13 252r16 263r16 273r33 275r13 313r42 318r13 321r27 324r13 338r13 345r16
+. 352r42 355r42 362r16 370r49 380r33 404r39
+75e4 Technique{64E9} 142m16 145m16 149m16 153m16 276r16 280m19 284m19 290r21
+. 305r17 306r16 307r16 308r16
+76r4 Operation_Name{92|35R9} 177m13 366r22 375r51
+77p4 Op_Ref{32|113P9} 367m19 370r22
+78p4 The_Op_Index{62|39P9[32|122]} 365m19 368r22
+79r4 Parameters_Filename{92|35R9} 164m13 293r50 296r50
+81r4 Description_Name{92|35R9} 170m13 325r56 326r23 328r32 328r56 329r39
+82b4 Output_File_Specified{boolean} 92r10 180m16 188r13 382r16
+83i4 Arg{natural} 130m7 131r13 132r22 132r49 134r25 134r52 136r25 136r52
+. 139r25 139r52 140m13 140r18 141r25 144r28 148r28 152r28 159r25 160r21 163m13
+. 163r18 164r58 165r25 165r52 167r25 167r52 169m13 169r18 170r55 171r25 171r52
+. 173r25 173r53 176m13 176r18 177r52 179r16 185m10 185r15
+83i9 Input_File_Arg{natural} 189m13 193m13 198r47
+83i25 Output_File_Arg{natural} 190m13 384r34 386r54
+84X4 Wrong_Format 102r13 108r16 128r16 157r22 182r22 423r9
+84X17 Unrecognizable 236r25 461r9
+84X32 Bad_Conversion 223r28 473r9
+84X48 Program_Not_Found 218r28 466r9
+85b4 Schedulable{boolean} 404m27 405r16 412r13
+85b17 Success{boolean} 221m69 222r26
+87U14 Close_Files 87b14 97l8 97t19 417s10 449s10 458s7 463s7 470s7 476s7
+. 484s7 493s7 497s7 519s7
+198a13 Input_Filename{string} 200r16 201r24 202r25 202r50 211r44 213r22 213r40
+. 225r19 228r49
+208p19 In_filename{75|67P12} 211m19 221r39
+208p32 In_Text_Filename{75|67P12} 212m19 221r51 225r35
+208p50 Program_Name{75|67P12} 215m19 217r22 221r22
+244i14 A{integer} 246r28
+386a19 Output_Filename{string} 388r23 389r32 389r48 390r48
+500r9 Other_Exception{5|63R9} 503r32 505r35
+X 53 mast_analysis_help.adb
+3U11*Mast_Analysis_Help 52|40w3 106s10
+X 57 mast_parser.adb
+22U11*MAST_Parser 52|32w3 233s16
+X 58 mast_parser_error_report.ads
+1K9*Mast_Parser_Error_Report 52|39w24 496r9 58|24e29
+3X5*Syntax_Error 52|496r34
+X 62 named_lists.ads
+37R9*List
+39P9*Index 52|78r41[32|122]
+65V13*Item{32|113P9} 52|367s44[32|122]
+70V13*Find{39P9[32|122]} 52|365s50[32|122]
+X 75 s-os_lib.ads
+67P12*String_Access{86|45P9} 52|50r22 209r33
+74A12*String_List{86|54A9}<integer> 52|50r49
+479V13*Locate_Exec_On_Path{67P12} 52|215s45
+851U14*Spawn 52|220s31
+X 86 s-string.ads
+45P9*String_Access(string)
+54A9*String_List(45P9)<integer>
+X 92 var_strings.ads
+31K9*Var_Strings 52|39w49 41r54 92|85e16
+35R9*Var_String 52|76r21 79r26 81r23 92|80e14
+37r4*Null_Var_String{35R9} 52|76r33
+39V13*To_String{string} 52|293s40 296s40 325s46 327s15
+40V13*To_Var_String{35R9} 52|79s38 164s35 170s32 177s29 241s12 243s41
+42V13*Length{natural} 52|326s16 328s49 329s32
+45U14*Put_Line 52|375s22
+54V14*"&"{35R9} 52|245s73 246s18 375s65
+55V14*"&"{35R9} 52|375s50
+66V13*Slice{35R9} 52|328s26
+70V13*To_Lower{35R9} 52|327s25
+

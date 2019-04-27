@@ -1,0 +1,74 @@
+V "GNAT Lib v2018"
+A -g
+A -gnato
+P ZX
+
+RN
+RV NO_STANDARD_STORAGE_POOLS
+RV NO_DEFAULT_INITIALIZATION
+RV NO_DYNAMIC_SIZED_OBJECTS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U mast.tool_exceptions%b  mast-tool_exceptions.adb  787333a5 OO PK IU
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W mast%s		mast.adb		mast.ali
+W var_strings%s		var_strings.adb		var_strings.ali
+
+U mast.tool_exceptions%s  mast-tool_exceptions.ads  087481a1 EE OO PK IU
+Z ada.tags%s		a-tags.adb		a-tags.ali
+W mast%s		mast.adb		mast.ali
+Z system%s		system.ads		system.ali
+Z system.exception_table%s  s-exctab.adb	s-exctab.ali
+Z system.standard_library%s  s-stalib.adb	s-stalib.ali
+
+D ada.ads		20180525052300 76789da1 ada%s
+D a-except.ads		20180525052301 291912d5 ada.exceptions%s
+D a-ioexce.ads		20180525052259 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180525052300 119b8fb3 ada.streams%s
+D a-tags.ads		20180525052302 491b781d ada.tags%s
+D a-textio.ads		20180525052302 881db35a ada.text_io%s
+D a-unccon.ads		20180525052301 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20180525052300 5ab55268 interfaces%s
+D i-cstrea.ads		20180525052259 e53d8b8e interfaces.c_streams%s
+D mast.ads		20080722124150 ce320f7b mast%s
+D mast-tool_exceptions.ads  20080722124150 c6468eda mast.tool_exceptions%s
+D mast-tool_exceptions.adb  20080722124150 868052dc mast.tool_exceptions%b
+D system.ads		20180525052301 4635ec04 system%s
+D s-crtl.ads		20180525052259 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180525052301 54135002 system.exception_table%s
+D s-ficobl.ads		20180525052302 078245e4 system.file_control_block%s
+D s-parame.ads		20180525052302 48ec542b system.parameters%s
+D s-secsta.ads		20180525052301 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180525052300 a7318a92 system.soft_links%s
+D s-stache.ads		20180525052302 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180525052301 09bd3940 system.standard_library%s
+D s-stoele.ads		20180525052302 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180525052300 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180525052301 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180525052301 1b7d22d2 system.wch_con%s
+D var_strings.ads	20080722124150 38b5efa3 var_strings%s
+X 10 mast.ads
+31K9*Mast 129e9 11|30r9 48r5 12|31r14 72r5
+X 11 mast-tool_exceptions.ads
+30K14*Tool_Exceptions 10|31k9 11|48l10 48e25 12|31b19 72l10 72t25
+32X4*Restriction_Not_Met
+33X4*Tool_Failure
+35V13*Restriction_Message{string} 12|40b13 43l8 43t27
+36V13*Tool_Failure_Message{string} 12|67b13 70l8 70t28
+38U14*Set_Restriction_Message 38>39 12|49b14 52l8 52t31
+38a39 Message{string} 12|49b39 51r58
+40U14*Set_Tool_Failure_Message 40>40 12|58b14 61l8 61t32
+40a40 Message{string} 12|58b40 60r59
+44X4*File_Does_Not_Exist
+45X4*Invalid_Format
+46X4*Parameters_Not_Stored
+X 12 mast-tool_exceptions.adb
+33r4 The_Restriction_Message{26|35R9} 42r36 51m7
+34r4 The_Tool_Failure_Message{26|35R9} 60m7 69r36
+X 26 var_strings.ads
+31K9*Var_Strings 12|30w6 33r30 34r31 42r14 51r32 60r33 69r14 26|85e16
+35R9*Var_String 12|33r42 34r43 26|80e14
+39V13*To_String{string} 12|42s26 69s26
+40V13*To_Var_String{35R9} 12|51s44 60s45
+

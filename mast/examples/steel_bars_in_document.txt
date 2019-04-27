@@ -1,0 +1,484 @@
+-- Real-Time System Model for the Example
+
+Model (
+   Model_Name  => Steel_Bars,
+   Model_Date  => 2000-01-01);
+
+-- All the timing requirements are global deadlines
+-- 5 Processing resources
+-- 0 Data resources
+-- 15 Operations
+-- 15 Scheduling Servers
+-- 2 Transactions
+--     1 --> 2 External Events
+--		11 Internal_Events
+--           10 Event Handlers (8 Activities, 2 others)
+--     2 --> 1 External Event
+--		9 Internal Events
+--           8 Event Hadlers (7 Activities, 1 other)
+
+-- Resources
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> Processor_1,
+	Worst_Context_Switch			=> 50,
+	Avg_Context_Switch 			=> 15,
+	Best_Context_Switch 			=> 10);
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> Processor_2,
+	Worst_Context_Switch 			=> 50,
+	Avg_Context_Switch 			=> 150,
+	Best_Context_Switch 			=> 10);
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> Processor_3,
+	Worst_Context_Switch 			=> 50,
+	Avg_Context_Switch 			=> 150,
+	Best_Context_Switch 			=> 10);
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> Processor_4,
+	Worst_Context_Switch 			=> 50,
+	Avg_Context_Switch 			=> 150,
+	Best_Context_Switch 			=> 10);
+
+Processing_Resource (
+	Type 					=> Fixed_Priority_Network,
+	Name 					=> Network,
+	Max_Packet_Transmission_Time 					=> 100);
+
+-- Operations
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> ACQ1,
+	Worst_Case_Execution_Time			 	=> 50,
+	Avg_Case_Execution_Time				=> 50,
+	Best_Case_Execution_Time 				=> 50);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> ACQ2,
+	Worst_Case_Execution_Time 				=> 50,
+	Avg_Case_Execution_Time 				=> 50,
+	Best_Case_Execution_Time 				=> 50);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> ACQ3,
+	Worst_Case_Execution_Time			 	=> 820,
+	Avg_Case_Execution_Time 				=> 820,
+	Best_Case_Execution_Time 				=> 820);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> PRO1,
+	Worst_Case_Execution_Time 				=> 100,
+	Avg_Case_Execution_Time 				=> 100,
+	Best_Case_Execution_Time 				=> 100);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> PRO2,
+	Worst_Case_Execution_Time 				=> 750,
+	Avg_Case_Execution_Time 				=> 750,
+	Best_Case_Execution_Time 				=> 750);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> ACT1,
+	Worst_Case_Execution_Time 				=> 100,
+	Avg_Case_Execution_Time 				=> 100,
+	Best_Case_Execution_Time 				=> 100);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> ACT2,
+	Worst_Case_Execution_Time 				=> 100,
+	Avg_Case_Execution_Time 				=> 100,
+	Best_Case_Execution_Time 				=> 100);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> ACT3,
+	Worst_Case_Execution_Time 				=> 725,
+	Avg_Case_Execution_Time 				=> 725,
+	Best_Case_Execution_Time 				=> 725);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> ACT4,
+	Worst_Case_Execution_Time 				=> 740,
+	Avg_Case_Execution_Time 				=> 740,
+	Best_Case_Execution_Time 				=> 740);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> M1,
+	Worst_Case_Execution_Time 				=> 100,
+	Avg_Case_Execution_Time 				=> 100,
+	Best_Case_Execution_Time 				=> 100);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> M2,
+	Worst_Case_Execution_Time 				=> 100,
+	Avg_Case_Execution_Time 				=> 100,
+	Best_Case_Execution_Time 				=> 100);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> M3,
+	Worst_Case_Execution_Time 				=> 50,
+	Avg_Case_Execution_Time 				=> 50,
+	Best_Case_Execution_Time 				=> 50);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> M4,
+	Worst_Case_Execution_Time 				=> 150,
+	Avg_Case_Execution_Time 				=> 150,
+	Best_Case_Execution_Time 				=> 150);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> M5,
+	Worst_Case_Execution_Time 				=> 230,
+	Avg_Case_Execution_Time 				=> 230,
+	Best_Case_Execution_Time 				=> 230);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> M6,
+	Worst_Case_Execution_Time 				=> 250,
+	Avg_Case_Execution_Time 				=> 250,
+	Best_Case_Execution_Time 				=> 250);
+
+-- Scheduling Servers
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> SACQ1,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority		=> 1,
+                Preassigned             => No),
+	Server_Processing_Resource				=> Processor_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> SACQ2,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority 		=> 2,
+                Preassigned             => No),
+	Server_Processing_Resource 				=> Processor_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> SACQ3,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority 		=> 3,
+                Preassigned             => No),
+	Server_Processing_Resource 				=> Processor_1);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> SPRO1,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority 		=> 1,
+                Preassigned             => No),
+	Server_Processing_Resource 				=> Processor_2);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> SPRO2,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority 		=> 2,
+                Preassigned             => No),
+	Server_Processing_Resource 				=> Processor_2);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> SACT1,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority 		=> 1,
+                Preassigned             => No),
+	Server_Processing_Resource 				=> Processor_3);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> SACT2,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority	 	=> 1,
+                Preassigned             => No),
+	Server_Processing_Resource 				=> Processor_4);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name	 			=> SACT3,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority 		=> 2,
+                Preassigned             => No),
+	Server_Processing_Resource 				=> Processor_4);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> SACT4,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority 		=> 2,
+                Preassigned             => No),
+	Server_Processing_Resource 				=> Processor_3);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> SM1,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority	 	=> 1,
+                Preassigned             => No),
+	Server_Processing_Resource 				=> Network);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> SM2,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority	 	=> 3,
+                Preassigned             => No),
+	Server_Processing_Resource 				=> Network);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> SM3,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority	 	=> 2,
+                Preassigned             => No),
+	Server_Processing_Resource 				=> Network);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> SM4,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority 		=> 4,
+                Preassigned             => No),
+	Server_Processing_Resource				=> Network);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> SM5,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority 		=> 5,
+                Preassigned             => No),
+	Server_Processing_Resource 				=> Network);
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> SM6,
+	Server_Sched_Parameters				=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority 		=> 6,
+                Preassigned             => No),
+	Server_Processing_Resource 				=> Network);
+
+-- Transactions
+
+Transaction (
+	Type	=> Regular,
+	Name	=> Trans1,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> EIM1,
+		 Period 		=> 1000,
+		 Max_Jitter		=> 0,
+		 Phase 		=> 0),
+		(Type 		=> Periodic,
+		 Name 		=> EIM2,
+		 Period 		=> 1000,
+		 Max_Jitter 		=> 0,
+		 Phase 		=> 0)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> AO1),
+		(Type 	=> regular,
+		 name 	=> AO2),
+		(Type 	=> regular,
+		 name 	=> AO3),
+		(Type 	=> regular,
+		 name 	=> AO4),
+		(Type 	=> regular,
+		 name 	=> AO5),
+		(Type 	=> regular,
+		 name 	=> AO6),
+		(Type 				=> regular,
+		 name 				=> AO7,
+		 Timing_Requirements 				=> (
+			 Type 			=> Composite,
+			 Requirements_List			=> (
+				(Type		=> Hard_Global_Deadline,
+				 Deadline		=> 1000,
+				 referenced_event 		=> EIM1),
+				(Type		=> Hard_Global_Deadline,
+				 Deadline		=> 1000,
+				 referenced_event 		=> EIM2)))),
+		(Type 				=> regular,
+		 name 				=> AO8,
+		 Timing_Requirements 				=> (
+			 Type 			=> Composite,
+			 Requirements_List			=> (
+				(Type		=> Hard_Global_Deadline,
+				 Deadline		=> 1000,
+				 referenced_event 		=> EIM1),
+				(Type		=> Hard_Global_Deadline,
+				 Deadline		=> 1000,
+				 referenced_event 		=> EIM2)))),
+		(Type 	=> regular,
+		 name 	=> AR1),
+		(Type 	=> regular,
+		 name 	=> AR2),
+		(Type 	=> regular,
+		 name 	=> AR3)),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 			=> EIM1,
+		 Output_Event 			=> AO1,
+		 Activity_Operation 			=> ACQ1,
+		 Activity_Server			=> SACQ1), 
+		(Type 			=> Activity,
+		 Input_Event 			=> EIM2,
+		 Output_Event 			=> AO2,
+		 Activity_Operation 			=> ACQ2,
+		 Activity_Server			=> SACQ2), 
+		(Type 			=> Activity,
+		 Input_Event 			=> AO1,
+		 Output_Event 			=> AO3,
+		 Activity_Operation 			=> M1,
+		 Activity_Server			=> SM1), 
+		(Type 			=> Activity,
+		 Input_Event 			=> AO2,
+		 Output_Event 			=> AO4,
+		 Activity_Operation 			=> M2,
+		 Activity_Server			=> SM2), 
+		(Type 			=> Activity,
+		 Input_Event 			=> AR1,
+		 Output_Event 			=> AO5,
+		 Activity_Operation	 		=> PRO1,
+		 Activity_Server			=> SPRO1), 
+		(Type 			=> Activity,
+		 Input_Event	 		=> AO5,
+		 Output_Event 			=> AO6,
+		 Activity_Operation 			=> M3,
+		 Activity_Server			=> SM3), 
+		(Type 			=> Activity,
+		 Input_Event 			=> AR2,
+		 Output_Event 			=> AO7,
+		 Activity_Operation 			=> ACT1,
+		 Activity_Server			=> SACT1), 
+		(Type 			=> Activity,
+		 Input_Event 			=> AR3,
+		 Output_Event			=> AO8,
+		 Activity_Operation 			=> ACT2,
+		 Activity_Server			=> SACT2), 
+		(Type 			=> Concentrator,
+		 Output_Event 			=> AR1,
+		 Input_Events_List 			=> (
+					AO3,
+					AO4)),
+		(Type 			=> Delivery_Server,
+		 Input_Event 			=> AO6,
+		 Output_Events_List 			=> (
+					AR2,
+					AR3))));
+
+Transaction (
+	Type	=> Regular,
+	Name 	=> Trans2,
+	External_Events =>(
+		(Type 		=> Periodic,
+		 Name 		=> EUS,
+		 Period 		=> 1000,
+		 Max_Jitter 		=> 0,
+		 Phase 		=> 0)),
+	Internal_Events 	=> (
+		(Type 	=> regular,
+		 name 	=> AO9),
+		(Type 	=> regular,
+		 name 	=> AO10),
+		(Type 	=> regular,
+		 name 	=> AO11),
+		(Type 	=> regular,	
+		 name 	=> AO12),
+		(Type 	=> regular,
+		 name 	=> AO13),
+		(Type 				=> regular,
+		 name 				=> AO14,
+		 Timing_Requirements 				=> (
+			 Type 		=> Hard_Global_Deadline,
+			 Deadline 		=> 10000,
+			 referenced_event	 	=> EUS)),
+		(Type			 	=> regular,
+		 name 				=> AO15,
+		 Timing_Requirements 				=> (
+			 Type 		=> Hard_Global_Deadline,
+			 Deadline 		=> 10000,
+			 referenced_event 		=> EUS)),
+		(Type 	=> regular,
+		 name 	=> AR4),
+		(Type 	=> regular,
+		 name 	=> AR5)),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 			=> EUS,
+		 Output_Event 			=> AO9,
+		 Activity_Operation 			=> ACQ3,
+		 Activity_Server			=> SACQ3), 
+		(Type 			=> Activity,
+		 Input_Event 			=> AO9,
+		 Output_Event 			=> AO10,
+		 Activity_Operation 			=> M4,
+		 Activity_Server			=> SM4), 
+		(Type 			=> Activity,
+		 Input_Event 			=> AO10,
+		 Output_Event 			=> AO11,
+		 Activity_Operation 			=> PRO2,
+		 Activity_Server			=> SPRO2), 
+		(Type 			=> Activity,
+		 Input_Event 			=> AR4,
+		 Output_Event 			=> AO12,
+		 Activity_Operation 			=> M5,
+		 Activity_Server			=> SM5), 
+		(Type 			=> Activity,
+		 Input_Event 			=> AR5,
+		 Output_Event 			=> AO13,
+		 Activity_Operation 			=> M6,
+		 Activity_Server			=> SM6), 
+		(Type 			=> Activity,
+		 Input_Event 			=> AO12,
+		 Output_Event 			=> AO14,
+		 Activity_Operation 			=> ACT3,
+		 Activity_Server			=> SACT3), 
+		(Type 			=> Activity,
+		 Input_Event 			=> AO13,
+		 Output_Event 			=> AO15,
+		 Activity_Operation 			=> ACT4,
+		 Activity_Server			=> SACT4), 
+		(Type 			=> Multicast,
+		 Input_Event 			=> AO11,
+		 Output_Events_List 			=> (
+					AR4,
+					AR5))));

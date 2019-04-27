@@ -1,0 +1,119 @@
+V "GNAT Lib v2018"
+A -g
+A -gnato
+P ZX
+
+RN
+RV NO_ALLOCATORS
+RV NO_EXCEPTIONS
+RV NO_LOCAL_ALLOCATORS
+RV NO_STANDARD_STORAGE_POOLS
+RV SPARK_05
+
+U named_lists%b		named_lists.adb		20c9431c NE OO PK GE
+W list_exceptions%s	list_exceptions.ads	list_exceptions.ali
+
+U named_lists%s		named_lists.ads		b3e8df51 BN EE NE OO PK GE
+W var_strings%s		var_strings.adb		var_strings.ali
+
+D ada.ads		20180525052300 76789da1 ada%s
+D a-except.ads		20180525052301 291912d5 ada.exceptions%s
+D a-ioexce.ads		20180525052259 e4a01f64 ada.io_exceptions%s
+D a-stream.ads		20180525052300 119b8fb3 ada.streams%s
+D a-tags.ads		20180525052302 491b781d ada.tags%s
+D a-textio.ads		20180525052302 881db35a ada.text_io%s
+D a-unccon.ads		20180525052301 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20180525052300 5ab55268 interfaces%s
+D i-cstrea.ads		20180525052259 e53d8b8e interfaces.c_streams%s
+D list_exceptions.ads	20080722124150 720909ba list_exceptions%s
+D named_lists.ads	20080722124150 8b5d30f2 named_lists%s
+D named_lists.adb	20080722124150 d99d7a54 named_lists%b
+D system.ads		20180525052301 4635ec04 system%s
+D s-crtl.ads		20180525052259 0ebbdb71 system.crtl%s
+D s-exctab.ads		20180525052301 54135002 system.exception_table%s
+D s-ficobl.ads		20180525052302 078245e4 system.file_control_block%s
+D s-parame.ads		20180525052302 48ec542b system.parameters%s
+D s-secsta.ads		20180525052301 20bbe636 system.secondary_stack%s
+D s-soflin.ads		20180525052300 a7318a92 system.soft_links%s
+D s-stache.ads		20180525052302 a37c21ec system.stack_checking%s
+D s-stalib.ads		20180525052301 09bd3940 system.standard_library%s
+D s-stoele.ads		20180525052302 2dc34a04 system.storage_elements%s
+D s-traent.ads		20180525052300 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20180525052301 34867c83 system.unsigned_types%s
+D s-wchcon.ads		20180525052301 1b7d22d2 system.wch_con%s
+D var_strings.ads	20080722124150 38b5efa3 var_strings%s
+X 10 list_exceptions.ads
+30K9*List_Exceptions 42e20 12|30w6 56r16 101r16 127r16 162r16 180r16 220r16
+32X4*Already_Exists 12|56r32
+34X4*Invalid_Index 12|101r32 127r32 180r32 220r32
+36X4*No_More_Items 12|162r32
+X 11 named_lists.ads
+33+9 Element 34r28 45r26 50r26 56r26 61r27 68r13 84r25 97r15 12|41r26 65r26
+. 94r27 156r25 176r13 215r26
+34V18 Name{26|35R9} 34>24 12|44s25 69s25 143s22
+34*24 E{33+9}
+35k9*Named_Lists 33z9 34z18 90E9 107l5 107e16 12|32b14 226l5 226t16
+37R9*List 46r26 52r26 57r26 62r30 67r19 72r18 77r18 81r21 85r21 101c9 105e17
+. 12|42r26 67r26 95r30 137r18 157r21 175r19 191r21 202r18 216r26
+39P9*Index 40r26 42r32 51r26 55r26 60r26 66r19 73r13 81r42 86r25 92c9 94r26
+. 98r15 103r24 12|44r13 66r26 69r13 93r26 97r14 138r13 140r13 158r25 174r19
+. 191r42 214r26
+40p4*Null_Index{39P9} 94c4 12|46r14 71r14 148r14
+42P12*Iteration_Object{39P9}
+44U14*Add 45>7 46=7 12|40b14 58l8 58t11
+45*7 Value{33+9} 12|41b7 44r30 48r48 51r52
+46r7 The_List{37R9} 12|42b7 44r37 47r13 48m13 49m13 49r28 51r13 52m13 52r28
+. 54m10 54r24
+49U14*Add_Or_Find 50>7 51<7 52=7 12|64b14 84l8 84t19
+50*7 Value{33+9} 12|65b7 69r30 73r48 76r52
+51p7 The_Index{39P9} 12|66b7 79m10 82m10
+52r7 The_List{37R9} 12|67b7 69r37 72r13 73m13 74m13 74r28 76r13 77m13 77r28
+. 79r21 80m10 80r24
+54U14*Update 55>7 56>7 57=7 12|213b14 224l8 224t14
+55p7 The_Index{39P9} 12|214b7 219r10 222r10
+56*7 New_Value{33+9} 12|215b7 222r27
+57r7 The_List{37R9} 12|216b7
+59U14*Delete 60>7 61<7 62=7 12|92b14 129l8 129t14
+60p7 The_Index{39P9} 12|93b7 100r10 104r10 106r25 107r26 115r26 117r31 118r27
+. 120r19
+61*7 Deleted_Value{33+9} 12|94b7 106m10 117m16
+62r7 The_List{37R9} 12|95b7 97r21 104r20 107m10 108m10 108r24 109r13 110m13
+. 111m13 114r22 119m16 119r30 121m19
+65V13*Item{33+9} 66>7 67>7 12|173b13 184l8 184t12
+66p7 The_Index{39P9} 12|174b7 179r10 182r17
+67r7 The_List{37R9} 12|175b7
+70V13*Find{39P9} 71>7 72>7 12|44s20 69s20 135b13 149l8 149t12
+71r7 The_Name{26|35R9} 12|136b7 143r13
+72r7 The_List{37R9} 12|137b7 140r20 142r19
+76V13*Size{natural} 77>7 12|201b13 207l8 207t12
+77r7 The_List{37R9} 12|202b7 206r14
+80U14*Rewind 81>7 81<27 12|190b14 195l8 195t14
+81r7 The_List{37R9} 12|191b7 194r17
+81p27 Iterator{39P9} 12|191b27 194m7
+83U14*Get_Next_Item 84<7 85>7 86=7 12|155b14 167l8 167t21
+84*7 Value{33+9} 12|156b7 164m10
+85r7 The_List{37R9} 12|157b7
+86p7 Iterator{39P9} 12|158b7 161r10 164r17 165m10 165r20
+90R9 Node 92r25 96c9 99e14 12|48r33 51r37 73r33 76r37
+97*7 Value{33+9} 12|48m39 51m43 73m39 76m43 106r35 117r41 143r31 164r26 182r27
+. 222m20
+98p7 Next{39P9} 12|48m55 51m27 51m59 52r42 73m55 76m27 76m59 77r42 107r36
+. 115r21 118m21 118r37 120r29 125r24 146r19 165r29
+103p10 First{39P9} 12|47r22 48m22 49r37 72r22 73m22 74r37 97r30 104r29 107m19
+. 110m22 140r29 194r26
+103p17 Last{39P9} 12|49m22 51r21 51r22 52m22 52r36 52r37 74m22 76r21 76r22
+. 77m22 77r36 77r37 79r30 111m22 121m28
+104i10 Num{natural} 12|54m19 54r33 80m19 80r33 108m19 108r33 109r22 114r31
+. 119m25 119r39 142r28 206r23
+X 12 named_lists.adb
+44p7 Pos{11|39P9} 46r10
+69p7 Pos{11|39P9} 71r10 82r21
+97p7 Pred{11|39P9} 100r33 115r16 118r16 121r34 125m13 125r19
+114i14 I{integer}
+140p7 Pos{11|39P9} 143r27 144r20 146m10 146r15
+142i11 I{integer}
+X 26 var_strings.ads
+31K9*Var_Strings 11|30w6 34r45 71r18 12|34r13 136r18 26|85e16
+35R9*Var_String 11|34r57 71r30 12|34r25 136r30 26|80e14
+58V14*"="{boolean} 12|143s21
+

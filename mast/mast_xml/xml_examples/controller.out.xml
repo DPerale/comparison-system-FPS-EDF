@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?mast fileType="XML-Mast-Result-File" version="1.1"?>
+<mast_res:REAL_TIME_SITUATION 
+   xmlns:mast_res="http://mast.unican.es/xmlmast/result" 
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+   xsi:schemaLocation="http://mast.unican.es/xmlmast/result Mast_Result.xsd" 
+   Model_Name="controller" 
+   Model_Date="2000-01-01T00:00:00" 
+   Generation_Tool="MAST Schedulability Analysis, version 1.3.7.5" 
+   Generation_Profile="mast_analysis holistic /home/mgh/prog/mast/mast_xml/xml_examples/controller.xml /home/mgh/prog/mast/mast_xml/xml_examples/controller.out" 
+   Generation_Date="2008-04-02T18:23:50">
+      <mast_res:Transaction Name="control_task" >
+         <mast_res:Timing_Result Event_Name="o1" Num_Of_Suspensions="0" Worst_Blocking_Time="20.000" >
+            <mast_res:Worst_Global_Response_Times>
+               <mast_res:Global_Response_Time  Referenced_Event="e1" Time_Value="46.000"/>
+            </mast_res:Worst_Global_Response_Times>
+            <mast_res:Best_Global_Response_Times>
+               <mast_res:Global_Response_Time  Referenced_Event="e1" Time_Value="0.000"/>
+            </mast_res:Best_Global_Response_Times>
+            <mast_res:Jitters>
+               <mast_res:Global_Response_Time  Referenced_Event="e1" Time_Value="46.000"/>
+            </mast_res:Jitters>
+         </mast_res:Timing_Result> 
+      </mast_res:Transaction> 
+
+      <mast_res:Transaction Name="planning_task" >
+         <mast_res:Timing_Result Event_Name="o2" Num_Of_Suspensions="0" Worst_Blocking_Time="10.000" >
+            <mast_res:Worst_Global_Response_Times>
+               <mast_res:Global_Response_Time  Referenced_Event="e2" Time_Value="82.000"/>
+            </mast_res:Worst_Global_Response_Times>
+            <mast_res:Best_Global_Response_Times>
+               <mast_res:Global_Response_Time  Referenced_Event="e2" Time_Value="0.000"/>
+            </mast_res:Best_Global_Response_Times>
+            <mast_res:Jitters>
+               <mast_res:Global_Response_Time  Referenced_Event="e2" Time_Value="82.000"/>
+            </mast_res:Jitters>
+         </mast_res:Timing_Result> 
+      </mast_res:Transaction> 
+
+      <mast_res:Transaction Name="status_task" >
+         <mast_res:Timing_Result Event_Name="o3" Num_Of_Suspensions="0" Worst_Blocking_Time="0.000" >
+            <mast_res:Worst_Global_Response_Times>
+               <mast_res:Global_Response_Time  Referenced_Event="e3" Time_Value="276.000"/>
+            </mast_res:Worst_Global_Response_Times>
+            <mast_res:Best_Global_Response_Times>
+               <mast_res:Global_Response_Time  Referenced_Event="e3" Time_Value="0.000"/>
+            </mast_res:Best_Global_Response_Times>
+            <mast_res:Jitters>
+               <mast_res:Global_Response_Time  Referenced_Event="e3" Time_Value="276.000"/>
+            </mast_res:Jitters>
+         </mast_res:Timing_Result> 
+      </mast_res:Transaction> 
+
+      <mast_res:Transaction Name="emergency" >
+         <mast_res:Timing_Result Event_Name="o4" Num_Of_Suspensions="0" Worst_Blocking_Time="20.000" >
+            <mast_res:Worst_Global_Response_Times>
+               <mast_res:Global_Response_Time  Referenced_Event="e4" Time_Value="25.500"/>
+            </mast_res:Worst_Global_Response_Times>
+            <mast_res:Best_Global_Response_Times>
+               <mast_res:Global_Response_Time  Referenced_Event="e4" Time_Value="0.000"/>
+            </mast_res:Best_Global_Response_Times>
+            <mast_res:Jitters>
+               <mast_res:Global_Response_Time  Referenced_Event="e4" Time_Value="25.500"/>
+            </mast_res:Jitters>
+         </mast_res:Timing_Result> 
+      </mast_res:Transaction> 
+
+      <mast_res:Shared_Resource Name="data_server" >
+      </mast_res:Shared_Resource>
+      <mast_res:Shared_Resource Name="comm_server" >
+      </mast_res:Shared_Resource>
+   </mast_res:REAL_TIME_SITUATION>
