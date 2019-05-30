@@ -1,0 +1,3 @@
+timeStamp;mode;totalTasks;short;mid;long;feasibilityEDF;maxLoadEDF;iterEDF;feasibilityFPS;iterFPS
+2019-05-23_16:24:27.761205;i;30;10;10;10;true;101.953;1;false;2
+numTask;DeadlineMiss;Executions

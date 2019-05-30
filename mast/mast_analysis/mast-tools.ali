@@ -18,7 +18,7 @@ RV NO_STANDARD_STORAGE_POOLS
 RV NO_DEFAULT_INITIALIZATION
 RV SPARK_05
 
-U mast.tools%b		mast-tools.adb		7a07b4d0 NE OO PK IU
+U mast.tools%b		mast-tools.adb		bc5dfebe NE OO PK IU
 W ada%s			ada.ads			ada.ali
 Z ada.exceptions%s	a-except.adb		a-except.ali
 Z ada.tags%s		a-tags.adb		a-tags.ali
@@ -86,7 +86,7 @@ D mast-synchronization_parameters.ads  20080722124150 70bb7288 mast.synchronizat
 D mast-systems.ads	20080722124150 cc6782d3 mast.systems%s
 D mast-tool_exceptions.ads  20080722124150 c6468eda mast.tool_exceptions%s
 D mast-tools.ads	20080722124150 00f9278d mast.tools%s
-D mast-tools.adb	20190427144932 b8659d44 mast.tools%b
+D mast-tools.adb	20190511112023 7e3fd72a mast.tools%b
 D mast-transactions.ads	20080722124150 8477c124 mast.transactions%s
 D named_lists.ads	20080722124150 8b5d30f2 named_lists%s
 D system.ads		20180525052301 4635ec04 system%s
@@ -457,7 +457,7 @@ X 38 mast-tools.adb
 184f7 The_Slack{float} 209m7 214r33
 185p7 Res{28|83P9} 210m7 211r10 212m10 214r25 215r43
 234f7 Max_Factor{15|82F9} 292r31
-235f7 Small_Step{15|82F9} 242r42 263r27 269r29
+235f7 Small_Step{15|82F9} 242r43 263r27 269r29
 236f7 Factor{15|82F9} 285r22 286m13 286r21 287r46 289m16 289r56 292r23 297m13
 . 299m13 302r24
 236f14 Initial{15|82F9} 285m13 289r48

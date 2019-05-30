@@ -33,7 +33,7 @@ class Looper
          puts "Shorts: #{short}\t Mids: #{mid}\t Long: #{long}"
          generator.datasetReplacement timeStamp
          puts "#{i}/#{loops}) Dataset Replaced."
-         if flag then
+         if not flag then
             compiler.compileUnit "unit01"
             puts "#{i}/#{loops}) Units Compiled."
             puts "#{i}/#{loops}) Registering Data: EDF Feasibility: #{feasibilityEDF.to_s.upcase} "\
@@ -56,15 +56,17 @@ class Looper
                #hash_edf_map, hash_edf_exec, hash_fps_dead, hash_fps_map, hash_fps_exec
             puts "#{i}/#{loops}) Data Registered Correctly."
          else
-            puts "#{i}/#{loops}) Testing EDF Dataset: EDF Feasibility: "\
-            "#{feasibilityEDF.to_s.upcase} with: #{maxLoadEDF} %."
-            puts "#{i}/#{loops}) Testing FPS Dataset: FPS Feasibility: "\
-            "#{feasibilityFPS.to_s.upcase}."
-            puts "#{i}/#{loops}) Test Ended Correctly."
+#            puts "#{i}/#{loops}) Testing EDF Dataset: EDF Feasibility: "\
+#            "#{feasibilityEDF.to_s.upcase} with: #{maxLoadEDF} %."
+#            puts "#{i}/#{loops}) Testing FPS Dataset: FPS Feasibility: "\
+#            "#{feasibilityFPS.to_s.upcase}."
+#            puts "#{i}/#{loops}) Test Ended Correctly."
          end
          puts "\n"
          i +=1
       end
+      puts $tot_schedulable
+      puts $s_For_taskset
    end
 
    #################################3

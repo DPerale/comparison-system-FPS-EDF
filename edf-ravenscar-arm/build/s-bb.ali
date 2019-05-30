@@ -1,6 +1,6 @@
 V "GNAT Lib v2018"
 A -gnatA
-A --RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f4/
+A --RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/
 A -mlittle-endian
 A -mfloat-abi=hard
 A -mcpu=cortex-m4

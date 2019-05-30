@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<Locations >
+  <Project>
+    <vfs_file>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_file>
+    <file_marker column=" 66" line=" 694" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-edf_tools.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 13" line=" 174" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-linear_translation.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 7" line=" 125" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 80" line=" 415" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast_analysis.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 40" line=" 424" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-tools.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 38" line=" 43" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-restrictions.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 27" line=" 568" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-restrictions.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 52" line=" 277" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-linear_translation.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 27" line=" 747" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-monoprocessor_tools.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-systems.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 38" line=" 226" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-tools.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 44" line=" 37" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-edf_tools.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 46" line=" 57" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-miscelaneous_tools.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 38" line=" 1881" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-miscelaneous_tools.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 49" line=" 26" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast_results_parser_tokens.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-consistency_checks.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-transactions.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 11" line=" 3149" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast_parser.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-graphs.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-transactions.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 46" line=" 190" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-linear_analysis_tools.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 17" line=" 73" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/test_analysis_tools.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 32" line=" 35" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-tool_exceptions.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 16" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-tool_exceptions.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 25" line=" 57" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-processing_resources.ads</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 25" line=" 381" >
+      <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-processing_resources.adb</vfs_file>
+    </file_marker>
+  </Project>
+</Locations>

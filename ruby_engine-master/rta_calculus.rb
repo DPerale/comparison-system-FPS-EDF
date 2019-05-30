@@ -7,6 +7,7 @@ class RTA_Calculus
    def initialize taskset
       @taskset = taskset
    end
+   
 
    def setPriorityLevelsRateMonotonic
       i=1;
@@ -239,17 +240,38 @@ class RTA_Calculus
    def MASTcomputeEDF
       puts "calculating RTA EDF with MAST"
       createMASTinputFILE
-      str = "../mast/mast_analysis/mast_analysis edf_monoprocessor -s ../MASTinput.txt ../MASTinput.out"
+      str = "../mast/mast_analysis/mast_analysis edf_monoprocessor ../MASTinput.txt ../MASTinput.out"
       utilization = 0
+      minTimeNoDeadlines = 0
+      schedulable = 0
+      l = 0
       Open3.popen3(str) do |stdin, stdout, stderr, thread|
         stdout.each do |output|
-          if output.include?"Utilization" then             
+          if output.include?"Utilization" then                     
             s = output.split(" ")
-            utilization = s[1].to_f
-          end
+            utilization = s[1].to_f            
+          end          
+          if output.include?"FirstDeadlineMissAfter" then           
+            s = output.split(" ")
+            minTimeNoDeadlines = s[1].to_f                       
+          end  
+          if output.include?"Schedulable" then           
+            s = output.split(" ")
+            schedulable = s[1].to_i                       
+          end      
+          if output.include?"L:" then           
+            s = output.split(" ")
+            l = s[1].to_f                       
+          end                   
         end
         
       end
+      puts "L: " + l.to_s
+      puts "Deadline Miss After: " + minTimeNoDeadlines.to_s
+      puts "Schedulable: " + schedulable.to_s
+      
+      $tot_schedulable.push minTimeNoDeadlines
+      $s_For_taskset.push schedulable
       
       periodicArray = @taskset.map(&:period)
       hyperPeriod = periodicArray.reduce(:lcm) 
@@ -259,7 +281,7 @@ class RTA_Calculus
    end
 
 
-   def createMASTinputFILE
+   def createMASTinputFILE     
       ofile = "../MASTinput.txt"
       File.open(ofile, 'w') do |out|
           out.puts "Model ("
@@ -275,13 +297,11 @@ class RTA_Calculus
           out.puts "        Name  => EDF_Scheduler,"
           out.puts "        Host  => Processor_1,"
           out.puts "        Policy =>"
-          out.puts "           (Type => EDF,"
-          out.puts "            Worst_Context_Switch => 0.0005,"
-          out.puts "            Avg_Context_Switch => 0.0005,"
-          out.puts "            Best_Context_Switch => 0.0005));"
+          out.puts "           (Type => EDF));"
           
           i = 1
           @taskset.sort_by! {|t| t.dead}
+          
           @taskset.each do |task|          
               out.puts "Scheduling_Server ("
               out.puts "        Type                    => Regular,"
@@ -299,9 +319,7 @@ class RTA_Calculus
               out.puts "Operation ("
               out.puts "        Type    => Simple,"
               out.puts "        Name    => C"+i.to_s+","
-              out.puts "        Worst_Case_Execution_Time => "+task.exec.to_s+","
-              out.puts "        Avg_Case_Execution_Time => "+task.exec.to_s+","
-              out.puts "        Best_Case_Execution_Time => "+task.exec.to_s+");"
+              out.puts "        Worst_Case_Execution_Time => "+task.exec.to_s+");"
               i = i + 1
           end
           
@@ -316,7 +334,11 @@ class RTA_Calculus
               out.puts "                 Period => "+task.period.to_s+")),"
               out.puts "        Internal_Events => ("
               out.puts "                (Type   => regular,"
-              out.puts "                 name   => O"+i.to_s+")),"
+              out.puts "                 name   => O"+i.to_s+","
+              out.puts "                 Timing_Requirements => ("
+              out.puts "                         Type             => Hard_Global_Deadline,"
+              out.puts "                         Deadline         => "+task.dead.to_s+","
+              out.puts "                         referenced_event => E"+i.to_s+"))),"
               out.puts "        Event_Handlers => ("
               out.puts "                (Type                => Activity,"
               out.puts "                 Input_Event         => E"+i.to_s+","

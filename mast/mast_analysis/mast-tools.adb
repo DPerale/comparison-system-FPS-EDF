@@ -239,7 +239,7 @@ package body MAST.Tools is
          Schedulable : Boolean;
       begin
          if Restrictions.Max_Processor_Utilization
-           (The_System,False)>=1.0-Float(Small_Step)/2.0
+           (The_System,False)>=10.0-Float(Small_Step)/2.0
          then
             return False;
          else

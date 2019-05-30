@@ -406,7 +406,7 @@ package body System.BB.Threads.Queues is
       --  follow natural behaviour of the Runtime
 
       Thread.Active_Absolute_Deadline := Abs_Deadline;
-      if Thread.Active_Relative_Deadline = -168 then
+      if Thread.Active_Relative_Deadline = -180 then
          Thread.Active_Absolute_Deadline := 0;
       end if;
    end Change_Absolute_Deadline;

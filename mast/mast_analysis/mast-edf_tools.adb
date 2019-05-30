@@ -355,7 +355,7 @@ package body Mast.EDF_Tools is
       use Translation;
 
       Transaction : Linear_Transaction_System;
-      Ci, Bi,Ri,Rbi, Rik,Wik, Wiknew, Ti, Ji : Time;
+      Ci, Bi,Ri,Rbi, Rik,Wik, Wiknew, Ti, Ji, Pi_Ti : Time;
       Di : Time;       --scheduling deadline (relative)
       Si : Sched_Type; -- kind of scheduler (FP or EDF)
       L : Time;        -- length of busy period
@@ -363,6 +363,7 @@ package body Mast.EDF_Tools is
       Qi, Qf : Integer;
       Qti, Qtf : Time;
       P : Transaction_Id;
+      Max_Task : Transaction_ID := Max_Transactions;
       Ni : Task_Id_Type;
       Jeffect : constant array(Boolean) of Time:=(False=> 1.0, True=> 0.0);
       Unbounded_Time : Boolean;
@@ -370,9 +371,13 @@ package body Mast.EDF_Tools is
    begin
       Translate_Linear_System(The_System,Transaction,Verbose);
       --show_linear_translation(Transaction);
-
+      Pi_Ti := Time(0);
       -- Loop for each transaction, I, under analysis
-      for I in 1..Max_Transactions loop
+      --  for I in 1..Transaction_ID(1) loop
+      for I in 1..Max_Task loop
+         --  Put_Line("I: " & Transaction_ID'Image(I));
+         exit when Max_Task = Transaction_ID(1);
+         --  Put_Line("I: " & Transaction_ID'Image(I));
          exit when Transaction(I).Ni=0;
          -- Calculate Rbi,Ci, Ji, Bi: only last task in the transaction is
          -- analyzed; other tasks in same transaction are considered
@@ -385,6 +390,7 @@ package body Mast.EDF_Tools is
          Si:=Transaction(I).The_Task(Ni).Schedij;
          Bi:=Transaction(I).The_Task(Ni).Bij;
          Rbi:=Transaction(I).The_Task(Ni).Cbijown;
+
          if Si=FP then
             -- Calculate initial value for Wik
             Unbounded_Time:=False;
@@ -419,6 +425,7 @@ package body Mast.EDF_Tools is
                            if Transaction(J).The_Task(Tsk).Model=
                              Unbounded_Effects
                            then
+                              Put_Line("Ueffct2");
                               Wiknew:= Large_Time;
                               Wik:=Large_Time;
                               Unbounded_Time:=True;
@@ -445,7 +452,8 @@ package body Mast.EDF_Tools is
                   Ri:=Rik;
                end if;
                -- check if busy period is too long
-               if Ri>Analysis_Bound then
+               if Ri>Analysis_Bound * 1.4 then
+                  Put_Line("Utime1");
                   Unbounded_Time:=True;
                   exit;
                end if;
@@ -465,7 +473,7 @@ package body Mast.EDF_Tools is
          else -- EDF task under analysis
               -- Calculate length of busy period
             Unbounded_Time:=False;
-            Wik:=Bi;
+            Wik:=Bi;   -- blocking time (no WCET?)
             L:=0.0;
             for J in 1..Max_Transactions loop
                exit when Transaction(J).Ni=0;
@@ -474,9 +482,14 @@ package body Mast.EDF_Tools is
                     Transaction(I).The_Task(Ni).Prioij
                   then
                      Wik:=Wik+Transaction(J).The_Task(Tsk).Cij;
+                     --  wik + WCET degli altri task
                   end if;
                end loop;
             end loop;
+
+            -- qui abbiamo
+            -- wik = blocking time i + WCET altri task j
+
             -- Iterate until equation converges
             loop
                Wiknew:=Bi;
@@ -490,6 +503,7 @@ package body Mast.EDF_Tools is
                         if Transaction(J).The_Task(Tsk).Model=
                           Unbounded_Effects
                         then
+                           Put_Line("Ueffct1");
                            Wiknew:= Large_Time;
                            Wik:=Large_Time;
                            Unbounded_Time:=True;
@@ -500,7 +514,9 @@ package body Mast.EDF_Tools is
                                Jeffect(Transaction(J).The_Task(Tsk).
                                        Jitter_Avoidance))/
                               Transaction(J).The_Task(Tsk).Tij)*
-                             Transaction(J).The_Task(Tsk).Cij;
+                               Transaction(J).The_Task(Tsk).Cij;
+                           -- wiknew + ceiling (
+                           --     wik + (jitter * (0 or 1)) / (periodo * WCET)
                         end if;
                      end if;
                   end loop;
@@ -508,32 +524,52 @@ package body Mast.EDF_Tools is
                exit when Unbounded_Time or else Wik=Wiknew;
                Wik:=Wiknew;
             end loop;
+            --  Put(" wik 2    ");
+            --  Put_Line(Time_Interval'Image(Wik));
             L:=Wik;
-            -- check if busy period is too long
-            if L>Analysis_Bound then
-               Unbounded_Time:=True;
+            if I = Transaction_ID(1) then
+               Put_Line("L: " & Time_Interval'Image(L));
             end if;
-
+            --  Put("L: ");
+            --  Put_Line(Time'Image(L));
+            -- check if busy period is too long
+            if L>Time_Interval(952560000) then
+               --  Put_Line(Time_Interval'Image(L));
+--                 Put_Line(Time_Interval'Image(Analysis_Bound * 100000.0));
+--                 Put_Line(Time_Interval'Image(Analysis_Bound));
+--                 Put_Line("Utime2");
+               L:=Time_Interval(952560000);
+               Max_Task := Transaction_ID(1);
+               --  Unbounded_Time:=True;
+            end if;
+            Unbounded_Time:=False;
             if not Unbounded_Time then
                -- Calculate worst-case response times
                Unbounded_Time:=False;
                Ri:=0.0;
                Transaction(I).The_Task(Ni).Rbij:=Rbi;
+               --  Put_Line("Ji: " & Time'Image(Ji));
+               --  Put_Line("-------------------------------------------");
                -- Iterate over the jobs, P, in the busy period
                for P in 1..Integer(Ceiling((L+Ji)/Ti))
                loop
+                  --  Put_Line("P: " & Integer'Image(P));
                   -- Iterate for all possible coincident deadlines
                   for K in 1..Max_Transactions loop
+                     --  Put_Line("K: " & Transaction_ID'Image(K));
                      exit when Transaction(K).Ni=0;
                      for KTsk in 1..Transaction(K).Ni loop
+
                         if  Transaction(K).The_Task(KTsk).Prioij=
                           Transaction(I).The_Task(Ni).Prioij
                         then
                            E:=Time(P-1)*Ti-Ji+Di;
+                           --  Put_Line("E: " & Time'Image(E));
                            Qti:=Ceiling
                              ((E+Transaction(K).The_Task(Ktsk).Jinit-
                                Transaction(K).The_Task(Ktsk).SDij)/
-                              Transaction(K).The_Task(Ktsk).Tijown)+1.0;
+                                Transaction(K).The_Task(Ktsk).Tijown)+1.0;
+                           --  Put_Line("Qti: " & Time'Image(Qti));
                            if Qti>=Time(Integer'Last) then
                               Qi:=Integer'Last;
                            elsif Qti<=Time(Integer'First) then
@@ -556,16 +592,30 @@ package body Mast.EDF_Tools is
                                   ((L+Transaction(K).The_Task(Ktsk).Jinit)/
                                    Transaction(K).The_Task(Ktsk).Tijown)));
                            end if;
+                           --  Put_Line("Qi: " & Integer'Image(Qi));
+                           --  Put_Line("Qf: " & Integer'Image(Qf));
+
                            for Q in Qi..Qf loop
                               Wik:=Bi+Ci;
+                              --Put_Line("Wik1: " & Time_Interval'Image(Wik));
                               Da:=(Time(Q)-1.0)*
                                 Transaction(K).The_Task(Ktsk).Tijown-
                                 Transaction(K).The_Task(Ktsk).Jinit+
                                 Transaction(K).The_Task(Ktsk).SDij;
                               A:=Da-(Time(P-1)*Ti-Ji+di);
+                              --  Put_Line("Da: " & Time'Image(Da));
+                              --  Put_Line("A: " & Time'Image(A));
+                              --  Put_Line("Jinit: "
+                              --         & Time'Image
+                              --         (Transaction(K).The_Task(Ktsk).Jinit));
+                              --  Put_Line("SDij: "
+                              --         & Time'Image
+                              --          (Transaction(K).The_Task(Ktsk).SDij));
                               -- Iterate until equation converges
                               loop
                                  Wiknew:=Bi+Time(P)*Ci;
+                                 --Put_Line("Wiknew1: "
+                                 --         & Time_Interval'Image(Wiknew));
                                  -- add contributions of high or equal
                                  -- priority tasks
                                  for J in 1..Max_Transactions loop
@@ -579,6 +629,7 @@ package body Mast.EDF_Tools is
                                           if Transaction(J).The_Task(Tsk).Model
                                             =Unbounded_Effects
                                           then
+                                             Put_Line("Ueffct3");
                                              Wiknew:= Large_Time;
                                              Wik:=Large_Time;
                                              Unbounded_Time:=True;
@@ -605,11 +656,21 @@ package body Mast.EDF_Tools is
                                             The_Task(Tsk).Model=
                                             Unbounded_Effects
                                           then
+                                             Put_Line("Ueffct4");
                                              Wiknew:= Large_Time;
                                              Wik:=Large_Time;
                                              Unbounded_Time:=True;
                                              exit;
                                           else
+--                                               Put_Line("Jinit: "
+--                                                        & Time_Interval'Image
+--                                                          (Transaction(J).
+--                                                        The_Task(Tsk).Jinit));
+--                                              Put_Line("Jeffect: "
+--                                                      & Time'Image
+--                                                      (Jeffect(Transaction(J).
+--                                                           The_Task(Tsk).
+--                                                          Jitter_Avoidance)));
                                              Wiknew:=Wiknew+Min0
                                                (Ceiling
                                                 ((Wik+Transaction(J).
@@ -631,6 +692,9 @@ package body Mast.EDF_Tools is
                                                  The_Task(Tsk).Tij)+1.0)*
                                                Transaction(J).
                                                The_Task(Tsk).Cij;
+                                             --  Put_Line("Wiknew1: "
+                                             --  & Time_Interval'Image(Wiknew));
+
                                           end if;
                                        end if;
                                     end loop;
@@ -641,23 +705,37 @@ package body Mast.EDF_Tools is
                               end loop; -- workload convergence
                               exit when Unbounded_Time;
                               Rik:=Wik-A+Ji-Ti*(Time(P)-1.0);
+                              -- Put_Line("Rik: "
+                              --                 & Time'Image(Rik));
                               -- keep the worst case result
                               if Rik>Ri then
                                  Ri:=Rik;
                               end if;
                               -- check if busy period is too long
                               if Ri>Analysis_Bound then
+                                 Put_Line("Utime3");
                                  Unbounded_Time:=True;
                                  exit;
                               end if;
                               Wik:=Wik+Ci;
                            end loop; -- Coincident deadline q
                            exit when Unbounded_Time;
+                           --  Put_Line("-------------");
                         end if; -- Pi=Pk
                      end loop; -- task Ktsk
                      exit when Unbounded_Time;
                   end loop; -- transaction k
                   exit when Unbounded_Time;
+                  --  Put_Line(Time'Image(Ri));
+                  if Ri > Di then
+                     if Pi_Ti < (Time(P)*Ti) then
+                        Pi_Ti := Time(P)*Ti;
+                        --  Put_Line("P: " & Integer'Image(P));
+                        --  Put_Line("Ti: " & Time'Image(Ti));
+                        --  Put_Line("Pi*Ti: " & Time'Image(Time(P)*Ti));
+                     end if;
+                     Unbounded_Time:=True;
+                  end if;
                end loop; -- job p
             end if;
             -- Store the worst-case response time obtained
@@ -670,6 +748,11 @@ package body Mast.EDF_Tools is
             end if;
          end if;
       end loop;
+--        Put_Line("Output P: " & Integer'Image(P));
+--                          Put_Line("Output Ti: " & Time'Image(Ti));
+      if Pi_Ti > Time(0) then
+         Put_Line("FirstDeadlineMissAfter: " & Time'Image(Pi_Ti));
+      end if;
       Translate_Linear_Analysis_Results(Transaction,The_System);
    end EDF_Within_Priorities_Analysis;
 

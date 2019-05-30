@@ -350,9 +350,9 @@ begin
                   Put_Line("Calculating Processing Resource Slacks...");
                   Mast.Tools.Calculate_Processing_Resource_Slacks
                     (The_System,The_Tool,Flag(Verbose));
-                  Put_Line("Calculating System Slack...");
-                  Mast.Tools.Calculate_System_Slack
-                    (The_System,The_Tool,Flag(Verbose));
+                  --  Put_Line("Calculating System Slack...");
+                  --  Mast.Tools.Calculate_System_Slack
+                  --  (The_System,The_Tool,Flag(Verbose));
                exception
                   when Timing_Requirements.Inconclusive =>
                      Put_Line ("Inconclusive results when calculating slacks");
@@ -403,17 +403,17 @@ begin
             Miscelaneous_Tools.Check_System_Schedulability
               (The_System,Schedulable,Flag(Verbose));
             if Schedulable then
-               Ada.Text_IO.Put_Line("The system is schedulable");
+               Ada.Text_IO.Put_Line("Schedulable: 1");
             else
-               Ada.Text_IO.Put_Line("Timing requirements not met");
+               Ada.Text_IO.Put_Line("Schedulable: 0");
             end if;
 
          end if;
-         if Schedulable then
-            Ada.Text_IO.Put_Line("Final analysis status: DONE");
-         else
-            Ada.Text_IO.Put_Line("Final analysis status: NOT-SCHEDULABLE");
-         end if;
+         --  if Schedulable then
+            --  Ada.Text_IO.Put_Line("Final analysis status: DONE");
+         --  else
+            --  Ada.Text_IO.Put_Line("Final analysis status: NOT-SCHEDULABLE");
+         --  end if;
          Close_Files;
       end;
    end if;

@@ -1,0 +1,19 @@
+[GENERATED OBJECT FILE]
+b__main.o
+[PROJECT FILES]
+/home/aquox/Scrivania/Arm/mast/mast.gpr
+20190503113008
+[BOUND OBJECT FILES]
+/home/aquox/Scrivania/Arm/mast/obj/main.o
+[GENERATED SOURCE FILES]
+b__main.ads
+b__main.adb
+b__main.ali
+[RESULTING OPTIONS]
+-L/home/aquox/Scrivania/Arm/mast/obj/
+-L/home/aquox/Scrivania/Arm/mast/obj/
+-L/home/aquox/opt/GNAT/2018/lib/gcc/x86_64-pc-linux-gnu/7.3.1/adalib/
+-static
+-static-libgcc
+/home/aquox/opt/GNAT/2018/lib/gcc/x86_64-pc-linux-gnu/7.3.1/adalib/libgnat.a
+-ldl

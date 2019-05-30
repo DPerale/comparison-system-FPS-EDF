@@ -9,13 +9,14 @@ project Unit01 is
    for Exec_Dir use ".";
    for Target use "arm-eabi";
    --  for Runtime ("ada") use "ravenscar-full-stm32f4";
-   for Runtime ("ada") use "ravenscar-full-stm32f4";
+   for Runtime ("ada") use "ravenscar-full-stm32f429disco";
 
    package Compiler is
       for Default_Switches ("ada") use ("-gnatwA", "-gnatg", "-g");
    end Compiler;
 
    package Ide is
+      for Connection_Tool use "st-util";
       for Program_Host use "localhost:1234";
       for Communication_Protocol use "remote";
    end Ide;

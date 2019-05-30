@@ -12,6 +12,7 @@ class BasicTask
    attr_accessor :period
    attr_accessor :id
    attr_accessor :exec
+   attr_accessor :exec_Perc
    attr_accessor :EDF_CS1
    attr_accessor :EDF_CS2
    attr_accessor :FPS_CS1
@@ -25,6 +26,7 @@ class BasicTask
       @period = period
       @id = id
       @exec = exec
+      @exec_Perc = 0.0
       @EDF_CS1 = 67996 # 251552
       @EDF_CS2 = 56214 # 182851
       @FPS_CS1 = 65364

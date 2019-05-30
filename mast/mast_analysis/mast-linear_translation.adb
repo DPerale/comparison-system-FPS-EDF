@@ -705,7 +705,7 @@ package body Mast.Linear_Translation is
                         case Transaction(I).Kind_Of_Event is
                            when Periodic|Sporadic|Bursty =>
                               -- check if enough capacity
-                              if (Css/Tss)*(1.0+Epsilon)>=
+                              if (Css/Tss)*(1.4+Epsilon)>=
                                 Transaction(I).The_Task(J).Cij/
                                 (Transaction(I).Ti*Accum_Rate_Factor)
                               then -- enough capacity

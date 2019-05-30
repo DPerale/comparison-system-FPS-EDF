@@ -12,8 +12,13 @@ require_relative 'looper'
 ##
 #####################################################################
 
+$tot_schedulable = Array.new
+$s_For_taskset = Array.new
+
+
 help = Helper.new
 looper = Looper.new
+
 
 case ARGV[0]
 when "-a"

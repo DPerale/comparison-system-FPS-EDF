@@ -149,7 +149,7 @@ class Generator
       else
          raise 'Error in numbering taskTypeNum'
       end
-      return a, b, c
+      return a, a, a
    end
 
    
@@ -180,7 +180,7 @@ class Generator
               p = rand @param.long_period_demo_mixed
             end
             ret = p
-            e = rand @param.long_impl_exec_range
+            e = rand @param.long_impl_exec_range            
          else
             raise 'Error size in generateSingleTask'
          end
@@ -214,7 +214,7 @@ class Generator
 
       dead = expSolver(d)
       period = expSolver(p)
-      t = BasicTask.new 0, dead, period, 0, e
+      t = BasicTask.new 0, dead, period, 0, 0
       @taskset.push t
       return ret
    end
@@ -226,10 +226,10 @@ class Generator
       # puts a
       # puts "2 ^ #{a[code][0][0][0]} * 3 ^ #{a[code][0][0][1]} "\
       #      "5 ^ #{a[code][0][0][2]} * 7 ^ #{a[code][0][0][3]}"
-      value = 2 ** a[code][0][0][0] *
-              3 ** a[code][0][0][1] *
-              5 ** a[code][0][0][2] *
-              7 ** a[code][0][0][3]
+      value = 2 ** a[code-1][0][0][0] *
+              3 ** a[code-1][0][0][1] *
+              5 ** a[code-1][0][0][2] *
+              7 ** a[code-1][0][0][3]     
       return value
    end
 
@@ -248,7 +248,22 @@ class Generator
          alreadyPicked.push(n)
       end
       alreadyPicked.clear
+      UUnifast(short*3,0.9)
    end
+   
+   def UUnifast (n, utilization)      
+      sumU = utilization
+      for i in 1..n-1
+        nextSumU = sumU*(rand**(1.to_f/(n.to_f-i.to_f)))
+        while (sumU - nextSumU) >= 1 do
+          nextSumU = sumU*(rand**(1.to_f/(n.to_f-i.to_f)))
+        end
+        @taskset[i-1].exec_Perc = sumU - nextSumU
+        @taskset[i-1].exec = ((sumU - nextSumU) * @taskset[i-1].period).to_i
+        sumU = nextSumU
+      end
+      @taskset[n-1].exec = (sumU * @taskset[n-1].period).to_i    
+   end   
 
    def generateConstrainedTaskset (short, mid, long, type)
       for i in 0..short
