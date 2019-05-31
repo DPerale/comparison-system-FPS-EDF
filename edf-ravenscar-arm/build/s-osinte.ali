@@ -17,7 +17,7 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_IMPLEMENTATION_RESTRICTIONS
 RR NO_ELABORATION_CODE
 
-U system.os_interface%s	s-osinte.ads		13f5c2c1 NE OL PR PK
+U system.os_interface%s	s-osinte.ads		5e43f1ec NE OL PR PK
 W system%s		system.ads		system.ali
 W system.bb%s		s-bb.ads		s-bb.ali
 W system.bb.board_support%s  s-bbbosu.adb	s-bbbosu.ali
@@ -43,7 +43,7 @@ D s-bbinte.ads		20181010193701 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20181010193701 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20181010193701 431abc17 system.bb.parameters%s
 D s-bbthre.ads		20190324144342 9be493b9 system.bb.threads%s
-D s-bbthqu.ads		20190324145125 9b3d531d system.bb.threads.queues%s
+D s-bbthqu.ads		20190530172602 d68b6030 system.bb.threads.queues%s
 D s-bbtime.ads		20190210170141 1a3e050f system.bb.time%s
 D s-multip.ads		20181010193706 f33e0e35 system.multiprocessors%s
 D s-osinte.ads		20190324143916 cd77825b system.os_interface%s
@@ -114,9 +114,9 @@ X 13 s-bbthre.ads
 354U14*Set_ATCB 17|169r32
 358V13*Get_ATCB{4|80M9} 17|172r70
 X 14 s-bbthqu.ads
-41K27*Queues 417e29 17|44w24 241r32 248r32
-221V13*Current_Relative_Deadline{9|51I12} 17|241r39
-229V13*Current_Absolute_Deadline{9|65M12} 17|248r39
+41K27*Queues 418e29 17|44w24 241r32 248r32
+222V13*Current_Relative_Deadline{9|51I12} 17|241r39
+230V13*Current_Absolute_Deadline{9|65M12} 17|248r39
 X 15 s-bbtime.ads
 43K19*Time 254e19 17|45w16 98r30 101r35 108r49 111r55
 46M9*Time 17|98r35

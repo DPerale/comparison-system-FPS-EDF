@@ -58,6 +58,7 @@ package System.BB.Threads.Queues is
    procedure Initialize_Task_Table (ID : Integer);
    procedure Add_DM (ID : Integer);
    procedure Add_Execution (ID : Integer);
+   procedure Add_Preemption (ID : Integer);
    function Get_Check (ID : Integer) return Boolean;
    procedure Set_Check (ID : Integer;
                         Check : Boolean);

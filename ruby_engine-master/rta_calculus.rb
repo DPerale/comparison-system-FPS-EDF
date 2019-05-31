@@ -277,6 +277,10 @@ class RTA_Calculus
       hyperPeriod = periodicArray.reduce(:lcm) 
       maxLoad = 1
       x = 1
+      
+      recorder = Recorder.new
+      recorder.dataRegistrationSoglia((minTimeNoDeadlines.to_f/hyperPeriod.to_f),@taskset)
+      
       return true, utilization, x, hyperPeriod
    end
 
@@ -297,7 +301,8 @@ class RTA_Calculus
           out.puts "        Name  => EDF_Scheduler,"
           out.puts "        Host  => Processor_1,"
           out.puts "        Policy =>"
-          out.puts "           (Type => EDF));"
+          out.puts "           (Type => EDF,"
+          out.puts "      Worst_Context_Switch => 9));"
           
           i = 1
           @taskset.sort_by! {|t| t.dead}

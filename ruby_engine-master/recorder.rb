@@ -21,6 +21,17 @@ class Recorder
       end
    end
 
+   def dataRegistrationSoglia(soglia,taskset)
+     File.open("../workspace/results.csv", 'a') do |out|      
+       out.print($utilization[($numTaskset.to_f/1000.to_f).to_i])
+       out.print(+";"+soglia.to_s + ";")
+       taskset.each do |task|        
+           out.print(task.prio.to_s+","+task.dead.to_s+","+task.period.to_s+","+task.id.to_s+","+task.exec.to_s+";")
+       end
+       out.puts ""
+     end
+   end
+   
    def dataRegistration (timeStamp, mode, totalTasks, short, mid, long,
                      feasibilityEDF, maxLoadEDF, iterEDF, feasibilityFPS, iterFPS, arr )
                     # edf_execs, edf_deads, edf_preem, fps_execs, fps_deads,

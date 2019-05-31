@@ -248,11 +248,16 @@ class Generator
          alreadyPicked.push(n)
       end
       alreadyPicked.clear
-      UUnifast(short*3,0.9)
+      x = ($numTaskset.to_f/1000.to_f).to_i
+      UUnifast(short*3,$utilization[x])
    end
    
    def UUnifast (n, utilization)      
       sumU = utilization
+      @taskset.each do |task|
+        sumU = sumU.to_f - (9.to_f / task.period.to_f)
+      end
+      
       for i in 1..n-1
         nextSumU = sumU*(rand**(1.to_f/(n.to_f-i.to_f)))
         while (sumU - nextSumU) >= 1 do

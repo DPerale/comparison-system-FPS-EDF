@@ -40,6 +40,7 @@ pragma Restrictions (No_Elaboration_Code);
 -------------------------------------------------------------
 --  Used for debug procedures
 with System.IO;
+
 with System.BB.Stats;
 with System.BB.Debug; use System.BB.Debug;
 -------------------------------------------------------------
@@ -70,6 +71,7 @@ package body System.BB.Threads.Queues is
          Check : Boolean;
          DM : Natural;
          Execution : Integer;
+         Preemption : Integer;
       end record;
 
    type Array_Table_Record is array (1 .. 90) of Table_Record;
@@ -80,7 +82,7 @@ package body System.BB.Threads.Queues is
    procedure Initialize_Task_Table (ID : Integer) is
    begin
       if ID /= 0 then
-         Task_Table (ID) := (ID, False, 0, -1);
+         Task_Table (ID) := (ID, False, 0, -1, 0);
          if Max_ID_Table < ID then
             Max_ID_Table := ID;
          end if;
@@ -117,14 +119,23 @@ package body System.BB.Threads.Queues is
       end if;
    end Add_Execution;
 
+   procedure Add_Preemption (ID : Integer) is
+   begin
+      if ID /= 0 then
+         Task_Table (ID).Preemption := Task_Table (ID).Preemption + 1;
+      end if;
+   end Add_Preemption;
+
    procedure Print_Table (First_Index : Integer) is
       i : Integer := First_Index;
    begin
       while i <= Max_ID_Table loop
+
          System.IO.Put ("Tab;");
          System.IO.Put (Integer'Image (i));
          System.IO.Put (Integer'Image (Task_Table (i).DM));
          System.IO.Put (Integer'Image (Task_Table (i).Execution));
+         System.IO.Put (Integer'Image (Task_Table (i).Preemption));
          System.IO.Put_Line ("");
          i := i + 1;
       end loop;
@@ -431,6 +442,7 @@ package body System.BB.Threads.Queues is
                 Running_Thread.Preemption_Needed
             then
                System.BB.Stats.Preemptions := System.BB.Stats.Preemptions + 1;
+               Add_Preemption (First_Thread.Fake_Number_ID);
 --                 System.IO.Put_Line ("PREEMPTION; "
 --                   & Integer'Image (System.BB.Stats.Preemptions));
             end if;

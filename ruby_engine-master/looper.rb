@@ -32,7 +32,7 @@ class Looper
          puts "#{i}/#{loops}) Dataset Generated. Total: #{totalTasks}."
          puts "Shorts: #{short}\t Mids: #{mid}\t Long: #{long}"
          generator.datasetReplacement timeStamp
-         puts "#{i}/#{loops}) Dataset Replaced."
+         puts "#{i}/#{loops}) Dataset Replaced."         
          if not flag then
             compiler.compileUnit "unit01"
             puts "#{i}/#{loops}) Units Compiled."
@@ -64,6 +64,7 @@ class Looper
          end
          puts "\n"
          i +=1
+         $numTaskset = $numTaskset + 1;
       end
       puts $tot_schedulable
       puts $s_For_taskset

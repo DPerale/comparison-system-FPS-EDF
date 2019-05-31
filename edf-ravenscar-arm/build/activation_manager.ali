@@ -1,0 +1,75 @@
+V "GNAT Lib v2018"
+A -gnatA
+A --RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/
+A -mlittle-endian
+A -mfloat-abi=hard
+A -mcpu=cortex-m4
+A -mfpu=fpv4-sp-d16
+A -mthumb
+A -gnatwA
+A -gnatg
+A -g
+P DB LC TF  ZX
+
+RN
+RV NO_DELAY
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_ELABORATION_CODE
+RV SPARK_05
+
+U activation_manager%b	activation_manager.adb	3da42afa NE OO PK
+Z ada.real_time.delays%s  a-retide.adb		a-retide.ali
+
+U activation_manager%s	activation_manager.ads	c4d2d530 EE OO PK
+W ada%s			ada.ads			ada.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+
+D activation_manager.ads  20170223093616 88c4423e activation_manager%s
+D activation_manager.adb  20170223093614 b56068c4 activation_manager%b
+D ada.ads		20181010193652 76789da1 ada%s
+D a-reatim.ads		20181010193649 4c16970e ada.real_time%s
+D a-retide.ads		20190309141716 081cdaa4 ada.real_time.delays%s
+D interfac.ads		20181010193657 5ab55268 interfaces%s
+D i-stm32.ads		20181010193657 2ad0960b interfaces.stm32%s
+D i-stm32-pwr.ads	20181010193657 4a098e84 interfaces.stm32.pwr%s
+D system.ads		20181010193713 db831581 system%s
+D s-bb.ads		20181010193701 09e072ae system.bb%s
+D s-bbbopa.ads		20181010193701 5e9af419 system.bb.board_parameters%s
+D s-bbbosu.ads		20181102132403 0f820a2a system.bb.board_support%s
+D s-bbcppr.ads		20181010193701 bcfa73ad system.bb.cpu_primitives%s
+D s-bbdead.ads		20190210124650 deeac8df system.bb.deadlines%s
+D s-bbinte.ads		20181010193701 c88d39da system.bb.interrupts%s
+D s-bbmcpa.ads		20181010193701 b5961a30 system.bb.mcu_parameters%s
+D s-bbpara.ads		20181010193701 431abc17 system.bb.parameters%s
+D s-bbthre.ads		20190324144342 9be493b9 system.bb.threads%s
+D s-bbthqu.ads		20190530172602 d68b6030 system.bb.threads.queues%s
+D s-bbtime.ads		20190210170141 1a3e050f system.bb.time%s
+D s-multip.ads		20181010193706 f33e0e35 system.multiprocessors%s
+D s-osinte.ads		20190324143916 cd77825b system.os_interface%s
+D s-stm32.ads		20181010193709 e898dba2 system.stm32%s
+D s-stoele.ads		20181010193709 2dc34a04 system.storage_elements%s
+D s-unstyp.ads		20181010193711 34867c83 system.unsigned_types%s
+X 1 activation_manager.ads
+2K9*Activation_Manager 18l5 18e23 2|1b14 12l5 12t23
+4V13*Clock=4:67{4|51M9} 7s55
+7m4*System_Start_Time{4|51M9} 14r6
+9i4*Relative_Offset{natural} 11r34
+10i4*Task_Start_Time{4|61I9} 14r26
+13m4*Activation_Time{4|51M9} 2|4r19 9r20 10r19
+15U14*Activation_Sporadic 2|2b14 5l8 5t27
+16U14*Activation_Cyclic 17<7 2|6b14 11l8 11t25
+17m7 Next_Time{4|51M9} 2|7b10 9m7
+X 3 ada.ads
+16K9*Ada 1|1r6 3r8 4r26 4r53 7r33 10r31 11r6 13r22 17r23 2|7r26 3|20e8
+X 4 a-reatim.ads
+41K13*Real_Time 1|1w10 3r12 4r30 4r57 7r37 10r35 11r10 13r26 17r27 2|7r30
+. 4|182e18
+51M9*Time<20|46M9> 1|4r40 7r47 13r36 17r37 2|7r40
+61I9*Time_Span<20|84I9> 1|10r45
+68V13*Clock{51M9}<20|191p13> 1|4r67
+72V14*"+"{51M9} 1|14s24
+128V13*Milliseconds{61I9}<20|163p13> 1|11s20
+X 20 s-bbtime.ads
+46M9*Time
+84I9*Time_Span<long_long_integer>
+

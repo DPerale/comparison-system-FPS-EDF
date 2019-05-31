@@ -25,7 +25,7 @@ RV NO_IMPLEMENTATION_RESTRICTIONS
 RR NO_ELABORATION_CODE
 RV SPARK_05
 
-U system.bb.time%b	s-bbtime.adb		f7163417 NE OL PK
+U system.bb.time%b	s-bbtime.adb		baa0073a NE OL PK
 W ada%s			ada.ads			ada.ali
 Z ada.tags%s		a-tags.adb		a-tags.ali
 W ada.unchecked_conversion%s
@@ -64,7 +64,7 @@ D s-bbmcpa.ads		20181010193701 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20181010193701 431abc17 system.bb.parameters%s
 D s-bbprot.ads		20181010193702 f48a7e85 system.bb.protection%s
 D s-bbthre.ads		20190324144342 9be493b9 system.bb.threads%s
-D s-bbthqu.ads		20190324145125 9b3d531d system.bb.threads.queues%s
+D s-bbthqu.ads		20190530172602 d68b6030 system.bb.threads.queues%s
 D s-bbtime.ads		20190210170141 1a3e050f system.bb.time%s
 D s-bbtime.adb		20190415141044 09cbb65b system.bb.time%b
 D s-bbtiev.ads		20181010193702 f167837c system.bb.timing_events%s
@@ -126,19 +126,19 @@ X 17 s-bbthre.ads
 166i7*Fake_Number_ID{integer} 20|342r52 348r54 350r51 353r48
 267V13*Thread_Self{65P9} 20|338s15
 X 18 s-bbthqu.ads
-41K27*Queues 417e29 20|43w24 56r25 342r25 348r31 350r31 353r25 378r18
+41K27*Queues 418e29 20|43w24 56r25 342r25 348r31 350r31 353r25 378r18
 59U14*Add_DM 20|350s38
 60U14*Add_Execution 20|342s32
-61V13*Get_Check{boolean} 20|348s38
-62U14*Set_Check 20|353s32
-114U14*Extract 20|363s10
-205U14*Change_Absolute_Deadline 20|378s25
-206p9 Thread{17|65P9} 20|379r13
-207m9 Abs_Deadline{12|65M12} 20|380r13
-237U14*Yield 20|381s10
-320U14*Insert_Alarm 20|369s10
-388V13*Get_Next_Alarm_Time{19|46M9} 20|401s37
-394U14*Wakeup_Expired_Alarms 20|210s7
+62V13*Get_Check{boolean} 20|348s38
+63U14*Set_Check 20|353s32
+115U14*Extract 20|363s10
+206U14*Change_Absolute_Deadline 20|378s25
+207p9 Thread{17|65P9} 20|379r13
+208m9 Abs_Deadline{12|65M12} 20|380r13
+238U14*Yield 20|381s10
+321U14*Insert_Alarm 20|369s10
+389V13*Get_Next_Alarm_Time{19|46M9} 20|401s37
+395U14*Wakeup_Expired_Alarms 20|210s7
 X 19 s-bbtime.ads
 43K19*Time 8|40k16 19|142r36 143r25 143r58 144r35 145r25 145r53 146r43 147r24
 . 239E4 254l15 254e19 20|49b24 954l15 954t19

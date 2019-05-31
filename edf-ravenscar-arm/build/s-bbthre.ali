@@ -19,7 +19,7 @@ RV NO_IMPLEMENTATION_RESTRICTIONS
 RR NO_ELABORATION_CODE
 RV SPARK_05
 
-U system.bb.threads%b	s-bbthre.adb		9f561797 NE OL PK
+U system.bb.threads%b	s-bbthre.adb		d2e024ba NE OL PK
 Z interfaces%s		interfac.ads		interfac.ali
 W system%s		system.ads		system.ali
 W system.bb%s		s-bb.ads		s-bb.ali
@@ -56,7 +56,7 @@ D s-bbpara.ads		20181010193701 431abc17 system.bb.parameters%s
 D s-bbprot.ads		20181010193702 f48a7e85 system.bb.protection%s
 D s-bbthre.ads		20190324144342 9be493b9 system.bb.threads%s
 D s-bbthre.adb		20190324145113 728e8172 system.bb.threads%b
-D s-bbthqu.ads		20190324145125 9b3d531d system.bb.threads.queues%s
+D s-bbthqu.ads		20190530172602 d68b6030 system.bb.threads.queues%s
 D s-bbtime.ads		20190210170141 1a3e050f system.bb.time%s
 D s-multip.ads		20181010193706 f33e0e35 system.multiprocessors%s
 D s-parame.ads		20181010193708 d106111e system.parameters%s
@@ -212,17 +212,17 @@ X 17 s-bbthre.adb
 X 18 s-bbthqu.ads
 41K27*Queues 17|42w24 113r14 196r25 197r7 201r7 313r7 340r7 377r7 377r38
 . 390r7 391r25 415r15 417r7 418r16 435r15 437r7 461r15 463r7 464r16 475r39
-. 516r10 563r14 582r10 587r10 18|417e29
-65U14*Set_Priority_For_Print 17|377s14
-68U14*Insert 17|201s14 587s17
-114U14*Extract 17|516s17
-187U14*Change_Fake_Number_ID 17|390s14
-193U14*Change_Relative_Deadline 17|417s14
-205U14*Change_Absolute_Deadline 17|463s14 582s17
-266a4*Running_Thread_Table(16|65P9) 17|313m14 340m14
-286V13*Running_Thread{16|65P9} 17|113s21 377s45 391s32 415s22 418s23 435s22
+. 516r10 563r14 582r10 587r10 18|418e29
+66U14*Set_Priority_For_Print 17|377s14
+69U14*Insert 17|201s14 587s17
+115U14*Extract 17|516s17
+188U14*Change_Fake_Number_ID 17|390s14
+194U14*Change_Relative_Deadline 17|417s14
+206U14*Change_Absolute_Deadline 17|463s14 582s17
+267a4*Running_Thread_Table(16|65P9) 17|313m14 340m14
+287V13*Running_Thread{16|65P9} 17|113s21 377s45 391s32 415s22 418s23 435s22
 . 437s14 461s22 464s23 475s46 563s21
-404p4*Global_List{16|65P9} 17|196r32 197m14
+405p4*Global_List{16|65P9} 17|196r32 197m14
 X 19 s-bbtime.ads
 43K19*Time 16|44w16 115r30 142r34 17|49r18 191r54 222r34 228r19 276r7 299r45
 . 333r22 571r32 571r55 19|254e19

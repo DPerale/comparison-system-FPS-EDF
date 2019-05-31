@@ -1,0 +1,2 @@
+activation_log.ads:5:04: expected type "System.Bb.Time.Time_Span"
+activation_log.ads:5:04: found type "Standard.Integer"
