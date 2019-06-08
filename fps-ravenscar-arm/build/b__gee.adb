@@ -14,22 +14,22 @@ package body ada_main is
    E105 : Short_Integer; pragma Import (Ada, E105, "system__bb__timing_events_E");
    E126 : Short_Integer; pragma Import (Ada, E126, "ada__real_time_E");
    E011 : Short_Integer; pragma Import (Ada, E011, "system__tasking__protected_objects_E");
-   E151 : Short_Integer; pragma Import (Ada, E151, "system__tasking__protected_objects__multiprocessors_E");
-   E156 : Short_Integer; pragma Import (Ada, E156, "system__tasking__restricted__stages_E");
+   E153 : Short_Integer; pragma Import (Ada, E153, "system__tasking__protected_objects__multiprocessors_E");
+   E158 : Short_Integer; pragma Import (Ada, E158, "system__tasking__restricted__stages_E");
    E009 : Short_Integer; pragma Import (Ada, E009, "activation_log_E");
-   E143 : Short_Integer; pragma Import (Ada, E143, "activation_manager_E");
+   E145 : Short_Integer; pragma Import (Ada, E145, "activation_manager_E");
    E183 : Short_Integer; pragma Import (Ada, E183, "auxiliary_E");
-   E170 : Short_Integer; pragma Import (Ada, E170, "external_event_server_parameters_E");
-   E160 : Short_Integer; pragma Import (Ada, E160, "event_queue_E");
-   E158 : Short_Integer; pragma Import (Ada, E158, "external_event_server_E");
+   E160 : Short_Integer; pragma Import (Ada, E160, "external_event_server_parameters_E");
+   E164 : Short_Integer; pragma Import (Ada, E164, "event_queue_E");
+   E162 : Short_Integer; pragma Import (Ada, E162, "external_event_servers_E");
    E130 : Short_Integer; pragma Import (Ada, E130, "production_workload_E");
    E007 : Short_Integer; pragma Import (Ada, E007, "activation_log_reader_parameters_E");
-   E005 : Short_Integer; pragma Import (Ada, E005, "activation_log_reader_E");
+   E143 : Short_Integer; pragma Import (Ada, E143, "activation_log_readers_E");
    E174 : Short_Integer; pragma Import (Ada, E174, "on_call_producer_parameters_E");
-   E176 : Short_Integer; pragma Import (Ada, E176, "request_buffer_E");
-   E172 : Short_Integer; pragma Import (Ada, E172, "on_call_producer_E");
+   E178 : Short_Integer; pragma Import (Ada, E178, "request_buffer_E");
+   E176 : Short_Integer; pragma Import (Ada, E176, "on_call_producers_E");
    E181 : Short_Integer; pragma Import (Ada, E181, "regular_producer_parameters_E");
-   E179 : Short_Integer; pragma Import (Ada, E179, "regular_producer_E");
+   E005 : Short_Integer; pragma Import (Ada, E005, "regular_producers_E");
 
    Sec_Default_Sized_Stacks : array (1 .. 5) of aliased System.Secondary_Stack.SS_Stack (System.Parameters.Runtime_Default_Sec_Stack_Size);
 
@@ -102,7 +102,7 @@ package body ada_main is
          return;
       end if;
       Is_Elaborated := True;
-      Main_Priority := -1;
+      Main_Priority := 0;
       Time_Slice_Value := 0;
       WC_Encoding := 'b';
       Locking_Policy := 'C';
@@ -126,13 +126,13 @@ package body ada_main is
          Violated =>
           (False, False, False, False, True, True, False, False, 
            False, False, False, True, True, True, True, False, 
-           False, False, True, False, True, True, False, True, 
+           False, False, False, False, True, True, False, True, 
            False, False, True, True, True, True, False, False, 
            False, False, False, True, False, False, True, False, 
            False, False, True, True, False, False, False, True, 
            False, False, False, True, False, False, False, False, 
            False, False, False, True, False, True, True, True, 
-           False, False, True, False, True, True, True, False, 
+           True, False, True, False, True, True, True, False, 
            True, True, False, False, True, True, True, False, 
            False, True, False, False, False, True, False, False, 
            True, False, True, False),
@@ -170,35 +170,31 @@ package body ada_main is
       System.Tasking.Protected_Objects'Elab_Body;
       E011 := E011 + 1;
       System.Tasking.Protected_Objects.Multiprocessors'Elab_Body;
-      E151 := E151 + 1;
+      E153 := E153 + 1;
       System.Tasking.Restricted.Stages'Elab_Body;
-      E156 := E156 + 1;
+      E158 := E158 + 1;
       Activation_Log'Elab_Spec;
       E009 := E009 + 1;
       Activation_Manager'Elab_Spec;
-      E143 := E143 + 1;
+      E145 := E145 + 1;
       E183 := E183 + 1;
-      E170 := E170 + 1;
-      Event_Queue'Elab_Spec;
       E160 := E160 + 1;
-      External_Event_Server'Elab_Spec;
-      External_Event_Server'Elab_Body;
-      E158 := E158 + 1;
+      Event_Queue'Elab_Spec;
+      E164 := E164 + 1;
+      External_Event_Servers'Elab_Body;
+      E162 := E162 + 1;
       E130 := E130 + 1;
       E007 := E007 + 1;
-      Activation_Log_Reader'Elab_Spec;
-      Activation_Log_Reader'Elab_Body;
-      E005 := E005 + 1;
+      Activation_Log_Readers'Elab_Body;
+      E143 := E143 + 1;
       E174 := E174 + 1;
       Request_Buffer'Elab_Body;
+      E178 := E178 + 1;
+      On_Call_Producers'Elab_Body;
       E176 := E176 + 1;
-      On_Call_Producer'Elab_Spec;
-      On_Call_Producer'Elab_Body;
-      E172 := E172 + 1;
       E181 := E181 + 1;
-      Regular_Producer'Elab_Spec;
-      Regular_Producer'Elab_Body;
-      E179 := E179 + 1;
+      Regular_Producers'Elab_Body;
+      E005 := E005 + 1;
    end adainit;
 
    procedure Ada_Main_Program;
@@ -308,16 +304,16 @@ package body ada_main is
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/auxiliary.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/external_event_server_parameters.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/event_queue.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/external_event_server.o
+   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/external_event_servers.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/production_workload.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/activation_log_reader_parameters.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/activation_log_reader.o
+   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/activation_log_readers.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/on_call_producer_parameters.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/request_buffer_parameters.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/request_buffer.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/on_call_producer.o
+   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/on_call_producers.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/regular_producer_parameters.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/regular_producer.o
+   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/regular_producers.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/gee.o
    --   -L/home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/
    --   -L/home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/

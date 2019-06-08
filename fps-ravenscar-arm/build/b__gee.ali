@@ -27,7 +27,7 @@ RV NO_ELABORATION_CODE
 RV NO_OBSOLESCENT_FEATURES
 RV SPARK_05
 
-U ada_main%b		b__gee.adb		2ecd4ec6 OO PK IL
+U ada_main%b		b__gee.adb		9040ac86 OO PK IL
 W system%s		system.ads		system.ali
 W system.restrictions%s	s-restri.adb		s-restri.ali
 
@@ -36,8 +36,8 @@ W system%s		system.ads		system.ali
 W system.parameters%s	s-parame.adb		s-parame.ali
 W system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 
-D b__gee.ads		20190531114321 70a3f19f ada_main%s
-D b__gee.adb		20190531114321 45f3b92b ada_main%b
+D b__gee.ads		20190605140333 70a3f19f ada_main%s
+D b__gee.adb		20190605140333 fb7e5b6b ada_main%b
 D system.ads		20181010193713 db831581 system%s
 D s-parame.ads		20181010193708 d106111e system.parameters%s
 D s-restri.ads		20181010193709 1b9d0672 system.restrictions%s
@@ -45,12 +45,12 @@ D s-rident.ads		20181010193709 50efdf23 system.rident%s
 D s-secsta.ads		20181010193709 56a2861c system.secondary_stack%s
 D s-stoele.ads		20181010193709 2dc34a04 system.storage_elements%s
 X 1 b__gee.ads
-6K9*ada_main 213l5 213e13 2|9b14 330l5 330t13
+6K9*ada_main 213l5 213e13 2|9b14 326l5 326t13
 9a4*GNAT_Version{string} 11r22
-13a4*Ada_Main_Program_Name{string} 14r22 2|215r52
-16U14*adainit 17i<c,adainit>22 2|57b14 202l8 202t15 220s7
-19U14*adafinal 20i<c,adafinal>22 2|41b14 55l8 55t16 222s7
-22U14*main 23i<c,main>22 2|207b14 224t7
+13a4*Ada_Main_Program_Name{string} 14r22 2|211r52
+16U14*adainit 17i<c,adainit>22 2|57b14 198l8 198t15 216s7
+19U14*adafinal 20i<c,adafinal>22 2|41b14 55l8 55t16 218s7
+22U14*main 23i<c,main>22 2|203b14 220t7
 X 2 b__gee.adb
 11i4 E076{short_integer} 11m46 11r46 163m7 163r15
 12i4 E051{short_integer} 12m46 12r46 167m7 167r15
@@ -58,22 +58,22 @@ X 2 b__gee.adb
 14i4 E105{short_integer} 14m46 14r46 166m7 166r15
 15i4 E126{short_integer} 15m46 15r46 169m7 169r15
 16i4 E011{short_integer} 16m46 16r46 171m7 171r15
-17i4 E151{short_integer} 17m46 17r46 173m7 173r15
-18i4 E156{short_integer} 18m46 18r46 175m7 175r15
+17i4 E153{short_integer} 17m46 17r46 173m7 173r15
+18i4 E158{short_integer} 18m46 18r46 175m7 175r15
 19i4 E009{short_integer} 19m46 19r46 177m7 177r15
-20i4 E143{short_integer} 20m46 20r46 179m7 179r15
+20i4 E145{short_integer} 20m46 20r46 179m7 179r15
 21i4 E183{short_integer} 21m46 21r46 180m7 180r15
-22i4 E170{short_integer} 22m46 22r46 181m7 181r15
-23i4 E160{short_integer} 23m46 23r46 183m7 183r15
-24i4 E158{short_integer} 24m46 24r46 186m7 186r15
-25i4 E130{short_integer} 25m46 25r46 187m7 187r15
-26i4 E007{short_integer} 26m46 26r46 188m7 188r15
-27i4 E005{short_integer} 27m46 27r46 191m7 191r15
-28i4 E174{short_integer} 28m46 28r46 192m7 192r15
-29i4 E176{short_integer} 29m46 29r46 194m7 194r15
-30i4 E172{short_integer} 30m46 30r46 197m7 197r15
-31i4 E181{short_integer} 31m46 31r46 198m7 198r15
-32i4 E179{short_integer} 32m46 32r46 201m7 201r15
+22i4 E160{short_integer} 22m46 22r46 181m7 181r15
+23i4 E164{short_integer} 23m46 23r46 183m7 183r15
+24i4 E162{short_integer} 24m46 24r46 185m7 185r15
+25i4 E130{short_integer} 25m46 25r46 186m7 186r15
+26i4 E007{short_integer} 26m46 26r46 187m7 187r15
+27i4 E143{short_integer} 27m46 27r46 189m7 189r15
+28i4 E174{short_integer} 28m46 28r46 190m7 190r15
+29i4 E178{short_integer} 29m46 29r46 192m7 192r15
+30i4 E176{short_integer} 30m46 30r46 194m7 194r15
+31i4 E181{short_integer} 31m46 31r46 195m7 195r15
+32i4 E005{short_integer} 32m46 32r46 197m7 197r15
 34a4 Sec_Default_Sized_Stacks(7|43R9) 155m32 155r32
 36a4 Local_Priority_Specific_Dispatching{string} 142r9
 37a4 Local_Interrupt_States{string} 145r27
@@ -101,16 +101,16 @@ X 2 b__gee.adb
 93i37 Install_Handler{integer}
 95i7*Binder_Sec_Stacks_Count{natural} 96m27 96r27 154m7
 97m7*Default_Sized_SS_Pool{3|80M9} 98m27 98r27 155m7
-204U14 Ada_Main_Program 205b<ada,_ada_gee>24 221s7
-208U17*Initialize 208>29 209b<c,__gnat_initialize>25 219s7
-208m29 Addr{3|80M9}
-211U17*Finalize 212b<c,__gnat_finalize>25 223s7
-213a7 SEH(integer) 219m19 219r19
-215m7 Ensure_Reference{3|80M9} 216r24
+200U14 Ada_Main_Program 201b<ada,_ada_gee>24 217s7
+204U17*Initialize 204>29 205b<c,__gnat_initialize>25 215s7
+204m29 Addr{3|80M9}
+207U17*Finalize 208b<c,__gnat_finalize>25 219s7
+209a7 SEH(integer) 215m19 215r19
+211m7 Ensure_Reference{3|80M9} 212r24
 X 3 system.ads
 50K9*System 1|3w6 4r6 5r6 2|7r6 34r57 34r90 70r39 76r26 86r38 90r23 97r31
-. 111r7 153r39 208r36 215r34 3|164e11
-80M9*Address 2|70r46 76r33 90r30 97r38 208r43 215r41
+. 111r7 153r39 204r36 211r34 3|164e11
+80M9*Address 2|70r46 76r33 90r30 97r38 204r43 211r41
 X 4 s-parame.ads
 49K16*Parameters 1|4w13 2|34r97 86r45 153r46 4|186e22
 56I9*Size_Type<integer> 2|86r56

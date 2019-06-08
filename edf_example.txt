@@ -44,12 +44,12 @@ Scheduling_Server (
 Operation (
         Type    => Simple,
         Name    => Task_21,
-        Worst_Case_Execution_Time => 1);
+        Worst_Case_Execution_Time => 0.5);
 
 Operation (
         Type    => Simple,
         Name    => Task_22,
-        Worst_Case_Execution_Time => 10);
+        Worst_Case_Execution_Time => 5.5);
 
 
    

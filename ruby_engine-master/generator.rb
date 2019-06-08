@@ -255,7 +255,7 @@ class Generator
    def UUnifast (n, utilization)      
       sumU = utilization
       @taskset.each do |task|
-        sumU = sumU.to_f - (9.to_f / task.period.to_f)
+        sumU = sumU.to_f - (18.to_f / task.period.to_f)
       end
       
       for i in 1..n-1

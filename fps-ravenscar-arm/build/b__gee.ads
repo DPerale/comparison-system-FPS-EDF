@@ -188,25 +188,25 @@ package ada_main is
    --  external_event_server_parameters%b
    --  event_queue%s
    --  event_queue%b
-   --  external_event_server%s
-   --  external_event_server%b
+   --  external_event_servers%s
+   --  external_event_servers%b
    --  production_workload%s
    --  production_workload%b
    --  activation_log_reader_parameters%s
    --  activation_log_reader_parameters%b
-   --  activation_log_reader%s
-   --  activation_log_reader%b
+   --  activation_log_readers%s
+   --  activation_log_readers%b
    --  on_call_producer_parameters%s
    --  on_call_producer_parameters%b
    --  request_buffer_parameters%s
    --  request_buffer%s
    --  request_buffer%b
-   --  on_call_producer%s
-   --  on_call_producer%b
+   --  on_call_producers%s
+   --  on_call_producers%b
    --  regular_producer_parameters%s
    --  regular_producer_parameters%b
-   --  regular_producer%s
-   --  regular_producer%b
+   --  regular_producers%s
+   --  regular_producers%b
    --  gee%b
    --  END ELABORATION ORDER
 

@@ -1,0 +1,41 @@
+Real_Time_Situation (
+   Model_Name         => edf_within_priorities_example,
+   Model_Date         => 2004-12-01,
+   Generation_Tool    => "MAST Schedulability Analysis, version 1.3.7.8",
+   Generation_Profile => "mast_analysis edf_monoprocessor -v /home/aquox/Scrivania/Arm/edf_example.txt /home/aquox/Scrivania/Arm/edf_example.out",
+   Generation_Date    => 2019-05-31T15:58:33);
+
+Transaction (
+   Name     => tr_21,
+   Results  => 
+       ((Type                          => Timing_Result,
+         Event_Name                    => o1,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => e1,
+              Time_Value       => 1.000)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => e1,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => e1,
+              Time_Value       => 1.000)))));
+
+Transaction (
+   Name     => tr_22,
+   Results  => 
+       ((Type                          => Timing_Result,
+         Event_Name                    => o2,
+         Num_Of_Suspensions            => 0,
+         Worst_Blocking_Time           => 0.000,
+         Worst_Global_Response_Times   => 
+            ((Referenced_Event => e2,
+              Time_Value       => 12.000)),
+         Best_Global_Response_Times    => 
+            ((Referenced_Event => e2,
+              Time_Value       => 0.000)),
+         Jitters                       => 
+            ((Referenced_Event => e2,
+              Time_Value       => 12.000)))));
+

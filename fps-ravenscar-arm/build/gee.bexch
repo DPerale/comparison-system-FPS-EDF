@@ -88,16 +88,16 @@ b__gee.o
 /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/auxiliary.o
 /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/external_event_server_parameters.o
 /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/event_queue.o
-/home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/external_event_server.o
+/home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/external_event_servers.o
 /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/production_workload.o
 /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/activation_log_reader_parameters.o
-/home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/activation_log_reader.o
+/home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/activation_log_readers.o
 /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/on_call_producer_parameters.o
 /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/request_buffer_parameters.o
 /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/request_buffer.o
-/home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/on_call_producer.o
+/home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/on_call_producers.o
 /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/regular_producer_parameters.o
-/home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/regular_producer.o
+/home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/regular_producers.o
 /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/gee.o
 [GENERATED SOURCE FILES]
 b__gee.ads

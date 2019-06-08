@@ -65,7 +65,7 @@ D s-bbprot.ads		20181010193702 f48a7e85 system.bb.protection%s
 D s-bbthre.ads		20190416131409 27ed24fe system.bb.threads%s
 D s-bbthqu.ads		20190415140210 3ed4e84f system.bb.threads.queues%s
 D s-bbtime.ads		20190415141432 1a3e050f system.bb.time%s
-D s-bbtime.adb		20190416142824 1b00395f system.bb.time%b
+D s-bbtime.adb		20190605140333 1b00395f system.bb.time%b
 D s-bbtiev.ads		20181010193702 f167837c system.bb.timing_events%s
 D s-multip.ads		20181010193706 f33e0e35 system.multiprocessors%s
 D s-mufalo.ads		20181010193706 3dca0374 system.multiprocessors.fair_locks%s
