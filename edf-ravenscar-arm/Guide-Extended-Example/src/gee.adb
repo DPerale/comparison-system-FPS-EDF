@@ -1,11 +1,14 @@
---  with External_Event_Server;
---  with On_Call_Producer;
+with Activation_Log_Readers;
 with Regular_Producers;
+with External_Event_Servers;
+with System;
 procedure Gee is
-   pragma Priority (0);
+   pragma Priority (System.Priority'First);
 begin
-   --  Activation_Log_Reader.Init;
-   --  External_Event_Server.Init;
-   --  On_Call_Producer.Init;
-   Regular_Producers.Init;
+   Activation_Log_Readers.Include (Activation_Log_Readers.Initialized);
+   Regular_Producers.Include (Regular_Producers.Initialized);
+   External_Event_Servers.Include (External_Event_Servers.Initialized);
+   loop
+      null;
+   end loop;
 end Gee;

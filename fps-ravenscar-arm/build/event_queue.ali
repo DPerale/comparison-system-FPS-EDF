@@ -39,7 +39,7 @@ D a-except.ads		20181010193647 291912d5 ada.exceptions%s
 D a-unccon.ads		20181010193651 0e9b276f ada.unchecked_conversion%s
 D event_queue.ads	20190531095640 cf01e3aa event_queue%s
 D event_queue.adb	20170223093614 68fe2cc3 event_queue%b
-D external_event_server_parameters.ads  20170223200353 dad70586 external_event_server_parameters%s
+D external_event_server_parameters.ads  20190608142248 dad70586 external_event_server_parameters%s
 D interfac.ads		20181010193657 5ab55268 interfaces%s
 D i-stm32.ads		20181010193657 4d2e1e9b interfaces.stm32%s
 D i-stm32-pwr.ads	20181010193657 10ed2a13 interfaces.stm32.pwr%s
@@ -80,8 +80,8 @@ X 4 event_queue.ads
 10Y13 Wait 5|7b13 10l11 10t15
 13b7 Barrier{boolean} 5|5r10 7r23 9r10
 X 6 external_event_server_parameters.ads
-3K9*External_Event_Server_Parameters 4|1w6 5r8 6|16e37
-9i4*Event_Queue_Priority{10|118I12} 4|5r41
+3K9*External_Event_Server_Parameters 4|1w6 5r8 6|18e37
+10i4*Event_Queue_Priority{10|118I12} 4|5r41
 X 10 system.ads
 116I12*Any_Priority{integer}
 118I12*Interrupt_Priority{116I12}

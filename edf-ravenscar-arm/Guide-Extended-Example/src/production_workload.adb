@@ -32,8 +32,8 @@ package body Production_Workload is
 --  package Math is new Ada.Numerics.Generic_Elementary_Functions(Whet_Float);
 
 --  use Math;
-  -- IMPLEMENTATION-DEPENDENT library & function names; see examples in
-  -- comments below
+  --  IMPLEMENTATION-DEPENDENT library & function names; see examples in
+  --  comments below
 --  function Log(X : in Whet_Float) return Whet_Float
 --    renames Float_Math_Lib.Log;
 

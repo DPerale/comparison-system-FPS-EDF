@@ -1,6 +1,7 @@
 --  with Ada.Interrupts.Names;
 with System;
 package External_Event_Server_Parameters is
+
    --  a target-specific interrupt
    --  The_Interrupt : constant Ada.Interrupts.Interrupt ID :=
    --       Ada.Interrupts.Names.External_Interrupt_2;
@@ -13,4 +14,5 @@ package External_Event_Server_Parameters is
    --  monotonic analysis
    External_Event_Server_Priority : constant System.Priority := 11;
    procedure Server_Operation;
+
 end External_Event_Server_Parameters;

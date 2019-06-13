@@ -175,9 +175,15 @@ package System.Tasking.Protected_Objects is
 
    Null_PO : constant Protection_Access := null;
 
-   procedure Initialize_Protection
+   Current_Object : Protection_Access;
+
+   procedure Initialize_Protection_Deadline
      (Object           : Protection_Access;
       Floor_Deadline   : System.BB.Deadlines.Relative_Deadline);
+
+   procedure Initialize_Protection
+     (Object           : Protection_Access;
+      Ceiling_Priority : Integer);
    --  Initialize the Object parameter so that it can be used by the runtime
    --  to keep track of the runtime state of a protected object.
 
@@ -202,6 +208,7 @@ package System.Tasking.Protected_Objects is
 
 private
    type Protection is record
+
       Ceiling : System.Any_Priority;
       --  Ceiling priority associated to the protected object
 

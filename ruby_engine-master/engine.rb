@@ -14,7 +14,7 @@ require_relative 'looper'
 
 $tot_schedulable = Array.new
 $s_For_taskset = Array.new
-$utilization = [0.95, 0.98, 1]
+$utilization = [1.01, 1.02, 1.03]
 $numTaskset = 0
 
 help = Helper.new

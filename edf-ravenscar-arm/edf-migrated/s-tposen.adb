@@ -100,14 +100,14 @@ package body System.Tasking.Protected_Objects.Single_Entry is
 
    procedure Initialize_Protection_Entry
      (Object           : Protection_Entry_Access;
-      --  Ceiling_Priority : Integer;
-      Floor_Deadline   : System.BB.Deadlines.Relative_Deadline;
+      Ceiling_Priority : Integer;
+      --  Floor_Deadline   : System.BB.Deadlines.Relative_Deadline;
       Compiler_Info    : System.Address;
       Entry_Body       : Entry_Body_Access)
    is
    begin
-      --  Initialize_Protection (Object.Common'Access, Ceiling_Priority);
-      Initialize_Protection (Object.Common'Access, Floor_Deadline);
+      Initialize_Protection (Object.Common'Access, Ceiling_Priority);
+      --  Initialize_Protection (Object.Common'Access, Floor_Deadline);
 
       Object.Compiler_Info := Compiler_Info;
       Object.Call_In_Progress := null;

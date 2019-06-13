@@ -20,7 +20,7 @@ RV NO_IMPLEMENTATION_RESTRICTIONS
 RR NO_ELABORATION_CODE
 RV SPARK_05
 
-U system.bb.threads.queues%b  s-bbthqu.adb	4f417eee NE OL PK
+U system.bb.threads.queues%b  s-bbthqu.adb	b99a5334 NE OL PK
 Z interfaces%s		interfac.ads		interfac.ali
 W system%s		system.ads		system.ali
 W system.bb%s		s-bb.ads		s-bb.ali
@@ -54,7 +54,7 @@ D s-bbpara.ads		20181010193701 431abc17 system.bb.parameters%s
 D s-bbstat.ads		20180509204605 d58cf16b system.bb.stats%s
 D s-bbthre.ads		20190324144342 9be493b9 system.bb.threads%s
 D s-bbthqu.ads		20190530172602 d68b6030 system.bb.threads.queues%s
-D s-bbthqu.adb		20190530181719 98a964f5 system.bb.threads.queues%b
+D s-bbthqu.adb		20190611105407 6e72492f system.bb.threads.queues%b
 D s-bbtime.ads		20190210170141 1a3e050f system.bb.time%s
 D s-imgint.ads		20181010193704 02dbe0c2 system.img_int%s
 D s-io.ads		20181010193705 9e42f74f system.io%s
@@ -124,7 +124,7 @@ X 15 s-bbthre.ads
 . 419m14 421m17 453r32 510r24 535r23 630r18 631r41 644r38 645r21 663r34 664r26
 . 780r26 790r31 798r50
 162b7*Preemption_Needed{boolean} 17|442r32 760m24
-166i7*Fake_Number_ID{integer} 17|304m14 445r45 450r26 451r41 454r44 455r44
+166i7*Fake_Number_ID{integer} 17|304m14 445r47 450r26 451r41 454r44 455r44
 . 456r46 532r17 533r32 536r35 537r35 538r37
 177V13*Get_CPU{21|23I12} 16|351s38 355s56 17|316s37 392s37 519s32 602s37
 . 686s38 778s41
@@ -186,10 +186,10 @@ X 16 s-bbthqu.ads
 . 528r29 542m7 572r14 622r10 628r13 631r13 633r25 634m10 641r25 792m10 796r26
 . 816r26 832r24
 287V13*Running_Thread{15|65P9} 103s21 104s21 125s17 246s17 264s26 290r14
-. 306s19 309s56 17|437s31 441s32 442s17 460s33 730b13 733l8 733t22
+. 306s19 309s56 17|437s31 441s32 442s17 445s32 460s33 730b13 733l8 733t22
 294V13*First_Thread{15|65P9} 94s29 102s10 126s28 132s8 247s28 305s8 309s40
-. 17|436s22 441s16 445s32 450s13 451s28 453s19 454s31 455s31 456s33 460s17
-. 570b13 574l8 574t20
+. 17|436s22 441s16 450s13 451s28 453s19 454s31 455s31 456s33 460s17 570b13
+. 574l8 574t20
 299V13*Context_Switch_Needed{boolean} 309r8 17|429b13 464l8 464t29
 321U14*Insert_Alarm 322>7 323>7 324<7 17|681b14 724l8 724t20
 322m7 T{18|46M9} 341r32 351r59 355r76 17|682b7 696r28 702r17 714r49

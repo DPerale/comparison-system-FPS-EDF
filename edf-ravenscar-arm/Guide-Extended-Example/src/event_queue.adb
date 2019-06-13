@@ -1,3 +1,4 @@
+with System.Tasking.Protected_Objects;
 package body Event_Queue is
    protected body Handler is
       procedure Signal is
@@ -9,4 +10,7 @@ package body Event_Queue is
          Barrier := False;
       end Wait;
    end Handler;
+begin
+   System.Tasking.Protected_Objects.Initialize_Protection_Deadline
+     (System.Tasking.Protected_Objects.Current_Object, 1100);
 end Event_Queue;

@@ -59,7 +59,7 @@
 --  Any changes to this interface may require corresponding compiler changes
 --  in exp_ch9.adb and possibly exp_ch7.adb
 
-with System.BB.Deadlines;
+--  with System.BB.Deadlines;
 
 package System.Tasking.Protected_Objects.Single_Entry is
    pragma Elaborate_Body;
@@ -188,8 +188,8 @@ package System.Tasking.Protected_Objects.Single_Entry is
 
    procedure Initialize_Protection_Entry
      (Object            : Protection_Entry_Access;
-      --  Ceiling_Priority  : Integer;
-      Floor_Deadline    : System.BB.Deadlines.Relative_Deadline;
+      Ceiling_Priority  : Integer;
+      --  Floor_Deadline    : System.BB.Deadlines.Relative_Deadline;
       Compiler_Info     : System.Address;
       Entry_Body        : Entry_Body_Access);
    --  Initialize the Object parameter so that it can be used by the run time

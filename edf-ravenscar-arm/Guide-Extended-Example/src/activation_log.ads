@@ -3,10 +3,9 @@ with Ada.Real_Time;
 package Activation_Log is
    type Range_Counter is mod 100;
    protected Activation_Log
-     --  with Priority =>
-     --  Activation_Log_Parameters.Activation_Log_Priority
+     with Priority =>
+       Activation_Log_Parameters.Activation_Log_Priority
    is
-      pragma Priority (Ada.Real_Time.Time_Span (37500000));
       procedure Write;
       --  retrieves the last activation record: non-suspending operation
       procedure Read

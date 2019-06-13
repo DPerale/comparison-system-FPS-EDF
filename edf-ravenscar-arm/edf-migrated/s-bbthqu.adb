@@ -442,7 +442,7 @@ package body System.BB.Threads.Queues is
                 Running_Thread.Preemption_Needed
             then
                System.BB.Stats.Preemptions := System.BB.Stats.Preemptions + 1;
-               Add_Preemption (First_Thread.Fake_Number_ID);
+               Add_Preemption (Running_Thread.Fake_Number_ID);
 --                 System.IO.Put_Line ("PREEMPTION; "
 --                   & Integer'Image (System.BB.Stats.Preemptions));
             end if;

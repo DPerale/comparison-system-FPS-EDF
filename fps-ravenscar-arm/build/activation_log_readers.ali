@@ -23,10 +23,11 @@ RV NO_DYNAMIC_SIZED_OBJECTS
 RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
+RV MAX_TASKS=1
 
-U activation_log_readers%b  activation_log_readers.adb  aca68e16 OO PK
-W activation_log_reader_parameters%s  activation_log_reader_parameters.adb  activation_log_reader_parameters.ali
-W activation_manager%s	activation_manager.adb	activation_manager.ali
+U activation_log_readers%b  activation_log_readers.adb  058c3c3d OO PK
+Z activation_log_reader_parameters%s  activation_log_reader_parameters.adb  activation_log_reader_parameters.ali  AD
+W activation_manager%s	activation_manager.adb	activation_manager.ali  AD
 W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W ada.synchronous_task_control%s  a-sytaco.adb	a-sytaco.ali
@@ -34,17 +35,19 @@ W ada.text_io%s		a-textio.adb		a-textio.ali
 Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 Z system.tasking.restricted.stages%s  s-tarest.adb  s-tarest.ali
 
-U activation_log_readers%s  activation_log_readers.ads  80b578ff EE NE OO PK
+U activation_log_readers%s  activation_log_readers.ads  d54afdd0 EE OO PK
+W activation_log_reader_parameters%s  activation_log_reader_parameters.adb  activation_log_reader_parameters.ali
 W system%s		system.ads		system.ali
 Z system.parameters%s	s-parame.adb		s-parame.ali
 Z system.storage_elements%s  s-stoele.adb	s-stoele.ali
 Z system.task_info%s	s-tasinf.adb		s-tasinf.ali
 Z system.tasking%s	s-taskin.adb		s-taskin.ali
 Z system.tasking.restricted.stages%s  s-tarest.adb  s-tarest.ali
+T 1 1
 
-D activation_log_reader_parameters.ads  20170223093612 61051ae0 activation_log_reader_parameters%s
-D activation_log_readers.ads  20190605131153 5b366d7e activation_log_readers%s
-D activation_log_readers.adb  20190605131153 2df6d4b0 activation_log_readers%b
+D activation_log_reader_parameters.ads  20190608143608 ee496639 activation_log_reader_parameters%s
+D activation_log_readers.ads  20190610092444 e0808e68 activation_log_readers%s
+D activation_log_readers.adb  20190609125803 5e6f9f6d activation_log_readers%b
 D activation_manager.ads  20170223093616 88c4423e activation_manager%s
 D ada.ads		20181010193652 76789da1 ada%s
 D a-except.ads		20181010193647 291912d5 ada.exceptions%s
@@ -87,41 +90,45 @@ D s-tarest.ads		20181010193710 c88b6d9a system.tasking.restricted.stages%s
 D s-traent.ads		20181010193711 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20181010193711 34867c83 system.unsigned_types%s
 X 1 activation_log_reader_parameters.ads
-2K9*Activation_Log_Reader_Parameters 5e37 3|5w6 25r10
-4U14*Activation_Log_Reader_Operation 3|25s43
+2K9*Activation_Log_Reader_Parameters 8e37 2|1w6 26r15 3|33r10
+4i4*Activation_Log_Reader_Priority{15|117I12} 2|26r48
+6U14*Activation_Log_Reader_Operation 3|33s43
 X 2 activation_log_readers.ads
-2K9*Activation_Log_Readers 23l5 23e27 3|6b14 34l5 34t27
-4T14*Activation_Log_Reader 5d7 6d7 7d7 8d7 9d8 12l8 12e29 3|17b14 32l8 32t29
-5i7 Pri{15|117I12} 11r24
-6i7 Dead{positive}
-7i7 Cycle_Time{positive}
-8i7 T_Num{integer}
-9i8 Gauss_Num{integer}
-16U14*Signal 3|8b14 11l8 11t14
-17U14*Wait 3|12b14 16l8 16t12 23s10
+3K9*Activation_Log_Readers 30l5 30e27 3|5b14 43l5 43t27
+5i4*Initialized{natural}
+7U14*Include 7<23 3|7b14 10l8 10t15
+7i23 Initialized{natural} 3|7b23 9m7
+9T14*Activation_Log_Reader_T 10d7 11d7 12d7 24r10 3|25b14 41l8 41t31
+10i7 Pri{15|117I12} 13r23
+11i7 WCET{positive} 3|34r13
+12i7 Deadline{positive}
+17U14*Signal 3|14b14 17l8 17t14
+18U14*Wait 3|19b14 23l8 23t12 31s10
+22i4*Load{positive} 27r15
+24t4*ALR{9T14}
 X 3 activation_log_readers.adb
-7w4 Local_Suspension_Object{8|46W9} 10m46 10r46 15m10 15r10
-28r12 Error{6|63R9} 31r72
+12w4 Local_Suspension_Object{8|46W9} 16m46 16r46 22m10 22r10
+37r12 Error{6|63R9} 40r72
 X 4 activation_manager.ads
-2K9*Activation_Manager 3|2w6 20r7 4|18e23
-15U14*Activation_Sporadic 3|20s26
+2K9*Activation_Manager 3|2w6 28r7 4|18e23
+15U14*Activation_Sporadic 3|28s26
 X 5 ada.ads
-16K9*Ada 3|1r6 3r6 4r6 4r26 7r30 10r7 14r7 30r10 5|20e8
+16K9*Ada 3|1r6 3r6 4r6 4r26 12r30 16r7 21r7 39r10 5|20e8
 X 6 a-except.ads
 54K13*Exceptions 3|4w10 4r30 6|349e19
-104V13*Exception_Information{string} 3|31s49
+104V13*Exception_Information{string} 3|40s49
 X 8 a-sytaco.ads
-40K13*Synchronous_Task_Control 3|1w10 7r34 10r11 14r11 8|92e33
-46W9*Suspension_Object 3|7r59 8|90e25
-49U14*Set_True 3|10s36
-63U14*Suspend_Until_True 3|14s36
+40K13*Synchronous_Task_Control 3|1w10 12r34 16r11 21r11 8|92e33
+46W9*Suspension_Object 3|12r59 8|90e25
+49U14*Set_True 3|16s36
+63U14*Suspend_Until_True 3|21s36
 X 10 a-textio.ads
-36K13*Text_IO 3|3w10 30r14 10|52e16
-46U14*Put_Line 3|30s22
+36K13*Text_IO 3|3w10 39r14 10|52e16
+46U14*Put_Line 3|39s22
 X 15 system.ads
-50K9*System 2|1w6 5r20 15|164e11
+50K9*System 2|2w6 10r14 15|164e11
 116I12*Any_Priority{integer}
-117I12*Priority{116I12} 2|5r27
+117I12*Priority{116I12} 2|10r21
 X 32 s-secsta.ads
 46P9*SS_Stack_Ptr(43R9)
 X 38 s-taskin.ads

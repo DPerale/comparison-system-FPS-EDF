@@ -48,16 +48,11 @@ package body System.Tasking.Protected_Objects is
    Multiprocessor : constant Boolean := CPU'Range_Length /= 1;
    --  Set true if on multiprocessor (more than one CPU)
 
-   ---------------------------
-   -- Initialize_Protection --
-   ---------------------------
-
-   procedure Initialize_Protection
+   procedure Initialize_Protection_Deadline
      (Object           : Protection_Access;
       Floor_Deadline   : System.BB.Deadlines.Relative_Deadline)
    is
       Init_Relative_Deadline : Relative_Deadline := Floor_Deadline;
-
    begin
       if Init_Relative_Deadline =
         System.BB.Deadlines.Unspecified_Relative_Deadline
@@ -68,6 +63,26 @@ package body System.Tasking.Protected_Objects is
 
       Object.Floor := Init_Relative_Deadline;
       Object.Caller_Relative_Deadline := Relative_Deadline'Last;
+      Object.Owner := Null_Task;
+   end Initialize_Protection_Deadline;
+
+   ---------------------------
+   -- Initialize_Protection --
+   ---------------------------
+
+   procedure Initialize_Protection
+     (Object           : Protection_Access;
+      Ceiling_Priority : Integer)
+   is
+      Init_Priority : Integer := Ceiling_Priority;
+
+   begin
+
+      Current_Object := Object;
+
+      Init_Priority := System.Priority'Last;
+      Object.Ceiling := System.Any_Priority (Init_Priority);
+      Object.Caller_Priority := System.Any_Priority'First;
       Object.Owner := Null_Task;
 
       --  Only for multiprocessor

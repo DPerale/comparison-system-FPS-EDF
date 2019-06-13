@@ -1,5 +1,6 @@
 package body Activation_Log is
    protected body Activation_Log is
+
       procedure Write is
       begin
          Activation_Counter := Activation_Counter + 1;
@@ -12,4 +13,5 @@ package body Activation_Log is
          Last_Active_Time := Activation_Time;
       end Read;
    end Activation_Log;
+
 end Activation_Log;

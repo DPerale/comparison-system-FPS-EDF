@@ -42,7 +42,7 @@
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-taprop.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 8" line=" 342" >
+    <file_marker column=" 22" line=" 342" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
     </file_marker>
@@ -50,11 +50,11 @@
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/print_task.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 1" >
+    <file_marker column=" 1" line=" 12" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/gee.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 45" line=" 239" >
+    <file_marker column=" 14" line=" 243" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/production_workload.adb</vfs_file>
     </file_marker>
@@ -62,7 +62,7 @@
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/compilare/a-sytaco.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 46" >
+    <file_marker column=" 16" line=" 13" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/regular_producers.adb</vfs_file>
     </file_marker>
@@ -86,15 +86,15 @@
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/on_call_producer_parameters.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 1" >
+    <file_marker column=" 4" line=" 5" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/activation_log_readers.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 39" line=" 5" >
+    <file_marker column=" 4" line=" 7" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/activation_log_readers.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 25" line=" 12" >
+    <file_marker column=" 50" line=" 22" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/regular_producers.ads</vfs_file>
     </file_marker>
@@ -110,17 +110,81 @@
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/activation_log_reader_parameters.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 39" line=" 5" >
+    <file_marker column=" 4" line=" 7" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/external_event_servers.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 5" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/external_event_servers.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/request_buffer_parameters.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/activation_log.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/request_buffer.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/request_buffer.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/activation_log_readers.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/activation_log_readers.ads</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/external_event_servers.ads</vfs_file>
     </file_marker>
-    <file_marker current="true" column=" 1" line=" 1" >
+    <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/production_workload.adb</vfs_file>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/on_call_producers.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/regular_producers.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 20" line=" 18" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/regular_producers.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 22" line=" 11" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/activation_log_readers.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 19" line=" 27" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/activation_log_readers.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 22" line=" 7" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/regular_producers.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 20" line=" 17" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/regular_producers.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 35" line=" 10" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/external_event_servers.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 78" line=" 15" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/external_event_servers.ads</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 29" line=" 6" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/Guide-Extended-Example/src/on_call_producers.ads</vfs_file>
     </file_marker>
   </Project>
 </Locations>

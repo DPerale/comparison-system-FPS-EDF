@@ -1,5 +1,8 @@
 with System;
 package Activation_Log_Reader_Parameters is
+
    Activation_Log_Reader_Priority : constant System.Priority := 3;
-   procedure Activation_Log_Reader_Operation;
+
+   procedure Activation_Log_Reader_Operation (Load : Positive);
+
 end Activation_Log_Reader_Parameters;

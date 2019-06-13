@@ -1,17 +1,18 @@
+with External_Event_Server_Parameters;
 with System;
 package External_Event_Servers is
 
-   task type External_Event_Server
-     (Pri        : System.Priority;
-      Dead       : Positive;
-      Cycle_Time : Positive;
-      T_Num      : Integer;
-       Gauss_Num  : Integer
-      ) is
-      pragma Priority (Pri);
-   end External_Event_Server;
+   Initialized : Natural := 0;
 
-   --  task External_Event_Server
-   --  with Priority =>
-   --    External_Event_Server_Parameters.External_Event_Server_Priority;
+   procedure Include (Initialized : out Natural);
+
+   task type External_Event_Server_T
+     (Pri        : System.Priority;
+      Deadline : Positive)
+     with Priority => Pri;
+
+   EES : External_Event_Server_T
+     (Pri => External_Event_Server_Parameters.External_Event_Server_Priority,
+     Deadline => 1);
+
 end External_Event_Servers;

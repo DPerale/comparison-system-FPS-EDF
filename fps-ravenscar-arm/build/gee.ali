@@ -14,19 +14,26 @@ P DB LC TF  ZX
 RN
 RV NO_IMPLEMENTATION_PRAGMAS
 
-U gee%b			gee.adb			6451f6c5 NE OO SU
+U gee%b			gee.adb			3685efe1 NE OO SU
+W activation_log_readers%s  activation_log_readers.adb  activation_log_readers.ali
+W external_event_servers%s  external_event_servers.adb  external_event_servers.ali
 W regular_producers%s	regular_producers.adb	regular_producers.ali
-Z system%s		system.ads		system.ali
+W system%s		system.ads		system.ali
 Z system.tasking.restricted.stages%s  s-tarest.adb  s-tarest.ali
 
+D activation_log_reader_parameters.ads  20190608143608 ee496639 activation_log_reader_parameters%s
+D activation_log_readers.ads  20190610092444 e0808e68 activation_log_readers%s
 D ada.ads		20181010193652 76789da1 ada%s
 D a-except.ads		20181010193647 291912d5 ada.exceptions%s
 D a-unccon.ads		20181010193651 0e9b276f ada.unchecked_conversion%s
-D gee.adb		20190605131055 a8e95aaa gee%b
+D external_event_server_parameters.ads  20190608142248 dad70586 external_event_server_parameters%s
+D external_event_servers.ads  20190610092502 2fb3653f external_event_servers%s
+D gee.adb		20190609125803 0b3efbbe gee%b
 D interfac.ads		20181010193657 5ab55268 interfaces%s
 D i-stm32.ads		20181010193657 4d2e1e9b interfaces.stm32%s
 D i-stm32-pwr.ads	20181010193657 10ed2a13 interfaces.stm32.pwr%s
-D regular_producers.ads	20190605125649 ccb8ac6f regular_producers%s
+D regular_producer_parameters.ads  20190608143802 da526c63 regular_producer_parameters%s
+D regular_producers.ads	20190610092452 290bea89 regular_producers%s
 D system.ads		20181010193713 db831581 system%s
 D s-bb.ads		20181010193701 09e072ae system.bb%s
 D s-bbbopa.ads		20181010193701 95d97b26 system.bb.board_parameters%s
@@ -53,15 +60,28 @@ D s-tasres.ads		20181010193710 0c8ef6fb system.tasking.restricted%s
 D s-tarest.ads		20181010193710 c88b6d9a system.tasking.restricted.stages%s
 D s-traent.ads		20181010193711 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20181010193711 34867c83 system.unsigned_types%s
-X 4 gee.adb
-4U11*Gee 4b11 11l5 11t8
-X 8 regular_producers.ads
-2K9*Regular_Producers 4|3w6 10r4 8|20e22
-14U14*Init 4|10s22
-X 24 s-secsta.ads
+X 2 activation_log_readers.ads
+3K9*Activation_Log_Readers 30e27 8|1w6 8r4 8r36
+5i4*Initialized{natural} 8|8m59 8r59
+7U14*Include 8|8s27
+X 7 external_event_servers.ads
+3K9*External_Event_Servers 18e27 8|3w6 10r4 10r36
+5i4*Initialized{natural} 8|10m59 10r59
+7U14*Include 8|10s27
+X 8 gee.adb
+5U11*Gee 5b11 14l5 14t8
+X 13 regular_producers.ads
+3K9*Regular_Producers 8|2w6 9r4 9r31 13|24e22
+20i4*Initialized{natural} 8|9m49 9r49
+22U14*Include 8|9s22
+X 14 system.ads
+50K9*System 8|4w6 6r21 14|164e11
+116I12*Any_Priority{integer}
+117I12*Priority{116I12} 8|6r28
+X 29 s-secsta.ads
 46P9*SS_Stack_Ptr(43R9)
-X 30 s-taskin.ads
-407V13*Get_Sec_Stack{24|46P9} 408i<c,__gnat_get_secondary_stack>22
-X 32 s-tarest.ads
+X 35 s-taskin.ads
+407V13*Get_Sec_Stack{29|46P9} 408i<c,__gnat_get_secondary_stack>22
+X 37 s-tarest.ads
 232U14*Activate_All_Tasks_Sequential 233i<c,__gnat_activate_all_tasks>22
 

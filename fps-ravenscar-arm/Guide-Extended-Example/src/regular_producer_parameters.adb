@@ -1,27 +1,26 @@
 with On_Call_Producers;
+with On_Call_Producer_Parameters;
 with Production_Workload;
 with Activation_Log_Readers;
 with Auxiliary;
 with Ada.Text_IO;
 package body Regular_Producer_Parameters is
-   --  approximately 5,001,000 processor cycles of Whetstone load
-   --  on an ERC32 (a radiation-hardened SPARC for space use) at 10 Hz
-   Regular_Producer_Workload : constant Positive := 756;
-   --  approximately 2,500,500 processor cycles
-   On_Call_Producer_Workload : constant Positive := 278;
+
    --  the parameter used to query the condition
    --  for the activation of On_Call_Producer
    Activation_Condition : constant Auxiliary.Range_Counter := 2;
-   procedure Regular_Producer_Operation is
+   procedure Regular_Producer_Operation (Load : Positive) is
    begin
       --  we execute the guaranteed level of workload
-      Production_Workload.Small_Whetstone (Regular_Producer_Workload);
+      Production_Workload.Small_Whetstone (Load);
       --  then we check whether we need to farm excess load out to
       --  On_Call_Producer
       if Auxiliary.Due_Activation (Activation_Condition) then
          --  if yes, then we issue the activation request with a parameter
          --  that determines the workload request
-         if not On_Call_Producers.Start (On_Call_Producer_Workload) then
+         if not On_Call_Producers.Start
+           (On_Call_Producer_Parameters.Load)
+         then
             --  we capture and report failed activation
             Ada.Text_IO.Put_Line ("Failed sporadic activation.");
          end if;
@@ -31,6 +30,7 @@ package body Regular_Producer_Parameters is
          Activation_Log_Readers.Signal;
       end if;
       --  finally we report nominal completion of the current activation
-      Ada.Text_IO.Put_Line ("End of cyclic activation.");
+      Ada.Text_IO.Put_Line ("RP: end of cyclic activation.");
    end Regular_Producer_Operation;
+
 end Regular_Producer_Parameters;
