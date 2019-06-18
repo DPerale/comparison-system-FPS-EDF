@@ -528,7 +528,11 @@ package body Mast.EDF_Tools is
             --  Put_Line(Time_Interval'Image(Wik));
             L:=Wik;
             if I = Transaction_ID(1) then
-               Put_Line("L: " & Time_Interval'Image(L));
+               if L > Time_Interval(952560000) then
+                  Put_Line("L: " & Integer'Image(-1));
+               else
+                  Put_Line("L:" & Time_Interval'Image(L));
+               end if;
             end if;
             --  Put("L: ");
             --  Put_Line(Time'Image(L));
@@ -751,7 +755,7 @@ package body Mast.EDF_Tools is
 --        Put_Line("Output P: " & Integer'Image(P));
 --                          Put_Line("Output Ti: " & Time'Image(Ti));
       if Pi_Ti > Time(0) then
-         Put_Line("FirstDeadlineMissAfter: " & Time'Image(Pi_Ti));
+         Put_Line("FirstDeadlineMissAfter:" & Time'Image(Pi_Ti));
       end if;
       Translate_Linear_Analysis_Results(Transaction,The_System);
    end EDF_Within_Priorities_Analysis;

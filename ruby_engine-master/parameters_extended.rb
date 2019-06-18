@@ -95,7 +95,7 @@ class Parameters_Extended
       #########################################
 
       ## 1) Short, Mid & Long to Reach 100%
-      @short_num_task_range_1    = 10..13    # bell 50 tasks low 25 high 75
+      @short_num_task_range_1    = 10..10    # bell 50 tasks low 25 high 75
       @mid_num_task_range_1      = 16..18    #
       @long_num_task_range_1     = 16..18    #
 

@@ -57,6 +57,7 @@ package body System.BB.Threads.Queues is
          Check : Boolean;
          DM : Integer;
          Execution : Integer;
+         Preemption : Integer;
       end record;
 
    type Array_Table_Record is array (1 .. 90) of Table_Record;
@@ -67,7 +68,7 @@ package body System.BB.Threads.Queues is
    procedure Initialize_Task_Table (ID : Integer) is
    begin
       if ID /= 0 then
-         Task_Table (ID) := (ID, False, -2, -1);
+         Task_Table (ID) := (ID, False, 0, -1, 0);
          if Max_ID_Table < ID then
             Max_ID_Table := ID;
          end if;
@@ -104,6 +105,13 @@ package body System.BB.Threads.Queues is
       end if;
    end Add_Execution;
 
+   procedure Add_Preemption (ID : Integer) is
+   begin
+      if ID /= 0 then
+         Task_Table (ID).Preemption := Task_Table (ID).Preemption + 1;
+      end if;
+   end Add_Preemption;
+
    procedure Print_Table (First_Index : Integer) is
       i : Integer := First_Index;
    begin
@@ -112,6 +120,7 @@ package body System.BB.Threads.Queues is
          System.IO.Put (Integer'Image (i));
          System.IO.Put (Integer'Image (Task_Table (i).DM));
          System.IO.Put (Integer'Image (Task_Table (i).Execution));
+         System.IO.Put (Integer'Image (Task_Table (i).Preemption));
          System.IO.Put_Line ("");
          i := i + 1;
       end loop;
@@ -264,6 +273,7 @@ package body System.BB.Threads.Queues is
    procedure Change_Relative_Deadline
      (Thread       : Thread_Id;
       Rel_Deadline : System.BB.Deadlines.Relative_Deadline)
+      --  First_Execution_Time :Ada.Real_Time.Time)
    is
       CPU_Id      : constant CPU := Get_CPU (Thread);
    begin
@@ -279,6 +289,9 @@ package body System.BB.Threads.Queues is
       --  Change the active relative deadline. The base relative deadline does
       --  not change
       Thread.Active_Relative_Deadline := Rel_Deadline;
+
+      Change_Absolute_Deadline (Thread, System.BB.Time.Time (4294983871) +
+                                  System.BB.Time.Microseconds (2500000));
 
    end Change_Relative_Deadline;
 
@@ -323,6 +336,11 @@ package body System.BB.Threads.Queues is
                  Task_Table (First_Thread.Fake_Number_ID).DM + 1;
             end if;
          end if;
+      end if;
+
+      if First_Thread /= Running_Thread and Running_Thread.Preemption_Needed
+      then
+         Add_Preemption (Running_Thread.Fake_Number_ID);
       end if;
 
       return First_Thread /= Running_Thread;
@@ -583,8 +601,11 @@ package body System.BB.Threads.Queues is
 
          Wakeup_Thread.State := Runnable;
 
+         Wakeup_Thread.Preemption_Needed := True;
+
          Change_Absolute_Deadline (Wakeup_Thread,
-              (Wakeup_Thread.Active_Relative_Deadline + Now));
+                                   (Wakeup_Thread.Active_Relative_Deadline +
+                                      Wakeup_Thread.Active_Absolute_Deadline));
 
          Insert (Wakeup_Thread);
       end loop;

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5dbbaf61-43e9-477b-8bd5-ce8c24cdb295" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../MASTinput.out" beforeDir="false" afterPath="$PROJECT_DIR$/../MASTinput.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MASTinput.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../MASTinput.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../cyclic_tasks.adb" beforeDir="false" afterPath="$PROJECT_DIR$/../cyclic_tasks.adb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../edf-ravenscar-arm/build/b__unit01.adb" beforeDir="false" afterPath="$PROJECT_DIR$/../edf-ravenscar-arm/build/b__unit01.adb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../edf-ravenscar-arm/build/b__unit01.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../edf-ravenscar-arm/build/b__unit01.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../edf-ravenscar-arm/build/b__unit01.o" beforeDir="false" afterPath="$PROJECT_DIR$/../edf-ravenscar-arm/build/b__unit01.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../edf-ravenscar-arm/build/cyclic_tasks.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../edf-ravenscar-arm/build/cyclic_tasks.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../edf-ravenscar-arm/build/cyclic_tasks.o" beforeDir="false" afterPath="$PROJECT_DIR$/../edf-ravenscar-arm/build/cyclic_tasks.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../edf-ravenscar-arm/build/gnatinspect.db" beforeDir="false" afterPath="$PROJECT_DIR$/../edf-ravenscar-arm/build/gnatinspect.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../edf-ravenscar-arm/build/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../edf-ravenscar-arm/build/map.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../edf-ravenscar-arm/build/unit01-loc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../edf-ravenscar-arm/build/unit01-loc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../edf-ravenscar-arm/src/cyclic_tasks.adb" beforeDir="false" afterPath="$PROJECT_DIR$/../edf-ravenscar-arm/src/cyclic_tasks.adb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../edf-ravenscar-arm/unit01" beforeDir="false" afterPath="$PROJECT_DIR$/../edf-ravenscar-arm/unit01" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../edf-ravenscar-arm/unit01.bin" beforeDir="false" afterPath="$PROJECT_DIR$/../edf-ravenscar-arm/unit01.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-elchha.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-elchha.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-elchha.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-elchha.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-reatim.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-reatim.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-reatim.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-reatim.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-retide.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-retide.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-retide.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-retide.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-sytaco.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-sytaco.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-sytaco.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-sytaco.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-taside.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-taside.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-taside.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/a-taside.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/b__unit01.adb" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/b__unit01.adb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/b__unit01.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/b__unit01.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/b__unit01.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/b__unit01.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/gnatinspect.db" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/gnatinspect.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/map.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbcppr.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbcppr.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbcppr.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbcppr.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbdead.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbdead.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbdead.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbdead.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbinte.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbinte.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbinte.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbinte.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbprot.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbprot.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbprot.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbprot.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbthqu.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbthqu.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbthqu.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbthqu.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbthre.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbthre.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbthre.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbthre.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbtiev.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbtiev.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbtiev.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbtiev.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbtime.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbtime.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbtime.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-bbtime.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-mufalo.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-mufalo.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-mufalo.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-mufalo.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-osinte.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-osinte.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-osinte.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-osinte.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-soflin.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-soflin.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-soflin.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-soflin.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taprob.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taprob.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taprob.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taprob.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taprop.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taprop.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taprop.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taprop.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tarest.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tarest.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tarest.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tarest.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tasdeb.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tasdeb.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tasdeb.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tasdeb.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taskin.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taskin.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taskin.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taskin.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taspri.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taspri.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taspri.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-taspri.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tasque.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tasque.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tasque.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tasque.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tasres.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tasres.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tasres.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tasres.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tpoben.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tpoben.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tpoben.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tpoben.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tpobmu.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tpobmu.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tpobmu.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tpobmu.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tpobop.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tpobop.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tpobop.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tpobop.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tposen.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tposen.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tposen.o" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/s-tposen.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/unit01-loc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/unit01-loc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/build/unit01.bexch" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/build/unit01.bexch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/needed/s-bbthqu.adb" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/needed/s-bbthqu.adb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/needed/s-bbthqu.ads" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/needed/s-bbthqu.ads" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/needed/s-bbthre.adb" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/needed/s-bbthre.adb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/needed/s-bbthre.ads" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/needed/s-bbthre.ads" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/needed/s-bbtime.adb" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/needed/s-bbtime.adb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/src/cyclic_tasks.adb" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/src/cyclic_tasks.adb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/src/cyclic_tasks.ads" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/src/cyclic_tasks.ads" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/unit01" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/unit01" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../fps-ravenscar-arm/unit01.gpr" beforeDir="false" afterPath="$PROJECT_DIR$/../fps-ravenscar-arm/unit01.gpr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mast/mast_analysis/b~mast_analysis.ads" beforeDir="false" afterPath="$PROJECT_DIR$/../mast/mast_analysis/b~mast_analysis.ads" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mast/mast_analysis/b~mast_analysis.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../mast/mast_analysis/b~mast_analysis.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mast/mast_analysis/b~mast_analysis.o" beforeDir="false" afterPath="$PROJECT_DIR$/../mast/mast_analysis/b~mast_analysis.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mast/mast_analysis/mast-edf_tools.adb" beforeDir="false" afterPath="$PROJECT_DIR$/../mast/mast_analysis/mast-edf_tools.adb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mast/mast_analysis/mast-edf_tools.ali" beforeDir="false" afterPath="$PROJECT_DIR$/../mast/mast_analysis/mast-edf_tools.ali" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mast/mast_analysis/mast-edf_tools.o" beforeDir="false" afterPath="$PROJECT_DIR$/../mast/mast_analysis/mast-edf_tools.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mast/mast_analysis/mast_analysis" beforeDir="false" afterPath="$PROJECT_DIR$/../mast/mast_analysis/mast_analysis" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python-execution/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../python-execution/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../python-execution/EDF_Execution.py" beforeDir="false" afterPath="$PROJECT_DIR$/../python-execution/EDF_Execution.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ruby_engine-master/engine.rb" beforeDir="false" afterPath="$PROJECT_DIR$/../ruby_engine-master/engine.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ruby_engine-master/mast_parser.lis" beforeDir="false" afterPath="$PROJECT_DIR$/../ruby_engine-master/mast_parser.lis" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ruby_engine-master/parameters_extended.rb" beforeDir="false" afterPath="$PROJECT_DIR$/../ruby_engine-master/parameters_extended.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../workspace/results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../workspace/results.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../workspace2/taskset2019-06-12 10:54:38.768892.csv" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Analysis.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="446" column="15" lean-forward="true" selection-start-line="446" selection-start-column="15" selection-end-line="446" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Analysis.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="1800" />
+    <option name="width" value="1280" />
+    <option name="height" value="555" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="python-analysis" type="b2602c69:ProjectViewProjectNode" />
+              <item name="python-analysis" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../python-execution" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Analysis" type="PythonConfigurationType" factoryName="Python">
+      <module name="python-analysis" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Analysis.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5dbbaf61-43e9-477b-8bd5-ce8c24cdb295" name="Default Changelist" comment="" />
+      <created>1560847219373</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1560847219373</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1366" y="-2" width="2560" height="1082" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24990146" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32948583" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/EDF_Execution.py" />
+    <entry file="file://$PROJECT_DIR$/Analysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="446" column="15" lean-forward="true" selection-start-line="446" selection-start-column="15" selection-end-line="446" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

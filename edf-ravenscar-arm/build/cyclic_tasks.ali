@@ -20,9 +20,9 @@ RV NO_DEFAULT_INITIALIZATION
 RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
-RV MAX_TASKS=34
+RV MAX_TASKS=31
 
-U cyclic_tasks%b	cyclic_tasks.adb	53950b5f OO PK
+U cyclic_tasks%b	cyclic_tasks.adb	4338a6b3 OO PK
 W ada%s			ada.ads			ada.ali
 W ada.real_time%s	a-reatim.adb		a-reatim.ali
 Z ada.real_time.delays%s  a-retide.adb		a-retide.ali
@@ -37,7 +37,7 @@ W system.task_primitives.operations%s  s-taprop.adb  s-taprop.ali
 Z system.tasking%s	s-taskin.adb		s-taskin.ali
 Z system.tasking.restricted.stages%s  s-tarest.adb  s-tarest.ali
 W system_time%s		system_time.ads		system_time.ali
-T 0 34
+T 0 31
 
 U cyclic_tasks%s	cyclic_tasks.ads	57edfd3a EE NE OO PK
 W system%s		system.ads		system.ali
@@ -53,7 +53,7 @@ D a-reatim.ads		20181010193649 4c16970e ada.real_time%s
 D a-retide.ads		20190309141716 081cdaa4 ada.real_time.delays%s
 D a-unccon.ads		20181010193651 0e9b276f ada.unchecked_conversion%s
 D cyclic_tasks.ads	20190324152347 8c6ee8bb cyclic_tasks%s
-D cyclic_tasks.adb	20190612084610 73766892 cyclic_tasks%b
+D cyclic_tasks.adb	20190613125939 63dbc57e cyclic_tasks%b
 D interfac.ads		20181010193657 5ab55268 interfaces%s
 D i-stm32.ads		20181010193657 2ad0960b interfaces.stm32%s
 D i-stm32-pwr.ads	20181010193657 4a098e84 interfaces.stm32.pwr%s
@@ -95,11 +95,11 @@ X 3 a-reatim.ads
 72V14*"+"{51M9} 7|16s13 16s49 44s37
 126V13*Microseconds{61I9}<23|162p13> 7|13s30 19s30
 X 6 cyclic_tasks.ads
-3K9*Cyclic_Tasks 19l5 19e17 7|9b14 92l5 92t17
+3K9*Cyclic_Tasks 19l5 19e17 7|9b14 89l5 89t17
 5T14*Cyclic 6d7 7d7 8d7 9d7 10d8 14l8 14e14 7|11b14 46l8 46t14 59r9 60r9
 . 61r9 62r9 63r9 64r9 65r9 66r9 67r9 68r10 69r10 70r10 71r10 72r10 73r10
 . 74r10 75r10 76r10 77r10 78r10 79r10 80r10 81r10 82r10 83r10 84r10 85r10
-. 86r10 87r10 88r10 89r10 90r10 91r10
+. 86r10 87r10 88r10
 6i7 Pri{12|117I12} 12r24
 7i7 Dead{positive} 7|34r40
 8i7 Cycle_Time{positive} 7|19r44
@@ -146,9 +146,6 @@ X 7 cyclic_tasks.adb
 86t4 C28{6|5T14}
 87t4 C29{6|5T14}
 88t4 C30{6|5T14}
-89t4 C31{6|5T14}
-90t4 C32{6|5T14}
-91t4 C33{6|5T14}
 X 11 print_task.ads
 2K9*Print_Task 7|7w6 58r9 11|14e15
 4T14*Print 7|58r20 11|12e13

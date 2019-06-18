@@ -156,6 +156,10 @@ package System.BB.Threads is
       --  time a thread is appened in the ready queue because absolute
       --  deadline is the comparison value for correct queue order
 
+      Preemption_Needed : Boolean := False;
+      --  Boolean that indicates whether an urgent task after a wakeup needs to
+      --  preempt the running task before its natural suspension.
+
       Fake_Number_ID : Integer := 0;
    end record;
 

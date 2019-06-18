@@ -26,7 +26,7 @@ Scheduling_Server (
         Name                    => SC2,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 12150,
+                Deadline    => 16000,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -34,7 +34,7 @@ Scheduling_Server (
         Name                    => SC3,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 14112,
+                Deadline    => 28224,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -42,7 +42,7 @@ Scheduling_Server (
         Name                    => SC4,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 15120,
+                Deadline    => 31500,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -50,7 +50,7 @@ Scheduling_Server (
         Name                    => SC5,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 18375,
+                Deadline    => 31500,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -58,7 +58,7 @@ Scheduling_Server (
         Name                    => SC6,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 21168,
+                Deadline    => 36288,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -90,7 +90,7 @@ Scheduling_Server (
         Name                    => SC10,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 77760,
+                Deadline    => 59535,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -98,7 +98,7 @@ Scheduling_Server (
         Name                    => SC11,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 194400,
+                Deadline    => 190512,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -106,7 +106,7 @@ Scheduling_Server (
         Name                    => SC12,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 198450,
+                Deadline    => 190512,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -114,7 +114,7 @@ Scheduling_Server (
         Name                    => SC13,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 201600,
+                Deadline    => 194400,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -122,7 +122,7 @@ Scheduling_Server (
         Name                    => SC14,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 238140,
+                Deadline    => 198450,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -130,7 +130,7 @@ Scheduling_Server (
         Name                    => SC15,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 252000,
+                Deadline    => 198450,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -138,7 +138,7 @@ Scheduling_Server (
         Name                    => SC16,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 264600,
+                Deadline    => 211680,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -146,7 +146,7 @@ Scheduling_Server (
         Name                    => SC17,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 297675,
+                Deadline    => 238140,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -154,7 +154,7 @@ Scheduling_Server (
         Name                    => SC18,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 302400,
+                Deadline    => 272160,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -162,7 +162,7 @@ Scheduling_Server (
         Name                    => SC19,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 303750,
+                Deadline    => 317520,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -170,7 +170,7 @@ Scheduling_Server (
         Name                    => SC20,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 330750,
+                Deadline    => 317520,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -178,7 +178,7 @@ Scheduling_Server (
         Name                    => SC21,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 423360,
+                Deadline    => 420000,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -186,7 +186,7 @@ Scheduling_Server (
         Name                    => SC22,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 508032,
+                Deadline    => 423360,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -194,7 +194,7 @@ Scheduling_Server (
         Name                    => SC23,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 529200,
+                Deadline    => 425250,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -202,7 +202,7 @@ Scheduling_Server (
         Name                    => SC24,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 544320,
+                Deadline    => 470400,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -210,7 +210,7 @@ Scheduling_Server (
         Name                    => SC25,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 567000,
+                Deadline    => 544320,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -218,7 +218,7 @@ Scheduling_Server (
         Name                    => SC26,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 588000,
+                Deadline    => 595350,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -226,7 +226,7 @@ Scheduling_Server (
         Name                    => SC27,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 604800,
+                Deadline    => 607500,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -234,7 +234,7 @@ Scheduling_Server (
         Name                    => SC28,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 630000,
+                Deadline    => 648000,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -242,7 +242,7 @@ Scheduling_Server (
         Name                    => SC29,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 648000,
+                Deadline    => 661500,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Scheduling_Server (
@@ -250,129 +250,129 @@ Scheduling_Server (
         Name                    => SC30,
         Server_Sched_Parameters => (
                 Type        => EDF_policy,
-                Deadline    => 661500,
+                Deadline    => 680400,
                 Preassigned => No),
         Scheduler               => EDF_Scheduler);
 Operation (
         Type    => Simple,
         Name    => C1,
-        Worst_Case_Execution_Time => 31);
+        Worst_Case_Execution_Time => 45);
 Operation (
         Type    => Simple,
         Name    => C2,
-        Worst_Case_Execution_Time => 101);
+        Worst_Case_Execution_Time => 1568);
 Operation (
         Type    => Simple,
         Name    => C3,
-        Worst_Case_Execution_Time => 1260);
+        Worst_Case_Execution_Time => 752);
 Operation (
         Type    => Simple,
         Name    => C4,
-        Worst_Case_Execution_Time => 274);
+        Worst_Case_Execution_Time => 470);
 Operation (
         Type    => Simple,
         Name    => C5,
-        Worst_Case_Execution_Time => 527);
+        Worst_Case_Execution_Time => 1403);
 Operation (
         Type    => Simple,
         Name    => C6,
-        Worst_Case_Execution_Time => 164);
+        Worst_Case_Execution_Time => 3736);
 Operation (
         Type    => Simple,
         Name    => C7,
-        Worst_Case_Execution_Time => 681);
+        Worst_Case_Execution_Time => 311);
 Operation (
         Type    => Simple,
         Name    => C8,
-        Worst_Case_Execution_Time => 2460);
+        Worst_Case_Execution_Time => 889);
 Operation (
         Type    => Simple,
         Name    => C9,
-        Worst_Case_Execution_Time => 1294);
+        Worst_Case_Execution_Time => 340);
 Operation (
         Type    => Simple,
         Name    => C10,
-        Worst_Case_Execution_Time => 1650);
+        Worst_Case_Execution_Time => 3036);
 Operation (
         Type    => Simple,
         Name    => C11,
-        Worst_Case_Execution_Time => 8199);
+        Worst_Case_Execution_Time => 4707);
 Operation (
         Type    => Simple,
         Name    => C12,
-        Worst_Case_Execution_Time => 2893);
+        Worst_Case_Execution_Time => 3006);
 Operation (
         Type    => Simple,
         Name    => C13,
-        Worst_Case_Execution_Time => 14932);
+        Worst_Case_Execution_Time => 210);
 Operation (
         Type    => Simple,
         Name    => C14,
-        Worst_Case_Execution_Time => 871);
+        Worst_Case_Execution_Time => 2796);
 Operation (
         Type    => Simple,
         Name    => C15,
-        Worst_Case_Execution_Time => 3);
+        Worst_Case_Execution_Time => 443);
 Operation (
         Type    => Simple,
         Name    => C16,
-        Worst_Case_Execution_Time => 6279);
+        Worst_Case_Execution_Time => 2545);
 Operation (
         Type    => Simple,
         Name    => C17,
-        Worst_Case_Execution_Time => 13110);
+        Worst_Case_Execution_Time => 8985);
 Operation (
         Type    => Simple,
         Name    => C18,
-        Worst_Case_Execution_Time => 4805);
+        Worst_Case_Execution_Time => 7517);
 Operation (
         Type    => Simple,
         Name    => C19,
-        Worst_Case_Execution_Time => 9487);
+        Worst_Case_Execution_Time => 2735);
 Operation (
         Type    => Simple,
         Name    => C20,
-        Worst_Case_Execution_Time => 596);
+        Worst_Case_Execution_Time => 1540);
 Operation (
         Type    => Simple,
         Name    => C21,
-        Worst_Case_Execution_Time => 3075);
+        Worst_Case_Execution_Time => 60143);
 Operation (
         Type    => Simple,
         Name    => C22,
-        Worst_Case_Execution_Time => 40364);
+        Worst_Case_Execution_Time => 8315);
 Operation (
         Type    => Simple,
         Name    => C23,
-        Worst_Case_Execution_Time => 111362);
+        Worst_Case_Execution_Time => 15828);
 Operation (
         Type    => Simple,
         Name    => C24,
-        Worst_Case_Execution_Time => 18837);
+        Worst_Case_Execution_Time => 26841);
 Operation (
         Type    => Simple,
         Name    => C25,
-        Worst_Case_Execution_Time => 1220);
+        Worst_Case_Execution_Time => 6000);
 Operation (
         Type    => Simple,
         Name    => C26,
-        Worst_Case_Execution_Time => 12610);
+        Worst_Case_Execution_Time => 34461);
 Operation (
         Type    => Simple,
         Name    => C27,
-        Worst_Case_Execution_Time => 18835);
+        Worst_Case_Execution_Time => 2374);
 Operation (
         Type    => Simple,
         Name    => C28,
-        Worst_Case_Execution_Time => 25965);
+        Worst_Case_Execution_Time => 33321);
 Operation (
         Type    => Simple,
         Name    => C29,
-        Worst_Case_Execution_Time => 35768);
+        Worst_Case_Execution_Time => 210);
 Operation (
         Type    => Simple,
         Name    => C30,
-        Worst_Case_Execution_Time => 6031);
+        Worst_Case_Execution_Time => 70870);
 Transaction (
         Type    => Regular,
         Name    => T1,
@@ -399,13 +399,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E2,
-                 Period => 12150)),
+                 Period => 16000)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O2,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 12150,
+                         Deadline         => 16000,
                          referenced_event => E2))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -419,13 +419,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E3,
-                 Period => 14112)),
+                 Period => 28224)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O3,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 14112,
+                         Deadline         => 28224,
                          referenced_event => E3))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -439,13 +439,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E4,
-                 Period => 15120)),
+                 Period => 31500)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O4,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 15120,
+                         Deadline         => 31500,
                          referenced_event => E4))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -459,13 +459,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E5,
-                 Period => 18375)),
+                 Period => 31500)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O5,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 18375,
+                         Deadline         => 31500,
                          referenced_event => E5))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -479,13 +479,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E6,
-                 Period => 21168)),
+                 Period => 36288)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O6,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 21168,
+                         Deadline         => 36288,
                          referenced_event => E6))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -559,13 +559,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E10,
-                 Period => 77760)),
+                 Period => 59535)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O10,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 77760,
+                         Deadline         => 59535,
                          referenced_event => E10))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -579,13 +579,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E11,
-                 Period => 194400)),
+                 Period => 190512)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O11,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 194400,
+                         Deadline         => 190512,
                          referenced_event => E11))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -599,13 +599,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E12,
-                 Period => 198450)),
+                 Period => 190512)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O12,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 198450,
+                         Deadline         => 190512,
                          referenced_event => E12))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -619,13 +619,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E13,
-                 Period => 201600)),
+                 Period => 194400)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O13,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 201600,
+                         Deadline         => 194400,
                          referenced_event => E13))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -639,13 +639,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E14,
-                 Period => 238140)),
+                 Period => 198450)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O14,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 238140,
+                         Deadline         => 198450,
                          referenced_event => E14))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -659,13 +659,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E15,
-                 Period => 252000)),
+                 Period => 198450)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O15,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 252000,
+                         Deadline         => 198450,
                          referenced_event => E15))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -679,13 +679,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E16,
-                 Period => 264600)),
+                 Period => 211680)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O16,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 264600,
+                         Deadline         => 211680,
                          referenced_event => E16))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -699,13 +699,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E17,
-                 Period => 297675)),
+                 Period => 238140)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O17,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 297675,
+                         Deadline         => 238140,
                          referenced_event => E17))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -719,13 +719,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E18,
-                 Period => 302400)),
+                 Period => 272160)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O18,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 302400,
+                         Deadline         => 272160,
                          referenced_event => E18))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -739,13 +739,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E19,
-                 Period => 303750)),
+                 Period => 317520)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O19,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 303750,
+                         Deadline         => 317520,
                          referenced_event => E19))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -759,13 +759,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E20,
-                 Period => 330750)),
+                 Period => 317520)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O20,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 330750,
+                         Deadline         => 317520,
                          referenced_event => E20))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -779,13 +779,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E21,
-                 Period => 423360)),
+                 Period => 420000)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O21,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 423360,
+                         Deadline         => 420000,
                          referenced_event => E21))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -799,13 +799,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E22,
-                 Period => 508032)),
+                 Period => 423360)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O22,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 508032,
+                         Deadline         => 423360,
                          referenced_event => E22))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -819,13 +819,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E23,
-                 Period => 529200)),
+                 Period => 425250)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O23,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 529200,
+                         Deadline         => 425250,
                          referenced_event => E23))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -839,13 +839,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E24,
-                 Period => 544320)),
+                 Period => 470400)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O24,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 544320,
+                         Deadline         => 470400,
                          referenced_event => E24))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -859,13 +859,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E25,
-                 Period => 567000)),
+                 Period => 544320)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O25,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 567000,
+                         Deadline         => 544320,
                          referenced_event => E25))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -879,13 +879,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E26,
-                 Period => 588000)),
+                 Period => 595350)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O26,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 588000,
+                         Deadline         => 595350,
                          referenced_event => E26))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -899,13 +899,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E27,
-                 Period => 604800)),
+                 Period => 607500)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O27,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 604800,
+                         Deadline         => 607500,
                          referenced_event => E27))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -919,13 +919,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E28,
-                 Period => 630000)),
+                 Period => 648000)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O28,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 630000,
+                         Deadline         => 648000,
                          referenced_event => E28))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -939,13 +939,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E29,
-                 Period => 648000)),
+                 Period => 661500)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O29,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 648000,
+                         Deadline         => 661500,
                          referenced_event => E29))),
         Event_Handlers => (
                 (Type                => Activity,
@@ -959,13 +959,13 @@ Transaction (
         External_Events => (
                 (Type   => Periodic,
                  Name   => E30,
-                 Period => 661500)),
+                 Period => 680400)),
         Internal_Events => (
                 (Type   => regular,
                  name   => O30,
                  Timing_Requirements => (
                          Type             => Hard_Global_Deadline,
-                         Deadline         => 661500,
+                         Deadline         => 680400,
                          referenced_event => E30))),
         Event_Handlers => (
                 (Type                => Activity,

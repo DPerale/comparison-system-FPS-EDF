@@ -357,6 +357,7 @@ package body System.BB.Time is
 
          Self.State := Delayed;
 
+         Self.Preemption_Needed := False;
          Extract (Self);
 
          --  Insert Thread_Id in the alarm queue (ordered by time) and if it

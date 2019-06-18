@@ -5,25 +5,29 @@ from threading import Thread
 from subprocess import Popen, PIPE
 from datetime import datetime
 import time
+import signal
 
 ####################
 ## Import Taskset ##     # Da mettere su file principale
 ####################
 
-def import_taskset(taskset):
-    with open('../workspace/results_prova.csv') as csv_file:
+def import_taskset(taskset, i):
+    with open('../workspace/results.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=';')
-        line_count = 0
+        row_number = 0
         for row in csv_reader:
-            for task in range (len(row)-3):
-                #print(row[task+2])
-                string_task = row[task+2].split(",")
-                task = [string_task[0],
-                        string_task[1],
-                        string_task[2],
-                        string_task[3],
-                        string_task[4]]
-                taskset.append (task)
+            if row_number == i:
+                for task in range (len(row)-3):
+                    string_task = row[task+2].split(",")
+                    task = [string_task[0],
+                            string_task[1],
+                            string_task[2],
+                            string_task[3],
+                            string_task[4]]
+                    taskset.append (task)
+            else:
+                a = 0
+            row_number = row_number + 1
     return taskset
 
 ##############################
@@ -31,7 +35,7 @@ def import_taskset(taskset):
 ##############################
 
 def make_adb_file (taskset, hyperPeriod):
-    file_adb = open("../edf-ravenscar-arm/src/cyclic_tasks.adb", "w")
+    file_adb = open("../fps-ravenscar-arm/src/cyclic_tasks.adb", "w")
     file_adb.write("with Ada.Real_Time; use Ada.Real_Time;\n")
     file_adb.write("with System_Time;\n")
     file_adb.write("with System.Task_Primitives.Operations;\n")
@@ -90,6 +94,7 @@ def make_adb_file (taskset, hyperPeriod):
     file_adb.write("   end Init;\n")
     file_adb.write("\n")
     file_adb.write("   P1 : Print_Task.Print (240, -" + str(1)+ ", " + str(int(hyperPeriod/1000)) + "); -- period in milliseconds\n")
+    ##  file_adb.write("   P1 : Print_Task.Print (240, -" + str(1) + ", " + str(5000) + "); -- period in milliseconds\n")
     for task in range (len(taskset)):
         work = int((float(taskset[task][4])-1.62)*180/17)
         #### DA METTERE APPOSTO PER ID
@@ -105,10 +110,17 @@ def make_adb_file (taskset, hyperPeriod):
 #############################################
 
 def compile_and_flash_into_board ():
-    os.system("gprbuild --target=arm-eabi -d -P/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr /home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/unit01.adb -largs -Wl,-Map=map.txt")
-    os.system("arm-eabi-objdump /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01 -h")
-    os.system("arm-eabi-objcopy -O binary /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01 /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.bin")
-    os.system("st-flash write /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.bin 0x08000000")
+    #os.system("gprbuild --target=arm-eabi -d -P/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr /home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/unit01.adb -largs -Wl,-Map=map.txt")
+    #os.system("arm-eabi-objdump /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01 -h")
+    #os.system("arm-eabi-objcopy -O binary /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01 /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.bin")
+    #os.system("st-flash write /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.bin 0x08000000")
+
+    os.system(
+        "gprbuild --target=arm-eabi -d -P/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr /home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/unit01.adb -largs -Wl,-Map=map.txt")
+    os.system("arm-eabi-objdump /home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01 -h")
+    os.system(
+        "arm-eabi-objcopy -O binary /home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01 /home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.bin")
+    os.system("st-flash write /home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.bin 0x08000000")
 
 
 ##################################################
@@ -119,15 +131,19 @@ def compile_and_flash_into_board ():
 class st_util_thread (Thread):
     def __init__(self):
         Thread.__init__(self)
+        self.st_util = Popen (["st-util"], stdin= PIPE, stdout= PIPE)
     def run(self):
-        subprocess.call(['st-util'], shell=True)
+        while True and self.st_util.poll() == None:
+            print(self.st_util.stdout.readline())
+    def stop(self):
+        self.st_util.send_signal(signal.SIGINT)
 
 def debug_and_save_data (taskset, hyperperiod):
     st_util = st_util_thread()
     st_util.start()
-    command =["arm-eabi-gdb /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01"]
+    command =["arm-eabi-gdb /home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01"]
     debugger = Popen (command, shell=True, stdout=PIPE, stdin= PIPE)
-    while True:
+    while True and debugger.poll() == None:
         line = debugger.stdout.readline()
         print(line)
         if "Reading symbols" in line.decode():
@@ -136,7 +152,8 @@ def debug_and_save_data (taskset, hyperperiod):
         if "_start_rom" in line.decode():
             debugger.stdin.write("monitor reset halt\n".encode())
             debugger.stdin.flush()
-            debugger.stdin.write("break s-bbthqu.adb:134\n".encode())
+            # debugger.stdin.write("break s-bbthqu.adb:134\n".encode())   # EDF
+            debugger.stdin.write("break s-bbthqu.adb:119\n".encode())     # FPS
             debugger.stdin.flush()
             debugger.stdin.write("c\n".encode())
             debugger.stdin.flush()
@@ -150,51 +167,58 @@ def debug_and_save_data (taskset, hyperperiod):
                     debugger.stdin.write(("p Task_Table ("+str(i+1)+").DM\n").encode())
                     debugger.stdin.flush()
                     DM_Line = debugger.stdout.readline().decode().split(" ")
-                    print ("DM_LINE" + str(DM_Line))
+                    print("DML " + str(DM_Line))
                     debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Execution\n").encode())
                     debugger.stdin.flush()
                     Execution_Line = debugger.stdout.readline().decode().split(" ")
-                    print("Execution_Line" + str(Execution_Line))
+                    print("EL "+ str(Execution_Line))
                     debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Preemption\n").encode())
                     debugger.stdin.flush()
                     Preemption_Line = debugger.stdout.readline().decode().split(" ")
-                    print("Preemption_Line" + str(Preemption_Line))
+                    print("Pr_L " + str(Preemption_Line))
                     debugger.stdin.write(("c\n").encode())
                     debugger.stdin.flush()
+                    debugger.stdout.readline()  # 4 per EDF
+                    debugger.stdout.readline()  # 6 per FPS
                     debugger.stdout.readline()
                     debugger.stdout.readline()
                     debugger.stdout.readline()
                     debugger.stdout.readline()
+
                     csv_writer.writerow([taskset[i][0], taskset[i][1], taskset[i][2], taskset[i][3], taskset[i][4],
                                          DM_Line[3].rstrip(), Execution_Line[3].rstrip(), Preemption_Line[3].rstrip()])
                 csv_writer.writerow(['hyperperiod',hyperperiod])
                 debugger.stdin.write(("quit\n").encode())
                 debugger.stdin.flush()
                 debugger.kill()
+                st_util.stop()
+                st_util.join(1)
 
-    #debugger.stdin.write("monitor reset halt".encode())
-    #debugger.stdin.write("c".encode())
-    #debugger.communicate (["tar extended-remote :4242"])
-    #print(prova)
-    #subprocess.call(['arm-eabi-gdb /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01'], shell=True)
 
 ##########
 ## Main ##
 ##########
 
-taskset = []
-taskset = import_taskset(taskset)
-make_adb_file(taskset, 952560000)
 
-utilization = 0
-utilization2 = 0
-for task in range(len(taskset)):
-    work = int((float(taskset[task][4]) - 2) * 180 / 17)
-    print (work)
-    utilization = utilization + (work*17/180) / float(taskset[task][1])
-    utilization2 = utilization2 + float(taskset[task][4])/float(taskset[task][1])
-print (utilization)
-print (utilization2)
+for i in range (10):
 
-# compile_and_flash_into_board()
-debug_and_save_data(taskset, 952560000)
+    taskset = []
+    taskset = import_taskset(taskset, i)
+
+    make_adb_file(taskset, 952560000)
+
+    utilization = 0
+    #utilization2 = 0
+    for task in range(len(taskset)):
+        work = int((float(taskset[task][4]) - 2) * 180 / 17)
+        utilization = utilization + (work*17/180) / float(taskset[task][1])
+        utilization = utilization + 18/float(taskset[task][1])
+        #utilization2 = utilization2 + float(taskset[task][4])/float(taskset[task][1])
+    #print(utilization)
+
+    compile_and_flash_into_board()
+    debug_and_save_data(taskset, 952560000)
+
+
+
+

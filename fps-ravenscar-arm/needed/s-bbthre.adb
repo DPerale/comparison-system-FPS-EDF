@@ -448,7 +448,7 @@ package body System.BB.Threads is
    ------------
 
    procedure Wakeup (Id : Thread_Id) is
-      Now : constant System.BB.Time.Time := System.BB.Time.Clock;
+      --  Now : constant System.BB.Time.Time := System.BB.Time.Clock;
    begin
       Protection.Enter_Kernel;
 
@@ -461,7 +461,7 @@ package body System.BB.Threads is
          Id.State := Runnable;
 
          Queues.Change_Absolute_Deadline
-           (Id, Id.Active_Relative_Deadline + Now);
+           (Id, Id.Active_Relative_Deadline + Id.Active_Absolute_Deadline);
          --  Insert the thread at the tail of its active priority so that the
          --  thread will resume execution.
 
