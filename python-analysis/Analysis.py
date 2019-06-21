@@ -295,12 +295,12 @@ task_periods_for_non_harmonic = [   10000, # Short (0,28)
 
 
 from random import randint, random
+import numpy as np
 
 # DA CHIAMARE SU MAIN NON SU MAST_INPUT_FILE
-def register_to_file(taskset, utilization, busy_period, first_DM_miss, schedulable):
-    print("ciao")
+def register_to_file(taskset, utilization, busy_period, first_DM_miss, schedulable, hyperperiod):
     tasksets_file = open("../workspace/tasksets.csv", 'a')
-    tasksets_file.write(str(utilization)+";"+str(busy_period)+";"+str(first_DM_miss)+";"+str(schedulable)+";")
+    tasksets_file.write(str(utilization)+";"+str(busy_period)+";"+str(first_DM_miss)+";"+str(schedulable)+";"+str(hyperperiod)+";")
     for i in range(len(taskset)):
         tasksets_file.write(str(taskset[i][0])+","+str(taskset[i][1])+","+str(taskset[i][2])+","+str(taskset[i][3])+","+str(taskset[i][4])+";")
     tasksets_file.write("\n")
@@ -362,7 +362,7 @@ def create_MAST_input_file(taskset):
         MAST_file.write("                 Activity_Operation  => C" + str(i + 1) + ",\n")
         MAST_file.write("                 Activity_Server     => SC" + str(i + 1) + ")));\n")
 
-def MAST_EDF_Analysis (taskset, utilization):
+def MAST_EDF_Analysis (taskset):
 
     busy_period = -1
     first_DM_miss = 0
@@ -385,7 +385,8 @@ def MAST_EDF_Analysis (taskset, utilization):
             s = line.decode().split(" ")
             busy_period = float(s[1])
 
-    register_to_file(taskset, utilization, busy_period, first_DM_miss, schedulable)
+    return busy_period, first_DM_miss, schedulable
+
 
 
 
@@ -439,15 +440,24 @@ def create_non_harmonic_taskset (num_tasks_per_type, utilization):
     return taskset
 
 
+def calculate_hyperperiod (taskset):
+    periods = []
+    for i in range (len(taskset)):
+        periods.append(taskset[i][1])
+    lcm = np.lcm.reduce(periods)
+    return lcm
+
 ##########
 ## Main ##
 ##########
 
 num_tasks_per_type = 10
-utilization = 1
+utilization = 0.80
 
 taskset = create_non_harmonic_taskset(num_tasks_per_type, utilization)
-MAST_EDF_Analysis(taskset, utilization)
+hyperperiod = calculate_hyperperiod (taskset)
+busy_period, first_DM_miss, schedulable = MAST_EDF_Analysis(taskset)
+register_to_file(taskset, utilization, busy_period, first_DM_miss, schedulable, hyperperiod)
 
 
 

@@ -25,7 +25,7 @@ Initializing error report...
  26          Name                    => SC2,
  27          Server_Sched_Parameters => (
  28                  Type        => EDF_policy,
- 29                  Deadline    => 16000,
+ 29                  Deadline    => 12150,
  30                  Preassigned => No),
  31          Scheduler               => EDF_Scheduler);
  32  Scheduling_Server (
@@ -33,7 +33,7 @@ Initializing error report...
  34          Name                    => SC3,
  35          Server_Sched_Parameters => (
  36                  Type        => EDF_policy,
- 37                  Deadline    => 28224,
+ 37                  Deadline    => 13230,
  38                  Preassigned => No),
  39          Scheduler               => EDF_Scheduler);
  40  Scheduling_Server (
@@ -41,7 +41,7 @@ Initializing error report...
  42          Name                    => SC4,
  43          Server_Sched_Parameters => (
  44                  Type        => EDF_policy,
- 45                  Deadline    => 31500,
+ 45                  Deadline    => 24192,
  46                  Preassigned => No),
  47          Scheduler               => EDF_Scheduler);
  48  Scheduling_Server (
@@ -49,7 +49,7 @@ Initializing error report...
  50          Name                    => SC5,
  51          Server_Sched_Parameters => (
  52                  Type        => EDF_policy,
- 53                  Deadline    => 31500,
+ 53                  Deadline    => 26250,
  54                  Preassigned => No),
  55          Scheduler               => EDF_Scheduler);
  56  Scheduling_Server (
@@ -57,7 +57,7 @@ Initializing error report...
  58          Name                    => SC6,
  59          Server_Sched_Parameters => (
  60                  Type        => EDF_policy,
- 61                  Deadline    => 36288,
+ 61                  Deadline    => 42000,
  62                  Preassigned => No),
  63          Scheduler               => EDF_Scheduler);
  64  Scheduling_Server (
@@ -65,7 +65,7 @@ Initializing error report...
  66          Name                    => SC7,
  67          Server_Sched_Parameters => (
  68                  Type        => EDF_policy,
- 69                  Deadline    => 39375,
+ 69                  Deadline    => 48000,
  70                  Preassigned => No),
  71          Scheduler               => EDF_Scheduler);
  72  Scheduling_Server (
@@ -73,7 +73,7 @@ Initializing error report...
  74          Name                    => SC8,
  75          Server_Sched_Parameters => (
  76                  Type        => EDF_policy,
- 77                  Deadline    => 42000,
+ 77                  Deadline    => 55125,
  78                  Preassigned => No),
  79          Scheduler               => EDF_Scheduler);
  80  Scheduling_Server (
@@ -81,7 +81,7 @@ Initializing error report...
  82          Name                    => SC9,
  83          Server_Sched_Parameters => (
  84                  Type        => EDF_policy,
- 85                  Deadline    => 52500,
+ 85                  Deadline    => 59535,
  86                  Preassigned => No),
  87          Scheduler               => EDF_Scheduler);
  88  Scheduling_Server (
@@ -89,7 +89,7 @@ Initializing error report...
  90          Name                    => SC10,
  91          Server_Sched_Parameters => (
  92                  Type        => EDF_policy,
- 93                  Deadline    => 59535,
+ 93                  Deadline    => 79380,
  94                  Preassigned => No),
  95          Scheduler               => EDF_Scheduler);
  96  Scheduling_Server (
@@ -97,7 +97,7 @@ Initializing error report...
  98          Name                    => SC11,
  99          Server_Sched_Parameters => (
  100                 Type        => EDF_policy,
- 101                 Deadline    => 190512,
+ 101                 Deadline    => 189000,
  102                 Preassigned => No),
  103         Scheduler               => EDF_Scheduler);
  104 Scheduling_Server (
@@ -113,7 +113,7 @@ Initializing error report...
  114         Name                    => SC13,
  115         Server_Sched_Parameters => (
  116                 Type        => EDF_policy,
- 117                 Deadline    => 194400,
+ 117                 Deadline    => 198450,
  118                 Preassigned => No),
  119         Scheduler               => EDF_Scheduler);
  120 Scheduling_Server (
@@ -121,7 +121,7 @@ Initializing error report...
  122         Name                    => SC14,
  123         Server_Sched_Parameters => (
  124                 Type        => EDF_policy,
- 125                 Deadline    => 198450,
+ 125                 Deadline    => 201600,
  126                 Preassigned => No),
  127         Scheduler               => EDF_Scheduler);
  128 Scheduling_Server (
@@ -129,7 +129,7 @@ Initializing error report...
  130         Name                    => SC15,
  131         Server_Sched_Parameters => (
  132                 Type        => EDF_policy,
- 133                 Deadline    => 198450,
+ 133                 Deadline    => 211680,
  134                 Preassigned => No),
  135         Scheduler               => EDF_Scheduler);
  136 Scheduling_Server (
@@ -137,7 +137,7 @@ Initializing error report...
  138         Name                    => SC16,
  139         Server_Sched_Parameters => (
  140                 Type        => EDF_policy,
- 141                 Deadline    => 211680,
+ 141                 Deadline    => 236250,
  142                 Preassigned => No),
  143         Scheduler               => EDF_Scheduler);
  144 Scheduling_Server (
@@ -145,7 +145,7 @@ Initializing error report...
  146         Name                    => SC17,
  147         Server_Sched_Parameters => (
  148                 Type        => EDF_policy,
- 149                 Deadline    => 238140,
+ 149                 Deadline    => 236250,
  150                 Preassigned => No),
  151         Scheduler               => EDF_Scheduler);
  152 Scheduling_Server (
@@ -153,7 +153,7 @@ Initializing error report...
  154         Name                    => SC18,
  155         Server_Sched_Parameters => (
  156                 Type        => EDF_policy,
- 157                 Deadline    => 272160,
+ 157                 Deadline    => 282240,
  158                 Preassigned => No),
  159         Scheduler               => EDF_Scheduler);
  160 Scheduling_Server (
@@ -161,7 +161,7 @@ Initializing error report...
  162         Name                    => SC19,
  163         Server_Sched_Parameters => (
  164                 Type        => EDF_policy,
- 165                 Deadline    => 317520,
+ 165                 Deadline    => 303750,
  166                 Preassigned => No),
  167         Scheduler               => EDF_Scheduler);
  168 Scheduling_Server (
@@ -169,7 +169,7 @@ Initializing error report...
  170         Name                    => SC20,
  171         Server_Sched_Parameters => (
  172                 Type        => EDF_policy,
- 173                 Deadline    => 317520,
+ 173                 Deadline    => 330750,
  174                 Preassigned => No),
  175         Scheduler               => EDF_Scheduler);
  176 Scheduling_Server (
@@ -201,7 +201,7 @@ Initializing error report...
  202         Name                    => SC24,
  203         Server_Sched_Parameters => (
  204                 Type        => EDF_policy,
- 205                 Deadline    => 470400,
+ 205                 Deadline    => 425250,
  206                 Preassigned => No),
  207         Scheduler               => EDF_Scheduler);
  208 Scheduling_Server (
@@ -209,7 +209,7 @@ Initializing error report...
  210         Name                    => SC25,
  211         Server_Sched_Parameters => (
  212                 Type        => EDF_policy,
- 213                 Deadline    => 544320,
+ 213                 Deadline    => 472500,
  214                 Preassigned => No),
  215         Scheduler               => EDF_Scheduler);
  216 Scheduling_Server (
@@ -217,7 +217,7 @@ Initializing error report...
  218         Name                    => SC26,
  219         Server_Sched_Parameters => (
  220                 Type        => EDF_policy,
- 221                 Deadline    => 595350,
+ 221                 Deadline    => 551250,
  222                 Preassigned => No),
  223         Scheduler               => EDF_Scheduler);
  224 Scheduling_Server (
@@ -225,7 +225,7 @@ Initializing error report...
  226         Name                    => SC27,
  227         Server_Sched_Parameters => (
  228                 Type        => EDF_policy,
- 229                 Deadline    => 607500,
+ 229                 Deadline    => 551250,
  230                 Preassigned => No),
  231         Scheduler               => EDF_Scheduler);
  232 Scheduling_Server (
@@ -233,7 +233,7 @@ Initializing error report...
  234         Name                    => SC28,
  235         Server_Sched_Parameters => (
  236                 Type        => EDF_policy,
- 237                 Deadline    => 648000,
+ 237                 Deadline    => 588000,
  238                 Preassigned => No),
  239         Scheduler               => EDF_Scheduler);
  240 Scheduling_Server (
@@ -241,7 +241,7 @@ Initializing error report...
  242         Name                    => SC29,
  243         Server_Sched_Parameters => (
  244                 Type        => EDF_policy,
- 245                 Deadline    => 661500,
+ 245                 Deadline    => 588000,
  246                 Preassigned => No),
  247         Scheduler               => EDF_Scheduler);
  248 Scheduling_Server (
@@ -249,129 +249,129 @@ Initializing error report...
  250         Name                    => SC30,
  251         Server_Sched_Parameters => (
  252                 Type        => EDF_policy,
- 253                 Deadline    => 680400,
+ 253                 Deadline    => 630000,
  254                 Preassigned => No),
  255         Scheduler               => EDF_Scheduler);
  256 Operation (
  257         Type    => Simple,
  258         Name    => C1,
- 259         Worst_Case_Execution_Time => 45);
+ 259         Worst_Case_Execution_Time => 31);
  260 Operation (
  261         Type    => Simple,
  262         Name    => C2,
- 263         Worst_Case_Execution_Time => 1568);
+ 263         Worst_Case_Execution_Time => 355);
  264 Operation (
  265         Type    => Simple,
  266         Name    => C3,
- 267         Worst_Case_Execution_Time => 752);
+ 267         Worst_Case_Execution_Time => 927);
  268 Operation (
  269         Type    => Simple,
  270         Name    => C4,
- 271         Worst_Case_Execution_Time => 470);
+ 271         Worst_Case_Execution_Time => 288);
  272 Operation (
  273         Type    => Simple,
  274         Name    => C5,
- 275         Worst_Case_Execution_Time => 1403);
+ 275         Worst_Case_Execution_Time => 407);
  276 Operation (
  277         Type    => Simple,
  278         Name    => C6,
- 279         Worst_Case_Execution_Time => 3736);
+ 279         Worst_Case_Execution_Time => 265);
  280 Operation (
  281         Type    => Simple,
  282         Name    => C7,
- 283         Worst_Case_Execution_Time => 311);
+ 283         Worst_Case_Execution_Time => 795);
  284 Operation (
  285         Type    => Simple,
  286         Name    => C8,
- 287         Worst_Case_Execution_Time => 889);
+ 287         Worst_Case_Execution_Time => 217);
  288 Operation (
  289         Type    => Simple,
  290         Name    => C9,
- 291         Worst_Case_Execution_Time => 340);
+ 291         Worst_Case_Execution_Time => 2173);
  292 Operation (
  293         Type    => Simple,
  294         Name    => C10,
- 295         Worst_Case_Execution_Time => 3036);
+ 295         Worst_Case_Execution_Time => 1078);
  296 Operation (
  297         Type    => Simple,
  298         Name    => C11,
- 299         Worst_Case_Execution_Time => 4707);
+ 299         Worst_Case_Execution_Time => 2508);
  300 Operation (
  301         Type    => Simple,
  302         Name    => C12,
- 303         Worst_Case_Execution_Time => 3006);
+ 303         Worst_Case_Execution_Time => 12731);
  304 Operation (
  305         Type    => Simple,
  306         Name    => C13,
- 307         Worst_Case_Execution_Time => 210);
+ 307         Worst_Case_Execution_Time => 7052);
  308 Operation (
  309         Type    => Simple,
  310         Name    => C14,
- 311         Worst_Case_Execution_Time => 2796);
+ 311         Worst_Case_Execution_Time => 4733);
  312 Operation (
  313         Type    => Simple,
  314         Name    => C15,
- 315         Worst_Case_Execution_Time => 443);
+ 315         Worst_Case_Execution_Time => 14635);
  316 Operation (
  317         Type    => Simple,
  318         Name    => C16,
- 319         Worst_Case_Execution_Time => 2545);
+ 319         Worst_Case_Execution_Time => 4609);
  320 Operation (
  321         Type    => Simple,
  322         Name    => C17,
- 323         Worst_Case_Execution_Time => 8985);
+ 323         Worst_Case_Execution_Time => 2756);
  324 Operation (
  325         Type    => Simple,
  326         Name    => C18,
- 327         Worst_Case_Execution_Time => 7517);
+ 327         Worst_Case_Execution_Time => 1759);
  328 Operation (
  329         Type    => Simple,
  330         Name    => C19,
- 331         Worst_Case_Execution_Time => 2735);
+ 331         Worst_Case_Execution_Time => 2173);
  332 Operation (
  333         Type    => Simple,
  334         Name    => C20,
- 335         Worst_Case_Execution_Time => 1540);
+ 335         Worst_Case_Execution_Time => 18433);
  336 Operation (
  337         Type    => Simple,
  338         Name    => C21,
- 339         Worst_Case_Execution_Time => 60143);
+ 339         Worst_Case_Execution_Time => 4578);
  340 Operation (
  341         Type    => Simple,
  342         Name    => C22,
- 343         Worst_Case_Execution_Time => 8315);
+ 343         Worst_Case_Execution_Time => 11677);
  344 Operation (
  345         Type    => Simple,
  346         Name    => C23,
- 347         Worst_Case_Execution_Time => 15828);
+ 347         Worst_Case_Execution_Time => 6796);
  348 Operation (
  349         Type    => Simple,
  350         Name    => C24,
- 351         Worst_Case_Execution_Time => 26841);
+ 351         Worst_Case_Execution_Time => 47824);
  352 Operation (
  353         Type    => Simple,
  354         Name    => C25,
- 355         Worst_Case_Execution_Time => 6000);
+ 355         Worst_Case_Execution_Time => 2096);
  356 Operation (
  357         Type    => Simple,
  358         Name    => C26,
- 359         Worst_Case_Execution_Time => 34461);
+ 359         Worst_Case_Execution_Time => 6508);
  360 Operation (
  361         Type    => Simple,
  362         Name    => C27,
- 363         Worst_Case_Execution_Time => 2374);
+ 363         Worst_Case_Execution_Time => 1885);
  364 Operation (
  365         Type    => Simple,
  366         Name    => C28,
- 367         Worst_Case_Execution_Time => 33321);
+ 367         Worst_Case_Execution_Time => 36993);
  368 Operation (
  369         Type    => Simple,
  370         Name    => C29,
- 371         Worst_Case_Execution_Time => 210);
+ 371         Worst_Case_Execution_Time => 12220);
  372 Operation (
  373         Type    => Simple,
  374         Name    => C30,
- 375         Worst_Case_Execution_Time => 70870);
+ 375         Worst_Case_Execution_Time => 3784);
  376 Transaction (
  377         Type    => Regular,
  378         Name    => T1,
@@ -398,13 +398,13 @@ Initializing error report...
  399         External_Events => (
  400                 (Type   => Periodic,
  401                  Name   => E2,
- 402                  Period => 16000)),
+ 402                  Period => 12150)),
  403         Internal_Events => (
  404                 (Type   => regular,
  405                  name   => O2,
  406                  Timing_Requirements => (
  407                          Type             => Hard_Global_Deadline,
- 408                          Deadline         => 16000,
+ 408                          Deadline         => 12150,
  409                          referenced_event => E2))),
  410         Event_Handlers => (
  411                 (Type                => Activity,
@@ -418,13 +418,13 @@ Initializing error report...
  419         External_Events => (
  420                 (Type   => Periodic,
  421                  Name   => E3,
- 422                  Period => 28224)),
+ 422                  Period => 13230)),
  423         Internal_Events => (
  424                 (Type   => regular,
  425                  name   => O3,
  426                  Timing_Requirements => (
  427                          Type             => Hard_Global_Deadline,
- 428                          Deadline         => 28224,
+ 428                          Deadline         => 13230,
  429                          referenced_event => E3))),
  430         Event_Handlers => (
  431                 (Type                => Activity,
@@ -438,13 +438,13 @@ Initializing error report...
  439         External_Events => (
  440                 (Type   => Periodic,
  441                  Name   => E4,
- 442                  Period => 31500)),
+ 442                  Period => 24192)),
  443         Internal_Events => (
  444                 (Type   => regular,
  445                  name   => O4,
  446                  Timing_Requirements => (
  447                          Type             => Hard_Global_Deadline,
- 448                          Deadline         => 31500,
+ 448                          Deadline         => 24192,
  449                          referenced_event => E4))),
  450         Event_Handlers => (
  451                 (Type                => Activity,
@@ -458,13 +458,13 @@ Initializing error report...
  459         External_Events => (
  460                 (Type   => Periodic,
  461                  Name   => E5,
- 462                  Period => 31500)),
+ 462                  Period => 26250)),
  463         Internal_Events => (
  464                 (Type   => regular,
  465                  name   => O5,
  466                  Timing_Requirements => (
  467                          Type             => Hard_Global_Deadline,
- 468                          Deadline         => 31500,
+ 468                          Deadline         => 26250,
  469                          referenced_event => E5))),
  470         Event_Handlers => (
  471                 (Type                => Activity,
@@ -478,13 +478,13 @@ Initializing error report...
  479         External_Events => (
  480                 (Type   => Periodic,
  481                  Name   => E6,
- 482                  Period => 36288)),
+ 482                  Period => 42000)),
  483         Internal_Events => (
  484                 (Type   => regular,
  485                  name   => O6,
  486                  Timing_Requirements => (
  487                          Type             => Hard_Global_Deadline,
- 488                          Deadline         => 36288,
+ 488                          Deadline         => 42000,
  489                          referenced_event => E6))),
  490         Event_Handlers => (
  491                 (Type                => Activity,
@@ -498,13 +498,13 @@ Initializing error report...
  499         External_Events => (
  500                 (Type   => Periodic,
  501                  Name   => E7,
- 502                  Period => 39375)),
+ 502                  Period => 48000)),
  503         Internal_Events => (
  504                 (Type   => regular,
  505                  name   => O7,
  506                  Timing_Requirements => (
  507                          Type             => Hard_Global_Deadline,
- 508                          Deadline         => 39375,
+ 508                          Deadline         => 48000,
  509                          referenced_event => E7))),
  510         Event_Handlers => (
  511                 (Type                => Activity,
@@ -518,13 +518,13 @@ Initializing error report...
  519         External_Events => (
  520                 (Type   => Periodic,
  521                  Name   => E8,
- 522                  Period => 42000)),
+ 522                  Period => 55125)),
  523         Internal_Events => (
  524                 (Type   => regular,
  525                  name   => O8,
  526                  Timing_Requirements => (
  527                          Type             => Hard_Global_Deadline,
- 528                          Deadline         => 42000,
+ 528                          Deadline         => 55125,
  529                          referenced_event => E8))),
  530         Event_Handlers => (
  531                 (Type                => Activity,
@@ -538,13 +538,13 @@ Initializing error report...
  539         External_Events => (
  540                 (Type   => Periodic,
  541                  Name   => E9,
- 542                  Period => 52500)),
+ 542                  Period => 59535)),
  543         Internal_Events => (
  544                 (Type   => regular,
  545                  name   => O9,
  546                  Timing_Requirements => (
  547                          Type             => Hard_Global_Deadline,
- 548                          Deadline         => 52500,
+ 548                          Deadline         => 59535,
  549                          referenced_event => E9))),
  550         Event_Handlers => (
  551                 (Type                => Activity,
@@ -558,13 +558,13 @@ Initializing error report...
  559         External_Events => (
  560                 (Type   => Periodic,
  561                  Name   => E10,
- 562                  Period => 59535)),
+ 562                  Period => 79380)),
  563         Internal_Events => (
  564                 (Type   => regular,
  565                  name   => O10,
  566                  Timing_Requirements => (
  567                          Type             => Hard_Global_Deadline,
- 568                          Deadline         => 59535,
+ 568                          Deadline         => 79380,
  569                          referenced_event => E10))),
  570         Event_Handlers => (
  571                 (Type                => Activity,
@@ -578,13 +578,13 @@ Initializing error report...
  579         External_Events => (
  580                 (Type   => Periodic,
  581                  Name   => E11,
- 582                  Period => 190512)),
+ 582                  Period => 189000)),
  583         Internal_Events => (
  584                 (Type   => regular,
  585                  name   => O11,
  586                  Timing_Requirements => (
  587                          Type             => Hard_Global_Deadline,
- 588                          Deadline         => 190512,
+ 588                          Deadline         => 189000,
  589                          referenced_event => E11))),
  590         Event_Handlers => (
  591                 (Type                => Activity,
@@ -618,13 +618,13 @@ Initializing error report...
  619         External_Events => (
  620                 (Type   => Periodic,
  621                  Name   => E13,
- 622                  Period => 194400)),
+ 622                  Period => 198450)),
  623         Internal_Events => (
  624                 (Type   => regular,
  625                  name   => O13,
  626                  Timing_Requirements => (
  627                          Type             => Hard_Global_Deadline,
- 628                          Deadline         => 194400,
+ 628                          Deadline         => 198450,
  629                          referenced_event => E13))),
  630         Event_Handlers => (
  631                 (Type                => Activity,
@@ -638,13 +638,13 @@ Initializing error report...
  639         External_Events => (
  640                 (Type   => Periodic,
  641                  Name   => E14,
- 642                  Period => 198450)),
+ 642                  Period => 201600)),
  643         Internal_Events => (
  644                 (Type   => regular,
  645                  name   => O14,
  646                  Timing_Requirements => (
  647                          Type             => Hard_Global_Deadline,
- 648                          Deadline         => 198450,
+ 648                          Deadline         => 201600,
  649                          referenced_event => E14))),
  650         Event_Handlers => (
  651                 (Type                => Activity,
@@ -658,13 +658,13 @@ Initializing error report...
  659         External_Events => (
  660                 (Type   => Periodic,
  661                  Name   => E15,
- 662                  Period => 198450)),
+ 662                  Period => 211680)),
  663         Internal_Events => (
  664                 (Type   => regular,
  665                  name   => O15,
  666                  Timing_Requirements => (
  667                          Type             => Hard_Global_Deadline,
- 668                          Deadline         => 198450,
+ 668                          Deadline         => 211680,
  669                          referenced_event => E15))),
  670         Event_Handlers => (
  671                 (Type                => Activity,
@@ -678,13 +678,13 @@ Initializing error report...
  679         External_Events => (
  680                 (Type   => Periodic,
  681                  Name   => E16,
- 682                  Period => 211680)),
+ 682                  Period => 236250)),
  683         Internal_Events => (
  684                 (Type   => regular,
  685                  name   => O16,
  686                  Timing_Requirements => (
  687                          Type             => Hard_Global_Deadline,
- 688                          Deadline         => 211680,
+ 688                          Deadline         => 236250,
  689                          referenced_event => E16))),
  690         Event_Handlers => (
  691                 (Type                => Activity,
@@ -698,13 +698,13 @@ Initializing error report...
  699         External_Events => (
  700                 (Type   => Periodic,
  701                  Name   => E17,
- 702                  Period => 238140)),
+ 702                  Period => 236250)),
  703         Internal_Events => (
  704                 (Type   => regular,
  705                  name   => O17,
  706                  Timing_Requirements => (
  707                          Type             => Hard_Global_Deadline,
- 708                          Deadline         => 238140,
+ 708                          Deadline         => 236250,
  709                          referenced_event => E17))),
  710         Event_Handlers => (
  711                 (Type                => Activity,
@@ -718,13 +718,13 @@ Initializing error report...
  719         External_Events => (
  720                 (Type   => Periodic,
  721                  Name   => E18,
- 722                  Period => 272160)),
+ 722                  Period => 282240)),
  723         Internal_Events => (
  724                 (Type   => regular,
  725                  name   => O18,
  726                  Timing_Requirements => (
  727                          Type             => Hard_Global_Deadline,
- 728                          Deadline         => 272160,
+ 728                          Deadline         => 282240,
  729                          referenced_event => E18))),
  730         Event_Handlers => (
  731                 (Type                => Activity,
@@ -738,13 +738,13 @@ Initializing error report...
  739         External_Events => (
  740                 (Type   => Periodic,
  741                  Name   => E19,
- 742                  Period => 317520)),
+ 742                  Period => 303750)),
  743         Internal_Events => (
  744                 (Type   => regular,
  745                  name   => O19,
  746                  Timing_Requirements => (
  747                          Type             => Hard_Global_Deadline,
- 748                          Deadline         => 317520,
+ 748                          Deadline         => 303750,
  749                          referenced_event => E19))),
  750         Event_Handlers => (
  751                 (Type                => Activity,
@@ -758,13 +758,13 @@ Initializing error report...
  759         External_Events => (
  760                 (Type   => Periodic,
  761                  Name   => E20,
- 762                  Period => 317520)),
+ 762                  Period => 330750)),
  763         Internal_Events => (
  764                 (Type   => regular,
  765                  name   => O20,
  766                  Timing_Requirements => (
  767                          Type             => Hard_Global_Deadline,
- 768                          Deadline         => 317520,
+ 768                          Deadline         => 330750,
  769                          referenced_event => E20))),
  770         Event_Handlers => (
  771                 (Type                => Activity,
@@ -838,13 +838,13 @@ Initializing error report...
  839         External_Events => (
  840                 (Type   => Periodic,
  841                  Name   => E24,
- 842                  Period => 470400)),
+ 842                  Period => 425250)),
  843         Internal_Events => (
  844                 (Type   => regular,
  845                  name   => O24,
  846                  Timing_Requirements => (
  847                          Type             => Hard_Global_Deadline,
- 848                          Deadline         => 470400,
+ 848                          Deadline         => 425250,
  849                          referenced_event => E24))),
  850         Event_Handlers => (
  851                 (Type                => Activity,
@@ -858,13 +858,13 @@ Initializing error report...
  859         External_Events => (
  860                 (Type   => Periodic,
  861                  Name   => E25,
- 862                  Period => 544320)),
+ 862                  Period => 472500)),
  863         Internal_Events => (
  864                 (Type   => regular,
  865                  name   => O25,
  866                  Timing_Requirements => (
  867                          Type             => Hard_Global_Deadline,
- 868                          Deadline         => 544320,
+ 868                          Deadline         => 472500,
  869                          referenced_event => E25))),
  870         Event_Handlers => (
  871                 (Type                => Activity,
@@ -878,13 +878,13 @@ Initializing error report...
  879         External_Events => (
  880                 (Type   => Periodic,
  881                  Name   => E26,
- 882                  Period => 595350)),
+ 882                  Period => 551250)),
  883         Internal_Events => (
  884                 (Type   => regular,
  885                  name   => O26,
  886                  Timing_Requirements => (
  887                          Type             => Hard_Global_Deadline,
- 888                          Deadline         => 595350,
+ 888                          Deadline         => 551250,
  889                          referenced_event => E26))),
  890         Event_Handlers => (
  891                 (Type                => Activity,
@@ -898,13 +898,13 @@ Initializing error report...
  899         External_Events => (
  900                 (Type   => Periodic,
  901                  Name   => E27,
- 902                  Period => 607500)),
+ 902                  Period => 551250)),
  903         Internal_Events => (
  904                 (Type   => regular,
  905                  name   => O27,
  906                  Timing_Requirements => (
  907                          Type             => Hard_Global_Deadline,
- 908                          Deadline         => 607500,
+ 908                          Deadline         => 551250,
  909                          referenced_event => E27))),
  910         Event_Handlers => (
  911                 (Type                => Activity,
@@ -918,13 +918,13 @@ Initializing error report...
  919         External_Events => (
  920                 (Type   => Periodic,
  921                  Name   => E28,
- 922                  Period => 648000)),
+ 922                  Period => 588000)),
  923         Internal_Events => (
  924                 (Type   => regular,
  925                  name   => O28,
  926                  Timing_Requirements => (
  927                          Type             => Hard_Global_Deadline,
- 928                          Deadline         => 648000,
+ 928                          Deadline         => 588000,
  929                          referenced_event => E28))),
  930         Event_Handlers => (
  931                 (Type                => Activity,
@@ -938,13 +938,13 @@ Initializing error report...
  939         External_Events => (
  940                 (Type   => Periodic,
  941                  Name   => E29,
- 942                  Period => 661500)),
+ 942                  Period => 588000)),
  943         Internal_Events => (
  944                 (Type   => regular,
  945                  name   => O29,
  946                  Timing_Requirements => (
  947                          Type             => Hard_Global_Deadline,
- 948                          Deadline         => 661500,
+ 948                          Deadline         => 588000,
  949                          referenced_event => E29))),
  950         Event_Handlers => (
  951                 (Type                => Activity,
@@ -958,13 +958,13 @@ Initializing error report...
  959         External_Events => (
  960                 (Type   => Periodic,
  961                  Name   => E30,
- 962                  Period => 680400)),
+ 962                  Period => 630000)),
  963         Internal_Events => (
  964                 (Type   => regular,
  965                  name   => O30,
  966                  Timing_Requirements => (
  967                          Type             => Hard_Global_Deadline,
- 968                          Deadline         => 680400,
+ 968                          Deadline         => 630000,
  969                          referenced_event => E30))),
  970         Event_Handlers => (
  971                 (Type                => Activity,

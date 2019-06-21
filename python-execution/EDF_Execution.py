@@ -12,23 +12,32 @@ import signal
 ####################
 
 def import_taskset(taskset, i):
-    with open('../workspace/results.csv') as csv_file:
+    utilization = 0
+    L = 0
+    first_deadline_miss = 0
+    schedulable = -1
+    hyperperiod = 0
+
+    with open('../workspace/tasksets.csv') as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=';')
         row_number = 0
         for row in csv_reader:
             if row_number == i:
-                for task in range (len(row)-3):
-                    string_task = row[task+2].split(",")
+                utilization = row[0]
+                L = row[1]
+                first_deadline_miss = row[2]
+                schedulable = row[3]
+                hyperperiod = row[4]
+                for task in range (len(row)-6):
+                    string_task = row[task+5].split(",")
                     task = [string_task[0],
                             string_task[1],
                             string_task[2],
                             string_task[3],
                             string_task[4]]
                     taskset.append (task)
-            else:
-                a = 0
             row_number = row_number + 1
-    return taskset
+    return taskset, utilization, L, first_deadline_miss, schedulable, hyperperiod
 
 ##############################
 ## Make ADB file to compile ##  # Da mettere su file principale?
@@ -200,25 +209,35 @@ def debug_and_save_data (taskset, hyperperiod):
 ##########
 
 
-for i in range (10):
+for i in range (1):
 
     taskset = []
-    taskset = import_taskset(taskset, i)
+    taskset, utilization, L, first_deadline_miss, schedulable, hyperperiod = import_taskset(taskset, i)
 
-    make_adb_file(taskset, 952560000)
+    print (utilization)
+    print(L)
+    print(first_deadline_miss)
+    print(schedulable)
+    print(hyperperiod)
 
-    utilization = 0
-    #utilization2 = 0
-    for task in range(len(taskset)):
-        work = int((float(taskset[task][4]) - 2) * 180 / 17)
-        utilization = utilization + (work*17/180) / float(taskset[task][1])
-        utilization = utilization + 18/float(taskset[task][1])
-        #utilization2 = utilization2 + float(taskset[task][4])/float(taskset[task][1])
-    #print(utilization)
+    #make_adb_file(taskset, 952560000)
 
-    compile_and_flash_into_board()
-    debug_and_save_data(taskset, 952560000)
 
+
+    #compile_and_flash_into_board()
+    #debug_and_save_data(taskset, 952560000)
+
+
+
+
+# utilization = 0
+    # #utilization2 = 0
+    # for task in range(len(taskset)):
+    #     work = int((float(taskset[task][4]) - 2) * 180 / 17)
+    #     utilization = utilization + (work*17/180) / float(taskset[task][1])
+    #     utilization = utilization + 18/float(taskset[task][1])
+    #     #utilization2 = utilization2 + float(taskset[task][4])/float(taskset[task][1])
+    # #print(utilization)
 
 
 

@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <Locations >
-  <Project >
-    <file_marker column=" 49" line=" 82" >
+  <Project>
+    <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_file>
+    <file_marker column=" 21" line=" 48" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
     </file_marker>
@@ -9,7 +10,7 @@
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/print_task.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 45" line=" 85" >
+    <file_marker column=" 7" line=" 308" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthqu.adb</vfs_file>
     </file_marker>
@@ -17,7 +18,7 @@
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/unit01.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 22" >
+    <file_marker column=" 41" line=" 25" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/print_task.adb</vfs_file>
     </file_marker>
@@ -25,11 +26,11 @@
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbbosu.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 17" line=" 342" >
+    <file_marker column=" 15" line=" 362" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbtime.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 66" line=" 105" >
+    <file_marker column=" 14" line=" 187" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-osinte.ads</vfs_file>
     </file_marker>
@@ -53,23 +54,23 @@
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/system.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 14" line=" 148" >
+    <file_marker column=" 27" line=" 298" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 83" >
+    <file_marker column=" 7" line=" 131" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprob.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 45" line=" 137" >
+    <file_marker column=" 14" line=" 417" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 41" line=" 120" >
+    <file_marker column=" 14" line=" 87" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 60" line=" 151" >
+    <file_marker column=" 66" line=" 164" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.ads</vfs_file>
     </file_marker>
@@ -113,15 +114,15 @@
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/a-reatim.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 44" line=" 61" >
+    <file_marker column=" 14" line=" 194" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthqu.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 15" line=" 156" >
+    <file_marker column=" 42" line=" 102" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taskin.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 45" line=" 305" >
+    <file_marker column=" 1" line=" 391" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taskin.ads</vfs_file>
     </file_marker>
@@ -141,7 +142,7 @@
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/a-reatim.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 1" >
+    <file_marker column=" 10" line=" 185" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-soflin.adb</vfs_file>
     </file_marker>
@@ -383,339 +384,31 @@
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthqu.adb</vfs_file>
+      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/DaCompilare/s-stm32.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 32" line=" 451" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthqu.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 15" line=" 362" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbtime.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 162" >
+    <file_marker column=" 1" line=" 168" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 66" line=" 164" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 15" line=" 362" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbtime.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 32" line=" 442" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthqu.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 24" line=" 760" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthqu.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
+      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/unit01.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 44" line=" 65" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 223" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 201" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprob.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 446" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 101" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 22" line=" 154" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 223" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 226" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 27" line=" 235" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 8" line=" 236" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 204" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-osinte.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 22" line=" 154" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 446" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 8" line=" 468" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 101" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 314" >
+    <file_marker column=" 1" line=" 168" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 19" line=" 316" >
+    <file_marker column=" 6" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 25" line=" 378" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbtime.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 463" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 206" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthqu.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 19" line=" 209" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthqu.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 384" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthqu.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 223" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 226" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 201" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprob.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 41" line=" 25" >
-      <vfs_project />
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/print_task.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 201" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprob.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 41" line=" 25" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/print_task.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 184" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 27" line=" 191" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 400" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 417" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 8" line=" 204" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthqu.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 417" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 194" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthqu.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 19" line=" 197" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthqu.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 308" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthqu.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 417" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 194" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthqu.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 41" line=" 25" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/print_task.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 41" line=" 50" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 41" line=" 32" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 181" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 184" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 27" line=" 191" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 8" line=" 192" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 27" line=" 298" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.adb</vfs_file>
+      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/unit01.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taskin.ads</vfs_file>
+      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/a-elchha.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 391" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taskin.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 13" line=" 123" >
+    <file_marker current="true" column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-soflin.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 152" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-soflin.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 159" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-soflin.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 10" line=" 185" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-soflin.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 187" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-osinte.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 131" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprob.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 125" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-tarest.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 87" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taprop.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 96" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taskin.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 16" line=" 117" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taskin.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 141" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taskin.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 10" line=" 161" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taskin.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 10" line=" 163" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taskin.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 45" line=" 167" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taskin.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 145" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 54" line=" 133" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-tarest.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 43" line=" 225" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-tarest.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 54" line=" 242" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-tarest.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 287" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-tarest.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 304" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-tarest.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 47" line=" 336" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-tarest.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 96" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-taskin.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 21" line=" 48" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 15" line=" 362" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbtime.adb</vfs_file>
-    </file_marker>
-    <file_marker current="true" column=" 7" line=" 162" >
-      <vfs_project>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/edf-ravenscar-arm/edf-migrated/s-bbthre.ads</vfs_file>
     </file_marker>
   </Project>
 </Locations>
