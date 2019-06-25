@@ -179,6 +179,14 @@ package System.BB.Threads.Queues is
    pragma Inline (Change_Fake_Number_ID);
    --  Change the fake integer number of the thread
 
+   procedure Change_Period
+     (Thread       : Thread_Id;
+      Period       : System.BB.Time.Time_Span);
+
+   procedure Change_Starting_Time
+     (Thread        : Thread_Id;
+      Starting_Time : System.BB.Time.Time_Span);
+
    procedure Change_Relative_Deadline
      (Thread       : Thread_Id;
       Rel_Deadline : System.BB.Deadlines.Relative_Deadline);

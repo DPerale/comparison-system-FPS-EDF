@@ -41,6 +41,7 @@ with System.Parameters;
 with System.Tasking;
 with System.OS_Interface;
 with System.BB.Deadlines;
+with System.BB.Time;
 
 package System.Task_Primitives.Operations is
    pragma Preelaborate;
@@ -98,6 +99,14 @@ package System.Task_Primitives.Operations is
 
    procedure Set_Relative_Deadline (T : ST.Task_Id;
              Relative_Deadline : System.BB.Deadlines.Relative_Deadline);
+
+   procedure Set_Period
+       (T       : ST.Task_Id;
+        Period       : System.BB.Time.Time_Span);
+
+   procedure Set_Starting_Time
+       (T      : ST.Task_Id;
+        Starting_Time : System.BB.Time.Time_Span);
 
    ----------------
    -- Extensions --

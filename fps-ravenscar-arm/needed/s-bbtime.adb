@@ -345,10 +345,10 @@ package body System.BB.Time is
          --  Se necessario si aumentano le deadline miss
          if System.BB.Threads.Queues.Get_Check (Self.Fake_Number_ID) = False
          then
+            System.BB.Threads.Queues.Set_Check (Self.Fake_Number_ID, True);
             System.BB.Threads.Queues.Add_DM (Self.Fake_Number_ID);
          end if;
       end if;
-      System.BB.Threads.Queues.Set_Check (Self.Fake_Number_ID, False);
 
       if T > Now then
 
@@ -376,6 +376,7 @@ package body System.BB.Time is
          Yield (Self);
       end if;
 
+      System.BB.Threads.Queues.Set_Check (Self.Fake_Number_ID, False);
       Protection.Leave_Kernel;
    end Delay_Until;
 

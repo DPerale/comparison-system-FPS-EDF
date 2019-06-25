@@ -16,7 +16,7 @@ package body ada_main is
    E123 : Short_Integer; pragma Import (Ada, E123, "print_task_E");
    E005 : Short_Integer; pragma Import (Ada, E005, "cyclic_tasks_E");
 
-   Sec_Default_Sized_Stacks : array (1 .. 32) of aliased System.Secondary_Stack.SS_Stack (System.Parameters.Runtime_Default_Sec_Stack_Size);
+   Sec_Default_Sized_Stacks : array (1 .. 3) of aliased System.Secondary_Stack.SS_Stack (System.Parameters.Runtime_Default_Sec_Stack_Size);
 
    Local_Priority_Specific_Dispatching : constant String := "";
    Local_Interrupt_States : constant String := "";
@@ -106,7 +106,7 @@ package body ada_main is
 
       ada_main'Elab_Body;
       Default_Secondary_Stack_Size := System.Parameters.Runtime_Default_Sec_Stack_Size;
-      Binder_Sec_Stacks_Count := 32;
+      Binder_Sec_Stacks_Count := 3;
       Default_Sized_SS_Pool := Sec_Default_Sized_Stacks'Address;
 
       Runtime_Initialize (1);
@@ -155,57 +155,9 @@ package body ada_main is
    end;
 
 --  BEGIN Object file/option list
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/ada.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/gnat.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/interfac.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/system.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/i-stm32.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/i-stm32-pwr.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-bb.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-bbbopa.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-bbcpsp.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-bbmcpa.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-except.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-imgint.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-maccod.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-parame.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-semiho.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-stoele.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-secsta.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/g-debuti.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-casuti.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-strhas.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-htable.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-tasinf.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-textio.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-io.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-traent.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-unstyp.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/i-stm32-rcc.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-bbpara.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-stm32.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-wchcon.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-wchjis.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-wchcnv.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-addima.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-traceb.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-excdeb.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-excmac.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-multip.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-musplo.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-exctab.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-bcpcst.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-bbbosu.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-bbdead.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/a-exctra.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-memory.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-trasym.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-wchstw.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/a-tags.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-valuti.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-valuns.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-stalib.o
-   --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/a-except.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-bbthqu.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-bbprot.o
    --   /home/aquox/Scrivania/Arm/fps-ravenscar-arm/build/s-bbthre.o

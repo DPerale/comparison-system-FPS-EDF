@@ -290,10 +290,39 @@ package body System.BB.Threads.Queues is
       --  not change
       Thread.Active_Relative_Deadline := Rel_Deadline;
 
-      Change_Absolute_Deadline (Thread, System.BB.Time.Time (4294983871) +
-                                  System.BB.Time.Microseconds (2500000));
+      if Thread.Active_Relative_Deadline <= Thread.Active_Period then
+         Change_Absolute_Deadline (Thread, System.BB.Time.Time_First +
+                                   Thread.Active_Starting_Time -
+                     (Thread.Active_Period - Thread.Active_Relative_Deadline));
+      else
+         Change_Absolute_Deadline (Thread, System.BB.Time.Time_First +
+                                   Thread.Active_Starting_Time +
+                     (Thread.Active_Relative_Deadline - Thread.Active_Period));
+      end if;
 
    end Change_Relative_Deadline;
+
+   procedure Change_Period
+     (Thread       : Thread_Id;
+      Period       : System.BB.Time.Time_Span)
+   is
+      CPU_Id      : constant CPU := Get_CPU (Thread);
+   begin
+      pragma Assert (CPU_Id = Current_CPU);
+      pragma Assert (Thread = Running_Thread_Table (CPU_Id));
+      Thread.Active_Period := Period;
+   end Change_Period;
+
+   procedure Change_Starting_Time
+     (Thread        : Thread_Id;
+      Starting_Time : System.BB.Time.Time_Span)
+   is
+      CPU_Id      : constant CPU := Get_CPU (Thread);
+   begin
+      pragma Assert (CPU_Id = Current_CPU);
+      pragma Assert (Thread = Running_Thread_Table (CPU_Id));
+      Thread.Active_Starting_Time := Starting_Time;
+   end Change_Starting_Time;
 
    ------------------------------
    -- Change_Absolute_Deadline --
@@ -604,7 +633,7 @@ package body System.BB.Threads.Queues is
          Wakeup_Thread.Preemption_Needed := True;
 
          Change_Absolute_Deadline (Wakeup_Thread,
-                                   (Wakeup_Thread.Active_Relative_Deadline +
+                                   (Wakeup_Thread.Active_Period +
                                       Wakeup_Thread.Active_Absolute_Deadline));
 
          Insert (Wakeup_Thread);

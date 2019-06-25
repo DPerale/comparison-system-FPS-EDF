@@ -69,7 +69,7 @@ package body System.BB.Threads.Queues is
       record
          ID : Integer;
          Check : Boolean;
-         DM : Natural;
+         DM : Integer;
          Execution : Integer;
          Preemption : Integer;
       end record;

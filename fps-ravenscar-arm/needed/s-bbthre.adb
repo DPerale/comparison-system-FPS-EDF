@@ -348,6 +348,24 @@ package body System.BB.Threads is
       Protection.Leave_Kernel;
    end Set_Relative_Deadline;
 
+   procedure Set_Period
+     (Period       : System.BB.Time.Time_Span) is
+   begin
+      Protection.Enter_Kernel;
+      Queues.Change_Period
+              (Queues.Running_Thread, Period);
+      Protection.Leave_Kernel;
+   end Set_Period;
+
+   procedure Set_Starting_Time
+     (Starting_Time :  System.BB.Time.Time_Span) is
+   begin
+      Protection.Enter_Kernel;
+      Queues.Change_Starting_Time
+              (Queues.Running_Thread, Starting_Time);
+      Protection.Leave_Kernel;
+   end Set_Starting_Time;
+
    -----------
    -- Sleep --
    -----------
@@ -461,7 +479,7 @@ package body System.BB.Threads is
          Id.State := Runnable;
 
          Queues.Change_Absolute_Deadline
-           (Id, Id.Active_Relative_Deadline + Id.Active_Absolute_Deadline);
+           (Id, Id.Active_Period + Id.Active_Absolute_Deadline);
          --  Insert the thread at the tail of its active priority so that the
          --  thread will resume execution.
 

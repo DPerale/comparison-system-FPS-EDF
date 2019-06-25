@@ -12,6 +12,6 @@ package System_Time is
    --  To wait for all tasks to be elaborated and activate them at the
    --  +    same time.
    Task_Activation_Delay : constant Ada.Real_Time.Time_Span
-      := Ada.Real_Time.Milliseconds (2000);
+      := Ada.Real_Time.Milliseconds (500);
 
 end System_Time;

@@ -186,6 +186,14 @@ package System.OS_Interface is
    --  Set the active relative deadline of the executing thread to the
    --  given value
 
+   procedure Set_Period
+     (Period       : System.BB.Time.Time_Span)
+      renames System.BB.Threads.Set_Period;
+
+   procedure Set_Starting_Time
+     (Starting_Time : System.BB.Time.Time_Span)
+     renames System.BB.Threads.Set_Starting_Time;
+
    procedure Sleep renames System.BB.Threads.Sleep;
    --  The calling thread is unconditionally suspended
 

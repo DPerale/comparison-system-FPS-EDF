@@ -16,31 +16,31 @@ RV NO_IMPLEMENTATION_ATTRIBUTES
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 
-U system.task_primitives%s  s-taspri.ads	189cf30c NE OL PR PK
+U system.task_primitives%s  s-taspri.ads	a6d8f9f1 NE OL PR PK
 W system%s		system.ads		system.ali
 W system.os_interface%s	s-osinte.ads		s-osinte.ali
 
-D interfac.ads		20181010193657 5ab55268 interfaces%s
-D i-stm32.ads		20181010193657 2ad0960b interfaces.stm32%s
-D i-stm32-pwr.ads	20181010193657 4a098e84 interfaces.stm32.pwr%s
-D system.ads		20181010193713 db831581 system%s
-D s-bb.ads		20181010193701 09e072ae system.bb%s
-D s-bbbopa.ads		20181010193701 5e9af419 system.bb.board_parameters%s
-D s-bbbosu.ads		20181010193701 0f820a2a system.bb.board_support%s
-D s-bbcppr.ads		20181010193701 bcfa73ad system.bb.cpu_primitives%s
-D s-bbdead.ads		20190210124650 deeac8df system.bb.deadlines%s
-D s-bbinte.ads		20181010193701 c88d39da system.bb.interrupts%s
-D s-bbmcpa.ads		20181010193701 b5961a30 system.bb.mcu_parameters%s
-D s-bbpara.ads		20181010193701 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20190613161122 0ea9a9a5 system.bb.threads%s
-D s-bbthqu.ads		20190613160600 d7a96db3 system.bb.threads.queues%s
-D s-bbtime.ads		20190415141432 1a3e050f system.bb.time%s
-D s-multip.ads		20181010193706 f33e0e35 system.multiprocessors%s
-D s-osinte.ads		20190613160406 f607ae77 system.os_interface%s
-D s-stm32.ads		20181010193709 e898dba2 system.stm32%s
-D s-stoele.ads		20181010193709 2dc34a04 system.storage_elements%s
-D s-taspri.ads		20181010193710 351848fa system.task_primitives%s
-D s-unstyp.ads		20181010193711 34867c83 system.unsigned_types%s
+D interfac.ads		20190621182551 5ab55268 interfaces%s
+D i-stm32.ads		20190621182551 2ad0960b interfaces.stm32%s
+D i-stm32-pwr.ads	20190621182551 4a098e84 interfaces.stm32.pwr%s
+D system.ads		20190621182556 db831581 system%s
+D s-bb.ads		20190621182552 09e072ae system.bb%s
+D s-bbbopa.ads		20190621182552 5e9af419 system.bb.board_parameters%s
+D s-bbbosu.ads		20190621183100 0f820a2a system.bb.board_support%s
+D s-bbcppr.ads		20190621183100 bcfa73ad system.bb.cpu_primitives%s
+D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
+D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
+D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
+D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
+D s-bbthre.ads		20190624103433 b225c8e4 system.bb.threads%s
+D s-bbthqu.ads		20190624103433 3b783ce6 system.bb.threads.queues%s
+D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
+D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
+D s-osinte.ads		20190624103433 4843a48a system.os_interface%s
+D s-stm32.ads		20190621182556 e898dba2 system.stm32%s
+D s-stoele.ads		20190621182556 2dc34a04 system.storage_elements%s
+D s-taspri.ads		20190621183100 351848fa system.task_primitives%s
+D s-unstyp.ads		20190621182556 34867c83 system.unsigned_types%s
 X 4 system.ads
 50K9*System 164e11 20|38r6 40r9 52r28 62r29 65r24 66r18 77r21 77r39 82r5
 80M9*Address 20|52r35 77r28
@@ -49,7 +49,7 @@ X 13 s-bbthre.ads
 65P9*Thread_Id(62R9)
 77R9*Thread_Descriptor
 X 17 s-osinte.ads
-51K16*OS_Interface 217e24 20|38w13 62r36 65r31 66r25
+51K16*OS_Interface 225e24 20|38w13 62r36 65r31 66r25
 118R12*Thread_Descriptor{13|77R9} 20|62r49
 122P12*Thread_Id{13|65P9} 20|65r44
 125p4*Null_Thread_Id{122P12} 20|66r38
