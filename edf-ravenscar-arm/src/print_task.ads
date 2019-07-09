@@ -5,7 +5,8 @@ package Print_Task is
      ( --   Pri        : System.BB.Time.Time_Span;
       Pri        : System.Priority;
       Dead       : Integer;
-      Cycle_Time : Positive
+      Cycle_Time : Positive;
+      Offset     : Integer
       ) is
       pragma Priority (Pri);
       pragma Storage_Size (450);

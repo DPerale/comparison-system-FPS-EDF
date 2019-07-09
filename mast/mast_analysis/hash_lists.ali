@@ -17,9 +17,9 @@ U hash_lists%s		hash_lists.ads		ebcb181e BN EE NE OO PK GE
 
 D ada.ads		20180525052300 76789da1 ada%s
 D a-unccon.ads		20180525052301 0e9b276f ada.unchecked_conversion%s
-D hash_lists.ads	20080722124150 ebcb181e hash_lists%s
-D hash_lists.adb	20080722124150 7530aa44 hash_lists%b
-D list_exceptions.ads	20080722124150 720909ba list_exceptions%s
+D hash_lists.ads	20190621183101 ebcb181e hash_lists%s
+D hash_lists.adb	20190621183101 7530aa44 hash_lists%b
+D list_exceptions.ads	20190621183101 720909ba list_exceptions%s
 D system.ads		20180525052301 4635ec04 system%s
 D s-exctab.ads		20180525052301 54135002 system.exception_table%s
 D s-stalib.ads		20180525052301 09bd3940 system.standard_library%s

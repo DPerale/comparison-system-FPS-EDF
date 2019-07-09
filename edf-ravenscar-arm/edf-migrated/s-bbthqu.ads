@@ -235,6 +235,14 @@ package System.BB.Threads.Queues is
    --  Ada.Deadline.Absolute_Deadline'First if no threads
    --  are running.
 
+   procedure Change_Period
+     (Thread       : Thread_Id;
+      Period       : System.BB.Time.Time_Span);
+
+   procedure Change_Starting_Time
+     (Thread        : Thread_Id;
+      Starting_Time : System.BB.Time.Time_Span);
+
    procedure Yield (Thread : Thread_Id) with
    --  Move the thread to the tail of its current priority
 

@@ -57,8 +57,8 @@ D s-stoele.ads		20180525052302 2dc34a04 system.storage_elements%s
 D s-traent.ads		20180525052300 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20180525052301 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20180525052301 1b7d22d2 system.wch_con%s
-D var_strings.ads	20080722124150 38b5efa3 var_strings%s
-D var_strings.adb	20080722124150 562ab7df var_strings%b
+D var_strings.ads	20190621183101 38b5efa3 var_strings%s
+D var_strings.adb	20190621183101 562ab7df var_strings%b
 X 1 ada.ads
 16K9*Ada 20e8 27|30r6 30r23 28|30r6 30r19 31r5
 X 2 a-charac.ads

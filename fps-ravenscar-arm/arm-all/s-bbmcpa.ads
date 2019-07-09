@@ -32,7 +32,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
---  This package defines MCU parameters for the STM32F40x family
+--  This package defines MCU parameters for the STM32F429x family
 
 with Interfaces.STM32;
 with Interfaces.STM32.PWR;
@@ -42,7 +42,7 @@ package System.BB.MCU_Parameters is
    pragma Preelaborate;
    use type Interfaces.STM32.Bit;
 
-   Number_Of_Interrupts : constant := 81;
+   Number_Of_Interrupts : constant := 92;
 
    procedure PWR_Initialize;
 

@@ -19,9 +19,9 @@ U priority_queues%s	priority_queues.ads	3e25a01a BN EE NE OO PK GE
 
 D ada.ads		20180525052300 76789da1 ada%s
 D a-unccon.ads		20180525052301 0e9b276f ada.unchecked_conversion%s
-D list_exceptions.ads	20080722124150 720909ba list_exceptions%s
-D priority_queues.ads	20080722124150 3e25a01a priority_queues%s
-D priority_queues.adb	20080722124150 bf393d86 priority_queues%b
+D list_exceptions.ads	20190621183101 720909ba list_exceptions%s
+D priority_queues.ads	20190621183101 3e25a01a priority_queues%s
+D priority_queues.adb	20190621183101 bf393d86 priority_queues%b
 D system.ads		20180525052301 4635ec04 system%s
 D s-exctab.ads		20180525052301 54135002 system.exception_table%s
 D s-stalib.ads		20180525052301 09bd3940 system.standard_library%s

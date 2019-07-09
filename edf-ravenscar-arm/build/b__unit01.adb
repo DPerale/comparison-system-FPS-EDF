@@ -9,14 +9,14 @@ package body ada_main is
    E047 : Short_Integer; pragma Import (Ada, E047, "system__soft_links_E");
    E045 : Short_Integer; pragma Import (Ada, E045, "system__exception_table_E");
    E052 : Short_Integer; pragma Import (Ada, E052, "ada__tags_E");
-   E095 : Short_Integer; pragma Import (Ada, E095, "system__bb__timing_events_E");
+   E093 : Short_Integer; pragma Import (Ada, E093, "system__bb__timing_events_E");
    E008 : Short_Integer; pragma Import (Ada, E008, "ada__real_time_E");
-   E127 : Short_Integer; pragma Import (Ada, E127, "system__tasking__restricted__stages_E");
-   E129 : Short_Integer; pragma Import (Ada, E129, "system_time_E");
-   E125 : Short_Integer; pragma Import (Ada, E125, "print_task_E");
+   E125 : Short_Integer; pragma Import (Ada, E125, "system__tasking__restricted__stages_E");
+   E127 : Short_Integer; pragma Import (Ada, E127, "system_time_E");
+   E123 : Short_Integer; pragma Import (Ada, E123, "print_task_E");
    E005 : Short_Integer; pragma Import (Ada, E005, "cyclic_tasks_E");
 
-   Sec_Default_Sized_Stacks : array (1 .. 3) of aliased System.Secondary_Stack.SS_Stack (System.Parameters.Runtime_Default_Sec_Stack_Size);
+   Sec_Default_Sized_Stacks : array (1 .. 4) of aliased System.Secondary_Stack.SS_Stack (System.Parameters.Runtime_Default_Sec_Stack_Size);
 
    Local_Priority_Specific_Dispatching : constant String := "";
    Local_Interrupt_States : constant String := "";
@@ -106,7 +106,7 @@ package body ada_main is
 
       ada_main'Elab_Body;
       Default_Secondary_Stack_Size := System.Parameters.Runtime_Default_Sec_Stack_Size;
-      Binder_Sec_Stacks_Count := 3;
+      Binder_Sec_Stacks_Count := 4;
       Default_Sized_SS_Pool := Sec_Default_Sized_Stacks'Address;
 
       Runtime_Initialize (1);
@@ -118,16 +118,16 @@ package body ada_main is
       E052 := E052 + 1;
       System.Bb.Timing_Events'Elab_Spec;
       System.Bb.Timing_Events'Elab_Body;
-      E095 := E095 + 1;
+      E093 := E093 + 1;
       E047 := E047 + 1;
       Ada.Real_Time'Elab_Body;
       E008 := E008 + 1;
       System.Tasking.Restricted.Stages'Elab_Body;
-      E127 := E127 + 1;
-      System_Time'Elab_Spec;
-      E129 := E129 + 1;
-      Print_Task'Elab_Body;
       E125 := E125 + 1;
+      System_Time'Elab_Spec;
+      E127 := E127 + 1;
+      Print_Task'Elab_Body;
+      E123 := E123 + 1;
       Cyclic_Tasks'Elab_Body;
       E005 := E005 + 1;
    end adainit;
@@ -157,8 +157,6 @@ package body ada_main is
 --  BEGIN Object file/option list
    --   /home/aquox/Scrivania/Arm/edf-ravenscar-arm/build/system.o
    --   /home/aquox/Scrivania/Arm/edf-ravenscar-arm/build/s-bb.o
-   --   /home/aquox/Scrivania/Arm/edf-ravenscar-arm/build/s-bbdebu.o
-   --   /home/aquox/Scrivania/Arm/edf-ravenscar-arm/build/s-bbstat.o
    --   /home/aquox/Scrivania/Arm/edf-ravenscar-arm/build/s-bbpara.o
    --   /home/aquox/Scrivania/Arm/edf-ravenscar-arm/build/s-multip.o
    --   /home/aquox/Scrivania/Arm/edf-ravenscar-arm/build/s-bbbosu.o

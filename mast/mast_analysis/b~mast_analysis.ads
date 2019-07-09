@@ -625,7 +625,7 @@ package ada_main is
    pragma Export (C, u00293, "mast__toolsB");
    u00294 : constant Version_32 := 16#2b4f418d#;
    pragma Export (C, u00294, "mast__toolsS");
-   u00295 : constant Version_32 := 16#43e05182#;
+   u00295 : constant Version_32 := 16#7ccab536#;
    pragma Export (C, u00295, "mast__edf_toolsB");
    u00296 : constant Version_32 := 16#3f0053e6#;
    pragma Export (C, u00296, "mast__edf_toolsS");
@@ -661,7 +661,7 @@ package ada_main is
    pragma Export (C, u00311, "mast__tools__schedulability_indexB");
    u00312 : constant Version_32 := 16#18f921ce#;
    pragma Export (C, u00312, "mast__tools__schedulability_indexS");
-   u00313 : constant Version_32 := 16#16b9260c#;
+   u00313 : constant Version_32 := 16#d6165795#;
    pragma Export (C, u00313, "mast__monoprocessor_toolsB");
    u00314 : constant Version_32 := 16#4bbac06b#;
    pragma Export (C, u00314, "mast__monoprocessor_toolsS");

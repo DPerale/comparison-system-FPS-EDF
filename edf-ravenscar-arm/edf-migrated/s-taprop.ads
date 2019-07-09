@@ -41,6 +41,7 @@ with System.Parameters;
 with System.Tasking;
 with System.OS_Interface;
 with System.BB.Deadlines;
+with System.BB.Time;
 
 package System.Task_Primitives.Operations is
    pragma Preelaborate;
@@ -106,6 +107,14 @@ package System.Task_Primitives.Operations is
    function Get_Absolute_Deadline (T : ST.Task_Id)
             return System.BB.Deadlines.Absolute_Deadline;
    pragma Inline (Get_Absolute_Deadline);
+
+   procedure Set_Period
+       (T       : ST.Task_Id;
+        Period       : System.BB.Time.Time_Span);
+
+   procedure Set_Starting_Time
+       (T      : ST.Task_Id;
+        Starting_Time : System.BB.Time.Time_Span);
 
    function Get_Affinity
      (T : ST.Task_Id) return System.Multiprocessors.CPU_Range;

@@ -368,6 +368,13 @@ package System.BB.Threads.Queues is
      Post =>
        Get_Next_Alarm_Time (BOSUMU.Current_CPU) > Now;
 
+   ----------------------------
+   -- Global_Interrupt_delay --
+   ----------------------------
+
+   Global_Interrupt_Delay : System.BB.Time.Time_Span
+     := System.BB.Time.Time_Span (171540);
+
    -----------------
    -- Global_List --
    -----------------

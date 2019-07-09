@@ -6,8 +6,6 @@ b__unit01.o
 [BOUND OBJECT FILES]
 /home/aquox/Scrivania/Arm/edf-ravenscar-arm/build/system.o
 /home/aquox/Scrivania/Arm/edf-ravenscar-arm/build/s-bb.o
-/home/aquox/Scrivania/Arm/edf-ravenscar-arm/build/s-bbdebu.o
-/home/aquox/Scrivania/Arm/edf-ravenscar-arm/build/s-bbstat.o
 /home/aquox/Scrivania/Arm/edf-ravenscar-arm/build/s-bbpara.o
 /home/aquox/Scrivania/Arm/edf-ravenscar-arm/build/s-multip.o
 /home/aquox/Scrivania/Arm/edf-ravenscar-arm/build/s-bbbosu.o

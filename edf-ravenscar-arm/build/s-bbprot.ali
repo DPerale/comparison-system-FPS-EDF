@@ -18,7 +18,7 @@ RV NO_IMPLEMENTATION_RESTRICTIONS
 RR NO_ELABORATION_CODE
 RV SPARK_05
 
-U system.bb.protection%b  s-bbprot.adb		3a191ffa NE OL PK
+U system.bb.protection%b  s-bbprot.adb		268bcca8 NE OL PK
 W system%s		system.ads		system.ali
 W system.bb%s		s-bb.ads		s-bb.ali
 W system.bb.cpu_primitives%s  s-bbcppr.adb	s-bbcppr.ali
@@ -44,8 +44,8 @@ D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621183100 431abc17 system.bb.parameters%s
 D s-bbprot.ads		20190621183100 f48a7e85 system.bb.protection%s
 D s-bbprot.adb		20190621183100 66225843 system.bb.protection%b
-D s-bbthre.ads		20190621183100 9be493b9 system.bb.threads%s
-D s-bbthqu.ads		20190621183100 d68b6030 system.bb.threads.queues%s
+D s-bbthre.ads		20190709122229 e098fee4 system.bb.threads%s
+D s-bbthqu.ads		20190709121239 b165de3f system.bb.threads.queues%s
 D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
 D s-stm32.ads		20190621182556 e898dba2 system.stm32%s
@@ -71,16 +71,16 @@ X 13 s-bbprot.ads
 48U14*Enter_Kernel 49r19 14|62b14 68l8 68t20
 54U14*Leave_Kernel 14|74b14 117l8 117t20
 X 15 s-bbthre.ads
-49K19*Threads 14|41w16 44r16 76r26 94r10 110r22 110r60 116r10 15|362e22
+49K19*Threads 14|41w16 44r16 76r26 94r10 110r22 110r60 116r10 15|372e22
 65P9*Thread_Id(62R9)
 71E9*Thread_States 14|76r34 15|71e56
 71n27*Runnable{71E9} 14|110r68
 98i7*Active_Priority{integer} 14|116r40
 123e7*State{71E9} 14|110r52
 X 16 s-bbthqu.ads
-41K27*Queues 14|44w24 53r37 94r18 110r30 116r18 16|418e29
-287V13*Running_Thread{15|65P9} 14|110s37 116s25
-299V13*Context_Switch_Needed{boolean} 14|94s25
+41K27*Queues 14|44w24 53r37 94r18 110r30 116r18 16|426e29
+295V13*Running_Thread{15|65P9} 14|110s37 116s25
+307V13*Context_Switch_Needed{boolean} 14|94s25
 X 17 s-bbtime.ads
 43K19*Time 14|42w16 75r21 17|254e19
 172p4*Scheduling_Event_Hook 14|101r13 102r13

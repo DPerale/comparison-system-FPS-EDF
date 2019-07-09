@@ -2,14 +2,14 @@
 --  Copyright (C) 2017, AdaCore
 --
 
---  This spec has been automatically generated from STM32F40x.svd
+--  This spec has been automatically generated from STM32F429x.svd
 
 pragma Ada_2012;
 pragma Style_Checks (Off);
 
 with System;
 
---  STM32F40x
+--  STM32F429x
 package Interfaces.STM32 is
    pragma Preelaborate;
    pragma No_Elaboration_Code_All;
@@ -88,7 +88,7 @@ package Interfaces.STM32 is
      System'To_Address (16#50060800#);
    DCMI_Base : constant System.Address :=
      System'To_Address (16#50050000#);
-   FSMC_Base : constant System.Address :=
+   FMC_Base : constant System.Address :=
      System'To_Address (16#A0000000#);
    DBG_Base : constant System.Address :=
      System'To_Address (16#E0042000#);
@@ -98,6 +98,10 @@ package Interfaces.STM32 is
      System'To_Address (16#40026000#);
    RCC_Base : constant System.Address :=
      System'To_Address (16#40023800#);
+   GPIOK_Base : constant System.Address :=
+     System'To_Address (16#40022800#);
+   GPIOJ_Base : constant System.Address :=
+     System'To_Address (16#40022400#);
    GPIOI_Base : constant System.Address :=
      System'To_Address (16#40022000#);
    GPIOH_Base : constant System.Address :=
@@ -128,6 +132,12 @@ package Interfaces.STM32 is
      System'To_Address (16#40003400#);
    I2S3ext_Base : constant System.Address :=
      System'To_Address (16#40004000#);
+   SPI4_Base : constant System.Address :=
+     System'To_Address (16#40013400#);
+   SPI5_Base : constant System.Address :=
+     System'To_Address (16#40015000#);
+   SPI6_Base : constant System.Address :=
+     System'To_Address (16#40015400#);
    SDIO_Base : constant System.Address :=
      System'To_Address (16#40012C00#);
    ADC1_Base : constant System.Address :=
@@ -164,6 +174,10 @@ package Interfaces.STM32 is
      System'To_Address (16#40004C00#);
    UART5_Base : constant System.Address :=
      System'To_Address (16#40005000#);
+   UART7_Base : constant System.Address :=
+     System'To_Address (16#40007800#);
+   UART8_Base : constant System.Address :=
+     System'To_Address (16#40007C00#);
    C_ADC_Base : constant System.Address :=
      System'To_Address (16#40012300#);
    TIM1_Base : constant System.Address :=
@@ -216,6 +230,8 @@ package Interfaces.STM32 is
      System'To_Address (16#40006400#);
    CAN2_Base : constant System.Address :=
      System'To_Address (16#40006800#);
+   NVIC_Base : constant System.Address :=
+     System'To_Address (16#E000E000#);
    FLASH_Base : constant System.Address :=
      System'To_Address (16#40023C00#);
    EXTI_Base : constant System.Address :=
@@ -228,7 +244,11 @@ package Interfaces.STM32 is
      System'To_Address (16#40040800#);
    OTG_HS_PWRCLK_Base : constant System.Address :=
      System'To_Address (16#40040E00#);
-   NVIC_Base : constant System.Address :=
-     System'To_Address (16#E000E000#);
+   LTDC_Base : constant System.Address :=
+     System'To_Address (16#40016800#);
+   SAI_Base : constant System.Address :=
+     System'To_Address (16#40015800#);
+   DMA2D_Base : constant System.Address :=
+     System'To_Address (16#4002B000#);
 
 end Interfaces.STM32;

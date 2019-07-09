@@ -2,7 +2,7 @@
 --  Copyright (C) 2017, AdaCore
 --
 
---  This spec has been automatically generated from STM32F40x.svd
+--  This spec has been automatically generated from STM32F429x.svd
 
 pragma Ada_2012;
 pragma Style_Checks (Off);
@@ -476,5 +476,13 @@ package Interfaces.STM32.GPIO is
    --  General-purpose I/Os
    GPIOI_Periph : aliased GPIO_Peripheral
      with Import, Address => System'To_Address (16#40022000#);
+
+   --  General-purpose I/Os
+   GPIOJ_Periph : aliased GPIO_Peripheral
+     with Import, Address => System'To_Address (16#40022400#);
+
+   --  General-purpose I/Os
+   GPIOK_Periph : aliased GPIO_Peripheral
+     with Import, Address => System'To_Address (16#40022800#);
 
 end Interfaces.STM32.GPIO;

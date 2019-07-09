@@ -789,6 +789,21 @@ package body Mast.Monoprocessor_Tools is
             Transaction(I).The_Task(Ni).Rij:=Ri+Ji;
             Transaction(I).The_Task(Ni).Jij:=Ri+Ji-Rbi;
          end if;
+         Put_Line("ResponseTime:" &
+                    Time'Image(Transaction(I).The_Task(Ni).Rij));
+         if Transaction(I).The_Task(Ni).Rij > Transaction(I).The_Task(Ni).Dij
+         then
+            Put_Line ("DMtask:" & Transaction_ID'Image(I));
+         end if;
+         if I = Max_Transactions then
+            if Transaction(I).The_Task(Ni).Rij
+              > Time_Interval(952560000) then
+                  Put_Line("L: " & Integer'Image(-1));
+               else
+                  Put_Line("L:" &  Time'Image(Transaction(I).The_Task(Ni).Rij));
+               end if;
+         end if;
+
       end loop;
       Translate_Linear_Analysis_Results(Transaction,The_System);
    end RM_Analysis;

@@ -7,7 +7,8 @@ package Cyclic_Tasks is
       Dead       : Positive;
       Cycle_Time : Positive;
       T_Num      : Integer;
-      Gauss_Num  : Integer
+      Gauss_Num  : Integer;
+      Offset     : Integer
       ) is
       pragma Priority (Pri);
       pragma Storage_Size (450);

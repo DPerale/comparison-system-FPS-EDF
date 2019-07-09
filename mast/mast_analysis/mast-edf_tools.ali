@@ -21,7 +21,7 @@ RV NO_DYNAMIC_SIZED_OBJECTS
 RV NO_IMPLICIT_LOOPS
 RV SPARK_05
 
-U mast.edf_tools%b	mast-edf_tools.adb	43e05182 NE OO PK
+U mast.edf_tools%b	mast-edf_tools.adb	7ccab536 NE OO PK
 W ada%s			ada.ads			ada.ali
 Z ada.exceptions%s	a-except.adb		a-except.ali
 Z ada.tags%s		a-tags.adb		a-tags.ali
@@ -90,46 +90,46 @@ D a-textio.ads		20180525052302 881db35a ada.text_io%s
 D a-tiflio.ads		20180525052259 56fbda09 ada.text_io.float_io%s
 D a-unccon.ads		20180525052301 0e9b276f ada.unchecked_conversion%s
 D a-uncdea.ads		20180525052301 eff36322 ada.unchecked_deallocation%s
-D hash_lists.ads	20080722124150 ebcb181e hash_lists%s
-D indexed_lists.ads	20080722124150 2a304d11 indexed_lists%s
-D indexed_lists.adb	20080722124150 1bb8ddaa indexed_lists%b
+D hash_lists.ads	20190621183101 ebcb181e hash_lists%s
+D indexed_lists.ads	20190621183101 2a304d11 indexed_lists%s
+D indexed_lists.adb	20190621183101 1bb8ddaa indexed_lists%b
 D interfac.ads		20180525052300 5ab55268 interfaces%s
 D i-cstrea.ads		20180525052259 e53d8b8e interfaces.c_streams%s
-D list_exceptions.ads	20080722124150 720909ba list_exceptions%s
-D mast.ads		20080722124150 ce320f7b mast%s
-D mast-drivers.ads	20080722124150 24d64b13 mast.drivers%s
-D mast-edf_tools.ads	20080722124150 3dacf9c3 mast.edf_tools%s
-D mast-edf_tools.adb	20190618112048 9f8b9862 mast.edf_tools%b
-D mast-events.ads	20080722124150 46b5a01e mast.events%s
-D mast-graphs.ads	20080722124150 28bf5497 mast.graphs%s
-D mast-graphs-event_handlers.ads  20080722124150 532e4f04 mast.graphs.event_handlers%s
-D mast-graphs-links.ads	20080722124150 c72e3255 mast.graphs.links%s
-D mast-io.ads		20080722124150 c81275e3 mast.io%s
-D mast-linear_translation.ads  20080722124150 fc1e7c55 mast.linear_translation%s
-D mast-linear_translation.adb  20190503122723 bb3a5f76 mast.linear_translation%b
-D mast-max_numbers.ads	20080722124150 a7bdd342 mast.max_numbers%s
-D mast-operations.ads	20080722124150 7c81852a mast.operations%s
-D mast-processing_resources.ads  20080722124150 d115afa6 mast.processing_resources%s
-D mast-processing_resources-network.ads  20080722124150 810c9112 mast.processing_resources.network%s
-D mast-processing_resources-processor.ads  20080722124150 c64c47fc mast.processing_resources.processor%s
-D mast-results.ads	20080722124150 baf539fc mast.results%s
-D mast-schedulers.ads	20080722124150 58d16fb6 mast.schedulers%s
-D mast-scheduling_parameters.ads  20080722124150 3e1e05b7 mast.scheduling_parameters%s
-D mast-scheduling_policies.ads  20080722124150 c3a91c32 mast.scheduling_policies%s
-D mast-scheduling_servers.ads  20080722124150 9878ddd6 mast.scheduling_servers%s
-D mast-shared_resources.ads  20080722124150 a742b9d2 mast.shared_resources%s
-D mast-synchronization_parameters.ads  20080722124150 70bb7288 mast.synchronization_parameters%s
-D mast-systems.ads	20080722124150 cc6782d3 mast.systems%s
-D mast-timers.ads	20080722124150 308ad90c mast.timers%s
-D mast-timing_requirements.ads  20080722124150 8c52dba9 mast.timing_requirements%s
-D mast-tool_exceptions.ads  20080722124150 c6468eda mast.tool_exceptions%s
-D mast-tools.ads	20080722124150 00f9278d mast.tools%s
-D mast-transaction_operations.ads  20080722124150 192cb4bf mast.transaction_operations%s
-D mast-transaction_operations.adb  20080722124150 34a83c08 mast.transaction_operations%b
-D mast-transactions.ads	20080722124150 8477c124 mast.transactions%s
-D named_lists.ads	20080722124150 8b5d30f2 named_lists%s
-D priority_queues.ads	20080722124150 3e25a01a priority_queues%s
-D priority_queues.adb	20080722124150 bf393d86 priority_queues%b
+D list_exceptions.ads	20190621183101 720909ba list_exceptions%s
+D mast.ads		20190621183100 ce320f7b mast%s
+D mast-drivers.ads	20190621183100 24d64b13 mast.drivers%s
+D mast-edf_tools.ads	20190621183100 3dacf9c3 mast.edf_tools%s
+D mast-edf_tools.adb	20190702141512 a0a17cd6 mast.edf_tools%b
+D mast-events.ads	20190621183100 46b5a01e mast.events%s
+D mast-graphs.ads	20190621183100 28bf5497 mast.graphs%s
+D mast-graphs-event_handlers.ads  20190621183100 532e4f04 mast.graphs.event_handlers%s
+D mast-graphs-links.ads	20190621183100 c72e3255 mast.graphs.links%s
+D mast-io.ads		20190621183100 c81275e3 mast.io%s
+D mast-linear_translation.ads  20190621183100 fc1e7c55 mast.linear_translation%s
+D mast-linear_translation.adb  20190621183100 bb3a5f76 mast.linear_translation%b
+D mast-max_numbers.ads	20190621183100 a7bdd342 mast.max_numbers%s
+D mast-operations.ads	20190621183100 7c81852a mast.operations%s
+D mast-processing_resources.ads  20190621183100 d115afa6 mast.processing_resources%s
+D mast-processing_resources-network.ads  20190621183100 810c9112 mast.processing_resources.network%s
+D mast-processing_resources-processor.ads  20190621183100 c64c47fc mast.processing_resources.processor%s
+D mast-results.ads	20190621183100 baf539fc mast.results%s
+D mast-schedulers.ads	20190621183100 58d16fb6 mast.schedulers%s
+D mast-scheduling_parameters.ads  20190621183100 3e1e05b7 mast.scheduling_parameters%s
+D mast-scheduling_policies.ads  20190621183100 c3a91c32 mast.scheduling_policies%s
+D mast-scheduling_servers.ads  20190621183100 9878ddd6 mast.scheduling_servers%s
+D mast-shared_resources.ads  20190621183100 a742b9d2 mast.shared_resources%s
+D mast-synchronization_parameters.ads  20190621183100 70bb7288 mast.synchronization_parameters%s
+D mast-systems.ads	20190621183100 cc6782d3 mast.systems%s
+D mast-timers.ads	20190621183100 308ad90c mast.timers%s
+D mast-timing_requirements.ads  20190621183100 8c52dba9 mast.timing_requirements%s
+D mast-tool_exceptions.ads  20190621183100 c6468eda mast.tool_exceptions%s
+D mast-tools.ads	20190621183100 00f9278d mast.tools%s
+D mast-transaction_operations.ads  20190621183100 192cb4bf mast.transaction_operations%s
+D mast-transaction_operations.adb  20190621183100 34a83c08 mast.transaction_operations%b
+D mast-transactions.ads	20190621183100 8477c124 mast.transactions%s
+D named_lists.ads	20190621183101 8b5d30f2 named_lists%s
+D priority_queues.ads	20190621183101 3e25a01a priority_queues%s
+D priority_queues.adb	20190621183101 bf393d86 priority_queues%b
 D system.ads		20180525052301 4635ec04 system%s
 D s-conca2.ads		20180525052301 02a0d7d0 system.concat_2%s
 D s-conca3.ads		20180525052302 0b705ca5 system.concat_3%s
@@ -163,45 +163,46 @@ D s-ststop.ads		20180525052300 5fbf1b38 system.strings.stream_ops%s
 D s-traent.ads		20180525052300 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20180525052301 34867c83 system.unsigned_types%s
 D s-wchcon.ads		20180525052301 1b7d22d2 system.wch_con%s
-D var_strings.ads	20080722124150 38b5efa3 var_strings%s
+D var_strings.ads	20190621183101 38b5efa3 var_strings%s
 X 1 ada.ads
 16K9*Ada 20e8 20|44r3 46r5
 X 7 a-textio.ads
 49K13*Text_IO 471e16 20|44w7 46r9
 263U14*Put_Line 20|284s28 428s31 456s19 506s28 532s19 534s19 636s46 663s46
-. 720s34 758s10
+. 720s34 755s13 762s10
 X 17 mast.ads
 31K9*Mast 129e9 19|30r6 30r19 31r9 34r27 38r27 42r27 46r27 49r5 20|30r6 31r3
 . 32r3 33r3 34r3 35r3 36r3 37r3 38r3 39r3 40r3 40r16 40r44 41r3 47r10 48r10
 . 49r10 51r14 67r27 73r22 74r34 76r23 131r22 132r25 138r9 142r19 145r20 154r25
 . 157r10 198r7 199r19 200r10 202r10 204r22 207r13 315r27 329r27 339r25 342r10
-. 768r27 776r5
+. 772r27 780r5
 35I9*Priority<short_integer>
 37I9*Preemption_Level<short_integer> 20|182r34
-57F9*Time_Interval<long_float> 20|531r23 534r35 540r18 545r19
+57F9*Time_Interval<long_float> 20|531r23 534r35 540r18 545r19 754r17
 61F12*Time{57F9} 20|57r22 57r35 59r14 59r23 78r25 119r47 174r22 181r18 358r55
 . 359r12 361r11 362r18 364r18 368r44 374r16 416r30 449r29 570r31 577r36 579r39
-. 588r36 590r39 594r34 605r36 609r38 620r45 711r49 735r34 736r34 757r18 758r47
+. 588r36 590r39 594r34 605r36 609r38 620r45 711r49 735r34 736r34 756r21 761r18
+. 762r47
 63f4*Large_Time{57F9} 20|429r40 430r36 467r49 468r49 507r37 508r33 637r55
 . 638r51 664r55 665r51 747r49 748r49
 79V13*Ceiling{61F12} 20|434s46 512s43 558s36 572s33 584s33 595s39 642s61
 . 679s49
 80V13*Floor{61F12} 20|687s49
 X 19 mast-edf_tools.ads
-31K14*EDF_Tools 17|31k9 19|49l10 49e19 20|51b19 776l10 776t19
+31K14*EDF_Tools 17|31k9 19|49l10 49e19 20|51b19 780l10 780t19
 33U14*EDF_Monoprocessor_Analysis 34=7 35>7 20|314b14 322l8 322t34
 34r7 The_System{40|48R9} 20|315b7 321m38
 35b7 Verbose{boolean} 20|316b7 321r49
-37U14*EDF_Within_Priorities_Analysis 38=7 39>7 20|321s7 328b14 761l8 761t38
-38r7 The_System{40|48R9} 20|329b7 337r11 340r26 342r63 372r31 760m53
+37U14*EDF_Within_Priorities_Analysis 38=7 39>7 20|321s7 328b14 765l8 765t38
+38r7 The_System{40|48R9} 20|329b7 337r11 340r26 342r63 372r31 764m53
 39b7 Verbose{boolean} 20|330b7 372r54
 41U14*Deadline_Assignment 42=7 43>7 20|66b14 308l8 308t27
 42r7 The_System{40|48R9} 20|67b7 152r11 155r26 157r63 198r38 199r48 201r23
 . 216r10 217r49 220r22 234r31
 43b7 Verbose{boolean} 20|68b7 234r54 283r28
-45U14*Linear_Deadline_Distribution 46=7 47>7 20|767b14 774l8 774t36
-46r7 The_System{40|48R9} 20|768b7
-47b7 Verbose{boolean} 20|769b7
+45U14*Linear_Deadline_Distribution 46=7 47>7 20|771b14 778l8 778t36
+46r7 The_System{40|48R9} 20|772b7
+47b7 Verbose{boolean} 20|773b7
 X 20 mast-edf_tools.adb
 57V13 Min0{17|61F12} 57b13 57>18 57>20 60l8 60t12 678s61
 57f18 X{17|61F12} 59r32
@@ -274,7 +275,7 @@ X 20 mast-edf_tools.adb
 . 575r33 585r37 586r32 587r31 596r39 597r36 606r33 607r33 608r33 626r47 627r51
 . 628r44 629r42 633r46 643r54 645r58 648r49 650r48 653r46 655r42 659r46 680r55
 . 682r59 685r50 688r51 690r59 693r51 695r50 697r48 747m16 748m16 750m16 751m16
-. 760r41
+. 756r32 764r41
 358f7 Ci{17|61F12} 386m10 397r21 416r38 463r25 603r39 620r53 724r40
 358f11 Bi{17|61F12} 391m10 397r18 416r27 476r18 495r24 603r36 620r42
 358f14 Ri{17|61F12} 398m13 451r23 452m19 455r19 470r49 471r49 553m16 715r38
@@ -291,10 +292,11 @@ X 20 mast-edf_tools.adb
 . 735r42 736r42
 358f43 Ji{17|61F12} 388m10 470r52 471r52 558r47 570r44 609r51 711r42 750r52
 . 751r52
-358f47 Pi_Ti{17|61F12} 374m7 735r25 736m25 757r10 758r58
+358f47 Pi_Ti{17|61F12} 374m7 735r25 736m25 761r10 762r58
 359f7 Di{17|61F12} 389m10 570r47 609r54 734r27
 360e7 Si{26|141E9[351]} 390m10 394r13
 361f7 L{17|61F12} 477m13 529m13 531r19 534r55 540r16 545m16 558r45 596r37
+. 754r13
 362f7 A{17|61F12} 609m31 711r40
 362f10 Da{17|61F12} 605m31 609r34 692r77
 362f14 E{17|61F12} 570m28 573r32 585r32
@@ -306,7 +308,7 @@ X 20 mast-edf_tools.adb
 366i7 Max_Task{333I12} 377r19 379r20 546m16
 367i7 Ni{348I15} 385m10 386r38 387r38 388r38 389r38 390r38 391r38 392r39
 . 403r45 404r40 410r37 422r51 423r46 467r40 468r40 470r40 471r40 482r45 501r48
-. 554r40 568r51 629r66 631r61 655r66 657r61 747r40 748r40 750r40 751r40
+. 554r40 568r51 629r66 631r61 655r66 657r61 747r40 748r40 750r40 751r40 756r56
 368a7 Jeffect(17|61F12) 436r35 514r32 645r50 682r51 690r51
 369b7 Unbounded_Time{boolean} 396m13 431m31 443r32 445r29 448r26 457m19 466r16
 . 475m13 509m28 524r26 549m13 550r20 552m16 639m46 666m46 705r47 707r44 710r41
@@ -314,7 +316,7 @@ X 20 mast-edf_tools.adb
 377i11 I<integer> 381r32 385r26 386r26 387r26 388r26 389r26 390r26 391r26
 . 392r27 403r33 404r25 410r25 422r39 423r31 467r28 468r28 470r28 471r28 482r33
 . 501r36 530r16 554r28 568r39 629r54 631r46 655r54 657r46 747r28 748r28 750r28
-. 751r28
+. 751r28 756r44
 399i17 J<integer> 400r38 401r42 402r35 404r22 406r43
 401i20 Tsk<integer> 402r47 404r35 406r55
 418i23 J<integer> 419r44 420r48 421r41 423r28 425r43 435r51 436r55 438r46
@@ -379,13 +381,13 @@ X 26 mast-linear_translation.ads
 189e7 Model{114E9[20|351]} 20|425r60[351] 503r57[351] 633r75[351] 660r59[351]
 190b7 Jitter_Avoidance{boolean} 20|437r43[351] 515r40[351] 647r58[351] 684r59[351]
 . 692r59[351]
-192f7 Rij{17|61F12} 20|467m44[351] 470m44[351] 747m44[351] 750m44[351]
+192f7 Rij{17|61F12} 20|467m44[351] 470m44[351] 747m44[351] 750m44[351] 756r60[351]
 192f11 Rbij{17|61F12} 20|410m41[351] 554m44[351]
 193i7 Prioij{17|35I9} 20|402r52[351] 403r49[351] 421r58[351] 422r55[351]
 . 481r52[351] 482r49[351] 500r55[351] 501r52[351] 567r59[351] 568r55[351]
 . 628r73[351] 629r70[351] 654r56[351] 655r70[351]
 197r7 Pav{144R9[20|166]} 20|240r45[166] 241r44[166] 248r48[166]
-201A9 The_Transaction_Tasks(169R9[20|166])<20|149I12>
+201A9 The_Transaction_Tasks(169R9[20|351])<20|334I12>
 204R9 Transaction_Data
 207i7 Ni{20|149I12} 20|237r35[166] 239r39[166] 381r35[351] 385r29[351] 400r41[351]
 . 401r45[351] 419r47[351] 420r51[351] 479r41[351] 480r45[351] 498r44[351]
@@ -402,11 +404,11 @@ X 26 mast-linear_translation.ads
 . 629r57[351] 633r61[351] 644r50[351] 646r58[351] 649r49[351] 651r48[351]
 . 654r42[351] 655r57[351] 660r45[351] 681r51[351] 683r59[351] 686r50[351]
 . 689r51[351] 691r59[351] 694r51[351] 696r50[351] 698r48[351] 747m31[351]
-. 748m31[351] 750m31[351] 751m31[351]
+. 748m31[351] 750m31[351] 751m31[351] 756r47[351]
 216A9 Linear_Transaction_System(204R9[20|166])<20|148I12> 20|180r21[166]
 . 357r21[351]
 220U14 Translate_Linear_System 20|234s7[166] 372s7[351]
-225U14 Translate_Linear_Analysis_Results 20|760s7[351]
+225U14 Translate_Linear_Analysis_Results 20|764s7[351]
 X 28 mast-max_numbers.ads
 32K14*Max_Numbers 20|33w8 154r30 157r15 339r30 342r15 28|40e21
 34V13*Calculate_Max_Transactions{natural} 20|154s42 339s42
@@ -445,9 +447,9 @@ X 39 mast-synchronization_parameters.ads
 65V13*The_Preemption_Level{17|37I9} 20|270R54 276R51
 71V13*Preassigned{boolean} 20|266R43 279R52
 X 40 mast-systems.ads
-42K14*Systems 19|30w11 34r32 38r32 42r32 46r32 20|67r32 315r32 329r32 768r32
+42K14*Systems 19|30w11 34r32 38r32 42r32 46r32 20|67r32 315r32 329r32 772r32
 . 40|108e17
-48R9*System 19|34r40 38r40 42r40 46r40 20|67r40 315r40 329r40 768r40 40|63e14
+48R9*System 19|34r40 38r40 42r40 46r40 20|67r40 315r40 329r40 772r40 40|63e14
 55r7*Processing_Resources{48|37R9[30|118]} 20|152r22 337r22
 59r7*Transactions{48|37R9[47|198]} 20|198r49 199r59 201r34
 60r7*Scheduling_Servers{48|37R9[37|152]} 20|216r21 217r60 220r33
@@ -457,9 +459,9 @@ X 42 mast-timing_requirements.ads
 102H9*Deadline<80R9> 20|91r56 93r42 42|532e14
 108V13*The_Deadline{17|61F12} 20|92R53
 X 43 mast-tool_exceptions.ads
-30K14*Tool_Exceptions 20|30w11 288r25 290r31 772r7 773r13 43|48e25
-33X4*Tool_Failure 20|290r47 773r29
-40U14*Set_Tool_Failure_Message 20|288s41 772s23
+30K14*Tool_Exceptions 20|30w11 288r25 290r31 776r7 777r13 43|48e25
+33X4*Tool_Failure 20|290r47 777r29
+40U14*Set_Tool_Failure_Message 20|288s41 776s23
 X 44 mast-tools.ads
 33K14*Tools 19|30w24 44|270e15
 X 45 mast-transaction_operations.ads

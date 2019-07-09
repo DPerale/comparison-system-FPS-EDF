@@ -751,6 +751,10 @@ package body Mast.EDF_Tools is
                Transaction(I).The_Task(Ni).Jij:=Ri+Ji-Rbi;
             end if;
          end if;
+         if L < Time_Interval(952560000) then
+            Put_Line("ResponseTime:" &
+                    Time'Image(Transaction(I).The_Task(Ni).Rij));
+         end if;
       end loop;
 --        Put_Line("Output P: " & Integer'Image(P));
 --                          Put_Line("Output Ti: " & Time'Image(Ti));

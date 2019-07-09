@@ -14,8 +14,8 @@ Z system.secondary_stack%s  s-secsta.adb	s-secsta.ali
 
 U mast_lex_dfa%s	mast_lex_dfa.ads	ba6952a6 EE NE OO PK IL
 
-D mast_lex_dfa.ads	20080722124150 ba6952a6 mast_lex_dfa%s
-D mast_lex_dfa.adb	20080722124150 f66a04b2 mast_lex_dfa%b
+D mast_lex_dfa.ads	20190621183100 ba6952a6 mast_lex_dfa%s
+D mast_lex_dfa.adb	20190621183100 f66a04b2 mast_lex_dfa%b
 D system.ads		20180525052301 4635ec04 system%s
 D s-parame.ads		20180525052302 48ec542b system.parameters%s
 D s-secsta.ads		20180525052301 20bbe636 system.secondary_stack%s

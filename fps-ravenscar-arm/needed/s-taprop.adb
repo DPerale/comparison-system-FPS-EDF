@@ -190,6 +190,10 @@ package body System.Task_Primitives.Operations is
       System.OS_Interface.Set_Relative_Deadline (Relative_Deadline);
    end Set_Relative_Deadline;
 
+   ----------------
+   -- Set_Period --
+   ----------------
+
    procedure Set_Period
     (T       : ST.Task_Id;
       Period       : System.BB.Time.Time_Span) is
@@ -197,6 +201,10 @@ package body System.Task_Primitives.Operations is
       pragma Assert (T = Self);
       System.OS_Interface.Set_Period (Period);
    end Set_Period;
+
+   -----------------------
+   -- Set_Starting_Time --
+   -----------------------
 
    procedure Set_Starting_Time
      (T      : ST.Task_Id;

@@ -2,7 +2,7 @@
 --  Copyright (C) 2017, AdaCore
 --
 
---  This spec has been automatically generated from STM32F40x.svd
+--  This spec has been automatically generated from STM32F429x.svd
 
 pragma Ada_2012;
 pragma Style_Checks (Off);
@@ -107,8 +107,9 @@ package Interfaces.STM32.FLASH is
    subtype CR_PG_Field is Interfaces.STM32.Bit;
    subtype CR_SER_Field is Interfaces.STM32.Bit;
    subtype CR_MER_Field is Interfaces.STM32.Bit;
-   subtype CR_SNB_Field is Interfaces.STM32.UInt4;
+   subtype CR_SNB_Field is Interfaces.STM32.UInt5;
    subtype CR_PSIZE_Field is Interfaces.STM32.UInt2;
+   subtype CR_MER1_Field is Interfaces.STM32.Bit;
    subtype CR_STRT_Field is Interfaces.STM32.Bit;
    subtype CR_EOPIE_Field is Interfaces.STM32.Bit;
    subtype CR_ERRIE_Field is Interfaces.STM32.Bit;
@@ -120,16 +121,16 @@ package Interfaces.STM32.FLASH is
       PG             : CR_PG_Field := 16#0#;
       --  Sector Erase
       SER            : CR_SER_Field := 16#0#;
-      --  Mass Erase
+      --  Mass Erase of sectors 0 to 11
       MER            : CR_MER_Field := 16#0#;
       --  Sector number
       SNB            : CR_SNB_Field := 16#0#;
-      --  unspecified
-      Reserved_7_7   : Interfaces.STM32.Bit := 16#0#;
       --  Program size
       PSIZE          : CR_PSIZE_Field := 16#0#;
       --  unspecified
-      Reserved_10_15 : Interfaces.STM32.UInt6 := 16#0#;
+      Reserved_10_14 : Interfaces.STM32.UInt5 := 16#0#;
+      --  Mass Erase of sectors 12 to 23
+      MER1           : CR_MER1_Field := 16#0#;
       --  Start
       STRT           : CR_STRT_Field := 16#0#;
       --  unspecified
@@ -150,10 +151,10 @@ package Interfaces.STM32.FLASH is
       PG             at 0 range 0 .. 0;
       SER            at 0 range 1 .. 1;
       MER            at 0 range 2 .. 2;
-      SNB            at 0 range 3 .. 6;
-      Reserved_7_7   at 0 range 7 .. 7;
+      SNB            at 0 range 3 .. 7;
       PSIZE          at 0 range 8 .. 9;
-      Reserved_10_15 at 0 range 10 .. 15;
+      Reserved_10_14 at 0 range 10 .. 14;
+      MER1           at 0 range 15 .. 15;
       STRT           at 0 range 16 .. 16;
       Reserved_17_23 at 0 range 17 .. 23;
       EOPIE          at 0 range 24 .. 24;
@@ -174,23 +175,23 @@ package Interfaces.STM32.FLASH is
    --  Flash option control register
    type OPTCR_Register is record
       --  Option lock
-      OPTLOCK        : OPTCR_OPTLOCK_Field := 16#0#;
+      OPTLOCK        : OPTCR_OPTLOCK_Field := 16#1#;
       --  Option start
       OPTSTRT        : OPTCR_OPTSTRT_Field := 16#0#;
       --  BOR reset Level
-      BOR_LEV        : OPTCR_BOR_LEV_Field := 16#1#;
+      BOR_LEV        : OPTCR_BOR_LEV_Field := 16#3#;
       --  unspecified
-      Reserved_4_4   : Interfaces.STM32.Bit := 16#1#;
+      Reserved_4_4   : Interfaces.STM32.Bit := 16#0#;
       --  WDG_SW User option bytes
-      WDG_SW         : OPTCR_WDG_SW_Field := 16#0#;
+      WDG_SW         : OPTCR_WDG_SW_Field := 16#1#;
       --  nRST_STOP User option bytes
-      nRST_STOP      : OPTCR_nRST_STOP_Field := 16#0#;
+      nRST_STOP      : OPTCR_nRST_STOP_Field := 16#1#;
       --  nRST_STDBY User option bytes
-      nRST_STDBY     : OPTCR_nRST_STDBY_Field := 16#0#;
+      nRST_STDBY     : OPTCR_nRST_STDBY_Field := 16#1#;
       --  Read protect
-      RDP            : OPTCR_RDP_Field := 16#0#;
+      RDP            : OPTCR_RDP_Field := 16#AA#;
       --  Not write protect
-      nWRP           : OPTCR_nWRP_Field := 16#0#;
+      nWRP           : OPTCR_nWRP_Field := 16#FFF#;
       --  unspecified
       Reserved_28_31 : Interfaces.STM32.UInt4 := 16#0#;
    end record
@@ -206,6 +207,26 @@ package Interfaces.STM32.FLASH is
       nRST_STOP      at 0 range 6 .. 6;
       nRST_STDBY     at 0 range 7 .. 7;
       RDP            at 0 range 8 .. 15;
+      nWRP           at 0 range 16 .. 27;
+      Reserved_28_31 at 0 range 28 .. 31;
+   end record;
+
+   subtype OPTCR1_nWRP_Field is Interfaces.STM32.UInt12;
+
+   --  Flash option control register 1
+   type OPTCR1_Register is record
+      --  unspecified
+      Reserved_0_15  : Interfaces.STM32.UInt16 := 16#0#;
+      --  Not write protect
+      nWRP           : OPTCR1_nWRP_Field := 16#FFF#;
+      --  unspecified
+      Reserved_28_31 : Interfaces.STM32.UInt4 := 16#0#;
+   end record
+     with Volatile_Full_Access, Size => 32,
+          Bit_Order => System.Low_Order_First;
+
+   for OPTCR1_Register use record
+      Reserved_0_15  at 0 range 0 .. 15;
       nWRP           at 0 range 16 .. 27;
       Reserved_28_31 at 0 range 28 .. 31;
    end record;
@@ -228,6 +249,8 @@ package Interfaces.STM32.FLASH is
       CR      : aliased CR_Register;
       --  Flash option control register
       OPTCR   : aliased OPTCR_Register;
+      --  Flash option control register 1
+      OPTCR1  : aliased OPTCR1_Register;
    end record
      with Volatile;
 
@@ -238,6 +261,7 @@ package Interfaces.STM32.FLASH is
       SR      at 16#C# range 0 .. 31;
       CR      at 16#10# range 0 .. 31;
       OPTCR   at 16#14# range 0 .. 31;
+      OPTCR1  at 16#18# range 0 .. 31;
    end record;
 
    --  FLASH

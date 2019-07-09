@@ -45,7 +45,7 @@ package body System.BB.MCU_Parameters is
    begin
       --  Set the PWR to Scale 1 mode to stabilize the MCU when in high
       --  performance mode.
-      PWR_Periph.CR.VOS := 1;
+      PWR_Periph.CR.VOS := 3;
    end PWR_Initialize;
 
    --------------------------
@@ -55,7 +55,18 @@ package body System.BB.MCU_Parameters is
    procedure PWR_Overdrive_Enable
    is
    begin
-      null;
+      --  Enable the overdrive mode
+      PWR_Periph.CR.ODEN := 1;
+      --  Wait for stabilisation
+      loop
+         exit when PWR_Periph.CSR.ODRDY = 1;
+      end loop;
+
+      --  Now switch to it
+      PWR_Periph.CR.ODSWEN := 1;
+      loop
+         exit when PWR_Periph.CSR.ODSWRDY = 1;
+      end loop;
    end PWR_Overdrive_Enable;
 
 end System.BB.MCU_Parameters;

@@ -2,9 +2,9 @@
 --  Copyright (C) 2017, AdaCore
 --
 
---  This spec has been automatically generated from STM32F40x.svd
+--  This spec has been automatically generated from STM32F429x.svd
 
---  This is a version for the STM32F40x MCU
+--  This is a version for the STM32F429x MCU
 package Ada.Interrupts.Names is
 
    --  All identifiers in this unit are implementation defined
@@ -29,6 +29,9 @@ package Ada.Interrupts.Names is
 
    --  RTC Wakeup interrupt through the EXTI line
    RTC_WKUP_Interrupt                : constant Interrupt_ID := 3;
+
+   --  Flash global interrupt
+   FLASH_Interrupt                   : constant Interrupt_ID := 4;
 
    --  RCC global interrupt
    RCC_Interrupt                     : constant Interrupt_ID := 5;
@@ -159,8 +162,8 @@ package Ada.Interrupts.Names is
    --  DMA1 Stream7 global interrupt
    DMA1_Stream7_Interrupt            : constant Interrupt_ID := 47;
 
-   --  FSMC global interrupt
-   FSMC_Interrupt                    : constant Interrupt_ID := 48;
+   --  FMC global interrupt
+   FMC_Interrupt                     : constant Interrupt_ID := 48;
 
    --  SDIO global interrupt
    SDIO_Interrupt                    : constant Interrupt_ID := 49;
@@ -257,5 +260,32 @@ package Ada.Interrupts.Names is
 
    --  FPU global interrupt
    FPU_Interrupt                     : constant Interrupt_ID := 81;
+
+   --  UART 7 global interrupt
+   UART7_Interrupt                   : constant Interrupt_ID := 82;
+
+   --  UART 8 global interrupt
+   UART8_Interrupt                   : constant Interrupt_ID := 83;
+
+   --  SPI 4 global interrupt
+   SPI4_Interrupt                    : constant Interrupt_ID := 84;
+
+   --  SPI 5 global interrupt
+   SPI5_Interrupt                    : constant Interrupt_ID := 85;
+
+   --  SPI 6 global interrupt
+   SPI6_Interrupt                    : constant Interrupt_ID := 86;
+
+   --  SAI1 global interrupt
+   SAI1_Interrupt                    : constant Interrupt_ID := 87;
+
+   --  LTDC global interrupt
+   LTDC_Interrupt                    : constant Interrupt_ID := 88;
+
+   --  LTDC global error interrupt
+   LTDC_ER_Interrupt                 : constant Interrupt_ID := 89;
+
+   --  DMA2D global interrupt
+   DMA2D_Interrupt                   : constant Interrupt_ID := 90;
 
 end Ada.Interrupts.Names;

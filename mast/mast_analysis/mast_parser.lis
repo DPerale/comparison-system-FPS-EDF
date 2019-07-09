@@ -1,80 +1,74 @@
 Initializing error report...
  1   Model (
- 2      Model_Name  => EDF_Within_Priorities_Example,
+ 2      Model_Name  => FPS,
  3      Model_Date  => 2004-12-01);
  7   Processing_Resource (
- 8           Type => Regular_Processor,
- 9           Name => Processor_1);
- 11  Scheduler (
- 12          Type  => Primary_Scheduler,
- 13          Name  => EDF_Scheduler,
- 14          Host  => Processor_1,
- 15          Policy =>         
- 16             (Type => EDF,
- 17  	    Worst_Context_Switch => 0.5));
- 21  Scheduling_Server (
- 22          Type                    => Regular,
- 23          Name                    => Task_EDF21,
- 24          Server_Sched_Parameters => (
- 25                  Type        => EDF_policy,
- 26                  Deadline    => 2,
- 27                  Preassigned => No),
- 28          Scheduler               => EDF_Scheduler);
- 30  Scheduling_Server (
- 31          Type                    => Regular,
- 32          Name                    => Task_EDF22,
- 33          Server_Sched_Parameters => (
- 34                  Type        => EDF_policy,
- 35                  Deadline    => 20,  --  45
- 36                  Preassigned => No),
- 37          Scheduler               => EDF_Scheduler);
- 44  Operation (
- 45          Type    => Simple,
- 46          Name    => Task_21,
- 47          Worst_Case_Execution_Time => 0.5);
- 49  Operation (
- 50          Type    => Simple,
- 51          Name    => Task_22,
- 52          Worst_Case_Execution_Time => 5.5);
- 61  Transaction (
- 62          Type    => Regular,
- 63          Name    => Tr_21,
- 64          External_Events => (
- 65                  (Type   => Periodic,
- 66                   Name   => E1,
- 67                   Period => 2)),
- 68          Internal_Events => (
- 69                  (Type   => regular,
- 70                   name   => O1,
- 71                   Timing_Requirements => (
- 72                           Type             => Hard_Global_Deadline,
- 73                           Deadline         => 2,
- 74                           referenced_event => E1))),
- 75          Event_Handlers => (
- 76                  (Type                => Activity,
- 77                   Input_Event         => E1,
- 78                   Output_Event        => O1,
- 79                   Activity_Operation  => Task_21,
- 80                   Activity_Server     => Task_EDF21)));
- 82  Transaction (
- 83          Type    => Regular,
- 84          Name    => Tr_22,
- 85          External_Events => (
- 86                  (Type   => Periodic,
- 87                   Name   => E2,
- 88                   Period => 20)),
- 89          Internal_Events => (
- 90                  (Type   => regular,
- 91                   name   => O2,
- 92                   Timing_Requirements => (
- 93                           Type             => Hard_Global_Deadline,
- 94                           Deadline         => 20, --  45
- 95                           referenced_event => E2))),
- 96          Event_Handlers => (
- 97                  (Type                   => Activity,
- 98                   Input_Event            => E2,
- 99                   Output_Event           => O2,
- 100                  Activity_Operation     => Task_22,
- 101                  Activity_Server        => Task_EDF22)));
- 105 
+ 8   	Type 			=> Fixed_Priority_Processor,
+ 9   	Name 			=> CPU_1,
+ 10  	Worst_Context_Switch    => 0.25);
+ 14  Scheduling_Server (
+ 15  	Type				=> Fixed_Priority,
+ 16  	Name 				=> Task_1,
+ 17  	Server_Sched_Parameters		=> (
+ 18  		Type		=> Fixed_Priority_Policy,
+ 19  		The_Priority		=> 18,
+ 20                  Preassigned             => No),
+ 21  	Server_Processing_Resource	=> CPU_1);
+ 24  Scheduling_Server (
+ 25  	Type				=> Fixed_Priority,
+ 26  	Name 				=> Task_2,
+ 27  	Server_Sched_Parameters		=> (
+ 28  		Type		=> Fixed_Priority_Policy,
+ 29  		The_Priority		=> 17,
+ 30                  Preassigned             => No),
+ 31  	Server_Processing_Resource	=> CPU_1);
+ 36  Operation (
+ 37  	Type 				=> Simple,
+ 38  	Name 				=> a1,
+ 39  	Worst_Case_Execution_Time 	=> 4062);
+ 41  Operation (
+ 42  	Type 				=> Simple,
+ 43  	Name 				=> a2,
+ 44  	Worst_Case_Execution_Time 	=> 5007);
+ 49  Transaction (
+ 50  	Type	=> Regular,
+ 51  	Name	=> T1,
+ 52  	External_Events => (
+ 53  		(Type 		=> Periodic,
+ 54  		 Name 		=> E1,
+ 55  		 Period 	=> 10000)),
+ 56  	Internal_Events => (
+ 57  		(Type 	=> regular,
+ 58  		 name 	=> O1,
+ 59                   Timing_Requirements => (
+ 60  			 Type 		  => Hard_Global_Deadline,
+ 61  			 Deadline 	  => 10000,
+ 62  			 referenced_event => E1))),
+ 63  	Event_Handlers => (
+ 64  		(Type 			=> Activity,
+ 65  		 Input_Event 		=> E1,
+ 66  		 Output_Event 		=> O1,
+ 67  		 Activity_Operation 	=> a1,
+ 68  		 Activity_Server	=> Task_1)));
+ 70  Transaction (
+ 71  	Type	=> Regular,
+ 72  	Name	=> T2,
+ 73  	External_Events => (
+ 74  		(Type 		=> Periodic,
+ 75  		 Name 		=> E2,
+ 76  		 Period 	=> 11000)),
+ 77  	Internal_Events => (
+ 78  		(Type 	=> regular,
+ 79  		 name 	=> O2,
+ 80                   Timing_Requirements => (
+ 81  			 Type 		  => Hard_Global_Deadline,
+ 82  			 Deadline 	  => 11000,
+ 83  			 referenced_event => E2))),
+ 84  	Event_Handlers => (
+ 85  		(Type 			=> Activity,
+ 86  		 Input_Event 		=> E2,
+ 87  		 Output_Event 		=> O2,
+ 88  		 Activity_Operation 	=> a2,
+ 89  		 Activity_Server	=> Task_2)));
+ 92  
 

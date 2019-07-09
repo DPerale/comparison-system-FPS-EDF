@@ -32,7 +32,7 @@
 --                                                                          --
 ------------------------------------------------------------------------------
 
---  This package defines board parameters for the STM32F407-Discovery board
+--  This package defines board parameters for the STM32F429-Discovery board
 
 package System.BB.Board_Parameters is
    pragma No_Elaboration_Code_All;
@@ -42,10 +42,9 @@ package System.BB.Board_Parameters is
    -- Hardware clock --
    --------------------
 
-   Main_Clock_Frequency : constant := 168_000_000;
-   --  Optimal frequency of the system clock. Note that the STM32F411 can go
-   --  up to 200 MHz, but all other STM32F40x and STM32F41x MCUs can only do
-   --  168 MHz.
+   Main_Clock_Frequency : constant := 180_000_000;
+   --  Maximal frequency in over-drive mode. In non over-drive mode, the
+   --  frequency should be adjusted to 168 MHz.
 
    HSE_Clock_Frequency : constant := 8_000_000;
    --  Frequency of High Speed External clock.

@@ -9,7 +9,7 @@ package body Print_Task is
 
    task body Print is
       Task_Static_Offset : constant Ada.Real_Time.Time_Span :=
-               Ada.Real_Time.Microseconds (500000);
+               Ada.Real_Time.Microseconds (Offset);
 
       Next_Period : Ada.Real_Time.Time := System_Time.System_Start_Time
             + System_Time.Task_Activation_Delay + Task_Static_Offset;

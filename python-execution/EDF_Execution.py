@@ -38,77 +38,95 @@ def import_taskset(taskset, i, name):
 ##############################
 
 def make_adb_file (taskset, hyperPeriod):
-    file_adb = open("../edf-ravenscar-arm/src/cyclic_tasks.adb", "w")
-    file_adb.write("with Ada.Real_Time; use Ada.Real_Time;\n")
-    file_adb.write("with System_Time;\n")
-    file_adb.write("with System.Task_Primitives.Operations;\n")
-    file_adb.write("with System.BB.Time;\n")
-    file_adb.write("with System.BB.Threads;\n")
-    file_adb.write("with System.BB.Threads.Queues;\n")
-    file_adb.write("with Print_Task;\n")
-    file_adb.write("\n")
-    file_adb.write("package body Cyclic_Tasks is\n")
-    file_adb.write("\n")
-    file_adb.write("   task body Cyclic is\n")
-    file_adb.write("      Task_Static_Offset : constant Time_Span :=\n")
-    file_adb.write("               Ada.Real_Time.Microseconds (500000);\n")
-    file_adb.write("\n")
-    file_adb.write("      Next_Period : Ada.Real_Time.Time := System_Time.System_Start_Time\n")
-    file_adb.write("            + System_Time.Task_Activation_Delay + Task_Static_Offset;\n")
-    file_adb.write("\n")
-    file_adb.write("      Period : constant Ada.Real_Time.Time_Span :=\n")
-    file_adb.write("               Ada.Real_Time.Microseconds (Cycle_Time);\n")
-    file_adb.write("\n")
-    file_adb.write("      procedure Gauss (Times : Integer);\n")
-    file_adb.write("      procedure Gauss (Times : Integer) is\n")
-    file_adb.write("         Num : Integer := 0;\n")
-    file_adb.write("      begin\n")
-    file_adb.write("         for I in 1 .. Times loop\n")
-    file_adb.write("            Num := Num + I;\n")
-    file_adb.write("         end loop;\n")
-    file_adb.write("      end Gauss;\n")
-    file_adb.write("      Temp : Integer;\n")
-    file_adb.write("\n")
-    file_adb.write("   begin\n")
-    file_adb.write("      System.Task_Primitives.Operations.Set_Relative_Deadline\n")
-    file_adb.write("         (System.Task_Primitives.Operations.Self,\n")
-    file_adb.write("          System.BB.Time.Microseconds (Dead));\n")
-    file_adb.write("      System.BB.Threads.Set_Fake_Number_ID (T_Num);\n")
-    file_adb.write("      System.BB.Threads.Queues.Initialize_Task_Table (T_Num);\n")
-    file_adb.write("\n")
-    file_adb.write("      loop\n")
-    file_adb.write("         delay until Next_Period;\n")
-    file_adb.write("\n")
-    file_adb.write("         Temp := Gauss_Num;\n")
-    file_adb.write("         Gauss (Temp);\n")
-    file_adb.write("\n")
-    file_adb.write("         Next_Period := Next_Period + Period;\n")
-    file_adb.write("      end loop;\n")
-    file_adb.write("   end Cyclic;\n")
-    file_adb.write("\n")
-    file_adb.write("   procedure Init is\n")
-    file_adb.write("   begin\n")
-    file_adb.write("      System.Task_Primitives.Operations.Set_Relative_Deadline\n")
-    file_adb.write("        (System.Task_Primitives.Operations.Self,\n")
-    file_adb.write("          System.BB.Time.Milliseconds (Integer'Last));\n")
-    file_adb.write("      loop\n")
-    file_adb.write("         null;\n")
-    file_adb.write("      end loop;\n")
-    file_adb.write("   end Init;\n")
-    file_adb.write("\n")
-    file_adb.write("   P1 : Print_Task.Print (240, -" + str(1)+ ", " + str(int(float(hyperPeriod)/1000)) + "); -- period in milliseconds\n")
-    ##  file_adb.write("   P1 : Print_Task.Print (240, -" + str(1) + ", " + str(5000) + "); -- period in milliseconds\n")
-    for task in range (len(taskset)):
-        work = int((float(taskset[task][4])-1.62)*180/17)
-        #### DA METTERE APPOSTO PER ID
-        file_adb.write("   C"+str(task+1)+" : Cyclic ("+str(len(taskset)-task)+", "
-                                                    +str(taskset[task][1])+", "
-                                                    +str(taskset[task][2])+", "
-                                                    +str(task+1)+", "
-                                                    +str(work)+");\n")
-    file_adb.write ("end Cyclic_Tasks;")
-    file_adb.close()
-    os.system("cp ../edf-ravenscar-arm/src/cyclic_tasks.adb ../fps-ravenscar-arm/src/cyclic_tasks.adb")
+    for i in range (2):
+        if i == 0 :
+            file_adb = open("../edf-ravenscar-arm/src/cyclic_tasks.adb", "w")
+        else:
+            file_adb = open("../fps-ravenscar-arm/src/cyclic_tasks.adb", "w")
+        file_adb.write("with Ada.Real_Time; use Ada.Real_Time;\n")
+        file_adb.write("with System_Time;\n")
+        file_adb.write("with System.Task_Primitives.Operations;\n")
+        file_adb.write("with System.BB.Time;\n")
+        file_adb.write("with System.BB.Threads;\n")
+        file_adb.write("with System.BB.Threads.Queues;\n")
+        file_adb.write("with Print_Task;\n")
+        file_adb.write("\n")
+        file_adb.write("package body Cyclic_Tasks is\n")
+        file_adb.write("\n")
+        file_adb.write("   task body Cyclic is\n")
+        file_adb.write("      Task_Static_Offset : constant Time_Span :=\n")
+        file_adb.write("               Ada.Real_Time.Microseconds (500000);\n")
+        file_adb.write("\n")
+        file_adb.write("      Next_Period : Ada.Real_Time.Time := System_Time.System_Start_Time\n")
+        file_adb.write("            + System_Time.Task_Activation_Delay + Task_Static_Offset;\n")
+        file_adb.write("\n")
+        file_adb.write("      Period : constant Ada.Real_Time.Time_Span :=\n")
+        file_adb.write("               Ada.Real_Time.Microseconds (Cycle_Time);\n")
+        file_adb.write("\n")
+        file_adb.write("      procedure Gauss (Times : Integer);\n")
+        file_adb.write("      procedure Gauss (Times : Integer) is\n")
+        file_adb.write("         Num : Integer := 0;\n")
+        file_adb.write("      begin\n")
+        file_adb.write("         for I in 1 .. Times loop\n")
+        file_adb.write("            Num := Num + I;\n")
+        file_adb.write("         end loop;\n")
+        file_adb.write("      end Gauss;\n")
+        file_adb.write("      Temp : Integer;\n")
+        if i == 1:
+            file_adb.write("      Starting_Time_Ada_Real_Time :\n")
+            file_adb.write("      constant Ada.Real_Time.Time_Span\n")
+            file_adb.write("        := Next_Period - Ada.Real_Time.Time_First;\n")
+            file_adb.write("      Starting_Time_BB_Time : System.BB.Time.Time_Span;\n")
+        file_adb.write("\n")
+        file_adb.write("   begin\n")
+        if i == 1:
+            file_adb.write("      Starting_Time_BB_Time := System.BB.Time.To_Time_Span\n")
+            file_adb.write("        (Ada.Real_Time.To_Duration (Starting_Time_Ada_Real_Time));\n")
+            file_adb.write("      System.Task_Primitives.Operations.Set_Period\n")
+            file_adb.write("         (System.Task_Primitives.Operations.Self,\n")
+            file_adb.write("         System.BB.Time.Microseconds (Cycle_Time));\n")
+            file_adb.write("      System.Task_Primitives.Operations.Set_Starting_Time\n")
+            file_adb.write("        (System.Task_Primitives.Operations.Self,\n")
+            file_adb.write("          Starting_Time_BB_Time);\n")
+        file_adb.write("      System.Task_Primitives.Operations.Set_Relative_Deadline\n")
+        file_adb.write("         (System.Task_Primitives.Operations.Self,\n")
+        file_adb.write("          System.BB.Time.Microseconds (Dead));\n")
+        file_adb.write("      System.BB.Threads.Set_Fake_Number_ID (T_Num);\n")
+        file_adb.write("      System.BB.Threads.Queues.Initialize_Task_Table (T_Num);\n")
+        file_adb.write("\n")
+        file_adb.write("      loop\n")
+        file_adb.write("         delay until Next_Period;\n")
+        file_adb.write("\n")
+        file_adb.write("         Temp := Gauss_Num;\n")
+        file_adb.write("         Gauss (Temp);\n")
+        file_adb.write("\n")
+        file_adb.write("         Next_Period := Next_Period + Period;\n")
+        file_adb.write("      end loop;\n")
+        file_adb.write("   end Cyclic;\n")
+        file_adb.write("\n")
+        file_adb.write("   procedure Init is\n")
+        file_adb.write("   begin\n")
+        file_adb.write("      System.Task_Primitives.Operations.Set_Relative_Deadline\n")
+        file_adb.write("        (System.Task_Primitives.Operations.Self,\n")
+        file_adb.write("          System.BB.Time.Milliseconds (Integer'Last));\n")
+        file_adb.write("      loop\n")
+        file_adb.write("         null;\n")
+        file_adb.write("      end loop;\n")
+        file_adb.write("   end Init;\n")
+        file_adb.write("\n")
+        file_adb.write("   P1 : Print_Task.Print (240, -" + str(1)+ ", " + str(int(float(hyperPeriod)/1000)) + "); -- period in milliseconds\n")
+        ##  file_adb.write("   P1 : Print_Task.Print (240, -" + str(1) + ", " + str(5000) + "); -- period in milliseconds\n")
+        for task in range (len(taskset)):
+            work = int((float(taskset[task][4])-1.62)*180/17)
+            #### DA METTERE APPOSTO PER ID
+            file_adb.write("   C"+str(task+1)+" : Cyclic ("+str(len(taskset)-task)+", "
+                                                        +str(taskset[task][1])+", "
+                                                        +str(taskset[task][2])+", "
+                                                        +str(task+1)+", "
+                                                        +str(work)+");\n")
+        file_adb.write ("end Cyclic_Tasks;")
+        file_adb.close()
+    # os.system("cp ../edf-ravenscar-arm/src/cyclic_tasks.adb ../fps-ravenscar-arm/src/cyclic_tasks.adb")
 
 
 #############################################
@@ -171,11 +189,6 @@ def debug_and_read_data (taskset, hyperperiod, EDF0_FPS1):
             debugger.stdin.write("c\n".encode())
             debugger.stdin.flush()
         if "System.IO.Put" in line.decode():
-            #now = datetime.now()
-            #with open('../workspace2/'+str(name)+str(now)+'.csv', mode='w') as csv_to_write:
-                #csv_writer = csv.writer(csv_to_write, delimiter=';')
-                #csv_writer.writerow(
-                #    ['Priority', 'Period', 'Deadline', 'ID', 'Work', 'Deadline Miss', 'Executions', 'Preemptions'])
             for i in range (len(taskset)):
                 debugger.stdin.write(("p Task_Table ("+str(i+1)+").DM\n").encode())
                 debugger.stdin.flush()
@@ -189,19 +202,7 @@ def debug_and_read_data (taskset, hyperperiod, EDF0_FPS1):
                 debugger.stdin.flush()
                 Preemption_Line = debugger.stdout.readline().decode().split(" ")
                 #print("Pr_L " + str(Preemption_Line))
-                debugger.stdin.write(("c\n").encode())
-                debugger.stdin.flush()
-                debugger.stdout.readline()
-                debugger.stdout.readline()
-                debugger.stdout.readline()
-                debugger.stdout.readline()
-                if (EDF0_FPS1 == 1): #4 per EDF, 6 per FPS
-                    debugger.stdout.readline()
-                    debugger.stdout.readline()
                 data.append([DM_Line[3].rstrip(), Execution_Line[3].rstrip(), Preemption_Line[3].rstrip()])
-                #csv_writer.writerow([taskset[i][0], taskset[i][1], taskset[i][2], taskset[i][3], taskset[i][4],
-                #                         DM_Line[3].rstrip(), Execution_Line[3].rstrip(), Preemption_Line[3].rstrip()])
-                #csv_writer.writerow(['hyperperiod',hyperperiod])
             debugger.stdin.write(("quit\n").encode())
             debugger.stdin.flush()
             debugger.kill()
@@ -209,10 +210,10 @@ def debug_and_read_data (taskset, hyperperiod, EDF0_FPS1):
             st_util.join(1)
     return data
 
-def save_data (taskset, EDF_data, FPS_data, name, hyperperiod):
+def save_data (taskset, EDF_data, FPS_data, name, unique_name, hyperperiod):
 
     now = datetime.now()
-    with open('../workspace2/'+str(name)+str(now)+'.csv', mode='w') as csv_to_write:
+    with open('../workspace2/'+str(name)+'_'+str(unique_name)+'.csv', mode='w') as csv_to_write:
         csv_writer = csv.writer(csv_to_write, delimiter=';')
         csv_writer.writerow(
             ['ID', 'Priority', 'Period', 'Deadline', 'WCET', 'FPS Deadline Miss', 'FPS Executions', 'FPS Preemptions', 'Less', 'EDF Deadline Miss', 'EDF Executions', 'EDF Preemptions', 'Utilization by work'])
@@ -236,9 +237,9 @@ def save_data (taskset, EDF_data, FPS_data, name, hyperperiod):
 ################
 
 def buttazzo_experiments_preemptions ():
-    for i in range(1):
+    for i in range(7001,7002):
         taskset = []
-        taskset, utilization, L, first_deadline_miss, schedulable, hyperperiod = import_taskset(taskset, i, "buttazzo.csv")
+        taskset, utilization, L, first_deadline_miss, schedulable, hyperperiod = import_taskset(taskset, i, "buttazzo_preemptions.csv")
         print(taskset)
         make_adb_file(taskset, hyperperiod)
         EDF_data = []
@@ -250,9 +251,9 @@ def buttazzo_experiments_preemptions ():
             else:
                 FPS_data = debug_and_read_data(taskset, hyperperiod, j)
         if i<9000:
-            save_data(taskset, EDF_data, FPS_data, "Buttazzo_First_Preemptions", hyperperiod)
+            save_data(taskset, EDF_data, FPS_data, "Buttazzo-First-Preemptions", i+1, hyperperiod)
         else:
-            save_data(taskset, EDF_data, FPS_data, "Buttazzo_Second_Preemptions", hyperperiod)
+            save_data(taskset, EDF_data, FPS_data, "Buttazzo-Second-Preemptions", i+1-9000, hyperperiod)
 ##########
 ## Main ##
 ##########

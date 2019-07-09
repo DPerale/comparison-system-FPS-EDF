@@ -1,0 +1,92 @@
+Model (
+   Model_Name  => FPS,
+   Model_Date  => 2004-12-01);
+
+-- Processing Resources
+
+Processing_Resource (
+	Type 			=> Fixed_Priority_Processor,
+	Name 			=> CPU_1,
+	Worst_Context_Switch    => 0.25);
+
+-- Scheduling Servers
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_1,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority		=> 18,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+
+Scheduling_Server (
+	Type				=> Fixed_Priority,
+	Name 				=> Task_2,
+	Server_Sched_Parameters		=> (
+		Type		=> Fixed_Priority_Policy,
+		The_Priority		=> 17,
+                Preassigned             => No),
+	Server_Processing_Resource	=> CPU_1);
+
+
+-- Operations
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a1,
+	Worst_Case_Execution_Time 	=> 4062);
+
+Operation (
+	Type 				=> Simple,
+	Name 				=> a2,
+	Worst_Case_Execution_Time 	=> 5007);
+
+
+-- Transactions
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T1,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E1,
+		 Period 	=> 10000)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O1,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 10000,
+			 referenced_event => E1))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E1,
+		 Output_Event 		=> O1,
+		 Activity_Operation 	=> a1,
+		 Activity_Server	=> Task_1)));
+
+Transaction (
+	Type	=> Regular,
+	Name	=> T2,
+	External_Events => (
+		(Type 		=> Periodic,
+		 Name 		=> E2,
+		 Period 	=> 11000)),
+	Internal_Events => (
+		(Type 	=> regular,
+		 name 	=> O2,
+                 Timing_Requirements => (
+			 Type 		  => Hard_Global_Deadline,
+			 Deadline 	  => 11000,
+			 referenced_event => E2))),
+	Event_Handlers => (
+		(Type 			=> Activity,
+		 Input_Event 		=> E2,
+		 Output_Event 		=> O2,
+		 Activity_Operation 	=> a2,
+		 Activity_Server	=> Task_2)));
+
+
+

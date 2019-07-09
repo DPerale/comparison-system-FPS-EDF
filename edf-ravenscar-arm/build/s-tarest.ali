@@ -20,7 +20,7 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U system.tasking.restricted.stages%b  s-tarest.adb  935c6808 OL PK
+U system.tasking.restricted.stages%b  s-tarest.adb  beabd222 OL PK
 Z ada.exceptions%s	a-except.adb		a-except.ali
 W system%s		system.ads		system.ali
 W system.task_primitives%s  s-taspri.ads	s-taspri.ali
@@ -49,11 +49,11 @@ D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
 D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621183100 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20190621183100 9be493b9 system.bb.threads%s
-D s-bbthqu.ads		20190621183100 d68b6030 system.bb.threads.queues%s
+D s-bbthre.ads		20190709122229 e098fee4 system.bb.threads%s
+D s-bbthqu.ads		20190709121239 b165de3f system.bb.threads.queues%s
 D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
-D s-osinte.ads		20190621183100 cd77825b system.os_interface%s
+D s-osinte.ads		20190709122130 af2773fc system.os_interface%s
 D s-parame.ads		20190621182555 d106111e system.parameters%s
 D s-secsta.ads		20190621182555 56a2861c system.secondary_stack%s
 D s-stalib.ads		20190621182556 09bd3940 system.standard_library%s
@@ -61,7 +61,7 @@ D s-stm32.ads		20190621182556 e898dba2 system.stm32%s
 D s-stoele.ads		20190621182556 2dc34a04 system.storage_elements%s
 D s-tasinf.ads		20190621182556 801abd01 system.task_info%s
 D s-taspri.ads		20190621183100 351848fa system.task_primitives%s
-D s-taprop.ads		20190621183100 9444b269 system.task_primitives.operations%s
+D s-taprop.ads		20190709122253 b9b30843 system.task_primitives.operations%s
 D s-taskin.ads		20190621183100 1c5b8fd8 system.tasking%s
 D s-tasres.ads		20190621183100 0c8ef6fb system.tasking.restricted%s
 D s-tarest.ads		20190621183100 053361b5 system.tasking.restricted.stages%s
@@ -108,18 +108,18 @@ X 26 s-tasinf.ads
 X 27 s-taspri.ads
 40K16*Task_Primitives 82e27 32|46r13 51r15 193r37 219r10 266r7
 X 28 s-taprop.ads
-45K32*Operations 147e38 32|46w29 51r31 193r53 219r26 266r23
-62U14*Create_Task 32|219s37
-63p7 T{29|70P9} 32|220r13
-64m7 Wrapper{7|80M9} 32|221r13
-65i7 Stack_Size{21|56I9} 32|222r13
-67i7 Relative_Deadline{12|51I12} 32|225r13
-68i7 Base_CPU{19|21I9} 32|226r13
-69b7 Succeeded{boolean} 32|227r13
-72U14*Enter_Task 32|108s7
-78V13*Self{29|70P9} 32|193s64 266s34
-87U14*Set_Relative_Deadline 32|125s7 133s7 202s7 242s7
-127U14*Sleep 32|148s7
+46K32*Operations 156e38 32|46w29 51r31 193r53 219r26 266r23
+63U14*Create_Task 32|219s37
+64p7 T{29|70P9} 32|220r13
+65m7 Wrapper{7|80M9} 32|221r13
+66i7 Stack_Size{21|56I9} 32|222r13
+68i7 Relative_Deadline{12|51I12} 32|225r13
+69i7 Base_CPU{19|21I9} 32|226r13
+70b7 Succeeded{boolean} 32|227r13
+73U14*Enter_Task 32|108s7
+79V13*Self{29|70P9} 32|193s64 266s34
+88U14*Set_Relative_Deadline 32|125s7 133s7 202s7 242s7
+136U14*Sleep 32|148s7
 X 29 s-taskin.ads
 59K16*Tasking 7|50k9 29|478e19 31|50r16 269r12 32|48r21 128r20 451r4 452r12
 70P9*Task_Id(68R9) 31|145r30 203r30 253r40 32|54r29 62r38 76r30 81r38 100r38

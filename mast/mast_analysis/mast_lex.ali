@@ -42,13 +42,13 @@ D a-textio.ads		20180525052302 881db35a ada.text_io%s
 D a-unccon.ads		20180525052301 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20180525052300 5ab55268 interfaces%s
 D i-cstrea.ads		20180525052259 e53d8b8e interfaces.c_streams%s
-D mast_lex.ads		20080722124150 74b66c2e mast_lex%s
-D mast_lex.adb		20080722124150 dacd675e mast_lex%b
-D mast_lex_dfa.ads	20080722124150 ba6952a6 mast_lex_dfa%s
-D mast_lex_io.ads	20080722124150 d67882a2 mast_lex_io%s
-D mast_parser_tokens.ads  20080722124150 608e929d mast_parser_tokens%s
-D named_lists.ads	20080722124150 8b5d30f2 named_lists%s
-D symbol_table.ads	20080722124150 a2a03d04 symbol_table%s
+D mast_lex.ads		20190621183100 74b66c2e mast_lex%s
+D mast_lex.adb		20190621183100 dacd675e mast_lex%b
+D mast_lex_dfa.ads	20190621183100 ba6952a6 mast_lex_dfa%s
+D mast_lex_io.ads	20190621183100 d67882a2 mast_lex_io%s
+D mast_parser_tokens.ads  20190621183100 608e929d mast_parser_tokens%s
+D named_lists.ads	20190621183101 8b5d30f2 named_lists%s
+D symbol_table.ads	20190621183101 a2a03d04 symbol_table%s
 D system.ads		20180525052301 4635ec04 system%s
 D s-conca3.ads		20180525052302 0b705ca5 system.concat_3%s
 D s-crtl.ads		20180525052259 0ebbdb71 system.crtl%s
@@ -71,7 +71,7 @@ D s-valint.ads		20180525052301 48a52a3f system.val_int%s
 D s-valrea.ads		20180525052302 fe297711 system.val_real%s
 D s-wchcon.ads		20180525052301 1b7d22d2 system.wch_con%s
 D text_io.ads		20180525052301 21b2c898 text_io%s
-D var_strings.ads	20080722124150 38b5efa3 var_strings%s
+D var_strings.ads	20190621183101 38b5efa3 var_strings%s
 X 7 a-textio.ads
 52P9*File_Type 12|1381r35
 104V13*Name{string} 12|1383s23

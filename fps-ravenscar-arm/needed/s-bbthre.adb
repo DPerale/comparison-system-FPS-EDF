@@ -348,6 +348,10 @@ package body System.BB.Threads is
       Protection.Leave_Kernel;
    end Set_Relative_Deadline;
 
+   ----------------
+   -- Set_Period --
+   ----------------
+
    procedure Set_Period
      (Period       : System.BB.Time.Time_Span) is
    begin
@@ -356,6 +360,10 @@ package body System.BB.Threads is
               (Queues.Running_Thread, Period);
       Protection.Leave_Kernel;
    end Set_Period;
+
+   -----------------------
+   -- Set_Starting_Time --
+   -----------------------
 
    procedure Set_Starting_Time
      (Starting_Time :  System.BB.Time.Time_Span) is

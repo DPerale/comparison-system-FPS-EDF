@@ -163,6 +163,10 @@ package System.BB.Threads is
       --  Boolean that indicates whether an urgent task after a wakeup needs to
       --  preempt the running task before its natural suspension.
 
+      Active_Period : System.BB.Time.Time_Span;
+
+      Active_Starting_Time :  System.BB.Time.Time_Span;
+
       Fake_Number_ID : Integer := 0;
    end record;
 
@@ -321,6 +325,12 @@ package System.BB.Threads is
           (Id : Thread_Id) return System.BB.Deadlines.Absolute_Deadline;
    pragma Inline (Get_Absolute_Deadline);
    --  Get the current active absolute deadline of any thread
+
+   procedure Set_Period
+     (Period       : System.BB.Time.Time_Span);
+
+   procedure Set_Starting_Time
+     (Starting_Time :  System.BB.Time.Time_Span);
 
    procedure Sleep;
    --  The calling thread is unconditionally suspended. In the case when there

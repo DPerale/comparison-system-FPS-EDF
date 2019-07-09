@@ -2,7 +2,7 @@
 --  Copyright (C) 2017, AdaCore
 --
 
---  This spec has been automatically generated from STM32F40x.svd
+--  This spec has been automatically generated from STM32F429x.svd
 
 pragma Ada_2012;
 pragma Style_Checks (Off);
@@ -472,6 +472,14 @@ package Interfaces.STM32.USART is
    --  Universal synchronous asynchronous receiver transmitter
    UART5_Periph : aliased UART4_Peripheral
      with Import, Address => System'To_Address (16#40005000#);
+
+   --  Universal synchronous asynchronous receiver transmitter
+   UART7_Periph : aliased UART4_Peripheral
+     with Import, Address => System'To_Address (16#40007800#);
+
+   --  Universal synchronous asynchronous receiver transmitter
+   UART8_Periph : aliased UART4_Peripheral
+     with Import, Address => System'To_Address (16#40007C00#);
 
    --  Universal synchronous asynchronous receiver transmitter
    type USART1_Peripheral is record

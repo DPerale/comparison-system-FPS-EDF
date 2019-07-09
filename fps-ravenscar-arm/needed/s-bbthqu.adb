@@ -293,14 +293,21 @@ package body System.BB.Threads.Queues is
       if Thread.Active_Relative_Deadline <= Thread.Active_Period then
          Change_Absolute_Deadline (Thread, System.BB.Time.Time_First +
                                    Thread.Active_Starting_Time -
-                     (Thread.Active_Period - Thread.Active_Relative_Deadline));
+                     (Thread.Active_Period - Thread.Active_Relative_Deadline)
+                                  + Global_Interrupt_Delay);
       else
          Change_Absolute_Deadline (Thread, System.BB.Time.Time_First +
                                    Thread.Active_Starting_Time +
-                     (Thread.Active_Relative_Deadline - Thread.Active_Period));
+                     (Thread.Active_Relative_Deadline - Thread.Active_Period)
+                                    + Global_Interrupt_Delay);
+
       end if;
 
    end Change_Relative_Deadline;
+
+   -------------------
+   -- Change_Period --
+   -------------------
 
    procedure Change_Period
      (Thread       : Thread_Id;
@@ -312,6 +319,10 @@ package body System.BB.Threads.Queues is
       pragma Assert (Thread = Running_Thread_Table (CPU_Id));
       Thread.Active_Period := Period;
    end Change_Period;
+
+   --------------------------
+   -- Change_Starting_Time --
+   --------------------------
 
    procedure Change_Starting_Time
      (Thread        : Thread_Id;
@@ -356,13 +367,13 @@ package body System.BB.Threads.Queues is
       --  to execute. It means that First_Thread is not null and it is not
       --  equal to the task currently executing (Running_Thread).
 
-      if First_Thread.Fake_Number_ID /= 0 then
-         if Task_Table (First_Thread.Fake_Number_ID).Check = False then
+      if Running_Thread.Fake_Number_ID /= 0 then
+         if Task_Table (Running_Thread.Fake_Number_ID).Check = False then
             Now := Clock;
-            if First_Thread.Active_Absolute_Deadline < Now then
-               Task_Table (First_Thread.Fake_Number_ID).Check := True;
-               Task_Table (First_Thread.Fake_Number_ID).DM :=
-                 Task_Table (First_Thread.Fake_Number_ID).DM + 1;
+            if Running_Thread.Active_Absolute_Deadline < Now then
+               Task_Table (Running_Thread.Fake_Number_ID).Check := True;
+               Task_Table (Running_Thread.Fake_Number_ID).DM :=
+                 Task_Table (Running_Thread.Fake_Number_ID).DM + 1;
             end if;
          end if;
       end if;
@@ -397,22 +408,10 @@ package body System.BB.Threads.Queues is
 
    procedure Extract (Thread : Thread_Id) is
       CPU_Id : constant CPU := Get_CPU (Thread);
-      Now : System.BB.Time.Time;
    begin
       --  A CPU can only modify its own tasks queues
 
       pragma Assert (CPU_Id = Current_CPU);
-
-      if Thread.Fake_Number_ID /= 0 then
-         if Task_Table (Thread.Fake_Number_ID).Check = False then
-            Now := Clock;
-            if Thread.Active_Absolute_Deadline < Now then
-               Task_Table (Thread.Fake_Number_ID).Check := True;
-               Task_Table (Thread.Fake_Number_ID).DM :=
-                 Task_Table (Thread.Fake_Number_ID).DM + 1;
-            end if;
-         end if;
-      end if;
 
       First_Thread_Table (CPU_Id) := Thread.Next;
       Thread.Next := Null_Thread_Id;
@@ -637,6 +636,16 @@ package body System.BB.Threads.Queues is
                                       Wakeup_Thread.Active_Absolute_Deadline));
 
          Insert (Wakeup_Thread);
+         if Wakeup_Thread.Fake_Number_ID /= 0 then
+            if Task_Table (Wakeup_Thread.Fake_Number_ID).Check = False then
+               --  Now := System.BB.Time.Clock;
+               if Wakeup_Thread.Active_Absolute_Deadline < Now then
+                  Task_Table (Wakeup_Thread.Fake_Number_ID).Check := True;
+                  Task_Table (Wakeup_Thread.Fake_Number_ID).DM :=
+                    Task_Table (Wakeup_Thread.Fake_Number_ID).DM + 1;
+               end if;
+            end if;
+         end if;
       end loop;
 
       --  Note: the caller (BB.Time.Alarm_Handler) must set the next alarm
@@ -650,7 +659,7 @@ package body System.BB.Threads.Queues is
       CPU_Id      : constant CPU     := Get_CPU (Thread);
       Prio        : constant Integer := Thread.Active_Priority;
       Aux_Pointer : Thread_Id;
-
+      Now         : System.BB.Time.Time;
    begin
       --  A CPU can only modify its own tasks queues
 
@@ -675,6 +684,18 @@ package body System.BB.Threads.Queues is
          Thread.Next := Aux_Pointer.Next;
          Aux_Pointer.Next := Thread;
       end if;
+
+      if Thread.Fake_Number_ID /= 0 then
+         if Task_Table (Thread.Fake_Number_ID).Check = False then
+            Now := System.BB.Time.Clock;
+            if Thread.Active_Absolute_Deadline < Now then
+               Task_Table (Thread.Fake_Number_ID).Check := True;
+               Task_Table (Thread.Fake_Number_ID).DM :=
+                 Task_Table (Thread.Fake_Number_ID).DM + 1;
+            end if;
+         end if;
+      end if;
+
    end Yield;
 
    ------------------

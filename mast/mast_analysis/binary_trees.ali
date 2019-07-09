@@ -15,8 +15,8 @@ U binary_trees%b	binary_trees.adb	3fefc18c NE OO PK GE
 
 U binary_trees%s	binary_trees.ads	af947937 BN EE NE OO PK GE
 
-D binary_trees.ads	20080722124150 af947937 binary_trees%s
-D binary_trees.adb	20080722124150 907bb8bb binary_trees%b
+D binary_trees.ads	20190621183101 af947937 binary_trees%s
+D binary_trees.adb	20190621183101 907bb8bb binary_trees%b
 D system.ads		20180525052301 4635ec04 system%s
 X 1 binary_trees.ads
 2+9 Element 3r31 4r31 14r25 36r38 39r23 43r23 49r23 62r18 2|9r25 62r55 72r23

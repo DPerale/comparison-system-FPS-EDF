@@ -212,6 +212,14 @@ package System.OS_Interface is
      renames System.BB.Threads.Get_Absolute_Deadline;
    --  Get the current base absolute deadline of a thread
 
+   procedure Set_Period
+     (Period       : System.BB.Time.Time_Span)
+      renames System.BB.Threads.Set_Period;
+
+   procedure Set_Starting_Time
+     (Starting_Time : System.BB.Time.Time_Span)
+     renames System.BB.Threads.Set_Starting_Time;
+
    procedure Sleep renames System.BB.Threads.Sleep;
    --  The calling thread is unconditionally suspended
 

@@ -40,9 +40,6 @@ pragma Restrictions (No_Elaboration_Code);
 -------------------------------------------------------------
 --  Used for debug procedures
 with System.IO;
-
-with System.BB.Stats;
-with System.BB.Debug; use System.BB.Debug;
 -------------------------------------------------------------
 -------------------------------------------------------------
 
@@ -422,6 +419,36 @@ package body System.BB.Threads.Queues is
       end if;
    end Change_Absolute_Deadline;
 
+   -------------------
+   -- Change_Period --
+   -------------------
+
+   procedure Change_Period
+     (Thread       : Thread_Id;
+      Period       : System.BB.Time.Time_Span)
+   is
+      CPU_Id      : constant CPU := Get_CPU (Thread);
+   begin
+      pragma Assert (CPU_Id = Current_CPU);
+      pragma Assert (Thread = Running_Thread_Table (CPU_Id));
+      Thread.Active_Period := Period;
+   end Change_Period;
+
+   --------------------------
+   -- Change_Starting_Time --
+   --------------------------
+
+   procedure Change_Starting_Time
+     (Thread        : Thread_Id;
+      Starting_Time : System.BB.Time.Time_Span)
+   is
+      CPU_Id      : constant CPU := Get_CPU (Thread);
+   begin
+      pragma Assert (CPU_Id = Current_CPU);
+      pragma Assert (Thread = Running_Thread_Table (CPU_Id));
+      Thread.Active_Starting_Time := Starting_Time;
+   end Change_Starting_Time;
+
    ---------------------------
    -- Context_Switch_Needed --
    ---------------------------
@@ -437,23 +464,20 @@ package body System.BB.Threads.Queues is
                      and then Running_Thread /= Null_Thread_Id);
 
       if not Busy_For_Interrupts and not Busy_For_Handlers then
-         if Print_Preem then
-            if First_Thread /= Running_Thread and
-                Running_Thread.Preemption_Needed
-            then
-               System.BB.Stats.Preemptions := System.BB.Stats.Preemptions + 1;
-               Add_Preemption (Running_Thread.Fake_Number_ID);
---                 System.IO.Put_Line ("PREEMPTION; "
---                   & Integer'Image (System.BB.Stats.Preemptions));
-            end if;
+
+         if First_Thread /= Running_Thread and
+           Running_Thread.Preemption_Needed
+         then
+            Add_Preemption (Running_Thread.Fake_Number_ID);
          end if;
-         if First_Thread.Fake_Number_ID /= 0 then
-            if Task_Table (First_Thread.Fake_Number_ID).Check = False then
+         if Running_Thread.Fake_Number_ID /= 0 then
+            if Task_Table (Running_Thread.Fake_Number_ID).Check = False then
                Now := Clock;
-               if First_Thread.Active_Absolute_Deadline < Now then
-                  Task_Table (First_Thread.Fake_Number_ID).Check := True;
-                  Task_Table (First_Thread.Fake_Number_ID).DM :=
-                    Task_Table (First_Thread.Fake_Number_ID).DM + 1;
+               if Running_Thread.Active_Absolute_Deadline < Now
+               then
+                  Task_Table (Running_Thread.Fake_Number_ID).Check := True;
+                  Task_Table (Running_Thread.Fake_Number_ID).DM :=
+                    Task_Table (Running_Thread.Fake_Number_ID).DM + 1;
                end if;
             end if;
          end if;
@@ -517,7 +541,6 @@ package body System.BB.Threads.Queues is
 
    procedure Extract (Thread : Thread_Id) is
       CPU_Id : constant CPU := Get_CPU (Thread);
-      Now : System.BB.Time.Time;
    begin
       --  A CPU can only modify its own tasks queues
 
@@ -528,17 +551,6 @@ package body System.BB.Threads.Queues is
           and then Thread = First_Thread_Table (CPU_Id)
           and then Thread.State /= Runnable);
 
-      --  Se necessario si aumentano le deadline miss
-      if Thread.Fake_Number_ID /= 0 then
-         if Task_Table (Thread.Fake_Number_ID).Check = False then
-            Now := Clock;
-            if Thread.Active_Absolute_Deadline < Now then
-               Task_Table (Thread.Fake_Number_ID).Check := True;
-               Task_Table (Thread.Fake_Number_ID).DM :=
-                 Task_Table (Thread.Fake_Number_ID).DM + 1;
-            end if;
-         end if;
-      end if;
       First_Thread_Table (CPU_Id) := Thread.Next;
       Thread.Next := Null_Thread_Id;
 
@@ -763,6 +775,17 @@ package body System.BB.Threads.Queues is
               (Wakeup_Thread.Active_Relative_Deadline + Now));
 
          Insert (Wakeup_Thread);
+
+         if Wakeup_Thread.Fake_Number_ID /= 0 then
+            if Task_Table (Wakeup_Thread.Fake_Number_ID).Check = False then
+               if Wakeup_Thread.Active_Absolute_Deadline < Now
+               then
+                  Task_Table (Wakeup_Thread.Fake_Number_ID).Check := True;
+                  Task_Table (Wakeup_Thread.Fake_Number_ID).DM :=
+                    Task_Table (Wakeup_Thread.Fake_Number_ID).DM + 1;
+               end if;
+            end if;
+         end if;
       end loop;
 
       Next_Alarm := Time.Get_Next_Timeout (CPU_Id);
@@ -780,7 +803,7 @@ package body System.BB.Threads.Queues is
                := Thread.Active_Absolute_Deadline;
       --  Prio        : constant Integer := Thread.Active_Priority;
       Aux_Pointer : Thread_Id;
-
+      Now         : System.BB.Time.Time;
    begin
       --  A CPU can only modify its own tasks queues
       pragma Assert (CPU_Id = Current_CPU);
@@ -804,6 +827,19 @@ package body System.BB.Threads.Queues is
 
          Thread.Next := Aux_Pointer.Next;
          Aux_Pointer.Next := Thread;
+
+         --  Se necessario si aumentano le deadline miss
+         if Thread.Fake_Number_ID /= 0 then
+            if Task_Table (Thread.Fake_Number_ID).Check = False then
+               Now := Clock;
+               if Thread.Active_Absolute_Deadline < Now
+               then
+                  Task_Table (Thread.Fake_Number_ID).Check := True;
+                  Task_Table (Thread.Fake_Number_ID).DM :=
+                    Task_Table (Thread.Fake_Number_ID).DM + 1;
+               end if;
+            end if;
+         end if;
       end if;
    end Yield;
 

@@ -1,7 +1,0 @@
-ID;Priority;Period;Deadline;WCET;FPS Deadline Miss;FPS Executions;FPS Preemptions;Less;EDF Deadline Miss;EDF Executions;EDF Preemptions;Utilization by work
-1;4;10000;10000;8531;100;100;0;0;-1;100;0;0.8531
-2;3;24000;24000;199;-1;42;0;0;-1;42;0;0.008291666666666666
-3;2;43000;43000;1010;-1;24;1;-2;-1;24;3;0.023488372093023256
-4;1;80000;80000;949;-1;13;7;4;-1;13;3;0.0118625
-;;1000000;;;;;8;;;;6;0.8967425387596899
-;;;;;;;0.25;;;;;

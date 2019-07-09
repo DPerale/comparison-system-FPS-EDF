@@ -20,7 +20,7 @@ RV NO_ELABORATION_CODE
 RV NO_OBSOLESCENT_FEATURES
 RV SPARK_05
 
-U system.soft_links%b	s-soflin.adb		c43cfb83 NE OL PK
+U system.soft_links%b	s-soflin.adb		e9cb41a9 NE OL PK
 W system%s		system.ads		system.ali
 W system.bb%s		s-bb.ads		s-bb.ali
 W system.bb.deadlines%s	s-bbdead.ads		s-bbdead.ali
@@ -33,39 +33,39 @@ W ada%s			ada.ads			ada.ali
 W ada.exceptions%s	a-except.adb		a-except.ali
 W system%s		system.ads		system.ali
 
-D ada.ads		20181010193652 76789da1 ada%s
-D a-except.ads		20181010193647 291912d5 ada.exceptions%s
-D a-unccon.ads		20181010193651 0e9b276f ada.unchecked_conversion%s
-D interfac.ads		20181010193657 5ab55268 interfaces%s
-D i-stm32.ads		20181010193657 2ad0960b interfaces.stm32%s
-D i-stm32-pwr.ads	20181010193657 4a098e84 interfaces.stm32.pwr%s
-D system.ads		20181010193713 db831581 system%s
-D s-bb.ads		20181010193701 09e072ae system.bb%s
-D s-bbbopa.ads		20181010193701 5e9af419 system.bb.board_parameters%s
-D s-bbbosu.ads		20181102132403 0f820a2a system.bb.board_support%s
-D s-bbcppr.ads		20181010193701 bcfa73ad system.bb.cpu_primitives%s
-D s-bbdead.ads		20190210124650 deeac8df system.bb.deadlines%s
-D s-bbinte.ads		20181010193701 c88d39da system.bb.interrupts%s
-D s-bbmcpa.ads		20181010193701 b5961a30 system.bb.mcu_parameters%s
-D s-bbpara.ads		20181010193701 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20190324144342 9be493b9 system.bb.threads%s
-D s-bbthqu.ads		20190530172602 d68b6030 system.bb.threads.queues%s
-D s-bbtime.ads		20190210170141 1a3e050f system.bb.time%s
-D s-multip.ads		20181010193706 f33e0e35 system.multiprocessors%s
-D s-osinte.ads		20190324143916 cd77825b system.os_interface%s
-D s-parame.ads		20181010193708 d106111e system.parameters%s
-D s-secsta.ads		20181010193709 56a2861c system.secondary_stack%s
-D s-soflin.ads		20181010193709 09900c20 system.soft_links%s
-D s-soflin.adb		20190324144417 9b5902cd system.soft_links%b
-D s-stalib.ads		20181010193709 09bd3940 system.standard_library%s
-D s-stm32.ads		20181010193709 e898dba2 system.stm32%s
-D s-stoele.ads		20181010193709 2dc34a04 system.storage_elements%s
-D s-tasinf.ads		20181010193710 801abd01 system.task_info%s
-D s-taspri.ads		20181010193710 351848fa system.task_primitives%s
-D s-taprop.ads		20190324143932 9444b269 system.task_primitives.operations%s
-D s-taskin.ads		20190324151830 1c5b8fd8 system.tasking%s
-D s-traent.ads		20181010193711 005bf670 system.traceback_entries%s
-D s-unstyp.ads		20181010193711 34867c83 system.unsigned_types%s
+D ada.ads		20190621182550 76789da1 ada%s
+D a-except.ads		20190621182548 291912d5 ada.exceptions%s
+D a-unccon.ads		20190621182550 0e9b276f ada.unchecked_conversion%s
+D interfac.ads		20190621182551 5ab55268 interfaces%s
+D i-stm32.ads		20190621182551 2ad0960b interfaces.stm32%s
+D i-stm32-pwr.ads	20190621182551 4a098e84 interfaces.stm32.pwr%s
+D system.ads		20190621182556 db831581 system%s
+D s-bb.ads		20190621183100 09e072ae system.bb%s
+D s-bbbopa.ads		20190621182552 5e9af419 system.bb.board_parameters%s
+D s-bbbosu.ads		20190621183100 0f820a2a system.bb.board_support%s
+D s-bbcppr.ads		20190621183100 bcfa73ad system.bb.cpu_primitives%s
+D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
+D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
+D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
+D s-bbpara.ads		20190621183100 431abc17 system.bb.parameters%s
+D s-bbthre.ads		20190709122229 e098fee4 system.bb.threads%s
+D s-bbthqu.ads		20190709121239 b165de3f system.bb.threads.queues%s
+D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
+D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
+D s-osinte.ads		20190709122130 af2773fc system.os_interface%s
+D s-parame.ads		20190621182555 d106111e system.parameters%s
+D s-secsta.ads		20190621182555 56a2861c system.secondary_stack%s
+D s-soflin.ads		20190621183100 09900c20 system.soft_links%s
+D s-soflin.adb		20190621183100 9b5902cd system.soft_links%b
+D s-stalib.ads		20190621182556 09bd3940 system.standard_library%s
+D s-stm32.ads		20190621182556 e898dba2 system.stm32%s
+D s-stoele.ads		20190621182556 2dc34a04 system.storage_elements%s
+D s-tasinf.ads		20190621182556 801abd01 system.task_info%s
+D s-taspri.ads		20190621183100 351848fa system.task_primitives%s
+D s-taprop.ads		20190709122253 b9b30843 system.task_primitives.operations%s
+D s-taskin.ads		20190621183100 1c5b8fd8 system.tasking%s
+D s-traent.ads		20190621182556 005bf670 system.traceback_entries%s
+D s-unstyp.ads		20190621182556 34867c83 system.unsigned_types%s
 X 1 ada.ads
 16K9*Ada 20e8 23|43r6 48r19 49r18 139r39 24|71r39 73r14 87r37
 X 2 a-except.ads
@@ -130,10 +130,10 @@ X 25 s-stalib.ads
 X 29 s-taspri.ads
 40K16*Task_Primitives 24|40r13 45r15 29|82e27
 X 30 s-taprop.ads
-45K32*Operations 24|40w29 45r31 30|147e38
-78V13*Self{31|70P9} 24|64s14 107s52 144s52 173s52
-87U14*Set_Relative_Deadline 24|123s13 152s7 159s7 185s10
-97V13*Get_Relative_Deadline{12|51I12} 24|117s15
+46K32*Operations 24|40w29 45r31 30|156e38
+79V13*Self{31|70P9} 24|64s14 107s52 144s52 173s52
+88U14*Set_Relative_Deadline 24|123s13 152s7 159s7 185s10
+98V13*Get_Relative_Deadline{12|51I12} 24|117s15
 X 31 s-taskin.ads
 59K16*Tasking 24|39w13 46r20 107r33 144r33 145r24 154r20 173r33 31|478e19
 70P9*Task_Id(68R9) 24|107r41 144r41 173r41

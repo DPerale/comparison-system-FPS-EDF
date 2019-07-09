@@ -467,6 +467,32 @@ package body System.BB.Threads is
 
    end Set_Absolute_Deadline;
 
+   ----------------
+   -- Set_Period --
+   ----------------
+
+   procedure Set_Period
+     (Period       : System.BB.Time.Time_Span) is
+   begin
+      Protection.Enter_Kernel;
+      Queues.Change_Period
+              (Queues.Running_Thread, Period);
+      Protection.Leave_Kernel;
+   end Set_Period;
+
+   -----------------------
+   -- Set_Starting_Time --
+   -----------------------
+
+   procedure Set_Starting_Time
+     (Starting_Time :  System.BB.Time.Time_Span) is
+   begin
+      Protection.Enter_Kernel;
+      Queues.Change_Starting_Time
+              (Queues.Running_Thread, Starting_Time);
+      Protection.Leave_Kernel;
+   end Set_Starting_Time;
+
    -----------
    -- Sleep --
    -----------

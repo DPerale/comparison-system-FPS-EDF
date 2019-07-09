@@ -2,7 +2,7 @@
 --  Copyright (C) 2017, AdaCore
 --
 
---  This spec has been automatically generated from STM32F40x.svd
+--  This spec has been automatically generated from STM32F429x.svd
 
 pragma Ada_2012;
 pragma Style_Checks (Off);
@@ -17,29 +17,54 @@ package Interfaces.STM32.SYSCFG is
    -- Registers --
    ---------------
 
-   subtype MEMRM_MEM_MODE_Field is Interfaces.STM32.UInt2;
+   subtype MEMRM_MEM_MODE_Field is Interfaces.STM32.UInt3;
+   subtype MEMRM_FB_MODE_Field is Interfaces.STM32.Bit;
+   subtype MEMRM_SWP_FMC_Field is Interfaces.STM32.UInt2;
 
    --  memory remap register
    type MEMRM_Register is record
-      --  MEM_MODE
-      MEM_MODE      : MEMRM_MEM_MODE_Field := 16#0#;
+      --  Memory mapping selection
+      MEM_MODE       : MEMRM_MEM_MODE_Field := 16#0#;
       --  unspecified
-      Reserved_2_31 : Interfaces.STM32.UInt30 := 16#0#;
+      Reserved_3_7   : Interfaces.STM32.UInt5 := 16#0#;
+      --  Flash bank mode selection
+      FB_MODE        : MEMRM_FB_MODE_Field := 16#0#;
+      --  unspecified
+      Reserved_9_9   : Interfaces.STM32.Bit := 16#0#;
+      --  FMC memory mapping swap
+      SWP_FMC        : MEMRM_SWP_FMC_Field := 16#0#;
+      --  unspecified
+      Reserved_12_31 : Interfaces.STM32.UInt20 := 16#0#;
    end record
      with Volatile_Full_Access, Size => 32,
           Bit_Order => System.Low_Order_First;
 
    for MEMRM_Register use record
-      MEM_MODE      at 0 range 0 .. 1;
-      Reserved_2_31 at 0 range 2 .. 31;
+      MEM_MODE       at 0 range 0 .. 2;
+      Reserved_3_7   at 0 range 3 .. 7;
+      FB_MODE        at 0 range 8 .. 8;
+      Reserved_9_9   at 0 range 9 .. 9;
+      SWP_FMC        at 0 range 10 .. 11;
+      Reserved_12_31 at 0 range 12 .. 31;
    end record;
 
+   subtype PMC_ADC1DC2_Field is Interfaces.STM32.Bit;
+   subtype PMC_ADC2DC2_Field is Interfaces.STM32.Bit;
+   subtype PMC_ADC3DC2_Field is Interfaces.STM32.Bit;
    subtype PMC_MII_RMII_SEL_Field is Interfaces.STM32.Bit;
 
    --  peripheral mode configuration register
    type PMC_Register is record
       --  unspecified
-      Reserved_0_22  : Interfaces.STM32.UInt23 := 16#0#;
+      Reserved_0_15  : Interfaces.STM32.UInt16 := 16#0#;
+      --  ADC1DC2
+      ADC1DC2        : PMC_ADC1DC2_Field := 16#0#;
+      --  ADC2DC2
+      ADC2DC2        : PMC_ADC2DC2_Field := 16#0#;
+      --  ADC3DC2
+      ADC3DC2        : PMC_ADC3DC2_Field := 16#0#;
+      --  unspecified
+      Reserved_19_22 : Interfaces.STM32.UInt4 := 16#0#;
       --  Ethernet PHY interface selection
       MII_RMII_SEL   : PMC_MII_RMII_SEL_Field := 16#0#;
       --  unspecified
@@ -49,7 +74,11 @@ package Interfaces.STM32.SYSCFG is
           Bit_Order => System.Low_Order_First;
 
    for PMC_Register use record
-      Reserved_0_22  at 0 range 0 .. 22;
+      Reserved_0_15  at 0 range 0 .. 15;
+      ADC1DC2        at 0 range 16 .. 16;
+      ADC2DC2        at 0 range 17 .. 17;
+      ADC3DC2        at 0 range 18 .. 18;
+      Reserved_19_22 at 0 range 19 .. 22;
       MII_RMII_SEL   at 0 range 23 .. 23;
       Reserved_24_31 at 0 range 24 .. 31;
    end record;

@@ -373,15 +373,15 @@ package body System.BB.Time is
             Update_Alarm (T);
          end if;
 
+         System.BB.Threads.Queues.Set_Check (Self.Fake_Number_ID, False);
       else
          --  If alarm time is not in the future, the thread must yield the CPU
          Threads.Queues.Change_Absolute_Deadline
            (Thread       => Self,
             Abs_Deadline => Self.Active_Relative_Deadline + T);
+         System.BB.Threads.Queues.Set_Check (Self.Fake_Number_ID, False);
          Yield (Self);
       end if;
-
-      System.BB.Threads.Queues.Set_Check (Self.Fake_Number_ID, False);
       Protection.Leave_Kernel;
    end Delay_Until;
 
