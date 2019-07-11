@@ -101,14 +101,14 @@ def create_file(name, first_row):
     file.write (first_row + "\n")
     file.close()
 
-def register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable, FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task, utilization_context_switch, EDF_utilization_clock, FPS_utilization_clock, hyperperiod, name):
+def register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable, FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task, utilization_context_switch, utilization_clock, hyperperiod, name):
 
     # Manca utilizzazione clock
     # utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i
     tasksets_file = open(name, 'a')
     tasksets_file.write(str(utilization)+";"+str(EDF_busy_period)+";"+str(FPS_busy_period)+";"+str(EDF_first_DM_miss)+";"+str(EDF_schedulable)+";"+str(FPS_schedulable)+";"+str(hyperperiod)+";")
     for i in range(len(taskset)):
-        tasksets_file.write(str(taskset[i][0])+","+str(taskset[i][1])+","+str(taskset[i][2])+","+str(taskset[i][3])+","+str(taskset[i][4])+";"+str(EDF_response_time[i])+";"+str(FPS_response_time[i])+";"+str(FPS_deadline_miss_task[i])+";"+str(utilization_context_switch[i])+";")
+        tasksets_file.write(str(taskset[i][0])+","+str(taskset[i][1])+","+str(taskset[i][2])+","+str(taskset[i][3])+","+str(taskset[i][4])+","+str(EDF_response_time[i])+","+str(FPS_response_time[i])+","+str(FPS_deadline_miss_task[i])+","+str(utilization_context_switch[i])+","+str(utilization_clock[i])+";")
     tasksets_file.write("\n")
     tasksets_file.close()
 
@@ -299,6 +299,7 @@ def MAST_FPS_Analysis (taskset):
 
 def UUnifast (taskset, utilization):
     utilization_context_switch = []
+    utilization_clock = []
 
     sumU = utilization
 
@@ -306,6 +307,11 @@ def UUnifast (taskset, utilization):
     for i in range (len(taskset)):
         sumU = sumU - (18 / taskset[i][2])
         utilization_context_switch.append((18 / taskset[i][2]))
+
+    # Utilization of clock on wakeup tasks
+    for i in range (len(taskset)):
+        sumU = sumU - (22.2 / taskset[i][2])
+        utilization_clock.append((22.2 / taskset[i][2]))
 
     # Utilization of work
     for i in range (1,len(taskset)):
@@ -317,7 +323,7 @@ def UUnifast (taskset, utilization):
 
     taskset[len(taskset)-1][4] = int(sumU * taskset[len(taskset)-1][2])
 
-    return utilization_context_switch
+    return utilization_context_switch, utilization_clock
 
 def calculate_hyperperiod (taskset):
     periods = []
@@ -327,60 +333,60 @@ def calculate_hyperperiod (taskset):
     return lcm
 
 
-def calculate_overhead_by_clock (taskset, EDF_busy_period, FPS_busy_period, FPS_response_time, interference_one_clock):
-
-    EDF_task_and_times = {}
-    FPS_task_and_times = {}
-    EDF_counting_clock_interference = []
-    FPS_counting_clock_interference = []
-    EDF_counting_clock_interference_assolute = []
-    FPS_counting_clock_interference_assolute = []
-    for task in range(len(taskset)):
-        EDF_counting_clock_interference.append(1)
-        FPS_counting_clock_interference.append(1)
-        EDF_counting_clock_interference_assolute.append(0)
-        FPS_counting_clock_interference_assolute.append(0)
-    for task in range (len(taskset)):
-        time_period = taskset[task][2]
-        while time_period < max(EDF_busy_period,FPS_busy_period):
-            if time_period <= EDF_busy_period:
-                if time_period in EDF_task_and_times:
-                    EDF_task_and_times[time_period].append(task)
-                else:
-                    EDF_task_and_times[time_period] = [task]
-                EDF_counting_clock_interference [task] = EDF_counting_clock_interference[task] + 1
-            if time_period <= FPS_busy_period:
-                if time_period in FPS_task_and_times:
-                    FPS_task_and_times[time_period].append(task)
-                else:
-                    FPS_task_and_times[time_period] = [task]
-                FPS_counting_clock_interference[task] = FPS_counting_clock_interference[task] + 1
-            time_period = time_period + taskset[task][2]
-
-    EDF_counting_clock_interference_weighted = []
-    FPS_counting_clock_interference_weighted = []
-    for task in range(len(taskset)):
-        EDF_counting_clock_interference_weighted.append(1/len(taskset))
-        FPS_counting_clock_interference_weighted.append(1/len(taskset))
-
-    for values in EDF_task_and_times:
-        for i in range(len(EDF_task_and_times [values])):
-            EDF_counting_clock_interference_weighted [EDF_task_and_times [values] [i]] = EDF_counting_clock_interference_weighted [EDF_task_and_times [values] [i]] + 1/ len(EDF_task_and_times [values])
-
-    for values in FPS_task_and_times:
-        for i in range(len(FPS_task_and_times [values])):
-            if FPS_response_time[i] < taskset[i][2]:
-                FPS_counting_clock_interference_weighted [FPS_task_and_times [values] [i]] = FPS_counting_clock_interference_weighted [FPS_task_and_times [values] [i]] + 1/ len(FPS_task_and_times [values])
-
-    for task in range (len(taskset)):
-        EDF_counting_clock_interference_assolute[task] = math.ceil(interference_one_clock * (EDF_counting_clock_interference_weighted[task] / EDF_counting_clock_interference[task]))
-        FPS_counting_clock_interference_assolute[task] = math.ceil(interference_one_clock * (FPS_counting_clock_interference_weighted[task] / FPS_counting_clock_interference[task]))
-
-    return EDF_counting_clock_interference_assolute, FPS_counting_clock_interference_assolute
-
-def subtract_overhead_by_clock(taskset, EDF_counting_clock_interference_assolute, FPS_counting_clock_interference_assolute):
-    for i in range(len(taskset)):
-        a = 0
+# def calculate_overhead_by_clock (taskset, EDF_busy_period, FPS_busy_period, FPS_response_time, interference_one_clock):
+#
+#     EDF_task_and_times = {}
+#     FPS_task_and_times = {}
+#     EDF_counting_clock_interference = []
+#     FPS_counting_clock_interference = []
+#     EDF_counting_clock_interference_assolute = []
+#     FPS_counting_clock_interference_assolute = []
+#     for task in range(len(taskset)):
+#         EDF_counting_clock_interference.append(1)
+#         FPS_counting_clock_interference.append(1)
+#         EDF_counting_clock_interference_assolute.append(0)
+#         FPS_counting_clock_interference_assolute.append(0)
+#     for task in range (len(taskset)):
+#         time_period = taskset[task][2]
+#         while time_period < max(EDF_busy_period,FPS_busy_period):
+#             if time_period <= EDF_busy_period:
+#                 if time_period in EDF_task_and_times:
+#                     EDF_task_and_times[time_period].append(task)
+#                 else:
+#                     EDF_task_and_times[time_period] = [task]
+#                 EDF_counting_clock_interference [task] = EDF_counting_clock_interference[task] + 1
+#             if time_period <= FPS_busy_period:
+#                 if time_period in FPS_task_and_times:
+#                     FPS_task_and_times[time_period].append(task)
+#                 else:
+#                     FPS_task_and_times[time_period] = [task]
+#                 FPS_counting_clock_interference[task] = FPS_counting_clock_interference[task] + 1
+#             time_period = time_period + taskset[task][2]
+#
+#     EDF_counting_clock_interference_weighted = []
+#     FPS_counting_clock_interference_weighted = []
+#     for task in range(len(taskset)):
+#         EDF_counting_clock_interference_weighted.append(1/len(taskset))
+#         FPS_counting_clock_interference_weighted.append(1/len(taskset))
+#
+#     for values in EDF_task_and_times:
+#         for i in range(len(EDF_task_and_times [values])):
+#             EDF_counting_clock_interference_weighted [EDF_task_and_times [values] [i]] = EDF_counting_clock_interference_weighted [EDF_task_and_times [values] [i]] + 1/ len(EDF_task_and_times [values])
+#
+#     for values in FPS_task_and_times:
+#         for i in range(len(FPS_task_and_times [values])):
+#             if FPS_response_time[i] < taskset[i][2]:
+#                 FPS_counting_clock_interference_weighted [FPS_task_and_times [values] [i]] = FPS_counting_clock_interference_weighted [FPS_task_and_times [values] [i]] + 1/ len(FPS_task_and_times [values])
+#
+#     for task in range (len(taskset)):
+#         EDF_counting_clock_interference_assolute[task] = math.ceil(interference_one_clock * (EDF_counting_clock_interference_weighted[task] / EDF_counting_clock_interference[task]))
+#         FPS_counting_clock_interference_assolute[task] = math.ceil(interference_one_clock * (FPS_counting_clock_interference_weighted[task] / FPS_counting_clock_interference[task]))
+#
+#     return EDF_counting_clock_interference_assolute, FPS_counting_clock_interference_assolute
+#
+# def subtract_overhead_by_clock(taskset, EDF_counting_clock_interference_assolute, FPS_counting_clock_interference_assolute):
+#     for i in range(len(taskset)):
+#         a = 0
 
 
 #######################
@@ -398,8 +404,8 @@ def create_random_taskset_between_two_periods (num_tasks, low, high, utilization
     periods.sort()
     for i in range (num_tasks):
         taskset.append ([(num_tasks - i), periods[i], periods[i], i+1, 0])
-    utilization_context_switch = UUnifast(taskset, utilization)
-    return taskset, utilization_context_switch
+    utilization_context_switch, utilization_clock = UUnifast(taskset, utilization)
+    return taskset, utilization_context_switch, utilization_clock
 
 
 def create_non_harmonic_taskset (num_tasks_per_type, utilization):
@@ -430,26 +436,24 @@ def create_non_harmonic_taskset (num_tasks_per_type, utilization):
 
 def buttazzo_experiments_preemptions ():
     utilization = 0.9
-    create_file("../workspace/buttazzo_preemptions.csv", "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i")
-    # for i in range (2,11):
-    #     for j in range(1000):
-    for i in range(10,11):
-        for j in range(1):
-            taskset, utilization_context_switch = create_random_taskset_between_two_periods(i*2, 10, 100, utilization)
+    create_file("../workspace/buttazzo_preemptions.csv", "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock_i")
+    for i in range (2,11):
+        for j in range(1000):
+            taskset, utilization_context_switch, utilization_clock = create_random_taskset_between_two_periods(i*2, 10, 100, utilization)
             #hyperperiod = calculate_hyperperiod(taskset)
             EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
             FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
-            EDF_counting_clock_interference_assolute, FPS_counting_clock_interference_assolute = calculate_overhead_by_clock(taskset, EDF_busy_period, FPS_busy_period, FPS_response_time, 977)
-            #register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable, FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task, utilization_context_switch, 1000000, "../workspace/buttazzo_preemptions.csv")
+            #EDF_counting_clock_interference_assolute, FPS_counting_clock_interference_assolute = calculate_overhead_by_clock(taskset, EDF_busy_period, FPS_busy_period, FPS_response_time, 977)
+            register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable, FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task, utilization_context_switch, utilization_clock, 1000000, "../workspace/buttazzo_preemptions.csv")
 
-    # for i in range (10):
-    #     utilization = 0.5 + i*0.05
-    #     for j in range(1000):
-    #         taskset, utilization_context_switch = create_random_taskset_between_two_periods(10, 10, 100, utilization)
-    #         #hyperperiod = calculate_hyperperiod(taskset)
-    #         EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
-    #         FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
-    #         register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable, FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task, utilization_context_switch, 1000000, "../workspace/buttazzo_preemptions.csv")
+    for i in range (10):
+        utilization = 0.5 + i*0.05
+        for j in range(1000):
+            taskset, utilization_context_switch, utilization_clock = create_random_taskset_between_two_periods(10, 10, 100, utilization)
+            #hyperperiod = calculate_hyperperiod(taskset)
+            EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
+            FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
+            register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable, FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task, utilization_context_switch, utilization_clock, 1000000, "../workspace/buttazzo_preemptions.csv")
 
 
 

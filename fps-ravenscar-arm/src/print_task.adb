@@ -17,20 +17,28 @@ package body Print_Task is
       Period : constant Ada.Real_Time.Time_Span :=
         Ada.Real_Time.Milliseconds (Cycle_Time);
 
+      function Time_Conversion (Time_in  : Ada.Real_Time.Time)
+                                return System.BB.Time.Time_Span;
+      function Time_Conversion (Time_in  : Ada.Real_Time.Time)
+                                return System.BB.Time.Time_Span is
+         Time_in_to_Time_Span : Ada.Real_Time.Time_Span;
+         Time_out : System.BB.Time.Time_Span;
+      begin
+         Time_in_to_Time_Span := Time_in - Ada.Real_Time.Time_First;
+         Time_out := System.BB.Time.To_Time_Span
+           (Ada.Real_Time.To_Duration (Time_in_to_Time_Span));
+         return Time_out;
+      end Time_Conversion;
+
       i : Integer := 0;
-      Starting_Time_Ada_Real_Time :
-      constant Ada.Real_Time.Time_Span
-        := Next_Period - Ada.Real_Time.Time_First;
-      Starting_Time_BB_Time : System.BB.Time.Time_Span;
+
    begin
-      Starting_Time_BB_Time := System.BB.Time.To_Time_Span
-        (Ada.Real_Time.To_Duration (Starting_Time_Ada_Real_Time));
       System.Task_Primitives.Operations.Set_Period
          (System.Task_Primitives.Operations.Self,
          System.BB.Time.Microseconds (Cycle_Time));
       System.Task_Primitives.Operations.Set_Starting_Time
         (System.Task_Primitives.Operations.Self,
-          Starting_Time_BB_Time);
+          Time_Conversion (Next_Period));
       System.Task_Primitives.Operations.Set_Relative_Deadline
          (System.Task_Primitives.Operations.Self,
           System.BB.Time.Milliseconds (Dead));

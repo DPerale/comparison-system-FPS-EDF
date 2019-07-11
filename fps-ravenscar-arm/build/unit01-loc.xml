@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <Locations >
-  <Project>
-    <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_file>
-    <file_marker column=" 1" line=" 119" >
+  <Project >
+    <file_marker column=" 80" line=" 636" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
     </file_marker>
@@ -14,7 +13,7 @@
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/compilare/s-soflin.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 37" line=" 70" >
+    <file_marker column=" 42" line=" 77" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
     </file_marker>
@@ -26,11 +25,11 @@
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbdead.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 35" line=" 365" >
+    <file_marker column=" 8" line=" 366" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 380" >
+    <file_marker column=" 61" line=" 353" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
     </file_marker>
@@ -38,35 +37,35 @@
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/system_time.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 39" >
+    <file_marker column=" 44" line=" 12" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/print_task.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 1" >
+    <file_marker column=" 14" line=" 9" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/print_task.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 1" line=" 486" >
+    <file_marker column=" 14" line=" 175" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthre.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 55" line=" 165" >
+    <file_marker column=" 20" line=" 311" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthre.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 25" line=" 63" >
+    <file_marker column=" 19" line=" 127" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-taprop.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 16" line=" 210" >
+    <file_marker column=" 17" line=" 147" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-taprop.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 28" line=" 51" >
+    <file_marker column=" 14" line=" 200" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-osinte.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 27" line=" 11" >
+    <file_marker column=" 7" line=" 11" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
     </file_marker>
@@ -130,7 +129,7 @@
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/compilare/a-reatim.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 25" line=" 188" >
+    <file_marker column=" 4" line=" 84" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.ads</vfs_file>
     </file_marker>
@@ -142,71 +141,27 @@
       <vfs_project />
       <vfs_file>/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/gnat/s-bbbosu.ads</vfs_file>
     </file_marker>
-    <file_marker column=" 14" line=" 324" >
+    <file_marker column=" 8" line=" 325" >
       <vfs_project />
       <vfs_file>/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/gnat/s-bbthqu.ads</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/compilare/s-bbinte.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 269" >
+      <vfs_project />
+      <vfs_file>/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/gnat/s-bbthre.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 11" line=" 147" >
+      <vfs_project />
+      <vfs_file>/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/gnat/i-stm32-usart.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 14" line=" 185" >
+      <vfs_project />
+      <vfs_file>/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/gnat/s-osinte.ads</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 30" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 29" line=" 13" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 28" line=" 18" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 29" line=" 13" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 20" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 13" line=" 16" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
     </file_marker>
@@ -216,219 +171,15 @@
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/print_task.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/system_time.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 28" line=" 18" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 13" line=" 16" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 28" line=" 18" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 13" line=" 16" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 20" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 11" line=" 43" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 11" line=" 43" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 31" line=" 33" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 30" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 31" line=" 33" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 36" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 29" line=" 13" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/print_task.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/print_task.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/print_task.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbdead.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-taskin.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-osinte.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-taprop.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-taprop.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-taskin.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-taskin.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthre.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthre.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 1" line=" 1" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 22" line=" 375" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 7" line=" 372" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 42" line=" 376" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 21" line=" 60" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 42" line=" 70" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 44" line=" 12" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/print_task.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
@@ -436,39 +187,99 @@
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/print_task.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 14" line=" 9" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/print_task.ads</vfs_file>
-    </file_marker>
-    <file_marker column=" 38" line=" 353" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 29" line=" 364" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
-    </file_marker>
-    <file_marker column=" 38" line=" 353" >
-      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/compilare/a-elchha.adb</vfs_file>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/compilare/s-bbinte.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/compilare/s-soflin.adb</vfs_file>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 40" line=" 50" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
     </file_marker>
     <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbdead.ads</vfs_file>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/unit01.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 40" line=" 50" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 380" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 173" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/compilare/s-bbinte.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 380" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 60" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 380" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 173" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/compilare/s-bbinte.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 380" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 60" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 380" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 173" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/compilare/s-bbinte.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 380" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 60" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 380" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 173" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/compilare/s-bbinte.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 380" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 60" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
     </file_marker>
     <file_marker current="true" column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
-      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthre.ads</vfs_file>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
     </file_marker>
   </Project>
 </Locations>

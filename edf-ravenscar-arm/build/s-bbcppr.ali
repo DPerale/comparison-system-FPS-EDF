@@ -23,7 +23,7 @@ RR NO_ELABORATION_CODE
 RV NO_OBSOLESCENT_FEATURES
 RV SPARK_05
 
-U system.bb.cpu_primitives%b  s-bbcppr.adb	6e48c466 NE OL PK
+U system.bb.cpu_primitives%b  s-bbcppr.adb	f151b4c1 NE OL PK
 W ada%s			ada.ads			ada.ali
 Z ada.exceptions%s	a-except.adb		a-except.ali
 W ada.unchecked_conversion%s
@@ -61,7 +61,7 @@ D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621183100 431abc17 system.bb.parameters%s
 D s-bbthre.ads		20190709122229 e098fee4 system.bb.threads%s
-D s-bbthqu.ads		20190709121239 b165de3f system.bb.threads.queues%s
+D s-bbthqu.ads		20190709153415 2e7cae98 system.bb.threads.queues%s
 D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
 D s-maccod.ads		20190621182555 6d68a701 system.machine_code%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
@@ -197,7 +197,7 @@ X 18 s-bbthre.ads
 65P9*Thread_Id(62R9)
 98i7*Active_Priority{integer} 12|325r41 379r41
 X 19 s-bbthqu.ads
-41K27*Queues 12|39w24 48r16 19|426e29
+41K27*Queues 12|39w24 48r16 19|433e29
 295V13*Running_Thread{18|65P9} 12|325s26 379s26
 307V13*Context_Switch_Needed{boolean} 12|304s13 375s10
 X 20 s-bbtime.ads

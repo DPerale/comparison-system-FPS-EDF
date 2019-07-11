@@ -26,21 +26,28 @@ package body Cyclic_Tasks is
             Num := Num + I;
          end loop;
       end Gauss;
+      function Time_Conversion (Time_in  : Ada.Real_Time.Time)
+                                return System.BB.Time.Time_Span;
+      function Time_Conversion (Time_in  : Ada.Real_Time.Time)
+                                return System.BB.Time.Time_Span is
+         Time_in_to_Time_Span : Ada.Real_Time.Time_Span;
+         Time_out : System.BB.Time.Time_Span;
+      begin
+         Time_in_to_Time_Span := Time_in - Ada.Real_Time.Time_First;
+         Time_out := System.BB.Time.To_Time_Span
+           (Ada.Real_Time.To_Duration (Time_in_to_Time_Span));
+         return Time_out;
+      end Time_Conversion;
+
       Temp : Integer;
-      Starting_Time_Ada_Real_Time :
-      constant Ada.Real_Time.Time_Span
-        := Next_Period - Ada.Real_Time.Time_First;
-      Starting_Time_BB_Time : System.BB.Time.Time_Span;
 
    begin
-      Starting_Time_BB_Time := System.BB.Time.To_Time_Span
-        (Ada.Real_Time.To_Duration (Starting_Time_Ada_Real_Time));
       System.Task_Primitives.Operations.Set_Period
          (System.Task_Primitives.Operations.Self,
          System.BB.Time.Microseconds (Cycle_Time));
       System.Task_Primitives.Operations.Set_Starting_Time
         (System.Task_Primitives.Operations.Self,
-          Starting_Time_BB_Time);
+          Time_Conversion (Next_Period));
       System.Task_Primitives.Operations.Set_Relative_Deadline
          (System.Task_Primitives.Operations.Self,
           System.BB.Time.Microseconds (Dead));
@@ -67,7 +74,9 @@ package body Cyclic_Tasks is
       end loop;
    end Init;
 
-   P1 : Print_Task.Print (240, -1, 110, 0); -- period in milliseconds
-   C1 : Cyclic (18, 10000, 10000, 1, 105000, 0);
-   --  C2 : Cyclic (17, 10000, 10000, 2, 52000, 0);
+   P1 : Print_Task.Print (240, -1, 1000, 0); -- period in milliseconds
+   C1 : Cyclic (4, 53000, 53000, 1, 70193, 0);
+   C2 : Cyclic (3, 60000, 60000, 2, 228074, 0);
+   C3 : Cyclic (2, 67000, 67000, 3, 221393, 0);
+   C4 : Cyclic (1, 89000, 89000, 4, 95382, 0);
 end Cyclic_Tasks;

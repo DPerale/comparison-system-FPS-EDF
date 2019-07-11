@@ -19,7 +19,7 @@ RV NO_IMPLEMENTATION_RESTRICTIONS
 RR NO_ELABORATION_CODE
 RV SPARK_05
 
-U system.bb.threads%b	s-bbthre.adb		e5c0eaae NE OL PK
+U system.bb.threads%b	s-bbthre.adb		7ad99a09 NE OL PK
 Z interfaces%s		interfac.ads		interfac.ali
 W system%s		system.ads		system.ali
 W system.bb%s		s-bb.ads		s-bb.ali
@@ -56,7 +56,7 @@ D s-bbpara.ads		20190621183100 431abc17 system.bb.parameters%s
 D s-bbprot.ads		20190621183100 f48a7e85 system.bb.protection%s
 D s-bbthre.ads		20190709122229 e098fee4 system.bb.threads%s
 D s-bbthre.adb		20190709121158 593c9c34 system.bb.threads%b
-D s-bbthqu.ads		20190709121239 b165de3f system.bb.threads.queues%s
+D s-bbthqu.ads		20190709153415 2e7cae98 system.bb.threads.queues%s
 D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
 D s-parame.ads		20190621182555 d106111e system.parameters%s
@@ -221,7 +221,7 @@ X 17 s-bbthre.adb
 X 18 s-bbthqu.ads
 41K27*Queues 17|42w24 113r14 196r25 197r7 201r7 313r7 340r7 377r7 377r38
 . 390r7 391r25 415r15 417r7 418r16 435r15 437r7 461r15 463r7 464r16 478r7
-. 479r16 491r7 492r16 501r39 542r10 589r14 608r10 613r10 18|426e29
+. 479r16 491r7 492r16 501r39 542r10 589r14 608r10 613r10 18|433e29
 66U14*Set_Priority_For_Print 17|377s14
 69U14*Insert 17|201s14 613s17
 115U14*Extract 17|542s17
@@ -233,7 +233,7 @@ X 18 s-bbthqu.ads
 275a4*Running_Thread_Table(16|65P9) 17|313m14 340m14
 295V13*Running_Thread{16|65P9} 17|113s21 377s45 391s32 415s22 418s23 435s22
 . 437s14 461s22 464s23 479s23 492s23 501s46 589s21
-413p4*Global_List{16|65P9} 17|196r32 197m14
+420p4*Global_List{16|65P9} 17|196r32 197m14
 X 19 s-bbtime.ads
 43K19*Time 16|44w16 115r30 142r34 166r33 168r41 330r32 333r34 17|49r18 191r54
 . 222r34 228r19 276r7 299r45 333r22 475r32 488r34 597r32 597r55 19|254e19

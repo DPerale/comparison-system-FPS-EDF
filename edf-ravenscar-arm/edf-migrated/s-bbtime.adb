@@ -352,7 +352,7 @@ package body System.BB.Time is
          end if;
       end if;
 
-      if T > Now then
+      if T + System.BB.Threads.Queues.Global_Interrupt_Delay > Now then
 
          --  Extract the thread from the ready queue. When a thread wants to
          --  wait for an alarm it becomes blocked.
@@ -377,8 +377,7 @@ package body System.BB.Time is
       else
          --  If alarm time is not in the future, the thread must yield the CPU
          Threads.Queues.Change_Absolute_Deadline
-           (Thread       => Self,
-            Abs_Deadline => Self.Active_Relative_Deadline + T);
+           (Self, Self.Active_Absolute_Deadline + Self.Active_Period);
          System.BB.Threads.Queues.Set_Check (Self.Fake_Number_ID, False);
          Yield (Self);
       end if;
