@@ -21,9 +21,9 @@ RV NO_DEFAULT_INITIALIZATION
 RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
-RV MAX_TASKS=5
+RV MAX_TASKS=11
 
-U cyclic_tasks%b	cyclic_tasks.adb	55d84181 OO PK
+U cyclic_tasks%b	cyclic_tasks.adb	476f6bc6 OO PK
 W ada%s			ada.ads			ada.ali
 W ada.real_time%s	a-reatim.adb		a-reatim.ali
 Z ada.real_time.delays%s  a-retide.adb		a-retide.ali
@@ -38,7 +38,7 @@ W system.task_primitives.operations%s  s-taprop.adb  s-taprop.ali
 Z system.tasking%s	s-taskin.adb		s-taskin.ali
 Z system.tasking.restricted.stages%s  s-tarest.adb  s-tarest.ali
 W system_time%s		system_time.ads		system_time.ali
-T 0 5
+T 0 11
 
 U cyclic_tasks%s	cyclic_tasks.ads	2989410f EE NE OO PK
 W system%s		system.ads		system.ali
@@ -54,7 +54,7 @@ D a-reatim.ads		20190621183100 4c16970e ada.real_time%s
 D a-retide.ads		20190621183100 081cdaa4 ada.real_time.delays%s
 D a-unccon.ads		20190621182550 0e9b276f ada.unchecked_conversion%s
 D cyclic_tasks.ads	20190709122130 f20a548e cyclic_tasks%s
-D cyclic_tasks.adb	20190711113416 103ca5e1 cyclic_tasks%b
+D cyclic_tasks.adb	20190715145844 028b8fa6 cyclic_tasks%b
 D interfac.ads		20190621182551 5ab55268 interfaces%s
 D i-stm32.ads		20190621182551 2ad0960b interfaces.stm32%s
 D i-stm32-pwr.ads	20190621182551 4a098e84 interfaces.stm32.pwr%s
@@ -101,9 +101,9 @@ X 3 a-reatim.ads
 119V13*To_Duration{duration}<23|123p13> 7|38s27
 126V13*Microseconds{61I9}<23|162p13> 7|13s30 19s30
 X 6 cyclic_tasks.ads
-3K9*Cyclic_Tasks 20l5 20e17 7|9b14 82l5 82t17
+3K9*Cyclic_Tasks 20l5 20e17 7|9b14 88l5 88t17
 5T14*Cyclic 6d7 7d7 8d7 9d7 10d7 11d7 15l8 15e14 7|11b14 65l8 65t14 78r9
-. 79r9 80r9 81r9
+. 79r9 80r9 81r9 82r9 83r9 84r9 85r9 86r9 87r10
 6i7 Pri{12|117I12} 13r24
 7i7 Dead{positive} 7|53r40
 8i7 Cycle_Time{positive} 7|19r44 47r39
@@ -129,6 +129,12 @@ X 7 cyclic_tasks.adb
 79t4 C2{6|5T14}
 80t4 C3{6|5T14}
 81t4 C4{6|5T14}
+82t4 C5{6|5T14}
+83t4 C6{6|5T14}
+84t4 C7{6|5T14}
+85t4 C8{6|5T14}
+86t4 C9{6|5T14}
+87t4 C10{6|5T14}
 X 11 print_task.ads
 2K9*Print_Task 7|7w6 77r9 11|15e15
 4T14*Print 7|77r20 11|13e13
