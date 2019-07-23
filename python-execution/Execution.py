@@ -264,11 +264,33 @@ def buttazzo_experiments_preemptions ():
             save_data(taskset, EDF_data, FPS_data, "Buttazzo-First-Preemptions", i, hyperperiod)
         else:
             save_data(taskset, EDF_data, FPS_data, "Buttazzo-Second-Preemptions", i-9000, hyperperiod)
+
+def single_experiment(location, number, time):
+
+    taskset = []
+    taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM, EDF_schedulable, FPS_schedulable, hyperperiod = import_taskset(
+            taskset, number, location)
+
+    hyperperiod = time
+
+    make_adb_file(taskset, hyperperiod)
+    EDF_data = []
+    FPS_data = []
+    for j in range(2):
+        compile_and_flash_into_board(j)
+        if (j == 0):
+            EDF_data = debug_and_read_data(taskset, hyperperiod, j)
+        else:
+            FPS_data = debug_and_read_data(taskset, hyperperiod, j)
+
+    save_data(taskset, EDF_data, FPS_data, "single_experiment_prova2", number, hyperperiod)
+
 ##########
 ## Main ##
 ##########
 
-buttazzo_experiments_preemptions()
+#buttazzo_experiments_preemptions()
+single_experiment("buttazzo_preemptions.csv", 8007, 1200000000)
 
 
 # for i in range (1):

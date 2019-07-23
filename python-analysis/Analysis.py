@@ -114,7 +114,7 @@ def register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF
 
 
 def create_MAST_input_file_EDF(taskset):
-    MAST_file = open("../MASTinput.txt", "w")
+    MAST_file = open("../MASTinputEDF.txt", "w")
     MAST_file.write("Model (\n")
     MAST_file.write("   Model_Name  => EDF_RTA_CALCULUS,\n")
     MAST_file.write("   Model_Date  => 2019-01-01);\n")
@@ -235,7 +235,7 @@ def MAST_EDF_Analysis (taskset):
 
     create_MAST_input_file_EDF(taskset)
 
-    command = ["../mast/mast_analysis/mast_analysis edf_monoprocessor ../MASTinput.txt ../MASTinput.out"]
+    command = ["../mast/mast_analysis/mast_analysis edf_monoprocessor ../MASTinputEDF.txt ../MASTinput.out"]
     MAST = Popen(command, shell=True, stdout=PIPE, stdin=PIPE)
 
     while True and MAST.poll() == None:
@@ -253,7 +253,7 @@ def MAST_EDF_Analysis (taskset):
             s = line.decode().split(" ")
             response_time.append(float(s[1]))
             i = i+1
-
+    MAST.kill()
     return busy_period, first_DM_miss, schedulable, response_time
 
 
@@ -285,7 +285,7 @@ def MAST_FPS_Analysis (taskset):
             else:
                 deadline_miss_task.append(0)
             i = i + 1
-
+    MAST.kill()
     return busy_period, schedulable, response_time, deadline_miss_task
 
 
@@ -329,7 +329,22 @@ def calculate_hyperperiod (taskset):
     periods = []
     for i in range (len(taskset)):
         periods.append(taskset[i][2])
-    lcm = np.lcm.reduce(periods, dtype='int128')
+    lcm = np.lcm.reduce(periods)
+
+    return lcm
+
+def calculate_hyperperiod_with_limit (taskset, max_hyperperiod):
+    periods = []
+    for i in range (len(taskset)):
+        periods.append(taskset[i][2])
+    #lcm = np.lcm.reduce(periods)
+    # iterative lcm
+    lcm = 1
+    for i in range (len(taskset)):
+        lcm = np.lcm.reduce([lcm, periods[i]])
+
+        if lcm > max_hyperperiod:
+            return max_hyperperiod+1
     return lcm
 
 
@@ -400,10 +415,52 @@ def create_random_taskset_between_two_periods (num_tasks, low, high, utilization
     taskset = []
     periods = []
     for i in range (num_tasks):
-        periods.append(randint(low,high)*1000)
+        periods.append(randint(low,high))
     periods.sort()
     for i in range (num_tasks):
         taskset.append ([(num_tasks - i), periods[i], periods[i], i+1, 0])
+
+    utilization_context_switch, utilization_clock = UUnifast(taskset, utilization)
+    return taskset, utilization_context_switch, utilization_clock
+
+def create_random_taskset_between_two_periods_with_max_hyperperiod (num_tasks, low, high, utilization, hyperperiod):
+    soglia_iperperiodo = 160000000
+    hyperperiod = 160000001
+    taskset = []
+    j = 0
+    while hyperperiod > soglia_iperperiodo:
+        taskset = []
+        periods = []
+        for i in range(num_tasks):
+            periods.append(randint(low, high))
+        periods.sort()
+        for i in range(num_tasks):
+            taskset.append([(num_tasks - i), periods[i], periods[i], i + 1, 0])
+
+        hyperperiod = calculate_hyperperiod_with_limit(taskset,soglia_iperperiodo)
+        print(j)
+        j=j+1
+    import sys
+
+    print(hyperperiod)
+    utilization_context_switch, utilization_clock = UUnifast(taskset, utilization)
+    return taskset, utilization_context_switch, utilization_clock
+
+
+def create_random_taskset_between_two_periods_no_repetition (num_tasks, low, high, utilization):
+    taskset = []
+    periods = []
+
+    i = 0
+    while i < num_tasks:
+        rand = randint(low,high)*10000
+        if rand not in periods:
+            periods.append(rand)
+            i = i+1
+    periods.sort()
+    for i in range (num_tasks):
+        taskset.append ([(num_tasks - i), periods[i], periods[i], i+1, 0])
+
     utilization_context_switch, utilization_clock = UUnifast(taskset, utilization)
     return taskset, utilization_context_switch, utilization_clock
 
@@ -455,7 +512,46 @@ def buttazzo_experiments_preemptions ():
             FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
             register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable, FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task, utilization_context_switch, utilization_clock, 1000000, "../workspace/buttazzo_preemptions.csv")
 
+def buttazzo_experiments_preemptions_no_repetition ():
+    utilization = 0.9
+    create_file("../workspace/buttazzo_preemptions_no_repetition.csv", "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock_i")
+    for i in range (2,11):
+        for j in range(500):
+            taskset, utilization_context_switch, utilization_clock = create_random_taskset_between_two_periods_no_repetition (i*2, 10, 100, utilization)
+            #hyperperiod = calculate_hyperperiod(taskset)
+            EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
+            FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
 
+            #EDF_counting_clock_interference_assolute, FPS_counting_clock_interference_assolute = calculate_overhead_by_clock(taskset, EDF_busy_period, FPS_busy_period, FPS_response_time, 977)
+            register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable, FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task, utilization_context_switch, utilization_clock, 1000000, "../workspace/buttazzo_preemptions_no_repetition.csv")
+
+    for i in range (10):
+        utilization = 0.5 + i*0.05
+        for j in range(500):
+            taskset, utilization_context_switch, utilization_clock = create_random_taskset_between_two_periods_no_repetition (10, 10, 100, utilization)
+            #hyperperiod = calculate_hyperperiod(taskset)
+            EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
+            FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
+            register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable, FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task, utilization_context_switch, utilization_clock, 1000000, "../workspace/buttazzo_preemptions_no_repetition.csv")
+
+
+def buttazzo_jitter():
+    utilization = 0.9
+    create_file("../workspace/buttazzo_jitter.csv",
+                "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock_i")
+
+    for j in range(1000):
+        print(j)
+        taskset, utilization_context_switch, utilization_clock = create_random_taskset_between_two_periods_with_max_hyperperiod(20,10,200, utilization,100)
+        hyperperiod = calculate_hyperperiod(taskset)
+        EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
+        FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
+        # EDF_counting_clock_interference_assolute, FPS_counting_clock_interference_assolute = calculate_overhead_by_clock(taskset, EDF_busy_period, FPS_busy_period, FPS_response_time, 977)
+
+        register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable,
+                         FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task,
+                         utilization_context_switch, utilization_clock, hyperperiod,
+                         "../workspace/buttazzo_jitter.csv")
 
 
 ##########
@@ -464,64 +560,6 @@ def buttazzo_experiments_preemptions ():
 
 ## Task (Prio, Dead, Period, ID, WCET)
 
-buttazzo_experiments_preemptions()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#buttazzo_experiments_preemptions()
+buttazzo_jitter ()
 
