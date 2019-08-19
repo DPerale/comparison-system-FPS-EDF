@@ -187,6 +187,11 @@ package System.BB.Threads.Queues is
      (Thread        : Thread_Id;
       Starting_Time : System.BB.Time.Time_Span);
 
+   procedure Change_Jitters
+     (Thread      : Thread_Id;
+      Work_Jitter : System.BB.Time.Time_Span;
+      Release_Jitter : System.BB.Time.Time_Span);
+
    procedure Change_Relative_Deadline
      (Thread       : Thread_Id;
       Rel_Deadline : System.BB.Deadlines.Relative_Deadline);

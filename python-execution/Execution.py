@@ -260,16 +260,37 @@ def buttazzo_experiments_preemptions ():
                 EDF_data = debug_and_read_data(taskset, hyperperiod, j)
             else:
                 FPS_data = debug_and_read_data(taskset, hyperperiod, j)
-        if i<9000:
+        if i<9001:
             save_data(taskset, EDF_data, FPS_data, "Buttazzo-First-Preemptions", i, hyperperiod)
         else:
             save_data(taskset, EDF_data, FPS_data, "Buttazzo-Second-Preemptions", i-9000, hyperperiod)
+
+def buttazzo_experiments_preemptions_no_repetition ():
+    for i in range(1,9501):
+        taskset = []
+        taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM, EDF_schedulable, FPS_schedulable, hyperperiod = import_taskset(taskset, i, "buttazzo_preemptions_no_repetition.csv")
+        make_adb_file(taskset, hyperperiod)
+        EDF_data = []
+        FPS_data = []
+        for j in range(2):
+            compile_and_flash_into_board(j)
+            if (j==0):
+                EDF_data = debug_and_read_data(taskset, hyperperiod, j)
+            else:
+                FPS_data = debug_and_read_data(taskset, hyperperiod, j)
+        if i<4501:
+            save_data(taskset, EDF_data, FPS_data, "Buttazzo-First-Preemptions_no_repetition/Buttazzo-First-Preemptions_no_repetition", i, hyperperiod)
+        else:
+            save_data(taskset, EDF_data, FPS_data, "Buttazzo-Second-Preemptions_no_repetition/Buttazzo-Second-Preemptions_no_repetition", i-4500, hyperperiod)
+
 
 def single_experiment(location, number, time):
 
     taskset = []
     taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM, EDF_schedulable, FPS_schedulable, hyperperiod = import_taskset(
             taskset, number, location)
+
+    print(taskset)
 
     hyperperiod = time
 
@@ -283,15 +304,16 @@ def single_experiment(location, number, time):
         else:
             FPS_data = debug_and_read_data(taskset, hyperperiod, j)
 
-    save_data(taskset, EDF_data, FPS_data, "single_experiment_prova2", number, hyperperiod)
+    save_data(taskset, EDF_data, FPS_data, "single_experiment_no_repetition_", number, hyperperiod)
 
 ##########
 ## Main ##
 ##########
 
 #buttazzo_experiments_preemptions()
-single_experiment("buttazzo_preemptions.csv", 8007, 1200000000)
+single_experiment("buttazzo_preemptions_no_repetition.csv", 4500, 1200000000)
 
+#buttazzo_experiments_preemptions_no_repetition ()
 
 # for i in range (1):
 #

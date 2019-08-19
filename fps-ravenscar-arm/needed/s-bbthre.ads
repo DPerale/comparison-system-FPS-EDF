@@ -301,6 +301,10 @@ package System.BB.Threads is
    procedure Set_Starting_Time
      (Starting_Time :  System.BB.Time.Time_Span);
 
+   procedure Set_Jitters
+     (Work_Jitter : System.BB.Time.Time_Span;
+      Release_Jitter : System.BB.Time.Time_Span);
+
    procedure Sleep;
    --  The calling thread is unconditionally suspended. In the case when there
    --  is a request to wakeup the caller just before the state changed to

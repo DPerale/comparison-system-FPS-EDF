@@ -20,7 +20,7 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U print_task%b		print_task.adb		21478ba3 OO PK
+U print_task%b		print_task.adb		70774de1 OO PK
 W ada%s			ada.ads			ada.ali
 W ada.real_time%s	a-reatim.adb		a-reatim.ali
 Z ada.real_time.delays%s  a-retide.adb		a-retide.ali
@@ -61,11 +61,11 @@ D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
 D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20190624103433 b225c8e4 system.bb.threads%s
-D s-bbthqu.ads		20190709122006 df0d9292 system.bb.threads.queues%s
+D s-bbthre.ads		20190819111553 18783b0b system.bb.threads%s
+D s-bbthqu.ads		20190817154556 2d9960f7 system.bb.threads.queues%s
 D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
-D s-osinte.ads		20190624103433 4843a48a system.os_interface%s
+D s-osinte.ads		20190817154822 793f6fd0 system.os_interface%s
 D s-parame.ads		20190621182555 d106111e system.parameters%s
 D s-secsta.ads		20190621182555 56a2861c system.secondary_stack%s
 D s-stalib.ads		20190621182556 09bd3940 system.standard_library%s
@@ -73,7 +73,7 @@ D s-stm32.ads		20190621182556 e898dba2 system.stm32%s
 D s-stoele.ads		20190621182556 2dc34a04 system.storage_elements%s
 D s-tasinf.ads		20190621182556 801abd01 system.task_info%s
 D s-taspri.ads		20190621183100 351848fa system.task_primitives%s
-D s-taprop.ads		20190624103551 1e69c519 system.task_primitives.operations%s
+D s-taprop.ads		20190817154556 179002d1 system.task_primitives.operations%s
 D s-taskin.ads		20190621183100 58b15916 system.tasking%s
 D s-tasres.ads		20190621183100 0c8ef6fb system.tasking.restricted%s
 D s-tarest.ads		20190621183100 c88b6d9a system.tasking.restricted.stages%s
@@ -118,9 +118,9 @@ X 11 system.ads
 X 12 s-bb.ads
 40K16*BB 10|4r13 5r13 6r13 21r47 23r47 25r28 28r29 38r17 44r18 50r20 12|95e14
 X 20 s-bbthre.ads
-49K19*Threads 10|5w16 6r16 50r23 20|341e22
+49K19*Threads 10|5w16 6r16 50r23 20|345e22
 X 21 s-bbthqu.ads
-41K27*Queues 10|6w24 50r31 21|395e29
+41K27*Queues 10|6w24 50r31 21|400e29
 58U14*Print_Table 10|50s38
 X 22 s-bbtime.ads
 43K19*Time 10|4w16 21r50 23r50 25r31 28r32 38r20 44r21 22|246e19
@@ -134,7 +134,7 @@ X 26 s-secsta.ads
 X 31 s-taspri.ads
 40K16*Task_Primitives 10|3r13 36r14 37r18 39r14 40r17 42r14 43r18 31|82e27
 X 32 s-taprop.ads
-46K32*Operations 10|3w29 36r30 37r34 39r30 40r33 42r30 43r34 32|135e38
+46K32*Operations 10|3w29 36r30 37r34 39r30 40r33 42r30 43r34 32|140e38
 78V13*Self{33|67P9} 10|37s45 40s44 43s45
 100U14*Set_Relative_Deadline 10|42s41
 103U14*Set_Period 10|36s41

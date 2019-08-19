@@ -25,7 +25,7 @@ RV NO_IMPLEMENTATION_RESTRICTIONS
 RR NO_ELABORATION_CODE
 RV SPARK_05
 
-U system.bb.time%b	s-bbtime.adb		79c7669c NE OL PK
+U system.bb.time%b	s-bbtime.adb		c05dd41e NE OL PK
 W ada%s			ada.ads			ada.ali
 Z ada.tags%s		a-tags.adb		a-tags.ali
 W ada.unchecked_conversion%s
@@ -63,15 +63,15 @@ D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621183100 431abc17 system.bb.parameters%s
 D s-bbprot.ads		20190621183100 f48a7e85 system.bb.protection%s
-D s-bbthre.ads		20190709122229 e098fee4 system.bb.threads%s
-D s-bbthqu.ads		20190709153415 2e7cae98 system.bb.threads.queues%s
+D s-bbthre.ads		20190819115249 2a78d1c0 system.bb.threads%s
+D s-bbthqu.ads		20190819115249 19d2b377 system.bb.threads.queues%s
 D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
 D s-bbtime.adb		20190709155835 500be8f2 system.bb.time%b
 D s-bbtiev.ads		20190621183100 f167837c system.bb.timing_events%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
 D s-mufalo.ads		20190621183100 3dca0374 system.multiprocessors.fair_locks%s
 D s-musplo.ads		20190621182555 69fa25c4 system.multiprocessors.spin_locks%s
-D s-osinte.ads		20190709122130 af2773fc system.os_interface%s
+D s-osinte.ads		20190819115249 2113dc91 system.os_interface%s
 D s-stm32.ads		20190621182556 e898dba2 system.stm32%s
 D s-stoele.ads		20190621182556 2dc34a04 system.storage_elements%s
 D s-unstyp.ads		20190621182556 34867c83 system.unsigned_types%s
@@ -112,7 +112,7 @@ X 16 s-bbprot.ads
 48U14*Enter_Kernel 20|147s18 336s18
 54U14*Leave_Kernel 20|215s18 384s18
 X 17 s-bbthre.ads
-49K19*Threads 372e22 20|43r16 56r8 56r17 329r27 342r17 348r23 350r23 351r23
+49K19*Threads 376e22 20|43r16 56r8 56r17 329r27 342r17 348r23 350r23 351r23
 . 355r24 376r20 379r10 381r20
 65P9*Thread_Id(62R9) 20|329r35
 71n27*Runnable{71E9} 20|340r35
@@ -124,7 +124,7 @@ X 17 s-bbthre.ads
 170i7*Fake_Number_ID{integer} 20|342r52 348r54 350r54 351r51 376r51 381r51
 271V13*Thread_Self{65P9} 20|338s15
 X 18 s-bbthqu.ads
-41K27*Queues 433e29 20|43w24 56r25 342r25 348r31 350r31 351r31 355r32 376r28
+41K27*Queues 438e29 20|43w24 56r25 342r25 348r31 350r31 351r31 355r32 376r28
 . 379r18 381r28
 59U14*Add_DM 20|351s38
 60U14*Add_Execution 20|342s32
@@ -132,11 +132,11 @@ X 18 s-bbthqu.ads
 63U14*Set_Check 20|350s38 376s35 381s35
 115U14*Extract 20|363s10
 206U14*Change_Absolute_Deadline 20|379s25
-246U14*Yield 20|382s10
-329U14*Insert_Alarm 20|369s10
-397V13*Get_Next_Alarm_Time{19|46M9} 20|401s37
-403U14*Wakeup_Expired_Alarms 20|210s7
-413i4*Global_Interrupt_Delay{19|84I9} 20|355r39
+251U14*Yield 20|382s10
+334U14*Insert_Alarm 20|369s10
+402V13*Get_Next_Alarm_Time{19|46M9} 20|401s37
+408U14*Wakeup_Expired_Alarms 20|210s7
+418i4*Global_Interrupt_Delay{19|84I9} 20|355r39
 X 19 s-bbtime.ads
 43K19*Time 8|40k16 19|142r36 143r25 143r58 144r35 145r25 145r53 146r43 147r24
 . 239E4 254l15 254e19 20|49b24 954l15 954t19
@@ -322,6 +322,6 @@ X 24 s-musplo.ads
 36M9*Atomic_Flag
 42m7*Flag{36M9} 20|64m44
 X 25 s-osinte.ads
-51K16*OS_Interface 20|47w13 58r31 25|265e24
+51K16*OS_Interface 20|47w13 58r31 25|270e24
 105N4*Ticks_Per_Second 20|754r53 766r53 900r53 941r58 948r41
 

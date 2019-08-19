@@ -69,6 +69,10 @@ package body System.BB.Threads.Queues is
          DM : Integer;
          Execution : Integer;
          Preemption : Integer;
+         Min_Work_Jitter :  System.BB.Time.Time_Span;
+         Max_Work_Jitter :  System.BB.Time.Time_Span;
+         Min_Release_Jitter :  System.BB.Time.Time_Span;
+         Max_Release_Jitter :  System.BB.Time.Time_Span;
       end record;
 
    type Array_Table_Record is array (1 .. 90) of Table_Record;
@@ -79,7 +83,11 @@ package body System.BB.Threads.Queues is
    procedure Initialize_Task_Table (ID : Integer) is
    begin
       if ID /= 0 then
-         Task_Table (ID) := (ID, False, 0, -1, 0);
+         Task_Table (ID) := (ID, False, 0, -1, 0,
+                             System.BB.Time.Time_Span_Last,
+                             System.BB.Time.Time_Span_First,
+                             System.BB.Time.Time_Span_Last,
+                             System.BB.Time.Time_Span_First);
          if Max_ID_Table < ID then
             Max_ID_Table := ID;
          end if;
@@ -460,6 +468,42 @@ package body System.BB.Threads.Queues is
       pragma Assert (Thread = Running_Thread_Table (CPU_Id));
       Thread.Active_Starting_Time := Starting_Time;
    end Change_Starting_Time;
+
+   --------------------
+   -- Change_Jitters --
+   --------------------
+
+   procedure Change_Jitters
+     (Thread      : Thread_Id;
+      Work_Jitter : System.BB.Time.Time_Span;
+      Release_Jitter : System.BB.Time.Time_Span)
+   is
+      CPU_Id      : constant CPU := Get_CPU (Thread);
+   begin
+      pragma Assert (CPU_Id = Current_CPU);
+      pragma Assert (Thread = Running_Thread_Table (CPU_Id));
+
+      if Work_Jitter < Task_Table (Thread.Fake_Number_ID).Min_Work_Jitter then
+         Task_Table (Thread.Fake_Number_ID).Min_Work_Jitter := Work_Jitter;
+      end if;
+
+      if Work_Jitter > Task_Table (Thread.Fake_Number_ID).Max_Work_Jitter then
+         Task_Table (Thread.Fake_Number_ID).Max_Work_Jitter := Work_Jitter;
+      end if;
+
+      if Release_Jitter < Task_Table (Thread.Fake_Number_ID).Min_Release_Jitter
+      then
+         Task_Table (Thread.Fake_Number_ID).Min_Release_Jitter :=
+           Release_Jitter;
+      end if;
+
+      if Release_Jitter > Task_Table (Thread.Fake_Number_ID).Max_Release_Jitter
+      then
+         Task_Table (Thread.Fake_Number_ID).Max_Release_Jitter :=
+           Release_Jitter;
+      end if;
+
+   end Change_Jitters;
 
    ---------------------------
    -- Context_Switch_Needed --

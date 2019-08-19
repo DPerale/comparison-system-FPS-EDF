@@ -415,7 +415,7 @@ def create_random_taskset_between_two_periods (num_tasks, low, high, utilization
     taskset = []
     periods = []
     for i in range (num_tasks):
-        periods.append(randint(low,high))
+        periods.append(randint(low,high) * 1000)
     periods.sort()
     for i in range (num_tasks):
         taskset.append ([(num_tasks - i), periods[i], periods[i], i+1, 0])
@@ -432,7 +432,7 @@ def create_random_taskset_between_two_periods_with_max_hyperperiod (num_tasks, l
         taskset = []
         periods = []
         for i in range(num_tasks):
-            periods.append(randint(low, high))
+            periods.append(randint(low, high) * 1000)
         periods.sort()
         for i in range(num_tasks):
             taskset.append([(num_tasks - i), periods[i], periods[i], i + 1, 0])
@@ -453,7 +453,7 @@ def create_random_taskset_between_two_periods_no_repetition (num_tasks, low, hig
 
     i = 0
     while i < num_tasks:
-        rand = randint(low,high)*10000
+        rand = randint(low, high) * 1000
         if rand not in periods:
             periods.append(rand)
             i = i+1
@@ -561,5 +561,5 @@ def buttazzo_jitter():
 ## Task (Prio, Dead, Period, ID, WCET)
 
 #buttazzo_experiments_preemptions()
-buttazzo_jitter ()
+buttazzo_experiments_preemptions_no_repetition ()
 

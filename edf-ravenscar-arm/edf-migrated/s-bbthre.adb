@@ -493,6 +493,20 @@ package body System.BB.Threads is
       Protection.Leave_Kernel;
    end Set_Starting_Time;
 
+   -----------------
+   -- Set_Jitters --
+   -----------------
+
+   procedure Set_Jitters
+     (Work_Jitter : System.BB.Time.Time_Span;
+      Release_Jitter : System.BB.Time.Time_Span) is
+   begin
+      Protection.Enter_Kernel;
+      Queues.Change_Jitters
+              (Queues.Running_Thread, Work_Jitter, Release_Jitter);
+      Protection.Leave_Kernel;
+   end Set_Jitters;
+
    -----------
    -- Sleep --
    -----------

@@ -243,6 +243,11 @@ package System.BB.Threads.Queues is
      (Thread        : Thread_Id;
       Starting_Time : System.BB.Time.Time_Span);
 
+   procedure Change_Jitters
+     (Thread      : Thread_Id;
+      Work_Jitter : System.BB.Time.Time_Span;
+      Release_Jitter : System.BB.Time.Time_Span);
+
    procedure Yield (Thread : Thread_Id) with
    --  Move the thread to the tail of its current priority
 

@@ -45,6 +45,28 @@ package body Mast.Monoprocessor_Tools is
    Debug : constant Boolean := False;
    My_Verbose : constant Boolean := False;
 
+
+   function Gcd (A, B : Integer) return Integer is
+      M : Integer := A;
+      N : Integer := B;
+      T : Integer;
+   begin
+      while N /= 0 loop
+         T := M;
+         M := N;
+         N := T mod N;
+      end loop;
+      return M;
+   end Gcd;
+
+   function Lcm (A, B : Integer) return Integer is
+   begin
+      if A = 0 or B = 0 then
+         return 0;
+      end if;
+      return abs (A) * (abs (B) / Gcd (A, B));
+   end Lcm;
+
    ------------------------
    -- Priority_Assignment --
    ------------------------
@@ -692,6 +714,7 @@ package body Mast.Monoprocessor_Tools is
       Transaction : Linear_Transaction_System;
       Ci, Bi,Ri,Rbi, Rik,Wik, Wiknew, Ti, Ji : Time;
       K : Transaction_Id;
+      Preemptions : Integer;
       Ni : Task_Id_Type;
       Jeffect : constant array(Boolean) of Time:=(False=> 1.0, True=> 0.0);
       Unbounded_Time : Boolean;
@@ -701,6 +724,7 @@ package body Mast.Monoprocessor_Tools is
       --show_linear_translation(Transaction);
 
       -- Loop for each transaction, I, under analysis
+
       for I in 1..Max_Transactions loop
          exit when Transaction(I).Ni=0;
          -- Calculate Rbi,Ci, Ji, Bi: only last task in the transaction is
@@ -714,28 +738,12 @@ package body Mast.Monoprocessor_Tools is
          Rbi:=Transaction(I).The_Task(Ni).Cbijown;
          -- Calculate initial value for Wik
          Unbounded_Time:=False;
-         Wik:=Bi+Ci;
+         --  Wik:=Bi+Ci;
          Ri:=0.0;
          -- Transaction(I).The_Task(Ni).Rbij:=Wik;
-         for J in 1..Max_Transactions loop
-            exit when Transaction(J).Ni=0;
-            for Tsk in 1..Transaction(J).Ni loop
-               if  Transaction(J).The_Task(Tsk).Prioij>=
-                 Transaction(I).The_Task(Ni).Prioij and then
-                 (J/=I or else Tsk/=Ni)
-               then
-                  Wik:=Wik+Transaction(J).The_Task(Tsk).Cij;
-               end if;
-            end loop;
-         end loop;
-         Transaction(I).The_Task(Ni).Rbij:=Rbi;
-         -- Iterate over the jobs, K, in the busy period
-         K:=1;
-         loop
-            -- Iterate until equation converges
-            loop
-               Wiknew:=Bi+Time(K)*Ci;
-               -- add contributions of high priority tasks
+         for discriminant in 0..1 loop
+            Wik:=Bi+Ci;
+            if discriminant = 1 then
                for J in 1..Max_Transactions loop
                   exit when Transaction(J).Ni=0;
                   for Tsk in 1..Transaction(J).Ni loop
@@ -743,43 +751,131 @@ package body Mast.Monoprocessor_Tools is
                        Transaction(I).The_Task(Ni).Prioij and then
                        (J/=I or else Tsk/=Ni)
                      then
-                        if Transaction(J).The_Task(Tsk).Model=
-                          Unbounded_Effects
-                        then
-                           Wiknew:= Large_Time;
-                           Wik:=Large_Time;
-                           Unbounded_Time:=True;
-                           exit;
-                        else
-                           Wiknew:=Wiknew+Ceiling
-                             ((Wik+Transaction(J).The_Task(Tsk).Jinit*
-                               Jeffect(Transaction(J).The_Task(Tsk).
-                                       Jitter_Avoidance))/
-                              Transaction(J).The_Task(Tsk).Tij)*
-                             Transaction(J).The_Task(Tsk).Cij;
-                        end if;
+                        Wik:=Wik+Transaction(J).The_Task(Tsk).Cij;
                      end if;
                   end loop;
-                  exit when Unbounded_Time;
                end loop;
-               exit when Unbounded_Time or else Wik=Wiknew;
-               Wik:=Wiknew;
-            end loop;
-            exit when Unbounded_Time;
-            Rik:=Wik-Ti*(Time(K)-1.0);
-            -- keep the worst case result
-            if Rik>Ri then
-               Ri:=Rik;
+               Transaction(I).The_Task(Ni).Rbij:=Rbi;
+            else
+               Wik := Time_Interval(1);
+               for tsk in 1..Max_Transactions loop
+                  wik := Time_Interval(Lcm
+                    (Integer(Wik),
+                     Integer(Transaction(tsk).The_Task(Task_ID(1)).Tij)));
+               end loop;
+               Put_Line ("iperperiodo " & Time'Image(Wik));
             end if;
-            -- check if busy period is too long
-            if Ri>Analysis_Bound then
-               Unbounded_Time:=True;
-               exit;
+            -- Iterate over the jobs, K, in the busy period
+            if discriminant = 1 then
+               K:=1;
+
+               loop
+                  -- Iterate until equation converges
+                  loop
+                     Wiknew:=Bi+Time(K)*Ci;
+                     Preemptions := 0;
+                     -- add contributions of high priority tasks
+                     for J in 1..Max_Transactions loop
+                        exit when Transaction(J).Ni=0;
+                        for Tsk in 1..Transaction(J).Ni loop
+                           if  Transaction(J).The_Task(Tsk).Prioij>=
+                             Transaction(I).The_Task(Ni).Prioij and then
+                             (J/=I or else Tsk/=Ni)
+                           then
+                              if Transaction(J).The_Task(Tsk).Model=
+                                Unbounded_Effects
+                              then
+                                 Wiknew:= Large_Time;
+                                 Wik:=Large_Time;
+                                 Unbounded_Time:=True;
+                                 exit;
+                              else
+                                 Wiknew:=Wiknew+Ceiling
+                                   ((Wik+Transaction(J).The_Task(Tsk).Jinit*
+                                      Jeffect(Transaction(J).The_Task(Tsk).
+                                            Jitter_Avoidance))/
+                                          Transaction(J).The_Task(Tsk).Tij)*
+                                     Transaction(J).The_Task(Tsk).Cij;
+                                 Preemptions := Preemptions + Integer
+                                      (Wik/Transaction(J).The_Task(Tsk).Tij);
+                              end if;
+                           end if;
+                        end loop;
+                        exit when Unbounded_Time;
+                     end loop;
+                     exit when Unbounded_Time or else Wik=Wiknew;
+                     Wik:=Wiknew;
+                  end loop;
+                  exit when Unbounded_Time;
+                  Rik:=Wik-Ti*(Time(K)-1.0);
+                  -- keep the worst case result
+                  if Rik>Ri then
+                     Ri:=Rik;
+                  end if;
+                  -- check if busy period is too long
+                  if Ri>Analysis_Bound then
+                     Unbounded_Time:=True;
+                     exit;
+                  end if;
+                  -- determine if busy period is over
+                  exit when Rik<=Ti;
+                  K:=K+1;
+                  Wik:=Wik+Ci;
+               end loop;
+               Put_Line ("Preemptions: " & Integer'Image(Preemptions));
+            else
+               K:=1;
+
+               loop
+                  -- Iterate until equation converges
+                  loop
+                     Wiknew:=Bi+Time(K)*Ci;
+                     Preemptions := 0;
+                     -- add contributions of high priority tasks
+                     for J in 1..Max_Transactions loop
+                        exit when Transaction(J).Ni=0;
+                        for Tsk in 1..Transaction(J).Ni loop
+                           if  Transaction(J).The_Task(Tsk).Prioij>=
+                             Transaction(I).The_Task(Ni).Prioij and then
+                             (J/=I or else Tsk/=Ni)
+                           then
+                              if Transaction(J).The_Task(Tsk).Model=
+                                Unbounded_Effects
+                              then
+                                 Wiknew:= Large_Time;
+                                 Wik:=Large_Time;
+                                 Unbounded_Time:=True;
+                                 exit;
+                              else
+                                 Wiknew:=Wiknew+Ceiling
+                                   ((Wik+Transaction(J).The_Task(Tsk).Jinit*
+                                      Jeffect(Transaction(J).The_Task(Tsk).
+                                            Jitter_Avoidance))/
+                                          Transaction(J).The_Task(Tsk).Tij)*
+                                     Transaction(J).The_Task(Tsk).Cij;
+                                 Preemptions := Preemptions + Integer
+                                      (Wik/Transaction(J).The_Task(Tsk).Tij);
+                              end if;
+                           end if;
+                        end loop;
+                        exit when Unbounded_Time;
+                     end loop;
+                     exit when Unbounded_Time or else Wik=Wiknew;
+                     Wik:=Wiknew;
+                  end loop;
+                  exit when Unbounded_Time;
+                  if Ri>Analysis_Bound then
+                     Unbounded_Time:=True;
+                     exit;
+                  end if;
+                  -- determine if busy period is over
+                  exit when Rik<=Ti;
+                  K:=K+1;
+                  Wik:=Wik+Ci;
+               end loop;
+               Put_Line ("Preemptions: " & Integer'Image(Preemptions));
             end if;
-            -- determine if busy period is over
-            exit when Rik<=Ti;
-            K:=K+1;
-            Wik:=Wik+Ci;
+
          end loop;
          -- Store the worst-case response time obtained
          if Unbounded_Time then
