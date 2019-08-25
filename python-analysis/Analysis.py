@@ -3,6 +3,148 @@ from random import randint, random
 import numpy as np
 import math
 
+task_hyper_113400000_10_100 = [10000,
+15750,
+18900,
+20000,
+22500,
+25200,
+26250,
+28350,
+30240,
+33750,
+35000,
+37800,
+39375,
+40000,
+42000,
+45000,
+45360,
+47250,
+50000,
+50400,
+52500,
+54000,
+56250,
+56700,
+60000,
+60480,
+63000,
+64800,
+65625,
+67500,
+70000,
+70875,
+72000,
+75000,
+75600,
+78750,
+81000,
+84000,
+84375,
+87500,
+90000,
+90720,
+94500,
+100000]
+
+task_hyper_113400000_10_200 = [10000,
+15750,
+18900,
+20000,
+22500,
+25200,
+26250,
+28350,
+30240,
+33750,
+35000,
+37800,
+39375,
+40000,
+42000,
+45000,
+45360,
+47250,
+50000,
+50400,
+52500,
+54000,
+56250,
+56700,
+60000,
+60480,
+63000,
+64800,
+65625,
+67500,
+70000,
+70875,
+72000,
+75000,
+75600,
+78750,
+81000,
+84000,
+84375,
+87500,
+90000,
+90720,
+94500,
+100000,
+100800,
+101250,
+105000,
+108000,
+112500,
+113400,
+118125,
+120000,
+126000,
+129600,
+131250,
+135000,
+140000,
+141750,
+150000,
+151200,
+157500,
+162000,
+168000,
+168750,
+175000,
+180000,
+181440,
+189000,
+196875,
+200000  ]
+
+task_hyper_113400000_longs = [405000,
+420000,
+450000,
+453600,
+472500,
+504000,
+506250,
+525000,
+540000,
+567000,
+590625,
+600000,
+630000,
+648000,
+675000,
+700000,
+708750,
+756000,
+787500,
+810000,
+840000,
+900000,
+907200,
+945000
+]
+
 task_periods_for_non_harmonic = [   10000, # Short (0,28)
                                     10584,
                                     11340,
@@ -482,6 +624,45 @@ def create_non_harmonic_taskset (num_tasks_per_type, utilization):
     utilization_context_switch = UUnifast(taskset,utilization)
     return taskset, utilization_context_switch
 
+def create_taskset_hyper_113400000_10_100(num_tasks, utilization):
+    taskset = []
+    periods = []
+    i = 0
+    while i < num_tasks:
+        rand = task_hyper_113400000_10_100[randint(0, 43)]
+        if rand not in periods:
+            periods.append(rand)
+            i = i + 1
+    periods.sort()
+    for i in range(num_tasks):
+        taskset.append([(num_tasks - i), periods[i], periods[i], i + 1, 0])
+
+    utilization_context_switch, utilization_clock = UUnifast(taskset, utilization)
+    return taskset, utilization_context_switch, utilization_clock
+
+
+def create_taskset_hyper_113400000_10_200_with_some_long (num_tasks, utilization):
+    taskset = []
+    periods = []
+    i = 0
+    num_longs = randint(1,2)
+    while i < (num_tasks-num_longs):
+        rand = task_hyper_113400000_10_200[randint(0, len(task_hyper_113400000_10_200)-1)]
+        if rand not in periods:
+            periods.append(rand)
+            i = i + 1
+    i = 0
+    while i < num_longs:
+        rand = task_hyper_113400000_longs[randint(0, len(task_hyper_113400000_longs)-1)]
+        if rand not in periods:
+            periods.append(rand)
+            i = i + 1
+    periods.sort()
+    for i in range(num_tasks):
+        taskset.append([(num_tasks - i), periods[i], periods[i], i + 1, 0])
+
+    utilization_context_switch, utilization_clock = UUnifast(taskset, utilization)
+    return taskset, utilization_context_switch, utilization_clock
 
 
 
@@ -535,14 +716,13 @@ def buttazzo_experiments_preemptions_no_repetition ():
             register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable, FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task, utilization_context_switch, utilization_clock, 1000000, "../workspace/buttazzo_preemptions_no_repetition.csv")
 
 
-def buttazzo_jitter():
+def U_90_hyper_113400000_10_100():
     utilization = 0.9
-    create_file("../workspace/buttazzo_jitter.csv",
+    create_file("../workspace/U_90_hyper_113400000.csv",
                 "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock_i")
 
-    for j in range(1000):
-        print(j)
-        taskset, utilization_context_switch, utilization_clock = create_random_taskset_between_two_periods_with_max_hyperperiod(20,10,200, utilization,100)
+    for j in range(500):
+        taskset, utilization_context_switch, utilization_clock = create_taskset_hyper_113400000_10_100(20, utilization)
         hyperperiod = calculate_hyperperiod(taskset)
         EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
         FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
@@ -551,7 +731,25 @@ def buttazzo_jitter():
         register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable,
                          FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task,
                          utilization_context_switch, utilization_clock, hyperperiod,
-                         "../workspace/buttazzo_jitter.csv")
+                         "../workspace/U_90_hyper_113400000.csv")
+
+def hyper_113400000_10_100_with_some_long():
+    create_file("../workspace/hyper_113400000_10_200_with_some_long.csv",
+                "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock_i")
+
+    for i in range(4):
+        utilization = 0.6 + (0.1 * i)
+        for j in range(500):
+            taskset, utilization_context_switch, utilization_clock = create_taskset_hyper_113400000_10_200_with_some_long (20, utilization)
+            hyperperiod = calculate_hyperperiod(taskset)
+            EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
+            FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
+            # EDF_counting_clock_interference_assolute, FPS_counting_clock_interference_assolute = calculate_overhead_by_clock(taskset, EDF_busy_period, FPS_busy_period, FPS_response_time, 977)
+
+            register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable,
+                             FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task,
+                             utilization_context_switch, utilization_clock, hyperperiod,
+                             "../workspace/hyper_113400000_10_200_with_some_long.csv")
 
 
 ##########
@@ -561,5 +759,5 @@ def buttazzo_jitter():
 ## Task (Prio, Dead, Period, ID, WCET)
 
 #buttazzo_experiments_preemptions()
-buttazzo_experiments_preemptions_no_repetition ()
+hyper_113400000_10_100_with_some_long()
 

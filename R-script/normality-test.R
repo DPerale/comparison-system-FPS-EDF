@@ -10,7 +10,7 @@ for (i in 0:(n2)){
   for (j in 0:(n3)){
     for (l in 0:(n5)){
       for (m in 0:(n7)){
-        if ((((2**i)*(3**j)*(5**l)*(7**m)))>9999 && (((2**i)*(3**j)*(5**l)*(7**m)))<100001){
+        if ((((2**i)*(3**j)*(5**l)*(7**m)))>=400000 && (((2**i)*(3**j)*(5**l)*(7**m)))<=1000000){
           possiblePeriods <- c(possiblePeriods, (((2**i)*(3**j)*(5**l)*(7**m))))
         }
       }
@@ -23,9 +23,10 @@ for (i in 1:length(possiblePeriods)){
   print (possiblePeriods[i])
 }
 
+print(length(possiblePeriods))
 
 dataset <- c()
-for (l in 1:5000){
+for (l in 1:10){
   alredy_insert <- c()
   for (j in 1:3){
     i <- 1
@@ -42,7 +43,7 @@ for (l in 1:5000){
 
 #a <- table(dataset)
 #ds <-  as.data.frame(table(dataset))
-hist(dataset, breaks = 100, main = "Iperperiodo = 567000000", xlab = "Periodi (ms)", ylab = "Frequenza")
+hist(possiblePeriods, breaks = 100, main = "Iperperiodo = 567000000", xlab = "Periodi (ms)", ylab = "Frequenza")
 #print(ds[1])
 
 

@@ -73,6 +73,7 @@ package body System.BB.Threads.Queues is
          Max_Work_Jitter :  System.BB.Time.Time_Span;
          Min_Release_Jitter :  System.BB.Time.Time_Span;
          Max_Release_Jitter :  System.BB.Time.Time_Span;
+         Avarage_Work_Jitter : System.BB.Time.Time_Span;
       end record;
 
    type Array_Table_Record is array (1 .. 90) of Table_Record;
@@ -87,7 +88,8 @@ package body System.BB.Threads.Queues is
                              System.BB.Time.Time_Span_Last,
                              System.BB.Time.Time_Span_First,
                              System.BB.Time.Time_Span_Last,
-                             System.BB.Time.Time_Span_First);
+                             System.BB.Time.Time_Span_First,
+                             System.BB.Time.Time_Span_Zero);
          if Max_ID_Table < ID then
             Max_ID_Table := ID;
          end if;
@@ -482,6 +484,17 @@ package body System.BB.Threads.Queues is
    begin
       pragma Assert (CPU_Id = Current_CPU);
       pragma Assert (Thread = Running_Thread_Table (CPU_Id));
+
+      if Task_Table (Thread.Fake_Number_ID).Avarage_Work_Jitter
+        = System.BB.Time.Time_Span_Zero
+      then
+         Task_Table (Thread.Fake_Number_ID).Avarage_Work_Jitter := Work_Jitter;
+      else
+         Task_Table (Thread.Fake_Number_ID).Avarage_Work_Jitter :=
+           ((Task_Table (Thread.Fake_Number_ID).Avarage_Work_Jitter *
+              Task_Table (Thread.Fake_Number_ID).Execution) + Work_Jitter)
+           / (Task_Table (Thread.Fake_Number_ID).Execution + 1);
+      end if;
 
       if Work_Jitter < Task_Table (Thread.Fake_Number_ID).Min_Work_Jitter then
          Task_Table (Thread.Fake_Number_ID).Min_Work_Jitter := Work_Jitter;

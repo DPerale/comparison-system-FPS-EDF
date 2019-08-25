@@ -20,9 +20,9 @@ RV NO_DEFAULT_INITIALIZATION
 RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
-RV MAX_TASKS=11
+RV MAX_TASKS=21
 
-U cyclic_tasks%b	cyclic_tasks.adb	1747b2fa OO PK
+U cyclic_tasks%b	cyclic_tasks.adb	80c4149d OO PK
 W ada%s			ada.ads			ada.ali
 W ada.real_time%s	a-reatim.adb		a-reatim.ali
 Z ada.real_time.delays%s  a-retide.adb		a-retide.ali
@@ -37,7 +37,7 @@ W system.task_primitives.operations%s  s-taprop.adb  s-taprop.ali
 Z system.tasking%s	s-taskin.adb		s-taskin.ali
 Z system.tasking.restricted.stages%s  s-tarest.adb  s-tarest.ali
 W system_time%s		system_time.ads		system_time.ali
-T 0 11
+T 0 21
 
 U cyclic_tasks%s	cyclic_tasks.ads	2989410f EE NE OO PK
 W system%s		system.ads		system.ali
@@ -53,7 +53,7 @@ D a-reatim.ads		20190621183100 4c16970e ada.real_time%s
 D a-retide.ads		20190621183100 081cdaa4 ada.real_time.delays%s
 D a-unccon.ads		20190621182550 0e9b276f ada.unchecked_conversion%s
 D cyclic_tasks.ads	20190709114523 f20a548e cyclic_tasks%s
-D cyclic_tasks.adb	20190819115623 07855788 cyclic_tasks%b
+D cyclic_tasks.adb	20190825143631 9006f1ef cyclic_tasks%b
 D interfac.ads		20190621182551 5ab55268 interfaces%s
 D i-stm32.ads		20190621182551 2ad0960b interfaces.stm32%s
 D i-stm32-pwr.ads	20190621182551 4a098e84 interfaces.stm32.pwr%s
@@ -103,7 +103,8 @@ X 3 a-reatim.ads
 X 6 cyclic_tasks.ads
 3K9*Cyclic_Tasks 20l5 20e17 7|9b14 110l5 110t17
 5T14*Cyclic 6d7 7d7 8d7 9d7 10d7 11d7 15l8 15e14 7|11b14 77l8 77t14 90r9
-. 91r9 92r9 93r9 94r9 95r9 96r9 97r9 98r9 99r10
+. 91r9 92r9 93r9 94r9 95r9 96r9 97r9 98r9 99r10 100r10 101r10 102r10 103r10
+. 104r10 105r10 106r10 107r10 108r10 109r10
 6i7 Pri{12|117I12} 13r24
 7i7 Dead{positive} 7|55r40
 8i7 Cycle_Time{positive} 7|19r44 49r39
@@ -137,6 +138,16 @@ X 7 cyclic_tasks.adb
 97t4 C8{6|5T14}
 98t4 C9{6|5T14}
 99t4 C10{6|5T14}
+100t4 C11{6|5T14}
+101t4 C12{6|5T14}
+102t4 C13{6|5T14}
+103t4 C14{6|5T14}
+104t4 C15{6|5T14}
+105t4 C16{6|5T14}
+106t4 C17{6|5T14}
+107t4 C18{6|5T14}
+108t4 C19{6|5T14}
+109t4 C20{6|5T14}
 X 11 print_task.ads
 2K9*Print_Task 7|7w6 89r9 11|15e15
 4T14*Print 7|89r20 11|13e13
