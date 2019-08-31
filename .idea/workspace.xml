@@ -3,45 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="a9ae135f-af0b-4f8a-b7e5-fba20d43de79" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MASTinput.out" beforeDir="false" afterPath="$PROJECT_DIR$/MASTinput.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MASTinput.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MASTinput.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MASTinputEDF.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MASTinputEDF.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R-script/normality-test.R" beforeDir="false" afterPath="$PROJECT_DIR$/R-script/normality-test.R" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/b__unit01.ali" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/build/b__unit01.ali" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/cyclic_tasks.ali" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/build/cyclic_tasks.ali" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/cyclic_tasks.o" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/build/cyclic_tasks.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/gnatinspect.db" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/build/gnatinspect.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/gnatinspect.db-shm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/gnatinspect.db-wal" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/gpsauto.cgpr" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/build/map.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/s-bbthqu.ali" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/build/s-bbthqu.ali" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/s-bbthqu.o" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/build/s-bbthqu.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/unit01-loc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/build/unit01-loc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/edf-migrated/s-bbthqu.adb" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/edf-migrated/s-bbthqu.adb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/src/cyclic_tasks.adb" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/src/cyclic_tasks.adb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/unit01" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/unit01" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/unit01.bin" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/unit01.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/build/b__unit01.adb" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/build/b__unit01.adb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/build/b__unit01.ali" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/build/b__unit01.ali" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/build/b__unit01.o" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/build/b__unit01.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/build/cyclic_tasks.ali" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/build/cyclic_tasks.ali" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/build/cyclic_tasks.o" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/build/cyclic_tasks.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/build/gnatinspect.db" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/build/gnatinspect.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/build/gnatinspect.db-shm" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/build/gnatinspect.db-shm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/build/gnatinspect.db-wal" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/build/gnatinspect.db-wal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/build/map.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/build/map.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/build/s-bbthqu.ali" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/build/s-bbthqu.ali" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/build/s-bbthqu.o" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/build/s-bbthqu.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/build/unit01-loc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/build/unit01-loc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/needed/s-bbthqu.adb" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/needed/s-bbthqu.adb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/src/cyclic_tasks.adb" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/src/cyclic_tasks.adb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/unit01" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/unit01" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/unit01.bin" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/unit01.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python-analysis/Analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-analysis/Analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python-analysis/mast_parser.lis" beforeDir="false" afterPath="$PROJECT_DIR$/python-analysis/mast_parser.lis" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python-execution/Execution.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-execution/Execution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workspace/buttazzo_jitter.csv" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
