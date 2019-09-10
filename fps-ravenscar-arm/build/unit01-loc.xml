@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <Locations >
-  <Project>
-    <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_file>
+  <Project >
     <file_marker column=" 59" line=" 81" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
@@ -166,9 +165,57 @@
       <vfs_project />
       <vfs_file>/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/gnat/s-taprop.ads</vfs_file>
     </file_marker>
-    <file_marker current="true" column=" 1" line=" 1" >
+    <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 29" line=" 65" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 10" line=" 58" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 26" line=" 107" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 55" line=" 131" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 53" line=" 751" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 61" line=" 433" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 59" line=" 432" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 61" line=" 433" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 61" line=" 701" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 63" line=" 702" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 51" line=" 750" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/Arm/fps-ravenscar-arm/needed/s-bbtime.adb</vfs_file>
     </file_marker>
   </Project>
 </Locations>
