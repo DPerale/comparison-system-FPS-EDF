@@ -627,13 +627,26 @@ def create_non_harmonic_taskset (num_tasks_per_type, utilization):
 def create_taskset_hyper_113400000_10_100(num_tasks, utilization):
     taskset = []
     periods = []
-    i = 0
-    while i < num_tasks:
-        rand = task_hyper_113400000_10_100[randint(0, 43)]
-        if rand not in periods:
-            periods.append(rand)
-            i = i + 1
-    periods.sort()
+    n_task_armonic = -1
+    while n_task_armonic < 7 or n_task_armonic > 20:
+        taskset = []
+        periods = []
+        i = 0
+        while i < num_tasks:
+            rand = task_hyper_113400000_10_100[randint(0, 43)]
+            if rand not in periods:
+                periods.append(rand)
+                i = i + 1
+        periods.sort()
+        armonic = []
+        for l in range(num_tasks - 1, 0, -1):
+            for j in range(0, l):
+                if periods[l] % periods[j] == 0:
+                    armonic.append(periods[l])
+                    armonic.append(periods[j])
+        n_task_armonic = len(set(armonic))
+
+
     for i in range(num_tasks):
         taskset.append([(num_tasks - i), periods[i], periods[i], i + 1, 0])
 
@@ -642,22 +655,35 @@ def create_taskset_hyper_113400000_10_100(num_tasks, utilization):
 
 
 def create_taskset_hyper_113400000_10_200_with_some_long (num_tasks, utilization):
+
     taskset = []
     periods = []
-    i = 0
-    num_longs = randint(1,2)
-    while i < (num_tasks-num_longs):
-        rand = task_hyper_113400000_10_200[randint(0, len(task_hyper_113400000_10_200)-1)]
-        if rand not in periods:
-            periods.append(rand)
-            i = i + 1
-    i = 0
-    while i < num_longs:
-        rand = task_hyper_113400000_longs[randint(0, len(task_hyper_113400000_longs)-1)]
-        if rand not in periods:
-            periods.append(rand)
-            i = i + 1
-    periods.sort()
+    n_task_armonic = -1
+    while n_task_armonic<0 or n_task_armonic >2:
+        taskset = []
+        periods = []
+        i = 0
+        num_longs = randint(1,2)
+        while i < (num_tasks-num_longs):
+            rand = task_hyper_113400000_10_200[randint(0, len(task_hyper_113400000_10_200)-1)]
+            if rand not in periods:
+                periods.append(rand)
+                i = i + 1
+        i = 0
+        while i < num_longs:
+            rand = task_hyper_113400000_longs[randint(0, len(task_hyper_113400000_longs)-1)]
+            if rand not in periods:
+                periods.append(rand)
+                i = i + 1
+        periods.sort()
+        armonic = []
+        for l in range (num_tasks-1,0,-1):
+            for j in range(0,l):
+                if periods[l] % periods[j] == 0:
+                    armonic.append(periods[l])
+                    armonic.append(periods[j])
+        n_task_armonic = len(set(armonic))
+
     for i in range(num_tasks):
         taskset.append([(num_tasks - i), periods[i], periods[i], i + 1, 0])
 
@@ -751,6 +777,24 @@ def hyper_113400000_10_100_with_some_long():
                              utilization_context_switch, utilization_clock, hyperperiod,
                              "../workspace/hyper_113400000_10_200_with_some_long.csv")
 
+def hyper_113400000_2_5_armonic():
+    create_file("../workspace/hyper_113400000_0_1_armonic_10_200.csv",
+                "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock_i")
+
+
+    utilization = 0.9
+    for j in range(500):
+        print(j)
+        taskset, utilization_context_switch, utilization_clock = create_taskset_hyper_113400000_10_200_with_some_long (20, utilization)
+        hyperperiod = calculate_hyperperiod(taskset)
+        EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
+        FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
+        # EDF_counting_clock_interference_assolute, FPS_counting_clock_interference_assolute = calculate_overhead_by_clock(taskset, EDF_busy_period, FPS_busy_period, FPS_response_time, 977)
+
+        register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable,
+                         FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task,
+                         utilization_context_switch, utilization_clock, hyperperiod,
+                         "../workspace/hyper_113400000_0_1_armonic_10_200.csv")
 
 ##########
 ## Main ##
@@ -759,5 +803,5 @@ def hyper_113400000_10_100_with_some_long():
 ## Task (Prio, Dead, Period, ID, WCET)
 
 #buttazzo_experiments_preemptions()
-hyper_113400000_10_100_with_some_long()
+hyper_113400000_2_5_armonic()
 
