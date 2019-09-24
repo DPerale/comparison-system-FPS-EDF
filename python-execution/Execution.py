@@ -392,6 +392,37 @@ def hyper_113400000_armonic_10_100():
         save_data(taskset, EDF_data, FPS_data, "U_"+ str(90) +"_hyper_113400000_7_20_armonic_10_100/U_"+ str(90) +"_hyper_113400000_7_20_armonic_10_100", i, hyperperiod)
 
 
+def hyper_113400000_armonic_10_200():
+
+    for i in range(1, 501):
+        taskset = []
+        taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM, EDF_schedulable, FPS_schedulable, hyperperiod = import_taskset(taskset, i, "hyper_113400000_3_6_armonic_10_200.csv")
+        make_adb_file(taskset, hyperperiod)
+        EDF_data = []
+        FPS_data = []
+        for j in range(2):
+            compile_and_flash_into_board(j)
+            if (j == 0):
+                EDF_data = debug_and_read_data(taskset, hyperperiod, j)
+            else:
+                FPS_data = debug_and_read_data(taskset, hyperperiod, j)
+        save_data(taskset, EDF_data, FPS_data, "U_"+ str(90) +"_hyper_113400000_3_6_armonic_10_200/U_"+ str(90) +"_hyper_113400000_3_6_armonic_10_200", i, hyperperiod)
+    # for i in range(1, 501):
+    #     taskset = []
+    #     taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM, EDF_schedulable, FPS_schedulable, hyperperiod = import_taskset(taskset, i, "hyper_113400000_3_6_armonic_10_100.csv")
+    #     make_adb_file(taskset, hyperperiod)
+    #     EDF_data = []
+    #     FPS_data = []
+    #     for j in range(2):
+    #         compile_and_flash_into_board(j)
+    #         if (j == 0):
+    #             EDF_data = debug_and_read_data(taskset, hyperperiod, j)
+    #         else:
+    #             FPS_data = debug_and_read_data(taskset, hyperperiod, j)
+    #     save_data(taskset, EDF_data, FPS_data, "U_"+ str(90) +"_hyper_113400000_3_6_armonic_10_100/U_"+ str(90) +"_hyper_113400000_3_6_armonic_10_100", i, hyperperiod)
+
+
+
 def single_experiment(location, number, time):
 
     taskset = []
@@ -421,7 +452,7 @@ def single_experiment(location, number, time):
 #buttazzo_experiments_preemptions()
 #single_experiment("buttazzo_preemptions_no_repetition.csv", 4500, 1200000000)
 
-hyper_113400000_armonic_10_100()
+hyper_113400000_armonic_10_200()
 
 #buttazzo_experiments_preemptions_no_repetition ()
 

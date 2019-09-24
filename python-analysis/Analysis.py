@@ -659,7 +659,7 @@ def create_taskset_hyper_113400000_10_200_with_some_long (num_tasks, utilization
     taskset = []
     periods = []
     n_task_armonic = -1
-    while n_task_armonic<0 or n_task_armonic >2:
+    while n_task_armonic<3 or n_task_armonic >6:
         taskset = []
         periods = []
         i = 0
@@ -778,7 +778,7 @@ def hyper_113400000_10_100_with_some_long():
                              "../workspace/hyper_113400000_10_200_with_some_long.csv")
 
 def hyper_113400000_2_5_armonic():
-    create_file("../workspace/hyper_113400000_0_1_armonic_10_200.csv",
+    create_file("../workspace/hyper_113400000_3_6_armonic_10_200.csv",
                 "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock_i")
 
 
@@ -794,7 +794,7 @@ def hyper_113400000_2_5_armonic():
         register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable,
                          FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task,
                          utilization_context_switch, utilization_clock, hyperperiod,
-                         "../workspace/hyper_113400000_0_1_armonic_10_200.csv")
+                         "../workspace/hyper_113400000_3_6_armonic_10_200.csv")
 
 ##########
 ## Main ##
