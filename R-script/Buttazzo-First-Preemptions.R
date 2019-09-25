@@ -2,7 +2,7 @@ array_edf_preemptions = vector()
 array_fps_preemptions = vector()
 
 for (i in 1:9000){
-  file_name <- paste("/home/aquox/Scrivania/Arm/workspace2/Buttazzo-First-Preemptions/Buttazzo-First-Preemptions_", c(i), ".csv", sep = "")
+  file_name <- paste("/home/aquox/Scrivania/Arm/workspace2/Buttazzo_First_Preemptions/Buttazzo-First-Preemptions_", c(i), ".csv", sep = "")
   file_to_open <- read.csv(file = file_name, header = TRUE, sep = ";", dec = ".")
   array_edf_preemptions <- append(array_edf_preemptions, file_to_open[5+((i-1)%/%1000)*2,12])  
   array_fps_preemptions <- append(array_fps_preemptions, file_to_open[5+((i-1)%/%1000)*2,8])  

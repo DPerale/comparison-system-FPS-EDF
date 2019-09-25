@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="a9ae135f-af0b-4f8a-b7e5-fba20d43de79" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MASTinput.out" beforeDir="false" afterPath="$PROJECT_DIR$/MASTinput.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MASTinput.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MASTinput.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MASTinputEDF.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MASTinputEDF.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/b__unit01.ali" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/build/b__unit01.ali" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/cyclic_tasks.ali" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/build/cyclic_tasks.ali" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/cyclic_tasks.o" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/build/cyclic_tasks.o" afterDir="false" />
@@ -20,11 +17,6 @@
       <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/src/cyclic_tasks.adb" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/src/cyclic_tasks.adb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/unit01" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/unit01" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fps-ravenscar-arm/unit01.bin" beforeDir="false" afterPath="$PROJECT_DIR$/fps-ravenscar-arm/unit01.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python-analysis/Analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-analysis/Analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python-analysis/mast_parser.lis" beforeDir="false" afterPath="$PROJECT_DIR$/python-analysis/mast_parser.lis" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python-execution/Execution.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-execution/Execution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/workspace/hyper_113400000_0_1_armonic_10_200.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/workspace/hyper_113400000_2_5_armonic.csv" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
