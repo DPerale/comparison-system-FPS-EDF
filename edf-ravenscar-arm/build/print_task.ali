@@ -52,7 +52,7 @@ D a-unccon.ads		20190621182550 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20190621182551 5ab55268 interfaces%s
 D i-stm32.ads		20190621182551 2ad0960b interfaces.stm32%s
 D i-stm32-pwr.ads	20190621182551 4a098e84 interfaces.stm32.pwr%s
-D print_task.ads	20190709122306 77c914e6 print_task%s
+D print_task.ads	20190926163549 77c914e6 print_task%s
 D print_task.adb	20190711085207 67398eec print_task%b
 D system.ads		20190621182556 db831581 system%s
 D s-bb.ads		20190621183100 09e072ae system.bb%s
@@ -97,12 +97,12 @@ X 3 a-reatim.ads
 126V13*Microseconds{61I9}<22|162p13> 10|13s30
 128V13*Milliseconds{61I9}<22|163p13> 10|19s23
 X 9 print_task.ads
-2K9*Print_Task 15l5 15e15 10|9b14 59l5 59t15
-4T14*Print 6d7 7d7 8d7 9d7 13l8 13e13 10|11b14 57l8 57t13
-6i7 Pri{11|117I12} 11r24 10|46r36
-7i7 Dead{integer}
-8i7 Cycle_Time{positive} 10|19r37 39r39
-9i7 Offset{integer} 10|13r44
+2K9*Print_Task 14l5 14e15 10|9b14 59l5 59t15
+4T14*Print 5d7 6d7 7d7 8d7 12l8 12e13 10|11b14 57l8 57t13
+5i7 Pri{11|117I12} 10r24 10|46r36
+6i7 Dead{integer}
+7i7 Cycle_Time{positive} 10|19r37 39r39
+8i7 Offset{integer} 10|13r44
 X 10 print_task.adb
 12i7 Task_Static_Offset{3|61I9} 16r51
 15m7 Next_Period{3|51M9} 42r28 48r22 55m10 55r25
@@ -113,10 +113,10 @@ X 10 print_task.adb
 26i10 Time_out{22|84I9} 29m10 31r17
 34i7 i{integer} 50r13 53m10 53r15
 X 11 system.ads
-50K9*System 9|1w6 6r20 10|3r6 4r6 5r6 6r6 7r6 22r40 24r40 26r21 29r22 37r7
+50K9*System 9|1w6 5r20 10|3r6 4r6 5r6 6r6 7r6 22r40 24r40 26r21 29r22 37r7
 . 38r11 39r10 40r7 41r10 43r7 44r11 45r11 46r7 51r13 11|164e11
 116I12*Any_Priority{integer}
-117I12*Priority{116I12} 9|6r27
+117I12*Priority{116I12} 9|5r27
 X 12 s-bb.ads
 40K16*BB 10|4r13 5r13 6r13 22r47 24r47 26r28 29r29 39r17 45r18 51r20 12|95e14
 X 20 s-bbthre.ads

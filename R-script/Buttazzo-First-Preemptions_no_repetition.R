@@ -35,7 +35,7 @@ arrows(X, avarage_fps_preemptions-standard_devation_fps_preemptions, X, avarage_
 legend(1,100,legend=c("EDF","FPS"), col=c("blue","red"), pch=c("o","*"),lty=c(1,2), ncol=1)
 
 
-dev.off()
+# dev.off()
 
-X = c(4001:4500)
-plot (X, array_fps_preemptions[4001:4500] - array_edf_preemptions[4001:4500], xlab="taskset", ylab="FPS-EDF preemptions", type="o", col="blue", pch="o", lty=1)
+# X = c(4001:4500)
+# plot (X, array_fps_preemptions[4001:4500] - array_edf_preemptions[4001:4500], xlab="taskset", ylab="FPS-EDF preemptions", type="o", col="blue", pch="o", lty=1)

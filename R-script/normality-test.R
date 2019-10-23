@@ -26,7 +26,7 @@ for (i in 1:length(possiblePeriods)){
 print(length(possiblePeriods))
 
 dataset <- c()
-for (l in 1:10){
+for (l in 1:2){
   alredy_insert <- c()
   for (j in 1:3){
     i <- 1
@@ -47,6 +47,4 @@ hist(possiblePeriods, breaks = 100, main = "Iperperiodo = 567000000", xlab = "Pe
 #print(ds[1])
 
 
-library(nortest)
-notest <- ks.test(ds[2], pnorm)
-print(notest)
+

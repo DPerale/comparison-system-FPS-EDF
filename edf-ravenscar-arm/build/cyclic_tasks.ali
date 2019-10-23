@@ -54,11 +54,11 @@ D a-reatim.ads		20190621183100 4c16970e ada.real_time%s
 D a-retide.ads		20190621183100 081cdaa4 ada.real_time.delays%s
 D a-unccon.ads		20190621182550 0e9b276f ada.unchecked_conversion%s
 D cyclic_tasks.ads	20190709122130 f20a548e cyclic_tasks%s
-D cyclic_tasks.adb	20190924210345 3ea07731 cyclic_tasks%b
+D cyclic_tasks.adb	20190926163548 3ea07731 cyclic_tasks%b
 D interfac.ads		20190621182551 5ab55268 interfaces%s
 D i-stm32.ads		20190621182551 2ad0960b interfaces.stm32%s
 D i-stm32-pwr.ads	20190621182551 4a098e84 interfaces.stm32.pwr%s
-D print_task.ads	20190709122306 77c914e6 print_task%s
+D print_task.ads	20190926163549 77c914e6 print_task%s
 D system.ads		20190621182556 db831581 system%s
 D s-bb.ads		20190621183100 09e072ae system.bb%s
 D s-bbbopa.ads		20190621182552 5e9af419 system.bb.board_parameters%s
@@ -150,8 +150,8 @@ X 7 cyclic_tasks.adb
 108t4 C19{6|5T14}
 109t4 C20{6|5T14}
 X 11 print_task.ads
-2K9*Print_Task 7|7w6 89r9 11|15e15
-4T14*Print 7|89r20 11|13e13
+2K9*Print_Task 7|7w6 89r9 11|14e15
+4T14*Print 7|89r20 11|12e13
 X 12 system.ads
 50K9*System 6|1w6 6r20 7|3r6 4r6 5r6 6r6 30r40 32r40 34r21 37r22 47r7 48r11
 . 49r10 50r7 51r10 53r7 54r11 55r11 56r7 57r7 73r10 74r13 81r7 82r10 83r11

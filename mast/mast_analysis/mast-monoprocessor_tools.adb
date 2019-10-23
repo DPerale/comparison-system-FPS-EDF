@@ -797,7 +797,8 @@ package body Mast.Monoprocessor_Tools is
                                           Transaction(J).The_Task(Tsk).Tij)*
                                      Transaction(J).The_Task(Tsk).Cij;
                                  Preemptions := Preemptions + Integer
-                                      (Wik/Transaction(J).The_Task(Tsk).Tij);
+                                   (Ceiling(Wik/
+                                        Transaction(J).The_Task(Tsk).Tij));
                               end if;
                            end if;
                         end loop;

@@ -661,7 +661,7 @@ package ada_main is
    pragma Export (C, u00311, "mast__tools__schedulability_indexB");
    u00312 : constant Version_32 := 16#18f921ce#;
    pragma Export (C, u00312, "mast__tools__schedulability_indexS");
-   u00313 : constant Version_32 := 16#2dea8c38#;
+   u00313 : constant Version_32 := 16#49fab5e7#;
    pragma Export (C, u00313, "mast__monoprocessor_toolsB");
    u00314 : constant Version_32 := 16#4bbac06b#;
    pragma Export (C, u00314, "mast__monoprocessor_toolsS");

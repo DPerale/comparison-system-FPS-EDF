@@ -2,8 +2,7 @@ with System;
 package Print_Task is
 
    task type Print
-     ( --   Pri        : System.BB.Time.Time_Span;
-      Pri        : System.Priority;
+     (Pri        : System.Priority;
       Dead       : Integer;
       Cycle_Time : Positive;
       Offset     : Integer
