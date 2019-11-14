@@ -1,5 +1,5 @@
 from subprocess import Popen, PIPE
-from random import randint, random
+from random import randint, random, choice, choices, sample
 import numpy as np
 import math
 
@@ -691,8 +691,13 @@ def create_taskset_hyper_113400000_10_200_with_some_long (num_tasks, utilization
     return taskset, utilization_context_switch, utilization_clock
 
 
+def create_taskset_harmonic(periods, utilization):
+    taskset = []
 
-
+    for i in range(20):
+        taskset.append([(20 - i), periods[i], periods[i], i + 1, 0])
+    utilization_context_switch, utilization_clock = UUnifast(taskset, utilization)
+    return taskset, utilization_context_switch, utilization_clock
 
 ################
 ## TEST TYPES ##
@@ -796,6 +801,159 @@ def hyper_113400000_2_5_armonic():
                          utilization_context_switch, utilization_clock, hyperperiod,
                          "../workspace/hyper_113400000_0_1_armonic_10_200.csv")
 
+def full_harmonic():
+    create_file("../workspace/full_harmonic.csv",
+                "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock_i")
+
+    taskset_periods = []
+    for i in range(10000):
+        taskset_periods.append([])
+    for l in range(500):
+        if l < 200:
+            min_int = max_int = int(l / 50) + 2
+        else:
+            min_int = 2
+            max_int = 5
+
+        for i in range(10, 30):
+            n = i
+            t = 1
+            taskset_periods[l * 20 + i - 10].append(n)
+            while (t < 20 and n <= 500):
+                if (l >= 200):
+                    temp = n * randint(min_int, max_int)
+                    if (temp != taskset_periods[l * 20 + i - 10][t - 1] and temp <= 1000):
+                        n = temp
+                        taskset_periods[l * 20 + i - 10].append(n)
+                        t = t + 1
+                else:
+                    n = n * randint(min_int, max_int)
+                    if (n <= 1000):
+                        taskset_periods[l * 20 + i - 10].append(n)
+                        t = t + 1
+
+            if t < 19:
+                t2 = t
+                while (t < 20):
+                    temp = choice(taskset_periods[l * 20 + i - 10][0:t2])
+                    taskset_periods[l * 20 + i - 10].append(temp)
+                    t = t + 1
+
+
+    for i in range(10000):
+        taskset_periods [i] = sorted([j * 1000 for j in taskset_periods[i]])
+
+    print(taskset_periods[0])
+
+    utilization = 0.9
+    for i in range(10000):
+        print(i)
+        taskset, utilization_context_switch, utilization_clock = create_taskset_harmonic(taskset_periods[i], utilization)
+        hyperperiod = calculate_hyperperiod(taskset)
+        EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
+        FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
+        register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable,
+                         FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task,
+                         utilization_context_switch, utilization_clock, hyperperiod,
+                         "../workspace/full_harmonic.csv")
+
+
+def semi_harmonic():
+    create_file("../workspace/semi_harmonic.csv",
+                "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock_i")
+
+    def isPrime(n):
+        if (n <= 1):
+            return False
+        if (n <= 3):
+            return True
+        if (n % 2 == 0 or n % 3 == 0):
+            return False
+        i = 5
+        while (i * i <= n):
+            if (n % i == 0 or n % (i + 2) == 0):
+                return False
+            i = i + 6
+        return True
+
+    reintroduction = True
+    taskset_periods = []
+    for i in range(1000):
+        taskset_periods.append([])
+    for z in range(50):
+        if z == 25:
+            reintroduction = False
+        for i in range(10, 30):
+            n = i
+            t = 0
+            possibleChoiches = []
+            possibleChoiches.append(n)
+            while (n < 1000):
+                n = n + i
+                possibleChoiches.append(n)
+            n2 = 4
+            n3 = 1
+            n5 = 2
+            n7 = 1
+            nmin = 0
+            min_i = i
+            if (isPrime(i)):
+                nmin = 1
+            else:
+                if (i == 22 or i == 26):
+                    nmin = 1
+                    min_i = int(i / 2)
+                else:
+                    if (i == 27 or i == 18):
+                        n2 = 5
+                        n3 = 3
+                        n5 = 2
+                    else:
+                        n2 = 6
+                        n3 = 2
+                        n5 = 2
+            numbers = []
+            for f in range((n2 + 1)):
+                for j in range((n3 + 1)):
+                    for l in range((n5 + 1)):
+                        for m in range((n7 + 1)):
+                            for o in range((nmin + 1)):
+                                if ((2 ** f) * (3 ** j) * (5 ** l) * (7 ** m) * (min_i ** o)) >= 10 and (
+                                        (2 ** f) * (3 ** j) * (5 ** l) * (7 ** m) * (min_i ** o)) < 1000:
+                                    numbers.append(((2 ** f) * (3 ** j) * (5 ** l) * (7 ** m) * (min_i ** o)))
+            common = sorted(list(set(possibleChoiches).intersection(numbers)))
+            if (len(common) >= 20):
+                if reintroduction:
+                    taskset_periods[(z * 20) + (i - 10)] = sorted(choices(common, k=20))
+                else:
+                    taskset_periods[(z * 20) + (i - 10)] = sorted(sample(common, 20))
+                t = 20
+            else:
+                taskset_periods[(z * 20) + (i - 10)] = common
+                t = len(common)
+            if (t < 20):
+                t2 = t
+                while (t < 20):
+                    temp = choice(taskset_periods[(z * 20) + (i - 10)][0:t2])
+                    taskset_periods[(z * 20) + (i - 10)].append(temp)
+                    t = t + 1
+    for i in range(1000):
+        taskset_periods [i] = sorted([j * 1000 for j in taskset_periods[i]])
+
+
+
+    utilization = 0.9
+    for i in range(1000):
+        print(i)
+        taskset, utilization_context_switch, utilization_clock = create_taskset_harmonic(taskset_periods[i], utilization)
+        hyperperiod = calculate_hyperperiod(taskset)
+        EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
+        FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
+        register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable,
+                         FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task,
+                         utilization_context_switch, utilization_clock, hyperperiod,
+                         "../workspace/semi_harmonic.csv")
+
 ##########
 ## Main ##
 ##########
@@ -803,5 +961,5 @@ def hyper_113400000_2_5_armonic():
 ## Task (Prio, Dead, Period, ID, WCET)
 
 #buttazzo_experiments_preemptions()
-hyper_113400000_2_5_armonic()
+semi_harmonic()
 

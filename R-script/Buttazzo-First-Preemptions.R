@@ -6,7 +6,7 @@ taskset5 = matrix(list(), nrow = 1000, ncol = 4)
 taskset6 = matrix(list(), nrow = 1000, ncol = 4)
 taskset7 = matrix(list(), nrow = 1000, ncol = 4)
 taskset8 = matrix(list(), nrow = 1000, ncol = 4)
-
+taskset9 = matrix(list(), nrow = 1000, ncol = 4)
 
 
 
@@ -21,6 +21,8 @@ index4 = 1
 index5 = 1
 index6 = 1
 index7 = 1
+index8 = 1
+index9 = 1
 index8_1 = 1
 index8_2 = 1
 index8_3 = 1
@@ -33,7 +35,7 @@ task_edf_preemptions = vector()
 task_fps_preemptions = vector()
 armonic_0_2 = vector()
 
-for (i in 7001:9000){
+for (i in 1:9000){
   file_name <- paste("/home/aquox/Scrivania/Arm/workspace2/Buttazzo_First_Preemptions/Buttazzo-First-Preemptions_", c(i), ".csv", sep = "")
   file_to_open <- read.csv(file = file_name, header = TRUE, sep = ";", dec = ".")
   
@@ -118,6 +120,12 @@ for (i in 7001:9000){
     index7 <- index7 + 1
   }
   if (i >= 7001 & i < 8001) {
+    taskset8 [[index8,1]]  <- file_to_open[5+((i-1)%/%1000)*2,8]
+    taskset8 [[index8,2]]  <- file_to_open[5+((i-1)%/%1000)*2,12]
+    taskset8 [[index8,3]]  <- (strtoi(file_to_open[5+((i-1)%/%1000)*2,8]) - strtoi(file_to_open[5+((i-1)%/%1000)*2,12]))
+    taskset8 [[index8,4]]  <- i
+    index8 <- index8 + 1
+    
     if (strtoi(file_to_open[5+((i-1)%/%1000)*2,8]) < 172){
       taskset [8,1,index8_1,1]  <- file_to_open[5+((i-1)%/%1000)*2,8]
       taskset [8,1,index8_1,2]  <- file_to_open[5+((i-1)%/%1000)*2,12]
@@ -153,6 +161,13 @@ for (i in 7001:9000){
     }
   }
   if (i >= 8001) {
+    
+    taskset9 [[index9,1]]  <- file_to_open[5+((i-1)%/%1000)*2,8]
+    taskset9 [[index9,2]]  <- file_to_open[5+((i-1)%/%1000)*2,12]
+    taskset9 [[index9,3]]  <- (strtoi(file_to_open[5+((i-1)%/%1000)*2,8]) - strtoi(file_to_open[5+((i-1)%/%1000)*2,12]))
+    taskset9 [[index9,4]]  <- i
+    index9 <- index9 + 1
+    
     if (strtoi(file_to_open[5+((i-1)%/%1000)*2,8]) < 183){
       taskset [9,1,index9_1,1]  <- file_to_open[5+((i-1)%/%1000)*2,8]
       taskset [9,1,index9_1,2]  <- file_to_open[5+((i-1)%/%1000)*2,12]
@@ -220,68 +235,83 @@ res <- boxplot (taskset[9,1,,10], taskset[9,2,,10], taskset[9,3,,10], names=c("g
 abline(h = 500000, col = "red")
 res$stats
 
-# taskset1.df <- as.data.frame(taskset1)
-# taskset1.df$V1 <- as.integer(taskset1.df$V1)
-# taskset1.df$V2 <- as.integer(taskset1.df$V2)
-# taskset1.df$V3 <- as.integer(taskset1.df$V3)
-# 
-# taskset2.df <- as.data.frame(taskset2)
-# taskset2.df$V1 <- as.integer(taskset2.df$V1)
-# taskset2.df$V2 <- as.integer(taskset2.df$V2)
-# taskset2.df$V3 <- as.integer(taskset2.df$V3)
-# 
-# taskset3.df <- as.data.frame(taskset3)
-# taskset3.df$V1 <- as.integer(taskset3.df$V1)
-# taskset3.df$V2 <- as.integer(taskset3.df$V2)
-# taskset3.df$V3 <- as.integer(taskset3.df$V3)
-# 
-# taskset4.df <- as.data.frame(taskset4)
-# taskset4.df$V1 <- as.integer(taskset4.df$V1)
-# taskset4.df$V2 <- as.integer(taskset4.df$V2)
-# taskset4.df$V3 <- as.integer(taskset4.df$V3)
-# 
-# taskset5.df <- as.data.frame(taskset5)
-# taskset5.df$V1 <- as.integer(taskset5.df$V1)
-# taskset5.df$V2 <- as.integer(taskset5.df$V2)
-# taskset5.df$V3 <- as.integer(taskset5.df$V3)
-# 
-# taskset6.df <- as.data.frame(taskset6)
-# taskset6.df$V1 <- as.integer(taskset6.df$V1)
-# taskset6.df$V2 <- as.integer(taskset6.df$V2)
-# taskset6.df$V3 <- as.integer(taskset6.df$V3)
-# 
-# taskset7.df <- as.data.frame(taskset7)
-# taskset7.df$V1 <- as.integer(taskset7.df$V1)
-# taskset7.df$V2 <- as.integer(taskset7.df$V2)
-# taskset7.df$V3 <- as.integer(taskset7.df$V3)
-# 
-# taskset8.df <- as.data.frame(taskset8)
-# taskset8.df$V1 <- as.integer(taskset8.df$V1)
-# taskset8.df$V2 <- as.integer(taskset8.df$V2)
-# taskset8.df$V3 <- as.integer(taskset8.df$V3)
+
+
+taskset1.df <- as.data.frame(taskset1)
+
+taskset1.df$V1 <- as.integer(taskset1.df$V1)
+taskset1.df$V2 <- as.integer(taskset1.df$V2)
+taskset1.df$V3 <- as.integer(taskset1.df$V3)
+
+taskset2.df <- as.data.frame(taskset2)
+taskset2.df$V1 <- as.integer(taskset2.df$V1)
+taskset2.df$V2 <- as.integer(taskset2.df$V2)
+taskset2.df$V3 <- as.integer(taskset2.df$V3)
+
+
+taskset3.df <- as.data.frame(taskset3)
+taskset3.df$V1 <- as.integer(taskset3.df$V1)
+taskset3.df$V2 <- as.integer(taskset3.df$V2)
+taskset3.df$V3 <- as.integer(taskset3.df$V3)
+
+
+taskset4.df <- as.data.frame(taskset4)
+taskset4.df$V1 <- as.integer(taskset4.df$V1)
+taskset4.df$V2 <- as.integer(taskset4.df$V2)
+taskset4.df$V3 <- as.integer(taskset4.df$V3)
+
+
+taskset5.df <- as.data.frame(taskset5)
+taskset5.df$V1 <- as.integer(taskset5.df$V1)
+taskset5.df$V2 <- as.integer(taskset5.df$V2)
+taskset5.df$V3 <- as.integer(taskset5.df$V3)
+
+
+
+taskset6.df <- as.data.frame(taskset6)
+taskset6.df$V1 <- as.integer(taskset6.df$V1)
+taskset6.df$V2 <- as.integer(taskset6.df$V2)
+taskset6.df$V3 <- as.integer(taskset6.df$V3)
+
+
+taskset7.df <- as.data.frame(taskset7)
+taskset7.df$V1 <- as.integer(taskset7.df$V1)
+taskset7.df$V2 <- as.integer(taskset7.df$V2)
+taskset7.df$V3 <- as.integer(taskset7.df$V3)
+
+
+taskset8.df <- as.data.frame(taskset8)
+taskset8.df$V1 <- as.integer(taskset8.df$V1)
+taskset8.df$V2 <- as.integer(taskset8.df$V2)
+taskset8.df$V3 <- as.integer(taskset8.df$V3)
+
+taskset9.df <- as.data.frame(taskset9)
+taskset9.df$V1 <- as.integer(taskset9.df$V1)
+taskset9.df$V2 <- as.integer(taskset9.df$V2)
+taskset9.df$V3 <- as.integer(taskset9.df$V3)
 
 taskset.df <- as.data.frame(taskset[8,,,])
 taskset.df <- taskset.df [order(taskset.df$V1, decreasing = TRUE),]
 
 
-# 
-# taskset1.df <- taskset1.df [order(taskset1.df$V3, decreasing = TRUE),]
-# taskset2.df <- taskset2.df [order(taskset2.df$V3, decreasing = TRUE),]
-# taskset3.df <- taskset3.df [order(taskset3.df$V3, decreasing = TRUE),]
-# taskset4.df <- taskset4.df [order(taskset4.df$V3, decreasing = TRUE),]
-# taskset5.df <- taskset5.df [order(taskset5.df$V3, decreasing = TRUE),]
-# taskset6.df <- taskset6.df [order(taskset6.df$V3, decreasing = TRUE),]
-# taskset7.df <- taskset7.df [order(taskset7.df$V3, decreasing = TRUE),]
-# taskset8.df <- taskset8.df [order(taskset8.df$V3, decreasing = TRUE),]
+print("ciao2")
+taskset1.df <- taskset1.df [order(taskset1.df$V3, decreasing = TRUE),]
+taskset2.df <- taskset2.df [order(taskset2.df$V3, decreasing = TRUE),]
+taskset3.df <- taskset3.df [order(taskset3.df$V3, decreasing = TRUE),]
+taskset4.df <- taskset4.df [order(taskset4.df$V3, decreasing = TRUE),]
+taskset5.df <- taskset5.df [order(taskset5.df$V3, decreasing = TRUE),]
+taskset6.df <- taskset6.df [order(taskset6.df$V3, decreasing = TRUE),]
+taskset7.df <- taskset7.df [order(taskset7.df$V3, decreasing = TRUE),]
+taskset8.df <- taskset8.df [order(taskset8.df$V3, decreasing = TRUE),]
 
 
-
+print("ciao3")
 
 # avarage_edf_preemptions_low = vector()
 # avarage_fps_preemptions_low = vector()
 # standard_devation_edf_preemptions_low = vector()
 # standard_devation_fps_preemptions_low = vector()
-#  
+# 
 # avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(taskset1.df[1:500][3]))
 # standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(array_edf_preemptions[(1+i*1000):(1000+i*1000)]))
 # avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(taskset1.df$V1[1:500]))
@@ -345,77 +375,77 @@ print(avarage_fps_preemptions_high)
 
 
 
-# avarage_edf_preemptions = vector()
-# avarage_fps_preemptions = vector()
-# standard_devation_edf_preemptions = vector()
-# standard_devation_fps_preemptions = vector()
-# 
-# avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[1:4000]))
-# standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[1:4000]))
-# avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[1:4000]))
-# standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[1:4000]))
-# 
-# avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[4001:10000]))
-# standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[4001:10000]))
-# avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[4001:10000]))
-# standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[4001:10000]))
-# 
-# avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[10001:18000]))
-# standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[10001:18000]))
-# avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[10001:18000]))
-# standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[10001:18000]))
-# 
-# avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[18001:28000]))
-# standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[18001:28000]))
-# avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[18001:28000]))
-# standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[18001:28000]))
-# 
-# avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[28001:40000]))
-# standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[28001:40000]))
-# avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[28001:40000]))
-# standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[28001:40000]))
-# 
-# avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[40001:54000]))
-# standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[40001:54000]))
-# avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[40001:54000]))
-# standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[40001:54000]))
-# 
-# avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[54001:70000]))
-# standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[54001:70000]))
-# avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[54001:70000]))
-# standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[54001:70000]))
-# 
-# avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[70001:88000]))
-# standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[70001:88000]))
-# avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[70001:88000]))
-# standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[70001:88000]))
-# 
-# avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[88001:108000]))
-# standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[88001:108000]))
-# avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[88001:108000]))
-# standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[88001:108000]))
-# 
-# print (avarage_edf_preemptions)
-# print (avarage_fps_preemptions)
+avarage_edf_preemptions = vector()
+avarage_fps_preemptions = vector()
+standard_devation_edf_preemptions = vector()
+standard_devation_fps_preemptions = vector()
+
+avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[1:4000]))
+standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[1:4000]))
+avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[1:4000]))
+standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[1:4000]))
+
+avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[4001:10000]))
+standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[4001:10000]))
+avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[4001:10000]))
+standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[4001:10000]))
+
+avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[10001:18000]))
+standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[10001:18000]))
+avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[10001:18000]))
+standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[10001:18000]))
+
+avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[18001:28000]))
+standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[18001:28000]))
+avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[18001:28000]))
+standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[18001:28000]))
+
+avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[28001:40000]))
+standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[28001:40000]))
+avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[28001:40000]))
+standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[28001:40000]))
+
+avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[40001:54000]))
+standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[40001:54000]))
+avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[40001:54000]))
+standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[40001:54000]))
+
+avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[54001:70000]))
+standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[54001:70000]))
+avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[54001:70000]))
+standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[54001:70000]))
+
+avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[70001:88000]))
+standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[70001:88000]))
+avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[70001:88000]))
+standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[70001:88000]))
+
+avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(task_edf_preemptions[88001:108000]))
+standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(task_edf_preemptions[88001:108000]))
+avarage_fps_preemptions <- append(avarage_fps_preemptions, mean(task_fps_preemptions[88001:108000]))
+standard_devation_fps_preemptions <- append(standard_devation_fps_preemptions, sd(task_fps_preemptions[88001:108000]))
+
+print (avarage_edf_preemptions)
+print (avarage_fps_preemptions)
 
 
-# X <- c(4,6,8,10,12,14,16,18,20)
-# 
-# plot(X, avarage_edf_preemptions, ylim=range(c(0, 40)), xlab="Number of tasks", ylab="Avarage number of preemptions", type="o", col="blue", pch="o", lty=1)
-# arrows(X, avarage_edf_preemptions-standard_devation_edf_preemptions, X, avarage_edf_preemptions+standard_devation_edf_preemptions, length=0.05, angle=90, code=3, col="blue" )
-# points(X, avarage_fps_preemptions, col="red", pch="*")
-# lines(X, avarage_fps_preemptions, col="red",lty=2)
-# arrows(X, avarage_fps_preemptions-standard_devation_fps_preemptions, X, avarage_fps_preemptions+standard_devation_fps_preemptions, length=0.05, angle=90, code=3, col="red" )
-# legend(1,100,legend=c("EDF","FPS"), col=c("blue","red"), pch=c("o","*"),lty=c(1,2), ncol=1)
+X <- c(4,6,8,10,12,14,16,18,20)
+
+plot(X, avarage_edf_preemptions, ylim=range(c(0, 300)), xlab="Number of tasks", ylab="Avarage number of preemptions", type="o", col="blue", pch="o", lty=1)
+arrows(X, avarage_edf_preemptions-standard_devation_edf_preemptions, X, avarage_edf_preemptions+standard_devation_edf_preemptions, length=0.05, angle=90, code=3, col="blue" )
+points(X, avarage_fps_preemptions, col="red", pch="*")
+lines(X, avarage_fps_preemptions, col="red",lty=2)
+arrows(X, avarage_fps_preemptions-standard_devation_fps_preemptions, X, avarage_fps_preemptions+standard_devation_fps_preemptions, length=0.05, angle=90, code=3, col="red" )
+legend(1,100,legend=c("EDF","FPS"), col=c("blue","red"), pch=c("o","*"),lty=c(1,2), ncol=1)
 
 
-#ylim=range(c(avarage_edf_preemptions_high-standard_devation_edf_preemptions_high, avarage_edf_preemptions_high+standard_devation_edf_preemptions_high))
-# plot(X, avarage_edf_preemptions_high, ylim=range(c(80, 170)), xlab="Number of tasks", ylab="Avarage number of preemptions", type="o", col="blue", pch="o", lty=1)
-# arrows(X, avarage_edf_preemptions_high-standard_devation_edf_preemptions_high, X, avarage_edf_preemptions_high+standard_devation_edf_preemptions_high, length=0.05, angle=90, code=3, col="blue" )
-# points(X, avarage_fps_preemptions_high, col="red", pch="*")
-# lines(X, avarage_fps_preemptions_high, col="red",lty=2)
-# arrows(X, avarage_fps_preemptions_high-standard_devation_fps_preemptions_high, X, avarage_fps_preemptions_high+standard_devation_fps_preemptions_high, length=0.05, angle=90, code=3, col="red" )
-# legend(1,100,legend=c("EDF","FPS"), col=c("blue","red"), pch=c("o","*"),lty=c(1,2), ncol=1)
+ylim=range(c(avarage_edf_preemptions_high-standard_devation_edf_preemptions_high, avarage_edf_preemptions_high+standard_devation_edf_preemptions_high))
+plot(X, avarage_edf_preemptions_high, ylim=range(c(0, 370)), xlab="Number of tasks", ylab="Avarage number of preemptions", type="o", col="blue", pch="o", lty=1)
+arrows(X, avarage_edf_preemptions_high-standard_devation_edf_preemptions_high, X, avarage_edf_preemptions_high+standard_devation_edf_preemptions_high, length=0.05, angle=90, code=3, col="blue" )
+points(X, avarage_fps_preemptions_high, col="red", pch="*")
+lines(X, avarage_fps_preemptions_high, col="red",lty=2)
+arrows(X, avarage_fps_preemptions_high-standard_devation_fps_preemptions_high, X, avarage_fps_preemptions_high+standard_devation_fps_preemptions_high, length=0.05, angle=90, code=3, col="red" )
+legend(1,100,legend=c("EDF","FPS"), col=c("blue","red"), pch=c("o","*"),lty=c(1,2), ncol=1)
 
 
 

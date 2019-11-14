@@ -486,7 +486,6 @@ package body Mast.EDF_Tools is
                   end if;
                end loop;
             end loop;
-
             -- qui abbiamo
             -- wik = blocking time i + WCET altri task j
 

@@ -763,7 +763,6 @@ package body Mast.Monoprocessor_Tools is
                     (Integer(Wik),
                      Integer(Transaction(tsk).The_Task(Task_ID(1)).Tij)));
                end loop;
-               Put_Line ("iperperiodo " & Time'Image(Wik));
             end if;
             -- Iterate over the jobs, K, in the busy period
             if discriminant = 1 then
@@ -823,7 +822,6 @@ package body Mast.Monoprocessor_Tools is
                   K:=K+1;
                   Wik:=Wik+Ci;
                end loop;
-               Put_Line ("Preemptions: " & Integer'Image(Preemptions));
             else
                K:=1;
 
@@ -874,7 +872,6 @@ package body Mast.Monoprocessor_Tools is
                   K:=K+1;
                   Wik:=Wik+Ci;
                end loop;
-               Put_Line ("Preemptions: " & Integer'Image(Preemptions));
             end if;
 
          end loop;
@@ -900,7 +897,6 @@ package body Mast.Monoprocessor_Tools is
                   Put_Line("L:" &  Time'Image(Transaction(I).The_Task(Ni).Rij));
                end if;
          end if;
-
       end loop;
       Translate_Linear_Analysis_Results(Transaction,The_System);
    end RM_Analysis;
