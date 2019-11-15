@@ -743,7 +743,7 @@ package body Mast.Monoprocessor_Tools is
          -- Transaction(I).The_Task(Ni).Rbij:=Wik;
          for discriminant in 0..1 loop
             Wik:=Bi+Ci;
-            if discriminant = 1 then
+            if discriminant = 1 or discriminant = 0 then
                for J in 1..Max_Transactions loop
                   exit when Transaction(J).Ni=0;
                   for Tsk in 1..Transaction(J).Ni loop

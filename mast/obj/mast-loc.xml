@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <Locations >
-  <Project >
-    <file_marker column=" 13" line=" 529" >
+  <Project>
+    <vfs_file>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_file>
+    <file_marker column=" 22" line=" 488" >
       <vfs_project>/home/aquox/Scrivania/Arm/mast/mast.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/Arm/mast/mast_analysis/mast-edf_tools.adb</vfs_file>
     </file_marker>

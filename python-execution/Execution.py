@@ -454,6 +454,21 @@ def semi_harmonic():
                 FPS_data = debug_and_read_data(taskset, hyperperiod, j)
         save_data(taskset, EDF_data, FPS_data, "Semi_Harmonic/semi_harmonic", i, hyperperiod)
 
+def U_90_log_uniform():
+
+    for i in range(1, 1001):
+        taskset = []
+        taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM, EDF_schedulable, FPS_schedulable, hyperperiod = import_taskset(taskset, i, "U_90_log_uniform.csv")
+        make_adb_file(taskset, hyperperiod)
+        EDF_data = []
+        FPS_data = []
+        for j in range(2):
+            compile_and_flash_into_board(j)
+            if (j == 0):
+                EDF_data = debug_and_read_data(taskset, hyperperiod, j)
+            else:
+                FPS_data = debug_and_read_data(taskset, hyperperiod, j)
+        save_data(taskset, EDF_data, FPS_data, "U_90_log_uniform/U_90_log_uniform", i, hyperperiod)
 
 
 
@@ -486,7 +501,7 @@ def single_experiment(location, number, time):
 #buttazzo_experiments_preemptions()
 #single_experiment("buttazzo_preemptions_no_repetition.csv", 4500, 1200000000)
 
-semi_harmonic()
+U_90_log_uniform()
 
 #buttazzo_experiments_preemptions_no_repetition ()
 

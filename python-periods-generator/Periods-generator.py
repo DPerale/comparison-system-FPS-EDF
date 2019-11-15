@@ -190,141 +190,158 @@
 
 ######  FULL HARMONIC
 
-import random
-from random import randint
-
-taskset = []
-for i in range (10000):
-    taskset.append([])
-for l in range (500):
-    if l<200:
-        min_int = max_int = int(l/50) + 2
-        print(min_int)
-    else:
-        min_int = 2
-        max_int = 5
-
-    for i in range (10,30):
-        n = i
-        t = 1
-        taskset[l*20 + i-10].append(n)
-        while (t < 20 and n <= 500):
-            if (l >= 200):
-                temp = n*randint(min_int,max_int)
-                if(temp != taskset[l*20+i-10][t-1] and temp <= 1000):
-                    n = temp
-                    taskset[l*20 + i-10].append(n)
-                    t = t + 1
-            else:
-                n = n * randint(min_int, max_int)
-                if(n <= 1000):
-                    taskset[l * 20 + i - 10].append(n)
-                    t = t + 1
-
-        if t < 19:
-            t2 = t
-            while (t < 20):
-                temp = random.choice(taskset[l*20 + i-10][0:t2])
-                taskset[l*20 + i-10].append(temp)
-                t = t + 1
-
-for i in range(10000):
-    taskset[i] = sorted([j * 1000 for j in taskset[i]])
-    #print(taskset[i])
-
-
-
-def isPrime(n):
-    if (n <= 1):
-        return False
-    if (n <= 3):
-        return True
-    if (n % 2 == 0 or n % 3 == 0):
-        return False
-    i = 5
-    while (i * i <= n):
-        if (n % i == 0 or n % (i + 2) == 0):
-            return False
-        i = i + 6
-    return True
-
-from math import gcd
-def calc_lcm(a):
-    lcm = a[0]
-    for i in a[1:]:
-        lcm = int(lcm*i/gcd(lcm, i))
-    return lcm
+# import random
+# from random import randint
+#
+# taskset = []
+# for i in range (10000):
+#     taskset.append([])
+# for l in range (500):
+#     if l<200:
+#         min_int = max_int = int(l/50) + 2
+#         print(min_int)
+#     else:
+#         min_int = 2
+#         max_int = 5
+#
+#     for i in range (10,30):
+#         n = i
+#         t = 1
+#         taskset[l*20 + i-10].append(n)
+#         while (t < 20 and n <= 500):
+#             if (l >= 200):
+#                 temp = n*randint(min_int,max_int)
+#                 if(temp != taskset[l*20+i-10][t-1] and temp <= 1000):
+#                     n = temp
+#                     taskset[l*20 + i-10].append(n)
+#                     t = t + 1
+#             else:
+#                 n = n * randint(min_int, max_int)
+#                 if(n <= 1000):
+#                     taskset[l * 20 + i - 10].append(n)
+#                     t = t + 1
+#
+#         if t < 19:
+#             t2 = t
+#             while (t < 20):
+#                 temp = random.choice(taskset[l*20 + i-10][0:t2])
+#                 taskset[l*20 + i-10].append(temp)
+#                 t = t + 1
+#
+# for i in range(10000):
+#     taskset[i] = sorted([j * 1000 for j in taskset[i]])
+#     #print(taskset[i])
+#
+#
+#
+# def isPrime(n):
+#     if (n <= 1):
+#         return False
+#     if (n <= 3):
+#         return True
+#     if (n % 2 == 0 or n % 3 == 0):
+#         return False
+#     i = 5
+#     while (i * i <= n):
+#         if (n % i == 0 or n % (i + 2) == 0):
+#             return False
+#         i = i + 6
+#     return True
+#
+# from math import gcd
+# def calc_lcm(a):
+#     lcm = a[0]
+#     for i in a[1:]:
+#         lcm = int(lcm*i/gcd(lcm, i))
+#     return lcm
 
 
 
 ####### GOOD HARMONIC
 
 
-reintroduction = True
-taskset = []
-for i in range (500):
-    taskset.append([])
-for z in range (25):
-    for i in range (10,30):
-        n = i
-        t = 0
-        possibleChoiches = []
-        possibleChoiches.append(n)
-        while (n < 1000):
-            n = n + i
-            possibleChoiches.append(n)
-        n2 = 4
-        n3 = 1
-        n5 = 2
-        n7 = 1
-        nmin = 0
-        min_i = i
-        if (isPrime(i)):
-            nmin = 1
-        else:
-            if (i == 22 or i == 26):
-                nmin = 1
-                min_i = int(i/2)
-            else:
-                if (i == 27 or i == 18):
-                    n2 = 5
-                    n3 = 3
-                    n5 = 2
-                else:
-                    n2 = 6
-                    n3 = 2
-                    n5 = 2
+# reintroduction = True
+# taskset = []
+# for i in range (500):
+#     taskset.append([])
+# for z in range (25):
+#     for i in range (10,30):
+#         n = i
+#         t = 0
+#         possibleChoiches = []
+#         possibleChoiches.append(n)
+#         while (n < 1000):
+#             n = n + i
+#             possibleChoiches.append(n)
+#         n2 = 4
+#         n3 = 1
+#         n5 = 2
+#         n7 = 1
+#         nmin = 0
+#         min_i = i
+#         if (isPrime(i)):
+#             nmin = 1
+#         else:
+#             if (i == 22 or i == 26):
+#                 nmin = 1
+#                 min_i = int(i/2)
+#             else:
+#                 if (i == 27 or i == 18):
+#                     n2 = 5
+#                     n3 = 3
+#                     n5 = 2
+#                 else:
+#                     n2 = 6
+#                     n3 = 2
+#                     n5 = 2
+#
+#         numbers = []
+#
+#         for f in range((n2+1)):
+#             for j in range((n3+1)):
+#                 for l in range((n5+1)):
+#                     for m in range((n7+1)):
+#                         for o in range((nmin+1)):
+#                             if ((2 ** f) * (3 ** j) * (5 ** l) * (7 ** m) * (min_i ** o)) >= 10 and ((2 ** f) * (3 ** j) * (5 ** l) * (7 ** m) * (min_i ** o)) < 1000:
+#                                 numbers.append(((2**f)*(3**j)*(5**l)*(7**m)*(min_i ** o)))
+#
+#         common = sorted(list(set(possibleChoiches).intersection(numbers)))
+#
+#         if (len(common) >= 20):
+#             if reintroduction :
+#                 taskset[(z * 20) + (i - 10)] = sorted(random.choices(common, k=20))
+#             else:
+#                 taskset[(z*20)+(i-10)] = sorted(random.sample(common, 20))
+#             t = 20
+#         else:
+#             taskset[(z*20)+(i-10)] = common
+#             t = len(common)
+#
+#         if (t < 20):
+#             t2 = t
+#             while (t < 20):
+#                 temp = random.choice(taskset[(z*20)+(i-10)][0:t2])
+#                 taskset[(z*20)+(i-10)].append(temp)
+#                 t = t + 1
+#
+#         calc_lcm([int(g) for g in taskset[(z*20)+(i-10)]])
+#
+# for i in range(500):
+#     print(taskset[i])
 
-        numbers = []
+import numpy as np
+import math
 
-        for f in range((n2+1)):
-            for j in range((n3+1)):
-                for l in range((n5+1)):
-                    for m in range((n7+1)):
-                        for o in range((nmin+1)):
-                            if ((2 ** f) * (3 ** j) * (5 ** l) * (7 ** m) * (min_i ** o)) >= 10 and ((2 ** f) * (3 ** j) * (5 ** l) * (7 ** m) * (min_i ** o)) < 1000:
-                                numbers.append(((2**f)*(3**j)*(5**l)*(7**m)*(min_i ** o)))
+def loguniform(low, high, size):
+    return np.exp(np.random.uniform(math.log(low), math.log(high), size))
 
-        common = sorted(list(set(possibleChoiches).intersection(numbers)))
+def calculate_hyperperiod (periods):
+    lcm = np.lcm.reduce(periods)
 
-        if (len(common) >= 20):
-            if reintroduction :
-                taskset[(z * 20) + (i - 10)] = sorted(random.choices(common, k=20))
-            else:
-                taskset[(z*20)+(i-10)] = sorted(random.sample(common, 20))
-            t = 20
-        else:
-            taskset[(z*20)+(i-10)] = common
-            t = len(common)
-
-        if (t < 20):
-            t2 = t
-            while (t < 20):
-                temp = random.choice(taskset[(z*20)+(i-10)][0:t2])
-                taskset[(z*20)+(i-10)].append(temp)
-                t = t + 1
-
-        calc_lcm([int(g) for g in taskset[(z*20)+(i-10)]])
-
-for i in range(500):
-    print(taskset[i])
+    return lcm
+for l in range (100):
+    ciao = loguniform(10, 101, 20)
+    for i in range(20):
+        ciao[i] = int(math.floor(ciao[i]/1)*1)
+    ciao2 = np.array(ciao, dtype=int)
+    print(calculate_hyperperiod(ciao2))

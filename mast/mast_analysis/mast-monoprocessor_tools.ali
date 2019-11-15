@@ -21,7 +21,7 @@ RV NO_DYNAMIC_SIZED_OBJECTS
 RV NO_IMPLICIT_LOOPS
 RV SPARK_05
 
-U mast.monoprocessor_tools%b  mast-monoprocessor_tools.adb  a0cc1c47 NE OO PK
+U mast.monoprocessor_tools%b  mast-monoprocessor_tools.adb  8e291678 NE OO PK
 W ada%s			ada.ads			ada.ali
 Z ada.exceptions%s	a-except.adb		a-except.ali
 Z ada.tags%s		a-tags.adb		a-tags.ali
@@ -107,7 +107,7 @@ D mast-linear_translation.ads  20190621183100 fc1e7c55 mast.linear_translation%s
 D mast-linear_translation.adb  20190621183100 bb3a5f76 mast.linear_translation%b
 D mast-max_numbers.ads	20190621183100 a7bdd342 mast.max_numbers%s
 D mast-monoprocessor_tools.ads  20190621183100 49166a4e mast.monoprocessor_tools%s
-D mast-monoprocessor_tools.adb  20191107144756 19231570 mast.monoprocessor_tools%b
+D mast-monoprocessor_tools.adb  20191114163641 37c61f4f mast.monoprocessor_tools%b
 D mast-operations.ads	20190621183100 7c81852a mast.operations%s
 D mast-processing_resources.ads  20190621183100 d115afa6 mast.processing_resources%s
 D mast-processing_resources-network.ads  20190621183100 810c9112 mast.processing_resources.network%s
@@ -238,7 +238,7 @@ X 24 mast-linear_translation.ads
 . 222r47[99] 223r48[99] 226r50[99] 231r50[99] 255r47[99] 326m41[99] 336r48[99]
 . 337r47[99] 364m40[99] 373r24[99] 376r18[99] 382r18[99] 392r48[99] 400r51[99]
 . 410r51[99] 423r16[99] 429r19[99] 434r16[99] 477r48[99] 478r47[99]
-201A9 The_Transaction_Tasks(169R9[28|99])<28|82I12>
+201A9 The_Transaction_Tasks(169R9[28|931])<28|914I12>
 204R9 Transaction_Data 28|938r26[931] 939r26[931] 1091r19[931]
 207i7 Ni{28|82I12} 28|162r36[99] 163r38[99] 216r36[99] 217r38[99] 323r36[99]
 . 324r38[99] 333r36[99] 334r38[99] 474r36[99] 475r38[99] 729r35[708] 733r29[708]
@@ -453,7 +453,7 @@ X 28 mast-monoprocessor_tools.adb
 728i11 I<integer> 729r32 733r26 734r26 735r26 736r26 737r26 738r27 751r36
 . 752r28 758r28 781r42 782r34 838r42 839r34 880r25 881r25 883r25 884r25 887r44
 . 888r25 888r59 890r56 892r13 893r28 897r59
-744i14 discriminant{integer} 746r16 768r16
+744i14 discriminant{integer} 746r16 746r36 768r16
 747i20 J<integer> 748r41 749r45 750r38 752r25 754r46
 749i23 Tsk<integer> 750r50 752r38 754r58
 761i20 tsk<integer> 764r42

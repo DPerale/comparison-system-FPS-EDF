@@ -6,9 +6,6 @@
       <change beforePath="$PROJECT_DIR$/MASTinput.out" beforeDir="false" afterPath="$PROJECT_DIR$/MASTinput.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MASTinput.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MASTinput.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MASTinputEDF.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MASTinputEDF.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R-script/Buttazzo-First-Preemptions.R" beforeDir="false" afterPath="$PROJECT_DIR$/R-script/Buttazzo-First-Preemptions.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/R-script/U90_113400000_0_2_armonic.R" beforeDir="false" afterPath="$PROJECT_DIR$/R-script/U90_113400000_0_2_armonic.R" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/edf-example.out" beforeDir="false" afterPath="$PROJECT_DIR$/edf-example.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/b__unit01.ali" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/build/b__unit01.ali" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/cyclic_tasks.ali" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/build/cyclic_tasks.ali" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/edf-ravenscar-arm/build/cyclic_tasks.o" beforeDir="false" afterPath="$PROJECT_DIR$/edf-ravenscar-arm/build/cyclic_tasks.o" afterDir="false" />
@@ -26,15 +23,11 @@
       <change beforePath="$PROJECT_DIR$/mast/mast_analysis/b~mast_analysis.ads" beforeDir="false" afterPath="$PROJECT_DIR$/mast/mast_analysis/b~mast_analysis.ads" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mast/mast_analysis/b~mast_analysis.ali" beforeDir="false" afterPath="$PROJECT_DIR$/mast/mast_analysis/b~mast_analysis.ali" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mast/mast_analysis/b~mast_analysis.o" beforeDir="false" afterPath="$PROJECT_DIR$/mast/mast_analysis/b~mast_analysis.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mast/mast_analysis/mast-edf_tools.adb" beforeDir="false" afterPath="$PROJECT_DIR$/mast/mast_analysis/mast-edf_tools.adb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mast/mast_analysis/mast-edf_tools.ali" beforeDir="false" afterPath="$PROJECT_DIR$/mast/mast_analysis/mast-edf_tools.ali" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mast/mast_analysis/mast-edf_tools.o" beforeDir="false" afterPath="$PROJECT_DIR$/mast/mast_analysis/mast-edf_tools.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mast/mast_analysis/mast-monoprocessor_tools.adb" beforeDir="false" afterPath="$PROJECT_DIR$/mast/mast_analysis/mast-monoprocessor_tools.adb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mast/mast_analysis/mast-monoprocessor_tools.ali" beforeDir="false" afterPath="$PROJECT_DIR$/mast/mast_analysis/mast-monoprocessor_tools.ali" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mast/mast_analysis/mast-monoprocessor_tools.o" beforeDir="false" afterPath="$PROJECT_DIR$/mast/mast_analysis/mast-monoprocessor_tools.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mast/mast_analysis/mast_analysis" beforeDir="false" afterPath="$PROJECT_DIR$/mast/mast_analysis/mast_analysis" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mast/mast_analysis/mast_parser.lis" beforeDir="false" afterPath="$PROJECT_DIR$/mast/mast_analysis/mast_parser.lis" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mast/obj/gnatinspect.db" beforeDir="false" afterPath="$PROJECT_DIR$/mast/obj/gnatinspect.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mast/obj/mast-loc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mast/obj/mast-loc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python-analysis/Analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-analysis/Analysis.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python-analysis/mast_parser.lis" beforeDir="false" afterPath="$PROJECT_DIR$/python-analysis/mast_parser.lis" afterDir="false" />

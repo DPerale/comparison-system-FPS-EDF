@@ -250,6 +250,13 @@ def register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF
     tasksets_file = open(name, 'a')
     tasksets_file.write(str(utilization)+";"+str(EDF_busy_period)+";"+str(FPS_busy_period)+";"+str(EDF_first_DM_miss)+";"+str(EDF_schedulable)+";"+str(FPS_schedulable)+";"+str(hyperperiod)+";")
     for i in range(len(taskset)):
+        # print(taskset)
+        # print(EDF_response_time)
+        # print("FPS")
+        # print(FPS_response_time)
+        # print(FPS_deadline_miss_task)
+        # print(utilization_context_switch)
+        # print(utilization_clock)
         tasksets_file.write(str(taskset[i][0])+","+str(taskset[i][1])+","+str(taskset[i][2])+","+str(taskset[i][3])+","+str(taskset[i][4])+","+str(EDF_response_time[i])+","+str(FPS_response_time[i])+","+str(FPS_deadline_miss_task[i])+","+str(utilization_context_switch[i])+","+str(utilization_clock[i])+";")
     tasksets_file.write("\n")
     tasksets_file.close()
@@ -699,6 +706,18 @@ def create_taskset_harmonic(periods, utilization):
     utilization_context_switch, utilization_clock = UUnifast(taskset, utilization)
     return taskset, utilization_context_switch, utilization_clock
 
+def create_taskset_log_uniform(low, high, size, utilization):
+    taskset = []
+
+    periods = np.exp(np.random.uniform(math.log(low), math.log(high), size))
+    periods = [x * 1000 for x in sorted(np.array(periods, dtype=int))]
+
+    for i in range (size):
+        taskset.append([(size - i), periods[i], periods[i], i + 1, 0])
+    utilization_context_switch, utilization_clock = UUnifast(taskset, utilization)
+    return taskset, utilization_context_switch, utilization_clock
+
+
 ################
 ## TEST TYPES ##
 ################
@@ -954,6 +973,27 @@ def semi_harmonic():
                          utilization_context_switch, utilization_clock, hyperperiod,
                          "../workspace/semi_harmonic.csv")
 
+def U_90_log_uniform():
+    create_file("../workspace/U_90_log_uniform.csv",
+                "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock_i")
+
+
+    utilization = 0.9
+    for j in range(1000):
+        print(j)
+        taskset, utilization_context_switch, utilization_clock = create_taskset_log_uniform(10, 100, 20, utilization)
+        hyperperiod = 1000000
+        EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
+        FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
+
+        # EDF_counting_clock_interference_assolute, FPS_counting_clock_interference_assolute = calculate_overhead_by_clock(taskset, EDF_busy_period, FPS_busy_period, FPS_response_time, 977)
+
+        register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable,
+                         FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task,
+                         utilization_context_switch, utilization_clock, hyperperiod,
+                         "../workspace/U_90_log_uniform.csv")
+
+
 ##########
 ## Main ##
 ##########
@@ -961,5 +1001,5 @@ def semi_harmonic():
 ## Task (Prio, Dead, Period, ID, WCET)
 
 #buttazzo_experiments_preemptions()
-semi_harmonic()
+U_0_9_log_uniform()
 
