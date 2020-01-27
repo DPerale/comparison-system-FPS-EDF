@@ -31,7 +31,7 @@ def import_taskset(taskset, i, name):
                             string_task[2],
                             string_task[3],
                             string_task[4],
-                            str((float(string_task[8])+float(string_task[9])))]
+                            str((float(string_task[8])+float(string_task[9])+float(string_task[10])))]
                     taskset.append (task)
                 return taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM, EDF_schedulable, FPS_schedulable, hyperperiod
             row_number = row_number + 1
@@ -471,6 +471,22 @@ def U_90_log_uniform():
         save_data(taskset, EDF_data, FPS_data, "U_90_log_uniform/U_90_log_uniform", i, hyperperiod)
 
 
+def U_99_hyper_113400000_10_100():
+
+    for i in range(1, 501):
+        taskset = []
+        taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM, EDF_schedulable, FPS_schedulable, hyperperiod = import_taskset(taskset, i, "U_99_hyper_113400000_10_100.csv")
+        make_adb_file(taskset, hyperperiod)
+        EDF_data = []
+        FPS_data = []
+        for j in range(2):
+            compile_and_flash_into_board(j)
+            if (j == 0):
+                EDF_data = debug_and_read_data(taskset, hyperperiod, j)
+            else:
+                FPS_data = debug_and_read_data(taskset, hyperperiod, j)
+        save_data(taskset, EDF_data, FPS_data, "U_99_hyper_113400000_10_100/U_99_hyper_113400000_10_100", i, hyperperiod)
+
 
 def single_experiment(location, number, time):
 
@@ -501,7 +517,7 @@ def single_experiment(location, number, time):
 #buttazzo_experiments_preemptions()
 #single_experiment("buttazzo_preemptions_no_repetition.csv", 4500, 1200000000)
 
-U_90_log_uniform()
+U_99_hyper_113400000_10_100()
 
 #buttazzo_experiments_preemptions_no_repetition ()
 
