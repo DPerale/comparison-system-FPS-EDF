@@ -26,7 +26,6 @@
       <change beforePath="$PROJECT_DIR$/python-analysis/mast_parser.lis" beforeDir="false" afterPath="$PROJECT_DIR$/python-analysis/mast_parser.lis" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python-execution/Execution.py" beforeDir="false" afterPath="$PROJECT_DIR$/python-execution/Execution.py" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -46,23 +45,16 @@
     </option>
   </component>
   <component name="ProjectId" id="1P3U9WoiH1wNe7g7ieCwGElEzRO" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/python-periods-generator/Execution.py" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="Python.execution">
     <configuration name="analysis" type="PythonConfigurationType" factoryName="Python">
@@ -159,5 +151,23 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1830" height="199" key="GridCell.Tab.0.bottom" timestamp="1581083792875">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1830" height="199" key="GridCell.Tab.0.bottom/67.27.1853.1053@67.27.1853.1053" timestamp="1581083792875" />
+    <state width="1830" height="199" key="GridCell.Tab.0.center" timestamp="1581083792875">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1830" height="199" key="GridCell.Tab.0.center/67.27.1853.1053@67.27.1853.1053" timestamp="1581083792875" />
+    <state width="1830" height="199" key="GridCell.Tab.0.left" timestamp="1581083792874">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1830" height="199" key="GridCell.Tab.0.left/67.27.1853.1053@67.27.1853.1053" timestamp="1581083792874" />
+    <state width="1830" height="199" key="GridCell.Tab.0.right" timestamp="1581083792875">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state width="1830" height="199" key="GridCell.Tab.0.right/67.27.1853.1053@67.27.1853.1053" timestamp="1581083792875" />
   </component>
 </project>

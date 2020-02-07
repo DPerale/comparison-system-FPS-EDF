@@ -169,83 +169,83 @@ Initializing error report...
  170 Operation (
  171         Type    => Simple,
  172         Name    => C1,
- 173         Worst_Case_Execution_Time => 426);
+ 173         Worst_Case_Execution_Time => 2029);
  174 Operation (
  175         Type    => Simple,
  176         Name    => C2,
- 177         Worst_Case_Execution_Time => 302);
+ 177         Worst_Case_Execution_Time => 360);
  178 Operation (
  179         Type    => Simple,
  180         Name    => C3,
- 181         Worst_Case_Execution_Time => 1064);
+ 181         Worst_Case_Execution_Time => 1025);
  182 Operation (
  183         Type    => Simple,
  184         Name    => C4,
- 185         Worst_Case_Execution_Time => 721);
+ 185         Worst_Case_Execution_Time => 1864);
  186 Operation (
  187         Type    => Simple,
  188         Name    => C5,
- 189         Worst_Case_Execution_Time => 5353);
+ 189         Worst_Case_Execution_Time => 1092);
  190 Operation (
  191         Type    => Simple,
  192         Name    => C6,
- 193         Worst_Case_Execution_Time => 2491);
+ 193         Worst_Case_Execution_Time => 130);
  194 Operation (
  195         Type    => Simple,
  196         Name    => C7,
- 197         Worst_Case_Execution_Time => 289);
+ 197         Worst_Case_Execution_Time => 1397);
  198 Operation (
  199         Type    => Simple,
  200         Name    => C8,
- 201         Worst_Case_Execution_Time => 307);
+ 201         Worst_Case_Execution_Time => 4488);
  202 Operation (
  203         Type    => Simple,
  204         Name    => C9,
- 205         Worst_Case_Execution_Time => 593);
+ 205         Worst_Case_Execution_Time => 2074);
  206 Operation (
  207         Type    => Simple,
  208         Name    => C10,
- 209         Worst_Case_Execution_Time => 311);
+ 209         Worst_Case_Execution_Time => 4513);
  210 Operation (
  211         Type    => Simple,
  212         Name    => C11,
- 213         Worst_Case_Execution_Time => 179);
+ 213         Worst_Case_Execution_Time => 1457);
  214 Operation (
  215         Type    => Simple,
  216         Name    => C12,
- 217         Worst_Case_Execution_Time => 7265);
+ 217         Worst_Case_Execution_Time => 1399);
  218 Operation (
  219         Type    => Simple,
  220         Name    => C13,
- 221         Worst_Case_Execution_Time => 4867);
+ 221         Worst_Case_Execution_Time => 27);
  222 Operation (
  223         Type    => Simple,
  224         Name    => C14,
- 225         Worst_Case_Execution_Time => 11895);
+ 225         Worst_Case_Execution_Time => 10322);
  226 Operation (
  227         Type    => Simple,
  228         Name    => C15,
- 229         Worst_Case_Execution_Time => 2154);
+ 229         Worst_Case_Execution_Time => 10285);
  230 Operation (
  231         Type    => Simple,
  232         Name    => C16,
- 233         Worst_Case_Execution_Time => 8521);
+ 233         Worst_Case_Execution_Time => 1118);
  234 Operation (
  235         Type    => Simple,
  236         Name    => C17,
- 237         Worst_Case_Execution_Time => 10081);
+ 237         Worst_Case_Execution_Time => 692);
  238 Operation (
  239         Type    => Simple,
  240         Name    => C18,
- 241         Worst_Case_Execution_Time => 1444);
+ 241         Worst_Case_Execution_Time => 2604);
  242 Operation (
  243         Type    => Simple,
  244         Name    => C19,
- 245         Worst_Case_Execution_Time => 1335);
+ 245         Worst_Case_Execution_Time => 170);
  246 Operation (
  247         Type    => Simple,
  248         Name    => C20,
- 249         Worst_Case_Execution_Time => 5317);
+ 249         Worst_Case_Execution_Time => 437);
  250 Transaction (
  251         Type    => Regular,
  252         Name    => T1,
@@ -272,13 +272,13 @@ Initializing error report...
  273         External_Events => (
  274                 (Type   => Periodic,
  275                  Name   => E2,
- 276                  Period => 30240)),
+ 276                  Period => 22500)),
  277         Internal_Events => (
  278                 (Type   => regular,
  279                  name   => O2,
  280                  Timing_Requirements => (
  281                          Type             => Hard_Global_Deadline,
- 282                          Deadline         => 30240,
+ 282                          Deadline         => 22500,
  283                          referenced_event => E2))),
  284         Event_Handlers => (
  285                 (Type                => Activity,
@@ -292,13 +292,13 @@ Initializing error report...
  293         External_Events => (
  294                 (Type   => Periodic,
  295                  Name   => E3,
- 296                  Period => 35000)),
+ 296                  Period => 25200)),
  297         Internal_Events => (
  298                 (Type   => regular,
  299                  name   => O3,
  300                  Timing_Requirements => (
  301                          Type             => Hard_Global_Deadline,
- 302                          Deadline         => 35000,
+ 302                          Deadline         => 25200,
  303                          referenced_event => E3))),
  304         Event_Handlers => (
  305                 (Type                => Activity,
@@ -312,13 +312,13 @@ Initializing error report...
  313         External_Events => (
  314                 (Type   => Periodic,
  315                  Name   => E4,
- 316                  Period => 39375)),
+ 316                  Period => 26250)),
  317         Internal_Events => (
  318                 (Type   => regular,
  319                  name   => O4,
  320                  Timing_Requirements => (
  321                          Type             => Hard_Global_Deadline,
- 322                          Deadline         => 39375,
+ 322                          Deadline         => 26250,
  323                          referenced_event => E4))),
  324         Event_Handlers => (
  325                 (Type                => Activity,
@@ -332,13 +332,13 @@ Initializing error report...
  333         External_Events => (
  334                 (Type   => Periodic,
  335                  Name   => E5,
- 336                  Period => 40000)),
+ 336                  Period => 28350)),
  337         Internal_Events => (
  338                 (Type   => regular,
  339                  name   => O5,
  340                  Timing_Requirements => (
  341                          Type             => Hard_Global_Deadline,
- 342                          Deadline         => 40000,
+ 342                          Deadline         => 28350,
  343                          referenced_event => E5))),
  344         Event_Handlers => (
  345                 (Type                => Activity,
@@ -352,13 +352,13 @@ Initializing error report...
  353         External_Events => (
  354                 (Type   => Periodic,
  355                  Name   => E6,
- 356                  Period => 50400)),
+ 356                  Period => 30240)),
  357         Internal_Events => (
  358                 (Type   => regular,
  359                  name   => O6,
  360                  Timing_Requirements => (
  361                          Type             => Hard_Global_Deadline,
- 362                          Deadline         => 50400,
+ 362                          Deadline         => 30240,
  363                          referenced_event => E6))),
  364         Event_Handlers => (
  365                 (Type                => Activity,
@@ -372,13 +372,13 @@ Initializing error report...
  373         External_Events => (
  374                 (Type   => Periodic,
  375                  Name   => E7,
- 376                  Period => 52500)),
+ 376                  Period => 39375)),
  377         Internal_Events => (
  378                 (Type   => regular,
  379                  name   => O7,
  380                  Timing_Requirements => (
  381                          Type             => Hard_Global_Deadline,
- 382                          Deadline         => 52500,
+ 382                          Deadline         => 39375,
  383                          referenced_event => E7))),
  384         Event_Handlers => (
  385                 (Type                => Activity,
@@ -392,13 +392,13 @@ Initializing error report...
  393         External_Events => (
  394                 (Type   => Periodic,
  395                  Name   => E8,
- 396                  Period => 54000)),
+ 396                  Period => 40000)),
  397         Internal_Events => (
  398                 (Type   => regular,
  399                  name   => O8,
  400                  Timing_Requirements => (
  401                          Type             => Hard_Global_Deadline,
- 402                          Deadline         => 54000,
+ 402                          Deadline         => 40000,
  403                          referenced_event => E8))),
  404         Event_Handlers => (
  405                 (Type                => Activity,
@@ -412,13 +412,13 @@ Initializing error report...
  413         External_Events => (
  414                 (Type   => Periodic,
  415                  Name   => E9,
- 416                  Period => 56700)),
+ 416                  Period => 47250)),
  417         Internal_Events => (
  418                 (Type   => regular,
  419                  name   => O9,
  420                  Timing_Requirements => (
  421                          Type             => Hard_Global_Deadline,
- 422                          Deadline         => 56700,
+ 422                          Deadline         => 47250,
  423                          referenced_event => E9))),
  424         Event_Handlers => (
  425                 (Type                => Activity,
@@ -432,13 +432,13 @@ Initializing error report...
  433         External_Events => (
  434                 (Type   => Periodic,
  435                  Name   => E10,
- 436                  Period => 60000)),
+ 436                  Period => 50400)),
  437         Internal_Events => (
  438                 (Type   => regular,
  439                  name   => O10,
  440                  Timing_Requirements => (
  441                          Type             => Hard_Global_Deadline,
- 442                          Deadline         => 60000,
+ 442                          Deadline         => 50400,
  443                          referenced_event => E10))),
  444         Event_Handlers => (
  445                 (Type                => Activity,
@@ -452,13 +452,13 @@ Initializing error report...
  453         External_Events => (
  454                 (Type   => Periodic,
  455                  Name   => E11,
- 456                  Period => 60480)),
+ 456                  Period => 52500)),
  457         Internal_Events => (
  458                 (Type   => regular,
  459                  name   => O11,
  460                  Timing_Requirements => (
  461                          Type             => Hard_Global_Deadline,
- 462                          Deadline         => 60480,
+ 462                          Deadline         => 52500,
  463                          referenced_event => E11))),
  464         Event_Handlers => (
  465                 (Type                => Activity,
@@ -472,13 +472,13 @@ Initializing error report...
  473         External_Events => (
  474                 (Type   => Periodic,
  475                  Name   => E12,
- 476                  Period => 63000)),
+ 476                  Period => 54000)),
  477         Internal_Events => (
  478                 (Type   => regular,
  479                  name   => O12,
  480                  Timing_Requirements => (
  481                          Type             => Hard_Global_Deadline,
- 482                          Deadline         => 63000,
+ 482                          Deadline         => 54000,
  483                          referenced_event => E12))),
  484         Event_Handlers => (
  485                 (Type                => Activity,
@@ -492,13 +492,13 @@ Initializing error report...
  493         External_Events => (
  494                 (Type   => Periodic,
  495                  Name   => E13,
- 496                  Period => 65625)),
+ 496                  Period => 56700)),
  497         Internal_Events => (
  498                 (Type   => regular,
  499                  name   => O13,
  500                  Timing_Requirements => (
  501                          Type             => Hard_Global_Deadline,
- 502                          Deadline         => 65625,
+ 502                          Deadline         => 56700,
  503                          referenced_event => E13))),
  504         Event_Handlers => (
  505                 (Type                => Activity,
@@ -512,13 +512,13 @@ Initializing error report...
  513         External_Events => (
  514                 (Type   => Periodic,
  515                  Name   => E14,
- 516                  Period => 75600)),
+ 516                  Period => 63000)),
  517         Internal_Events => (
  518                 (Type   => regular,
  519                  name   => O14,
  520                  Timing_Requirements => (
  521                          Type             => Hard_Global_Deadline,
- 522                          Deadline         => 75600,
+ 522                          Deadline         => 63000,
  523                          referenced_event => E14))),
  524         Event_Handlers => (
  525                 (Type                => Activity,
@@ -532,13 +532,13 @@ Initializing error report...
  533         External_Events => (
  534                 (Type   => Periodic,
  535                  Name   => E15,
- 536                  Period => 78750)),
+ 536                  Period => 75000)),
  537         Internal_Events => (
  538                 (Type   => regular,
  539                  name   => O15,
  540                  Timing_Requirements => (
  541                          Type             => Hard_Global_Deadline,
- 542                          Deadline         => 78750,
+ 542                          Deadline         => 75000,
  543                          referenced_event => E15))),
  544         Event_Handlers => (
  545                 (Type                => Activity,
@@ -552,13 +552,13 @@ Initializing error report...
  553         External_Events => (
  554                 (Type   => Periodic,
  555                  Name   => E16,
- 556                  Period => 84375)),
+ 556                  Period => 78750)),
  557         Internal_Events => (
  558                 (Type   => regular,
  559                  name   => O16,
  560                  Timing_Requirements => (
  561                          Type             => Hard_Global_Deadline,
- 562                          Deadline         => 84375,
+ 562                          Deadline         => 78750,
  563                          referenced_event => E16))),
  564         Event_Handlers => (
  565                 (Type                => Activity,
@@ -572,13 +572,13 @@ Initializing error report...
  573         External_Events => (
  574                 (Type   => Periodic,
  575                  Name   => E17,
- 576                  Period => 87500)),
+ 576                  Period => 84000)),
  577         Internal_Events => (
  578                 (Type   => regular,
  579                  name   => O17,
  580                  Timing_Requirements => (
  581                          Type             => Hard_Global_Deadline,
- 582                          Deadline         => 87500,
+ 582                          Deadline         => 84000,
  583                          referenced_event => E17))),
  584         Event_Handlers => (
  585                 (Type                => Activity,
@@ -592,13 +592,13 @@ Initializing error report...
  593         External_Events => (
  594                 (Type   => Periodic,
  595                  Name   => E18,
- 596                  Period => 90000)),
+ 596                  Period => 87500)),
  597         Internal_Events => (
  598                 (Type   => regular,
  599                  name   => O18,
  600                  Timing_Requirements => (
  601                          Type             => Hard_Global_Deadline,
- 602                          Deadline         => 90000,
+ 602                          Deadline         => 87500,
  603                          referenced_event => E18))),
  604         Event_Handlers => (
  605                 (Type                => Activity,
@@ -612,13 +612,13 @@ Initializing error report...
  613         External_Events => (
  614                 (Type   => Periodic,
  615                  Name   => E19,
- 616                  Period => 94500)),
+ 616                  Period => 90720)),
  617         Internal_Events => (
  618                 (Type   => regular,
  619                  name   => O19,
  620                  Timing_Requirements => (
  621                          Type             => Hard_Global_Deadline,
- 622                          Deadline         => 94500,
+ 622                          Deadline         => 90720,
  623                          referenced_event => E19))),
  624         Event_Handlers => (
  625                 (Type                => Activity,
@@ -632,13 +632,13 @@ Initializing error report...
  633         External_Events => (
  634                 (Type   => Periodic,
  635                  Name   => E20,
- 636                  Period => 100000)),
+ 636                  Period => 94500)),
  637         Internal_Events => (
  638                 (Type   => regular,
  639                  name   => O20,
  640                  Timing_Requirements => (
  641                          Type             => Hard_Global_Deadline,
- 642                          Deadline         => 100000,
+ 642                          Deadline         => 94500,
  643                          referenced_event => E20))),
  644         Event_Handlers => (
  645                 (Type                => Activity,

@@ -1019,6 +1019,23 @@ def U_99_hyper_113400000_10_100():
                          "../workspace/U_99_hyper_113400000_10_100.csv")
 
 
+def U_100_hyper_113400000_10_100():
+    utilization = 1.00
+    create_file("../workspace/U_100_hyper_113400000_10_100.csv",
+                "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock, utilization_support_function_i")
+
+    for j in range(500):
+        print(j)
+        taskset, utilization_context_switch, utilization_clock, utilization_support_function = create_taskset_hyper_113400000_10_100(20, utilization)
+        hyperperiod = calculate_hyperperiod(taskset)
+        EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
+        FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
+        # EDF_counting_clock_interference_assolute, FPS_counting_clock_interference_assolute = calculate_overhead_by_clock(taskset, EDF_busy_period, FPS_busy_period, FPS_response_time, 977)
+
+        register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable,
+                         FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task,
+                         utilization_context_switch, utilization_clock, utilization_support_function, hyperperiod,
+                         "../workspace/U_100_hyper_113400000_10_100.csv")
 
 
 ##########
@@ -1028,5 +1045,5 @@ def U_99_hyper_113400000_10_100():
 ## Task (Prio, Dead, Period, ID, WCET)
 
 #buttazzo_experiments_preemptions()
-U_99_hyper_113400000_10_100()
+#U_100_hyper_113400000_10_100()
 
