@@ -170,7 +170,7 @@ for (i in 1:500){
 # # short mid long
 # res <- boxplot (taskset_0_2[1,,6], taskset_0_2[1,,7], taskset_0_2[1,,8], taskset_0_2[2,,6], taskset_0_2[2,,7], taskset_0_2[2,,8], taskset_0_2[3,,6], taskset_0_2[3,,7], taskset_0_2[3,,8], taskset_0_2[4,,6], taskset_0_2[4,,7], taskset_0_2[4,,8], taskset_0_2[5,,6], taskset_0_2[5,,7], taskset_0_2[5,,8], names=c("short g1","medium g1","long g1", "short g2","medium g2","long g2", "short g3","medium g3","long g3", "short g4","medium g4","long g4", "short g5","medium g5","long g5"), scipen=5, main="tipo task per gruppo", xlab="Task", ylab="quantità")
 # abline(h = 7, col = "red")
-# res$stats
+# res$stats 
 #
 # res <- boxplot (taskset_0_2[1,,10], taskset_0_2[2,,10], taskset_0_2[3,,10], taskset_0_2[4,,10], taskset_0_2[5,,10], names=c("gruppo 1","gruppo 2","gruppo 3","gruppo 4","gruppo 5"), scipen=5, main="Armonicità", xlab="Task", ylab="Numero rilasci uguali")
 # abline(h = 15, col = "red")
@@ -574,6 +574,25 @@ res <- boxplot (sum(taskset_0_2[1,,14], na.rm = TRUE)/length(taskset_0_2[1,,14][
                 sum(taskset_7_20[1,,14], na.rm = TRUE)/length(taskset_7_20[1,,14][!is.na(taskset_7_20[1,,14])]),sum(taskset_7_20[2,,14], na.rm = TRUE)/length(taskset_7_20[2,,14][!is.na(taskset_7_20[2,,14])]), sum(taskset_7_20[3,,14], na.rm = TRUE)/length(taskset_7_20[3,,14][!is.na(taskset_7_20[3,,14])]), sum(taskset_7_20[4,,14], na.rm = TRUE)/length(taskset_7_20[4,,14][!is.na(taskset_7_20[4,,14])]), sum(taskset_7_20[5,,14], na.rm = TRUE)/length(taskset_7_20[5,,14][!is.na(taskset_7_20[5,,14])]), 
                 names=c("g1","g2","g3", "g4","g5","g12","g22","g32", "g42","g52","g13","g23","g33", "g43","g53"), scipen=5, main="tipo task per gruppo", xlab="Task", ylab="quantità")
 abline(h = 7, col = "red")
+
+avarage_fps1 = mean (c(taskset_0_2[1,,1], taskset_0_2[2,,1], taskset_0_2[3,,1], taskset_0_2[4,,1], taskset_0_2[5,,1]),na.rm=TRUE)
+avarage_fps2 = mean (c(taskset_3_6[1,,1], taskset_3_6[2,,1], taskset_3_6[3,,1], taskset_3_6[4,,1], taskset_3_6[5,,1]),na.rm=TRUE)
+avarage_fps3 = mean (c(taskset_7_20[1,,1], taskset_7_20[2,,1], taskset_7_20[3,,1], taskset_7_20[4,,1], taskset_7_20[5,,1]),na.rm=TRUE)
+
+avarage_edf1 = mean (c(taskset_0_2[1,,2], taskset_0_2[2,,2], taskset_0_2[3,,2], taskset_0_2[4,,2], taskset_0_2[5,,2]),na.rm=TRUE)
+avarage_edf2 = mean (c(taskset_3_6[1,,2], taskset_3_6[2,,2], taskset_3_6[3,,2], taskset_3_6[4,,2], taskset_3_6[5,,2]),na.rm=TRUE)
+avarage_edf3 = mean (c(taskset_7_20[1,,2], taskset_7_20[2,,2], taskset_7_20[3,,2], taskset_7_20[4,,2], taskset_7_20[5,,2]),na.rm=TRUE)
+
+print(avarage_fps1, avarage_fps2, avarage_fps3)
+print(avarage_edf1, avarage_edf2, avarage_edf3)
+
+max_1 = max (c(taskset_0_2[1,,11], taskset_0_2[2,,11], taskset_0_2[3,,11], taskset_0_2[4,,11], taskset_0_2[5,,11]),na.rm=TRUE)
+max_2 = max (c(taskset_3_6[1,,11], taskset_3_6[2,,11], taskset_3_6[3,,11], taskset_3_6[4,,11], taskset_3_6[5,,11]),na.rm=TRUE)
+max_3 = max (c(taskset_7_20[1,,11], taskset_7_20[2,,11], taskset_7_20[3,,11], taskset_7_20[4,,11], taskset_7_20[5,,11]),na.rm=TRUE)
+
+min_1 = min (c(taskset_0_2[1,,11], taskset_0_2[2,,11], taskset_0_2[3,,11], taskset_0_2[4,,11], taskset_0_2[5,,11]),na.rm=TRUE)
+min_2 = min (c(taskset_3_6[1,,11], taskset_3_6[2,,11], taskset_3_6[3,,11], taskset_3_6[4,,11], taskset_3_6[5,,11]),na.rm=TRUE)
+min_3 = min (c(taskset_7_20[1,,11], taskset_7_20[2,,11], taskset_7_20[3,,3], taskset_7_20[4,,11], taskset_7_20[5,,11]),na.rm=TRUE)
 
 # res <- boxplot (fps_preemptions_7_20, names=c("fps pree"), scipen=5, main="Armonicità", xlab="Task", ylab="Numero rilasci uguali")
 # abline(h = 15, col = "red")
