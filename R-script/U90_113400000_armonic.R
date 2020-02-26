@@ -1,20 +1,9 @@
 high_utilization = 0.045
 low_priority = 15
-
-
-taskset_0_2 = array (integer(), dim = c(5,1000,14))
-
-
-task_fps_win_0_2 = matrix(list(), nrow = 10000, ncol = 1)
-index_0_2  = 1
-armonic_0_2 = vector()
-work_0_2 = vector ()
-priority_0_2 = vector ()
-
-armonicity_0_2 = array(integer(), dim = c(500))
+taskset_0_2 = array (integer(), dim = c(5,1000,10))
 
 for (i in 1:500){
-  file_name <- paste("/home/aquox/Scrivania/Arm/workspace2/U_90_hyper_113400000_0_2_armonic_10_100/U_90_hyper_113400000_0_2_armonic_10_100_", c(i), ".csv", sep = "")
+  file_name <- paste("../taskset-experiments/U_90_hyper_113400000_0_2_armonic_10_100/U_90_hyper_113400000_0_2_armonic_10_100_", c(i), ".csv", sep = "")
   file_to_open <- read.csv(file = file_name, header = TRUE, sep = ";", dec = ".")
   print(i)
 
@@ -25,188 +14,57 @@ for (i in 1:500){
   list_of_wake_up = array(integer(), dim = c(dimensions))
   armonicity_number = 0
   counter = 1
-  # for (l in 1:20){
-  #   temp = file_to_open[l,3]
-  #   while (temp < file_to_open [21,3]){
-  #     list_of_wake_up [counter] <- temp
-  #     temp <- temp + file_to_open[l,3]
-  #     counter <- counter + 1
-  #   }
-  # }
-  armonicity_number <- length(list_of_wake_up) - length(unique(list_of_wake_up))
-  armonicity_0_2 [i] <- armonicity_number
-
   for (l in 1:20){
-    if (file_to_open[l,9]<0){
-      temp = vector()
-      temp <- append (file_to_open[l,], i)
-      task_fps_win_0_2 [[index_0_2,1]] <- temp
-      work_0_2 <- append(work_0_2, file_to_open[l,13])
-      priority_0_2 <- append(priority_0_2, file_to_open[l,2])
-      index_0_2 <- index_0_2 + 1
-    }
-  }
-  
-  counter = 0
-  for (l in 1:20){
-    if (file_to_open[l,9]<0 & file_to_open[l,2] >= low_priority & file_to_open[l,13] >= high_utilization){
+    temp = file_to_open[l,3]
+    while (temp < file_to_open [21,3]){
+      list_of_wake_up [counter] <- temp
+      temp <- temp + file_to_open[l,3]
       counter <- counter + 1
     }
   }
+  armonicity_number <- length(list_of_wake_up) - length(unique(list_of_wake_up))
   
-
-  armonic = vector()
-  for (l in 20:2){
-    for (m in 1:(l-1)){
-      if ((file_to_open[l,3]%%file_to_open[m,3]) == 0){
-        armonic <- append(armonic, file_to_open[l,3])
-        armonic <- append(armonic, file_to_open[m,3])
-      }
-    }
-  }
-  armonic_0_2 <- append (armonic_0_2, length(unique(armonic)))
-
-  long = 0
-  medium = 0
-  short = 0
   sumperiod = 0
   for (l in 20:1){
     sumperiod = sumperiod + strtoi(file_to_open[l,3])
-    if (file_to_open[l,3] <= 40000){
-      short = short + 1
-    }else{
-      if (file_to_open[l,3] >= 70000){
-        long = long + 1
-      }else{
-        medium = medium + 1
-      }
-    }
   }
+  tn = 0
   if (strtoi(file_to_open[21,8]) <= 10000){
-    taskset_0_2 [1,i,1]  <- file_to_open[21,8]
-    taskset_0_2 [1,i,2]  <- file_to_open[21,12]
-    taskset_0_2 [1,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_0_2 [1,i,4]  <- i
-    taskset_0_2 [1,i,5]  <- length(unique(armonic))
-    taskset_0_2 [1,i,6]  <- short
-    taskset_0_2 [1,i,7]  <- medium
-    taskset_0_2 [1,i,8]  <- long
-    taskset_0_2 [1,i,9]  <- sumperiod
-    taskset_0_2 [1,i,10] <- armonicity_number
-    taskset_0_2 [1,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_0_2 [1,i,12] <- (armonicity_number / dimensions)
-    taskset_0_2 [1,i,13] <- file_to_open[21,3]
-    taskset_0_2 [1,i,14] <- counter
+    tn = 1
   }
   if (strtoi(file_to_open[21,8]) > 10000 & strtoi(file_to_open[21,8]) <= 15000){
-    taskset_0_2 [2,i,1]  <- file_to_open[21,8]
-    taskset_0_2 [2,i,2]  <- file_to_open[21,12]
-    taskset_0_2 [2,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_0_2 [2,i,4]  <- i
-    taskset_0_2 [2,i,5]  <- length(unique(armonic))
-    taskset_0_2 [2,i,6]  <- short
-    taskset_0_2 [2,i,7]  <- medium
-    taskset_0_2 [2,i,8]  <- long
-    taskset_0_2 [2,i,9]  <- sumperiod
-    taskset_0_2 [2,i,10] <- armonicity_number
-    taskset_0_2 [2,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_0_2 [2,i,12] <- (armonicity_number / dimensions)
-    taskset_0_2 [2,i,13] <- file_to_open[21,3]
-    taskset_0_2 [2,i,14] <- counter
+    tn = 2
   }
   if (strtoi(file_to_open[21,8]) > 15000 & strtoi(file_to_open[21,8]) <= 20000){
-    taskset_0_2 [3,i,1]  <- file_to_open[21,8]
-    taskset_0_2 [3,i,2]  <- file_to_open[21,12]
-    taskset_0_2 [3,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_0_2 [3,i,4]  <- i
-    taskset_0_2 [3,i,5]  <- length(unique(armonic))
-    taskset_0_2 [3,i,6]  <- short
-    taskset_0_2 [3,i,7]  <- medium
-    taskset_0_2 [3,i,8]  <- long
-    taskset_0_2 [3,i,9]  <- sumperiod
-    taskset_0_2 [3,i,10] <- armonicity_number
-    taskset_0_2 [3,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_0_2 [3,i,12] <- (armonicity_number / dimensions)
-    taskset_0_2 [3,i,13] <- file_to_open[21,3]
-    taskset_0_2 [3,i,14] <- counter
+    tn = 3
   }
   if (strtoi(file_to_open[21,8]) > 20000 & strtoi(file_to_open[21,8]) <= 25000){
-    taskset_0_2 [4,i,1]  <- file_to_open[21,8]
-    taskset_0_2 [4,i,2]  <- file_to_open[21,12]
-    taskset_0_2 [4,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_0_2 [4,i,4]  <- i
-    taskset_0_2 [4,i,5]  <- length(unique(armonic))
-    taskset_0_2 [4,i,6]  <- short
-    taskset_0_2 [4,i,7]  <- medium
-    taskset_0_2 [4,i,8]  <- long
-    taskset_0_2 [4,i,9]  <- sumperiod
-    taskset_0_2 [4,i,10] <- armonicity_number
-    taskset_0_2 [4,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_0_2 [4,i,12] <- (armonicity_number / dimensions)
-    taskset_0_2 [4,i,13] <- file_to_open[21,3]
-    taskset_0_2 [4,i,14] <- counter
+    tn = 4
   }
   if (strtoi(file_to_open[21,8]) > 25000){
-    taskset_0_2 [5,i,1]  <- file_to_open[21,8]
-    taskset_0_2 [5,i,2]  <- file_to_open[21,12]
-    taskset_0_2 [5,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_0_2 [5,i,4]  <- i
-    taskset_0_2 [5,i,5]  <- length(unique(armonic))
-    taskset_0_2 [5,i,6]  <- short
-    taskset_0_2 [5,i,7]  <- medium
-    taskset_0_2 [5,i,8]  <- long
-    taskset_0_2 [5,i,9]  <- sumperiod
-    taskset_0_2 [5,i,10] <- armonicity_number
-    taskset_0_2 [5,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_0_2 [5,i,12] <- (armonicity_number / dimensions)
-    taskset_0_2 [5,i,13] <- file_to_open[21,3]
-    taskset_0_2 [5,i,14] <- counter
+    tn = 5
   }
-
+  taskset_0_2 [tn,i,1]  <- file_to_open[21,8]
+  taskset_0_2 [tn,i,2]  <- file_to_open[21,12]
+  taskset_0_2 [tn,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
+  taskset_0_2 [tn,i,4]  <- i
+  taskset_0_2 [tn,i,5]  <- sumperiod/20
+  taskset_0_2 [tn,i,6] <- armonicity_number
+  taskset_0_2 [tn,i,7] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
+  taskset_0_2 [tn,i,8] <- (armonicity_number / dimensions)
+  taskset_0_2 [tn,i,9] <- file_to_open[21,3]
+  taskset_0_2 [tn,i,10] <- counter
 }
 
-# print(armonicity_0_2)
-#
-# # short mid long
-# res <- boxplot (taskset_0_2[1,,6], taskset_0_2[1,,7], taskset_0_2[1,,8], taskset_0_2[2,,6], taskset_0_2[2,,7], taskset_0_2[2,,8], taskset_0_2[3,,6], taskset_0_2[3,,7], taskset_0_2[3,,8], taskset_0_2[4,,6], taskset_0_2[4,,7], taskset_0_2[4,,8], taskset_0_2[5,,6], taskset_0_2[5,,7], taskset_0_2[5,,8], names=c("short g1","medium g1","long g1", "short g2","medium g2","long g2", "short g3","medium g3","long g3", "short g4","medium g4","long g4", "short g5","medium g5","long g5"), scipen=5, main="tipo task per gruppo", xlab="Task", ylab="quantità")
-# abline(h = 7, col = "red")
-# res$stats 
-#
-# res <- boxplot (taskset_0_2[1,,10], taskset_0_2[2,,10], taskset_0_2[3,,10], taskset_0_2[4,,10], taskset_0_2[5,,10], names=c("gruppo 1","gruppo 2","gruppo 3","gruppo 4","gruppo 5"), scipen=5, main="Armonicità", xlab="Task", ylab="Numero rilasci uguali")
-# abline(h = 15, col = "red")
-# res$stats
-#
-# # fps preemption - edf preemption
-# res <- boxplot (taskset_0_2[1,,3], taskset_0_2[2,,3], taskset_0_2[3,,3], taskset_0_2[4,,3], taskset_0_2[5,,3], names=c("gruppo 1","gruppo 2","gruppo 3","gruppo 4","gruppo 5"), scipen=5, main="FPS Preemtpion - EDF Preemption", xlab="Task", ylab="Differenza preemption")
-# abline(h = 15, col = "red")
-# res$stats
-#
-# res <- boxplot (taskset_0_2[1,,12], taskset_0_2[2,,12], taskset_0_2[3,,12], taskset_0_2[4,,12], taskset_0_2[5,,12], names=c("gruppo 1","gruppo 2","gruppo 3","gruppo 4","gruppo 5"), scipen=5, main="Armonicità", xlab="Task", ylab="Numero rilasci uguali")
-# abline(h = 15, col = "red")
-# res$stats
-#
-# # fps preemption - edf preemption
-# res <- boxplot (taskset_0_2[1,,11], taskset_0_2[2,,11], taskset_0_2[3,,11], taskset_0_2[4,,11], taskset_0_2[5,,11], names=c("gruppo 1","gruppo 2","gruppo 3","gruppo 4","gruppo 5"), scipen=5, main="FPS Preemtpion - EDF Preemption", xlab="Task", ylab="Differenza preemption")
-# abline(h = 15, col = "red")
-# res$stats
 
-taskset_3_6 = array (integer(), dim = c(5,1000,14))
 
-task_fps_win_3_6 = matrix(list(), nrow = 10000, ncol = 1)
-index_3_6  = 1
-armonic_3_6 = vector()
-work_3_6 = vector ()
-priority_3_6 = vector ()
-
-fps_preemptions_3_6 = vector()
-armonicity_3_6 = array(integer(), dim = c(500))
+taskset_3_6 = array (integer(), dim = c(5,1000,10))
 
 for (i in 1:500){
-  file_name <- paste("/home/aquox/Scrivania/Arm/workspace2/U_90_hyper_113400000_3_6_armonic_10_100/U_90_hyper_113400000_3_6_armonic_10_100_", c(i), ".csv", sep = "")
+  file_name <- paste("../taskset-experiments/U_90_hyper_113400000_3_6_armonic_10_100/U_90_hyper_113400000_3_6_armonic_10_100_", c(i), ".csv", sep = "")
   file_to_open <- read.csv(file = file_name, header = TRUE, sep = ";", dec = ".")
-
   print(i)
-
+  
   dimensions = 0
   for (l in 1:20){
     dimensions <- dimensions + ((file_to_open[21,3]/file_to_open[l,3]))
@@ -214,213 +72,56 @@ for (i in 1:500){
   list_of_wake_up = array(integer(), dim = c(dimensions))
   armonicity_number = 0
   counter = 1
-  # for (l in 1:20){
-  #   temp = file_to_open[l,3]
-  #   while (temp < file_to_open [21,3]){
-  #     list_of_wake_up [counter] <- temp
-  #     temp <- temp + file_to_open[l,3]
-  #     counter <- counter + 1
-  #   }
-  # }
-  armonicity_number <- length(list_of_wake_up) - length(unique(list_of_wake_up))
-  armonicity_3_6 [i] <- armonicity_number
-
-  fps_preemptions_3_6 <- append (fps_preemptions_3_6, file_to_open[21,8])
-
   for (l in 1:20){
-    if (file_to_open[l,9]<0){
-      temp = vector()
-      temp <- append (file_to_open[l,], i)
-      task_fps_win_3_6 [[index_3_6,1]] <- temp
-      work_3_6 <- append(work_3_6, file_to_open[l,13])
-      priority_3_6 <- append(priority_3_6, file_to_open[l,2])
-      index_3_6 <- index_3_6 + 1
-    }
-  }
-  
-  counter = 0
-  for (l in 1:20){
-    if (file_to_open[l,9]<0 & file_to_open[l,2] >= low_priority & file_to_open[l,13] >= high_utilization){
+    temp = file_to_open[l,3]
+    while (temp < file_to_open [21,3]){
+      list_of_wake_up [counter] <- temp
+      temp <- temp + file_to_open[l,3]
       counter <- counter + 1
     }
   }
-
-  armonic = vector()
-  for (l in 20:2){
-    for (m in 1:(l-1)){
-      if ((file_to_open[l,3]%%file_to_open[m,3]) == 0){
-        armonic <- append(armonic, file_to_open[l,3])
-        armonic <- append(armonic, file_to_open[m,3])
-      }
-    }
-  }
-  armonic_3_6 <- append (armonic_3_6, length(unique(armonic)))
-
-  long = 0
-  medium = 0
-  short = 0
+  armonicity_number <- length(list_of_wake_up) - length(unique(list_of_wake_up))
+  
   sumperiod = 0
   for (l in 20:1){
     sumperiod = sumperiod + strtoi(file_to_open[l,3])
-    if (file_to_open[l,3] <= 40000){
-      short = short + 1
-    }else{
-      if (file_to_open[l,3] >= 70000){
-        long = long + 1
-      }else{
-        medium = medium + 1
-      }
-    }
   }
-
+  tn = 0
   if (strtoi(file_to_open[21,8]) <= 10000){
-    taskset_3_6 [1,i,1]  <- file_to_open[21,8]
-    taskset_3_6 [1,i,2]  <- file_to_open[21,12]
-    taskset_3_6 [1,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_3_6 [1,i,4]  <- i
-    taskset_3_6 [1,i,5]  <- length(unique(armonic))
-    taskset_3_6 [1,i,6]  <- short
-    taskset_3_6 [1,i,7]  <- medium
-    taskset_3_6 [1,i,8]  <- long
-    taskset_3_6 [1,i,9]  <- sumperiod
-    taskset_3_6 [1,i,10] <- armonicity_number
-    taskset_3_6 [1,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_3_6 [1,i,12] <- (armonicity_number / dimensions)
-    taskset_3_6 [1,i,13] <- file_to_open[21,3]
-    taskset_3_6 [1,i,14] <- counter
+    tn = 1
   }
   if (strtoi(file_to_open[21,8]) > 10000 & strtoi(file_to_open[21,8]) <= 15000){
-    taskset_3_6 [2,i,1]  <- file_to_open[21,8]
-    taskset_3_6 [2,i,2]  <- file_to_open[21,12]
-    taskset_3_6 [2,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_3_6 [2,i,4]  <- i
-    taskset_3_6 [2,i,5]  <- length(unique(armonic))
-    taskset_3_6 [2,i,6]  <- short
-    taskset_3_6 [2,i,7]  <- medium
-    taskset_3_6 [2,i,8]  <- long
-    taskset_3_6 [2,i,9]  <- sumperiod
-    taskset_3_6 [2,i,10] <- armonicity_number
-    taskset_3_6 [2,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_3_6 [2,i,12] <- (armonicity_number / dimensions)
-    taskset_3_6 [2,i,13] <- file_to_open[21,3]
-    taskset_3_6 [2,i,14] <- counter
+    tn = 2
   }
   if (strtoi(file_to_open[21,8]) > 15000 & strtoi(file_to_open[21,8]) <= 20000){
-    taskset_3_6 [3,i,1]  <- file_to_open[21,8]
-    taskset_3_6 [3,i,2]  <- file_to_open[21,12]
-    taskset_3_6 [3,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_3_6 [3,i,4]  <- i
-    taskset_3_6 [3,i,5]  <- length(unique(armonic))
-    taskset_3_6 [3,i,6]  <- short
-    taskset_3_6 [3,i,7]  <- medium
-    taskset_3_6 [3,i,8]  <- long
-    taskset_3_6 [3,i,9]  <- sumperiod
-    taskset_3_6 [3,i,10] <- armonicity_number
-    taskset_3_6 [3,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_3_6 [3,i,12] <- (armonicity_number / dimensions)
-    taskset_3_6 [3,i,13] <- file_to_open[21,3]
-    taskset_3_6 [3,i,14] <- counter
+    tn = 3
   }
   if (strtoi(file_to_open[21,8]) > 20000 & strtoi(file_to_open[21,8]) <= 25000){
-    taskset_3_6 [4,i,1]  <- file_to_open[21,8]
-    taskset_3_6 [4,i,2]  <- file_to_open[21,12]
-    taskset_3_6 [4,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_3_6 [4,i,4]  <- i
-    taskset_3_6 [4,i,5]  <- length(unique(armonic))
-    taskset_3_6 [4,i,6]  <- short
-    taskset_3_6 [4,i,7]  <- medium
-    taskset_3_6 [4,i,8]  <- long
-    taskset_3_6 [4,i,9]  <- sumperiod
-    taskset_3_6 [4,i,10] <- armonicity_number
-    taskset_3_6 [4,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_3_6 [4,i,12] <- (armonicity_number / dimensions)
-    taskset_3_6 [4,i,13] <- file_to_open[21,3]
-    taskset_3_6 [4,i,14] <- counter
+    tn = 4
   }
   if (strtoi(file_to_open[21,8]) > 25000){
-    taskset_3_6 [5,i,1]  <- file_to_open[21,8]
-    taskset_3_6 [5,i,2]  <- file_to_open[21,12]
-    taskset_3_6 [5,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_3_6 [5,i,4]  <- i
-    taskset_3_6 [5,i,5]  <- length(unique(armonic))
-    taskset_3_6 [5,i,6]  <- short
-    taskset_3_6 [5,i,7]  <- medium
-    taskset_3_6 [5,i,8]  <- long
-    taskset_3_6 [5,i,9]  <- sumperiod
-    taskset_3_6 [5,i,10] <- armonicity_number
-    taskset_3_6 [5,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_3_6 [5,i,12] <- (armonicity_number / dimensions)
-    taskset_3_6 [5,i,13] <- file_to_open[21,3]
-    taskset_3_6 [5,i,14] <- counter
+    tn = 5
   }
-
+  taskset_3_6 [tn,i,1]  <- file_to_open[21,8]
+  taskset_3_6 [tn,i,2]  <- file_to_open[21,12]
+  taskset_3_6 [tn,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
+  taskset_3_6 [tn,i,4]  <- i
+  taskset_3_6 [tn,i,5]  <- sumperiod/20
+  taskset_3_6 [tn,i,6] <- armonicity_number
+  taskset_3_6 [tn,i,7] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
+  taskset_3_6 [tn,i,8] <- (armonicity_number / dimensions)
+  taskset_3_6 [tn,i,9] <- file_to_open[21,3]
+  taskset_3_6 [tn,i,10] <- counter
+  
 }
 
-# res <- boxplot (sum(taskset_0_2[1,,14], na.rm = TRUE)/length(taskset_0_2[1,,14][!is.na(taskset_0_2[1,,14])]),sum(taskset_0_2[2,,14], na.rm = TRUE)/length(taskset_0_2[2,,14][!is.na(taskset_0_2[2,,14])]), sum(taskset_0_2[3,,14], na.rm = TRUE)/length(taskset_0_2[3,,14][!is.na(taskset_0_2[3,,14])]), sum(taskset_0_2[4,,14], na.rm = TRUE)/length(taskset_0_2[4,,14][!is.na(taskset_0_2[4,,14])]), sum(taskset_0_2[5,,14], na.rm = TRUE)/length(taskset_0_2[5,,14][!is.na(taskset_0_2[5,,14])]),
-#                 sum(taskset_3_6[1,,14], na.rm = TRUE)/length(taskset_3_6[1,,14][!is.na(taskset_3_6[1,,14])]),sum(taskset_3_6[2,,14], na.rm = TRUE)/length(taskset_3_6[2,,14][!is.na(taskset_3_6[2,,14])]), sum(taskset_3_6[3,,14], na.rm = TRUE)/length(taskset_3_6[3,,14][!is.na(taskset_3_6[3,,14])]), sum(taskset_3_6[4,,14], na.rm = TRUE)/length(taskset_3_6[4,,14][!is.na(taskset_3_6[4,,14])]), sum(taskset_3_6[5,,14], na.rm = TRUE)/length(taskset_3_6[5,,14][!is.na(taskset_3_6[5,,14])]), 
-#                 names=c("g1","g2","g3", "g4","g5","g12","g22","g32", "g42","g52"), scipen=5, main="tipo task per gruppo", xlab="Task", ylab="quantità")
-# abline(h = 7, col = "red")
-
-# res <- boxplot (fps_preemptions_3_6, names=c("fps pree"), scipen=5, main="Armonicità", xlab="Task", ylab="Numero rilasci uguali")
-# abline(h = 15, col = "red")
-# res$stats
-#
-#
-# print(armonicity_3_6)
-#
-# # short mid long
-# res <- boxplot (taskset_3_6[1,,6], taskset_3_6[1,,7], taskset_3_6[1,,8], taskset_3_6[2,,6], taskset_3_6[2,,7], taskset_3_6[2,,8], taskset_3_6[3,,6], taskset_3_6[3,,7], taskset_3_6[3,,8], taskset_3_6[4,,6], taskset_3_6[4,,7], taskset_3_6[4,,8], taskset_3_6[5,,6], taskset_3_6[5,,7], taskset_3_6[5,,8], names=c("short g1","medium g1","long g1", "short g2","medium g2","long g2", "short g3","medium g3","long g3", "short g4","medium g4","long g4", "short g5","medium g5","long g5"), scipen=5, main="tipo task per gruppo", xlab="Task", ylab="quantità")
-# abline(h = 7, col = "red")
-# res$stats
-#
-# # short mid long
-# res <- boxplot (taskset_3_6[1,,9], taskset_3_6[2,,9], taskset_3_6[3,,9], taskset_3_6[4,,9], taskset_3_6[5,,9], names=c("g1","g2","g3", "g4","g5"), scipen=5, main="tipo task per gruppo", xlab="Task", ylab="quantità")
-# abline(h = 7, col = "red")
-# res$stats
-#
-# res <- boxplot (taskset_3_6[1,,10], taskset_3_6[2,,10], taskset_3_6[3,,10], taskset_3_6[4,,10], taskset_3_6[5,,10], names=c("gruppo 1","gruppo 2","gruppo 3","gruppo 4","gruppo 5"), scipen=5, main="Armonicità", xlab="Task", ylab="Numero rilasci uguali")
-# abline(h = 15, col = "red")
-# res$stats
-#
-# # fps preemption - edf preemption
-# res <- boxplot (taskset_3_6[1,,3], taskset_3_6[2,,3], taskset_3_6[3,,3], taskset_3_6[4,,3], taskset_3_6[5,,3], names=c("gruppo 1","gruppo 2","gruppo 3","gruppo 4","gruppo 5"), scipen=5, main="FPS Preemtpion - EDF Preemption", xlab="Task", ylab="Differenza preemption")
-# abline(h = 15, col = "red")
-# res$stats
-#
-# res <- boxplot (taskset_3_6[1,,12], taskset_3_6[2,,12], taskset_3_6[3,,12], taskset_3_6[4,,12], taskset_3_6[5,,12], names=c("gruppo 1","gruppo 2","gruppo 3","gruppo 4","gruppo 5"), scipen=5, main="Armonicità", xlab="Task", ylab="Numero rilasci uguali")
-# abline(h = 15, col = "red")
-# res$stats
-#
-# # fps preemption - edf preemption
-# res <- boxplot (taskset_3_6[1,,11], taskset_3_6[2,,11], taskset_3_6[3,,11], taskset_3_6[4,,11], taskset_3_6[5,,11], names=c("gruppo 1","gruppo 2","gruppo 3","gruppo 4","gruppo 5"), scipen=5, main="FPS Preemtpion - EDF Preemption", xlab="Task", ylab="Differenza preemption")
-# abline(h = 15, col = "red")
-# res$stats
-#
-#
-#
-# res <- boxplot (taskset_0_2[1,,12], taskset_0_2[2,,12], taskset_0_2[3,,12], taskset_0_2[4,,12], taskset_0_2[5,,12], taskset_3_6[1,,12], taskset_3_6[2,,12], taskset_3_6[3,,12], taskset_3_6[4,,12], taskset_3_6[5,,12], names=c("gruppo 1","gruppo 2","gruppo 3","gruppo 4","gruppo 5", "gruppo 12","gruppo 22","gruppo 32","gruppo 42","gruppo 52"), scipen=5, main="Armonicità", xlab="Task", ylab="Numero rilasci uguali")
-# abline(h = 0.36, col = "red")
-# res$stats
-
-
-
-taskset_7_20 = array (integer(), dim = c(5,1000,14))
-
-task_fps_win_7_20 = matrix(list(), nrow = 10000, ncol = 1)
-index_7_20  = 1
-armonic_7_20 = vector()
-work_7_20 = vector ()
-priority_7_20 = vector ()
-
-fps_preemptions_7_20 = vector()
-armonicity_7_20 = array(integer(), dim = c(500))
+taskset_7_20 = array (integer(), dim = c(5,1000,10))
 
 for (i in 1:500){
-  file_name <- paste("/home/aquox/Scrivania/Arm/workspace2/U_90_hyper_113400000_7_20_armonic_10_100/U_90_hyper_113400000_7_20_armonic_10_100_", c(i), ".csv", sep = "")
+  file_name <- paste("../taskset-experiments/U_90_hyper_113400000_7_20_armonic_10_100/U_90_hyper_113400000_7_20_armonic_10_100_", c(i), ".csv", sep = "")
   file_to_open <- read.csv(file = file_name, header = TRUE, sep = ";", dec = ".")
-
   print(i)
-
+  
   dimensions = 0
   for (l in 1:20){
     dimensions <- dimensions + ((file_to_open[21,3]/file_to_open[l,3]))
@@ -428,251 +129,80 @@ for (i in 1:500){
   list_of_wake_up = array(integer(), dim = c(dimensions))
   armonicity_number = 0
   counter = 1
-  # for (l in 1:20){
-  #   temp = file_to_open[l,3]
-  #   while (temp < file_to_open [21,3]){
-  #     list_of_wake_up [counter] <- temp
-  #     temp <- temp + file_to_open[l,3]
-  #     counter <- counter + 1
-  #   }
-  # }
-  armonicity_number <- length(list_of_wake_up) - length(unique(list_of_wake_up))
-  armonicity_7_20 [i] <- armonicity_number
-
-  fps_preemptions_7_20 <- append (fps_preemptions_7_20, file_to_open[21,8])
-
-  counter = 0
   for (l in 1:20){
-    if (file_to_open[l,9]<0 & file_to_open[l,2] >= low_priority & file_to_open[l,13] >= high_utilization){
+    temp = file_to_open[l,3]
+    while (temp < file_to_open [21,3]){
+      list_of_wake_up [counter] <- temp
+      temp <- temp + file_to_open[l,3]
       counter <- counter + 1
     }
   }
-
-  for (l in 1:20){
-    if (file_to_open[l,9]<0){
-      temp = vector()
-      temp <- append (file_to_open[l,], i)
-      task_fps_win_7_20 [[index_7_20,1]] <- temp
-      work_7_20 <- append(work_7_20, file_to_open[l,13])
-      priority_7_20 <- append(priority_7_20, file_to_open[l,2])
-      index_7_20 <- index_7_20 + 1
-    }
-  }
-  armonic = vector()
-  for (l in 20:2){
-    for (m in 1:(l-1)){
-      if ((file_to_open[l,3]%%file_to_open[m,3]) == 0){
-        armonic <- append(armonic, file_to_open[l,3])
-        armonic <- append(armonic, file_to_open[m,3])
-      }
-    }
-  }
-  armonic_7_20 <- append (armonic_7_20, length(unique(armonic)))
-
-  long = 0
-  medium = 0
-  short = 0
+  armonicity_number <- length(list_of_wake_up) - length(unique(list_of_wake_up))
+  
   sumperiod = 0
   for (l in 20:1){
     sumperiod = sumperiod + strtoi(file_to_open[l,3])
-    if (file_to_open[l,3] <= 40000){
-      short = short + 1
-    }else{
-      if (file_to_open[l,3] >= 70000){
-        long = long + 1
-      }else{
-        medium = medium + 1
-      }
-    }
   }
-
+  tn = 0
   if (strtoi(file_to_open[21,8]) <= 10000){
-    taskset_7_20 [1,i,1]  <- file_to_open[21,8]
-    taskset_7_20 [1,i,2]  <- file_to_open[21,12]
-    taskset_7_20 [1,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_7_20 [1,i,4]  <- i
-    taskset_7_20 [1,i,5]  <- length(unique(armonic))
-    taskset_7_20 [1,i,6]  <- short
-    taskset_7_20 [1,i,7]  <- medium
-    taskset_7_20 [1,i,8]  <- long
-    taskset_7_20 [1,i,9]  <- sumperiod
-    taskset_7_20 [1,i,10] <- armonicity_number
-    taskset_7_20 [1,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_7_20 [1,i,12] <- (armonicity_number / dimensions)
-    taskset_7_20 [1,i,13] <- file_to_open[21,3]
-    taskset_7_20 [1,i,14] <- counter
+    tn = 1
   }
   if (strtoi(file_to_open[21,8]) > 10000 & strtoi(file_to_open[21,8]) <= 15000){
-    taskset_7_20 [2,i,1]  <- file_to_open[21,8]
-    taskset_7_20 [2,i,2]  <- file_to_open[21,12]
-    taskset_7_20 [2,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_7_20 [2,i,4]  <- i
-    taskset_7_20 [2,i,5]  <- length(unique(armonic))
-    taskset_7_20 [2,i,6]  <- short
-    taskset_7_20 [2,i,7]  <- medium
-    taskset_7_20 [2,i,8]  <- long
-    taskset_7_20 [2,i,9]  <- sumperiod
-    taskset_7_20 [2,i,10] <- armonicity_number
-    taskset_7_20 [2,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_7_20 [2,i,12] <- (armonicity_number / dimensions)
-    taskset_7_20 [2,i,13] <- file_to_open[21,3]
-    taskset_7_20 [2,i,14] <- counter
+    tn = 2
   }
   if (strtoi(file_to_open[21,8]) > 15000 & strtoi(file_to_open[21,8]) <= 20000){
-    taskset_7_20 [3,i,1]  <- file_to_open[21,8]
-    taskset_7_20 [3,i,2]  <- file_to_open[21,12]
-    taskset_7_20 [3,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_7_20 [3,i,4]  <- i
-    taskset_7_20 [3,i,5]  <- length(unique(armonic))
-    taskset_7_20 [3,i,6]  <- short
-    taskset_7_20 [3,i,7]  <- medium
-    taskset_7_20 [3,i,8]  <- long
-    taskset_7_20 [3,i,9]  <- sumperiod
-    taskset_7_20 [3,i,10] <- armonicity_number
-    taskset_7_20 [3,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_7_20 [3,i,12] <- (armonicity_number / dimensions)
-    taskset_7_20 [3,i,13] <- file_to_open[21,3]
-    taskset_7_20 [3,i,14] <- counter
+    tn = 3
   }
   if (strtoi(file_to_open[21,8]) > 20000 & strtoi(file_to_open[21,8]) <= 25000){
-    taskset_7_20 [4,i,1]  <- file_to_open[21,8]
-    taskset_7_20 [4,i,2]  <- file_to_open[21,12]
-    taskset_7_20 [4,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_7_20 [4,i,4]  <- i
-    taskset_7_20 [4,i,5]  <- length(unique(armonic))
-    taskset_7_20 [4,i,6]  <- short
-    taskset_7_20 [4,i,7]  <- medium
-    taskset_7_20 [4,i,8]  <- long
-    taskset_7_20 [4,i,9]  <- sumperiod
-    taskset_7_20 [4,i,10] <- armonicity_number
-    taskset_7_20 [4,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_7_20 [4,i,12] <- (armonicity_number / dimensions)
-    taskset_7_20 [4,i,13] <- file_to_open[21,3]
-    taskset_7_20 [4,i,14] <- counter
+    tn = 4
   }
   if (strtoi(file_to_open[21,8]) > 25000){
-    taskset_7_20 [5,i,1]  <- file_to_open[21,8]
-    taskset_7_20 [5,i,2]  <- file_to_open[21,12]
-    taskset_7_20 [5,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
-    taskset_7_20 [5,i,4]  <- i
-    taskset_7_20 [5,i,5]  <- length(unique(armonic))
-    taskset_7_20 [5,i,6]  <- short
-    taskset_7_20 [5,i,7]  <- medium
-    taskset_7_20 [5,i,8]  <- long
-    taskset_7_20 [5,i,9]  <- sumperiod
-    taskset_7_20 [5,i,10] <- armonicity_number
-    taskset_7_20 [5,i,11] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
-    taskset_7_20 [5,i,12] <- (armonicity_number / dimensions)
-    taskset_7_20 [5,i,13] <- file_to_open[21,3]
-    taskset_7_20 [5,i,14] <- counter
+    tn = 5
   }
-
+  taskset_7_20 [tn,i,1]  <- file_to_open[21,8]
+  taskset_7_20 [tn,i,2]  <- file_to_open[21,12]
+  taskset_7_20 [tn,i,3]  <- (strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))
+  taskset_7_20 [tn,i,4]  <- i
+  taskset_7_20 [tn,i,5]  <- sumperiod/20
+  taskset_7_20 [tn,i,6] <- armonicity_number
+  taskset_7_20 [tn,i,7] <- ((strtoi(file_to_open[21,8]) - strtoi(file_to_open[21,12]))/strtoi(file_to_open[21,8]))
+  taskset_7_20 [tn,i,8] <- (armonicity_number / dimensions)
+  taskset_7_20 [tn,i,9] <- file_to_open[21,3]
+  taskset_7_20 [tn,i,10] <- counter
+  
 }
 
-res <- boxplot (sum(taskset_0_2[1,,14], na.rm = TRUE)/length(taskset_0_2[1,,14][!is.na(taskset_0_2[1,,14])]),sum(taskset_0_2[2,,14], na.rm = TRUE)/length(taskset_0_2[2,,14][!is.na(taskset_0_2[2,,14])]), sum(taskset_0_2[3,,14], na.rm = TRUE)/length(taskset_0_2[3,,14][!is.na(taskset_0_2[3,,14])]), sum(taskset_0_2[4,,14], na.rm = TRUE)/length(taskset_0_2[4,,14][!is.na(taskset_0_2[4,,14])]), sum(taskset_0_2[5,,14], na.rm = TRUE)/length(taskset_0_2[5,,14][!is.na(taskset_0_2[5,,14])]),
-                sum(taskset_3_6[1,,14], na.rm = TRUE)/length(taskset_3_6[1,,14][!is.na(taskset_3_6[1,,14])]),sum(taskset_3_6[2,,14], na.rm = TRUE)/length(taskset_3_6[2,,14][!is.na(taskset_3_6[2,,14])]), sum(taskset_3_6[3,,14], na.rm = TRUE)/length(taskset_3_6[3,,14][!is.na(taskset_3_6[3,,14])]), sum(taskset_3_6[4,,14], na.rm = TRUE)/length(taskset_3_6[4,,14][!is.na(taskset_3_6[4,,14])]), sum(taskset_3_6[5,,14], na.rm = TRUE)/length(taskset_3_6[5,,14][!is.na(taskset_3_6[5,,14])]), 
-                sum(taskset_7_20[1,,14], na.rm = TRUE)/length(taskset_7_20[1,,14][!is.na(taskset_7_20[1,,14])]),sum(taskset_7_20[2,,14], na.rm = TRUE)/length(taskset_7_20[2,,14][!is.na(taskset_7_20[2,,14])]), sum(taskset_7_20[3,,14], na.rm = TRUE)/length(taskset_7_20[3,,14][!is.na(taskset_7_20[3,,14])]), sum(taskset_7_20[4,,14], na.rm = TRUE)/length(taskset_7_20[4,,14][!is.na(taskset_7_20[4,,14])]), sum(taskset_7_20[5,,14], na.rm = TRUE)/length(taskset_7_20[5,,14][!is.na(taskset_7_20[5,,14])]), 
-                names=c("g1","g2","g3", "g4","g5","g12","g22","g32", "g42","g52","g13","g23","g33", "g43","g53"), scipen=5, main="tipo task per gruppo", xlab="Task", ylab="quantità")
-abline(h = 7, col = "red")
 
-avarage_fps1 = mean (c(taskset_0_2[1,,1], taskset_0_2[2,,1], taskset_0_2[3,,1], taskset_0_2[4,,1], taskset_0_2[5,,1]),na.rm=TRUE)
-avarage_fps2 = mean (c(taskset_3_6[1,,1], taskset_3_6[2,,1], taskset_3_6[3,,1], taskset_3_6[4,,1], taskset_3_6[5,,1]),na.rm=TRUE)
-avarage_fps3 = mean (c(taskset_7_20[1,,1], taskset_7_20[2,,1], taskset_7_20[3,,1], taskset_7_20[4,,1], taskset_7_20[5,,1]),na.rm=TRUE)
+#############################################################
 
-avarage_edf1 = mean (c(taskset_0_2[1,,2], taskset_0_2[2,,2], taskset_0_2[3,,2], taskset_0_2[4,,2], taskset_0_2[5,,2]),na.rm=TRUE)
-avarage_edf2 = mean (c(taskset_3_6[1,,2], taskset_3_6[2,,2], taskset_3_6[3,,2], taskset_3_6[4,,2], taskset_3_6[5,,2]),na.rm=TRUE)
-avarage_edf3 = mean (c(taskset_7_20[1,,2], taskset_7_20[2,,2], taskset_7_20[3,,2], taskset_7_20[4,,2], taskset_7_20[5,,2]),na.rm=TRUE)
+# Numero preemption per gruppo
+res <- boxplot (taskset_0_2[1,,1], taskset_0_2[2,,1], taskset_0_2[3,,1], taskset_0_2[4,,1], taskset_0_2[5,,1],taskset_3_6[1,,1], taskset_3_6[2,,1], taskset_3_6[3,,1], taskset_3_6[4,,1], taskset_3_6[5,,1], taskset_7_20[1,,1], taskset_7_20[2,,1], taskset_7_20[3,,1], taskset_7_20[4,,1], taskset_7_20[5,,1], 
+                names=c("1-g1","1-g2","1-g3","1-g4","1-g5", "2-g1","2-g2","2-g3","2-g4","2-g5", "3-g1","3-g2","3-g3","3-g4","3-g5"), scipen=5, main="FPS preemtpion per gruppo", xlab="Taskset", ylab="FPS preemption")
+abline(h = 0.36, col = "red")
+abline(h = 0.40, col = "red")
+res$stats
 
-print(avarage_fps1, avarage_fps2, avarage_fps3)
-print(avarage_edf1, avarage_edf2, avarage_edf3)
+# Iperperiodo
+res <- boxplot (taskset_0_2[1,,9], taskset_0_2[2,,9], taskset_0_2[3,,9], taskset_0_2[4,,9], taskset_0_2[5,,9],taskset_3_6[1,,9], taskset_3_6[2,,9], taskset_3_6[3,,9], taskset_3_6[4,,9], taskset_3_6[5,,9], taskset_7_20[1,,9], taskset_7_20[2,,9], taskset_7_20[3,,9], taskset_7_20[4,,9], taskset_7_20[5,,9], 
+                names=c("1-g1","1-g2","1-g3","1-g4","1-g5", "2-g1","2-g2","2-g3","2-g4","2-g5", "3-g1","3-g2","3-g3","3-g4","3-g5"), scipen=5, main="Iperperiodi", xlab="Taskset", ylab="Iperperiodo")
 
-max_1 = max (c(taskset_0_2[1,,11], taskset_0_2[2,,11], taskset_0_2[3,,11], taskset_0_2[4,,11], taskset_0_2[5,,11]),na.rm=TRUE)
-max_2 = max (c(taskset_3_6[1,,11], taskset_3_6[2,,11], taskset_3_6[3,,11], taskset_3_6[4,,11], taskset_3_6[5,,11]),na.rm=TRUE)
-max_3 = max (c(taskset_7_20[1,,11], taskset_7_20[2,,11], taskset_7_20[3,,11], taskset_7_20[4,,11], taskset_7_20[5,,11]),na.rm=TRUE)
+# Armonicità %
+res <- boxplot (taskset_0_2[1,,8], taskset_0_2[2,,8], taskset_0_2[3,,8], taskset_0_2[4,,8], taskset_0_2[5,,8],taskset_3_6[1,,8], taskset_3_6[2,,8], taskset_3_6[3,,8], taskset_3_6[4,,8], taskset_3_6[5,,8], taskset_7_20[1,,8], taskset_7_20[2,,8], taskset_7_20[3,,8], taskset_7_20[4,,8], taskset_7_20[5,,8],
+                names=c("1-g1","1-g2","1-g3","1-g4","1-g5", "2-g1","2-g2","2-g3","2-g4","2-g5", "3-g1","3-g2","3-g3","3-g4","3-g5"), scipen=5, main="Armonicità", xlab="Taskset", ylab="(Numero rilasci simultanei) / (Rilasci possibili)")
+abline(h = 0.36, col = "red")
+abline(h = 0.40, col = "red")
+res$stats
 
-min_1 = min (c(taskset_0_2[1,,11], taskset_0_2[2,,11], taskset_0_2[3,,11], taskset_0_2[4,,11], taskset_0_2[5,,11]),na.rm=TRUE)
-min_2 = min (c(taskset_3_6[1,,11], taskset_3_6[2,,11], taskset_3_6[3,,11], taskset_3_6[4,,11], taskset_3_6[5,,11]),na.rm=TRUE)
-min_3 = min (c(taskset_7_20[1,,11], taskset_7_20[2,,11], taskset_7_20[3,,3], taskset_7_20[4,,11], taskset_7_20[5,,11]),na.rm=TRUE)
+# Media periodi per gruppo
+res <- boxplot (taskset_0_2[1,,5], taskset_0_2[2,,5], taskset_0_2[3,,5], taskset_0_2[4,,5], taskset_0_2[5,,5],taskset_3_6[1,,5], taskset_3_6[2,,5], taskset_3_6[3,,5], taskset_3_6[4,,5], taskset_3_6[5,,5], taskset_7_20[1,,5], taskset_7_20[2,,5], taskset_7_20[3,,5], taskset_7_20[4,,5], taskset_7_20[5,,5],
+                names=c("1-g1","1-g2","1-g3","1-g4","1-g5", "2-g1","2-g2","2-g3","2-g4","2-g5", "3-g1","3-g2","3-g3","3-g4","3-g5"), scipen=5, main="Somma Periodi", xlab="Taskset", ylab="Somma Periodi")
 
-# res <- boxplot (fps_preemptions_7_20, names=c("fps pree"), scipen=5, main="Armonicità", xlab="Task", ylab="Numero rilasci uguali")
-# abline(h = 15, col = "red")
-# res$stats
-#
-#
-# print(armonicity_3_6)
-#
-# # short mid long
-# res <- boxplot (taskset_7_20[1,,6], taskset_7_20[1,,7], taskset_7_20[1,,8], taskset_7_20[2,,6], taskset_7_20[2,,7], taskset_7_20[2,,8], taskset_7_20[3,,6], taskset_7_20[3,,7], taskset_7_20[3,,8], taskset_7_20[4,,6], taskset_7_20[4,,7], taskset_7_20[4,,8], taskset_7_20[5,,6], taskset_7_20[5,,7], taskset_7_20[5,,8], names=c("short g1","medium g1","long g1", "short g2","medium g2","long g2", "short g3","medium g3","long g3", "short g4","medium g4","long g4", "short g5","medium g5","long g5"), scipen=5, main="tipo task per gruppo", xlab="Task", ylab="quantità")
-# abline(h = 7, col = "red")
-# res$stats
-#
-# # short mid long
-# res <- boxplot (taskset_7_20[1,,9], taskset_7_20[2,,9], taskset_7_20[3,,9], taskset_7_20[4,,9], taskset_7_20[5,,9], names=c("g1","g2","g3", "g4","g5"), scipen=5, main="tipo task per gruppo", xlab="Task", ylab="quantità")
-# abline(h = 7, col = "red")
-# res$stats
-#
-# res <- boxplot (taskset_7_20[1,,10], taskset_7_20[2,,10], taskset_7_20[3,,10], taskset_7_20[4,,10], taskset_7_20[5,,10], names=c("gruppo 1","gruppo 2","gruppo 3","gruppo 4","gruppo 5"), scipen=5, main="Armonicità", xlab="Task", ylab="Numero rilasci uguali")
-# abline(h = 15, col = "red")
-# res$stats
-#
-# # fps preemption - edf preemption
-# res <- boxplot (taskset_7_20[1,,3], taskset_7_20[2,,3], taskset_7_20[3,,3], taskset_7_20[4,,3], taskset_7_20[5,,3], names=c("gruppo 1","gruppo 2","gruppo 3","gruppo 4","gruppo 5"), scipen=5, main="FPS Preemtpion - EDF Preemption", xlab="Task", ylab="Differenza preemption")
-# abline(h = 15, col = "red")
-# res$stats
-#
-# res <- boxplot (taskset_7_20[1,,12], taskset_7_20[2,,12], taskset_7_20[3,,12], taskset_7_20[4,,12], taskset_7_20[5,,12], names=c("gruppo 1","gruppo 2","gruppo 3","gruppo 4","gruppo 5"), scipen=5, main="Armonicità", xlab="Task", ylab="Numero rilasci uguali")
-# abline(h = 15, col = "red")
-# res$stats
-#
-# # fps preemption - edf preemption
-# res <- boxplot (taskset_7_20[1,,11], taskset_7_20[2,,11], taskset_7_20[3,,11], taskset_7_20[4,,11], taskset_7_20[5,,11], names=c("gruppo 1","gruppo 2","gruppo 3","gruppo 4","gruppo 5"), scipen=5, main="FPS Preemtpion - EDF Preemption", xlab="Task", ylab="Differenza preemption")
-# abline(h = 15, col = "red")
-# res$stats
+# FPS-EDF preemptions %
+res <- boxplot (taskset_0_2[1,,7], taskset_0_2[2,,7], taskset_0_2[3,,7], taskset_0_2[4,,7], taskset_0_2[5,,7],taskset_3_6[1,,7], taskset_3_6[2,,7], taskset_3_6[3,,7], taskset_3_6[4,,7], taskset_3_6[5,,7], taskset_7_20[1,,7], taskset_7_20[2,,7], taskset_7_20[3,,7], taskset_7_20[4,,7], taskset_7_20[5,,7], 
+                names=c("1-g1","1-g2","1-g3","1-g4","1-g5", "2-g1","2-g2","2-g3","2-g4","2-g5", "3-g1","3-g2","3-g3","3-g4","3-g5"), scipen=5, main="FPS-EDF preemption %", xlab="Taskset", ylab="(FPS - EDF) / (FPS)")
 
 
-
-
-
-
-# #############################################################
-# 
-# # # Numero preemption per gruppo
-# # res <- boxplot (taskset_0_2[1,,1], taskset_0_2[2,,1], taskset_0_2[3,,1], taskset_0_2[4,,1], taskset_0_2[5,,1],taskset_3_6[1,,1], taskset_3_6[2,,1], taskset_3_6[3,,1], taskset_3_6[4,,1], taskset_3_6[5,,1], taskset_7_20[1,,1], taskset_7_20[2,,1], taskset_7_20[3,,1], taskset_7_20[4,,1], taskset_7_20[5,,1], names=c("g1 0-2","g2 0-2","g3 0-2","g4 0-2","g5 0-2", "g1 3-6","g2 3-6","g3 3-6","g4 3-6","g5 3-6", "g1 7-20","g2 7-20","g3 7-20","g4 7-20","g5 7-20"), scipen=5, main="FPS preemtpion per gruppo", xlab="Taskset", ylab="FPS preemption")
-# # abline(h = 0.36, col = "red")
-# # abline(h = 0.40, col = "red")
-# # res$stats
-# # 
-# # # Iperperiodo
-# # res <- boxplot (taskset_0_2[1,,13], taskset_0_2[2,,13], taskset_0_2[3,,13], taskset_0_2[4,,13], taskset_0_2[5,,13],taskset_3_6[1,,13], taskset_3_6[2,,13], taskset_3_6[3,,13], taskset_3_6[4,,13], taskset_3_6[5,,13], taskset_7_20[1,,13], taskset_7_20[2,,13], taskset_7_20[3,,13], taskset_7_20[4,,13], taskset_7_20[5,,13], names=c("g1 0-2","g2 0-2","g3 0-2","g4 0-2","g5 0-2", "g1 3-6","g2 3-6","g3 3-6","g4 3-6","g5 3-6", "g1 7-20","g2 7-20","g3 7-20","g4 7-20","g5 7-20"), scipen=5, main="Iperperiodi", xlab="Taskset", ylab="Iperperiodo")
-# # 
-# # # Armonicità %
-# # res <- boxplot (taskset_0_2[1,,12], taskset_0_2[2,,12], taskset_0_2[3,,12], taskset_0_2[4,,12], taskset_0_2[5,,12],taskset_3_6[1,,12], taskset_3_6[2,,12], taskset_3_6[3,,12], taskset_3_6[4,,12], taskset_3_6[5,,12], taskset_7_20[1,,12], taskset_7_20[2,,12], taskset_7_20[3,,12], taskset_7_20[4,,12], taskset_7_20[5,,12], names=c("g1 0-2","g2 0-2","g3 0-2","g4 0-2","g5 0-2", "g1 3-6","g2 3-6","g3 3-6","g4 3-6","g5 3-6", "g1 7-20","g2 7-20","g3 7-20","g4 7-20","g5 7-20"), scipen=5, main="Armonicità", xlab="Taskset", ylab="(Numero rilasci simultanei) / (Rilasci possibili)")
-# # abline(h = 0.36, col = "red")
-# # abline(h = 0.40, col = "red")
-# # res$stats
-# # # Armonicità assoluta
-# # res <- boxplot (taskset_0_2[1,,10], taskset_0_2[2,,10], taskset_0_2[3,,10], taskset_0_2[4,,10], taskset_0_2[5,,10],taskset_3_6[1,,10], taskset_3_6[2,,10], taskset_3_6[3,,10], taskset_3_6[4,,10], taskset_3_6[5,,10], taskset_7_20[1,,10], taskset_7_20[2,,10], taskset_7_20[3,,10], taskset_7_20[4,,10], taskset_7_20[5,,10], names=c("g1 0-2","g2 0-2","g3 0-2","g4 0-2","g5 0-2", "g1 3-6","g2 3-6","g3 3-6","g4 3-6","g5 3-6", "g1 7-20","g2 7-20","g3 7-20","g4 7-20","g5 7-20"), scipen=5, main="Armonicità", xlab="Taskset", ylab="Numero rilasci simultanei")
-# # res$stats
-# # 
-# # # Tipo task per gruppo
-# # res <- boxplot (taskset_0_2[1,,6], taskset_0_2[1,,7], taskset_0_2[1,,8], taskset_0_2[2,,6], taskset_0_2[2,,7], taskset_0_2[2,,8], taskset_0_2[3,,6], taskset_0_2[3,,7], taskset_0_2[3,,8], taskset_0_2[4,,6], taskset_0_2[4,,7], taskset_0_2[4,,8], taskset_0_2[5,,6], taskset_0_2[5,,7], taskset_0_2[5,,8], taskset_3_6[1,,6], taskset_3_6[1,,7], taskset_3_6[1,,8], taskset_3_6[2,,6], taskset_3_6[2,,7], taskset_3_6[2,,8], taskset_3_6[3,,6], taskset_3_6[3,,7], taskset_3_6[3,,8], taskset_3_6[4,,6], taskset_3_6[4,,7], taskset_3_6[4,,8], taskset_3_6[5,,6], taskset_3_6[5,,7], taskset_3_6[5,,8], taskset_7_20[1,,6], taskset_7_20[1,,7], taskset_7_20[1,,8], taskset_7_20[2,,6], taskset_7_20[2,,7], taskset_7_20[2,,8], taskset_7_20[3,,6], taskset_7_20[3,,7], taskset_7_20[3,,8], taskset_7_20[4,,6], taskset_7_20[4,,7], taskset_7_20[4,,8], taskset_7_20[5,,6], taskset_7_20[5,,7], taskset_7_20[5,,8],
-# #                 names=c("s g1 0_2","m g1 0_2","l g1 0_2", "s g2 0_2","m g2 0_2","l g2 0_2", "s g3 0_2","m g3 0_2","l g3 0_2", "s g4 0_2","m g4 0_2","l g4 0_2", "s g5 0_2","m g5 0_2","l g5 0_2", "s g1 3_6","m g1 3_6","l g1 3_6", "s g2 3_6","m g2 3_6","l g2 3_6", "s g3 3_6","m g3 3_6","l g3 3_6", "s g4 3_6","m g4 3_6","l g4 3_6", "s g5 3_6","m g5 3_6","l g5 3_6", "s g1 7_20","m g1 7_20","l g1 7_20", "s g2 7_20","m g2 7_20","l g2 7_20", "s g3 7_20","m g3 7_20","l g3 7_20", "s g4 7_20","m g4 7_20","l g4 7_20", "s g5 7_20","m g5 7_20","l g5 7_20"), scipen=5, main="tipo task per gruppo", xlab="Task", ylab="quantità")
-# # abline(h = 7, col = "red")
-# # # Tipo task per gruppo %
-# # res <- boxplot (taskset_0_2[1,,6]/20, taskset_0_2[1,,7]/20, taskset_0_2[1,,8]/20, taskset_0_2[2,,6]/20, taskset_0_2[2,,7]/20, taskset_0_2[2,,8]/20, taskset_0_2[3,,6]/20, taskset_0_2[3,,7]/20, taskset_0_2[3,,8]/20, taskset_0_2[4,,6]/20, taskset_0_2[4,,7]/20, taskset_0_2[4,,8]/20, taskset_0_2[5,,6]/20, taskset_0_2[5,,7]/20, taskset_0_2[5,,8]/20, taskset_3_6[1,,6]/20, taskset_3_6[1,,7]/20, taskset_3_6[1,,8]/20, taskset_3_6[2,,6]/20, taskset_3_6[2,,7]/20, taskset_3_6[2,,8]/20, taskset_3_6[3,,6]/20, taskset_3_6[3,,7]/20, taskset_3_6[3,,8]/20, taskset_3_6[4,,6]/20, taskset_3_6[4,,7]/20, taskset_3_6[4,,8]/20, taskset_3_6[5,,6]/20, taskset_3_6[5,,7]/20, taskset_3_6[5,,8]/20, taskset_7_20[1,,6]/20, taskset_7_20[1,,7]/20, taskset_7_20[1,,8]/20, taskset_7_20[2,,6]/20, taskset_7_20[2,,7]/20, taskset_7_20[2,,8]/20, taskset_7_20[3,,6]/20, taskset_7_20[3,,7]/20, taskset_7_20[3,,8]/20, taskset_7_20[4,,6]/20, taskset_7_20[4,,7]/20, taskset_7_20[4,,8]/20, taskset_7_20[5,,6]/20, taskset_7_20[5,,7]/20, taskset_7_20[5,,8]/20,
-# #                 names=c("s g1 0_2","m g1 0_2","l g1 0_2", "s g2 0_2","m g2 0_2","l g2 0_2", "s g3 0_2","m g3 0_2","l g3 0_2", "s g4 0_2","m g4 0_2","l g4 0_2", "s g5 0_2","m g5 0_2","l g5 0_2", "s g1 3_6","m g1 3_6","l g1 3_6", "s g2 3_6","m g2 3_6","l g2 3_6", "s g3 3_6","m g3 3_6","l g3 3_6", "s g4 3_6","m g4 3_6","l g4 3_6", "s g5 3_6","m g5 3_6","l g5 3_6", "s g1 7_20","m g1 7_20","l g1 7_20", "s g2 7_20","m g2 7_20","l g2 7_20", "s g3 7_20","m g3 7_20","l g3 7_20", "s g4 7_20","m g4 7_20","l g4 7_20", "s g5 7_20","m g5 7_20","l g5 7_20"), scipen=5, main="tipo task per gruppo", xlab="Task", ylab="quantità %")
-# # abline(h = 7, col = "red")
-# # 
-# # # Somma periodi per gruppo
-# # res <- boxplot (taskset_0_2[1,,9], taskset_0_2[2,,9], taskset_0_2[3,,9], taskset_0_2[4,,9], taskset_0_2[5,,9],taskset_3_6[1,,9], taskset_3_6[2,,9], taskset_3_6[3,,9], taskset_3_6[4,,9], taskset_3_6[5,,9], taskset_7_20[1,,9], taskset_7_20[2,,9], taskset_7_20[3,,9], taskset_7_20[4,,9], taskset_7_20[5,,9], names=c("g1 0-2","g2 0-2","g3 0-2","g4 0-2","g5 0-2", "g1 3-6","g2 3-6","g3 3-6","g4 3-6","g5 3-6", "g1 7-20","g2 7-20","g3 7-20","g4 7-20","g5 7-20"), scipen=5, main="Somma Periodi", xlab="Taskset", ylab="Somma Periodi")
-# # 
-# # # FPS-EDF preemptions %
-# # res <- boxplot (taskset_0_2[1,,11], taskset_0_2[2,,11], taskset_0_2[3,,11], taskset_0_2[4,,11], taskset_0_2[5,,11],taskset_3_6[1,,11], taskset_3_6[2,,11], taskset_3_6[3,,11], taskset_3_6[4,,11], taskset_3_6[5,,11], taskset_7_20[1,,11], taskset_7_20[2,,11], taskset_7_20[3,,11], taskset_7_20[4,,11], taskset_7_20[5,,11], names=c("g1 0-2","g2 0-2","g3 0-2","g4 0-2","g5 0-2", "g1 3-6","g2 3-6","g3 3-6","g4 3-6","g5 3-6", "g1 7-20","g2 7-20","g3 7-20","g4 7-20","g5 7-20"), scipen=5, main="FPS-EDF preemption %", xlab="Taskset", ylab="(FPS - EDF) / (FPS)")
-# # # FPS-EDF preemptions
-# # res <- boxplot (taskset_0_2[1,,3], taskset_0_2[2,,3], taskset_0_2[3,,3], taskset_0_2[4,,3], taskset_0_2[5,,3],taskset_3_6[1,,3], taskset_3_6[2,,3], taskset_3_6[3,,3], taskset_3_6[4,,3], taskset_3_6[5,,3], taskset_7_20[1,,3], taskset_7_20[2,,3], taskset_7_20[3,,3], taskset_7_20[4,,3], taskset_7_20[5,,3], names=c("g1 0-2","g2 0-2","g3 0-2","g4 0-2","g5 0-2", "g1 3-6","g2 3-6","g3 3-6","g4 3-6","g5 3-6", "g1 7-20","g2 7-20","g3 7-20","g4 7-20","g5 7-20"), scipen=5, main="FPS - EDF preemption", xlab="Taskset", ylab="FPS - EDF")
-# 
-# 
-# #############################################################
+#############################################################
 # 
 # 
 # taskset_0_2_200 = array (integer(), dim = c(5,1000,13))

@@ -2,20 +2,17 @@ array_edf_preemptions = vector()
 array_fps_preemptions = vector()
 
 for (i in 1:4500){
-  file_name <- paste("/home/aquox/Scrivania/Arm/workspace2/Buttazzo-First-Preemptions_no_repetition/Buttazzo-First-Preemptions_no_repetition_", c(i), ".csv", sep = "")
+  file_name <- paste("../taskset-experiments/Buttazzo-First-Preemptions_no_repetition/Buttazzo-First-Preemptions_no_repetition_", c(i), ".csv", sep = "")
   file_to_open <- read.csv(file = file_name, header = TRUE, sep = ";", dec = ".")
   array_edf_preemptions <- append(array_edf_preemptions, file_to_open[5+((i-1)%/%500)*2,12])  
   array_fps_preemptions <- append(array_fps_preemptions, file_to_open[5+((i-1)%/%500)*2,8])  
 }
-
-# 4+(i%/%1000)*2
 
 avarage_edf_preemptions = vector()
 avarage_fps_preemptions = vector()
 standard_devation_edf_preemptions = vector()
 standard_devation_fps_preemptions = vector()
 
-#avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(array_edf_preemptions[1:1000]))
 for (i in 0:8){
   avarage_edf_preemptions <- append(avarage_edf_preemptions, mean(array_edf_preemptions[(1+i*500):(500+i*500)]))
   standard_devation_edf_preemptions <- append(standard_devation_edf_preemptions, sd(array_edf_preemptions[(1+i*500):(500+i*500)]))
@@ -35,7 +32,3 @@ arrows(X, avarage_fps_preemptions-standard_devation_fps_preemptions, X, avarage_
 legend(1,100,legend=c("EDF","FPS"), col=c("blue","red"), pch=c("o","*"),lty=c(1,2), ncol=1)
 
 
-# dev.off()
-
-# X = c(4001:4500)
-# plot (X, array_fps_preemptions[4001:4500] - array_edf_preemptions[4001:4500], xlab="taskset", ylab="FPS-EDF preemptions", type="o", col="blue", pch="o", lty=1)

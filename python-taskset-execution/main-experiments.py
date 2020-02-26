@@ -1,6 +1,6 @@
 import csv
-from .compile_flash_run import compile_and_flash_into_board, debug_and_read_data
-from .file_management import make_adb_file, save_data, import_taskset
+from compile_flash_run import compile_and_flash_into_board, debug_and_read_data
+from file_management import make_adb_file, save_data, import_taskset
 
 
 # experiments of Buttazzo method 1 and 2, with possible repetition of periods
@@ -173,17 +173,16 @@ def full_harmonic():
 
     for i in range(1, 10001):
         taskset = []
-        taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM, EDF_schedulable, FPS_schedulable,\
-            hyperperiod = import_taskset(taskset, i, "full_harmonic.csv")
+        taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM, EDF_schedulable, FPS_schedulable, hyperperiod = import_taskset(taskset, i, "full_harmonic.csv")
         make_adb_file(taskset, hyperperiod)
         EDF_data = []
         FPS_data = []
         for j in range(2):
             compile_and_flash_into_board(j)
             if (j == 0):
-                EDF_data = debug_and_read_data(taskset, hyperperiod, j)
+                EDF_data = debug_and_read_data(taskset, j)
             else:
-                FPS_data = debug_and_read_data(taskset, hyperperiod, j)
+                FPS_data = debug_and_read_data(taskset, j)
         save_data(taskset, EDF_data, FPS_data, "Full_Harmonic/full_harmonic", i, hyperperiod)
 
 
@@ -302,6 +301,7 @@ def U_100_hyper_113400000_10_100_full():
 
 
 # use a function here
-# U_100_hyper_113400000_10_100_full()
+#U_100_hyper_113400000_10_100_full()
+U_90_log_uniform()
 
 

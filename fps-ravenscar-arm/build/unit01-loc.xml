@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <Locations >
-  <Project>
-    <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/unit01.gpr</vfs_file>
+  <Project >
     <file_marker column=" 1" line=" 1" >
       <vfs_project />
       <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/unit01.gpr</vfs_file>
@@ -14,9 +13,21 @@
       <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/modified_for_strumentation/s-bbdead.ads</vfs_file>
     </file_marker>
-    <file_marker current="true" column=" 1" line=" 1" >
+    <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/modified_for_strumentation/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 27" line=" 10" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/src/unit01.adb</vfs_file>
     </file_marker>
   </Project>
 </Locations>

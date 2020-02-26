@@ -23,7 +23,7 @@ RV NO_ELABORATION_CODE
 RV SPARK_05
 RV MAX_TASKS=21
 
-U cyclic_tasks%b	cyclic_tasks.adb	4bedef5a OO PK
+U cyclic_tasks%b	cyclic_tasks.adb	d7b6808b OO PK
 W ada%s			ada.ads			ada.ali
 W ada.real_time%s	a-reatim.adb		a-reatim.ali
 Z ada.real_time.delays%s  a-retide.adb		a-retide.ali
@@ -40,7 +40,7 @@ Z system.tasking.restricted.stages%s  s-tarest.adb  s-tarest.ali
 W system_time%s		system_time.ads		system_time.ali
 T 0 21
 
-U cyclic_tasks%s	cyclic_tasks.ads	2989410f EE NE OO PK
+U cyclic_tasks%s	cyclic_tasks.ads	87610b36 EE NE OO PK
 W system%s		system.ads		system.ali
 Z system.parameters%s	s-parame.adb		s-parame.ali
 Z system.storage_elements%s  s-stoele.adb	s-stoele.ali
@@ -53,8 +53,8 @@ D a-except.ads		20190621182548 291912d5 ada.exceptions%s
 D a-reatim.ads		20190621183100 4c16970e ada.real_time%s
 D a-retide.ads		20190621183100 081cdaa4 ada.real_time.delays%s
 D a-unccon.ads		20190621182550 0e9b276f ada.unchecked_conversion%s
-D cyclic_tasks.ads	20190709122130 f20a548e cyclic_tasks%s
-D cyclic_tasks.adb	20200211030613 b7b4c306 cyclic_tasks%b
+D cyclic_tasks.ads	20200226124810 5ce21eb7 cyclic_tasks%s
+D cyclic_tasks.adb	20200226125035 8507e6ee cyclic_tasks%b
 D interfac.ads		20190621182551 5ab55268 interfaces%s
 D i-stm32.ads		20190621182551 2ad0960b interfaces.stm32%s
 D i-stm32-pwr.ads	20190621182551 4a098e84 interfaces.stm32.pwr%s
@@ -110,22 +110,22 @@ X 6 cyclic_tasks.ads
 7i7 Dead{positive} 7|55r40
 8i7 Cycle_Time{positive} 7|19r44 49r39
 9i7 T_Num{integer} 7|56r45 57r55
-10i7 Gauss_Num{integer} 7|65r18
+10i7 Load_Num{integer} 7|65r18
 11i7 Offset{integer} 7|13r44
 17U14*Init 18r22 7|79b14 87l8 87t12
 X 7 cyclic_tasks.adb
 12i7 Task_Static_Offset{3|61I9} 16r51
 15m7 Next_Period{3|51M9} 52r28 60r22 63r35 70r16 72m10 72r25
 18i7 Period{3|61I9} 72r39
-21U17 Gauss 21>24 22b17 28l11 28t16 66s10
-21i24 Times{integer} 22b24 25r24
+21U17 Load 21>23 22b17 28l11 28t15 66s10
+21i23 Times{integer} 22b23 25r24
 23i10 Num{integer} 26m13 26r20
 25i14 I{integer} 26r26
 29V16 Time_Conversion{23|84I9} 29>33 31b16 40l11 40t26 52s11 75s12 75s43
 29m33 Time_in{3|51M9} 31b33 36r34
 33i10 Time_in_to_Time_Span{3|61I9} 36m10 38r40
 34i10 Time_out{23|84I9} 37m10 39r17
-42i7 Temp{integer} 65m10 66r17
+42i7 Temp{integer} 65m10 66r16
 43m7 Work_Jitter{3|51M9} 68m10 75r29
 44m7 Release_Jitter{3|51M9} 62m10 69r36 75r60
 89t4 P1{11|4T14}

@@ -9,6 +9,7 @@ def import_taskset(taskset, i, name):
         csv_reader = csv.reader(csv_file, delimiter=';')
         row_number = 0
         for row in csv_reader:
+            print(row)
             if row_number == i:
                 utilization = row[0]
                 EDF_busy_period = row[1]
@@ -24,7 +25,8 @@ def import_taskset(taskset, i, name):
                             string_task[2],
                             string_task[3],
                             string_task[4],
-                            str((float(string_task[8])+float(string_task[9])+float(string_task[10])))]
+                            str((float(string_task[8]) + float(string_task[9])))]
+                            #str((float(string_task[8])+float(string_task[9])+float(string_task[10])))]
                     taskset.append (task)
                 return taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM, EDF_schedulable, FPS_schedulable, hyperperiod
             row_number = row_number + 1

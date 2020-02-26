@@ -8,15 +8,15 @@ import signal
 def compile_and_flash_into_board (EDF0_FPS1):
     # use your location
     if (EDF0_FPS1 == 0):
-        os.system("gprbuild --target=arm-eabi -d -P/home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.gpr /home/aquox/Scrivania/Arm/edf-ravenscar-arm/src/unit01.adb -largs -Wl,-Map=map.txt")
-        os.system("arm-eabi-objdump /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01 -h")
-        os.system("arm-eabi-objcopy -O binary /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01 /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.bin")
-        os.system("st-flash write /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01.bin 0x08000000")
+        os.system("gprbuild --target=arm-eabi -d -P/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/src/unit01.adb -largs -Wl,-Map=map.txt")
+        os.system("arm-eabi-objdump /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01 -h")
+        os.system("arm-eabi-objcopy -O binary /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.bin")
+        os.system("st-flash write /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.bin 0x08000000")
     else:
-        os.system("gprbuild --target=arm-eabi -d -P/home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.gpr /home/aquox/Scrivania/Arm/fps-ravenscar-arm/src/unit01.adb -largs -Wl,-Map=map.txt")
-        os.system("arm-eabi-objdump /home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01 -h")
-        os.system("arm-eabi-objcopy -O binary /home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01 /home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.bin")
-        os.system("st-flash write /home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01.bin 0x08000000")
+        os.system("gprbuild --target=arm-eabi -d -P/home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/unit01.gpr /home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/src/unit01.adb -largs -Wl,-Map=map.txt")
+        os.system("arm-eabi-objdump /home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/unit01 -h")
+        os.system("arm-eabi-objcopy -O binary /home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/unit01 /home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/unit01.bin")
+        os.system("st-flash write /home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/unit01.bin 0x08000000")
 
 
 # We need a separate Thread for call the st-util tool
@@ -38,14 +38,15 @@ def debug_and_read_data (taskset, EDF0_FPS1):
     data = []
     # use your location
     if (EDF0_FPS1 == 0):
-        command = ["arm-eabi-gdb /home/aquox/Scrivania/Arm/edf-ravenscar-arm/unit01"]
+        command = ["arm-eabi-gdb /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01"]
     else:
-        command = ["arm-eabi-gdb /home/aquox/Scrivania/Arm/fps-ravenscar-arm/unit01"]
+        command = ["arm-eabi-gdb /home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/unit01"]
     # run the program with debugger
     debugger = Popen (command, shell=True, stdout=PIPE, stdin= PIPE)
     # read the data
     while True and debugger.poll() == None:
         line = debugger.stdout.readline()
+        print(line)
         if "Reading symbols" in line.decode():
             debugger.stdin.write("tar extended-remote :4242\n".encode())
             debugger.stdin.flush()

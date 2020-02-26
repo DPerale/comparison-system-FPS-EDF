@@ -18,14 +18,14 @@ package body Cyclic_Tasks is
       Period : constant Ada.Real_Time.Time_Span :=
                Ada.Real_Time.Microseconds (Cycle_Time);
 
-      procedure Gauss (Times : Integer);
-      procedure Gauss (Times : Integer) is
+      procedure Load (Times : Integer);
+      procedure Load (Times : Integer) is
          Num : Integer := 0;
       begin
          for I in 1 .. Times loop
             Num := Num + I;
          end loop;
-      end Gauss;
+      end Load;
       function Time_Conversion (Time_in  : Ada.Real_Time.Time)
                                 return System.BB.Time.Time_Span;
       function Time_Conversion (Time_in  : Ada.Real_Time.Time)
@@ -62,8 +62,8 @@ package body Cyclic_Tasks is
          Release_Jitter := Ada.Real_Time.Time_First +
            (Ada.Real_Time.Clock - Next_Period);
 
-         Temp := Gauss_Num;
-         Gauss (Temp);
+         Temp := Load_Num;
+         Load (Temp);
 
          Work_Jitter := Ada.Real_Time.Time_First +
            (Ada.Real_Time.Clock - (Release_Jitter
@@ -86,25 +86,25 @@ package body Cyclic_Tasks is
       end loop;
    end Init;
 
-   P1 : Print_Task.Print (240, -1, 113444, 0); -- period in milliseconds
-   C1 : Cyclic (20, 15750, 15750, 1, 1264, 0);
-   C2 : Cyclic (19, 18900, 18900, 2, 4609, 0);
-   C3 : Cyclic (18, 22500, 22500, 3, 2767, 0);
-   C4 : Cyclic (17, 25200, 25200, 4, 7246, 0);
-   C5 : Cyclic (16, 26250, 26250, 5, 2344, 0);
-   C6 : Cyclic (15, 37800, 37800, 6, 38439, 0);
-   C7 : Cyclic (14, 40000, 40000, 7, 9120, 0);
-   C8 : Cyclic (13, 50000, 50000, 8, 6759, 0);
-   C9 : Cyclic (12, 50400, 50400, 9, 7119, 0);
-   C10 : Cyclic (11, 52500, 52500, 10, 18618, 0);
-   C11 : Cyclic (10, 54000, 54000, 11, 4821, 0);
-   C12 : Cyclic (9, 64800, 64800, 12, 17347, 0);
-   C13 : Cyclic (8, 70875, 70875, 13, 63035, 0);
-   C14 : Cyclic (7, 72000, 72000, 14, 1655, 0);
-   C15 : Cyclic (6, 75000, 75000, 15, 65238, 0);
-   C16 : Cyclic (5, 78750, 78750, 16, 3212, 0);
-   C17 : Cyclic (4, 81000, 81000, 17, 59647, 0);
-   C18 : Cyclic (3, 87500, 87500, 18, 159875, 0);
-   C19 : Cyclic (2, 90000, 90000, 19, 233675, 0);
-   C20 : Cyclic (1, 94500, 94500, 20, 23520, 0);
+   P1 : Print_Task.Print (240, -1, 1000, 0); -- period in milliseconds
+   C1 : Cyclic (20, 10000, 10000, 1, 5139, 0);
+   C2 : Cyclic (19, 10000, 10000, 2, 2831, 0);
+   C3 : Cyclic (18, 10000, 10000, 3, 9808, 0);
+   C4 : Cyclic (17, 10000, 10000, 4, 67, 0);
+   C5 : Cyclic (16, 11000, 11000, 5, 1772, 0);
+   C6 : Cyclic (15, 13000, 13000, 6, 3731, 0);
+   C7 : Cyclic (14, 14000, 14000, 7, 19825, 0);
+   C8 : Cyclic (13, 14000, 14000, 8, 8273, 0);
+   C9 : Cyclic (12, 16000, 16000, 9, 332, 0);
+   C10 : Cyclic (11, 20000, 20000, 10, 3434, 0);
+   C11 : Cyclic (10, 20000, 20000, 11, 1909, 0);
+   C12 : Cyclic (9, 23000, 23000, 12, 1084, 0);
+   C13 : Cyclic (8, 37000, 37000, 13, 84169, 0);
+   C14 : Cyclic (7, 41000, 41000, 14, 4504, 0);
+   C15 : Cyclic (6, 47000, 47000, 15, 11587, 0);
+   C16 : Cyclic (5, 47000, 47000, 16, 16585, 0);
+   C17 : Cyclic (4, 63000, 63000, 17, 45692, 0);
+   C18 : Cyclic (3, 75000, 75000, 18, 24526, 0);
+   C19 : Cyclic (2, 93000, 93000, 19, 28179, 0);
+   C20 : Cyclic (1, 97000, 97000, 20, 13451, 0);
 end Cyclic_Tasks;
