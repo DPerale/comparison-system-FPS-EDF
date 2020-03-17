@@ -20,7 +20,7 @@ RV NO_ELABORATION_CODE
 RV NO_OBSOLESCENT_FEATURES
 RV SPARK_05
 
-U system.soft_links%b	s-soflin.adb		ad38bb5e NE OL PK
+U system.soft_links%b	s-soflin.adb		86037401 NE OL PK
 W system%s		system.ads		system.ali
 W system.bb%s		s-bb.ads		s-bb.ali
 W system.bb.deadlines%s	s-bbdead.ads		s-bbdead.ali
@@ -48,21 +48,21 @@ D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
 D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621183100 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20190819115249 2a78d1c0 system.bb.threads%s
-D s-bbthqu.ads		20190819115249 19d2b377 system.bb.threads.queues%s
+D s-bbthre.ads		20200317135402 fdb90fdb system.bb.threads%s
+D s-bbthqu.ads		20200317135402 7f12ff45 system.bb.threads.queues%s
 D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
-D s-osinte.ads		20190819115249 2113dc91 system.os_interface%s
+D s-osinte.ads		20200317135436 0270a3b7 system.os_interface%s
 D s-parame.ads		20190621182555 d106111e system.parameters%s
 D s-secsta.ads		20190621182555 56a2861c system.secondary_stack%s
 D s-soflin.ads		20190621183100 09900c20 system.soft_links%s
-D s-soflin.adb		20190621183100 9b5902cd system.soft_links%b
+D s-soflin.adb		20200317135916 3391d1c3 system.soft_links%b
 D s-stalib.ads		20190621182556 09bd3940 system.standard_library%s
 D s-stm32.ads		20190621182556 e898dba2 system.stm32%s
 D s-stoele.ads		20190621182556 2dc34a04 system.storage_elements%s
 D s-tasinf.ads		20190621182556 801abd01 system.task_info%s
 D s-taspri.ads		20190621183100 351848fa system.task_primitives%s
-D s-taprop.ads		20190819115250 fd40f2b4 system.task_primitives.operations%s
+D s-taprop.ads		20200317135651 7eb3eee5 system.task_primitives.operations%s
 D s-taskin.ads		20190621183100 1c5b8fd8 system.tasking%s
 D s-traent.ads		20190621182556 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20190621182556 34867c83 system.unsigned_types%s
@@ -77,7 +77,7 @@ X 2 a-except.ads
 102V13*Exception_Identity{58P9} 24|73s29
 X 7 system.ads
 50K9*System 164e11 23|45r9 73r28 179r5 24|39r6 40r6 41r6 43r14 45r8 46r13
-. 47r8 107r26 116r31 126r17 144r26 145r17 154r13 173r26 189r5
+. 47r8 107r26 116r31 126r17 144r26 145r17 154r13 174r26 190r5
 80M9*Address 23|73r35
 X 8 s-bb.ads
 40K16*BB 95e14 24|41r13 47r15 116r38 126r24
@@ -89,7 +89,7 @@ X 18 s-bbtime.ads
 X 22 s-secsta.ads
 46P9*SS_Stack_Ptr(43R9)
 X 23 s-soflin.ads
-45K16*Soft_Links 7|50k9 23|179l12 179e22 24|43b21 189l12 189t22
+45K16*Soft_Links 7|50k9 23|179l12 179e22 24|43b21 190l12 190t22
 48P12*EOA{2|66P9} 60r48 134r43 24|62r43
 49R12*EO{2|63R9} 57r52 146r46 157r24 24|141r46
 55P9*No_Param_Proc 56r36 65r35 88r16 96r18 121r15 124r27 128r29
@@ -102,7 +102,7 @@ X 23 s-soflin.ads
 76U14*Abort_Defer_Raven 124r44
 79U14*Abort_Undefer_Raven 128r46
 82U14*Task_Lock_Soft 88r33 24|106b14 135l8 135t22
-85U14*Task_Unlock_Soft 96r35 24|172b14 187l8 187t24
+85U14*Task_Unlock_Soft 96r35 24|173b14 188l8 188t24
 88p4*Lock_Task{55P9}
 96p4*Unlock_Task{55P9}
 118U14*Adafinal_Soft 121r32 24|80b14 100l8 100t21
@@ -112,39 +112,39 @@ X 23 s-soflin.ads
 134V13*Get_Current_Excep_Soft{48P12} 135r19 137r49 24|62b13 65l8 65t30
 137p4*Get_Current_Excep{60P9} 24|73r49
 139V13*Get_GNAT_Exception{2|58P9} 140r19 24|71b13 74l8 74t26
-146U14*Task_Termination_Soft 146>37 150r48 24|141b14 166l8 166t29
+146U14*Task_Termination_Soft 146>37 150r48 24|141b14 167l8 167t29
 146r37 Except{49R12} 24|141b37 142r28
 150p4*Task_Termination_Handler{57P9} 24|87r7
 157r4*Library_Exception{49R12}
 161b4*Library_Exception_Set{boolean}
 165p4*Traceback_Decorator_Wrapper{72P9} 174r19
 X 24 s-soflin.adb
-54i4 Caller_Relative_Deadline{12|51I12} 132m13 185r42
+54i4 Caller_Relative_Deadline{12|51I12} 132m13 186r42
 107p7 Self_Id{31|70P9} 110r7 111r9 113r10 117r38 124r17
 116i13 R_Dead{12|51I12} 132r41
-144p7 Self_Id{31|70P9} 152r30 159r30 159r39 164r18
-145p7 TH{31|238P9} 154m7 163r10 164r10
-173p7 Self_Id{31|70P9} 176r22 177r7 178r9 180r10 185r33
+144p7 Self_Id{31|70P9} 152r30 159r30 159r39 165r18
+145p7 TH{31|238P9} 154m7 164r10 165r10
+174p7 Self_Id{31|70P9} 177r22 178r7 179r9 181r10 186r33
 X 25 s-stalib.ads
 87P9*Exception_Data_Ptr(86R9)
 X 29 s-taspri.ads
 40K16*Task_Primitives 24|40r13 45r15 29|82e27
 X 30 s-taprop.ads
-46K32*Operations 24|40w29 45r31 30|161e38
-79V13*Self{31|70P9} 24|64s14 107s52 144s52 173s52
-88U14*Set_Relative_Deadline 24|123s13 152s7 159s7 185s10
-98V13*Get_Relative_Deadline{12|51I12} 24|117s15
+46K32*Operations 24|40w29 45r31 30|162e38
+79V13*Self{31|70P9} 24|64s14 107s52 144s52 174s52
+88U14*Set_Relative_Deadline 24|123s13 152s7 159s7 186s10
+99V13*Get_Relative_Deadline{12|51I12} 24|117s15
 X 31 s-taskin.ads
-59K16*Tasking 24|39w13 46r20 107r33 144r33 145r24 154r20 173r33 31|478e19
-70P9*Task_Id(68R9) 24|107r41 144r41 173r41
+59K16*Tasking 24|39w13 46r20 107r33 144r33 145r24 154r20 174r33 31|478e19
+70P9*Task_Id(68R9) 24|107r41 144r41 174r41
 238P9*Termination_Handler 24|46r28 145r32
 242p4*Fall_Back_Handler{238P9} 24|154r28
 305r7*Current_Excep{2|63R9} 24|64m40
 361r7*Compiler_Data{298R9} 24|64m26
-377i7*Global_Task_Lock_Nesting{natural} 24|110m22 111r24 113r25 176r37 177m22
-. 178r24 180r25
+377i7*Global_Task_Lock_Nesting{natural} 24|110m22 111r24 113r25 177r37 178m22
+. 179r24 181r25
 386i7*Base_Relative_Deadline{12|51I12} 24|159r54
-400r7*Common{314R9} 24|64m19 110m15 111r17 113r18 159r47 176r30 177m15 178r17
-. 180r18
+400r7*Common{314R9} 24|64m19 110m15 111r17 113r18 159r47 177r30 178m15 179r17
+. 181r18
 421V13*Get_Sec_Stack{22|46P9} 422i<c,__gnat_get_secondary_stack>22
 

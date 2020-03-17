@@ -65,7 +65,6 @@ package body System.BB.Threads.Queues is
    type Table_Record is
       record
          ID : Integer;
-         Check : Boolean;
          DM : Integer;
          Execution : Integer;
          Preemption : Integer;
@@ -73,7 +72,7 @@ package body System.BB.Threads.Queues is
          Max_Work_Jitter :  System.BB.Time.Time_Span;
          Min_Release_Jitter :  System.BB.Time.Time_Span;
          Max_Release_Jitter :  System.BB.Time.Time_Span;
-         Avarage_Work_Jitter : System.BB.Time.Time_Span;
+         Average_Work_Jitter : System.BB.Time.Time_Span;
       end record;
 
    type Array_Table_Record is array (1 .. 90) of Table_Record;
@@ -84,7 +83,7 @@ package body System.BB.Threads.Queues is
    procedure Initialize_Task_Table (ID : Integer) is
    begin
       if ID /= 0 then
-         Task_Table (ID) := (ID, False, 0, -1, 0,
+         Task_Table (ID) := (ID, 0, -1, 0,
                              System.BB.Time.Time_Span_Last,
                              System.BB.Time.Time_Span_First,
                              System.BB.Time.Time_Span_Last,
@@ -95,22 +94,6 @@ package body System.BB.Threads.Queues is
          end if;
       end if;
    end Initialize_Task_Table;
-
-   function Get_Check (ID : Integer) return Boolean is
-   begin
-      if ID /= 0 then
-         return Task_Table (ID).Check;
-      end if;
-      return True;
-   end Get_Check;
-
-   procedure Set_Check (ID : Integer;
-                        Check : Boolean) is
-   begin
-      if ID /= 0 then
-         Task_Table (ID).Check := Check;
-      end if;
-   end Set_Check;
 
    procedure Add_DM (ID : Integer) is
    begin
@@ -311,17 +294,30 @@ package body System.BB.Threads.Queues is
       Thread.Fake_Number_ID := Fake_Number_ID;
    end Change_Fake_Number_ID;
 
+   ------------------------
+   -- Change_Is_Sporadic --
+   ------------------------
+
+   procedure Change_Is_Sporadic
+     (Thread       : Thread_Id;
+      Bool : Boolean)
+   is
+   begin
+      Thread.Is_Sporadic := Bool;
+   end Change_Is_Sporadic;
+
    ------------------------------
    -- Change_Relative_Deadline --
    ------------------------------
 
    procedure Change_Relative_Deadline
      (Thread       : Thread_Id;
-      Rel_Deadline : Relative_Deadline)
+      Rel_Deadline : Relative_Deadline;
+      Is_Floor     : Boolean)
    is
       Aux_Pointer : Thread_Id;
       CPU_Id      : constant CPU := Get_CPU (Thread);
---      Now         : constant System.BB.Time.Time := System.BB.Time.Clock;
+      Now         : constant System.BB.Time.Time := System.BB.Time.Clock;
    begin
       --  A CPU can only change the relative deadline of its own tasks
 
@@ -336,16 +332,23 @@ package body System.BB.Threads.Queues is
       --  not change
       Thread.Active_Relative_Deadline := Rel_Deadline;
 
-      if Thread.Active_Relative_Deadline <= Thread.Active_Period then
-         Change_Absolute_Deadline (Thread, System.BB.Time.Time_First +
+      if Is_Floor then
+         Change_Absolute_Deadline (Thread, Absolute_Deadline'Min (
+                                   Now + Thread.Active_Relative_Deadline,
+                                   Thread.Active_Absolute_Deadline));
+      else
+
+         if Thread.Active_Relative_Deadline <= Thread.Active_Period then
+            Change_Absolute_Deadline (Thread, System.BB.Time.Time_First +
                                    Thread.Active_Starting_Time -
                      (Thread.Active_Period - Thread.Active_Relative_Deadline)
                                   + Global_Interrupt_Delay);
-      else
-         Change_Absolute_Deadline (Thread, System.BB.Time.Time_First +
+         else
+            Change_Absolute_Deadline (Thread, System.BB.Time.Time_First +
                                    Thread.Active_Starting_Time +
                      (Thread.Active_Relative_Deadline - Thread.Active_Period)
                                     + Global_Interrupt_Delay);
+         end if;
       end if;
 
       --  Thread.Active_Absolute_Deadline := (Rel_Deadline + Now);
@@ -485,13 +488,13 @@ package body System.BB.Threads.Queues is
       pragma Assert (CPU_Id = Current_CPU);
       pragma Assert (Thread = Running_Thread_Table (CPU_Id));
 
-      if Task_Table (Thread.Fake_Number_ID).Avarage_Work_Jitter
+      if Task_Table (Thread.Fake_Number_ID).Average_Work_Jitter
         = System.BB.Time.Time_Span_Zero
       then
-         Task_Table (Thread.Fake_Number_ID).Avarage_Work_Jitter := Work_Jitter;
+         Task_Table (Thread.Fake_Number_ID).Average_Work_Jitter := Work_Jitter;
       else
-         Task_Table (Thread.Fake_Number_ID).Avarage_Work_Jitter :=
-           ((Task_Table (Thread.Fake_Number_ID).Avarage_Work_Jitter *
+         Task_Table (Thread.Fake_Number_ID).Average_Work_Jitter :=
+           ((Task_Table (Thread.Fake_Number_ID).Average_Work_Jitter *
               Task_Table (Thread.Fake_Number_ID).Execution) + Work_Jitter)
            / (Task_Table (Thread.Fake_Number_ID).Execution + 1);
       end if;
@@ -523,7 +526,7 @@ package body System.BB.Threads.Queues is
    ---------------------------
 
    function Context_Switch_Needed return Boolean is
-      Now : System.BB.Time.Time;
+   --   Now : System.BB.Time.Time;
    begin
       --  A context switch is needed when there is a higher priority task ready
       --  to execute. It means that First_Thread is not null and it is not
@@ -539,17 +542,7 @@ package body System.BB.Threads.Queues is
          then
             Add_Preemption (Running_Thread.Fake_Number_ID);
          end if;
-         if Running_Thread.Fake_Number_ID /= 0 then
-            if Task_Table (Running_Thread.Fake_Number_ID).Check = False then
-               Now := Clock;
-               if Running_Thread.Active_Absolute_Deadline < Now
-               then
-                  Task_Table (Running_Thread.Fake_Number_ID).Check := True;
-                  Task_Table (Running_Thread.Fake_Number_ID).DM :=
-                    Task_Table (Running_Thread.Fake_Number_ID).DM + 1;
-               end if;
-            end if;
-         end if;
+
          return First_Thread /= Running_Thread;
       else
          return False;
@@ -846,16 +839,6 @@ package body System.BB.Threads.Queues is
 
          Insert (Wakeup_Thread);
 
-         if Wakeup_Thread.Fake_Number_ID /= 0 then
-            if Task_Table (Wakeup_Thread.Fake_Number_ID).Check = False then
-               if Wakeup_Thread.Active_Absolute_Deadline < Now
-               then
-                  Task_Table (Wakeup_Thread.Fake_Number_ID).Check := True;
-                  Task_Table (Wakeup_Thread.Fake_Number_ID).DM :=
-                    Task_Table (Wakeup_Thread.Fake_Number_ID).DM + 1;
-               end if;
-            end if;
-         end if;
       end loop;
 
       Next_Alarm := Time.Get_Next_Timeout (CPU_Id);
@@ -873,7 +856,7 @@ package body System.BB.Threads.Queues is
                := Thread.Active_Absolute_Deadline;
       --  Prio        : constant Integer := Thread.Active_Priority;
       Aux_Pointer : Thread_Id;
-      Now         : System.BB.Time.Time;
+   --   Now         : System.BB.Time.Time;
    begin
       --  A CPU can only modify its own tasks queues
       pragma Assert (CPU_Id = Current_CPU);
@@ -898,18 +881,6 @@ package body System.BB.Threads.Queues is
          Thread.Next := Aux_Pointer.Next;
          Aux_Pointer.Next := Thread;
 
-         --  Se necessario si aumentano le deadline miss
-         if Thread.Fake_Number_ID /= 0 then
-            if Task_Table (Thread.Fake_Number_ID).Check = False then
-               Now := Clock;
-               if Thread.Active_Absolute_Deadline < Now
-               then
-                  Task_Table (Thread.Fake_Number_ID).Check := True;
-                  Task_Table (Thread.Fake_Number_ID).DM :=
-                    Task_Table (Thread.Fake_Number_ID).DM + 1;
-               end if;
-            end if;
-         end if;
       end if;
    end Yield;
 

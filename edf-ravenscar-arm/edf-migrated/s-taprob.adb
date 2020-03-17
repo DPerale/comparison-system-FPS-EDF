@@ -128,7 +128,7 @@ package body System.Tasking.Protected_Objects is
       end if;
 
       --  Set_Priority (Self_Id, Object.Ceiling);
-      Set_Relative_Deadline (Self_Id, Object.Floor);
+      Set_Relative_Deadline (Self_Id, Object.Floor, True);
       --  Locking for multiprocessor systems
 
       --  This lock ensure mutual exclusion of tasks from different processors,

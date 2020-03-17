@@ -21,7 +21,7 @@ RV NO_IMPLEMENTATION_RESTRICTIONS
 RR NO_ELABORATION_CODE
 RV SPARK_05
 
-U system.tasking%b	s-taskin.adb		04ed0cd2 NE OL PK
+U system.tasking%b	s-taskin.adb		eb7fdee5 NE OL PK
 Z ada.exceptions%s	a-except.adb		a-except.ali
 W system%s		system.ads		system.ali
 W system.task_primitives%s  s-taspri.ads	s-taspri.ali
@@ -54,11 +54,11 @@ D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
 D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20190819111553 18783b0b system.bb.threads%s
-D s-bbthqu.ads		20190817154556 2d9960f7 system.bb.threads.queues%s
+D s-bbthre.ads		20200317140614 c3a001f2 system.bb.threads%s
+D s-bbthqu.ads		20200317140437 220c8ae0 system.bb.threads.queues%s
 D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
-D s-osinte.ads		20190817154822 793f6fd0 system.os_interface%s
+D s-osinte.ads		20200317140614 f16b2235 system.os_interface%s
 D s-parame.ads		20190621182555 d106111e system.parameters%s
 D s-secsta.ads		20190621182555 56a2861c system.secondary_stack%s
 D s-stalib.ads		20190621182556 09bd3940 system.standard_library%s
@@ -66,7 +66,7 @@ D s-stm32.ads		20190621182556 e898dba2 system.stm32%s
 D s-stoele.ads		20190621182556 2dc34a04 system.storage_elements%s
 D s-tasinf.ads		20190621182556 801abd01 system.task_info%s
 D s-taspri.ads		20190621183100 351848fa system.task_primitives%s
-D s-taprop.ads		20190817154556 179002d1 system.task_primitives.operations%s
+D s-taprop.ads		20200317140741 f802d0e6 system.task_primitives.operations%s
 D s-taskin.ads		20190621183100 58b15916 system.tasking%s
 D s-taskin.adb		20190621183100 4bcc5715 system.tasking%b
 D s-traent.ads		20190621182556 005bf670 system.traceback_entries%s
@@ -116,7 +116,7 @@ X 27 s-taspri.ads
 47R9*Private_Data 80e14 29|331r36
 52M12*Task_Address{7|80M9} 29|71r34 75r43
 X 28 s-taprop.ads
-46K32*Operations 140e38 30|43w29 99r23 153r23 196r64
+46K32*Operations 142e38 30|43w29 99r23 153r23 196r64
 57U14*Initialize 30|153s34
 75U14*Initialize_TCB 30|99s34
 78V13*Self{29|67P9} 30|196r75

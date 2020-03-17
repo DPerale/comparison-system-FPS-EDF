@@ -181,13 +181,14 @@ package body System.Task_Primitives.Operations is
    ---------------------------
 
    procedure Set_Relative_Deadline (T : ST.Task_Id;
-        Relative_Deadline : System.BB.Deadlines.Relative_Deadline) is
+               Relative_Deadline : System.BB.Deadlines.Relative_Deadline;
+               Is_Floor : Boolean) is
    begin
       --  A task can only change its own relative deadline
       pragma Assert (T = Self);
 
       --  Change the relative deadline in the underlying executive
-      System.OS_Interface.Set_Relative_Deadline (Relative_Deadline);
+      System.OS_Interface.Set_Relative_Deadline (Relative_Deadline, Is_Floor);
    end Set_Relative_Deadline;
 
    ---------------------------
@@ -332,7 +333,7 @@ package body System.Task_Primitives.Operations is
 
    --  System.OS_Interface.Set_Priority (Self_ID.Common.Base_Priority);
       System.OS_Interface.Set_Relative_Deadline
-               (Self_ID.Common.Base_Relative_Deadline);
+               (Self_ID.Common.Base_Relative_Deadline, False);
    end Enter_Task;
 
    ----------
@@ -350,7 +351,7 @@ package body System.Task_Primitives.Operations is
       loop
          --  set relative deadline for idle task
          System.Task_Primitives.Operations.Set_Relative_Deadline
-           (System.Task_Primitives.Operations.Self, dead_idle);
+           (System.Task_Primitives.Operations.Self, dead_idle, False);
          OS_Interface.Power_Down;
       end loop;
    end Idle;

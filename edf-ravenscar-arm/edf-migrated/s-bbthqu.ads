@@ -59,9 +59,6 @@ package System.BB.Threads.Queues is
    procedure Add_DM (ID : Integer);
    procedure Add_Execution (ID : Integer);
    procedure Add_Preemption (ID : Integer);
-   function Get_Check (ID : Integer) return Boolean;
-   procedure Set_Check (ID : Integer;
-                        Check : Boolean);
    procedure Print_Table (First_Index : Integer);
    procedure Set_Priority_For_Print (Thread : Thread_Id;
                                     Priority : System.Any_Priority);
@@ -191,9 +188,14 @@ package System.BB.Threads.Queues is
    pragma Inline (Change_Fake_Number_ID);
    --  Change the fake integer number of the thread
 
+   procedure Change_Is_Sporadic
+     (Thread       : Thread_Id;
+      Bool : Boolean);
+
    procedure Change_Relative_Deadline
      (Thread       : Thread_Id;
-      Rel_Deadline : System.BB.Deadlines.Relative_Deadline);
+      Rel_Deadline : System.BB.Deadlines.Relative_Deadline;
+      Is_Floor     : Boolean);
    pragma Inline (Change_Relative_Deadline);
    --  Move the thread to a new relative deadline within the ready queue
    --  In addiction updates absolute deadline value of the thread and then

@@ -123,14 +123,15 @@ package body System.Tasking.Restricted.Stages is
 
       --  Set_Priority (Self_ID, Any_Priority'Last);
       Set_Relative_Deadline (Self_ID,
-                             System.BB.Deadlines.Relative_Deadline (0));
+                             System.BB.Deadlines.Relative_Deadline (0), False);
 
       TH := System.Tasking.Fall_Back_Handler;
 
       --  Restore original priority after retrieving shared data
 
       --  Set_Priority (Self_ID, Self_ID.Common.Base_Priority);
-      Set_Relative_Deadline (Self_ID, Self_ID.Common.Base_Relative_Deadline);
+      Set_Relative_Deadline (Self_ID, Self_ID.Common.Base_Relative_Deadline,
+                            False);
 
       --  Execute the task termination handler if we found it
 
@@ -200,7 +201,7 @@ package body System.Tasking.Restricted.Stages is
       --  before we finish activating the chain.
       --  Set_Priority (Self_ID, System.Any_Priority'Last);
       Set_Relative_Deadline (Self_ID,
-               System.BB.Deadlines.Relative_Deadline (0));
+               System.BB.Deadlines.Relative_Deadline (0), False);
 
       --  Activate all the tasks in the chain
 
@@ -239,7 +240,8 @@ package body System.Tasking.Restricted.Stages is
       --  Restore the original priority
 
       --  Set_Priority (Self_ID, Self_ID.Common.Base_Priority);
-      Set_Relative_Deadline (Self_ID, Self_ID.Common.Base_Relative_Deadline);
+      Set_Relative_Deadline (Self_ID, Self_ID.Common.Base_Relative_Deadline,
+                            False);
    end Activate_Tasks;
 
    ------------------------------------

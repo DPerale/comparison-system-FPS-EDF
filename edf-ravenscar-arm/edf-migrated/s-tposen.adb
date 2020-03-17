@@ -67,11 +67,8 @@ with System.Multiprocessors;
 with System.Task_Primitives.Operations;
 
 with System.Tasking.Protected_Objects.Multiprocessors;
-with System.BB.Stats;
 with System.BB.Time; use System.BB.Time;
 with System.BB.Threads.Queues; use System.BB.Threads.Queues;
-with System.BB.Debug; use System.BB.Debug;
-with System.IO;
 
 package body System.Tasking.Protected_Objects.Single_Entry is
 
@@ -154,18 +151,12 @@ package body System.Tasking.Protected_Objects.Single_Entry is
       if Self_Id.Common.Protected_Action_Nesting > 0 then
          raise Program_Error;
       end if;
-      Now := System.BB.Time.Clock;
 
-      if Print_Miss then
-         if Now > Running_Thread.Active_Absolute_Deadline then
-            System.BB.Stats.Deadline_Miss := System.BB.Stats.Deadline_Miss + 1;
-            System.IO.Put_Line ("DEADLINE_MISS; " &
-                  Integer'Image (System.BB.Stats.Deadline_Miss));
-         else
-            System.BB.Stats.Executions := System.BB.Stats.Executions + 1;
-            System.IO.Put_Line ("EXECUTED; " &
-                  Integer'Image (System.BB.Stats.Executions));
-         end if;
+      --  add DM if necessary and add execution
+      Now := System.BB.Time.Clock;
+      System.BB.Threads.Queues.Add_Execution (Running_Thread.Fake_Number_ID);
+      if Running_Thread.Active_Absolute_Deadline < Now then
+         System.BB.Threads.Queues.Add_DM (Running_Thread.Fake_Number_ID);
       end if;
 
       Lock_Entry (Object);
@@ -215,6 +206,9 @@ package body System.Tasking.Protected_Objects.Single_Entry is
          --  will not be queued.
 
          Self_Id.Common.State := Entry_Caller_Sleep;
+
+         Running_Thread.Preemption_Needed := False;
+
          STPO.Sleep (Self_Id, Entry_Caller_Sleep);
          Self_Id.Common.State := Runnable;
       end if;

@@ -97,8 +97,10 @@ package System.Task_Primitives.Operations is
    function Monotonic_Clock return Time;
    pragma Inline (Monotonic_Clock);
 
-   procedure Set_Relative_Deadline (T : ST.Task_Id;
-             Relative_Deadline : System.BB.Deadlines.Relative_Deadline);
+   procedure Set_Relative_Deadline
+     (T : ST.Task_Id;
+      Relative_Deadline : System.BB.Deadlines.Relative_Deadline;
+      Is_Floor : Boolean);
 
    procedure Set_Period
        (T       : ST.Task_Id;

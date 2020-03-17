@@ -123,7 +123,7 @@ package body System.Soft_Links is
             Set_Relative_Deadline
                (Self_Id,
                 --  System.BB.Deadlines.Relative_Deadline'First);
-                System.BB.Deadlines.Relative_Deadline (0));
+                System.BB.Deadlines.Relative_Deadline (0), False);
 
             --  Store caller's active priority so that it can be later restored
             --  when releasing the global lock.
@@ -149,14 +149,15 @@ package body System.Soft_Links is
       --  System.Tasking.Fall_Back_Handler.
 
       --  Set_Priority (Self_Id, Any_Priority'Last);
-      Set_Relative_Deadline (Self_Id, Relative_Deadline (0));
+      Set_Relative_Deadline (Self_Id, Relative_Deadline (0), False);
 
       TH := System.Tasking.Fall_Back_Handler;
 
       --  Restore original priority after retrieving shared data
 
       --  Set_Priority (Self_Id, Self_Id.Common.Base_Priority);
-      Set_Relative_Deadline (Self_Id, Self_Id.Common.Base_Relative_Deadline);
+      Set_Relative_Deadline (Self_Id, Self_Id.Common.Base_Relative_Deadline,
+                             False);
 
       --  Execute the task termination handler if we found it
 
@@ -182,7 +183,7 @@ package body System.Soft_Links is
          --  Restore the task's active priority
 
          --  Set_Priority (Self_Id, Caller_Priority);
-         Set_Relative_Deadline (Self_Id, Caller_Relative_Deadline);
+         Set_Relative_Deadline (Self_Id, Caller_Relative_Deadline, False);
       end if;
    end Task_Unlock_Soft;
 

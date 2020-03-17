@@ -168,6 +168,8 @@ package System.BB.Threads is
       Active_Starting_Time :  System.BB.Time.Time_Span;
 
       Fake_Number_ID : Integer := 0;
+
+      Is_Sporadic : Boolean := False;
    end record;
 
    function Get_Affinity
@@ -298,8 +300,11 @@ package System.BB.Threads is
    pragma Inline (Set_Fake_Number_ID);
    --  Set a fake integer number ID
 
+   procedure Set_Is_Sporadic (Bool : Boolean);
+
    procedure Set_Relative_Deadline
-          (Rel_Deadline : System.BB.Deadlines.Relative_Deadline);
+     (Rel_Deadline : System.BB.Deadlines.Relative_Deadline;
+      Is_Floor     : Boolean);
    pragma Inline (Set_Relative_Deadline);
    --  Set the active relative deadline of the executing thread to the
    --  given value

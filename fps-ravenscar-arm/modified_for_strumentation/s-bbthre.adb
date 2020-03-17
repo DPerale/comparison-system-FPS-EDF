@@ -322,12 +322,27 @@ package body System.BB.Threads is
       Protection.Leave_Kernel;
    end Set_Fake_Number_ID;
 
+   ---------------------
+   -- Set_Is_Sporadic --
+   ---------------------
+
+   procedure Set_Is_Sporadic (Bool : Boolean) is
+   begin
+      Protection.Enter_Kernel;
+
+      Queues.Change_Is_Sporadic
+                       (Queues.Running_Thread, Bool);
+
+      Protection.Leave_Kernel;
+   end Set_Is_Sporadic;
+
    ---------------------------
    -- Set_Relative_Deadline --
    ---------------------------
 
    procedure Set_Relative_Deadline
-     (Rel_Deadline : System.BB.Deadlines.Relative_Deadline) is
+     (Rel_Deadline : System.BB.Deadlines.Relative_Deadline;
+      Is_Floor     : Boolean) is
    begin
       Protection.Enter_Kernel;
 
@@ -343,7 +358,7 @@ package body System.BB.Threads is
       --  a priority which is lower than the base priority of the thread.
 
       Queues.Change_Relative_Deadline
-              (Queues.Running_Thread, Rel_Deadline);
+              (Queues.Running_Thread, Rel_Deadline, Is_Floor);
 
       Protection.Leave_Kernel;
    end Set_Relative_Deadline;
@@ -488,7 +503,7 @@ package body System.BB.Threads is
    ------------
 
    procedure Wakeup (Id : Thread_Id) is
-      --  Now : constant System.BB.Time.Time := System.BB.Time.Clock;
+      Now : constant System.BB.Time.Time := System.BB.Time.Clock;
    begin
       Protection.Enter_Kernel;
 
@@ -500,8 +515,12 @@ package body System.BB.Threads is
 
          Id.State := Runnable;
 
-         Queues.Change_Absolute_Deadline
-           (Id, Id.Active_Period + Id.Active_Absolute_Deadline);
+         Id.Preemption_Needed := True;
+
+         if Id.Is_Sporadic = True then
+            Queues.Change_Absolute_Deadline
+              (Id, Id.Active_Relative_Deadline + Now);
+         end if;
          --  Insert the thread at the tail of its active priority so that the
          --  thread will resume execution.
 

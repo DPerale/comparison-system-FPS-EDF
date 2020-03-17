@@ -41,7 +41,7 @@ package body Print_Task is
           Time_Conversion (Next_Period));
       System.Task_Primitives.Operations.Set_Relative_Deadline
          (System.Task_Primitives.Operations.Self,
-          System.BB.Time.Milliseconds (Dead));
+          System.BB.Time.Milliseconds (Dead), False);
       loop
 
          delay until Next_Period;

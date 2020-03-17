@@ -42,7 +42,7 @@ package body Print_Task is
           Time_Conversion (Next_Period));
       System.Task_Primitives.Operations.Set_Relative_Deadline
          (System.Task_Primitives.Operations.Self,
-          System.BB.Time.Microseconds (-1));
+          System.BB.Time.Microseconds (-1), False);
       System.Tasking.Set_Priority (Pri);
       loop
          delay until Next_Period;

@@ -54,9 +54,9 @@ def debug_and_read_data (taskset, EDF0_FPS1):
             debugger.stdin.write("monitor reset halt\n".encode())
             debugger.stdin.flush()
             if (EDF0_FPS1 == 0):
-                debugger.stdin.write("break s-bbthqu.adb:141\n".encode())   # EDF
+                debugger.stdin.write("break s-bbthqu.adb:124\n".encode())   # EDF
             else:
-                debugger.stdin.write("break s-bbthqu.adb:129\n".encode())     # FPS
+                debugger.stdin.write("break s-bbthqu.adb:112\n".encode())     # FPS
             debugger.stdin.flush()
             debugger.stdin.write("c\n".encode())
             debugger.stdin.flush()
@@ -90,7 +90,7 @@ def debug_and_read_data (taskset, EDF0_FPS1):
                 debugger.stdin.flush()
                 Max_Release_Jitter_Line = debugger.stdout.readline().decode().split(" ")
 
-                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Avarage_Work_Jitter\n").encode())
+                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Average_Work_Jitter\n").encode())
                 debugger.stdin.flush()
                 Avarage_Work_Jitter_Line = debugger.stdout.readline().decode().split(" ")
 
