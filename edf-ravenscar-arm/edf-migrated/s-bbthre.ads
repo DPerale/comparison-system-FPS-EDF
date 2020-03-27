@@ -170,6 +170,18 @@ package System.BB.Threads is
       Fake_Number_ID : Integer := 0;
 
       Is_Sporadic : Boolean := False;
+
+      Just_Wakeup : Boolean := False;
+
+      Active_Next_Period : System.BB.Time.Time :=
+        System.BB.Time.Time_First;
+      pragma Volatile (Active_Next_Period);
+
+      Active_Release_Jitter : System.BB.Time.Time :=
+        System.BB.Time.Time_First;
+      pragma Volatile (Active_Release_Jitter);
+
+      First_Execution : Boolean := False;
    end record;
 
    function Get_Affinity
@@ -336,10 +348,6 @@ package System.BB.Threads is
 
    procedure Set_Starting_Time
      (Starting_Time :  System.BB.Time.Time_Span);
-
-   procedure Set_Jitters
-     (Work_Jitter : System.BB.Time.Time_Span;
-      Release_Jitter : System.BB.Time.Time_Span);
 
    procedure Sleep;
    --  The calling thread is unconditionally suspended. In the case when there

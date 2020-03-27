@@ -321,7 +321,7 @@ package body System.BB.CPU_Primitives is
       end if;
 
       --  Restore interrupt masking of interrupted thread
-
+      Threads.Queues.Change_Release_Jitter (Threads.Queues.First_Thread);
       Enable_Interrupts (Running_Thread.Active_Priority);
    end Interrupt_Request_Handler;
 
@@ -375,7 +375,7 @@ package body System.BB.CPU_Primitives is
       if Context_Switch_Needed then
          Context_Switch;
       end if;
-
+      Threads.Queues.Change_Release_Jitter (Threads.Queues.First_Thread);
       Enable_Interrupts (Running_Thread.Active_Priority);
    end Sys_Tick_Handler;
 

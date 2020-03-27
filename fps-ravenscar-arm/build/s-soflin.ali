@@ -19,7 +19,7 @@ RV NO_ELABORATION_CODE
 RV NO_OBSOLESCENT_FEATURES
 RV SPARK_05
 
-U system.soft_links%b	s-soflin.adb		5b7ca88e NE OL PK
+U system.soft_links%b	s-soflin.adb		772d0673 NE OL PK
 W system%s		system.ads		system.ali
 W system.task_primitives%s  s-taspri.ads	s-taspri.ali
 W system.task_primitives.operations%s  s-taprop.adb  s-taprop.ali
@@ -45,11 +45,11 @@ D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
 D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20200317140614 c3a001f2 system.bb.threads%s
-D s-bbthqu.ads		20200317140437 220c8ae0 system.bb.threads.queues%s
-D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
+D s-bbthre.ads		20200326105744 01e92e1c system.bb.threads%s
+D s-bbthqu.ads		20200327114526 2c7634a4 system.bb.threads.queues%s
+D s-bbtime.ads		20200325112142 da8467fe system.bb.time%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
-D s-osinte.ads		20200317140614 f16b2235 system.os_interface%s
+D s-osinte.ads		20200325121008 b65f4a11 system.os_interface%s
 D s-parame.ads		20190621182555 d106111e system.parameters%s
 D s-secsta.ads		20190621182555 56a2861c system.secondary_stack%s
 D s-soflin.ads		20190621183100 09900c20 system.soft_links%s
@@ -59,7 +59,7 @@ D s-stm32.ads		20190621182556 e898dba2 system.stm32%s
 D s-stoele.ads		20190621182556 2dc34a04 system.storage_elements%s
 D s-tasinf.ads		20190621182556 801abd01 system.task_info%s
 D s-taspri.ads		20190621183100 351848fa system.task_primitives%s
-D s-taprop.ads		20200317140741 f802d0e6 system.task_primitives.operations%s
+D s-taprop.ads		20200325121008 d4537e1b system.task_primitives.operations%s
 D s-taskin.ads		20190621183100 58b15916 system.tasking%s
 D s-traent.ads		20190621182556 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20190621182556 34867c83 system.unsigned_types%s
@@ -121,7 +121,7 @@ X 25 s-stalib.ads
 X 29 s-taspri.ads
 40K16*Task_Primitives 24|40r13 44r15 29|82e27
 X 30 s-taprop.ads
-46K32*Operations 24|40w29 44r31 30|142e38
+46K32*Operations 24|40w29 44r31 30|137e38
 78V13*Self{31|67P9} 24|61s14 104s52 134s52 161s52
 81U14*Set_Priority 24|117s13 141s7 147s7 173s10
 84V13*Get_Priority{31|250I12} 24|112s52

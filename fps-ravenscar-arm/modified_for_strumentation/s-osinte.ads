@@ -195,11 +195,6 @@ package System.OS_Interface is
      (Starting_Time : System.BB.Time.Time_Span)
       renames System.BB.Threads.Set_Starting_Time;
 
-   procedure Set_Jitters
-      (Work_Jitter : System.BB.Time.Time_Span;
-      Release_Jitter : System.BB.Time.Time_Span)
-      renames System.BB.Threads.Set_Jitters;
-
    procedure Sleep renames System.BB.Threads.Sleep;
    --  The calling thread is unconditionally suspended
 

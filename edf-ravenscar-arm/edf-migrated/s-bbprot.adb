@@ -74,7 +74,6 @@ package body System.BB.Protection is
    procedure Leave_Kernel is
       use System.BB.Time;
       use type System.BB.Threads.Thread_States;
-
    begin
       --  Interrupts are always disabled when entering here
 
@@ -108,6 +107,8 @@ package body System.BB.Protection is
       --  There is always a running thread (at worst the idle thread)
 
       pragma Assert (Threads.Queues.Running_Thread.State = Threads.Runnable);
+
+      Threads.Queues.Change_Release_Jitter (Threads.Queues.First_Thread);
 
       --  Now we need to set the hardware interrupt masking level equal to the
       --  software priority of the task that is executing.

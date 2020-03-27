@@ -57,11 +57,11 @@ package body System.BB.Threads.Queues is
          DM : Integer;
          Execution : Integer;
          Preemption : Integer;
-         Min_Work_Jitter :  System.BB.Time.Time_Span;
-         Max_Work_Jitter :  System.BB.Time.Time_Span;
+         Min_Response_Jitter :  System.BB.Time.Time_Span;
+         Max_Response_Jitter :  System.BB.Time.Time_Span;
          Min_Release_Jitter :  System.BB.Time.Time_Span;
          Max_Release_Jitter :  System.BB.Time.Time_Span;
-         Average_Work_Jitter : System.BB.Time.Time_Span;
+         Average_Response_Jitter : System.BB.Time.Time_Span;
       end record;
 
    type Array_Table_Record is array (1 .. 90) of Table_Record;
@@ -339,15 +339,37 @@ package body System.BB.Threads.Queues is
       pragma Assert (CPU_Id = Current_CPU);
       pragma Assert (Thread = Running_Thread_Table (CPU_Id));
       Thread.Active_Starting_Time := Starting_Time;
+      Thread.Active_Next_Period := System.BB.Time.Time_First +
+          (Starting_Time - Thread.Active_Period);
    end Change_Starting_Time;
 
-   --------------------
-   -- Change_Jitters --
-   --------------------
+   ---------------------------
+   -- Change_Release_Jitter --
+   ---------------------------
 
-   procedure Change_Jitters
+   procedure Change_Release_Jitter
+     (Thread        : Thread_Id)
+   is
+      CPU_Id      : constant CPU := Get_CPU (Thread);
+      Temp : System.BB.Time.Time_Span;
+   begin
+      pragma Assert (CPU_Id = Current_CPU);
+      pragma Assert (Thread = Running_Thread_Table (CPU_Id));
+
+      if Thread.Just_Wakeup = True then
+         Temp := System.BB.Time.Clock - Thread.Active_Next_Period;
+         Thread.Active_Release_Jitter := System.BB.Time.Time_First + (Temp);
+         Thread.Just_Wakeup := False;
+      end if;
+   end Change_Release_Jitter;
+
+   -----------------
+   -- Set_Jitters --
+   -----------------
+
+   procedure Set_Jitters
      (Thread      : Thread_Id;
-      Work_Jitter : System.BB.Time.Time_Span;
+      Response_Jitter : System.BB.Time.Time_Span;
       Release_Jitter : System.BB.Time.Time_Span)
    is
       CPU_Id      : constant CPU := Get_CPU (Thread);
@@ -355,38 +377,48 @@ package body System.BB.Threads.Queues is
       pragma Assert (CPU_Id = Current_CPU);
       pragma Assert (Thread = Running_Thread_Table (CPU_Id));
 
-      if Task_Table (Thread.Fake_Number_ID).Average_Work_Jitter
+      if Task_Table (Thread.Fake_Number_ID).Average_Response_Jitter
         = System.BB.Time.Time_Span_Zero
       then
-         Task_Table (Thread.Fake_Number_ID).Average_Work_Jitter := Work_Jitter;
+         Task_Table (Thread.Fake_Number_ID).Average_Response_Jitter :=
+           Response_Jitter;
       else
-         Task_Table (Thread.Fake_Number_ID).Average_Work_Jitter :=
-           ((Task_Table (Thread.Fake_Number_ID).Average_Work_Jitter *
-              Task_Table (Thread.Fake_Number_ID).Execution) + Work_Jitter)
+         Task_Table (Thread.Fake_Number_ID).Average_Response_Jitter :=
+           ((Task_Table (Thread.Fake_Number_ID).Average_Response_Jitter *
+              Task_Table (Thread.Fake_Number_ID).Execution) +
+              Response_Jitter)
            / (Task_Table (Thread.Fake_Number_ID).Execution + 1);
       end if;
 
-      if Work_Jitter < Task_Table (Thread.Fake_Number_ID).Min_Work_Jitter then
-         Task_Table (Thread.Fake_Number_ID).Min_Work_Jitter := Work_Jitter;
+      if Response_Jitter <
+        Task_Table (Thread.Fake_Number_ID).Min_Response_Jitter
+      then
+         Task_Table (Thread.Fake_Number_ID).Min_Response_Jitter :=
+           Response_Jitter;
       end if;
 
-      if Work_Jitter > Task_Table (Thread.Fake_Number_ID).Max_Work_Jitter then
-         Task_Table (Thread.Fake_Number_ID).Max_Work_Jitter := Work_Jitter;
+      if Response_Jitter >
+        Task_Table (Thread.Fake_Number_ID).Max_Response_Jitter
+      then
+         Task_Table (Thread.Fake_Number_ID).Max_Response_Jitter :=
+           Response_Jitter;
       end if;
 
-      if Release_Jitter < Task_Table (Thread.Fake_Number_ID).Min_Release_Jitter
+      if Release_Jitter <
+        Task_Table (Thread.Fake_Number_ID).Min_Release_Jitter
       then
          Task_Table (Thread.Fake_Number_ID).Min_Release_Jitter :=
            Release_Jitter;
       end if;
 
-      if Release_Jitter > Task_Table (Thread.Fake_Number_ID).Max_Release_Jitter
+      if Release_Jitter >
+        Task_Table (Thread.Fake_Number_ID).Max_Release_Jitter
       then
          Task_Table (Thread.Fake_Number_ID).Max_Release_Jitter :=
            Release_Jitter;
       end if;
 
-   end Change_Jitters;
+   end Set_Jitters;
 
    ------------------------------
    -- Change_Absolute_Deadline --
@@ -414,7 +446,7 @@ package body System.BB.Threads.Queues is
    ---------------------------
 
    function Context_Switch_Needed return Boolean is
-   --   Now : System.BB.Time.Time;
+      --   Now : System.BB.Time.Time;
    begin
       --  A context switch is needed when there is a higher priority task ready
       --  to execute. It means that First_Thread is not null and it is not
@@ -677,6 +709,10 @@ package body System.BB.Threads.Queues is
                                    (Wakeup_Thread.Active_Period +
                                       Wakeup_Thread.Active_Absolute_Deadline));
 
+         Wakeup_Thread.Just_Wakeup := True;
+         Wakeup_Thread.Active_Next_Period := Wakeup_Thread.Active_Next_Period
+           + Wakeup_Thread.Active_Period;
+
          Insert (Wakeup_Thread);
 
       end loop;
@@ -697,6 +733,10 @@ package body System.BB.Threads.Queues is
       --  A CPU can only modify its own tasks queues
 
       pragma Assert (CPU_Id = Current_CPU);
+
+      Thread.Just_Wakeup := True;
+      Thread.Active_Next_Period := Thread.Active_Next_Period +
+        Thread.Active_Period;
 
       if Thread.Next /= Null_Thread_Id
         and then Thread.Next.Active_Priority = Prio

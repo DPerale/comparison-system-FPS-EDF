@@ -32,8 +32,13 @@ package body Print_Task is
       end Time_Conversion;
 
       i : Integer := 0;
+      Temp2 : Ada.Real_Time.Time_Span;
 
    begin
+      Temp2 := Next_Period - Ada.Real_Time.Time_First;
+      Temp2 := (Temp2 / 180000) * 180000;
+      Temp2 := Temp2 - Ada.Real_Time.Microseconds (73);
+      Next_Period := Ada.Real_Time.Time_First + Temp2;
       System.Task_Primitives.Operations.Set_Period
          (System.Task_Primitives.Operations.Self,
          System.BB.Time.Microseconds (Cycle_Time));

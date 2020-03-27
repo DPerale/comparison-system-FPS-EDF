@@ -117,11 +117,6 @@ package System.Task_Primitives.Operations is
        (T      : ST.Task_Id;
         Starting_Time : System.BB.Time.Time_Span);
 
-   procedure Set_Jitters
-     (T      : ST.Task_Id;
-      Work_Jitter : System.BB.Time.Time_Span;
-      Release_Jitter : System.BB.Time.Time_Span);
-
    function Get_Affinity
      (T : ST.Task_Id) return System.Multiprocessors.CPU_Range;
 

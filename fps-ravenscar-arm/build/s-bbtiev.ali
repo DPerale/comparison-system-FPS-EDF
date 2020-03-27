@@ -21,7 +21,7 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U system.bb.timing_events%b  s-bbtiev.adb	3bf2cc92 OL PK
+U system.bb.timing_events%b  s-bbtiev.adb	f7c15d38 OL PK
 Z ada.tags%s		a-tags.adb		a-tags.ali
 Z interfaces%s		interfac.ads		interfac.ali
 W system%s		system.ads		system.ali
@@ -31,7 +31,7 @@ W system.bb.parameters%s  s-bbpara.ads		s-bbpara.ali
 W system.bb.threads%s	s-bbthre.adb		s-bbthre.ali
 W system.bb.threads.queues%s  s-bbthqu.adb	s-bbthqu.ali
 
-U system.bb.timing_events%s  s-bbtiev.ads	1187fae8 BN EE OL PF PR PK
+U system.bb.timing_events%s  s-bbtiev.ads	d13d9819 BN EE OL PF PR PK
 Z ada.tags%s		a-tags.adb		a-tags.ali
 W system%s		system.ads		system.ali
 W system.bb%s		s-bb.ads		s-bb.ali
@@ -54,9 +54,9 @@ D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
 D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20200317140614 c3a001f2 system.bb.threads%s
-D s-bbthqu.ads		20200317140437 220c8ae0 system.bb.threads.queues%s
-D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
+D s-bbthre.ads		20200326105744 01e92e1c system.bb.threads%s
+D s-bbthqu.ads		20200327114526 2c7634a4 system.bb.threads.queues%s
+D s-bbtime.ads		20200325112142 da8467fe system.bb.time%s
 D s-bbtiev.ads		20190621183100 f167837c system.bb.timing_events%s
 D s-bbtiev.adb		20190621183100 67a172c1 system.bb.timing_events%b
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
@@ -84,21 +84,21 @@ X 15 s-bbpara.ads
 45K19*Parameters 155e25 20|29w16 69r34 134r34
 152b4*Multiprocessor{boolean} 20|69r45 134r45
 X 16 s-bbthre.ads
-49K19*Threads 350e22 20|30w16 31r16 39r18
+49K19*Threads 362e22 20|30w16 31r16 39r18
 65P9*Thread_Id(62R9) 20|266r25
-267V13*Thread_Self{65P9} 20|285s18
-282V13*Get_Priority{integer} 20|286s26
+283V13*Thread_Self{65P9} 20|285s18
+298V13*Get_Priority{integer} 20|286s26
 X 17 s-bbthqu.ads
-41K27*Queues 402e29 20|31w24 288r7 318r7
+41K27*Queues 405e29 20|31w24 288r7 318r7
 125U14*Change_Priority 20|288s14 318s14
 X 18 s-bbtime.ads
-43K19*Time 246e19 19|29w16 46r27 62r67 66r61 71r61 76r27 76r50 20|36r23 164r27
+43K19*Time 248e19 19|29w16 46r27 62r67 66r61 71r61 76r27 76r50 20|36r23 164r27
 . 167r30 197r24 198r10 221r25 232r30 247r27 248r13 261r61 331r61 336r27 346r67
 . 349r27
 46M9*Time 19|46r32 62r72 66r66 71r66 76r32 76r55 20|36r28 164r32 167r35 232r35
 . 261r66 331r66 336r32 346r72 349r32
-191V13*Get_Next_Timeout{46M9} 20|197s29 221s30 247s32
-194U14*Update_Alarm 20|198s15 248s18
+193V13*Get_Next_Timeout{46M9} 20|197s29 221s30 247s32
+196U14*Update_Alarm 20|198s15 248s18
 X 19 s-bbtiev.ads
 32K19*Timing_Events 8|40k16 19|75E9 96l15 96e28 20|34b24 443l15 443t28
 35R9*Timing_Event 38r42 40r43 45r24 57r26 62r36 20|163r24 229r26 346r36

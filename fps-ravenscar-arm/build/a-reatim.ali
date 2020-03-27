@@ -20,7 +20,7 @@ RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
 
-U ada.real_time%b	a-reatim.adb		1b292802 OL PK
+U ada.real_time%b	a-reatim.adb		377886ff OL PK
 W ada%s			ada.ads			ada.ali
 W ada.unchecked_conversion%s
 W system%s		system.ads		system.ali
@@ -28,7 +28,7 @@ W system.task_primitives%s  s-taspri.ads	s-taspri.ali
 W system.task_primitives.operations%s  s-taprop.adb  s-taprop.ali
 W system.tasking%s	s-taskin.adb		s-taskin.ali
 
-U ada.real_time%s	a-reatim.ads		cb05289a BN EE NE OL PK
+U ada.real_time%s	a-reatim.ads		8c3140be BN EE NE OL PK
 W ada%s			ada.ads			ada.ali
 W system%s		system.ads		system.ali
 W system.os_interface%s	s-osinte.ads		s-osinte.ali  EA
@@ -36,7 +36,7 @@ W system.os_interface%s	s-osinte.ads		s-osinte.ali  EA
 D ada.ads		20190621182550 76789da1 ada%s
 D a-except.ads		20190621182548 291912d5 ada.exceptions%s
 D a-reatim.ads		20190621183100 4c16970e ada.real_time%s
-D a-reatim.adb		20190621183100 f9171193 ada.real_time%b
+D a-reatim.adb		20200325104715 f9171193 ada.real_time%b
 D a-unccon.ads		20190621182550 0e9b276f ada.unchecked_conversion%s
 D interfac.ads		20190621182551 5ab55268 interfaces%s
 D i-stm32.ads		20190621182551 2ad0960b interfaces.stm32%s
@@ -50,11 +50,11 @@ D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
 D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20200317140614 c3a001f2 system.bb.threads%s
-D s-bbthqu.ads		20200317140437 220c8ae0 system.bb.threads.queues%s
-D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
+D s-bbthre.ads		20200326105744 01e92e1c system.bb.threads%s
+D s-bbthqu.ads		20200327114526 2c7634a4 system.bb.threads.queues%s
+D s-bbtime.ads		20200325112142 da8467fe system.bb.time%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
-D s-osinte.ads		20200317140614 f16b2235 system.os_interface%s
+D s-osinte.ads		20200325121008 b65f4a11 system.os_interface%s
 D s-parame.ads		20190621182555 d106111e system.parameters%s
 D s-secsta.ads		20190621182555 56a2861c system.secondary_stack%s
 D s-stalib.ads		20190621182556 09bd3940 system.standard_library%s
@@ -62,7 +62,7 @@ D s-stm32.ads		20190621182556 e898dba2 system.stm32%s
 D s-stoele.ads		20190621182556 2dc34a04 system.storage_elements%s
 D s-tasinf.ads		20190621182556 801abd01 system.task_info%s
 D s-taspri.ads		20190621183100 351848fa system.task_primitives%s
-D s-taprop.ads		20200317140741 f802d0e6 system.task_primitives.operations%s
+D s-taprop.ads		20200325121008 d4537e1b system.task_primitives.operations%s
 D s-taskin.ads		20190621183100 58b15916 system.tasking%s
 D s-traent.ads		20190621182556 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20190621182556 34867c83 system.unsigned_types%s
@@ -93,7 +93,7 @@ X 3 a-reatim.ads
 64i4*Time_Span_Zero{61I9} 165c4
 65i4*Time_Span_Unit{61I9} 166c4
 67i4*Tick{61I9} 168c4
-68V13*Clock{51M9}<20|185p13> 4|311b13 314l8 314t13
+68V13*Clock{51M9}<20|187p13> 4|311b13 314l8 314t13
 72V14*"+"{51M9} 72>19 72>32 80s13 4|187b14 214l9 214t11 596s33
 72m19 Left{51M9} 4|187b18 195r49 197r32 203r46 204r32 207r18 209r32
 72i32 Right{61I9} 4|187b31 194r10 195r67 197r49 203r13 206r13 206r32 207r37
@@ -120,13 +120,13 @@ X 3 a-reatim.ads
 89V14*">="{boolean} 89>19 89>25 173b31 4|203r51 207r23 233r35 262r15
 89m19 Left{51M9}
 89m25 Right{51M9}
-92V14*"+"{61I9}<20|140p13> 92>19 92>25 4|216b14 220l9 220t11 563s18
+92V14*"+"{61I9}<20|142p13> 92>19 92>25 4|216b14 220l9 220t11 563s18
 92i19 Left{61I9} 4|216b18 219r30
 92i25 Right{61I9} 4|216b24 219r43
-94V14*"-"{61I9}<20|148p13> 94>19 94>25 4|270s20 277b14 281l9 281t11
+94V14*"-"{61I9}<20|150p13> 94>19 94>25 4|270s20 277b14 281l9 281t11
 94i19 Left{61I9} 4|277b18 280r30
 94i25 Right{61I9} 4|277b24 280r43
-96V14*"-"{61I9}<20|149p13> 96>19 4|270s17 283b14 287l9 287t11
+96V14*"-"{61I9}<20|151p13> 96>19 4|270s17 283b14 287l9 287t11
 96i19 Right{61I9} 4|283b18 286r31
 98V14*"*"{61I9}<20|124p13> 98>19 98>37 4|136b14 176l9 176t11 180s20
 98i19 Left{61I9} 4|136b18 138r13 140r16 155r13 158r27 174r17
@@ -158,11 +158,11 @@ X 3 a-reatim.ads
 119i27 TS{61I9} 4|604b26 608r33
 121V13*To_Time_Span{61I9}<20|118p13> 121>27 4|615b13 620l8 620t20
 121o27 D{duration} 4|615b27 619r33
-124V13*Nanoseconds{61I9}<20|155p13> 124>27 178r19 4|487b13 493l8 493t19
+124V13*Nanoseconds{61I9}<20|157p13> 124>27 178r19 4|487b13 493l8 493t19
 124i27 NS{integer} 4|487b26 492r38
-126V13*Microseconds{61I9}<20|156p13> 126>27 176r19 4|320b13 326l8 326t20
+126V13*Microseconds{61I9}<20|158p13> 126>27 176r19 4|320b13 326l8 326t20
 126i27 US{integer} 4|320b27 325r38
-128V13*Milliseconds{61I9}<20|157p13> 128>27 177r19 4|332b13 338l8 338t20
+128V13*Milliseconds{61I9}<20|159p13> 128>27 177r19 4|332b13 338l8 338t20
 128i27 MS{integer} 4|332b27 337r38
 131V13*Seconds{61I9} 131>22 133r19 179r19 4|515b13 520l8 520t15
 131i22 S{integer} 4|515b22 519r30
@@ -230,7 +230,7 @@ X 20 s-bbtime.ads
 46M9*Time
 84I9*Time_Span<long_long_integer>
 X 22 s-osinte.ads
-51K16*OS_Interface 3|38w13 39r30 47r14 55r41 155r28 160r33 4|50r31 22|231e24
+51K16*OS_Interface 3|38w13 39r30 47r14 55r41 155r28 160r33 4|50r31 22|226e24
 98M12*Time{20|46M9} 3|155r41
 101I12*Time_Span{20|84I9} 3|160r46
 105N4*Ticks_Per_Second 3|47r27 55r54 4|325r53 337r53 345r52 346r52 357r45
@@ -240,7 +240,7 @@ X 24 s-secsta.ads
 X 29 s-taspri.ads
 40K16*Task_Primitives 4|37r13 313r27 29|82e27
 X 30 s-taprop.ads
-46K32*Operations 4|37w29 313r43 30|142e38
+46K32*Operations 4|37w29 313r43 30|137e38
 95M9*Time<20|46M9>
 97V13*Monotonic_Clock{95M9} 4|313s54
 X 31 s-taskin.ads

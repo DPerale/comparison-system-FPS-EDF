@@ -134,11 +134,13 @@ package System.BB.Time is
    -- "+" --
    ---------
    function "+"  (Left : System.BB.Time.Time;
-      Right : System.BB.Time.Time_Span) return System.BB.Time.Time;
+                  Right : System.BB.Time.Time_Span) return Time;
+
    function "+" (Left : System.BB.Time.Time_Span;
-      Right : System.BB.Time.Time) return System.BB.Time.Time;
+                 Right : System.BB.Time.Time) return Time;
+
    function "+"  (Left, Right : System.BB.Time.Time_Span)
-      return System.BB.Time.Time_Span;
+      return Time_Span;
 
    ---------
    -- "-" --

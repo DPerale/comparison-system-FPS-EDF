@@ -40,10 +40,13 @@ package body Cyclic_Tasks is
       end Time_Conversion;
 
       Temp : Integer;
-      Work_Jitter : Ada.Real_Time.Time;
-      Release_Jitter : Ada.Real_Time.Time;
+      Temp2 : Ada.Real_Time.Time_Span;
 
    begin
+      Temp2 := Next_Period - Ada.Real_Time.Time_First;
+      Temp2 := (Temp2 / 180000) * 180000;
+      Temp2 := Temp2 - Ada.Real_Time.Microseconds (73);
+      Next_Period := Ada.Real_Time.Time_First + Temp2;
       System.Task_Primitives.Operations.Set_Period
          (System.Task_Primitives.Operations.Self,
          System.BB.Time.Microseconds (Cycle_Time));
@@ -59,20 +62,10 @@ package body Cyclic_Tasks is
       loop
          delay until Next_Period;
 
-         Release_Jitter := Ada.Real_Time.Time_First +
-           (Ada.Real_Time.Clock - Next_Period);
-
          Temp := Load_Num;
          Load (Temp);
 
-         Work_Jitter := Ada.Real_Time.Time_First +
-           (Ada.Real_Time.Clock - (Release_Jitter
-            + (Next_Period - Ada.Real_Time.Time_First)));
-
          Next_Period := Next_Period + Period;
-         System.Task_Primitives.Operations.Set_Jitters
-           (System.Task_Primitives.Operations.Self,
-           Time_Conversion (Work_Jitter), Time_Conversion (Release_Jitter));
       end loop;
    end Cyclic;
 

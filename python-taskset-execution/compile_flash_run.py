@@ -74,11 +74,11 @@ def debug_and_read_data (taskset, EDF0_FPS1):
                 debugger.stdin.flush()
                 Preemption_Line = debugger.stdout.readline().decode().split(" ")
 
-                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Min_Work_Jitter\n").encode())
+                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Min_Response_Jitter\n").encode())
                 debugger.stdin.flush()
                 Min_Work_Jitter_Line = debugger.stdout.readline().decode().split(" ")
 
-                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Max_Work_Jitter\n").encode())
+                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Max_Response_Jitter\n").encode())
                 debugger.stdin.flush()
                 Max_Work_Jitter_Line = debugger.stdout.readline().decode().split(" ")
 
@@ -90,7 +90,7 @@ def debug_and_read_data (taskset, EDF0_FPS1):
                 debugger.stdin.flush()
                 Max_Release_Jitter_Line = debugger.stdout.readline().decode().split(" ")
 
-                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Average_Work_Jitter\n").encode())
+                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Average_Response_Jitter\n").encode())
                 debugger.stdin.flush()
                 Avarage_Work_Jitter_Line = debugger.stdout.readline().decode().split(" ")
 

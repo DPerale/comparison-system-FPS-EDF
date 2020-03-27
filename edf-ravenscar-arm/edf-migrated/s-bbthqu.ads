@@ -245,9 +245,12 @@ package System.BB.Threads.Queues is
      (Thread        : Thread_Id;
       Starting_Time : System.BB.Time.Time_Span);
 
-   procedure Change_Jitters
+   procedure Change_Release_Jitter
+     (Thread        : Thread_Id);
+
+   procedure Set_Jitters
      (Thread      : Thread_Id;
-      Work_Jitter : System.BB.Time.Time_Span;
+      Response_Jitter : System.BB.Time.Time_Span;
       Release_Jitter : System.BB.Time.Time_Span);
 
    procedure Yield (Thread : Thread_Id) with
@@ -418,7 +421,7 @@ package System.BB.Threads.Queues is
    ----------------------------
 
    Global_Interrupt_Delay : System.BB.Time.Time_Span
-     := System.BB.Time.Time_Span (171540);
+     := System.BB.Time.Time_Span (0);
 
    -----------------
    -- Global_List --

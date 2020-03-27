@@ -18,7 +18,7 @@ RV NO_DYNAMIC_SIZED_OBJECTS
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 
-U ada.exceptions.last_chance_handler%b  a-elchha.adb  52402e03 NE OL PR SU
+U ada.exceptions.last_chance_handler%b  a-elchha.adb  58d87116 NE OL PR SU
 W ada.exceptions%s	a-except.adb		a-except.ali
 W gnat%s		gnat.ads		gnat.ali
 W gnat.debug_utilities%s  g-debuti.adb		g-debuti.ali
@@ -50,12 +50,12 @@ D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
 D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621183100 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20200317135402 fdb90fdb system.bb.threads%s
-D s-bbthqu.ads		20200317135402 7f12ff45 system.bb.threads.queues%s
+D s-bbthre.ads		20200327120656 e32b4f4c system.bb.threads%s
+D s-bbthqu.ads		20200327120656 ddbca820 system.bb.threads.queues%s
 D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
 D s-io.ads		20190621182554 9e42f74f system.io%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
-D s-osinte.ads		20200317135436 0270a3b7 system.os_interface%s
+D s-osinte.ads		20200325142452 08e8fca2 system.os_interface%s
 D s-parame.ads		20190621182555 d106111e system.parameters%s
 D s-secsta.ads		20190621182555 56a2861c system.secondary_stack%s
 D s-stalib.ads		20190621182556 09bd3940 system.standard_library%s
@@ -95,8 +95,8 @@ X 23 s-io.ads
 45U14*Put_Line 4|45s4 46s4 47s4 48s4
 47U14*New_Line 4|57s4
 X 25 s-osinte.ads
-51K16*OS_Interface 4|35w13 61r11 25|271e24
-229U14*Sleep=229:46 4|61s24
+51K16*OS_Interface 4|35w13 61r11 25|266e24
+224U14*Sleep=224:46 4|61s24
 X 31 s-traent.ads
 50M12*Traceback_Entry{11|80M9}
 56A9*Tracebacks_Array(50M12)<integer>

@@ -38,7 +38,6 @@ with Ada.Unchecked_Conversion;
 with System.Storage_Elements;
 with System.Tasking.Debug;
 with System.Task_Info;
-with System.IO;
 
 package body System.Task_Primitives.Operations is
 
@@ -216,19 +215,6 @@ package body System.Task_Primitives.Operations is
       System.OS_Interface.Set_Starting_Time (Starting_Time);
    end Set_Starting_Time;
 
-   -----------------
-   -- Set_Jitters --
-   -----------------
-
-   procedure Set_Jitters
-     (T      : ST.Task_Id;
-      Work_Jitter : System.BB.Time.Time_Span;
-      Release_Jitter : System.BB.Time.Time_Span) is
-   begin
-      pragma Assert (T = Self);
-      System.OS_Interface.Set_Jitters (Work_Jitter, Release_Jitter);
-   end Set_Jitters;
-
    ------------------
    -- Get_Affinity --
    ------------------
@@ -292,7 +278,6 @@ package body System.Task_Primitives.Operations is
       Enter_Task (T);
 
       loop
-         System.IO.Put_Line ("ciao idle");
          OS_Interface.Power_Down;
       end loop;
    end Idle;

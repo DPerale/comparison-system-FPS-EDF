@@ -328,6 +328,9 @@ package body System.BB.Time is
       Now               : Time;
       Self              : Threads.Thread_Id;
       Inserted_As_First : Boolean;
+      Response_Jitter : Time_Span;
+      Temp1 : Time_Span;
+      Temp2 : Time;
 
    begin
 
@@ -338,6 +341,19 @@ package body System.BB.Time is
       Self := Thread_Self;
 
       pragma Assert (Self.State = Runnable);
+
+      if Self.First_Execution = True then
+
+         Temp1 := Self.Active_Next_Period - Time_First;
+         Temp2 := Self.Active_Release_Jitter + Temp1;
+         Response_Jitter := Now - Temp2;
+         if Self.Fake_Number_ID > 0 then
+            System.BB.Threads.Queues.Set_Jitters (Self,
+                (Response_Jitter), (Self.Active_Release_Jitter - Time_First));
+         end if;
+      else
+         Self.First_Execution := True;
+      end if;
 
       --  add DM if necessary and add execution
       System.BB.Threads.Queues.Add_Execution (Self.Fake_Number_ID);
