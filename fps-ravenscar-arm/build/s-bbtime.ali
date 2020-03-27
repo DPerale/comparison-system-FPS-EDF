@@ -62,7 +62,7 @@ D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
 D s-bbprot.ads		20190621183100 f48a7e85 system.bb.protection%s
-D s-bbthre.ads		20200326105744 01e92e1c system.bb.threads%s
+D s-bbthre.ads		20200327123511 01e92e1c system.bb.threads%s
 D s-bbthqu.ads		20200327114526 2c7634a4 system.bb.threads.queues%s
 D s-bbtime.ads		20200325112142 da8467fe system.bb.time%s
 D s-bbtime.adb		20200326111919 5a273000 system.bb.time%b
@@ -111,7 +111,7 @@ X 16 s-bbprot.ads
 48U14*Enter_Kernel 20|147s18 345s18
 54U14*Leave_Kernel 20|214s18 399s18
 X 17 s-bbthre.ads
-49K19*Threads 362e22 20|43r16 56r8 56r17 359r23 367r17 369r20 374r24 395r10
+49K19*Threads 358e22 20|43r16 56r8 56r17 359r23 367r17 369r20 374r24 395r10
 65P9*Thread_Id(62R9) 20|338r27
 71n27*Runnable{71E9} 20|351r35
 71n48*Delayed{71E9} 20|379r24
@@ -121,9 +121,9 @@ X 17 s-bbthre.ads
 163i7*Active_Period{19|84I9} 20|396r56
 167i7*Fake_Number_ID{integer} 20|358r18 367r52 369r48
 173m7*Active_Next_Period{19|46M9} 20|355r24
-181m7*Active_Release_Jitter{19|46M9} 20|356r24 360r42
-185b7*First_Execution{boolean} 20|353r15 363m15
-283V13*Thread_Self{65P9} 20|349s15
+177m7*Active_Release_Jitter{19|46M9} 20|356r24 360r42
+181b7*First_Execution{boolean} 20|353r15 363m15
+279V13*Thread_Self{65P9} 20|349s15
 X 18 s-bbthqu.ads
 41K27*Queues 405e29 20|43w24 56r25 359r31 367r25 369r28 374r32 395r18
 52U14*Add_DM 20|369s35

@@ -41,7 +41,7 @@ D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
 D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20200326105744 01e92e1c system.bb.threads%s
+D s-bbthre.ads		20200327123511 01e92e1c system.bb.threads%s
 D s-bbthqu.ads		20200327114526 2c7634a4 system.bb.threads.queues%s
 D s-bbtime.ads		20200325112142 da8467fe system.bb.time%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
@@ -87,28 +87,28 @@ X 12 s-bbpara.ads
 53N4*Ticks_Per_Second 17|105r56
 102I12*Interrupt_Range{integer}
 X 13 s-bbthre.ads
-49K19*Threads 362e22 17|44r16 118r43 122r35 126r33 135r24 143r24 154r24 157r60
+49K19*Threads 358e22 17|44r16 118r43 122r35 126r33 135r24 143r24 154r24 157r60
 . 165r24 168r62 176r24 180r24 186r24 192r25 196r25 198r38 201r56 209r24 213r24
 . 218r24
-62R9*Thread_Descriptor 186e14 17|118r51
+62R9*Thread_Descriptor 182e14 17|118r51
 65P9*Thread_Id(62R9) 17|122r43
 68p4*Null_Thread_Id{65P9} 17|126r41
 77R9*Thread_Descriptor
-188V13*Get_Affinity{16|21I9} 17|209r32
-196V13*Get_CPU{16|23I12} 17|213r32
-204U14*Initialize 17|135r32
-240U14*Initialize_Slave 17|143r32
-263U14*Thread_Create 17|154r32
-283V13*Thread_Self{65P9} 17|157r68
-294U14*Set_Priority 17|176r32
-298V13*Get_Priority{integer} 17|180r32
-312U14*Set_Relative_Deadline 17|186r32
-319U14*Set_Period 17|192r33
-322U14*Set_Starting_Time 17|196r33
-325U14*Sleep 17|198r46
-332U14*Wakeup 17|201r64
-354U14*Set_ATCB 17|165r32
-358V13*Get_ATCB{4|80M9} 17|168r70
+184V13*Get_Affinity{16|21I9} 17|209r32
+192V13*Get_CPU{16|23I12} 17|213r32
+200U14*Initialize 17|135r32
+236U14*Initialize_Slave 17|143r32
+259U14*Thread_Create 17|154r32
+279V13*Thread_Self{65P9} 17|157r68
+290U14*Set_Priority 17|176r32
+294V13*Get_Priority{integer} 17|180r32
+308U14*Set_Relative_Deadline 17|186r32
+315U14*Set_Period 17|192r33
+318U14*Set_Starting_Time 17|196r33
+321U14*Sleep 17|198r46
+328U14*Wakeup 17|201r64
+350U14*Set_ATCB 17|165r32
+354V13*Get_ATCB{4|80M9} 17|168r70
 X 14 s-bbthqu.ads
 41K27*Queues 405e29 17|44w24 218r32
 151V13*Current_Priority{integer} 17|218r39

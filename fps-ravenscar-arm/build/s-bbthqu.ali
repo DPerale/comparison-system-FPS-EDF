@@ -48,7 +48,7 @@ D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
 D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20200326105744 01e92e1c system.bb.threads%s
+D s-bbthre.ads		20200327123511 01e92e1c system.bb.threads%s
 D s-bbthqu.ads		20200327114526 2c7634a4 system.bb.threads.queues%s
 D s-bbthqu.adb		20200326102435 a1190070 system.bb.threads.queues%b
 D s-bbtime.ads		20200325112142 da8467fe system.bb.time%s
@@ -83,7 +83,7 @@ X 9 s-bbdead.ads
 51I12*Relative_Deadline{16|84I9} 14|201r42 15|280r42
 65M12*Absolute_Deadline{16|46M9} 14|211r44 15|429r42
 X 13 s-bbthre.ads
-49K19*Threads 5|40k16 13|362e22 14|41r19 405r15 15|41r24 472r48 809r15
+49K19*Threads 5|40k16 13|358e22 14|41r19 405r15 15|41r24 472r48 809r15
 65P9*Thread_Id(62R9) 14|57r31 103r32 125r40 174r22 180r22 184r22 188r23 192r23
 . 195r21 200r22 210r24 218r30 247r65 257r63 267r35 274r33 303r18 337r40 392r18
 . 15|50r34 127r40 130r22 131r22 255r22 267r22 279r22 319r22 334r23 351r23
@@ -122,8 +122,8 @@ X 13 s-bbthre.ads
 169b7*Is_Sporadic{boolean} 15|271m14
 171b7*Just_Wakeup{boolean} 15|359r17 362m17 712m24 737m14
 173m7*Active_Next_Period{16|46M9} 15|342m14 360r48 713m24 713r60 738m14 738r43
-181m7*Active_Release_Jitter{16|46M9} 15|361m17
-196V13*Get_CPU{19|23I12} 14|331s38 335s56 15|136s31 284s37 322s37 337s37
+177m7*Active_Release_Jitter{16|46M9} 15|361m17
+192V13*Get_CPU{19|23I12} 14|331s38 335s56 15|136s31 284s37 322s37 337s37
 . 353s37 375s37 432s37 484s32 549s37 631s38 728s41
 X 14 s-bbthqu.ads
 41K27*Queues 13|49k19 14|405l23 405e29 15|41b32 809l23 809t29
