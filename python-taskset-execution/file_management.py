@@ -136,7 +136,7 @@ def save_data (taskset, EDF_data, FPS_data, name, unique_name, hyperperiod):
     with open('../taskset-experiments/'+str(name)+'_'+str(unique_name)+'.csv', mode='w') as csv_to_write:
         csv_writer = csv.writer(csv_to_write, delimiter=';')
         csv_writer.writerow(
-            ['ID', 'Priority', 'Period', 'Deadline', 'WCET', 'FPS Deadline Miss', 'FPS Executions', 'FPS Preemptions', 'Less', 'EDF Deadline Miss', 'EDF Executions', 'EDF Preemptions', 'Utilization by work', 'Utilization by calculable overheads', '', 'FPS Min Work Jitter', 'FPS Max Work Jitter', 'FPS Min Release Jitter', 'FPS Max Release Jitter', 'FPS Avarage Work Jitter', 'EDF Min Work Jitter', 'EDF Max Work Jitter', 'EDF Min Release Jitter', 'EDF Max Release Jitter', 'EDF Avarage Work Jitter'])
+            ['ID', 'Priority', 'Period', 'Deadline', 'WCET', 'FPS Deadline Miss', 'FPS Regular Completions', 'FPS Preemptions', 'Less', 'EDF Deadline Miss', 'EDF Regular Completions', 'EDF Preemptions', 'Utilization by work', 'Utilization by calculable overheads', '', 'FPS Min Response Jitter', 'FPS Max Response Jitter', 'FPS Min Release Jitter', 'FPS Max Release Jitter', 'FPS Avarage Response Jitter', 'EDF Min Response Jitter', 'EDF Max Response Jitter', 'EDF Min Release Jitter', 'EDF Max Release Jitter', 'EDF Avarage Response Jitter'])
         sum_FPS_preemptions = 0
         sum_EDF_preemptions = 0
         sum_utilization = 0

@@ -25,7 +25,7 @@ RV NO_IMPLEMENTATION_RESTRICTIONS
 RR NO_ELABORATION_CODE
 RV SPARK_05
 
-U system.bb.time%b	s-bbtime.adb		a9c506bc NE OL PK
+U system.bb.time%b	s-bbtime.adb		0a05feff NE OL PK
 W ada%s			ada.ads			ada.ali
 Z ada.tags%s		a-tags.adb		a-tags.ali
 W ada.unchecked_conversion%s
@@ -64,9 +64,9 @@ D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621183100 431abc17 system.bb.parameters%s
 D s-bbprot.ads		20190621183100 f48a7e85 system.bb.protection%s
 D s-bbthre.ads		20200327120656 e32b4f4c system.bb.threads%s
-D s-bbthqu.ads		20200327120656 ddbca820 system.bb.threads.queues%s
+D s-bbthqu.ads		20200327155700 73514a90 system.bb.threads.queues%s
 D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
-D s-bbtime.adb		20200327120718 d4060134 system.bb.time%b
+D s-bbtime.adb		20200327155659 d92b1bc7 system.bb.time%b
 D s-bbtiev.ads		20190621183100 f167837c system.bb.timing_events%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
 D s-mufalo.ads		20190621183100 3dca0374 system.multiprocessors.fair_locks%s
@@ -121,7 +121,7 @@ X 17 s-bbthre.ads
 155m7*Active_Absolute_Deadline{12|65M12} 20|360r15 389r24
 162b7*Preemption_Needed{boolean} 20|373m15
 166i7*Active_Period{19|84I9} 20|389r56
-170i7*Fake_Number_ID{integer} 20|350r18 359r52 361r48
+170i7*Fake_Number_ID{integer} 20|350r18 359r62 361r48
 176m7*Active_Next_Period{19|46M9} 20|347r24
 180m7*Active_Release_Jitter{19|46M9} 20|348r24 352r42
 184b7*First_Execution{boolean} 20|345r15 355m15
@@ -129,10 +129,10 @@ X 17 s-bbthre.ads
 X 18 s-bbthqu.ads
 41K27*Queues 443e29 20|43w24 56r25 351r31 359r25 361r28 366r32 388r18
 59U14*Add_DM 20|361s35
-60U14*Add_Execution 20|359s32
+60U14*Add_Regular_Completions 20|359s32
 112U14*Extract 20|374s10
 208U14*Change_Absolute_Deadline 20|388s25
-251U14*Set_Jitters 20|351s38
+251U14*Update_Jitters 20|351s38
 256U14*Yield 20|390s10
 339U14*Insert_Alarm 20|380s10
 407V13*Get_Next_Alarm_Time{19|46M9} 20|409s37
@@ -257,8 +257,8 @@ X 20 s-bbtime.adb
 227m7 After_MSP{70M9} 275m10 288r26
 253i11 Iteration{integer} 306r16
 328m7 Now{19|46M9} 337m7 349r29 360r42 366r64
-329p7 Self{17|65P9} 341m7 343r22 345r10 347r19 348r19 350r13 351r51 352r37
-. 355r10 359r47 360r10 361r43 371r10 373r10 374r19 380r27 389r13 389r19 389r51
+329p7 Self{17|65P9} 341m7 343r22 345r10 347r19 348r19 350r13 351r54 352r37
+. 355r10 359r57 360r10 361r43 371r10 373r10 374r19 380r27 389r13 389r19 389r51
 . 390r17
 330b7 Inserted_As_First{boolean} 380m33 382r13
 331i7 Response_Jitter{19|84I9} 349m10 352r18

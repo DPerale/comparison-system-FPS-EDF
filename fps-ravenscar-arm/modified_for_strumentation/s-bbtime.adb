@@ -356,15 +356,15 @@ package body System.BB.Time is
          Temp2 := Self.Active_Release_Jitter + Temp1;
          Response_Jitter := Now - Temp2;
          if Self.Fake_Number_ID > 0 then
-            System.BB.Threads.Queues.Set_Jitters (Self,
+            System.BB.Threads.Queues.Update_Jitters (Self,
                 (Response_Jitter), (Self.Active_Release_Jitter - Time_First));
          end if;
       else
          Self.First_Execution := True;
       end if;
 
-      --  add DM if necessary and add execution
-      System.BB.Threads.Queues.Add_Execution (Self.Fake_Number_ID);
+      --  add DM if necessary and add Regular_Completion
+      System.BB.Threads.Queues.Add_Regular_Completions (Self.Fake_Number_ID);
       if Self.Active_Absolute_Deadline < Now then
          System.BB.Threads.Queues.Add_DM (Self.Fake_Number_ID);
       end if;

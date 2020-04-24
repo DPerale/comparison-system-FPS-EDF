@@ -151,9 +151,10 @@ package body System.Tasking.Protected_Objects.Single_Entry is
          raise Program_Error;
       end if;
 
-      --  add DM if necessary and add execution
+      --  add DM if necessary and add Regular_Completion
       Now := System.BB.Time.Clock;
-      System.BB.Threads.Queues.Add_Execution (Running_Thread.Fake_Number_ID);
+      System.BB.Threads.Queues.Add_Regular_Completions
+        (Running_Thread.Fake_Number_ID);
       if Running_Thread.Active_Absolute_Deadline < Now then
          System.BB.Threads.Queues.Add_DM (Running_Thread.Fake_Number_ID);
       end if;

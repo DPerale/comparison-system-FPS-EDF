@@ -53,10 +53,12 @@ def debug_and_read_data (taskset, EDF0_FPS1):
         if "_start_rom" in line.decode():
             debugger.stdin.write("monitor reset halt\n".encode())
             debugger.stdin.flush()
+            debugger.stdin.write("del br\n".encode())
+            debugger.stdin.flush()
             if (EDF0_FPS1 == 0):
-                debugger.stdin.write("break s-bbthqu.adb:124\n".encode())   # EDF
+                debugger.stdin.write("break s-bbthqu.adb:125\n".encode())   # EDF
             else:
-                debugger.stdin.write("break s-bbthqu.adb:112\n".encode())     # FPS
+                debugger.stdin.write("break s-bbthqu.adb:113\n".encode())     # FPS
             debugger.stdin.flush()
             debugger.stdin.write("c\n".encode())
             debugger.stdin.flush()
@@ -66,7 +68,7 @@ def debug_and_read_data (taskset, EDF0_FPS1):
                 debugger.stdin.flush()
                 DM_Line = debugger.stdout.readline().decode().split(" ")
 
-                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Execution\n").encode())
+                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Regular_Completions\n").encode())
                 debugger.stdin.flush()
                 Execution_Line = debugger.stdout.readline().decode().split(" ")
 

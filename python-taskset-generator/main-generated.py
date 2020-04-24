@@ -4,7 +4,7 @@ from taskset_generator import create_random_taskset_between_two_periods, \
     create_random_taskset_between_two_periods_no_repetition, create_taskset_hyper_113400000_10_100, \
     create_taskset_hyper_113400000_10_200_with_some_long, create_taskset_full_harmonic, create_taskset_semi_harmonic, \
     create_taskset_log_uniform
-from support_functions import calculate_hyperperiod
+from support_functions import calculate_hyperperiod, full_harmonic_periods_generator, semi_harmonic_periods_generator
 
 
 # taskset generated for experiments of Buttazzo method 1 and 2, with possible repetition of periods
@@ -85,7 +85,7 @@ def hyper_113400000_x_x_armonic_10_100():
         if (l == 2):
             min_armonicity_grade = 7
             max_armonicity_grade = 20
-        create_file(("../taskset-generated/hyper_113400000_" + str(min_armonicity_grade) + "_" +str(max_armonicity_grade) +"armonic_10_100.csv"),
+        create_file(("../taskset-generated/hyper_113400000_" + str(min_armonicity_grade) + "_" +str(max_armonicity_grade) +"_armonic_10_100.csv"),
                 "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock, utilization_support_function_i")
         for j in range(500):
             taskset, utilization_context_switch, utilization_clock, utilization_support_function = \
@@ -116,14 +116,17 @@ def hyper_113400000_x_x_armonic_10_200():
         if (l == 2):
             min_armonicity_grade = 7
             max_armonicity_grade = 20
-        create_file("../taskset-generated/hyper_113400000_"+ str(min_armonicity_grade) + "_" +str(max_armonicity_grade) +"armonic_10_200.csv",
+        create_file("../taskset-generated/hyper_113400000_"+ str(min_armonicity_grade) + "_" +str(max_armonicity_grade) +"_armonic_10_200.csv",
                     "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock, utilization_support_function_i")
         for j in range(500):
+            print(j)
             taskset, utilization_context_switch, utilization_clock, utilization_support_function = \
                 create_taskset_hyper_113400000_10_200_with_some_long (20, utilization, min_armonicity_grade, max_armonicity_grade)
+
             hyperperiod = calculate_hyperperiod(taskset)
             EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
             FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
+
 
             register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable,
                              FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task,
@@ -157,10 +160,11 @@ def full_harmonic():
     create_file("../taskset-generated/full_harmonic.csv",
                 "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock, utilization_support_function_i")
     utilization = 0.9
+    periods = full_harmonic_periods_generator()
     for i in range(10000):
         print(i)
         taskset, utilization_context_switch, utilization_clock, utilization_support_function = \
-            create_taskset_full_harmonic(utilization)
+            create_taskset_full_harmonic(utilization, periods, i)
         hyperperiod = calculate_hyperperiod(taskset)
         EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
         FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
@@ -176,10 +180,11 @@ def semi_harmonic():
     create_file("../taskset-generated/semi_harmonic.csv",
                 "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock, utilization_support_function_i")
     utilization = 0.9
+    periods = semi_harmonic_periods_generator()
     for i in range(1000):
         print(i)
         taskset, utilization_context_switch, utilization_clock, utilization_support_function = \
-            create_taskset_semi_harmonic(utilization)
+            create_taskset_semi_harmonic(utilization, periods, i)
         hyperperiod = calculate_hyperperiod(taskset)
         EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
         FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
@@ -212,7 +217,7 @@ def U_90_log_uniform():
 def U_100_hyper_113400000_10_100():
 
     utilization = 1.00
-    create_file("../taskset-generated/U_100_hyper_1134000001_10_100.csv",
+    create_file("../taskset-generated/U_100_hyper_113400000_10_100.csv",
                 "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock, utilization_support_function_i")
 
     for j in range(500):
@@ -225,8 +230,9 @@ def U_100_hyper_113400000_10_100():
         register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss, EDF_schedulable,
                          FPS_schedulable, EDF_response_time, FPS_response_time, FPS_deadline_miss_task,
                          utilization_context_switch, utilization_clock, utilization_support_function, hyperperiod,
-                         "../taskset-generated/U_100_hyper_1134000001_10_100.csv")
+                         "../taskset-generated/U_100_hyper_113400000_10_100.csv")
 
 
 # use a function here
 # U_100_hyper_113400000_10_100()
+semi_harmonic()

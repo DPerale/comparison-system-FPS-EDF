@@ -55,7 +55,7 @@ package body System.BB.Threads.Queues is
       record
          ID : Integer;
          DM : Integer;
-         Execution : Integer;
+         Regular_Completions : Integer;
          Preemption : Integer;
          Min_Response_Jitter :  System.BB.Time.Time_Span;
          Max_Response_Jitter :  System.BB.Time.Time_Span;
@@ -91,12 +91,13 @@ package body System.BB.Threads.Queues is
       end if;
    end Add_DM;
 
-   procedure Add_Execution (ID : Integer) is
+   procedure Add_Regular_Completions (ID : Integer) is
    begin
       if ID /= 0 then
-         Task_Table (ID).Execution := Task_Table (ID).Execution + 1;
+         Task_Table (ID).Regular_Completions :=
+           Task_Table (ID).Regular_Completions + 1;
       end if;
-   end Add_Execution;
+   end Add_Regular_Completions;
 
    procedure Add_Preemption (ID : Integer) is
    begin
@@ -112,7 +113,7 @@ package body System.BB.Threads.Queues is
          System.IO.Put ("Tab;");
          System.IO.Put (Integer'Image (i));
          System.IO.Put (Integer'Image (Task_Table (i).DM));
-         System.IO.Put (Integer'Image (Task_Table (i).Execution));
+         System.IO.Put (Integer'Image (Task_Table (i).Regular_Completions));
          System.IO.Put (Integer'Image (Task_Table (i).Preemption));
          System.IO.Put_Line ("");
          i := i + 1;
@@ -367,7 +368,7 @@ package body System.BB.Threads.Queues is
    -- Set_Jitters --
    -----------------
 
-   procedure Set_Jitters
+   procedure Update_Jitters
      (Thread      : Thread_Id;
       Response_Jitter : System.BB.Time.Time_Span;
       Release_Jitter : System.BB.Time.Time_Span)
@@ -385,9 +386,9 @@ package body System.BB.Threads.Queues is
       else
          Task_Table (Thread.Fake_Number_ID).Average_Response_Jitter :=
            ((Task_Table (Thread.Fake_Number_ID).Average_Response_Jitter *
-              Task_Table (Thread.Fake_Number_ID).Execution) +
+              Task_Table (Thread.Fake_Number_ID).Regular_Completions) +
               Response_Jitter)
-           / (Task_Table (Thread.Fake_Number_ID).Execution + 1);
+           / (Task_Table (Thread.Fake_Number_ID).Regular_Completions + 1);
       end if;
 
       if Response_Jitter <
@@ -418,7 +419,7 @@ package body System.BB.Threads.Queues is
            Release_Jitter;
       end if;
 
-   end Set_Jitters;
+   end Update_Jitters;
 
    ------------------------------
    -- Change_Absolute_Deadline --

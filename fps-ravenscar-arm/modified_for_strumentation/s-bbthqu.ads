@@ -50,7 +50,7 @@ package System.BB.Threads.Queues is
 
    procedure Initialize_Task_Table (ID : Integer);
    procedure Add_DM (ID : Integer);
-   procedure Add_Execution (ID : Integer);
+   procedure Add_Regular_Completions (ID : Integer);
    procedure Add_Preemption (ID : Integer);
    procedure Print_Table (First_Index : Integer);
 
@@ -191,7 +191,7 @@ package System.BB.Threads.Queues is
    procedure Change_Release_Jitter
      (Thread        : Thread_Id);
 
-   procedure Set_Jitters
+   procedure Update_Jitters
      (Thread      : Thread_Id;
       Response_Jitter : System.BB.Time.Time_Span;
       Release_Jitter : System.BB.Time.Time_Span);

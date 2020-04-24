@@ -1,5 +1,5 @@
 from random import randint
-from support_functions import UUnifast, full_harmonic_periods_generator, semi_harmonic_periods_generator
+from support_functions import UUnifast
 import numpy as np
 import math
 
@@ -131,26 +131,22 @@ def create_taskset_hyper_113400000_10_200_with_some_long (num_tasks, utilization
 
 
 # generate a taskset  with full harmonic periods
-def create_taskset_full_harmonic(utilization):
+def create_taskset_full_harmonic(utilization, periods, counter):
 
-    # choosing periods
-    periods = full_harmonic_periods_generator()
     taskset = []
     for i in range(20):
-        taskset.append([(20 - i), periods[i], periods[i], i + 1, 0])
+        taskset.append([(20 - i), periods[counter][i], periods[counter][i], i + 1, 0])
     # use UUnifast for utilization of tasks
     utilization_context_switch, utilization_clock, utilization_support_function = UUnifast(taskset, utilization)
     return taskset, utilization_context_switch, utilization_clock, utilization_support_function
 
 
 # generate a taskset with an high degree of harmonicity
-def create_taskset_semi_harmonic(utilization):
+def create_taskset_semi_harmonic(utilization, periods, counter):
 
-    # choosing periods
-    periods = semi_harmonic_periods_generator()
     taskset = []
     for i in range(20):
-        taskset.append([(20 - i), periods[i], periods[i], i + 1, 0])
+        taskset.append([(20 - i), periods[counter][i], periods[counter][i], i + 1, 0])
     # use UUnifast for utilization of tasks
     utilization_context_switch, utilization_clock, utilization_support_function = UUnifast(taskset, utilization)
     return taskset, utilization_context_switch, utilization_clock, utilization_support_function
