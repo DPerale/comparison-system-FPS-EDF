@@ -374,8 +374,8 @@ def U_100_hyper_113400000_10_100_full1():
             retry = retry + 1
 
 # use a function here
-U_100_hyper_113400000_10_100_full()
-
+#U_100_hyper_113400000_10_100_full()
+U_90_log_uniform()
 #semi_harmonic()
 
 

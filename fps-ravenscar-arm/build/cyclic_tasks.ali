@@ -22,7 +22,7 @@ RV NO_ELABORATION_CODE
 RV SPARK_05
 RV MAX_TASKS=21
 
-U cyclic_tasks%b	cyclic_tasks.adb	19db25dc OO PK
+U cyclic_tasks%b	cyclic_tasks.adb	15a2341f OO PK
 W ada%s			ada.ads			ada.ali
 W ada.real_time%s	a-reatim.adb		a-reatim.ali
 Z ada.real_time.delays%s  a-retide.adb		a-retide.ali
@@ -53,7 +53,7 @@ D a-reatim.ads		20190621183100 4c16970e ada.real_time%s
 D a-retide.ads		20190621183100 081cdaa4 ada.real_time.delays%s
 D a-unccon.ads		20190621182550 0e9b276f ada.unchecked_conversion%s
 D cyclic_tasks.ads	20200226124956 5ce21eb7 cyclic_tasks%s
-D cyclic_tasks.adb	20200426072649 a855fc4e cyclic_tasks%b
+D cyclic_tasks.adb	20200426125904 a42ced8d cyclic_tasks%b
 D interfac.ads		20190621182551 5ab55268 interfaces%s
 D i-stm32.ads		20190621182551 2ad0960b interfaces.stm32%s
 D i-stm32-pwr.ads	20190621182551 4a098e84 interfaces.stm32.pwr%s

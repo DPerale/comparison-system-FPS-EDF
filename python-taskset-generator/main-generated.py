@@ -235,4 +235,4 @@ def U_100_hyper_113400000_10_100():
 
 # use a function here
 # U_100_hyper_113400000_10_100()
-semi_harmonic()
+U_90_log_uniform()
