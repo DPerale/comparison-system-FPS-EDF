@@ -45,6 +45,7 @@ def buttazzo_experiments_preemptions_no_repetition ():
     # Buttazzo method 1 no periods repetition
     for i in range (2,11):
         for j in range(500):
+            print(j)
             taskset, utilization_context_switch, utilization_clock, utilization_support_function = \
                 create_random_taskset_between_two_periods_no_repetition (i*2, 10, 100, utilization)
             EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
@@ -58,6 +59,7 @@ def buttazzo_experiments_preemptions_no_repetition ():
     for i in range (10):
         utilization = 0.5 + i*0.05
         for j in range(500):
+            print(j)
             taskset, utilization_context_switch, utilization_clock, utilization_support_function = \
                 create_random_taskset_between_two_periods_no_repetition (10, 10, 100, utilization)
             EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
@@ -235,4 +237,5 @@ def U_100_hyper_113400000_10_100():
 
 # use a function here
 # U_100_hyper_113400000_10_100()
-U_90_log_uniform()
+# U_90_log_uniform()
+hyper_113400000_10_200_with_some_long_U_60_70_80_90 ()

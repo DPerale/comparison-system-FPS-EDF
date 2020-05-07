@@ -141,7 +141,9 @@ package body System.Tasking.Protected_Objects.Single_Entry is
       Self_Id : constant Task_Id := STPO.Self;
 
       use type Ada.Exceptions.Exception_Id;
-      Now : System.BB.Time.Time;
+      Now : System.BB.Time.Time := System.BB.Time.Clock;
+      Temp1 : Time_Span;
+      Temp2 : Time;
 
    begin
       --  For this run time, pragma Detect_Blocking is always active, so we
@@ -153,11 +155,19 @@ package body System.Tasking.Protected_Objects.Single_Entry is
       end if;
 
       --  add DM if necessary and add execution
-      Now := System.BB.Time.Clock;
-      System.BB.Threads.Queues.Add_Regular_Completions
-        (Running_Thread.Fake_Number_ID);
-      if Running_Thread.Active_Absolute_Deadline < Now then
-         System.BB.Threads.Queues.Add_DM (Running_Thread.Fake_Number_ID);
+      if Running_Thread.Is_Sporadic then
+         Temp1 := Self.Active_Next_Period - Time_First;
+         Temp2 := Self.Active_Release_Jitter + Temp1;
+         Response_Jitter := Now - Temp2;
+         if Self.Fake_Number_ID > 0 then
+            System.BB.Threads.Queues.Update_Jitters (Self,
+                (Response_Jitter), (Self.Active_Release_Jitter - Time_First));
+         end if;
+         System.BB.Threads.Queues.Add_Regular_Completions
+           (Running_Thread.Fake_Number_ID);
+         if Running_Thread.Active_Absolute_Deadline < Now then
+            System.BB.Threads.Queues.Add_DM (Running_Thread.Fake_Number_ID);
+         end if;
       end if;
 
       Lock_Entry (Object);

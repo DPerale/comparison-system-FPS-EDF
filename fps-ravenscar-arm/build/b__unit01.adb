@@ -13,7 +13,7 @@ package body ada_main is
    E008 : Short_Integer; pragma Import (Ada, E008, "ada__real_time_E");
    E125 : Short_Integer; pragma Import (Ada, E125, "system__tasking__restricted__stages_E");
    E127 : Short_Integer; pragma Import (Ada, E127, "system_time_E");
-   E123 : Short_Integer; pragma Import (Ada, E123, "print_task_E");
+   E123 : Short_Integer; pragma Import (Ada, E123, "log_reporter_task_E");
    E005 : Short_Integer; pragma Import (Ada, E005, "cyclic_tasks_E");
 
    Sec_Default_Sized_Stacks : array (1 .. 22) of aliased System.Secondary_Stack.SS_Stack (System.Parameters.Runtime_Default_Sec_Stack_Size);
@@ -126,7 +126,7 @@ package body ada_main is
       E125 := E125 + 1;
       System_Time'Elab_Spec;
       E127 := E127 + 1;
-      Print_Task'Elab_Body;
+      Log_Reporter_Task'Elab_Body;
       E123 := E123 + 1;
       Cyclic_Tasks'Elab_Body;
       E005 := E005 + 1;
@@ -178,7 +178,7 @@ package body ada_main is
    --   /home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/build/s-tasres.o
    --   /home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/build/s-tarest.o
    --   /home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/build/system_time.o
-   --   /home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/build/print_task.o
+   --   /home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/build/log_reporter_task.o
    --   /home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/build/cyclic_tasks.o
    --   /home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/build/unit01.o
    --   -L/home/aquox/Scrivania/comparison-system-FPS-EDF/fps-ravenscar-arm/build/

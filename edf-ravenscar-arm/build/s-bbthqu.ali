@@ -21,14 +21,14 @@ RV NO_IMPLEMENTATION_RESTRICTIONS
 RR NO_ELABORATION_CODE
 RV SPARK_05
 
-U system.bb.threads.queues%b  s-bbthqu.adb	bc397ed6 NE OL PK
+U system.bb.threads.queues%b  s-bbthqu.adb	78536ecd NE OL PK
 Z interfaces%s		interfac.ads		interfac.ali
 W system%s		system.ads		system.ali
 W system.bb.threads%s	s-bbthre.adb		s-bbthre.ali
 Z system.img_int%s	s-imgint.adb		s-imgint.ali
 W system.io%s		s-io.adb		s-io.ali
 
-U system.bb.threads.queues%s  s-bbthqu.ads	76f804cc BN NE OL PR PK
+U system.bb.threads.queues%s  s-bbthqu.ads	1ddb8785 BN NE OL PR PK
 W system%s		system.ads		system.ali
 W system.bb%s		s-bb.ads		s-bb.ali
 W system.bb.board_support%s  s-bbbosu.adb	s-bbbosu.ali
@@ -49,8 +49,8 @@ D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621183100 431abc17 system.bb.parameters%s
 D s-bbthre.ads		20200327120656 e32b4f4c system.bb.threads%s
-D s-bbthqu.ads		20200327155700 73514a90 system.bb.threads.queues%s
-D s-bbthqu.adb		20200327155700 512ac309 system.bb.threads.queues%b
+D s-bbthqu.ads		20200507120206 1872c9d9 system.bb.threads.queues%s
+D s-bbthqu.adb		20200507120252 fe63505b system.bb.threads.queues%b
 D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
 D s-imgint.ads		20190621182554 02dbe0c2 system.img_int%s
 D s-io.ads		20190621182554 9e42f74f system.io%s
@@ -122,8 +122,8 @@ X 13 s-bbthre.ads
 166i7*Active_Period{16|84I9} 15|342r55 345r30 350r64 460m14 477r35 870r51
 . 875r28 903r16
 168i7*Active_Starting_Time{16|84I9} 15|344r43 349r43 475m14
-170i7*Fake_Number_ID{integer} 15|295m14 514r29 517r29 520r29 521r33 522r34
-. 524r34 528r28 530r29 535r28 537r29 542r28 544r29 549r28 551r29 576r44
+170i7*Fake_Number_ID{integer} 15|295m14 514r28 517r28 520r28 521r32 522r33
+. 524r33 528r27 530r28 535r27 537r28 542r27 544r28 549r27 551r28 576r44
 172b7*Is_Sporadic{boolean} 15|307m14
 174b7*Just_Wakeup{boolean} 15|493r17 496m17 873m24 901m14
 176m7*Active_Next_Period{16|46M9} 15|476m14 494r48 874m24 874r60 902m14 902r43
@@ -135,16 +135,16 @@ X 14 s-bbthqu.ads
 44b4*Busy_For_Interrupts{boolean} 15|275m7 571r14
 48b4*Busy_For_Handlers{boolean} 15|571r42
 53K12*BOSUMU=53:51 402r35 403r35 417r29 15|144r38
-58U14*Initialize_Task_Table 58>37 15|83b14 96l8 96t29
-58i37 ID{integer} 15|83b37 85r10 86r22 86r30 92r28 93r29
+58U14*Initialize_Log_Table 58>36 15|83b14 96l8 96t28
+58i36 ID{integer} 15|83b36 85r10 86r21 86r29 92r28 93r29
 59U14*Add_DM 59>22 15|98b14 103l8 103t14
-59i22 ID{integer} 15|98b22 100r10 101r22 101r44
+59i22 ID{integer} 15|98b22 100r10 101r21 101r42
 60U14*Add_Regular_Completions 60>39 15|105b14 111l8 111t31
-60i39 ID{integer} 15|105b39 107r10 108r22 109r24
+60i39 ID{integer} 15|105b39 107r10 108r21 109r23
 61U14*Add_Preemption 61>30 15|113b14 118l8 118t22 576s13
-61i30 ID{integer} 15|113b30 115r10 116r22 116r52
-62U14*Print_Table 62>27 15|120b14 134l8 134t19
-62i27 First_Index{integer} 15|120b27 121r22
+61i30 ID{integer} 15|113b30 115r10 116r21 116r50
+62U14*Print_Log 62>25 15|120b14 134l8 134t17
+62i25 First_Index{integer} 15|120b25 121r22
 63U14*Set_Priority_For_Print 63>38 64>37 15|279b14 284l8 284t30
 63p38 Thread{13|65P9} 15|279b38 282r7 283r7
 64i37 Priority{4|116I12} 15|280b37 282r33 283r31
@@ -189,8 +189,8 @@ X 14 s-bbthqu.ads
 248U14*Change_Release_Jitter 249>7 15|484b14 498l8 498t29
 249p7 Thread{13|65P9} 15|485b7 487r46 491r22 493r10 494r41 495r10 496r10
 251U14*Update_Jitters 252>7 253>7 254>7 15|504b14 555l8 555t22
-252p7 Thread{13|65P9} 15|505b7 509r46 512r22 514r22 517r22 520r22 521r26
-. 522r27 524r27 528r21 530r22 535r21 537r22 542r21 544r22 549r21 551r22
+252p7 Thread{13|65P9} 15|505b7 509r46 512r22 514r21 517r21 520r21 521r25
+. 522r26 524r26 528r20 530r21 535r20 537r21 542r20 544r21 549r20 551r21
 253i7 Response_Jitter{16|84I9} 15|506b7 518r12 523r15 527r10 531r12 534r10
 . 538r12
 254i7 Release_Jitter{16|84I9} 15|507b7 541r10 545r12 548r10 552r12
@@ -225,22 +225,22 @@ X 14 s-bbthqu.ads
 X 15 s-bbthqu.adb
 61a4 Alarms_Table(13|65P9) 62r32 660r38 667m7 691r17 808r10 809r21 811r31
 . 812m10 819r26
-65R9 Table_Record 76e17 78r50
+65R9 Log_Record 76e17 78r48
 67i10*ID{integer}
-68i10*DM{integer} 101m26 101r48 127r55
-69i10*Regular_Completions{integer} 108m26 109r28 128r55 522r50 524r50
-70i10*Preemption{integer} 116m26 116r56 129r55
-71i10*Min_Response_Jitter{16|84I9} 528r44 530m45
-72i10*Max_Response_Jitter{16|84I9} 535r44 537m45
-73i10*Min_Release_Jitter{16|84I9} 542r44 544m45
-74i10*Max_Release_Jitter{16|84I9} 549r44 551m45
-75i10*Average_Response_Jitter{16|84I9} 514r45 517m45 520m45 521r49
-78A9 Array_Table_Record(65R9)<integer> 80r17
-80a4 Task_Table{78A9} 86m10 101m10 101r32 108m10 109r12 116m10 116r40 127r40
+68i10*DM{integer} 101m25 101r46 127r54
+69i10*Regular_Completions{integer} 108m25 109r27 128r54 522r49 524r49
+70i10*Preemption{integer} 116m25 116r54 129r54
+71i10*Min_Response_Jitter{16|84I9} 528r43 530m44
+72i10*Max_Response_Jitter{16|84I9} 535r43 537m44
+73i10*Min_Release_Jitter{16|84I9} 542r43 544m44
+74i10*Max_Release_Jitter{16|84I9} 549r43 551m44
+75i10*Average_Response_Jitter{16|84I9} 514r44 517m44 520m44 521r48
+78A9 Array_Log_Record(65R9)<integer> 80r16
+80a4 Log_Table{78A9} 86m10 101m10 101r31 108m10 109r12 116m10 116r39 127r40
 . 128r40 129r40 514r10 517m10 520m10 521r14 522r15 524r15 528r9 530m10 535r9
 . 537m10 542r9 544m10 549r9 551m10
 81i4 Max_ID_Table{integer} 92r13 93m13 123r18
-121i7 i{integer} 123r13 126r40 127r52 128r52 129r52 131m10 131r15
+121i7 i{integer} 123r13 126r40 127r51 128r51 129r51 131m10 131r15
 144i7 CPU_Id{19|23I12} 149r22 154r53 155r60
 319p7 Aux_Pointer{13|65P9} 381m10 391r16 393r24 395m13 395r28 400r25 401r10
 320i7 CPU_Id{19|23I12} 325r22 330r53 379r30 381r45
@@ -283,12 +283,12 @@ X 16 s-bbtime.ads
 89i4*Time_Span_First{84I9} 15|88r45 90r45
 90i4*Time_Span_Last{84I9} 15|87r45 89r45
 91i4*Time_Span_Zero{84I9} 15|91r45 515r26
-130V14*"*"{84I9} 15|521s73
+130V14*"*"{84I9} 15|521s72
 136V14*"/"{84I9} 15|524s12
 142V14*"+"{46M9} 15|338s40 343s73 346s35 348s73 349s64 351s37 476s62 495s68
 . 875s12 902s62
 144V14*"+"{46M9} 15|870s65
-146V14*"+"{84I9} 15|522s71
+146V14*"+"{84I9} 15|522s70
 152V14*"-"{46M9} 15|344s64
 153V14*"-"{84I9} 15|494s39
 154V14*"-"{84I9} 15|345s44 350s55 477s26

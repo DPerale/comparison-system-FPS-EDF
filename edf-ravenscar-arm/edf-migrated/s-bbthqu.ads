@@ -55,11 +55,11 @@ package System.BB.Threads.Queues is
    ----------------
    -- Ready list --
    ----------------
-   procedure Initialize_Task_Table (ID : Integer);
+   procedure Initialize_Log_Table (ID : Integer);
    procedure Add_DM (ID : Integer);
    procedure Add_Regular_Completions (ID : Integer);
    procedure Add_Preemption (ID : Integer);
-   procedure Print_Table (First_Index : Integer);
+   procedure Print_Log (First_Index : Integer);
    procedure Set_Priority_For_Print (Thread : Thread_Id;
                                     Priority : System.Any_Priority);
 

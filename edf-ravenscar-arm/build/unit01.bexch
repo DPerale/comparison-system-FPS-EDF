@@ -30,7 +30,7 @@ b__unit01.o
 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-tasres.o
 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-tarest.o
 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/system_time.o
-/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/print_task.o
+/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/log_reporter_task.o
 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/cyclic_tasks.o
 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/unit01.o
 [GENERATED SOURCE FILES]

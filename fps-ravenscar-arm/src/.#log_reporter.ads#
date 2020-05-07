@@ -1,0 +1,15 @@
+with System;
+package Log_Reporter is
+
+   task type Print
+     ( --   Pri        : System.BB.Time.Time_Span;
+      Pri        : System.Priority;
+      Dead       : Integer;
+      Cycle_Time : Positive;
+      Offset     : Integer
+      ) is
+      pragma Priority (Pri);
+      pragma Storage_Size (450);
+   end Print;
+
+end Log_Reporter;

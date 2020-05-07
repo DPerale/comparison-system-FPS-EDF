@@ -62,7 +62,7 @@ package body System.BB.Threads.Queues is
    pragma Volatile_Components (Alarms_Table);
    --  Identifier of the thread that is in the first place of the alarm queue
 
-   type Table_Record is
+   type Log_Record is
       record
          ID : Integer;
          DM : Integer;
@@ -75,15 +75,15 @@ package body System.BB.Threads.Queues is
          Average_Response_Jitter : System.BB.Time.Time_Span;
       end record;
 
-   type Array_Table_Record is array (1 .. 90) of Table_Record;
+   type Array_Log_Record is array (1 .. 90) of Log_Record;
 
-   Task_Table : Array_Table_Record;
+   Log_Table : Array_Log_Record;
    Max_ID_Table : Integer := 0;
 
-   procedure Initialize_Task_Table (ID : Integer) is
+   procedure Initialize_Log_Table (ID : Integer) is
    begin
       if ID /= 0 then
-         Task_Table (ID) := (ID, 0, -1, 0,
+         Log_Table (ID) := (ID, 0, -1, 0,
                              System.BB.Time.Time_Span_Last,
                              System.BB.Time.Time_Span_First,
                              System.BB.Time.Time_Span_Last,
@@ -93,45 +93,45 @@ package body System.BB.Threads.Queues is
             Max_ID_Table := ID;
          end if;
       end if;
-   end Initialize_Task_Table;
+   end Initialize_Log_Table;
 
    procedure Add_DM (ID : Integer) is
    begin
       if ID /= 0 then
-         Task_Table (ID).DM := Task_Table (ID).DM + 1;
+         Log_Table (ID).DM := Log_Table (ID).DM + 1;
       end if;
    end Add_DM;
 
    procedure Add_Regular_Completions (ID : Integer) is
    begin
       if ID /= 0 then
-         Task_Table (ID).Regular_Completions :=
-           Task_Table (ID).Regular_Completions + 1;
+         Log_Table (ID).Regular_Completions :=
+           Log_Table (ID).Regular_Completions + 1;
       end if;
    end Add_Regular_Completions;
 
    procedure Add_Preemption (ID : Integer) is
    begin
       if ID /= 0 then
-         Task_Table (ID).Preemption := Task_Table (ID).Preemption + 1;
+         Log_Table (ID).Preemption := Log_Table (ID).Preemption + 1;
       end if;
    end Add_Preemption;
 
-   procedure Print_Table (First_Index : Integer) is
+   procedure Print_Log (First_Index : Integer) is
       i : Integer := First_Index;
    begin
       while i <= Max_ID_Table loop
 
          System.IO.Put ("Tab;");
          System.IO.Put (Integer'Image (i));
-         System.IO.Put (Integer'Image (Task_Table (i).DM));
-         System.IO.Put (Integer'Image (Task_Table (i).Regular_Completions));
-         System.IO.Put (Integer'Image (Task_Table (i).Preemption));
+         System.IO.Put (Integer'Image (Log_Table (i).DM));
+         System.IO.Put (Integer'Image (Log_Table (i).Regular_Completions));
+         System.IO.Put (Integer'Image (Log_Table (i).Preemption));
          System.IO.Put_Line ("");
          i := i + 1;
       end loop;
 
-   end Print_Table;
+   end Print_Log;
 
    ---------------------
    -- Change_Priority --
@@ -511,44 +511,44 @@ package body System.BB.Threads.Queues is
       pragma Assert (CPU_Id = Current_CPU);
       pragma Assert (Thread = Running_Thread_Table (CPU_Id));
 
-      if Task_Table (Thread.Fake_Number_ID).Average_Response_Jitter
+      if Log_Table (Thread.Fake_Number_ID).Average_Response_Jitter
         = System.BB.Time.Time_Span_Zero
       then
-         Task_Table (Thread.Fake_Number_ID).Average_Response_Jitter :=
+         Log_Table (Thread.Fake_Number_ID).Average_Response_Jitter :=
            Response_Jitter;
       else
-         Task_Table (Thread.Fake_Number_ID).Average_Response_Jitter :=
-           ((Task_Table (Thread.Fake_Number_ID).Average_Response_Jitter *
-              Task_Table (Thread.Fake_Number_ID).Regular_Completions) +
+         Log_Table (Thread.Fake_Number_ID).Average_Response_Jitter :=
+           ((Log_Table (Thread.Fake_Number_ID).Average_Response_Jitter *
+              Log_Table (Thread.Fake_Number_ID).Regular_Completions) +
               Response_Jitter)
-           / (Task_Table (Thread.Fake_Number_ID).Regular_Completions + 1);
+           / (Log_Table (Thread.Fake_Number_ID).Regular_Completions + 1);
       end if;
 
       if Response_Jitter <
-        Task_Table (Thread.Fake_Number_ID).Min_Response_Jitter
+        Log_Table (Thread.Fake_Number_ID).Min_Response_Jitter
       then
-         Task_Table (Thread.Fake_Number_ID).Min_Response_Jitter :=
+         Log_Table (Thread.Fake_Number_ID).Min_Response_Jitter :=
            Response_Jitter;
       end if;
 
       if Response_Jitter >
-        Task_Table (Thread.Fake_Number_ID).Max_Response_Jitter
+        Log_Table (Thread.Fake_Number_ID).Max_Response_Jitter
       then
-         Task_Table (Thread.Fake_Number_ID).Max_Response_Jitter :=
+         Log_Table (Thread.Fake_Number_ID).Max_Response_Jitter :=
            Response_Jitter;
       end if;
 
       if Release_Jitter <
-        Task_Table (Thread.Fake_Number_ID).Min_Release_Jitter
+        Log_Table (Thread.Fake_Number_ID).Min_Release_Jitter
       then
-         Task_Table (Thread.Fake_Number_ID).Min_Release_Jitter :=
+         Log_Table (Thread.Fake_Number_ID).Min_Release_Jitter :=
            Release_Jitter;
       end if;
 
       if Release_Jitter >
-        Task_Table (Thread.Fake_Number_ID).Max_Release_Jitter
+        Log_Table (Thread.Fake_Number_ID).Max_Release_Jitter
       then
-         Task_Table (Thread.Fake_Number_ID).Max_Release_Jitter :=
+         Log_Table (Thread.Fake_Number_ID).Max_Release_Jitter :=
            Release_Jitter;
       end if;
 

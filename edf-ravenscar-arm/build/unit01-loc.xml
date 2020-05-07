@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <Locations >
-  <Project>
-    <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_file>
+  <Project >
     <file_marker column=" 14" line=" 128" >
       <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-taprob.adb</vfs_file>
@@ -34,7 +33,7 @@
       <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-bbtime.adb</vfs_file>
     </file_marker>
-    <file_marker column=" 9" line=" 158" >
+    <file_marker column=" 7" line=" 158" >
       <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-tposen.adb</vfs_file>
     </file_marker>
@@ -118,9 +117,93 @@
       <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/src/unit01.adb</vfs_file>
     </file_marker>
-    <file_marker current="true" column=" 1" line=" 1" >
+    <file_marker column=" 1" line=" 1" >
       <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
       <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/src/log_reporter_task.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/src/log_reporter_task.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/src/cyclic_tasks.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-bbthqu.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 62" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-bbthqu.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 23" line=" 14" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/src/log_reporter_task.ads</vfs_file>
+    </file_marker>
+    <file_marker column=" 31" line=" 6" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/src/log_reporter_task.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 4" line=" 96" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/a-elchha.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-soflin.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-bbthre.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-bbtime.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-bbthqu.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-bbthre.adb</vfs_file>
+    </file_marker>
+    <file_marker column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/edf-migrated/s-tposen.adb</vfs_file>
+    </file_marker>
+    <file_marker current="true" column=" 1" line=" 1" >
+      <vfs_project>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/unit01.gpr</vfs_project>
+      <vfs_file>/home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/src/cyclic_tasks.adb</vfs_file>
     </file_marker>
   </Project>
 </Locations>

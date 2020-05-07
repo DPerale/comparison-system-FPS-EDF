@@ -625,6 +625,8 @@ package body System.BB.Threads is
          if Id.Is_Sporadic = True then
             Queues.Change_Absolute_Deadline
               (Id, Id.Active_Relative_Deadline + Now);
+            Id.Just_Wakeup := True;
+            Id.Active_Next_Period := Now;
          end if;
          --  Insert the thread at the tail of its active priority so that the
          --  thread will resume execution.

@@ -25,7 +25,7 @@ RV NO_IMPLEMENTATION_RESTRICTIONS
 RR NO_ELABORATION_CODE
 RV SPARK_05
 
-U system.bb.time%b	s-bbtime.adb		0a05feff NE OL PK
+U system.bb.time%b	s-bbtime.adb		61267db6 NE OL PK
 W ada%s			ada.ads			ada.ali
 Z ada.tags%s		a-tags.adb		a-tags.ali
 W ada.unchecked_conversion%s
@@ -64,7 +64,7 @@ D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621183100 431abc17 system.bb.parameters%s
 D s-bbprot.ads		20190621183100 f48a7e85 system.bb.protection%s
 D s-bbthre.ads		20200327120656 e32b4f4c system.bb.threads%s
-D s-bbthqu.ads		20200327155700 73514a90 system.bb.threads.queues%s
+D s-bbthqu.ads		20200507120206 1872c9d9 system.bb.threads.queues%s
 D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
 D s-bbtime.adb		20200327155659 d92b1bc7 system.bb.time%b
 D s-bbtiev.ads		20190621183100 f167837c system.bb.timing_events%s

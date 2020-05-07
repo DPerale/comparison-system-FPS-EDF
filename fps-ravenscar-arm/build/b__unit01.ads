@@ -147,8 +147,8 @@ package ada_main is
    --  system.tasking.restricted.stages%s
    --  system.tasking.restricted.stages%b
    --  system_time%s
-   --  print_task%s
-   --  print_task%b
+   --  log_reporter_task%s
+   --  log_reporter_task%b
    --  cyclic_tasks%s
    --  cyclic_tasks%b
    --  unit01%b

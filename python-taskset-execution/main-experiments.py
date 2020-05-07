@@ -154,7 +154,7 @@ def hyper_113400000_with_some_long():
         for i in range(1, 501):
             taskset = []
             taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM, EDF_schedulable, FPS_schedulable, \
-                hyperperiod = import_taskset(taskset, i+(l*500), "hyper_113400000_10_200_with_some_long.csv")
+                hyperperiod = import_taskset(taskset, i+(l*500), "hyper_113400000_10_200_with_some_long_U_60_70_80_90.csv")
             make_adb_file(taskset, hyperperiod)
             EDF_data = []
             FPS_data = []
@@ -375,8 +375,6 @@ def U_100_hyper_113400000_10_100_full1():
 
 # use a function here
 #U_100_hyper_113400000_10_100_full()
-U_90_log_uniform()
-#semi_harmonic()
-
+hyper_113400000_with_some_long()
 
 

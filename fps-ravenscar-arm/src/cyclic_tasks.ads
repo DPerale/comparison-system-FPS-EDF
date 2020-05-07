@@ -4,10 +4,10 @@ package Cyclic_Tasks is
 
    task type Cyclic
      (Pri        : System.Priority;
-      Dead       : Positive;
-      Cycle_Time : Positive;
+      Deadline   : Positive;
+      Period     : Positive;
       T_Num      : Integer;
-      Load_Num  : Integer;
+      Workload   : Integer;
       Offset     : Integer
       ) is
       pragma Priority (Pri);
