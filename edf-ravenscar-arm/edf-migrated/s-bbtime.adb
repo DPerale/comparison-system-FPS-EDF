@@ -356,7 +356,7 @@ package body System.BB.Time is
       end if;
 
       --  add DM if necessary and add execution
-      System.BB.Threads.Queues.Add_Regular_Completions (Self.Fake_Number_ID);
+      System.BB.Threads.Queues.Add_Runs (Self.Fake_Number_ID);
       if Self.Active_Absolute_Deadline < Now then
          System.BB.Threads.Queues.Add_DM (Self.Fake_Number_ID);
       end if;

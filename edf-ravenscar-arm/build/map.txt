@@ -231,7 +231,7 @@ END GROUP
                 0x0000000008000d40                system__bb__threads__queues__Tarray_log_recordBIP
                 0x0000000008000d54                system__bb__threads__queues__initialize_log_table
                 0x0000000008000e74                system__bb__threads__queues__add_dm
-                0x0000000008000ee0                system__bb__threads__queues__add_regular_completions
+                0x0000000008000ee0                system__bb__threads__queues__add_runs
                 0x0000000008000f4c                system__bb__threads__queues__add_preemption
                 0x0000000008000fb8                system__bb__threads__queues__print_log
                 0x0000000008001170                system__bb__threads__queues__change_priority
@@ -4601,7 +4601,7 @@ END GROUP
  .debug_frame   0x0000000000004460      0x104 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(pr-support.o)
  .debug_frame   0x0000000000004564       0x20 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-errno.o)
 
-.debug_str      0x0000000000000000    0x139b7
+.debug_str      0x0000000000000000    0x139a8
  *(.debug_str)
  .debug_str     0x0000000000000000      0x1d2 unit01.o
                                         0x1d9 (size before relaxing)
@@ -4621,95 +4621,95 @@ END GROUP
                                         0x2ef (size before relaxing)
  .debug_str     0x0000000000002024      0x452 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-bbtiev.o
                                         0x694 (size before relaxing)
- .debug_str     0x0000000000002476      0xbfd /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-bbthqu.o
-                                        0xfe0 (size before relaxing)
- .debug_str     0x0000000000003073       0xf7 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-bbprot.o
+ .debug_str     0x0000000000002476      0xbee /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-bbthqu.o
+                                        0xfc2 (size before relaxing)
+ .debug_str     0x0000000000003064       0xf7 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-bbprot.o
                                         0x326 (size before relaxing)
- .debug_str     0x000000000000316a      0x44d /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-bbthre.o
+ .debug_str     0x000000000000315b      0x44d /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-bbthre.o
                                         0xb84 (size before relaxing)
- .debug_str     0x00000000000035b7      0x373 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-bbinte.o
+ .debug_str     0x00000000000035a8      0x373 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-bbinte.o
                                         0xa80 (size before relaxing)
- .debug_str     0x000000000000392a      0x95d /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-bbcppr.o
+ .debug_str     0x000000000000391b      0x95d /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-bbcppr.o
                                         0xd39 (size before relaxing)
- .debug_str     0x0000000000004287      0x4cb /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-osinte.o
+ .debug_str     0x0000000000004278      0x4cb /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-osinte.o
                                         0xf31 (size before relaxing)
- .debug_str     0x0000000000004752      0x48c /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/a-elchha.o
+ .debug_str     0x0000000000004743      0x48c /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/a-elchha.o
                                         0x760 (size before relaxing)
- .debug_str     0x0000000000004bde       0x5c /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-taspri.o
+ .debug_str     0x0000000000004bcf       0x5c /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-taspri.o
                                         0x28b (size before relaxing)
- .debug_str     0x0000000000004c3a      0x6f9 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-tasdeb.o
+ .debug_str     0x0000000000004c2b      0x6f9 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-tasdeb.o
                                        0x125e (size before relaxing)
- .debug_str     0x0000000000005333      0x31b /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-taskin.o
+ .debug_str     0x0000000000005324      0x31b /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-taskin.o
                                        0x151b (size before relaxing)
- .debug_str     0x000000000000564e      0x416 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-soflin.o
+ .debug_str     0x000000000000563f      0x416 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-soflin.o
                                        0x161f (size before relaxing)
- .debug_str     0x0000000000005a64      0x807 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-bbtime.o
+ .debug_str     0x0000000000005a55      0x807 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-bbtime.o
                                         0xf1e (size before relaxing)
- .debug_str     0x000000000000626b      0x1b1 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-mufalo.o
+ .debug_str     0x000000000000625c      0x1b1 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-mufalo.o
                                         0x47b (size before relaxing)
- .debug_str     0x000000000000641c      0x8ec /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-taprop.o
+ .debug_str     0x000000000000640d      0x8ec /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-taprop.o
                                        0x1bcf (size before relaxing)
- .debug_str     0x0000000000006d08      0x5c5 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/a-reatim.o
+ .debug_str     0x0000000000006cf9      0x5c5 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/a-reatim.o
                                         0x87a (size before relaxing)
- .debug_str     0x00000000000072cd       0xf0 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/a-retide.o
+ .debug_str     0x00000000000072be       0xf0 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/a-retide.o
                                         0x46f (size before relaxing)
- .debug_str     0x00000000000073bd       0x5c /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-tasres.o
+ .debug_str     0x00000000000073ae       0x5c /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-tasres.o
                                         0x1d1 (size before relaxing)
- .debug_str     0x0000000000007419      0x49f /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-tarest.o
+ .debug_str     0x000000000000740a      0x49f /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/s-tarest.o
                                        0x1711 (size before relaxing)
- .debug_str     0x00000000000078b8       0xbf /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/system_time.o
+ .debug_str     0x00000000000078a9       0xbf /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/system_time.o
                                         0x2ac (size before relaxing)
- .debug_str     0x0000000000007977      0x163 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/log_reporter_task.o
+ .debug_str     0x0000000000007968      0x163 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/log_reporter_task.o
                                        0x13ef (size before relaxing)
- .debug_str     0x0000000000007ada      0x332 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/cyclic_tasks.o
+ .debug_str     0x0000000000007acb      0x332 /home/aquox/Scrivania/comparison-system-FPS-EDF/edf-ravenscar-arm/build/cyclic_tasks.o
                                        0x1645 (size before relaxing)
- .debug_str     0x0000000000007e0c     0x604b /usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/adalib/libgnat.a(a-except.o)
+ .debug_str     0x0000000000007dfd     0x604b /usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/adalib/libgnat.a(a-except.o)
                                        0x6653 (size before relaxing)
- .debug_str     0x000000000000de57     0x246d /usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/adalib/libgnat.a(a-tags.o)
+ .debug_str     0x000000000000de48     0x246d /usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/adalib/libgnat.a(a-tags.o)
                                        0x2b81 (size before relaxing)
- .debug_str     0x00000000000102c4      0x3ca /usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/adalib/libgnat.a(s-excdeb.o)
+ .debug_str     0x00000000000102b5      0x3ca /usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/adalib/libgnat.a(s-excdeb.o)
                                         0x686 (size before relaxing)
- .debug_str     0x000000000001068e      0x76f /usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/adalib/libgnat.a(s-traceb.o)
+ .debug_str     0x000000000001067f      0x76f /usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/adalib/libgnat.a(s-traceb.o)
                                         0x98b (size before relaxing)
- .debug_str     0x0000000000010dfd      0x57f /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-malloc.o)
+ .debug_str     0x0000000000010dee      0x57f /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-malloc.o)
                                         0x626 (size before relaxing)
- .debug_str     0x000000000001137c      0x251 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
+ .debug_str     0x000000000001136d      0x251 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mallocr.o)
                                         0x85d (size before relaxing)
- .debug_str     0x00000000000115cd       0xbd /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcmp.o)
+ .debug_str     0x00000000000115be       0xbd /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcmp.o)
                                         0x5f9 (size before relaxing)
- .debug_str     0x000000000001168a       0xe0 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcpy.o)
- .debug_str     0x000000000001176a       0x66 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memmove.o)
+ .debug_str     0x000000000001167b       0xe0 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memcpy.o)
+ .debug_str     0x000000000001175b       0x66 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memmove.o)
                                         0x62c (size before relaxing)
- .debug_str     0x00000000000117d0       0x48 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memset.o)
+ .debug_str     0x00000000000117c1       0x48 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-memset.o)
                                         0x60d (size before relaxing)
- .debug_str     0x0000000000011818       0x4f /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
+ .debug_str     0x0000000000011809       0x4f /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-mlock.o)
                                         0x61d (size before relaxing)
- .debug_str     0x0000000000011867       0x4f /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-realloc.o)
+ .debug_str     0x0000000000011858       0x4f /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-realloc.o)
                                         0x617 (size before relaxing)
- .debug_str     0x00000000000118b6       0x4b /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o)
+ .debug_str     0x00000000000118a7       0x4b /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reallocr.o)
                                         0x814 (size before relaxing)
- .debug_str     0x0000000000011901       0xce /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o)
+ .debug_str     0x00000000000118f2       0xce /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-sbrkr.o)
                                         0x637 (size before relaxing)
- .debug_str     0x00000000000119cf       0x34 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
+ .debug_str     0x00000000000119c0       0x34 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-freer.o)
                                         0x7d6 (size before relaxing)
- .debug_str     0x0000000000011a03       0x46 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
+ .debug_str     0x00000000000119f4       0x46 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-impure.o)
                                         0x5f5 (size before relaxing)
- .debug_str     0x0000000000011a49       0x65 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
+ .debug_str     0x0000000000011a3a       0x65 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-reent.o)
                                         0x631 (size before relaxing)
- .debug_str     0x0000000000011aae       0xa4 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_aeabi_ldivmod.o)
+ .debug_str     0x0000000000011a9f       0xa4 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_aeabi_ldivmod.o)
                                          0xb3 (size before relaxing)
- .debug_str     0x0000000000011b52       0xb3 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_aeabi_uldivmod.o)
- .debug_str     0x0000000000011b52     0x1302 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_udivmoddi4.o)
+ .debug_str     0x0000000000011b43       0xb3 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_aeabi_uldivmod.o)
+ .debug_str     0x0000000000011b43     0x1302 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_udivmoddi4.o)
                                        0x1412 (size before relaxing)
- .debug_str     0x0000000000012e54      0x94d /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(unwind-arm.o)
+ .debug_str     0x0000000000012e45      0x94d /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(unwind-arm.o)
                                         0xccd (size before relaxing)
- .debug_str     0x00000000000137a1       0x37 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(libunwind.o)
+ .debug_str     0x0000000000013792       0x37 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(libunwind.o)
                                          0xb7 (size before relaxing)
- .debug_str     0x00000000000137d8       0xe6 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(pr-support.o)
+ .debug_str     0x00000000000137c9       0xe6 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(pr-support.o)
                                         0x597 (size before relaxing)
- .debug_str     0x00000000000138be       0x37 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_dvmd_tls.o)
+ .debug_str     0x00000000000138af       0x37 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/thumb/v7e-m/fpv4-sp/hard/libgcc.a(_dvmd_tls.o)
                                          0xb7 (size before relaxing)
- .debug_str     0x00000000000138f5       0xc2 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-errno.o)
+ .debug_str     0x00000000000138e6       0xc2 /usr/local/gnat-arm/bin/../lib/gcc/arm-eabi/7.3.1/../../../../arm-eabi/lib/thumb/v7e-m/fpv4-sp/hard/libc.a(lib_a-errno.o)
                                         0x607 (size before relaxing)
 
 .debug_loc      0x0000000000000000     0xaea4

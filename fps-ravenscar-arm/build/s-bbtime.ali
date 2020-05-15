@@ -24,7 +24,7 @@ RV NO_IMPLEMENTATION_RESTRICTIONS
 RR NO_ELABORATION_CODE
 RV SPARK_05
 
-U system.bb.time%b	s-bbtime.adb		c1aaba30 NE OL PK
+U system.bb.time%b	s-bbtime.adb		316b97b2 NE OL PK
 W ada%s			ada.ads			ada.ali
 Z ada.tags%s		a-tags.adb		a-tags.ali
 W ada.unchecked_conversion%s
@@ -63,9 +63,9 @@ D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
 D s-bbprot.ads		20190621183100 f48a7e85 system.bb.protection%s
 D s-bbthre.ads		20200327123511 01e92e1c system.bb.threads%s
-D s-bbthqu.ads		20200507120013 206c361e system.bb.threads.queues%s
+D s-bbthqu.ads		20200515092755 91e53bcb system.bb.threads.queues%s
 D s-bbtime.ads		20200325112142 da8467fe system.bb.time%s
-D s-bbtime.adb		20200327155712 3fb4f7c4 system.bb.time%b
+D s-bbtime.adb		20200515092755 7efcd793 system.bb.time%b
 D s-bbtiev.ads		20190621183100 f167837c system.bb.timing_events%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
 D s-mufalo.ads		20190621183100 3dca0374 system.multiprocessors.fair_locks%s
@@ -119,7 +119,7 @@ X 17 s-bbthre.ads
 152m7*Active_Absolute_Deadline{12|65M12} 20|368r15 396r24
 159b7*Preemption_Needed{boolean} 20|381m15
 163i7*Active_Period{19|84I9} 20|396r56
-167i7*Fake_Number_ID{integer} 20|358r18 367r62 369r48
+167i7*Fake_Number_ID{integer} 20|358r18 367r47 369r48
 173m7*Active_Next_Period{19|46M9} 20|355r24
 177m7*Active_Release_Jitter{19|46M9} 20|356r24 360r42
 181b7*First_Execution{boolean} 20|353r15 363m15
@@ -127,7 +127,7 @@ X 17 s-bbthre.ads
 X 18 s-bbthqu.ads
 41K27*Queues 405e29 20|43w24 56r25 359r31 367r25 369r28 374r32 395r18
 52U14*Add_DM 20|369s35
-53U14*Add_Regular_Completions 20|367s32
+53U14*Add_Runs 20|367s32
 103U14*Extract 20|382s10
 194U14*Update_Jitters 20|359s38
 209U14*Change_Absolute_Deadline 20|395s25
@@ -257,7 +257,7 @@ X 20 s-bbtime.adb
 252i11 Iteration{integer} 305r16
 337m7 Now{19|46M9} 347m7 357r29 368r42 374r64
 338p7 Self{17|65P9} 349m7 351r22 353r10 355r19 356r19 358r13 359r54 360r37
-. 363r10 367r57 368r10 369r43 379r10 381r10 382r19 388r27 396r13 396r19 396r51
+. 363r10 367r42 368r10 369r43 379r10 381r10 382r19 388r27 396r13 396r19 396r51
 . 397r17
 339b7 Inserted_As_First{boolean} 388m33 390r13
 340i7 Response_Jitter{19|84I9} 357m10 360r18

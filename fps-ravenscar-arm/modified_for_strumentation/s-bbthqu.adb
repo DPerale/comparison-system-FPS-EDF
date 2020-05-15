@@ -55,7 +55,7 @@ package body System.BB.Threads.Queues is
       record
          ID : Integer;
          DM : Integer;
-         Regular_Completions : Integer;
+         Runs : Integer;
          Preemption : Integer;
          Min_Response_Jitter :  System.BB.Time.Time_Span;
          Max_Response_Jitter :  System.BB.Time.Time_Span;
@@ -91,13 +91,13 @@ package body System.BB.Threads.Queues is
       end if;
    end Add_DM;
 
-   procedure Add_Regular_Completions (ID : Integer) is
+   procedure Add_Runs (ID : Integer) is
    begin
       if ID /= 0 then
-         Log_Table (ID).Regular_Completions :=
-           Log_Table (ID).Regular_Completions + 1;
+         Log_Table (ID).Runs :=
+           Log_Table (ID).Runs + 1;
       end if;
-   end Add_Regular_Completions;
+   end Add_Runs;
 
    procedure Add_Preemption (ID : Integer) is
    begin
@@ -113,7 +113,7 @@ package body System.BB.Threads.Queues is
          System.IO.Put ("Tab;");
          System.IO.Put (Integer'Image (i));
          System.IO.Put (Integer'Image (Log_Table (i).DM));
-         System.IO.Put (Integer'Image (Log_Table (i).Regular_Completions));
+         System.IO.Put (Integer'Image (Log_Table (i).Runs));
          System.IO.Put (Integer'Image (Log_Table (i).Preemption));
          System.IO.Put_Line ("");
          i := i + 1;
@@ -386,9 +386,9 @@ package body System.BB.Threads.Queues is
       else
          Log_Table (Thread.Fake_Number_ID).Average_Response_Jitter :=
            ((Log_Table (Thread.Fake_Number_ID).Average_Response_Jitter *
-              Log_Table (Thread.Fake_Number_ID).Regular_Completions) +
+              Log_Table (Thread.Fake_Number_ID).Runs) +
               Response_Jitter)
-           / (Log_Table (Thread.Fake_Number_ID).Regular_Completions + 1);
+           / (Log_Table (Thread.Fake_Number_ID).Runs + 1);
       end if;
 
       if Response_Jitter <

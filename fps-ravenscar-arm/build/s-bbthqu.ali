@@ -19,7 +19,7 @@ RV NO_IMPLEMENTATION_RESTRICTIONS
 RR NO_ELABORATION_CODE
 RV SPARK_05
 
-U system.bb.threads.queues%b  s-bbthqu.adb	2e40c6b8 NE OL PK
+U system.bb.threads.queues%b  s-bbthqu.adb	d7a7cd42 NE OL PK
 Z interfaces%s		interfac.ads		interfac.ali
 W system%s		system.ads		system.ali
 W system.bb%s		s-bb.ads		s-bb.ali
@@ -28,7 +28,7 @@ W system.bb.time%s	s-bbtime.adb		s-bbtime.ali
 Z system.img_int%s	s-imgint.adb		s-imgint.ali
 W system.io%s		s-io.adb		s-io.ali
 
-U system.bb.threads.queues%s  s-bbthqu.ads	07bd7be3 BN NE OL PR PK
+U system.bb.threads.queues%s  s-bbthqu.ads	b6347636 BN NE OL PR PK
 W system%s		system.ads		system.ali
 W system.bb%s		s-bb.ads		s-bb.ali
 W system.bb.board_support%s  s-bbbosu.adb	s-bbbosu.ali
@@ -49,8 +49,8 @@ D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
 D s-bbthre.ads		20200327123511 01e92e1c system.bb.threads%s
-D s-bbthqu.ads		20200507120013 206c361e system.bb.threads.queues%s
-D s-bbthqu.adb		20200507120013 4aea6017 system.bb.threads.queues%b
+D s-bbthqu.ads		20200515092755 91e53bcb system.bb.threads.queues%s
+D s-bbthqu.adb		20200515092755 02846638 system.bb.threads.queues%b
 D s-bbtime.ads		20200325112142 da8467fe system.bb.time%s
 D s-imgint.ads		20190621182554 02dbe0c2 system.img_int%s
 D s-io.ads		20190621182554 9e42f74f system.io%s
@@ -132,8 +132,8 @@ X 14 s-bbthqu.ads
 51i36 ID{integer} 15|72b36 74r10 75r21 75r29 81r28 82r29
 52U14*Add_DM 52>22 15|87b14 92l8 92t14
 52i22 ID{integer} 15|87b22 89r10 90r21 90r42
-53U14*Add_Regular_Completions 53>39 15|94b14 100l8 100t31
-53i39 ID{integer} 15|94b39 96r10 97r21 98r23
+53U14*Add_Runs 53>24 15|94b14 100l8 100t16
+53i24 ID{integer} 15|94b24 96r10 97r21 98r23
 54U14*Add_Preemption 54>30 15|102b14 107l8 107t22 458s10
 54i30 ID{integer} 15|102b30 104r10 105r21 105r50
 55U14*Print_Log 55>25 15|109b14 122l8 122t17
@@ -215,7 +215,7 @@ X 15 s-bbthqu.adb
 54R9 Log_Record 65e17 67r48
 56i10*ID{integer}
 57i10*DM{integer} 90m25 90r46 115r54
-58i10*Regular_Completions{integer} 97m25 98r27 116r54 389r49 391r49
+58i10*Runs{integer} 97m25 98r27 116r54 389r49 391r49
 59i10*Preemption{integer} 105m25 105r54 117r54
 60i10*Min_Response_Jitter{16|84I9} 395r43 397m44
 61i10*Max_Response_Jitter{16|84I9} 402r43 404m44
@@ -274,7 +274,7 @@ X 16 s-bbtime.ads
 136V14*"+"{46M9} 15|301s70 304s35 306s70 307s64 309s37 343s62 362s68 715s12
 . 739s62
 139V14*"+"{46M9} 15|710s65
-142V14*"+"{84I9} 15|389s70
+142V14*"+"{84I9} 15|389s55
 148V14*"-"{46M9} 15|302s64
 149V14*"-"{84I9} 15|361s39
 150V14*"-"{84I9} 15|303s44 308s55 344s26
