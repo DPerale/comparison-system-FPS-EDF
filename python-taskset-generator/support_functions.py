@@ -10,19 +10,33 @@ def UUnifast (taskset, utilization):
 
     sumU = utilization
 
+    # # Overheads calculation
+    # # Utilization of context switch overhead
+    # for i in range (len(taskset)):
+    #     sumU = sumU - (12.46 / taskset[i][2])
+    #     utilization_context_switch.append((12.46 / taskset[i][2]))
+    # # Utilization of clock on wakeup tasks
+    # for i in range (len(taskset)):
+    #     sumU = sumU - (7.2 / taskset[i][2])
+    #     utilization_clock.append((7.2 / taskset[i][2]))
+    # # Utilization of overhead for support functions in task
+    # for i in range (len(taskset)):
+    #     sumU = sumU - (9.92 / taskset[i][2])
+    #     utilization_support_function.append((9.92 / taskset[i][2]))
+
     # Overheads calculation
     # Utilization of context switch overhead
     for i in range (len(taskset)):
-        sumU = sumU - (12.46 / taskset[i][2])
-        utilization_context_switch.append((12.46 / taskset[i][2]))
+        sumU = sumU - (0 / taskset[i][2])
+        utilization_context_switch.append((0 / taskset[i][2]))
     # Utilization of clock on wakeup tasks
     for i in range (len(taskset)):
-        sumU = sumU - (7.2 / taskset[i][2])
-        utilization_clock.append((7.2 / taskset[i][2]))
+        sumU = sumU - (0 / taskset[i][2])
+        utilization_clock.append((0 / taskset[i][2]))
     # Utilization of overhead for support functions in task
     for i in range (len(taskset)):
-        sumU = sumU - (9.92 / taskset[i][2])
-        utilization_support_function.append((9.92 / taskset[i][2]))
+        sumU = sumU - (0 / taskset[i][2])
+        utilization_support_function.append((0 / taskset[i][2]))
 
     # Utilization of task calculation
     for i in range (1,len(taskset)):

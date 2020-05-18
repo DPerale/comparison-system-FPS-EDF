@@ -237,5 +237,3 @@ def U_100_hyper_113400000_10_100():
 
 # use a function here
 # U_100_hyper_113400000_10_100()
-# U_90_log_uniform()
-hyper_113400000_10_200_with_some_long_U_60_70_80_90 ()

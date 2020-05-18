@@ -64,35 +64,35 @@ def debug_and_read_data (taskset, EDF0_FPS1):
             debugger.stdin.flush()
         if "System.IO.Put" in line.decode():
             for i in range (len(taskset)):
-                debugger.stdin.write(("p Task_Table ("+str(i+1)+").DM\n").encode())
+                debugger.stdin.write(("p Log_Table ("+str(i+1)+").DM\n").encode())
                 debugger.stdin.flush()
                 DM_Line = debugger.stdout.readline().decode().split(" ")
 
-                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Regular_Completions\n").encode())
+                debugger.stdin.write(("p Log_Table (" + str(i + 1) + ").Runs\n").encode())
                 debugger.stdin.flush()
                 Execution_Line = debugger.stdout.readline().decode().split(" ")
 
-                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Preemption\n").encode())
+                debugger.stdin.write(("p Log_Table (" + str(i + 1) + ").Preemption\n").encode())
                 debugger.stdin.flush()
                 Preemption_Line = debugger.stdout.readline().decode().split(" ")
 
-                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Min_Response_Jitter\n").encode())
+                debugger.stdin.write(("p Log_Table (" + str(i + 1) + ").Min_Response_Jitter\n").encode())
                 debugger.stdin.flush()
                 Min_Work_Jitter_Line = debugger.stdout.readline().decode().split(" ")
 
-                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Max_Response_Jitter\n").encode())
+                debugger.stdin.write(("p Log_Table (" + str(i + 1) + ").Max_Response_Jitter\n").encode())
                 debugger.stdin.flush()
                 Max_Work_Jitter_Line = debugger.stdout.readline().decode().split(" ")
 
-                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Min_Release_Jitter\n").encode())
+                debugger.stdin.write(("p Log_Table (" + str(i + 1) + ").Min_Release_Jitter\n").encode())
                 debugger.stdin.flush()
                 Min_Release_Jitter_Line = debugger.stdout.readline().decode().split(" ")
 
-                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Max_Release_Jitter\n").encode())
+                debugger.stdin.write(("p Log_Table (" + str(i + 1) + ").Max_Release_Jitter\n").encode())
                 debugger.stdin.flush()
                 Max_Release_Jitter_Line = debugger.stdout.readline().decode().split(" ")
 
-                debugger.stdin.write(("p Task_Table (" + str(i + 1) + ").Average_Response_Jitter\n").encode())
+                debugger.stdin.write(("p Log_Table (" + str(i + 1) + ").Average_Response_Jitter\n").encode())
                 debugger.stdin.flush()
                 Avarage_Work_Jitter_Line = debugger.stdout.readline().decode().split(" ")
 
