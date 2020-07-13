@@ -21,9 +21,9 @@ RV NO_DEFAULT_INITIALIZATION
 RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
-RV MAX_TASKS=21
+RV MAX_TASKS=11
 
-U cyclic_tasks%b	cyclic_tasks.adb	f6b42f41 OO PK
+U cyclic_tasks%b	cyclic_tasks.adb	ddd284b3 OO PK
 W ada%s			ada.ads			ada.ali
 W ada.real_time%s	a-reatim.adb		a-reatim.ali
 Z ada.real_time.delays%s  a-retide.adb		a-retide.ali
@@ -38,7 +38,7 @@ W system.task_primitives.operations%s  s-taprop.adb  s-taprop.ali
 Z system.tasking%s	s-taskin.adb		s-taskin.ali
 Z system.tasking.restricted.stages%s  s-tarest.adb  s-tarest.ali
 W system_time%s		system_time.ads		system_time.ali
-T 0 21
+T 0 11
 
 U cyclic_tasks%s	cyclic_tasks.ads	42254f49 EE NE OO PK
 W system%s		system.ads		system.ali
@@ -54,7 +54,7 @@ D a-reatim.ads		20190621183100 4c16970e ada.real_time%s
 D a-retide.ads		20190621183100 081cdaa4 ada.real_time.delays%s
 D a-unccon.ads		20190621182550 0e9b276f ada.unchecked_conversion%s
 D cyclic_tasks.ads	20200507120206 99a65ac8 cyclic_tasks%s
-D cyclic_tasks.adb	20200518115124 774d1970 cyclic_tasks%b
+D cyclic_tasks.adb	20200519211626 5c2bb282 cyclic_tasks%b
 D interfac.ads		20190621182551 5ab55268 interfaces%s
 D i-stm32.ads		20190621182551 2ad0960b interfaces.stm32%s
 D i-stm32-pwr.ads	20190621182551 4a098e84 interfaces.stm32.pwr%s
@@ -104,10 +104,9 @@ X 3 a-reatim.ads
 119V13*To_Duration{duration}<23|123p13> 7|38s27
 126V13*Microseconds{61I9}<23|162p13> 7|13s30 19s30 48s58
 X 6 cyclic_tasks.ads
-3K9*Cyclic_Tasks 20l5 20e17 7|9b14 102l5 102t17
+3K9*Cyclic_Tasks 20l5 20e17 7|9b14 92l5 92t17
 5T14*Cyclic 6d7 7d7 8d7 9d7 10d7 11d7 15l8 15e14 7|11b14 69l8 69t14 82r9
-. 83r9 84r9 85r9 86r9 87r9 88r9 89r9 90r9 91r10 92r10 93r10 94r10 95r10 96r10
-. 97r10 98r10 99r10 100r10 101r10
+. 83r9 84r9 85r9 86r9 87r9 88r9 89r9 90r9 91r10
 6i7 Pri{12|117I12} 13r24
 7i7 Deadline{positive} 7|58r40
 8i7 Period{positive} 7|19r44 52r39
@@ -140,16 +139,6 @@ X 7 cyclic_tasks.adb
 89t4 C8{6|5T14}
 90t4 C9{6|5T14}
 91t4 C10{6|5T14}
-92t4 C11{6|5T14}
-93t4 C12{6|5T14}
-94t4 C13{6|5T14}
-95t4 C14{6|5T14}
-96t4 C15{6|5T14}
-97t4 C16{6|5T14}
-98t4 C17{6|5T14}
-99t4 C18{6|5T14}
-100t4 C19{6|5T14}
-101t4 C20{6|5T14}
 X 11 log_reporter_task.ads
 2K9*Log_Reporter_Task 7|7w6 81r9 11|14e22
 4T14*Log_Reporter 7|81r27 11|12e20

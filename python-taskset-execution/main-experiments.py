@@ -301,7 +301,25 @@ def U_100_hyper_113400000_10_100_full():
 
 
 
+def buttazzo_experiments_preemptions_over ():
+    for i in range(1,2001):
+        taskset = []
+        taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM, EDF_schedulable, \
+            FPS_schedulable, hyperperiod = import_taskset(taskset, i, "buttazzo_preemptions_over2.csv")
+        make_adb_file(taskset, hyperperiod)
+        EDF_data = []
+        FPS_data = []
+        for j in range(2):
+            compile_and_flash_into_board(j)
+            if (j==0):
+                EDF_data = debug_and_read_data(taskset, j)
+            else:
+                FPS_data = debug_and_read_data(taskset, j)
+        save_data(taskset, EDF_data, FPS_data, "Buttazzo-Second-Preemptions-over2/Buttazzo-Second-Preemptions-over2", i, hyperperiod)
+
+
 # use a function here
 #U_100_hyper_113400000_10_100_full()
 
+buttazzo_experiments_preemptions_over ()
 

@@ -70,6 +70,7 @@ with System.Tasking.Protected_Objects.Multiprocessors;
 
 with System.BB.Time; use System.BB.Time;
 with System.BB.Threads.Queues; use System.BB.Threads.Queues;
+with System.BB.Threads; use System.BB.Threads;
 
 package body System.Tasking.Protected_Objects.Single_Entry is
 
@@ -140,9 +141,11 @@ package body System.Tasking.Protected_Objects.Single_Entry is
       Self_Id : constant Task_Id := STPO.Self;
 
       use type Ada.Exceptions.Exception_Id;
-      Now : System.BB.Time.Time := System.BB.Time.Clock;
+      Now : constant System.BB.Time.Time := System.BB.Time.Clock;
+      Response_Jitter : Time_Span;
       Temp1 : Time_Span;
       Temp2 : Time;
+      ThId : constant Thread_Id := Thread_Self;
 
    begin
       --  For this run time, pragma Detect_Blocking is always active, so we
@@ -155,12 +158,12 @@ package body System.Tasking.Protected_Objects.Single_Entry is
 
       --  add DM if necessary and add Regular_Completion
       if Running_Thread.Is_Sporadic then
-         Temp1 := Self.Active_Next_Period - Time_First;
-         Temp2 := Self.Active_Release_Jitter + Temp1;
+         Temp1 := ThId.Active_Next_Period - Time_First;
+         Temp2 := ThId.Active_Release_Jitter + Temp1;
          Response_Jitter := Now - Temp2;
-         if Self.Fake_Number_ID > 0 then
-            System.BB.Threads.Queues.Update_Jitters (Self,
-                (Response_Jitter), (Self.Active_Release_Jitter - Time_First));
+         if ThId.Fake_Number_ID > 0 then
+            System.BB.Threads.Queues.Update_Jitters (ThId,
+                (Response_Jitter), (ThId.Active_Release_Jitter - Time_First));
          end if;
          System.BB.Threads.Queues.Add_Runs
            (Running_Thread.Fake_Number_ID);

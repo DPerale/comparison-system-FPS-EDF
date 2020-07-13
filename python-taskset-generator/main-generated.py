@@ -235,5 +235,26 @@ def U_100_hyper_113400000_10_100():
                          "../taskset-generated/U_100_hyper_113400000_10_100.csv")
 
 
+def buttazzo_experiments_preemptions_over ():
+
+    # Buttazzo method 2
+    create_file("../taskset-generated/buttazzo_preemptions_over2.csv",
+                "utilization;EDF_busy_period;FPS_busy_period;EDF_first_DM_miss;EDF_schedulable;FPS_schedulable;hyperperiod;Priority_i,Deadline_i,Period_i,ID_i,WCET_i,EDF_response_time_i,FPS_response_time_i,FPS_deadline_miss_task_i,utilization_context_switch_i,utilization_clock, utilization_support_function_i")
+
+    for i in range (1):
+        utilization = 0.99
+        for j in range(1000):
+            print(j)
+            taskset, utilization_context_switch, utilization_clock, utilization_support_function = \
+                create_random_taskset_between_two_periods(10, 10, 100, utilization)
+            EDF_busy_period, EDF_first_DM_miss, EDF_schedulable, EDF_response_time = MAST_EDF_Analysis(taskset)
+            FPS_busy_period, FPS_schedulable, FPS_response_time, FPS_deadline_miss_task = MAST_FPS_Analysis(taskset)
+            register_to_file(taskset, utilization, EDF_busy_period, FPS_busy_period, EDF_first_DM_miss,
+                             EDF_schedulable, FPS_schedulable, EDF_response_time, FPS_response_time,
+                             FPS_deadline_miss_task, utilization_context_switch, utilization_clock,
+                             utilization_support_function, 1000000, "../taskset-generated/buttazzo_preemptions_over2.csv")
+
+
 # use a function here
 # U_100_hyper_113400000_10_100()
+buttazzo_experiments_preemptions_over ()
