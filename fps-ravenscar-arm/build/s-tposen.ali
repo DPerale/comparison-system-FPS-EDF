@@ -18,7 +18,7 @@ RV NO_IMPLEMENTATION_ATTRIBUTES
 RV NO_IMPLEMENTATION_PRAGMAS
 RV SPARK_05
 
-U system.tasking.protected_objects.single_entry%b  s-tposen.adb  797df822 NE OL PK
+U system.tasking.protected_objects.single_entry%b  s-tposen.adb  a9932dd2 NE OL PK
 Z ada.exceptions%s	a-except.adb		a-except.ali
 W system%s		system.ads		system.ali
 W system.bb%s		s-bb.ads		s-bb.ali
@@ -69,7 +69,7 @@ D s-taskin.ads		20190621183100 58b15916 system.tasking%s
 D s-taprob.ads		20190621182556 c8fc0753 system.tasking.protected_objects%s
 D s-tpobmu.ads		20190621182556 c379b126 system.tasking.protected_objects.multiprocessors%s
 D s-tposen.ads		20190621182556 828b4fcc system.tasking.protected_objects.single_entry%s
-D s-tposen.adb		20200713133312 556a04cf system.tasking.protected_objects.single_entry%b
+D s-tposen.adb		20200713134411 8584d13f system.tasking.protected_objects.single_entry%b
 D s-traent.ads		20190621182556 005bf670 system.traceback_entries%s
 D s-unstyp.ads		20190621182556 34867c83 system.unsigned_types%s
 X 1 ada.ads
@@ -82,34 +82,34 @@ X 2 a-except.ads
 X 7 system.ads
 50K9*System 164e11 34|62r9 190r27 217r29 250r23 264r5 35|65r6 67r6 69r6 71r6
 . 71r26 72r6 72r36 73r6 73r29 75r14 77r8 79r25 80r26 103r26 139r28 144r22
-. 144r45 165r13 168r10 171r13 311r5
+. 144r45 164r13 168r10 171r13 311r5
 80M9*Address 34|190r34 217r36 250r30 35|103r33 139r35
 X 8 s-bb.ads
-40K16*BB 95e14 35|71r13 71r33 72r13 72r43 73r13 73r36 144r29 144r52 165r20
+40K16*BB 95e14 35|71r13 71r33 72r13 72r43 73r13 73r36 144r29 144r52 164r20
 . 168r17 171r20
 X 16 s-bbthre.ads
-49K19*Threads 358e22 35|72r16 72r46 73w16 73r39 165r23 168r20 171r23
-65P9*Thread_Id(62R9) 35|148r23
+49K19*Threads 358e22 35|72r16 72r46 73w16 73r39 164r23 168r20 171r23
+65P9*Thread_Id(62R9)
 152m7*Active_Absolute_Deadline{12|65M12} 35|170r28
 159b7*Preemption_Needed{boolean} 35|223m25
-167i7*Fake_Number_ID{integer} 35|164r18 169r28 171r61
-169b7*Is_Sporadic{boolean} 35|160r25
-173m7*Active_Next_Period{18|46M9} 35|161r24
-177m7*Active_Release_Jitter{18|46M9} 35|162r24 166r42
-279V13*Thread_Self{65P9} 35|148s36
+167i7*Fake_Number_ID{integer} 35|163r28 169r28 171r61
+169b7*Is_Sporadic{boolean} 35|159r25
+173m7*Active_Next_Period{18|46M9} 35|160r34
+177m7*Active_Release_Jitter{18|46M9} 35|161r34 165r51
 X 17 s-bbthqu.ads
-41K27*Queues 405e29 35|72w24 72r54 165r31 168r28 171r31
+41K27*Queues 405e29 35|72w24 72r54 164r31 168r28 171r31
 52U14*Add_DM 35|171s38
 53U14*Add_Runs 35|168s35
-194U14*Update_Jitters 35|165s38
-267V13*Running_Thread{16|65P9} 35|160s10 169s13 170s13 171s46 223s10
+194U14*Update_Jitters 35|164s38
+267V13*Running_Thread{16|65P9} 35|159s10 160s19 161s19 163s13 164s54 165s36
+. 169s13 170s13 171s46 223s10
 X 18 s-bbtime.ads
 43K19*Time 248e19 35|71w16 71r36 144r32 144r55
 46M9*Time 35|144r37 147r15
-49m4*Time_First{46M9} 35|161r45 166r66
+49m4*Time_First{46M9} 35|160r55 166r58
 84I9*Time_Span<long_long_integer> 35|145r25 146r15
-136V14*"+"{46M9} 35|162s46
-149V14*"-"{84I9} 35|161s43 163s33 166s64
+136V14*"+"{46M9} 35|161s56
+149V14*"-"{84I9} 35|160s53 162s33 165s73
 187V13*Clock{46M9} 35|144s60
 X 19 s-multip.ads
 18K16*Multiprocessors 31e27 35|65w13 77r15
@@ -138,8 +138,8 @@ X 31 s-taskin.ads
 216p7*Exception_To_Raise{2|58P9} 35|93m31 177m26 231r29 233r32
 308e7*State{90E9} 35|221m25 226m25
 316i7*Base_CPU{19|21I9} 35|283r34 283r62
-324i7*Protected_Action_Nesting{natural} 35|155r25
-386r7*Common{307R9} 35|155r18 221m18 226m18 283r27 283r55
+324i7*Protected_Action_Nesting{natural} 35|154r25
+386r7*Common{307R9} 35|154r18 221m18 226m18 283r27 283r55
 388r7*Entry_Call{209R9} 35|176m15 177m15 192m45 194m43 215m40 231r18 233r21
 407V13*Get_Sec_Stack{24|46P9} 408i<c,__gnat_get_secondary_stack>22
 X 32 s-taprob.ads
@@ -199,13 +199,12 @@ X 35 s-tposen.adb
 79K12 STPO=79:48 141r37 225r10 283r45 288r13
 80K12 STPOM=80:59 292r13
 82b4 Multiprocessor{boolean} 282r17
-141p7 Self_Id{31|67P9} 155r10 176r7 177r7 192r37 194r35 215r32 221r10 225r22
+141p7 Self_Id{31|67P9} 154r10 176r7 177r7 192r37 194r35 215r32 221r10 225r22
 . 226r10 231r10 233r13
-144m7 Now{18|46M9} 163r29 170r55
-145i7 Response_Jitter{18|84I9} 163m10 166r18
-146i7 Temp1{18|84I9} 161m10 162r48
-147m7 Temp2{18|46M9} 162m10 163r35
-148p7 ThId{16|65P9} 161r19 162r19 164r13 165r54 166r37
+144m7 Now{18|46M9} 162r29 170r55
+145i7 Response_Jitter{18|84I9} 162m10 165r17
+146i7 Temp1{18|84I9} 160m10 161r58
+147m7 Temp2{18|46M9} 161m10 162r35
 253p7 Entry_Call{31|196P9} 257r10 273r37 275r35 277r20 292r27
 254p7 Caller{31|67P9} 277m10 283r20 288r26
 

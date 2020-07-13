@@ -141,7 +141,8 @@ package body System.Tasking.Protected_Objects.Single_Entry is
       Self_Id : constant Task_Id := STPO.Self;
 
       use type Ada.Exceptions.Exception_Id;
-      Now : System.BB.Time.Time := System.BB.Time.Clock;
+      Now : constant System.BB.Time.Time := System.BB.Time.Clock;
+      Response_Jitter : Time_Span;
       Temp1 : Time_Span;
       Temp2 : Time;
 
@@ -156,12 +157,13 @@ package body System.Tasking.Protected_Objects.Single_Entry is
 
       --  add DM if necessary and add execution
       if Running_Thread.Is_Sporadic then
-         Temp1 := Self.Active_Next_Period - Time_First;
-         Temp2 := Self.Active_Release_Jitter + Temp1;
+         Temp1 := Running_Thread.Active_Next_Period - Time_First;
+         Temp2 := Running_Thread.Active_Release_Jitter + Temp1;
          Response_Jitter := Now - Temp2;
-         if Self.Fake_Number_ID > 0 then
-            System.BB.Threads.Queues.Update_Jitters (Self,
-                (Response_Jitter), (Self.Active_Release_Jitter - Time_First));
+         if Running_Thread.Fake_Number_ID > 0 then
+            System.BB.Threads.Queues.Update_Jitters (Running_Thread,
+                  (Response_Jitter), (Running_Thread.Active_Release_Jitter
+                                                       - Time_First));
          end if;
          System.BB.Threads.Queues.Add_Runs
            (Running_Thread.Fake_Number_ID);
