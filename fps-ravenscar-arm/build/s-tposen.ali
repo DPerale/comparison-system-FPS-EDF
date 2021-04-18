@@ -50,7 +50,7 @@ D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
 D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20200327123511 01e92e1c system.bb.threads%s
+D s-bbthre.ads		20210418132912 01e92e1c system.bb.threads%s
 D s-bbthqu.ads		20200515092755 91e53bcb system.bb.threads.queues%s
 D s-bbtime.ads		20200325112142 da8467fe system.bb.time%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
@@ -88,14 +88,14 @@ X 8 s-bb.ads
 40K16*BB 95e14 35|71r13 71r33 72r13 72r43 73r13 73r36 144r29 144r52 164r20
 . 168r17 171r20
 X 16 s-bbthre.ads
-49K19*Threads 358e22 35|72r16 72r46 73w16 73r39 164r23 168r20 171r23
+49K19*Threads 368e22 35|72r16 72r46 73w16 73r39 164r23 168r20 171r23
 65P9*Thread_Id(62R9)
 152m7*Active_Absolute_Deadline{12|65M12} 35|170r28
 159b7*Preemption_Needed{boolean} 35|223m25
-167i7*Fake_Number_ID{integer} 35|163r28 169r28 171r61
-169b7*Is_Sporadic{boolean} 35|159r25
-173m7*Active_Next_Period{18|46M9} 35|160r34
-177m7*Active_Release_Jitter{18|46M9} 35|161r34 165r51
+169i7*Fake_Number_ID{integer} 35|163r28 169r28 171r61
+172b7*Is_Sporadic{boolean} 35|159r25
+178m7*Active_Next_Period{18|46M9} 35|160r34
+182m7*Active_Release_Jitter{18|46M9} 35|161r34 165r51
 X 17 s-bbthqu.ads
 41K27*Queues 405e29 35|72w24 72r54 164r31 168r28 171r31
 52U14*Add_DM 35|171s38

@@ -49,7 +49,6 @@ package body System.Tasking is
    use System.Secondary_Stack;
    use System.Multiprocessors;
 
-   --  use System.BB.Deadlines;
    use System.BB.Time;
 
    ------------------------
@@ -150,12 +149,6 @@ package body System.Tasking is
       Initialized := True;
 
       --  Compute priority
-
---        if Main_Priority = Unspecified_Priority then
---           Base_Priority := Default_Priority;
---        else
---           Base_Priority := Main_Priority;
---        end if;
 
       if Main_Relative_Deadline = Unspecified_Relative_Deadline then
          Base_Relative_Deadline := Default_Relative_Deadline;

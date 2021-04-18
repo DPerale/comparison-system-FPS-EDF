@@ -137,7 +137,6 @@ package System.OS_Interface is
 
    procedure Initialize_Slave
      (Idle_Thread   : Thread_Id;
-      --  Idle_Priority : Integer;
       Stack_Address : System.Address;
       Stack_Size    : System.Storage_Elements.Storage_Offset)
      renames System.BB.Threads.Initialize_Slave;
@@ -147,10 +146,6 @@ package System.OS_Interface is
      (Id            : Thread_Id;
       Code          : System.Address;
       Arg           : System.Address;
-      --   Priority      : Integer;
-      --   Base_CPU      : System.Multiprocessors.CPU_Range;
-      --   Stack_Address : System.Address;
-      --   Stack_Size    : System.Storage_Elements.Storage_Offset)
       Relative_Deadline : System.BB.Deadlines.Relative_Deadline;
       Base_CPU          : System.Multiprocessors.CPU_Range;
       Stack_Address     : System.Address;
@@ -175,14 +170,6 @@ package System.OS_Interface is
    ----------------
    -- Scheduling --
    ----------------
-
-   --  procedure Set_Priority (Priority : Integer)
-   --  renames System.BB.Threads.Set_Priority;
-   --  Set the active priority of the executing thread to the given value
-
-   --  function Get_Priority  (Id : Thread_Id) return Integer
-   --  renames System.BB.Threads.Get_Priority;
-   --  Get the current base priority of a thread
 
    procedure Set_Relative_Deadline
      (Rel_Deadline  : System.BB.Deadlines.Relative_Deadline;
@@ -238,12 +225,6 @@ package System.OS_Interface is
    function Get_CPU  (Id : Thread_Id) return Multiprocessors.CPU
      renames System.BB.Threads.Get_CPU;
    --  Return the CPU in charge of the given thread (always a valid CPU)
-
-   --  function Current_Priority
-   --  (CPU_Id : Multiprocessors.CPU) return System.Any_Priority
-   --  renames System.BB.Threads.Queues.Current_Priority;
-   --  Return the active priority of the current thread or
-   --  System.Any_Priority'First if no threads are running.
 
    function Current_Relative_Deadline (CPU_Id : Multiprocessors.CPU)
             return System.BB.Deadlines.Relative_Deadline

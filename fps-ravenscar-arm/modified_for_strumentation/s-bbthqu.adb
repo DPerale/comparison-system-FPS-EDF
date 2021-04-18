@@ -51,6 +51,7 @@ package body System.BB.Threads.Queues is
    pragma Volatile_Components (Alarms_Table);
    --  Identifier of the thread that is in the first place of the alarm queue
 
+   --  Atomic record for the log table
    type Log_Record is
       record
          ID : Integer;
@@ -64,11 +65,17 @@ package body System.BB.Threads.Queues is
          Average_Response_Jitter : System.BB.Time.Time_Span;
       end record;
 
+   --  Definition of log table, every element rapresent a task. 90 is a good
+   --  number of our implementations because there can't be more tasks for
+   --  the RAM limitation of the embedded board
    type Array_Log_Record is array (1 .. 90) of Log_Record;
 
+   --  Declaration of log table
    Log_Table : Array_Log_Record;
    Max_ID_Table : Integer := 0;
 
+   --  Before the tasks start we initialize the log table that will fill with
+   --  the data when needed.
    procedure Initialize_Log_Table (ID : Integer) is
    begin
       if ID /= 0 then
@@ -106,6 +113,8 @@ package body System.BB.Threads.Queues is
       end if;
    end Add_Preemption;
 
+   --  Procedure to print to screen the log table (not supported in our
+   --  embedded board).
    procedure Print_Log (First_Index : Integer) is
       i : Integer := First_Index;
    begin
@@ -118,7 +127,6 @@ package body System.BB.Threads.Queues is
          System.IO.Put_Line ("");
          i := i + 1;
       end loop;
-
    end Print_Log;
 
    ---------------------
@@ -276,6 +284,8 @@ package body System.BB.Threads.Queues is
    -- Change_Relative_Deadline --
    ------------------------------
 
+   --  It is needed for the strumentation, but obviosly we don't use deadlines
+   --  in a FPS scheduler
    procedure Change_Relative_Deadline
      (Thread       : Thread_Id;
       Rel_Deadline : System.BB.Deadlines.Relative_Deadline;
@@ -311,6 +321,27 @@ package body System.BB.Threads.Queues is
       end if;
 
    end Change_Relative_Deadline;
+
+   ------------------------------
+   -- Change_Absolute_Deadline --
+   ------------------------------
+
+   procedure Change_Absolute_Deadline
+     (Thread       : Thread_Id;
+      Abs_Deadline : System.BB.Deadlines.Absolute_Deadline)
+   is
+      --  Previous_Thread, Next_Thread : Thread_Id;
+      CPU_Id      : constant CPU := Get_CPU (Thread);
+
+   begin
+      --  A CPU can only change the absolute deadline of its own tasks
+      pragma Assert (CPU_Id = Current_CPU);
+
+      pragma Assert (Thread = Running_Thread_Table (CPU_Id));
+
+      Thread.Active_Absolute_Deadline := Abs_Deadline;
+
+   end Change_Absolute_Deadline;
 
    -------------------
    -- Change_Period --
@@ -357,7 +388,7 @@ package body System.BB.Threads.Queues is
       pragma Assert (CPU_Id = Current_CPU);
       pragma Assert (Thread = Running_Thread_Table (CPU_Id));
 
-      if Thread.Just_Wakeup = True then
+      if Thread.Just_Wakeup then
          Temp := System.BB.Time.Clock - Thread.Active_Next_Period;
          Thread.Active_Release_Jitter := System.BB.Time.Time_First + (Temp);
          Thread.Just_Wakeup := False;
@@ -421,33 +452,11 @@ package body System.BB.Threads.Queues is
 
    end Update_Jitters;
 
-   ------------------------------
-   -- Change_Absolute_Deadline --
-   ------------------------------
-
-   procedure Change_Absolute_Deadline
-     (Thread       : Thread_Id;
-      Abs_Deadline : System.BB.Deadlines.Absolute_Deadline)
-   is
-      --  Previous_Thread, Next_Thread : Thread_Id;
-      CPU_Id      : constant CPU := Get_CPU (Thread);
-
-   begin
-      --  A CPU can only change the absolute deadline of its own tasks
-      pragma Assert (CPU_Id = Current_CPU);
-
-      pragma Assert (Thread = Running_Thread_Table (CPU_Id));
-
-      Thread.Active_Absolute_Deadline := Abs_Deadline;
-
-   end Change_Absolute_Deadline;
-
    ---------------------------
    -- Context_Switch_Needed --
    ---------------------------
 
    function Context_Switch_Needed return Boolean is
-      --   Now : System.BB.Time.Time;
    begin
       --  A context switch is needed when there is a higher priority task ready
       --  to execute. It means that First_Thread is not null and it is not
@@ -729,10 +738,8 @@ package body System.BB.Threads.Queues is
       CPU_Id      : constant CPU     := Get_CPU (Thread);
       Prio        : constant Integer := Thread.Active_Priority;
       Aux_Pointer : Thread_Id;
-   --   Now         : System.BB.Time.Time;
    begin
       --  A CPU can only modify its own tasks queues
-
       pragma Assert (CPU_Id = Current_CPU);
 
       Thread.Just_Wakeup := True;

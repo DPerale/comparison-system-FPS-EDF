@@ -300,7 +300,6 @@ package body System.Task_Primitives.Operations is
 
    procedure Initialize_Slave (CPU_Id : CPU) is
       Idle_Task : Tasking.Ada_Task_Control_Block renames Idle_Tasks (CPU_Id);
-
       Success  : Boolean;
       pragma Warnings (Off, Success);
 

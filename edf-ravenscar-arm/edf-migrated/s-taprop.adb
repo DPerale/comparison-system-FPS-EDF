@@ -150,32 +150,6 @@ package body System.Task_Primitives.Operations is
       System.OS_Interface.Wakeup (T.Common.LL.Thread);
    end Wakeup;
 
-   ------------------
-   -- Set_Priority --
-   ------------------
-
-   --  procedure Set_Priority (T : ST.Task_Id; Prio : ST.Extended_Priority) is
-   --  begin
-   --  A task can only change its own priority
-
-   --   pragma Assert (T = Self);
-
-   --  Change the priority in the underlying executive
-
-   --   System.OS_Interface.Set_Priority (Prio);
-   --  end Set_Priority;
-
-   ------------------
-   -- Get_Priority --
-   ------------------
-
-   --  function Get_Priority (T : ST.Task_Id) return ST.Extended_Priority is
-   --  begin
-   --   --  Get current active priority
-
-   --   return System.OS_Interface.Get_Priority (T.Common.LL.Thread);
-   --  end Get_Priority;
-
    ---------------------------
    -- Set_Relative_Deadline --
    ---------------------------
@@ -361,14 +335,12 @@ package body System.Task_Primitives.Operations is
 
    procedure Initialize_Slave (CPU_Id : CPU) is
       Idle_Task : Tasking.Ada_Task_Control_Block renames Idle_Tasks (CPU_Id);
-      --  Idle_Relative_Deadline :
-      --  constant System.BB.Deadlines.Relative_Deadline
-      --  := System.BB.Time.Milliseconds (1000000000);
       Success  : Boolean;
       pragma Warnings (Off, Success);
 
    begin
       --  Initialize ATCB for the idle task
+
       Initialize_Idle (CPU_Id);
 
       --  Initialize the environment thread
@@ -396,7 +368,6 @@ package body System.Task_Primitives.Operations is
      (T          : ST.Task_Id;
       Wrapper    : System.Address;
       Stack_Size : System.Parameters.Size_Type;
-      --  Priority   : ST.Extended_Priority;
       Relative_Deadline : System.BB.Deadlines.Relative_Deadline;
       Base_CPU   : System.Multiprocessors.CPU_Range;
       Succeeded  : out Boolean)
@@ -412,13 +383,10 @@ package body System.Task_Primitives.Operations is
 
       --  Create the underlying task
 
-      --  AAA problema qui?
-
       System.OS_Interface.Thread_Create
         (T.Common.LL.Thread,
          Wrapper,
          To_Address (T),
-         --  Priority,
          Relative_Deadline,
          Base_CPU,
          T.Common.Compiler_Data.Pri_Stack_Info.Start_Address,
@@ -449,7 +417,6 @@ package body System.Task_Primitives.Operations is
 
       System.OS_Interface.Initialize
         (T, Environment_Task.Common.Base_Relative_Deadline);
-      --  Environment_Task.Common.Base_Priority);
 
       --  Link the underlying executive thread to the Ada task
 

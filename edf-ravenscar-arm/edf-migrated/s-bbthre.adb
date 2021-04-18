@@ -57,7 +57,6 @@ package body System.BB.Threads is
       Code          : System.Address;
       Arg           : System.Address;
       Relative_Deadline : System.BB.Deadlines.Relative_Deadline;
-      --  Priority      : Integer;
       This_CPU      : System.Multiprocessors.CPU_Range;
       Stack_Top     : System.Address;
       Stack_Bottom  : System.Address);
@@ -117,15 +116,7 @@ package body System.BB.Threads is
    -- Get_Priority --
    ------------------
 
-   --  function Get_Priority (Id : Thread_Id) return Integer is
-   --  begin
-      --  This function does not need to be protected by Enter_Kernel and
-      --  Leave_Kernel, because the Active_Priority value is only updated by
-      --  Set_Priority (atomically). Moreover, Active_Priority is marked as
-      --  Volatile.
-
-   --  return Id.Active_Priority;
-   --  end Get_Priority;
+   --  no need in EDF
 
    ---------------------------
    -- Get_Relative_Deadline --
@@ -166,7 +157,6 @@ package body System.BB.Threads is
       Code          : System.Address;
       Arg           : System.Address;
       Relative_Deadline : System.BB.Deadlines.Relative_Deadline;
-      --  Priority      : Integer;
       This_CPU      : System.Multiprocessors.CPU_Range;
       Stack_Top     : System.Address;
       Stack_Bottom  : System.Address) is
@@ -245,18 +235,11 @@ package body System.BB.Threads is
    -- Initialize --
    ----------------
 
-   --  AAA vedere se i metodi combaciano
-
    procedure Initialize
      (Environment_Thread : Thread_Id;
-      --  Main_Priority      : System.Any_Priority
       Main_Rel_Deadline : Relative_Deadline)
    is
-      --  Main_CPU : constant System.Multiprocessors.CPU := Current_CPU;
-      --  Main_Priority : constant System.Any_Priority
-      --  := System.Any_Priority (0);
       Main_Priority : constant System.Any_Priority := System.Any_Priority (1);
-
       Main_CPU : constant System.Multiprocessors.CPU := Current_CPU;
 
    begin
@@ -264,6 +247,7 @@ package body System.BB.Threads is
       --  interrupt handlers).
 
       --  First initialize interrupt stacks
+
       Interrupts.Initialize_Interrupts;
 
       --  Then the CPU (which set interrupt stack pointer)
@@ -282,25 +266,11 @@ package body System.BB.Threads is
       Environment_Thread.Base_Priority   := Main_Priority;
       Environment_Thread.Active_Priority := Main_Priority;
 
---        Environment_Thread.Base_Relative_Deadline   := Main_Rel_Deadline;
---        Environment_Thread.Active_Relative_Deadline := Main_Rel_Deadline;
---        Environment_Thread.Active_Absolute_Deadline :=
---                Main_Rel_Deadline + System.BB.Time.Clock;
-
       Environment_Thread.Base_Relative_Deadline   := Main_Rel_Deadline;
       Environment_Thread.Active_Relative_Deadline := Main_Rel_Deadline;
 
---      Environment_Thread.Active_Absolute_Deadline :=
---         (System.BB.Time.Clock + System.BB.Time.Milliseconds (1000000000));
---                              --  Absolute_Deadline'Last;
-
       Environment_Thread.Active_Absolute_Deadline :=
-      --          Main_Rel_Deadline + Now;
               Main_Rel_Deadline + System.BB.Time.Clock;
-
-      -------------------------------------------------------------------------
-      --     con initialize_thread si va a completare il metodo come su leon
-      ------------------------------------------------------------------------
 
       --  The environment thread executes the main procedure of the program
 
@@ -324,7 +294,6 @@ package body System.BB.Threads is
 
    procedure Initialize_Slave
      (Idle_Thread   : Thread_Id;
-      --  Idle_Priority : Integer;
       Stack_Address : System.Address;
       Stack_Size    : System.Storage_Elements.Storage_Offset)
    is
@@ -369,10 +338,6 @@ package body System.BB.Threads is
       --  Priority changes are only possible as a result of inheriting the
       --  ceiling priority of a protected object. Hence, it can never be set
       --  a priority which is lower than the base priority of the thread.
-
-   --   pragma Assert
-   --     (Queues.Running_Thread /= Null_Thread_Id
-   --       and then Priority >= Queues.Running_Thread.Base_Priority);
 
       Queues.Set_Priority_For_Print (Queues.Running_Thread, Priority);
 
@@ -575,7 +540,6 @@ package body System.BB.Threads is
      (Id            : Thread_Id;
       Code          : System.Address;
       Arg           : System.Address;
-   --  Priority      : Integer;
       Relative_Deadline : System.BB.Deadlines.Relative_Deadline;
       Base_CPU      : System.Multiprocessors.CPU_Range;
       Stack_Address : System.Address;
@@ -622,7 +586,7 @@ package body System.BB.Threads is
 
          Id.Preemption_Needed := True;
 
-         if Id.Is_Sporadic = True then
+         if Id.Is_Sporadic then
             Queues.Change_Absolute_Deadline
               (Id, Id.Active_Relative_Deadline + Now);
             Id.Just_Wakeup := True;

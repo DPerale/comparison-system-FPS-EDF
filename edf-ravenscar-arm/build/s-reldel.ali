@@ -1,0 +1,72 @@
+V "GNAT Lib v2018"
+A -gnatA
+A --RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/
+A -mlittle-endian
+A -mfloat-abi=hard
+A -mcpu=cortex-m4
+A -mfpu=fpv4-sp-d16
+A -mthumb
+A -gnatwA
+A -gnatg
+A -g
+P DB ZX
+
+RN
+RV NO_DELAY
+RV NO_FIXED_POINT
+RV NO_IMPLEMENTATION_PRAGMAS
+RV SPARK_05
+
+U system.relative_delays%b  s-reldel.adb	d6b7bcc0 NE OL PK
+W ada%s			ada.ads			ada.ali
+W ada.real_time%s	a-reatim.adb		a-reatim.ali
+Z ada.real_time.delays%s  a-retide.adb		a-retide.ali
+W system%s		system.ads		system.ali
+
+U system.relative_delays%s  s-reldel.ads	096f30c5 NE OL PK
+W system%s		system.ads		system.ali
+
+D ada.ads		20190621182550 76789da1 ada%s
+D a-reatim.ads		20190621183100 4c16970e ada.real_time%s
+D a-retide.ads		20190621183100 081cdaa4 ada.real_time.delays%s
+D interfac.ads		20190621182551 5ab55268 interfaces%s
+D i-stm32.ads		20190621182551 2ad0960b interfaces.stm32%s
+D i-stm32-pwr.ads	20190621182551 4a098e84 interfaces.stm32.pwr%s
+D system.ads		20190621182556 db831581 system%s
+D s-bb.ads		20190621183100 09e072ae system.bb%s
+D s-bbbopa.ads		20190621182552 5e9af419 system.bb.board_parameters%s
+D s-bbbosu.ads		20190621183100 0f820a2a system.bb.board_support%s
+D s-bbcppr.ads		20190621183100 bcfa73ad system.bb.cpu_primitives%s
+D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
+D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
+D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
+D s-bbpara.ads		20190621183100 431abc17 system.bb.parameters%s
+D s-bbthre.ads		20210418132909 e32b4f4c system.bb.threads%s
+D s-bbthqu.ads		20200515092919 dad6adec system.bb.threads.queues%s
+D s-bbtime.ads		20190621183100 1a3e050f system.bb.time%s
+D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
+D s-osinte.ads		20210418133327 08e8fca2 system.os_interface%s
+D s-reldel.ads		20190621183100 d2ec2544 system.relative_delays%s
+D s-reldel.adb		20190621183100 484d0e8a system.relative_delays%b
+D s-stm32.ads		20190621182556 e898dba2 system.stm32%s
+D s-stoele.ads		20190621182556 2dc34a04 system.storage_elements%s
+D s-unstyp.ads		20190621182556 34867c83 system.unsigned_types%s
+X 1 ada.ads
+16K9*Ada 20e8 22|32r6 32r25
+X 2 a-reatim.ads
+41K13*Real_Time 182e18 22|32w10 32r29
+51M9*Time<18|46M9>
+61I9*Time_Span<18|84I9>
+68V13*Clock{51M9}<18|191p13> 22|40s19
+72V14*"+"{51M9} 22|40s25
+121V13*To_Time_Span{61I9}<18|124p13> 22|40s27
+X 7 system.ads
+50K9*System 164e11 21|36r9 44r5 22|34r14 43r5
+X 18 s-bbtime.ads
+46M9*Time
+84I9*Time_Span<long_long_integer>
+X 21 s-reldel.ads
+36K16*Relative_Delays 7|50k9 21|44l12 44e27 22|34b21 43l12 43t27
+38U14*Delay_For 38>25 22|36b14 41l8 41t17
+38o25 D{duration} 22|36b25 40r41
+

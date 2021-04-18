@@ -54,7 +54,7 @@ D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
 D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20200327123511 01e92e1c system.bb.threads%s
+D s-bbthre.ads		20210418132912 01e92e1c system.bb.threads%s
 D s-bbthqu.ads		20200515092755 91e53bcb system.bb.threads.queues%s
 D s-bbtime.ads		20200325112142 da8467fe system.bb.time%s
 D s-bbtiev.ads		20190621183100 f167837c system.bb.timing_events%s
@@ -84,10 +84,10 @@ X 15 s-bbpara.ads
 45K19*Parameters 155e25 20|29w16 69r34 134r34
 152b4*Multiprocessor{boolean} 20|69r45 134r45
 X 16 s-bbthre.ads
-49K19*Threads 358e22 20|30w16 31r16 39r18
+49K19*Threads 368e22 20|30w16 31r16 39r18
 65P9*Thread_Id(62R9) 20|266r25
-279V13*Thread_Self{65P9} 20|285s18
-294V13*Get_Priority{integer} 20|286s26
+286V13*Thread_Self{65P9} 20|285s18
+301V13*Get_Priority{integer} 20|286s26
 X 17 s-bbthqu.ads
 41K27*Queues 405e29 20|31w24 288r7 318r7
 125U14*Change_Priority 20|288s14 318s14

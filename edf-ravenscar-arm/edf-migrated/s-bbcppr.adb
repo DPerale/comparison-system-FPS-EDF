@@ -320,8 +320,10 @@ package body System.BB.CPU_Primitives is
          null;
       end if;
 
-      --  Restore interrupt masking of interrupted thread
+      --  Calculate Release Jitter
       Threads.Queues.Change_Release_Jitter (Threads.Queues.First_Thread);
+
+      --  Restore interrupt masking of interrupted thread
       Enable_Interrupts (Running_Thread.Active_Priority);
    end Interrupt_Request_Handler;
 

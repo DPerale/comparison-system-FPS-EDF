@@ -34,8 +34,6 @@
 pragma Restrictions (No_Elaboration_Code);
 
 with System.Tasking.Restricted.Stages;
-with System.BB.Debug;
-with System.IO;
 
 package body System.Interrupts is
 

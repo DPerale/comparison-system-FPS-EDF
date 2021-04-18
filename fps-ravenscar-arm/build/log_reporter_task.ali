@@ -61,7 +61,7 @@ D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
 D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20200327123511 01e92e1c system.bb.threads%s
+D s-bbthre.ads		20210418132912 01e92e1c system.bb.threads%s
 D s-bbthqu.ads		20200515092755 91e53bcb system.bb.threads.queues%s
 D s-bbtime.ads		20200325112142 da8467fe system.bb.time%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
@@ -122,7 +122,7 @@ X 11 system.ads
 X 12 s-bb.ads
 40K16*BB 10|4r13 5r13 6r13 21r47 23r47 25r28 28r29 43r17 49r18 55r20 12|95e14
 X 20 s-bbthre.ads
-49K19*Threads 10|5w16 6r16 55r23 20|358e22
+49K19*Threads 10|5w16 6r16 55r23 20|368e22
 X 21 s-bbthqu.ads
 41K27*Queues 10|6w24 55r31 21|405e29
 55U14*Print_Log 10|55s38

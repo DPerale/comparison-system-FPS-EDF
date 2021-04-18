@@ -319,16 +319,6 @@ package body System.BB.Time is
       return Before_MSP & 0;
    end Clock;
 
---     function Time_Conversion (Time_in  : System.BB.Time.Time)
---                                  return System.BB.Time.Time_Span;
---     function Time_Conversion (Time_in  : System.BB.Time.Time)
---                                  return System.BB.Time.Time_Span is
---        Time_out : System.BB.Time.Time_Span;
---     begin
---        Time_out := System.BB.Time.Time_Span (Time_in);
---        return Time_out;
---     end Time_Conversion;
-
    -----------------
    -- Delay_Until --
    -----------------
@@ -336,7 +326,7 @@ package body System.BB.Time is
    procedure Delay_Until (T : Time) is
       Now               : Time;
       Self              : Thread_Id;
-      Inserted_As_First : Boolean;
+      Inserted_As_First : Boolean := False;
       Response_Jitter : Time_Span;
       Temp1 : Time_Span;
       Temp2 : Time;
@@ -350,8 +340,8 @@ package body System.BB.Time is
 
       pragma Assert (Self.State = Runnable);
 
+      --  Calculate and update Jitters if is not first task execution
       if Self.First_Execution = True then
-
          Temp1 := Self.Active_Next_Period - Time_First;
          Temp2 := Self.Active_Release_Jitter + Temp1;
          Response_Jitter := Now - Temp2;
@@ -388,7 +378,8 @@ package body System.BB.Time is
          Insert_Alarm (T, Self, Inserted_As_First);
 
          if Inserted_As_First then
-            Update_Alarm (Get_Next_Timeout (Current_CPU));
+            --  Update_Alarm (Get_Next_Timeout (Current_CPU));
+            Update_Alarm (T);
          end if;
       else
          --  If alarm time is not in the future, the thread must yield the CPU

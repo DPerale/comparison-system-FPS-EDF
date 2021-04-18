@@ -250,10 +250,6 @@ package System.Tasking is
    Idle_Priority : constant Integer := Any_Priority'First - 1;
    --  A priority lower than any user priority. Used by the idle task
 
-   --  Idle_Relative_Deadline : constant System.BB.Deadlines.Relative_Deadline
-   --  :=
-   --         System.BB.Time.Milliseconds (1000000000);
-
    subtype Extended_Priority is
      Integer range Idle_Priority .. Any_Priority'Last;
    --  Priority range that also includes the idle priority

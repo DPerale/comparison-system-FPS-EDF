@@ -45,13 +45,9 @@ with System.IO;
 
 package body System.BB.Threads.Queues is
 
-   --  use type System.BB.Time.Time;
    use System.Multiprocessors;
    use System.BB.Board_Support.Multiprocessors;
    use System.BB.Deadlines;
-   --  for deadline references
-
-   --  use System.IO;
    use System.BB.Time;
 
    ----------------
@@ -62,6 +58,7 @@ package body System.BB.Threads.Queues is
    pragma Volatile_Components (Alarms_Table);
    --  Identifier of the thread that is in the first place of the alarm queue
 
+   --  Atomic record for the log table
    type Log_Record is
       record
          ID : Integer;
@@ -75,11 +72,17 @@ package body System.BB.Threads.Queues is
          Average_Response_Jitter : System.BB.Time.Time_Span;
       end record;
 
+   --  Definition of log table, every element rapresent a task. 90 is a good
+   --  number of our implementations because there can't be more tasks for
+   --  the RAM limitation of the embedded board. If you need you can change it
    type Array_Log_Record is array (1 .. 90) of Log_Record;
 
+   --  Declaration of log table
    Log_Table : Array_Log_Record;
    Max_ID_Table : Integer := 0;
 
+   --  Before the tasks start we initialize the log table that will fill with
+   --  the data when needed.
    procedure Initialize_Log_Table (ID : Integer) is
    begin
       if ID /= 0 then
@@ -117,6 +120,8 @@ package body System.BB.Threads.Queues is
       end if;
    end Add_Preemption;
 
+   --  Procedure to print to screen the log table (not supported in our
+   --  embedded board).
    procedure Print_Log (First_Index : Integer) is
       i : Integer := First_Index;
    begin
@@ -130,13 +135,14 @@ package body System.BB.Threads.Queues is
          System.IO.Put_Line ("");
          i := i + 1;
       end loop;
-
    end Print_Log;
 
    ---------------------
    -- Change_Priority --
    ---------------------
 
+   --  The priority is still used but is fixed and equal for all the tasks
+   --  in EDF
    procedure Change_Priority (Thread : Thread_Id;
                               Priority : System.Any_Priority;
                               Flag : Boolean)
@@ -154,128 +160,15 @@ package body System.BB.Threads.Queues is
       pragma Assert (Thread = Running_Thread_Table (CPU_Id)
                      and then Thread = First_Thread_Table (CPU_Id));
 
-      --  Return now if there is no change. This is a rather common case, as
-      --  it happens if user is not using priorities, or if the priority of
-      --  an interrupt handler is the same as the priority of the interrupt.
-      --  In any case, the check is quick enough.
-
-      --  if Thread.Active_Priority = Priority then
-      --   return;
-      --  end if;
-
       --  Change the active priority. The base priority does not change
 
       Thread.Active_Priority := Priority;
 
-      --  Outside of the executive kernel, the running thread is also the first
-      --  thread in the First_Thread_Table list. This is also true in general
-      --  within the kernel, except during transcient period when a task is
-      --  extracted from the list (blocked by a delay until or on an entry),
-      --  when a task is inserted (after a wakeup), after a yield or after
-      --  this procedure. But then a context_switch put things in order.
-
-      --  However, on ARM Cortex-M, context switches can be delayed by
-      --  interrupts. They are performed via a special interrupt (Pend_SV),
-      --  which is at the lowest priority. This has three consequences:
-      --   A) it is not possible to have tasks in the Interrupt_Priority range
-      --   B) the head of First_Thread_Table list may be different from the
-      --      running thread within user interrupt handler
-      --   C) the running thread may not be in the First_Thread_Table list.
-      --  The following scenario shows case B: while a thread is running, an
-      --  interrupt awakes a task at a higher priority; it is put in front of
-      --  the First_Thread_Table queue, and a context switch is requested. But
-      --  before the end of the interrupt, another interrupt triggers. It
-      --  increases the priority of  the current thread, which is not the
-      --  first in queue.
-      --  The following scenario shows case C: a task is executing a delay
-      --  until and therefore it is removed from the First_Thread_Table. But
-      --  before the context switch, an interrupt triggers and change the
-      --  priority of the running thread.
-
-      --  First, find THREAD in the queue and remove it temporarly.
-
---        Head := First_Thread_Table (CPU_Id);
-
---        if Head = Thread then
---
---           if System.BB.Debug.Debug_Inte then
---              System.IO.Put_Line ("out 3");
---           end if;
---
---           --  This is the very common case: THREAD is the first in the queue
---
---           if Thread.Next = Null_Thread_Id
---             or else Priority >= Thread.Next.Active_Priority
---           then
---              --  Already at the right place.
---              return;
---           end if;
---
---           --  Remove THREAD from the queue
---
---           Head := Thread.Next;
---        else
---
---           --  Uncommon case: less than 0.1% on a Cortex-M test.
---
---           --  Search the thread before THREAD.
---
---           if System.BB.Debug.Debug_Inte then
---              System.IO.Put_Line ("out 4");
---           end if;
---
---           Prev_Pointer := Head;
---           loop
---              if Prev_Pointer = null then
---                 --  THREAD is not in the queue. This corresponds to case B.
---                 return;
---              end if;
---
---              exit when Prev_Pointer.Next = Thread;
---
---              Prev_Pointer := Prev_Pointer.Next;
---           end loop;
---
---           --  Remove THREAD from the queue.
---
---           Prev_Pointer.Next := Thread.Next;
---        end if;
-
-      --  Now insert THREAD.
-
-      --  FIFO_Within_Priorities dispatching policy. In ALRM D.2.2 it is
-      --  said that when the active priority is lowered due to the loss of
-      --  inherited priority (the only possible case within the Ravenscar
-      --  profile) the task is added at the head of the ready queue for
-      --  its new active priority.
-
---        if Priority >= Head.Active_Priority then
---
---        --  THREAD is the highest priority thread, so put it in the front of
---           --  the queue.
---
---           Thread.Next := Head;
---           Head := Thread;
---        else
---
---           --  Search the right place in the queue.
---
---           Prev_Pointer := Head;
---           while Prev_Pointer.Next /= Null_Thread_Id
---             and then Priority < Prev_Pointer.Next.Active_Priority
---           loop
---              Prev_Pointer := Prev_Pointer.Next;
---           end loop;
---
---           Thread.Next := Prev_Pointer.Next;
---           Prev_Pointer.Next := Thread;
---        end if;
---
---        First_Thread_Table (CPU_Id) := Head;
       Busy_For_Interrupts := Flag;
 
    end Change_Priority;
 
+   --  Set the log reporter task priority
    procedure Set_Priority_For_Print (Thread : Thread_Id;
                                     Priority : System.Any_Priority) is
    begin
@@ -299,6 +192,9 @@ package body System.BB.Threads.Queues is
    -- Change_Is_Sporadic --
    ------------------------
 
+   --  If you use sporadic tasks this procedure will set them as sporadic so
+   --  the strumentation will work correctly (the sporadic part is not well
+   --  tested).
    procedure Change_Is_Sporadic
      (Thread       : Thread_Id;
       Bool : Boolean)
@@ -311,6 +207,7 @@ package body System.BB.Threads.Queues is
    -- Change_Relative_Deadline --
    ------------------------------
 
+   --
    procedure Change_Relative_Deadline
      (Thread       : Thread_Id;
       Rel_Deadline : Relative_Deadline;
@@ -352,8 +249,6 @@ package body System.BB.Threads.Queues is
          end if;
       end if;
 
-      --  Thread.Active_Absolute_Deadline := (Rel_Deadline + Now);
-
       --  When lowering the relative deadline, we have to lower absolute
       --  deadline too because our considerations about enqueuing will be
       --  based on absolute deadline value. Furthermore it is not possible
@@ -362,7 +257,6 @@ package body System.BB.Threads.Queues is
       --  required within the queue, because the thread is already in the
       --  first position.
       if Thread.Next /= Null_Thread_Id
-        --  and then Priority < Thread.Next.Active_Priority
         and then Thread.Active_Absolute_Deadline >
                       Thread.Next.Active_Absolute_Deadline
       then
@@ -440,6 +334,9 @@ package body System.BB.Threads.Queues is
       --  follow natural behaviour of the Runtime
 
       Thread.Active_Absolute_Deadline := Abs_Deadline;
+
+      --  -180 is an impossible number for a deadline, for that we use it
+      --  to recognize the log printer task
       if Thread.Active_Relative_Deadline = -180 then
          Thread.Active_Absolute_Deadline := 0;
       end if;
@@ -490,7 +387,7 @@ package body System.BB.Threads.Queues is
       pragma Assert (CPU_Id = Current_CPU);
       pragma Assert (Thread = Running_Thread_Table (CPU_Id));
 
-      if Thread.Just_Wakeup = True then
+      if Thread.Just_Wakeup then
          Temp := System.BB.Time.Clock - Thread.Active_Next_Period;
          Thread.Active_Release_Jitter := System.BB.Time.Time_First + (Temp);
          Thread.Just_Wakeup := False;
@@ -559,7 +456,6 @@ package body System.BB.Threads.Queues is
    ---------------------------
 
    function Context_Switch_Needed return Boolean is
-   --   Now : System.BB.Time.Time;
    begin
       --  A context switch is needed when there is a higher priority task ready
       --  to execute. It means that First_Thread is not null and it is not
@@ -586,17 +482,7 @@ package body System.BB.Threads.Queues is
    -- Current_Priority --
    ----------------------
 
-   --  function Current_Priority
-   --  (CPU_Id : System.Multiprocessors.CPU) return Integer
-   --  is
-   --   Thread : constant Thread_Id := Running_Thread_Table (CPU_Id);
-   --  begin
-   --   if Thread = null or else Thread.State /= Threads.Runnable then
-   --      return System.Any_Priority'First;
-   --   else
-   --      return Thread.Active_Priority;
-   --   end if;
-   --  end Current_Priority;
+   --  not needed in EDF
 
    -------------------------------
    -- Current_Relative_Deadline --
@@ -891,9 +777,7 @@ package body System.BB.Threads.Queues is
       CPU_Id      : constant CPU     := Get_CPU (Thread);
       Abs_Dead    : constant System.BB.Deadlines.Absolute_Deadline
                := Thread.Active_Absolute_Deadline;
-      --  Prio        : constant Integer := Thread.Active_Priority;
       Aux_Pointer : Thread_Id;
-   --   Now         : System.BB.Time.Time;
    begin
       --  A CPU can only modify its own tasks queues
       pragma Assert (CPU_Id = Current_CPU);
@@ -903,7 +787,6 @@ package body System.BB.Threads.Queues is
         Thread.Active_Period;
 
       if Thread.Next /= Null_Thread_Id
-      --  and then Thread.Next.Active_Priority = Prio
          and then Thread.Next.Active_Absolute_Deadline < Abs_Dead
       then
          First_Thread_Table (CPU_Id) := Thread.Next;

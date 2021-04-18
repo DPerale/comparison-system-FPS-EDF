@@ -108,6 +108,7 @@ package body System.BB.Protection is
 
       pragma Assert (Threads.Queues.Running_Thread.State = Threads.Runnable);
 
+      --  Calculate Release Jitter
       Threads.Queues.Change_Release_Jitter (Threads.Queues.First_Thread);
 
       --  Now we need to set the hardware interrupt masking level equal to the

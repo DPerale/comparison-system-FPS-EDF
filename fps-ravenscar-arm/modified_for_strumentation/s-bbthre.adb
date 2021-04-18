@@ -503,7 +503,7 @@ package body System.BB.Threads is
 
          Id.Preemption_Needed := True;
 
-         if Id.Is_Sporadic = True then
+         if Id.Is_Sporadic then
             Queues.Change_Absolute_Deadline
               (Id, Id.Active_Relative_Deadline + Now);
             Id.Just_Wakeup := True;

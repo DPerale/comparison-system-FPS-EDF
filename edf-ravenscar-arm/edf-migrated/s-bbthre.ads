@@ -164,14 +164,19 @@ package System.BB.Threads is
       --  preempt the running task before its natural suspension.
 
       Active_Period : System.BB.Time.Time_Span;
+      --  Period of the thread
 
       Active_Starting_Time :  System.BB.Time.Time_Span;
+      --  When was started the thread
 
       Fake_Number_ID : Integer := 0;
+      --  ID for the logging table
 
       Is_Sporadic : Boolean := False;
+      --  Used to mark if a thread is sporadic
 
       Just_Wakeup : Boolean := False;
+      --  It is changed to True when the thread is awakened
 
       Active_Next_Period : System.BB.Time.Time :=
         System.BB.Time.Time_First;
@@ -180,8 +185,10 @@ package System.BB.Threads is
       Active_Release_Jitter : System.BB.Time.Time :=
         System.BB.Time.Time_First;
       pragma Volatile (Active_Release_Jitter);
+      --  Variable to update at every execution of the thread
 
       First_Execution : Boolean := False;
+      --  The first execution is important to trak for the strumentation
    end record;
 
    function Get_Affinity
@@ -202,7 +209,6 @@ package System.BB.Threads is
 
    procedure Initialize
      (Environment_Thread : Thread_Id;
-   --  Main_Priority      : System.Any_Priority
       Main_Rel_Deadline : System.BB.Deadlines.Relative_Deadline) with
    --  Procedure to initialize the board and the data structures related to the
    --  low level tasking system. This procedure must be called before any other
@@ -239,7 +245,6 @@ package System.BB.Threads is
 
    procedure Initialize_Slave
      (Idle_Thread   : Thread_Id;
-      --  Idle_Priority : Integer;
       Stack_Address : System.Address;
       Stack_Size    : System.Storage_Elements.Storage_Offset) with
    --  Procedure to initialize the idle thread on a slave CPU.
@@ -264,12 +269,10 @@ package System.BB.Threads is
      (Id            : Thread_Id;
       Code          : System.Address;
       Arg           : System.Address;
-   --  Priority      : Integer;
       Relative_Deadline : System.BB.Deadlines.Relative_Deadline;
       Base_CPU      : System.Multiprocessors.CPU_Range;
       Stack_Address : System.Address;
       Stack_Size    : System.Storage_Elements.Storage_Offset);
-   --  with
    --  Create a new thread
    --
    --  The new thread executes the code at address Code and using Args as
@@ -298,21 +301,13 @@ package System.BB.Threads is
    pragma Inline (Set_Priority);
    --  Set the active priority of the executing thread to the given value
 
-   --  function Get_Priority  (Id : Thread_Id) return Integer with
-   --  Get the current active priority of any thread
-
-   --  AAA togliere?
-
-   --  Pre => Id /= Null_Thread_Id,
-
-   --  Inline => True;
-
    procedure Set_Fake_Number_ID
           (Fake_Number_ID : Integer);
    pragma Inline (Set_Fake_Number_ID);
-   --  Set a fake integer number ID
+   --  Set a fake integer number ID for the logging table
 
    procedure Set_Is_Sporadic (Bool : Boolean);
+   --  Set if the task is sporadic or not
 
    procedure Set_Relative_Deadline
      (Rel_Deadline : System.BB.Deadlines.Relative_Deadline;
@@ -345,9 +340,11 @@ package System.BB.Threads is
 
    procedure Set_Period
      (Period       : System.BB.Time.Time_Span);
+   --  Set the period of the thread
 
    procedure Set_Starting_Time
      (Starting_Time :  System.BB.Time.Time_Span);
+   --  Set the starting time of the thread
 
    procedure Sleep;
    --  The calling thread is unconditionally suspended. In the case when there

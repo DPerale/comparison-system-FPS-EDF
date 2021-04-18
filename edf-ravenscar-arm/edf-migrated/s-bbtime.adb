@@ -327,23 +327,22 @@ package body System.BB.Time is
    procedure Delay_Until (T : Time) is
       Now               : Time;
       Self              : Threads.Thread_Id;
-      Inserted_As_First : Boolean;
+      Inserted_As_First : Boolean := False;
       Response_Jitter : Time_Span;
       Temp1 : Time_Span;
       Temp2 : Time;
 
    begin
+      Protection.Enter_Kernel;
 
       Now := Clock;
-
-      Protection.Enter_Kernel;
 
       Self := Thread_Self;
 
       pragma Assert (Self.State = Runnable);
 
-      if Self.First_Execution = True then
-
+      --  Calculate and update Jitters if is not first task execution
+      if Self.First_Execution then
          Temp1 := Self.Active_Next_Period - Time_First;
          Temp2 := Self.Active_Release_Jitter + Temp1;
          Response_Jitter := Now - Temp2;
@@ -355,7 +354,7 @@ package body System.BB.Time is
          Self.First_Execution := True;
       end if;
 
-      --  add DM if necessary and add execution
+      --  add DM if necessary and add Regular_Completion
       System.BB.Threads.Queues.Add_Runs (Self.Fake_Number_ID);
       if Self.Active_Absolute_Deadline < Now then
          System.BB.Threads.Queues.Add_DM (Self.Fake_Number_ID);
@@ -380,7 +379,6 @@ package body System.BB.Time is
          Insert_Alarm (T, Self, Inserted_As_First);
 
          if Inserted_As_First then
-            --   Update_Alarm (Get_Next_Timeout (Current_CPU));
             Update_Alarm (T);
          end if;
       else

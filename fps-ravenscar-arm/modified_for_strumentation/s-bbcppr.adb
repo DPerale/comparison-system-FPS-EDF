@@ -376,7 +376,10 @@ package body System.BB.CPU_Primitives is
          Context_Switch;
       end if;
 
+      --  Calculate Release Jitter
       Threads.Queues.Change_Release_Jitter (Threads.Queues.First_Thread);
+
+      --  Restore interrupt masking of interrupted thread
       Enable_Interrupts (Running_Thread.Active_Priority);
    end Sys_Tick_Handler;
 

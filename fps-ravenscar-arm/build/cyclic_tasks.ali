@@ -20,9 +20,9 @@ RV NO_DEFAULT_INITIALIZATION
 RV NO_IMPLEMENTATION_PRAGMAS
 RV NO_ELABORATION_CODE
 RV SPARK_05
-RV MAX_TASKS=11
+RV MAX_TASKS=5
 
-U cyclic_tasks%b	cyclic_tasks.adb	2add7ebe OO PK
+U cyclic_tasks%b	cyclic_tasks.adb	368eb062 OO PK
 W ada%s			ada.ads			ada.ali
 W ada.real_time%s	a-reatim.adb		a-reatim.ali
 Z ada.real_time.delays%s  a-retide.adb		a-retide.ali
@@ -37,7 +37,7 @@ W system.task_primitives.operations%s  s-taprop.adb  s-taprop.ali
 Z system.tasking%s	s-taskin.adb		s-taskin.ali
 Z system.tasking.restricted.stages%s  s-tarest.adb  s-tarest.ali
 W system_time%s		system_time.ads		system_time.ali
-T 0 11
+T 0 5
 
 U cyclic_tasks%s	cyclic_tasks.ads	42254f49 EE NE OO PK
 W system%s		system.ads		system.ali
@@ -53,7 +53,7 @@ D a-reatim.ads		20190621183100 4c16970e ada.real_time%s
 D a-retide.ads		20190621183100 081cdaa4 ada.real_time.delays%s
 D a-unccon.ads		20190621182550 0e9b276f ada.unchecked_conversion%s
 D cyclic_tasks.ads	20200507113613 99a65ac8 cyclic_tasks%s
-D cyclic_tasks.adb	20200519211626 5c2bb282 cyclic_tasks%b
+D cyclic_tasks.adb	20210410105559 40787c5e cyclic_tasks%b
 D interfac.ads		20190621182551 5ab55268 interfaces%s
 D i-stm32.ads		20190621182551 2ad0960b interfaces.stm32%s
 D i-stm32-pwr.ads	20190621182551 4a098e84 interfaces.stm32.pwr%s
@@ -67,7 +67,7 @@ D s-bbdead.ads		20190621183100 deeac8df system.bb.deadlines%s
 D s-bbinte.ads		20190621183100 c88d39da system.bb.interrupts%s
 D s-bbmcpa.ads		20190621182552 b5961a30 system.bb.mcu_parameters%s
 D s-bbpara.ads		20190621182552 431abc17 system.bb.parameters%s
-D s-bbthre.ads		20200327123511 01e92e1c system.bb.threads%s
+D s-bbthre.ads		20210418132912 01e92e1c system.bb.threads%s
 D s-bbthqu.ads		20200515092755 91e53bcb system.bb.threads.queues%s
 D s-bbtime.ads		20200325112142 da8467fe system.bb.time%s
 D s-multip.ads		20190621183100 f33e0e35 system.multiprocessors%s
@@ -103,9 +103,9 @@ X 3 a-reatim.ads
 119V13*To_Duration{duration}<23|117p13> 7|38s27
 126V13*Microseconds{61I9}<23|158p13> 7|13s30 19s30 48s58
 X 6 cyclic_tasks.ads
-3K9*Cyclic_Tasks 20l5 20e17 7|9b14 92l5 92t17
+3K9*Cyclic_Tasks 20l5 20e17 7|9b14 86l5 86t17
 5T14*Cyclic 6d7 7d7 8d7 9d7 10d7 11d7 15l8 15e14 7|11b14 69l8 69t14 82r9
-. 83r9 84r9 85r9 86r9 87r9 88r9 89r9 90r9 91r10
+. 83r9 84r9 85r9
 6i7 Pri{12|117I12} 13r24
 7i7 Deadline{positive} 7|58r40
 8i7 Period{positive} 7|19r44 52r39
@@ -132,12 +132,6 @@ X 7 cyclic_tasks.adb
 83t4 C2{6|5T14}
 84t4 C3{6|5T14}
 85t4 C4{6|5T14}
-86t4 C5{6|5T14}
-87t4 C6{6|5T14}
-88t4 C7{6|5T14}
-89t4 C8{6|5T14}
-90t4 C9{6|5T14}
-91t4 C10{6|5T14}
 X 11 log_reporter_task.ads
 2K9*Log_Reporter_Task 7|7w6 81r9 11|14e22
 4T14*Log_Reporter 7|81r27 11|12e20
@@ -150,8 +144,8 @@ X 13 s-bb.ads
 40K16*BB 7|4r13 5r13 6r13 30r47 32r47 34r28 37r29 52r17 58r18 59r14 60r14
 . 75r18 13|95e14
 X 21 s-bbthre.ads
-49K19*Threads 7|5w16 6r16 59r17 60r17 21|358e22
-301U14*Set_Fake_Number_ID 7|59s25
+49K19*Threads 7|5w16 6r16 59r17 60r17 21|368e22
+308U14*Set_Fake_Number_ID 7|59s25
 X 22 s-bbthqu.ads
 41K27*Queues 7|6w24 60r25 22|405e29
 51U14*Initialize_Log_Table 7|60s32

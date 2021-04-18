@@ -161,14 +161,19 @@ package System.BB.Threads is
       --  preempt the running task before its natural suspension.
 
       Active_Period : System.BB.Time.Time_Span;
+      --  Period of the thread
 
       Active_Starting_Time :  System.BB.Time.Time_Span;
+      --  When was started the thread
 
       Fake_Number_ID : Integer := 0;
+      --  ID for the logging table
 
       Is_Sporadic : Boolean := False;
+      --  Used to mark if a thread is sporadic
 
       Just_Wakeup : Boolean := False;
+      --  It is changed to True when the thread is awakened
 
       Active_Next_Period : System.BB.Time.Time :=
         System.BB.Time.Time_First;
@@ -177,8 +182,10 @@ package System.BB.Threads is
       Active_Release_Jitter : System.BB.Time.Time :=
         System.BB.Time.Time_First;
       pragma Volatile (Active_Release_Jitter);
+      --  Variable to update at every execution of the thread
 
       First_Execution : Boolean := False;
+      --  The first execution is important to trak for the strumentation
    end record;
 
    function Get_Affinity
@@ -301,9 +308,10 @@ package System.BB.Threads is
    procedure Set_Fake_Number_ID
           (Fake_Number_ID : Integer);
    pragma Inline (Set_Fake_Number_ID);
-   --  Set a fake integer number ID
+   --  Set a fake integer number ID for the logging table
 
    procedure Set_Is_Sporadic (Bool : Boolean);
+   --  Set if the task is sporadic or not
 
    procedure Set_Relative_Deadline
      (Rel_Deadline : System.BB.Deadlines.Relative_Deadline;
@@ -314,9 +322,11 @@ package System.BB.Threads is
 
    procedure Set_Period
      (Period       : System.BB.Time.Time_Span);
+   --  Set the period of the thread
 
    procedure Set_Starting_Time
      (Starting_Time :  System.BB.Time.Time_Span);
+   --  Set the starting time of the thread
 
    procedure Sleep;
    --  The calling thread is unconditionally suspended. In the case when there

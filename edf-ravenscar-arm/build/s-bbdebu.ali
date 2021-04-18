@@ -1,0 +1,63 @@
+V "GNAT Lib v2018"
+A -gnatA
+A --RTS=/usr/local/gnat-arm/arm-eabi/lib/gnat/ravenscar-full-stm32f429disco/
+A -mlittle-endian
+A -mfloat-abi=hard
+A -mcpu=cortex-m4
+A -mfpu=fpv4-sp-d16
+A -mthumb
+A -gnatwA
+A -gnatg
+A -g
+P DB ZX
+
+RN
+RV NO_IMPLEMENTATION_PRAGMAS
+RV NO_IMPLEMENTATION_RESTRICTIONS
+RR NO_ELABORATION_CODE
+
+U system.bb.debug%s	s-bbdebu.ads		434d0ea1 NE OL PR PK
+W system.bb%s		s-bb.ads		s-bb.ali
+
+D system.ads		20190621182556 db831581 system%s
+D s-bb.ads		20190621183100 09e072ae system.bb%s
+D s-bbdebu.ads		20190621183100 4aad7c0f system.bb.debug%s
+X 1 system.ads
+50K9*System 164e11 3|39r9 83r5
+X 2 s-bb.ads
+40K16*BB 1|50k9 2|95e14 3|39r16 83r12
+X 3 s-bbdebu.ads
+39K19*Debug 2|40k16 3|83l15 83e20
+42b4*General{boolean} 48r29 49r29 50r29 51r29 52r29 53r29 54r29 55r29 56r29
+. 57r29 59r29 60r29 61r29 63r29 64r32 66r29
+43b4*Queues{boolean} 74r30 77r29
+44b4*Delays{boolean} 68r29 69r29
+45b4*Clocks{boolean} 71r34 72r35 75r32 78r29
+46b4*Bench{boolean} 80r29 81r29
+48b4*Debug_Inte{boolean}
+49b4*Debug_Hand{boolean}
+50b4*Debug_Prot{boolean}
+51b4*Debug_Thre{boolean}
+52b4*Debug_Prob{boolean}
+53b4*Debug_Prop{boolean}
+54b4*Debug_Rest{boolean}
+55b4*Debug_Event{boolean}
+56b4*Debug_Soft{boolean}
+57b4*Debug_POSE{boolean}
+59b4*Debug_Thqu{boolean}
+60b4*Debug_Timer{boolean}
+61b4*Debug_Abs{boolean}
+63b4*Debug_Tasks{boolean}
+64b4*Debug_Handler{boolean}
+66b4*Debug_Time{boolean}
+68b4*Debug_Add{boolean}
+69b4*Debug_Delay{boolean}
+71b4*Debug_Delay_Time{boolean}
+72b4*Debug_Wakeup_Time{boolean}
+74b4*Debug_Insert{boolean}
+75b4*Debug_Abs_Dead{boolean}
+77b4*Debug_Queue{boolean}
+78b4*Debug_Clock{boolean}
+80b4*Print_Miss{boolean}
+81b4*Print_Preem{boolean}
+

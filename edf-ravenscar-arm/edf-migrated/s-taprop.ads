@@ -64,7 +64,6 @@ package System.Task_Primitives.Operations is
      (T          : ST.Task_Id;
       Wrapper    : System.Address;
       Stack_Size : System.Parameters.Size_Type;
-      --  Priority   : ST.Extended_Priority;
       Relative_Deadline : System.BB.Deadlines.Relative_Deadline;
       Base_CPU   : System.Multiprocessors.CPU_Range;
       Succeeded  : out Boolean);
@@ -78,12 +77,6 @@ package System.Task_Primitives.Operations is
 
    function Self return ST.Task_Id;
    pragma Inline (Self);
-
-   --  procedure Set_Priority (T : ST.Task_Id; Prio : ST.Extended_Priority);
-   --  pragma Inline (Set_Priority);
-
-   --  function Get_Priority (T : ST.Task_Id) return ST.Extended_Priority;
-   --  pragma Inline (Get_Priority);
 
    procedure Set_Relative_Deadline
      (T    : ST.Task_Id;
